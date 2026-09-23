@@ -326,6 +326,7 @@
     "Camped": "{name} made camp: a Ration eaten, every Fatigue cleared.",
     "CampedHungry": "{name} made camp with no Ration to eat, and is Deprived.",
     "CrewFromWorld": "Only an Actor in this world can walk. Import it from the compendium first.",
+    "CrewUnlinked": "Not added to the journey: {names}. Unlinked tokens are copies, so Rations and Fatigue would land on none of them. Tick Link Actor Data on the prototype token, and on any token already on the map, then drag it in again.",
     "DropCrew": "Drag a character, a hireling, a mount or a whole party here.",
     "Day": "Day {day}",
     "Distance": "Distance",

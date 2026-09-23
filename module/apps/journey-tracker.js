@@ -278,9 +278,20 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
       // entry with no items, and the tracker threw on it (`journey.js#members`).
       if (actor?.pack) ui.notifications.warn(game.i18n.localize("CAIRN.Journey.CrewFromWorld"));
       if (!actor || actor.pack) return;
-      const uuids = actor.type === "party"
-        ? actor.system.roster.filter((m) => m.deployed).map((m) => m.actor.uuid)
-        : [actor.uuid];
+      const candidates = actor.type === "party"
+        ? actor.system.roster.filter((m) => m.deployed).map((m) => m.actor)
+        : [actor];
+      // An Actor whose prototype token is unlinked is a template: each token on a map is its own
+      // copy (a follower from `module/encounters.js`), and the journey would spend Rations and
+      // Fatigue on the directory Actor that no token shows. Linking it is the Warden's call, so
+      // the drop only refuses and says how — it never links anything itself.
+      const unlinked = candidates.filter((a) => !a.prototypeToken.actorLink);
+      if (unlinked.length) {
+        ui.notifications.warn(game.i18n.localize("CAIRN.Journey.CrewUnlinked", {
+          names: game.i18n.getListFormatter().format(unlinked.map((a) => a.name))
+        }));
+      }
+      const uuids = candidates.filter((a) => a.prototypeToken.actorLink).map((a) => a.uuid);
       if (uuids.length) await this.#send("addCrew", { uuids });
     });
   }

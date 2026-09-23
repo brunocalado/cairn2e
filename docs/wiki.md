@@ -435,6 +435,13 @@ opens the window on every player's screen.
 **Who travels.** Drag characters, hirelings, mounts or a whole party onto the window. The **×** on a
 row takes someone off the journey, and nothing the journey does touches them after that.
 
+Only an actor whose token is **linked** can travel. Generated NPCs, hirelings and monsters, and
+creatures added from an encounter, get unlinked tokens: each token is its own copy, so the journey
+would have no single sheet to take Rations from or give Fatigue to. Dropping one shows a warning
+and leaves it off. To bring it along, tick **Link Actor Data** in its prototype token settings (and
+on any of its tokens already on the map), then drag it in again. A party brings in its linked
+members and names the ones it left behind.
+
 ### Each watch
 
 A day has three watches: morning, afternoon and night.
