@@ -1,0 +1,31 @@
+{
+  "_id": "P799Joyn54UqzS9a",
+  "name": "Manacles",
+  "type": "gear",
+  "img": "icons/sundries/survival/cuffs-shackles-steel.webp",
+  "system": {
+    "description": "<p>Manacles</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!P799Joyn54UqzS9a",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

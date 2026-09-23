@@ -1,0 +1,113 @@
+{
+  "_id": "yzhR0sYQIJLgCYTn",
+  "name": "Crypt Guardian",
+  "type": "npc",
+  "img": "icons/magic/death/undead-skeleton-worn-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 12,
+      "max": 12
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "JDStyRGCbLlBGX39",
+      "name": "Ethereal Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>ethereal claws (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!yzhR0sYQIJLgCYTn.JDStyRGCbLlBGX39"
+    },
+    {
+      "name": "Animated skeletons clothed in billowing robes.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Their eye sockets are hypnotically red. Defend crypts and tombs, but will not attack if left undisturbed.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Sa7lwrwnnEcN7jUs",
+      "_key": "!actors.items!yzhR0sYQIJLgCYTn.Sa7lwrwnnEcN7jUs"
+    },
+    {
+      "name": "Non-magical attacks against them are impaired.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "SEYFFgQlURr4EIZS",
+      "_key": "!actors.items!yzhR0sYQIJLgCYTn.SEYFFgQlURr4EIZS"
+    },
+    {
+      "name": "Can teleport any target in eyesight to a random room nearby.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "302zqhTqLEiXOgcJ",
+      "_key": "!actors.items!yzhR0sYQIJLgCYTn.302zqhTqLEiXOgcJ"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!yzhR0sYQIJLgCYTn"
+}

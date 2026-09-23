@@ -1,0 +1,69 @@
+{
+  "_id": "uvEPiingwI5E96RA",
+  "name": "Will-o-Wisp",
+  "type": "npc",
+  "img": "icons/magic/light/orbs-smoke-pink.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 6,
+        "max": 6
+      },
+      "DEX": {
+        "value": 17,
+        "max": 17
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Nocturnal spirits of cool flame, commonly found in dense woodlands, marshes, and swamps.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "VzsP4Uw6Wp351KnX",
+      "_key": "!actors.items!uvEPiingwI5E96RA.VzsP4Uw6Wp351KnX"
+    },
+    {
+      "name": "Known to lead travelers astray, to a corpse, or back home again.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "txcITgDyJxA6cox7",
+      "_key": "!actors.items!uvEPiingwI5E96RA.txcITgDyJxA6cox7"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!uvEPiingwI5E96RA"
+}

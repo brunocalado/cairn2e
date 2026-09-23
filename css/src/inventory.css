@@ -1,0 +1,334 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The inventory — ten numbered ruled slots.                              *
+     *                                                                       *
+     * This is what removes the dead space the maintainer reported: the tab   *
+     * is exactly as tall as the character's capacity, because an empty slot  *
+     * is a ruled line rather than nothing. Occupancy comes from              *
+     * `slotsForItem`, the same function the encumbrance rule uses.           *
+     **************************************************************************/
+
+    .cairn-slot-list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* No border: a slot's rule is drawn by `module/ink.js` from the row's own width, and a rule
+       between two rows of the SAME item is left out — the bracket in the gutter already says the
+       item reaches that far.
+
+       A row has NO hover state and no fill of any kind. It used to take a band of
+       `--cairn-paper-sunk` under the pointer, which is the one permitted fill and it was being
+       spent on the wrong thing: reading down ten ruled lines lit a different one on every pass.
+       The multi-slot block wore the same band, so the sheet had one mark saying two things; both
+       are gone, and the `::before` they were painted on with them. The controls answer the
+       pointer individually and the name reads as a link; the line itself is a printed line and
+       stays still.
+
+       `position: relative` is load-bearing, not tidying: it is the containing block the bracket
+       is positioned and sized against. */
+    /* `--cairn-slot-h` and `--cairn-slot-gap` are declared at the top of this file, not here:
+       the row's height and the air under it are what the character sheet's page height is
+       computed from (`--cairn-tab-max-h`), so they have to be readable from outside the ledger.
+       The 4px was core's own `ol li { margin-bottom: 0.25rem }` before it was restated as ours. */
+    .cairn-slot {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: var(--cairn-slot-gap);
+        min-height: var(--cairn-slot-h);
+        position: relative;
+
+        /* The last line closes on the ledger's own frame, and the gap under it would be air
+           inside that frame — which is core's reading of a list too, and copying its
+           `:last-child` exception is what keeps the block the height it has always been.
+           `:where()` so the exclusion carries no specificity of its own. */
+        &:where(:last-child) {
+            margin-bottom: 0;
+        }
+
+        &.used-up {
+            opacity: 0.65;
+        }
+    }
+
+    /* A fixed two-digit column, so every item name on the ledger starts at the same x.
+       `flex: 0 0 2ch` did not hold it: a flex item's `min-width` defaults to `auto`, which is its
+       CONTENT width, and that beats the basis — so slot 10 grew its own column by a digit and
+       pushed its name a digit right of the nine above it. An explicit width with `min-width: 0`
+       is the pair that actually fixes a flex item's size. The figures are tabular so 1 and 10
+       advance the same as 7 and 17, and they are centred in the column rather than ranged right:
+       a printed sheet numbers its lines, it does not align them to a decimal point. */
+    .cairn-slot-number {
+        color: var(--cairn-ink-soft);
+        flex: 0 0 auto;
+        font-variant-numeric: tabular-nums;
+        line-height: 26px;
+        min-width: 0;
+        text-align: center;
+        width: 18px;
+    }
+
+    .cairn-slot-body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex: 1;
+        min-width: 0;
+        gap: 8px;
+    }
+
+    /* A typed row on a list line — the Background's names. It fills the line and brings no box:
+       the row's own drawn rule is already its underline, and a second one a few pixels above it
+       is the machined seam the ink layer exists to avoid. Ink returns on focus, which is the
+       only thing the border still had to say. Same treatment as `.cairn-prop-number`. */
+    .cairn-row-input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid transparent;
+        flex: 1;
+        min-width: 0;
+
+        &:focus {
+            border-bottom-color: var(--cairn-ink);
+        }
+
+        /* The row's rule is its underline and a new row has none yet, so an empty row says
+           what it is with words, in the voice every other placeholder here uses. */
+        &::placeholder {
+            color: var(--cairn-ink-soft);
+            font-style: italic;
+            opacity: 1;
+        }
+    }
+
+    /* A reference whose document is gone. Faint and italic like `.cairn-empty`, because it says
+       the same kind of thing — there is nothing here — but it keeps the row, because unlike an
+       empty list this one is a fault somebody has to fix. */
+    .cairn-broken {
+        color: var(--cairn-ink-faint);
+        font-style: italic;
+    }
+
+    /* An empty slot is the ruled line itself — there is nothing else to draw. */
+    .cairn-slot-rule {
+        flex: 1;
+        height: 26px;
+    }
+
+    .cairn-empty {
+        color: var(--cairn-ink-soft);
+        font-style: italic;
+        margin: 12px 0;
+        text-align: center;
+    }
+
+    /**************************************************************************
+     * Inventory / container / effect lists.                                 *
+     **************************************************************************/
+
+    /* Primitive 7 — list row. Every list of carried things — *petty* items, NPC equipment,
+       containers — is a `.cairn-plain-list` of `.cairn-slot` lines, so two lists on one tab read
+       as two lists and not as two different devices. There is no separate container row and no
+       CSS border: the rule under a row is drawn ink like every other rule on the sheet, emitted
+       by the template only when a row follows, so a line never closes a list. */
+
+    .cairn-item-name-and-tags {
+        display: flex;
+        line-height: 26px;
+        height: 26px;
+        gap: 4px;
+    }
+
+    /* On an inventory row the name opens the item's sheet, so it carries the pointer the
+       `<summary>` used to. It is a sibling of the controls and never their ancestor, which is
+       what keeps a click on the trash from also being a click on the name. The use pips are the
+       one control it does contain, and they are safe because core dispatches a click to the
+       innermost `data-action` only. */
+    .cairn-item-name-and-tags[data-action] {
+        cursor: pointer;
+    }
+
+    .cairn-item-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* A tag is an open hairline frame on bare paper. It carried a `--cairn-paper-sunk` ground
+       once, and frame + fill + rounded corner together read as a web-form chip; the fill was
+       the part that did it. */
+    .cairn-item-tag {
+        align-self: center;
+        border: var(--cairn-hairline) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+        display: inline-block;
+        font-size: 10px;
+        line-height: 16px;
+        padding: 0 3px;
+        height: 18px;
+    }
+
+    /* The pips are a control now, so each has a hit box taller than its 10px glyph — the full
+       line, and a little wider than the mark — without the glyph growing. Flex with the same 4px
+       the name span uses between its children, so three pips take the width three inline glyphs
+       and two spaces took. The anchor keeps the name's ink: core would otherwise colour it as a
+       link. */
+    .cairn-item-uses {
+        align-items: center;
+        display: inline-flex;
+        gap: 4px;
+
+        a {
+            align-items: center;
+            color: inherit;
+            cursor: pointer;
+            display: inline-flex;
+            height: 26px;
+            justify-content: center;
+            min-width: 12px;
+
+            /* Full ink, and NOT the inverted cell the item controls wear: a pip sits inside the
+               item's name, in the run of text, and an ink block opening mid-line there reads as
+               a hole in the sentence. The controls to the right stand in a row of their own,
+               which is what gives a cell somewhere to be. */
+            &:hover {
+                color: var(--cairn-ink);
+            }
+        }
+
+        i {
+            font-size: 10px;
+        }
+    }
+
+    /* Every control is the same 18 x 26 cell whatever glyph is in it, so a row keeps its shape
+       when one of them swaps — the equip toggle changes silhouette, not footprint.
+
+       The glyph is centred in that cell by FLEX, and that is the whole of the fix for a row of
+       icons that did not share a centreline. The cell was a block with `text-align: center` and
+       a `line-height: 26px` on `.fas`, so each icon sat wherever its own font metrics put it on
+       that line — and the equip toggle is the one control whose unequipped state is a `far`
+       glyph, which the `.fas` rule never matched at all. It hung a couple of pixels low next to
+       its siblings, and only in that one state. A centred flex box asks the glyph for no metrics
+       beyond its box, so every icon in the row lands on the same optical line, `fas` or `far`. */
+    .cairn-item-controls {
+        align-items: center;
+        display: flex;
+        gap: 4px;
+        height: 26px;
+        opacity: 0.7;
+
+        i {
+            display: block;
+            line-height: 1;
+            /* Over the inked ground, not under it. The ground is a `::before` on the anchor, and
+               a glyph with no position of its own paints before it and is buried by it. */
+            position: relative;
+            z-index: 1;
+        }
+
+        a {
+            align-items: center;
+            color: var(--cairn-ink-soft);
+            display: flex;
+            height: 26px;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+            position: relative;
+            width: 18px;
+
+            /* The ground the cell inverts onto, laid out always and revealed by opacity: a
+               `background` that appears on hover would be the anchor's own box, which is the full
+               18 x 26 hit cell — a bar next to a 13px glyph. Held 2px off top and bottom and
+               pushed 1px past each side, it squares up to the glyph without the hit box moving.
+
+               It is painted even when invisible so nothing is laid out at the moment of the
+               hover; `opacity` is the only thing that changes, and it changes instantly. */
+            &::before {
+                background: var(--cairn-ink);
+                border-radius: var(--cairn-radius);
+                content: "";
+                inset: 2px -1px;
+                opacity: 0;
+                position: absolute;
+            }
+
+            /* Equipped is full ink; unequipped keeps the soft ink every other control wears. The
+               glyphs differ too (a closed fist against an open hand) — this only reinforces it,
+               because two shades of the same hand was the whole of the old signal and nobody
+               could read it. */
+            &.equipped {
+                color: var(--cairn-ink);
+            }
+
+            /* With the actor, or left behind. The glyphs differ — a walking figure against a camp
+               — and this only reinforces it, in the same way and for the same reason as the equip
+               hand two rules above: full ink when it is with the actor, the soft ink of every
+               other control when it is not.
+
+               `.is-on` inside `:where()` so this weighs one class, like `.equipped`, and the
+               hover pair written under it wins by order. As two bare classes it outweighed the
+               hover at any order, and a hovered carried control painted ink glyph on ink ground:
+               a black cell. */
+            &.cairn-carried:where(.is-on) {
+                color: var(--cairn-ink);
+            }
+
+            /* Nothing to do: the scroll on an item with nothing written on it. It keeps its cell
+               so the row of controls is the same shape on every line, and it keeps its tooltip so
+               the reason is readable rather than absent — which is why `pointer-events` is left
+               alone and only the cursor says the click will not land. */
+            &.is-disabled {
+                color: var(--cairn-ink-faint);
+                cursor: default;
+            }
+
+            /* Primitive 2 at icon scale: under the pointer the cell inverts — ink ground, paper
+               glyph — which is the gesture an ink button already makes, said in an 18px cell.
+               It replaces core's warm 8px `text-shadow` halo, killed for every anchor near the
+               top of this file: that halo was the one colour on the sheet nobody had chosen.
+
+               LAST in the block on purpose. `.equipped` and `.cairn-carried:where(.is-on)` each
+               weigh one class, exactly what this pair weighs, so whichever is written second
+               wins — and written first, this rule left a hovered equipped control painting ink
+               on ink, which is a control that disappears when you point at it.
+
+               `:where()` around the exclusion so it carries no specificity of its own: a bare
+               `:not(.is-disabled)` would add a class's weight and outrank the state rules above
+               for every control that is NOT disabled, which is all of them. */
+            &:is(:hover, :focus-visible):where(:not(.is-disabled)) {
+                color: var(--cairn-paper);
+            }
+
+            &:is(:hover, :focus-visible):where(:not(.is-disabled))::before {
+                opacity: 1;
+            }
+
+            /* Ink on ink says nothing, so the focus ring is held outside the inverted cell
+               rather than drawn on it — the same offset ring every other control here wears. */
+            &:focus-visible {
+                outline: var(--cairn-hairline) solid var(--cairn-ink);
+                outline-offset: 2px;
+            }
+        }
+    }
+
+    /* On the ledger the controls are always legible. They used to fade up on row hover, which
+       went with the hover band; with no band to belong to, a control that only appears when the
+       pointer is already on it is a control nobody finds. Soft ink is quiet enough. */
+    .cairn-slot .cairn-item-controls {
+        opacity: 1;
+    }
+}

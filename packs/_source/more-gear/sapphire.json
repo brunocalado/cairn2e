@@ -1,0 +1,31 @@
+{
+  "_id": "EeBf0RkESbejIBSE",
+  "name": "Sapphire",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-oval-blue.webp",
+  "system": {
+    "description": "<p>Cornflower blue, cut oval, flawless.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 500,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!EeBf0RkESbejIBSE",
+  "folder": "HJvY3JTRuL5xJNFj"
+}

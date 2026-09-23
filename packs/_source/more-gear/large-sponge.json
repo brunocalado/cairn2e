@@ -1,0 +1,31 @@
+{
+  "_id": "3uwxCeiglSbFNGzg",
+  "name": "Large Sponge",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>Large Sponge</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 5,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!3uwxCeiglSbFNGzg",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

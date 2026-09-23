@@ -1,0 +1,31 @@
+{
+  "_id": "ODYbo3VU9ctEFLWC",
+  "name": "Phantom Hound",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>A ghostly canine (4 HP, bite (1d4)) obeys your commands for up to one hour.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ODYbo3VU9ctEFLWC",
+  "folder": "MCt2VTDHSjLFlLso"
+}

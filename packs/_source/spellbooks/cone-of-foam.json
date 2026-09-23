@@ -1,0 +1,31 @@
+{
+  "_id": "puYee7lTn1eelbSC",
+  "name": "Cone of Foam",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p><em>Spongy and moist with a soapy residue.</em></p><p>Dense foam sprays from your hand, coating the target.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!puYee7lTn1eelbSC",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

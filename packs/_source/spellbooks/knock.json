@@ -1,0 +1,31 @@
+{
+  "_id": "UmU3x2Elim6shGcA",
+  "name": "Knock",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p><em>Locked. A new owner \"produces\" the key after their next meal.</em></p><p>A nearby mundane or magical lock unlocks loudly.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UmU3x2Elim6shGcA",
+  "folder": "CUFHa1lIQAt4nRUN"
+}

@@ -1,0 +1,99 @@
+{
+  "_id": "DpMgbeLk18GeU4gd",
+  "name": "Cave Locust",
+  "type": "npc",
+  "img": "icons/creatures/invertebrates/dragonfly-teal.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 6,
+        "max": 6
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 3,
+        "max": 3
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "7D4Evjg1WyAsSJJJ",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!DpMgbeLk18GeU4gd.7D4Evjg1WyAsSJJJ"
+    },
+    {
+      "name": "Giant plant-eating crickets that dwell in caves.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Immune to most types of poison.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "GUXFntiYKUTMIzju",
+      "_key": "!actors.items!DpMgbeLk18GeU4gd.GUXFntiYKUTMIzju"
+    },
+    {
+      "name": "Their natural coloration allows them to blend in with the stone.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>They emit loud shrieks when threatened.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZtbkDDyKq00ufZwv",
+      "_key": "!actors.items!DpMgbeLk18GeU4gd.ZtbkDDyKq00ufZwv"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!DpMgbeLk18GeU4gd"
+}

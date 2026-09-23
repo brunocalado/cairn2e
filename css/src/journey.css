@@ -1,0 +1,681 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The route form (templates/parts/route-pick.hbs) — the Path, Distance,  *
+     * Terrain and vast-terrain runs.                                         *
+     *                                                                       *
+     * Two windows draw it from one partial over one `routeChoices`           *
+     * (`module/journey.js`): the journey window's setup band, and a `route`  *
+     * journal page's edit form. So its rules are here, at the wrapper, and   *
+     * not inside either window's block — a selector written inside one would *
+     * simply never match in the other, which is how the page's runs first    *
+     * rendered as a stack of unstyled labels.                                *
+     **************************************************************************/
+
+    /* The route form's tables are segmented controls, and each button says three things: the
+       name, its watch penalty as a badge, and what the row actually means. They divide the
+       track equally so the run reads as one scale rather than words of different lengths. */
+    /* The route form's labels are one short word each, so the gutter is narrower here than
+       the 7.5rem a sheet's rows want — every pixel it gives back is a pixel of button, and
+       the longest detail line is within a few of filling one. */
+    .cairn-journey-pick,
+    .cairn-journey-vast {
+        --cairn-label-gutter: 6rem;
+    }
+
+    .cairn-journey-pick .cairn-field-label,
+    .cairn-journey-vast .cairn-field-label {
+        white-space: nowrap;
+    }
+
+    .cairn-journey-pick .cairn-choice-option,
+    .cairn-journey-vast .cairn-choice-option {
+        flex: 1 1 0;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1px;
+        height: auto;
+        min-height: 28px;
+        padding: 4px 6px;
+        text-align: center;
+    }
+
+    .cairn-pick-cost {
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Mixed case and no tracking: this is the table's own prose, not a label. It inherits the
+       button's ink — or its paper, once the button is the chosen one — so state stays ink.
+
+       It does NOT inherit the chosen button's weight, and it does not wrap. Bold is wider, so
+       a detail line that fitted unchosen wrapped the moment it was picked, and the wrap grew
+       the whole run: choosing a route made the form jump. The state is said by the name and
+       the ink fill; the line under it stays one line whatever is chosen. */
+    .cairn-pick-note {
+        font-size: 9px;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: 0;
+        text-transform: none;
+        white-space: nowrap;
+        opacity: 0.72;
+    }
+
+    /* The vast-terrain hint belongs to its row, so the row grows a third track for it rather
+       than leaving the sentence adrift under the form. */
+    .cairn-journey-vast {
+        grid-template-columns: var(--cairn-label-gutter, 7.5rem) auto 1fr;
+    }
+
+    .cairn-journey-vast .cairn-choice-option {
+        flex: 0 0 auto;
+        min-width: 34px;
+    }
+
+    .cairn-journey-vast-note {
+        font-size: 10px;
+        font-style: italic;
+        color: var(--cairn-ink-soft);
+    }
+
+    /**************************************************************************
+     * The journey window (module/apps/journey-tracker.js) — the Wilderness  *
+     * Exploration procedure, one window on every client.                    *
+     *                                                                       *
+     * Five bands: the route form, then where the party is and when, then    *
+     * the watch itself, then what the last one turned up, then the Warden's  *
+     * foot. The progress is a run of    *
+     * ticks, one per watch, the travelled ones filled with ink — the same   *
+     * fill a marked Fatigue circle wears, because "done" is said with ink   *
+     * here as everywhere. Nothing carries a hue: lost and sleep-deprived    *
+     * are words in a Tag frame.                                             *
+     *                                                                       *
+     * The head is two lines and no labels: the day with the route as its    *
+     * caption, then the bar with the count under it and the Warden's four   *
+     * counter buttons at its right. Those carry no figure — the bar and     *
+     * the sentence beside them already say 1 of 10, and a third copy is a   *
+     * third thing to keep in step — so they are square, the smallest an     *
+     * ink button goes, and what each moves is its tooltip.                  *
+     *                                                                       *
+     * The watch band is three headings (the group heading with its drawn    *
+     * rule, as the creator's steps and the edit windows use it), each       *
+     * answering one question. WEATHER carries the three watches of the day  *
+     * at its right, because the sky is the sky OF a watch. Its run is a     *
+     * segmented control (Primitive 2) at the band's full width — the label  *
+     * gutter went to the heading, which is what lets seven buttons stay on  *
+     * one line — and each button's row of the Difficulty table is its       *
+     * tooltip rather than a line of prose underneath that changed the       *
+     * band's height with every reading.                                     *
+     *                                                                       *
+     * The roster is Primitive 7, a line per character: portrait and name    *
+     * into the sheet, what they are carrying as Tags, and the switch        *
+     * (Primitive 5) that says whether they are walking. It was a grid of    *
+     * framed blocks while a block only had to say who someone was; a line   *
+     * is what holds Rations, Fatigue and Deprived beside the name.          *
+     **************************************************************************/
+
+    &.cairn-journey {
+        /* The one scroller, and a last resort: only a window taller than the screen reaches
+           core's max-height, and past it core's `overflow: hidden` cut the Action and the events
+           off with no way to reach them. Both axes named, because `auto` on one promotes the
+           other (trap 11). */
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .cairn-journey-setup,
+        .cairn-journey-head,
+        .cairn-journey-events,
+        .cairn-journey-foot {
+            flex: 0 0 auto;
+        }
+
+        /* No band scrolls, the roster included: a scroll bar under THE PARTY hid a character
+           behind a thumb in a window that had room to show them. The window fits itself to the
+           roster instead (`_onRender` refits its height whenever the crew count changes). */
+        .cairn-journey-watch {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 auto;
+            gap: 6px;
+        }
+
+        .cairn-journey-setup {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cairn-journey-intro {
+            margin: 0;
+            font-family: var(--cairn-serif);
+            color: var(--cairn-ink-soft);
+        }
+
+        /* A band's own button takes the band. `.cairn-journey-resolve` is NOT one of them any
+           more: it shares the action's line with the run of four, and a width of 100% there put
+           it on a line of its own whatever the flex basis said. */
+        .cairn-journey-start,
+        .cairn-journey-roll {
+            width: 100%;
+        }
+
+        /* The watch's one row: the closed list of four on the left, and the button that spends
+           the watch on whichever is chosen at the right. The run gives, the button does not —
+           "Spend the watch" is a fixed phrase and shrinking it would ellipsis the only label in
+           the band that has to stay readable. */
+        .cairn-journey-take {
+            align-items: center;
+            display: flex;
+            flex: 0 0 auto;
+            gap: 8px;
+        }
+
+        .cairn-journey-take .cairn-choice {
+            flex: 1 1 auto;
+        }
+
+        /* The wrapper is the flex item, because it is what carries the button's reading: a
+           disabled button raises no pointer event, so the tooltip has to hang one level out. */
+        .cairn-journey-resolve-wrap {
+            display: flex;
+            flex: 0 0 auto;
+        }
+
+        /* The day is the heading and the route is its caption, so they share a line and part at
+           its two ends. Baseline, not centre: two type sizes on one line sit on one line. */
+        .cairn-journey-top {
+            align-items: baseline;
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+        }
+
+        .cairn-journey-route {
+            margin: 0;
+            font-size: 11px;
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-journey-raised {
+            text-transform: none;
+            letter-spacing: 0;
+            font-style: italic;
+        }
+
+        /* The JOURNEY: a 2px frame around one tick per watch the route takes, the hairline between
+           them the only division, ink running from the left as far as the party has come. The
+           weather's "add one watch to the journey" and the Warden's NEEDED counter both grow its
+           denominator, because both make the route longer. */
+        .cairn-journey-progress {
+            margin-top: 6px;
+        }
+
+        .cairn-journey-ticks {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 18px;
+            border-radius: var(--cairn-radius);
+            overflow: hidden;
+            border: var(--cairn-rule) solid var(--cairn-ink);
+        }
+
+        .cairn-journey-ticks li {
+            flex: 1 1 0;
+            margin: 0;
+        }
+
+        .cairn-journey-ticks li + li {
+            border-left: var(--cairn-hairline) solid var(--cairn-ink-faint);
+        }
+
+        .cairn-journey-ticks li.done {
+            background: var(--cairn-ink);
+        }
+
+        /* What the bar says in words, and the hand that moves it, on one line.
+
+           The TEXT sets the line's height, not the buttons: the counters are sized from
+           `--cairn-counter` and so is the line box they sit in, so a counter can never be the
+           thing that makes this row taller. 18px is the height the flag Tags in this same line
+           already wear, so a lost or sleep-deprived party does not change it either. */
+        .cairn-journey-count {
+            --cairn-counter: 18px;
+            align-items: center;
+            display: flex;
+            /* At a narrow window, or with both party flags up, this row has more in it than a
+               560px line holds. It wraps rather than shrinking, and every phrase in it carries
+               `nowrap`, so a wrap falls BETWEEN readings and never through the middle of one —
+               "2 of 10 watches travelled" broken across two lines reads as two readings. */
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            justify-content: space-between;
+            line-height: var(--cairn-counter);
+            margin-top: 4px;
+        }
+
+        .cairn-journey-progress-label {
+            margin: 0;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+        }
+
+        .cairn-journey-progress-label > * {
+            white-space: nowrap;
+        }
+
+        /* Primitive 8, the Tag: a state the party is in, said in a frame and never a hue. */
+        .cairn-journey-flag {
+            font-size: 10px;
+            text-transform: none;
+            letter-spacing: 0;
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            padding: 0 4px;
+        }
+
+        .cairn-journey-day {
+            font-family: var(--cairn-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* The group heading, at the pitch a band of them can hold: `.cairn-edit-group`'s 12/10
+           margins were written for a panel with one of them, and three in a band that also has to
+           fit a roster spent a fifth of the window on air between words. The rule is still drawn
+           on the element's lower edge, so the padding is the space under the word. */
+        .cairn-journey-heading {
+            align-items: baseline;
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin: 2px 0 6px;
+            padding-bottom: 6px;
+        }
+
+        /* The three watches as a rail (Primitive 6): the current one full ink, the rest soft.
+           It rides on the Weather heading, so it drops the heading's weight — the rail says where
+           the day is with ink and a rule already, and a bold rail would say it twice. */
+        .cairn-journey-watches {
+            display: flex;
+            flex: 0 0 auto;
+            font-weight: 400;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 12px;
+        }
+
+        .cairn-journey-watches li {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-journey-watches li.current {
+            color: var(--cairn-ink);
+            font-weight: 700;
+            border-bottom: var(--cairn-rule) solid var(--cairn-ink);
+        }
+
+        /* The sky and the party's action are the same shape, because they are the same kind of
+           thing: one closed table, one row of it true. Their heading carries the word that used
+           to sit in a label gutter, which is the whole point of the change — the run gets the
+           band's full width, and seven weather buttons stay on one line. */
+        .cairn-journey-weather,
+        .cairn-journey-action {
+            flex: 0 0 auto;
+        }
+
+        /* Supply's two answers, and the weather's two tolls, are the same shape because they are
+           the same thing: one watch, two ways to take it. Forage for the rolled bounty, or spend
+           the watch at a settlement; add a Fatigue, or add a watch. */
+        .cairn-journey-supply,
+        .cairn-journey-weather-toll {
+            display: flex;
+            gap: 8px;
+
+            button {
+                flex: 1 1 0;
+            }
+        }
+
+        /* The roster's rows are `.cairn-slot` lines, so the pitch, the gap and the drawn rule
+           between them are the ledger's — one list device in the system, not a second one here.
+           What this adds is the three-part split: who, what they carry, whether they walk. */
+        /* Left to right in one direction: who, a drawn rule, what they carry — then paper, then
+           the switch. `margin-left: auto` on the switch is what holds the right edge; the row
+           does NOT use `justify-content: space-between`, which would have opened a gap between
+           the name and its own tags and made the rule look like a column divider. */
+        /* The row's one control sits at the far right, where the membership switch used to: the
+           list IS who is travelling now, so what the cell holds is "take them off it". */
+        .cairn-journey-member .cairn-item-controls {
+            margin-left: auto;
+        }
+
+        /* Parts the name from what the character is carrying. It paints nothing — the ink layer
+           strokes the rule over its box, as it does the Fatigue track's — so it is 1px of width
+           and the row's height, which `align-self: stretch` is what supplies: `.cairn-slot`
+           centres its items, so without it the span is as tall as its own (empty) content. */
+        .cairn-journey-divide {
+            align-self: stretch;
+            flex: 0 0 auto;
+            margin: 0 2px;
+            width: 1px;
+        }
+
+        /* Off the journey: the row stays on the list and stays legible, because who is NOT
+           walking is as much of an answer as who is. The switch keeps its full ink — it is the
+           control that says so, and a faded control reads as a disabled one. */
+        .cairn-journey-member.away .cairn-journey-who,
+        .cairn-journey-member.away .cairn-journey-load {
+            opacity: 0.5;
+        }
+
+        /* The portrait and the name open the sheet, so they are one button — no frame and no
+           fill, because the row's own drawn rule is already its edge.
+
+           `height: auto` is load-bearing: core sizes every `button` to `--button-size`, which is
+           taller than this row. `min-width: 0` is the other half of the pair — the name wears
+           `overflow: hidden` for its ellipsis, which switches OFF the automatic minimum size, so
+           without a floor to shrink to it once collapsed to exactly zero pixels. */
+        .cairn-journey-who {
+            align-items: center;
+            background: none;
+            border: none;
+            display: flex;
+            /* Shrinks, never grows: a long name ellipses rather than pushing the tags off the
+               row, and the name, the rule and the tags stay one group on the left. */
+            flex: 0 1 auto;
+            gap: 8px;
+            height: auto;
+            justify-content: flex-start;
+            letter-spacing: 0;
+            min-width: 0;
+            padding: 0;
+            text-transform: none;
+        }
+
+        .cairn-journey-who:hover {
+            background: none;
+            color: var(--cairn-ink);
+        }
+
+        .cairn-journey-portrait {
+            flex: 0 0 auto;
+            width: 26px;
+            height: 26px;
+            object-fit: cover;
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+        }
+
+        .cairn-journey-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /* The button's own 10px is a control's size; a character's name is read, not pressed. */
+            font-family: var(--cairn-serif);
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* What the character is carrying into the night, as Tags (Primitive 8): Rations left,
+           Fatigue carried, and Deprived when it is on — the three a Warden asks for between
+           watches. Tabular figures so a column of rows reads down. */
+        .cairn-journey-load {
+            align-items: center;
+            display: flex;
+            flex: 0 0 auto;
+            font-variant-numeric: tabular-nums;
+            gap: 4px;
+        }
+
+        /* Nobody to show. The row carries no rule and no control, so it is only the sentence. */
+        .cairn-journey-empty {
+            color: var(--cairn-ink-soft);
+            font-style: italic;
+        }
+
+        /* A choice that is not the player's to make stays legible and inert. */
+        .cairn-choice-option:has(input:disabled) {
+            cursor: default;
+            opacity: 0.55;
+
+            &:hover {
+                background: transparent;
+            }
+
+            &:has(input:checked) {
+                opacity: 1;
+            }
+        }
+
+        .cairn-journey-roll {
+            margin-top: 2px;
+        }
+
+        /* What the Wilderness Events table said about the watch that just ended. It was a card
+           whispered to the Wardens; it is a band now, because the only reader was already looking
+           at this window and a card cannot be thrown back. */
+        .cairn-journey-events {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* Which watch these came from, on the heading's right, where the sky's watches sit on
+           theirs — so nobody reads last night's Encounter as this morning's. */
+        .cairn-journey-events-when {
+            color: var(--cairn-ink-soft);
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .cairn-journey-event {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* The row's name, and the one control that throws it back. */
+        .cairn-journey-event-head {
+            align-items: center;
+            display: flex;
+            gap: 8px;
+            margin: 0;
+            min-height: 20px;
+        }
+
+        .cairn-journey-event-name {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        /* Square, and sized the way the watch counters are: `--button-size` is what holds a
+           button's height, because core writes `min-height: var(--button-size)` on the element
+           itself and the ink button sets it to 36px. */
+        .cairn-journey-event-head button {
+            --button-size: 20px;
+            height: 20px;
+            margin-left: auto;
+            min-height: 20px;
+            min-width: 20px;
+            padding: 0;
+            width: 20px;
+        }
+
+        /* The table's own prose. The row is stored HTML and arrives wrapped in its own <p>. */
+        .cairn-journey-event-text {
+            font-family: var(--cairn-serif);
+            font-size: 12px;
+            line-height: 1.35;
+        }
+
+        .cairn-journey-event-text p {
+            margin: 0;
+        }
+
+        .cairn-journey-event-party {
+            color: var(--cairn-ink-soft);
+            font-size: 11px;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Who the party met: Primitive 8's frame at block scale — a hairline and no fill — around
+           the creatures, their Reaction and the one button that puts them on a map. */
+        .cairn-journey-met {
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 6px 8px;
+        }
+
+        .cairn-journey-met-rows {
+            font-size: 11px;
+            font-variant-numeric: tabular-nums;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cairn-journey-met-rows li {
+            margin: 0;
+        }
+
+        .cairn-journey-met-reaction {
+            align-items: baseline;
+            display: flex;
+            font-size: 11px;
+            gap: 6px;
+            margin: 0;
+        }
+
+        .cairn-journey-met-label {
+            color: var(--cairn-ink-soft);
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        .cairn-journey-met-total {
+            color: var(--cairn-ink-soft);
+            font-variant-numeric: tabular-nums;
+            margin-left: auto;
+        }
+
+        .cairn-journey-place {
+            width: 100%;
+        }
+
+        .cairn-journey-met-done {
+            color: var(--cairn-ink-soft);
+            font-size: 11px;
+            font-style: italic;
+            margin: 0;
+            text-align: center;
+        }
+
+        .cairn-journey-foot {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 8px;
+            border-top: var(--cairn-rule) solid var(--cairn-ink);
+        }
+
+        /* The Warden's hand on the two numbers, at the right of the line that reports them. The
+           buttons are SQUARE — the smallest an ink button goes and still reads as one — because
+           they sit beside a sentence rather than under a heading, and because there is no figure
+           between them to make a pair look like a field: the bar above says how far the party has
+           come, and the sentence beside them says it in words. What each one moves is its
+           tooltip, which is the only place that reading now lives. */
+        .cairn-journey-adjust {
+            display: flex;
+            align-items: center;
+            flex: 0 0 auto;
+            gap: 3px;
+
+            /* `--button-size` is what actually holds a button's height. Core writes
+               `min-height: var(--button-size)` ON the element (foundry2.css:4073) and the ink
+               button sets that variable to 36px, so a bare `height` here loses to it and the
+               square came out a tall rectangle that pushed the line open. The variable has to be
+               set on the button itself, not on an ancestor: core declares it on
+               `a.button, button, kbd`, and a custom property is only inherited. */
+            button {
+                --button-size: var(--cairn-counter);
+                flex: 0 0 auto;
+                height: var(--cairn-counter);
+                min-height: var(--cairn-counter);
+                min-width: var(--cairn-counter);
+                padding: 0;
+                width: var(--cairn-counter);
+            }
+        }
+
+        .cairn-journey-adjust-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+            color: var(--cairn-ink-soft);
+
+            /* Air before the word, never before the first: the two counters have to read as two
+               groups and not as one run of four buttons. */
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+
+        .cairn-journey-warden {
+            display: flex;
+            gap: 8px;
+
+            button {
+                flex: 1 1 0;
+            }
+        }
+
+        /* A band whose block rendered nothing still holds the template's whitespace, so `:empty`
+           never matches it — the foot's 2px rule used to underline a band of nothing under the
+           route form. `:has(*)` and `:not()` both take their argument's specificity, so this
+           lands level with each band's own `display` and wins only by coming after all of them. */
+        .cairn-journey-setup:not(:has(*)),
+        .cairn-journey-head:not(:has(*)),
+        .cairn-journey-watch:not(:has(*)),
+        .cairn-journey-events:not(:has(*)),
+        .cairn-journey-foot:not(:has(*)) {
+            display: none;
+        }
+    }
+}

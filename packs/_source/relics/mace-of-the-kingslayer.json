@@ -1,0 +1,31 @@
+{
+  "_id": "2l7tDOf8pGqgLsKZ",
+  "name": "Mace of the Kingslayer",
+  "type": "gear",
+  "img": "icons/weapons/maces/shortmace-ornate-gold.webp",
+  "system": {
+    "description": "<p>Hold the weapon aloft and shout an order or declaration. Any who fail a WIL save must obey, against their better judgment.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Deliver a fatal blow to the leader of a group or faction.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2l7tDOf8pGqgLsKZ",
+  "folder": "Pos0prP8w9WLaBgG"
+}

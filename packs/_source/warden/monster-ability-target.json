@@ -1,0 +1,318 @@
+{
+  "_id": "DBXfbgkzqeFECHEV",
+  "name": "Monster Ability Target",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Target column of the Monster Abilities table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "lNHGUFRwrgaAkumv",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Body",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.lNHGUFRwrgaAkumv"
+    },
+    {
+      "_id": "8tr3JAu1vqKYL1hN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Dreams",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.8tr3JAu1vqKYL1hN"
+    },
+    {
+      "_id": "5iffmRqKPhf34DFm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Element",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.5iffmRqKPhf34DFm"
+    },
+    {
+      "_id": "d95oJdgn0mWJ67tr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Emotions",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.d95oJdgn0mWJ67tr"
+    },
+    {
+      "_id": "R4OauuDFt31aQYxu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Energy",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.R4OauuDFt31aQYxu"
+    },
+    {
+      "_id": "Y134bO6TBMfpisms",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Health",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.Y134bO6TBMfpisms"
+    },
+    {
+      "_id": "YCaRZHuREQDIov6G",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hearing",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.YCaRZHuREQDIov6G"
+    },
+    {
+      "_id": "LXgg1zsuZZwXGyo5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Illusions",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.LXgg1zsuZZwXGyo5"
+    },
+    {
+      "_id": "ZQzZgRO0rpmuRDlU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Light",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.ZQzZgRO0rpmuRDlU"
+    },
+    {
+      "_id": "5ijnDCXh4oZ1odnp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Memory",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.5ijnDCXh4oZ1odnp"
+    },
+    {
+      "_id": "sPWeI7dLML3PC7CR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Metal",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.sPWeI7dLML3PC7CR"
+    },
+    {
+      "_id": "AxI4ALeiY28qmURA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Plants",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.AxI4ALeiY28qmURA"
+    },
+    {
+      "_id": "8VyRwDaUMUI3Hh1I",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Spirit",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.8VyRwDaUMUI3Hh1I"
+    },
+    {
+      "_id": "aCAhEg5VRGpqES60",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Stone",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.aCAhEg5VRGpqES60"
+    },
+    {
+      "_id": "j8HJSAnMnq9rsq1T",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Surroundings",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.j8HJSAnMnq9rsq1T"
+    },
+    {
+      "_id": "OinW8fqq9eRXZVI7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Time",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.OinW8fqq9eRXZVI7"
+    },
+    {
+      "_id": "ZPQEerFdAaO5N38J",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Vision",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.ZPQEerFdAaO5N38J"
+    },
+    {
+      "_id": "iaplmLlr4bnt4Dju",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Water",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.iaplmLlr4bnt4Dju"
+    },
+    {
+      "_id": "AR7IfW9eUvSPJNTX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Weather",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.AR7IfW9eUvSPJNTX"
+    },
+    {
+      "_id": "dkgOAGiBeEAnbeze",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Weakens",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DBXfbgkzqeFECHEV.dkgOAGiBeEAnbeze"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!DBXfbgkzqeFECHEV"
+}

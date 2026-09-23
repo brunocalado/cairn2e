@@ -1,0 +1,228 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Item sheets (gear / weapon / armor / spellbook / scroll / relic /     *
+     * fatigue / background). The `.item-sheet` wrapper is gone              *
+     * — header, properties, nav and each tab are render parts, siblings     *
+     * inside `.window-content`.                                             *
+     **************************************************************************/
+
+    /* Portrait left, name banner right, tags beneath. The name's `grid-column` lives HERE, on the
+       header that owns the grid — it used to be declared on `.name-input` itself, where the
+       actor sheet's `1 / 3` spanned both of this two-column header's tracks and pushed the name
+       onto row 2, under the portrait. */
+    .item-header {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        /* The name, and the hint line under it. `auto` on the second, so a subtype without a hint
+           costs no height at all. */
+        grid-template-rows: 46px auto;
+        column-gap: 8px;
+        row-gap: 4px;
+        align-content: start;
+        flex: 0 0 auto;
+
+        .portrait {
+            grid-row: 1 / 3;
+            height: 96px;
+        }
+
+        /* Primitive 3's underline is written at (0,1,1) — one class plus the element — so the
+           bare `.name-input` rule cannot turn it off and the field wore a hairline INSIDE its own
+           drawn box, thickening to 2px the moment it was clicked. Two classes outrank it.
+
+           Nothing replaces it: the box says where the field is and the caret says it is being
+           typed into, which is the whole job a focus ring had here. */
+        .name-input {
+            grid-column: 2;
+            grid-row: 1;
+            border: none;
+
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
+
+    /* The subtype's one line of rules text, in the name's own column and under it — the space the
+       tag row used to hold. It is a caption for the name above it, so it sits beside the portrait
+       rather than running under it, and the header keeps the height it has always had. */
+    .item-header-hint {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
+        margin: 2px 0 0;
+        font-size: 12px;
+        font-style: italic;
+        color: var(--cairn-ink-soft);
+    }
+
+    /* The feature's one property, in the caption's row: a label and the toggle. */
+    .item-header-critical {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
+        /* The same air the hint line has over it (the grid's 4px and its own 2px): a 26px pill
+           flush under the box read as part of it, where a line of italic did not. */
+        margin-top: 6px;
+    }
+
+    /* The field primitive, shared by the item sheets, the NPC Details tab and the damage-options
+       dialog. `{{formGroup}}` was considered and rejected: it emits `.form-group` /
+       `.form-fields` markup whose layout only exists under `.standard-form` — the very chrome
+       this file removes — so it would have meant adopting core's form skin to lay out a field. */
+    .cairn-field {
+        display: grid;
+        grid-template-columns: var(--cairn-label-gutter, 7.5rem) 1fr;
+        align-items: center;
+        column-gap: 8px;
+        min-height: 26px;
+
+        /* `.cairn-field-label` is the same word when the control beside it is a GROUP: a
+           radiogroup is not one control, so nothing valid can be `for`-ed at it and the row's
+           word cannot be a `<label>`. It is set identically, because it says the same thing. */
+        > label,
+        > .cairn-field-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 1.2em;
+        }
+    }
+
+    /* Primitive 7, at form scale — the ruled property list. An item's options are the character
+       sheet's own lines: the label in the gutter, the control in the track, and a drawn rule
+       under every row but the last, emitted by the template rather than by a border so it is the
+       same ink as every other rule in the system (`module/ink.js`).
+
+       It replaced a two-column grid of fields, one subtype at a time. Two columns fit
+       more rows into the window and cost the reader the thing a list is for: with a toggle beside
+       a number beside a second toggle, nothing lines up and every row has to be read to be
+       found. One column, and the eye runs down the gutter.
+
+       The rows are taller than a bare `.cairn-field` (26px): a rule needs air under the control
+       above it, or it reads as that control's underline.
+
+       The list is a div INSIDE the tab section, never the section itself. This stylesheet is a
+       later cascade layer, so an ordinary `display: flex` here outranks core's
+       `.tab:not(.active) { display: none }` at any specificity — as the section's own class it
+       kept the panel on screen while another tab was active, and the Description editor rendered
+       underneath it. */
+    .cairn-prop-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Compound with `.cairn-field`, which the row also carries: a bare `.cairn-prop-row` weighs
+       exactly what `.cairn-field` weighs, so its 36px floor would win or lose on which of the two
+       is written later in this file — and it lost, silently, at 26px. */
+    .cairn-field.cairn-prop-row {
+        min-height: 36px;
+    }
+
+    /* Two controls on one line. Neither a pair of switches nor a pair of short numbers fills a
+       row, and four of them down a 480px window was four rules saying nothing.
+
+       The tracks repeat, so the second label sits in a gutter of its own rather than wherever the
+       first control happens to end: PETTY over QUANTITY, BULKY over COST, and the four controls
+       on two columns. */
+    .cairn-field.cairn-prop-pair {
+        grid-template-columns: repeat(2, var(--cairn-label-gutter, 7.5rem) 1fr);
+    }
+
+    /* A number in a list of switches is a short number. Left in its track at the width of its
+       digits, the ruled line under it stops where the value does instead of running the width of
+       the window — which on a row that holds a 1 reads as room for a sentence. */
+    .cairn-prop-number {
+        justify-self: start;
+        width: 5rem;
+    }
+
+    /* The row's drawn rule IS this field's line, so the field does not bring a second one — two
+       rules a few pixels apart under one number is the machined seam the drawn layer exists to
+       avoid. Ink comes back on focus, which is the only thing the underline still had to say. */
+    .cairn-prop-row .cairn-prop-number {
+        border-bottom-color: transparent;
+
+        &:focus {
+            border-bottom-color: var(--cairn-ink);
+        }
+    }
+
+    /* Ink, not core's secondary text colour: on this paper that resolves to a warm brown
+       (`rgb(159, 132, 117)` measured 2026-09-18), a third ink the sheet does not have. Softness is
+       said with opacity, the way `--cairn-ink-soft` says it everywhere else. */
+    .hint {
+        color: var(--cairn-ink);
+        font-size: 12px;
+        font-style: italic;
+        opacity: 0.75;
+    }
+
+    /* The description field. The drawn box is its edge and the editor fills it — the same shape
+       as the edit window's Bond and Omen boxes, which is what makes a description read as the
+       same kind of thing as the text fields on the character's own form.
+
+       The toolbar is hidden rather than styled. ProseMirror ships a `<menu>` of its own buttons,
+       sized and spaced by core, and a strip of web-app controls inside a drawn box is exactly the
+       seam this sheet avoids everywhere else. Nothing is lost that the field cannot do: the
+       keymaps plugin stays, so the formatting shortcuts still work, and the content is still HTML
+       — every compendium description is, `<em>bulky</em>` included.
+
+       `min-height: 0` with `flex: 1` is the pair a flex scroller needs: without the floor
+       removed, a long description claims the height of a long description and pushes the box's
+       own foot out of the window. */
+    .cairn-prose-box {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+        padding: 8px 10px;
+
+        .editor,
+        prose-mirror {
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* The whole menu CONTAINER, not just the `<menu>` inside it: core gives the container
+           `flex: 0 0 var(--menu-height)` (foundry2.css), so hiding only the bar left a 42px band
+           of reserved nothing at the top of the box and the text started below it. */
+        prose-mirror .menu-container {
+            display: none;
+        }
+
+        /* Core gives the editor's own scroller a border and a ground; inside the drawn box both
+           are a second edge. */
+        .editor-content {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+    }
+
+    /* The one maximum a growth moved, printed on its Description tab as a line of text: no
+       gutter, no grid, the width is the window's. It was a property row once, and its 7.5rem
+       label column broke a five-word fact in two. */
+    .cairn-growth-outcome {
+        font-size: 13px;
+        line-height: 1.45;
+        margin: 4px 0 6px;
+    }
+
+    /* The gained box gives way to the description above it: a fixed few rows, not a `flex: 1`
+       share, or the two boxes split a 480px window in half and neither is a paragraph tall. */
+    .cairn-edit-text.cairn-growth-gained {
+        flex: 0 0 auto;
+    }
+}

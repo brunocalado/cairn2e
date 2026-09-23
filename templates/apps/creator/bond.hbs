@@ -1,0 +1,40 @@
+{{!-- Three sections in the SRD's order — Bond, then Age, then (for the youngest) an Omen —
+      each under the heading-with-roll the Attributes step uses, so the two roll-driven steps
+      read alike. The Omen roll is inert, not hidden, until Youngest is on: everything on a
+      step is on screen from the first visit. --}}
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="bond">
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-bond" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "CAIRN.Bond"}}</h3>
+        <button type="button" class="mini" data-action="rollBond">
+            <i class="fas fa-dice-d20"></i> {{localize "CAIRN.CharacterCreator.RollBond"}}
+        </button>
+    </div>
+    {{#if bondText}}<div class="bond-result" data-ink="vline" data-ink-seed="bond" data-ink-w="1.8">{{bondText}}</div>{{/if}}
+
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-age" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "CAIRN.CharacterCreator.Age"}}</h3>
+        <button type="button" class="mini" data-action="rollAge">
+            <i class="fas fa-dice"></i> {{localize "CAIRN.CharacterCreator.RollAge"}}
+        </button>
+    </div>
+    {{!-- `name="age"` is unchanged: the change listener in `_onRender` reads it. --}}
+    <label class="age-field">
+        <span>{{localize "CAIRN.CharacterCreator.Age"}}</span>
+        <input type="number" name="age" value="{{draft.age}}" min="0" />
+        <span class="unit">{{localize "CAIRN.CharacterCreator.Years"}}</span>
+    </label>
+    {{!-- The switch is the system's one on/off control; `name="youngest"` is unchanged, so the
+          change listener in `_onRender` keeps working; the label points at the pill. --}}
+    <div class="section-controls">
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="youngest" value=draft.youngest id="creator-youngest"}}
+        <label for="creator-youngest">{{localize "CAIRN.CharacterCreator.Youngest"}}</label>
+    </div>
+
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-omen" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "CAIRN.Omen"}}</h3>
+        <button type="button" class="mini" data-action="rollOmen" {{#unless draft.youngest}}disabled{{/unless}}>
+            <i class="fas fa-dice-d20"></i> {{localize "CAIRN.CharacterCreator.RollOmen"}}
+        </button>
+    </div>
+    {{#if omenText}}<div class="omen-result" data-ink="vline" data-ink-seed="omen" data-ink-w="1.8">{{omenText}}</div>{{/if}}
+</section>

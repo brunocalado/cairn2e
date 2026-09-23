@@ -1,0 +1,129 @@
+{
+  "_id": "g3E957BSeiDYoaMm",
+  "name": "Kobold",
+  "type": "npc",
+  "img": "icons/creatures/reptiles/lizard-iguana-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 4,
+        "max": 4
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "8NZRNvMFXSmFwAm3",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!g3E957BSeiDYoaMm.8NZRNvMFXSmFwAm3"
+    },
+    {
+      "_id": "BrxCzOOpJzbLcXTn",
+      "name": "Spear",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>spear (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!g3E957BSeiDYoaMm.BrxCzOOpJzbLcXTn"
+    },
+    {
+      "name": "Hairless humanoids with canine-like features and scaly skin.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Can see perfectly in the dark, but are harmed by direct sunlight.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "chxCsnivwtnwUd1r",
+      "_key": "!actors.items!g3E957BSeiDYoaMm.chxCsnivwtnwUd1r"
+    },
+    {
+      "name": "Use traps and ambush to defeat opponents.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Often act in service of a more powerful creatures.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZSKXEkAVKpQVRbkI",
+      "_key": "!actors.items!g3E957BSeiDYoaMm.ZSKXEkAVKpQVRbkI"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!g3E957BSeiDYoaMm"
+}

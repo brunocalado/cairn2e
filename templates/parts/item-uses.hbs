@@ -1,0 +1,23 @@
+{{!-- The use pips ARE the control: a filled pip spends one use, an empty one restores one.
+      There is no −/+ beside the other controls — two controls for one number was one too
+      many. They sit inside the name span whose own action opens the item; a click lands on
+      the innermost `data-action` and nowhere else, which is how core dispatches, so a pip is
+      a pip and the name around it is still the name. One partial for both actor rows, so
+      they cannot drift. On a sheet the user may not write, the pips are the count and nothing
+      else: the glyphs without the anchors.
+
+      @param uses      [filled, …] one per use
+      @param editable  @root.editable — whether a pip spends and restores --}}
+<span class="cairn-item-uses">
+    {{#each uses as |filled|}}
+    {{#if ../editable}}
+    {{#if filled}}
+    <a data-action="itemUseDecrement" data-tooltip="{{localize 'CAIRN.ItemSpendUse'}}"><i class="fa-solid fa-circle"></i></a>
+    {{else}}
+    <a data-action="itemUseIncrement" data-tooltip="{{localize 'CAIRN.ItemRestoreUse'}}"><i class="fa-regular fa-circle"></i></a>
+    {{/if}}
+    {{else}}
+    <i class="{{#if filled}}fa-solid{{else}}fa-regular{{/if}} fa-circle"></i>
+    {{/if}}
+    {{/each}}
+</span>

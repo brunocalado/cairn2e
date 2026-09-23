@@ -1,0 +1,99 @@
+{
+  "_id": "0GBNxrPaSX6CTNmn",
+  "name": "Invisible Stalker",
+  "type": "npc",
+  "img": "icons/magic/air/wind-tornado-funnel-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 15,
+        "max": 15
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "3X6RlGJBscii9AFP",
+      "name": "Fists",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>fists (d4+d4)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d4",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!0GBNxrPaSX6CTNmn.3X6RlGJBscii9AFP"
+    },
+    {
+      "name": "Intelligent beings shaped into reality by a powerful wizard.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Completely invisible and silent.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XdlCAoBjLeubgqdh",
+      "_key": "!actors.items!0GBNxrPaSX6CTNmn.XdlCAoBjLeubgqdh"
+    },
+    {
+      "name": "Attacks deal direct STR damage (subtracting Armor).",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "a83zYlAfVRM8lsjO",
+      "_key": "!actors.items!0GBNxrPaSX6CTNmn.a83zYlAfVRM8lsjO"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!0GBNxrPaSX6CTNmn"
+}

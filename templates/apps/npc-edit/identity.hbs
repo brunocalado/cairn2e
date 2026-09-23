@@ -1,0 +1,57 @@
+{{!-- The five people-tables (`wardens-guide/npc-tables.md`: Background, Quirks, Goals, Virtues,
+      Vices) and the six Character Traits (`core-rules.md` § Hirelings rolls them on the same
+      tables a character uses). Every die fills its input and nothing else; Save writes, Cancel
+      forgets — the same promise the rest of the window makes. No Name die: the window has no
+      name input (`npc-header.hbs`), and the header's re-roll rolls it.
+
+      Every row is shown for every person: this is where the fields are filled, so hiding one
+      here would put it out of reach. The sheet's own Identity tab is the copy that leaves a
+      blank row out. `npc-edit.js#_onRender` hides this tab's nav entry for a creature. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="identity">
+    <div class="cairn-edit-head">
+        <button type="button" class="cairn-chip" data-action="randomizeAll"
+            data-ink="box" data-ink-seed="randomize-all" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14">
+            <span>{{localize 'CAIRN.Edit.RandomizeAll'}}</span>
+        </button>
+    </div>
+    <div class="cairn-edit-details">
+        <div class="cairn-field cairn-die-row">
+            <label for="cairn-edit-background">{{localize 'CAIRN.Background'}}</label>
+            <input id="cairn-edit-background" type="text" name="system.background" value="{{system.background}}" />
+            <button type="button" class="mini" data-action="rollDetail" data-key="background"
+                data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+        <div class="cairn-field cairn-die-row">
+            <label for="cairn-edit-quirk">{{localize 'CAIRN.Quirk'}}</label>
+            <input id="cairn-edit-quirk" type="text" name="system.traits.quirk" value="{{system.traits.quirk}}" />
+            <button type="button" class="mini" data-action="rollDetail" data-key="quirk"
+                data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+        <div class="cairn-field cairn-die-row">
+            <label for="cairn-edit-goal">{{localize 'CAIRN.Goal'}}</label>
+            <input id="cairn-edit-goal" type="text" name="system.traits.goal" value="{{system.traits.goal}}" />
+            <button type="button" class="mini" data-action="rollDetail" data-key="goal"
+                data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+        <div class="cairn-field cairn-die-row">
+            <label for="cairn-edit-virtue">{{localize 'CAIRN.Trait.Virtue'}}</label>
+            <input id="cairn-edit-virtue" type="text" name="system.traits.virtue" value="{{system.traits.virtue}}" />
+            <button type="button" class="mini" data-action="rollDetail" data-key="virtue"
+                data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+        <div class="cairn-field cairn-die-row">
+            <label for="cairn-edit-vice">{{localize 'CAIRN.Trait.Vice'}}</label>
+            <input id="cairn-edit-vice" type="text" name="system.traits.vice" value="{{system.traits.vice}}" />
+            <button type="button" class="mini" data-action="rollDetail" data-key="vice"
+                data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+        {{#each appearanceTraits as |trait|}}
+        <div class="cairn-field cairn-die-row">
+            <label for="cairn-edit-{{trait.key}}">{{localize trait.label}}</label>
+            <input id="cairn-edit-{{trait.key}}" type="text" name="system.traits.{{trait.key}}" value="{{trait.value}}" />
+            <button type="button" class="mini" data-action="rollDetail" data-key="{{trait.key}}"
+                data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+        {{/each}}
+    </div>
+</section>

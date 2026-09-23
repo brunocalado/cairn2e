@@ -1,0 +1,108 @@
+{
+  "_id": "lVqUbRdzVVOElCO8",
+  "name": "Foundling: What keeps bad tidings at bay?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Foundling</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "yZnBpodSjpELq4KZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Pipeweed</strong> Your good luck charm. Conversations tend to flow more easily after a smoke. 6 uses.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lVqUbRdzVVOElCO8.yZnBpodSjpELq4KZ"
+    },
+    {
+      "_id": "u7Gc4Oflyxk7u0O1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Stink Jar</strong> Shattering this jar releases an odor so foul all nearby must make a STR save or immediately vomit. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lVqUbRdzVVOElCO8.u7Gc4Oflyxk7u0O1"
+    },
+    {
+      "_id": "T0A7XnRnzXOoxs9Z",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Ivy Worm</strong> A green worm often mistaken for a weed. Swallowed whole, it absorbs any toxins or rot in the body before exiting through the usual way.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lVqUbRdzVVOElCO8.T0A7XnRnzXOoxs9Z"
+    },
+    {
+      "_id": "ymJPWA8lawaDDwA0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Dream Stone</strong> A smooth blue stone that helps recall dreams more clearly. Overuse can cause dream-addiction.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lVqUbRdzVVOElCO8.ymJPWA8lawaDDwA0"
+    },
+    {
+      "_id": "GghBv1x79xF9MPPg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Drowning Rod</strong> A finger-sized wooden stick that doubles in size each time it is fully submerged in water. It does not shrink down again.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lVqUbRdzVVOElCO8.GghBv1x79xF9MPPg"
+    },
+    {
+      "_id": "Qm1VAsU3Dd99S8Hg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Rabbit's Foot</strong> You were wearing it when they found you. They say it is the foot of she who left you and that it protects you from witch magic. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lVqUbRdzVVOElCO8.Qm1VAsU3Dd99S8Hg"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!lVqUbRdzVVOElCO8"
+}

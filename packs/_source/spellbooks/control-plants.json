@@ -1,0 +1,31 @@
+{
+  "_id": "tdbBEG1m1tvTCKAJ",
+  "name": "Control Plants",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p><em>Leaves grow along the spine, and it smells faintly of decay.</em></p><p>Nearby plants and trees obey you and gain the ability to move at a slow pace.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!tdbBEG1m1tvTCKAJ",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

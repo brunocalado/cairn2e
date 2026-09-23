@@ -1,0 +1,31 @@
+{
+  "_id": "juT6hJSSk0N8oiwV",
+  "name": "Oxen",
+  "type": "gear",
+  "img": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
+  "system": {
+    "description": "<p>Oxen (+6 slots, slow)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 60,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 6,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!juT6hJSSk0N8oiwV",
+  "folder": "ARzrDNEhwsW3YANG"
+}

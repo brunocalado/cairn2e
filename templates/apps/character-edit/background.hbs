@@ -1,0 +1,24 @@
+{{!-- The two Background table results: what each asked and what it said. Two fixed slots
+      (`actor-character.js#backgroundTables`), each a question and a drawn answer box, stacked.
+      The question is a full-width drawn box like the answer under it, not a ruled field in a
+      gutter: a one-line input in a track reads as a printed caption rather than something to
+      type in, which is exactly what it was mistaken for. Both are plain text — the drawn result
+      carries no markup (`character-generator.js#drawBackgroundTable`). --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="background">
+    <label class="cairn-edit-label" for="cairn-edit-table-first-question">{{localize 'CAIRN.Edit.TableQuestion'}}</label>
+    <input id="cairn-edit-table-first-question" class="cairn-edit-text cairn-edit-line" type="text"
+        name="system.backgroundTables.first.question" value="{{system.backgroundTables.first.question}}"
+        maxlength="{{limits.question}}" placeholder="{{localize 'CAIRN.Edit.TableQuestionPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-table-first-question" data-ink-w="1.6" />
+    <textarea class="cairn-edit-text" name="system.backgroundTables.first.answer" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.Edit.TableAnswerPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-table-first" data-ink-w="1.6">{{system.backgroundTables.first.answer}}</textarea>
+    <label class="cairn-edit-label" for="cairn-edit-table-second-question">{{localize 'CAIRN.Edit.TableQuestion'}}</label>
+    <input id="cairn-edit-table-second-question" class="cairn-edit-text cairn-edit-line" type="text"
+        name="system.backgroundTables.second.question" value="{{system.backgroundTables.second.question}}"
+        maxlength="{{limits.question}}" placeholder="{{localize 'CAIRN.Edit.TableQuestionPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-table-second-question" data-ink-w="1.6" />
+    <textarea class="cairn-edit-text" name="system.backgroundTables.second.answer" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.Edit.TableAnswerPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-table-second" data-ink-w="1.6">{{system.backgroundTables.second.answer}}</textarea>
+</section>

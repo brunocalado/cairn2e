@@ -1,0 +1,31 @@
+{
+  "_id": "wf3CGAlV3Obrl1e3",
+  "name": "Astral Prison",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p><em>Silent, abstract, faces scream in anguish within.</em></p><p>An object is frozen in time and space within an invulnerable crystal shell.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!wf3CGAlV3Obrl1e3",
+  "folder": "CUFHa1lIQAt4nRUN"
+}

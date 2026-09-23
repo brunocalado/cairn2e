@@ -1,0 +1,162 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Warden sidebar tab — the system's own entry in the sidebar rail.      *
+     *                                                                       *
+     * `AbstractSidebarTab` puts both `.cairn2e` (our scope) and             *
+     * `.cairn2e-sidebar` (its own `<tabName>-sidebar`) on the section, so   *
+     * the whole tab is reachable from inside the wrapper with `&`. Core     *
+     * hides an inactive `.tab`, so the layout hangs off `.active` the way   *
+     * core's own `.settings-sidebar` does. Colours are core sidebar tokens, *
+     * not the sheet's parchment palette: this panel lives in the sidebar    *
+     * and must follow the user's theme.                                     *
+     **************************************************************************/
+
+    /* The nav button in the sidebar rail. It is core's markup, so it carries the scope class
+       through the tab descriptor's `icon` string (module/cairn2e.js#registerSidebarTab) rather
+       than from a parent. Core already handles size, radius and the hover / pressed transitions
+       off these six custom properties, so the colours are set once here and every state
+       follows — including `[aria-pressed=true]` when the tab is open.
+
+       A candle in the dark: the ground is the wordmark's own black, and the flame is the one
+       thing on it, in ember at rest and brighter under the pointer or with the tab open. The
+       grey-lilac the button used to wear was a leftover of the skull glyph it used to carry. */
+    &[data-tab="cairn2e"] {
+        /* Opaque, unlike core's translucent rail buttons: the point of the colour is to be found
+           at a glance, and 85% alpha washed the dark out to grey over a bright scene. */
+        --control-bg-color: var(--cairn-rail-bg);
+        --control-border-color: var(--cairn-rail-border);
+        --control-icon-color: var(--cairn-rail-icon);
+        --control-hover-bg-color: var(--cairn-rail-hover-bg);
+        --control-hover-border-color: var(--cairn-rail-hover-border);
+        --control-hover-icon-color: var(--cairn-candle);
+        --control-active-bg-color: var(--cairn-rail-active-bg);
+        --control-active-border-color: var(--cairn-rail-active-border);
+        --control-active-icon-color: var(--cairn-candle);
+
+        /* The glyph is the candle flame from the wordmark's "i" (`assets/flame.svg`), not a Font
+           Awesome icon: the descriptor's class string carries no `fa-*`, so the pseudo has no
+           glyph of its own and the shape is a mask filled with `currentColor` — core's own
+           `color` on the button, so hover and pressed recolour it with no rule here. The flame is
+           three times taller than wide; 26px tall inside the 32px control keeps the three tongues
+           above the body readable, where the 16px of a glyph turned them into dots. */
+        &::before {
+            content: "";
+            display: block;
+            height: 26px;
+            aspect-ratio: 40.56 / 117.46;
+            background-color: currentColor;
+            mask: url("../assets/flame.svg") center / contain no-repeat;
+        }
+
+        /* Lit while the game is paused: the ember flares to the yellow at the peak of the
+           banner's flicker (`cairn-candle` keyframes) and throws the same glow, in every state
+           of the button. Core keeps no pause class on `body`; the one mark in the DOM is
+           `#pause.paused`, toggled by `GamePause#_replaceHTML`, so the button reads it through
+           `:has()` — which also gets the initial state right for free, since the banner renders
+           with it on load. */
+        body:has(#pause.paused) &::before {
+            background-color: var(--cairn-candle-lit);
+            filter: drop-shadow(0 0 4px color-mix(in srgb, var(--cairn-candle-lit) 80%, transparent));
+        }
+    }
+
+    &.cairn2e-sidebar {
+        flex-direction: column;
+        overflow-y: auto;
+        color: var(--color-text-secondary);
+
+        &.active {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .cairn-tool-group {
+            gap: 0.5rem;
+
+            h4 {
+                margin: 0;
+            }
+        }
+
+        /* This panel deliberately follows the user's theme, and the system's ink button would
+           undo that: black-on-transparent in a dark sidebar is unreadable. The one place in the
+           system where an ink button must NOT appear, so it takes the swapping pair instead. */
+        /* `:is(button, a.button)` rather than a bare `button`: the generic control rule above is
+           `.cairn2e :is(button, a.button):not(…)` at (0,2,2), and a plain
+           `.cairn2e.cairn2e-sidebar button` is only (0,2,1) — it loses, and the ink button comes
+           back. Measured in a live client before this line was widened. */
+        & :is(button, a.button) {
+            --button-background-color: transparent;
+            --button-border-color: var(--cairn-surface-fg);
+            --button-text-color: var(--cairn-surface-fg);
+            --button-hover-background-color: var(--cairn-surface-fg);
+            --button-hover-border-color: var(--cairn-surface-fg);
+            --button-hover-text-color: var(--cairn-surface-bg);
+            justify-content: flex-start;
+            font-family: var(--cairn-serif);
+        }
+    }
+
+    /* The pause banner (`module/apps/game-pause.js`): the wordmark is inline SVG, so core's
+       100×100 `img` rule never reaches it and the 10:7 aspect comes from its own viewBox. The band,
+       the caption and the pulse stay core's. The logo is white on transparency and the band behind
+       it is core's dark gradient in both themes, so it stays white rather than ink or paper.
+
+       The candle on the "i" is where the monochrome rule yields (`--cairn-candle`): a flame that
+       is white and still is a woodcut; one that is warm and moves is a candle. The
+       flame group scales around its wick — `transform-box: view-box` puts the origin in viewBox
+       units, where the wick sits — and the glow is a `drop-shadow` on the group alone, never on
+       `#pause`: the band is viewport-wide and an animated filter on it would repaint the screen
+       every frame. The blur radii are in user units, which display at roughly 0.28× (501 units
+       across ~143px), so they look larger than they are. */
+    &#pause {
+        svg {
+            width: auto;
+            height: 100px;
+            overflow: visible;
+            /* The wordmark is white on core's dark pause band, deliberately — it is core's
+               ground, not the system's paper. */
+            fill: #fff;
+        }
+
+        .cairn-flame {
+            fill: var(--cairn-candle);
+            transform-box: view-box;
+            transform-origin: 281px 135px;
+            animation: cairn-candle 4s ease-in-out infinite;
+        }
+
+        /* Users who asked for less motion keep the lit flame, only without the flicker. */
+        @media (prefers-reduced-motion: reduce) {
+            .cairn-flame {
+                animation: none;
+                filter: drop-shadow(0 0 10px color-mix(in srgb, var(--cairn-candle) 50%, transparent));
+            }
+        }
+    }
+}
+
+/* The pause banner's candle (`.cairn-flame` above). At column 0 because Chromium drops an
+   `@keyframes` nested inside a style rule; the `cairn-` prefix keeps it clear of core's names.
+   The tokens still resolve: a keyframe's `var()` is computed on the animated element, which is
+   inside the `.cairn2e` scope. */
+@keyframes cairn-candle {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px color-mix(in srgb, var(--cairn-candle) 50%, transparent))
+            drop-shadow(0 0 30px color-mix(in srgb, var(--cairn-candle) 25%, transparent));
+    }
+    50% {
+        transform: scale(1.05, 1.12);
+        filter: drop-shadow(0 0 22px color-mix(in srgb, var(--cairn-candle-lit) 90%, transparent))
+            drop-shadow(0 0 50px color-mix(in srgb, var(--cairn-candle) 45%, transparent));
+    }
+}

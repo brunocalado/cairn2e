@@ -1,0 +1,31 @@
+{
+  "_id": "YlTGhKnd2Wz0vyUy",
+  "name": "Astral Prison",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>An object is frozen in time and space within an invulnerable crystal shell.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!YlTGhKnd2Wz0vyUy",
+  "folder": "cY8dColvFmUwDJFw"
+}

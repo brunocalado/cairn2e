@@ -1,0 +1,31 @@
+{
+  "_id": "bPF5KYUGmvOkfVHE",
+  "name": "Arcane Eye",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p><em>Needs a spritz of water to open.</em></p><p>You can see through a magical floating eyeball that flies around at your command.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!bPF5KYUGmvOkfVHE",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

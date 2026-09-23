@@ -1,0 +1,100 @@
+{
+  "_id": "quc6W0Kh1YHeLx2G",
+  "name": "Wight",
+  "type": "npc",
+  "img": "icons/magic/death/undead-skeleton-deformed-red.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 16,
+        "max": 16
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 12,
+      "max": 12
+    },
+    "role": "monster",
+    "armor": 3,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "hGeYCmdIYXTAsEGP",
+      "name": "Long Sword",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>long sword (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!quc6W0Kh1YHeLx2G.hGeYCmdIYXTAsEGP"
+    },
+    {
+      "name": "Grotesque, fallen warriors, raised from death for ill purpose.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Often astride equally nightmarish steeds, leading lesser undead creatures into battle.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nRNmWgN8eGqaahUI",
+      "_key": "!actors.items!quc6W0Kh1YHeLx2G.nRNmWgN8eGqaahUI"
+    },
+    {
+      "name": "On a fail, any STR loss is permanent.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XwkuPQZsMDRqeFFC",
+      "_key": "!actors.items!quc6W0Kh1YHeLx2G.XwkuPQZsMDRqeFFC"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!quc6W0Kh1YHeLx2G"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "va6jaq0RCIQyAang",
+  "name": "Jerked Beef",
+  "type": "gear",
+  "img": "icons/consumables/food/dried-meat-jerky-fish-red.webp",
+  "system": {
+    "description": "<p>Jerked Beef (pound)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 4,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!va6jaq0RCIQyAang",
+  "folder": "oZhGiDOcu7cDovBl"
+}

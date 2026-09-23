@@ -1,0 +1,47 @@
+{{!-- One block per step, in STEPS order. A blank value says it will be rolled on create, which
+      is what `#onSubmit` does — a character is never left half-made. No heading: the tab is
+      the heading. The Status block under the list and the footer's Create button are computed
+      from the same four conditions `#onSubmit` checks, and the footer is re-rendered on every
+      arrival here, so the line and the button cannot disagree. --}}
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="review">
+    <dl class="creator-review">
+        <dt>{{localize "CAIRN.Background"}}</dt>
+        <dd>{{draft.backgroundName}}</dd>
+
+        <dt>{{localize "CAIRN.Name"}}</dt>
+        <dd>{{#if draft.name}}{{draft.name}}{{else}}<em>{{localize "CAIRN.CharacterCreator.Missing"}}</em>{{/if}}</dd>
+
+        <dt>{{localize "CAIRN.CharacterCreator.Attributes"}}</dt>
+        <dd>{{#if attrs}}{{#each attrKeys as |key|}}{{localize key}} {{lookup ../attrs key}}{{#unless @last}} &middot; {{/unless}}{{/each}}{{#if swapDone}} <em class="review-note">{{localize "CAIRN.CharacterCreator.SwappedNote"}}</em>{{/if}}{{else}}<em>{{localize "CAIRN.CharacterCreator.Missing"}}</em>{{/if}}</dd>
+
+        <dt>{{localize "CAIRN.HitProtection"}}</dt>
+        <dd>{{#if draft.hp}}{{draft.hp}}{{else}}<em>{{localize "CAIRN.CharacterCreator.Missing"}}</em>{{/if}}</dd>
+
+        {{#each tables}}
+        <dt>{{this.name}}</dt>
+        <dd>{{#if this.rolled}}{{this.text}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
+        {{/each}}
+
+        <dt>{{localize "CAIRN.CharacterCreator.Traits"}}</dt>
+        <dd>{{#if traitsComplete}}{{#each traitRows}}{{this.value}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
+
+        <dt>{{localize "CAIRN.Bond"}}</dt>
+        <dd>{{#if bondText}}{{bondText}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
+
+        <dt>{{localize "CAIRN.CharacterCreator.Age"}}</dt>
+        <dd>{{#if draft.age}}{{draft.age}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
+
+        {{#if draft.youngest}}
+        <dt>{{localize "CAIRN.Omen"}}</dt>
+        <dd>{{#if omenText}}{{omenText}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
+        {{/if}}
+    </dl>
+
+    {{!-- Which actor is written is said twice — in the footer's button and in the line here —
+          because "Apply" alone does not say that it replaces. --}}
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-status" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "CAIRN.CharacterCreator.Status"}}</h3>
+    </div>
+    <p class="creator-status">{{#if canCreate}}{{localize "CAIRN.CharacterCreator.Ready"}}{{else}}{{createReason}}{{/if}}</p>
+    {{#if target}}<p class="creator-status hint">{{localize "CAIRN.CharacterCreator.ApplyWarning" name=target.name}}</p>{{/if}}
+</section>

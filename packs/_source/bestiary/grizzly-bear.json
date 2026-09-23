@@ -1,0 +1,114 @@
+{
+  "_id": "YPqZ8xfZsj5JXrJM",
+  "name": "Grizzly Bear",
+  "type": "npc",
+  "img": "icons/creatures/abilities/bear-roar-bite-brown.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 5,
+        "max": 5
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "2ror1Vt7GBX3pRBf",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!YPqZ8xfZsj5JXrJM.2ror1Vt7GBX3pRBf"
+    },
+    {
+      "name": "Reddish-brown bears commonly found in mountains, woodlands, and prairies.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ypWXoKU0rvGHh0Va",
+      "_key": "!actors.items!YPqZ8xfZsj5JXrJM.ypWXoKU0rvGHh0Va"
+    },
+    {
+      "name": "Prefer to eat fish and meat, and will attack the rare unfortunate who crosses their path.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Zvda1qOWEQVck4GY",
+      "_key": "!actors.items!YPqZ8xfZsj5JXrJM.Zvda1qOWEQVck4GY"
+    },
+    {
+      "name": "Bites the victim for an additional d6 STR damage. They bleed out very quickly.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZjJpFFqRmtN6fa77",
+      "_key": "!actors.items!YPqZ8xfZsj5JXrJM.ZjJpFFqRmtN6fa77"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!YPqZ8xfZsj5JXrJM"
+}

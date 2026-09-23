@@ -1,0 +1,108 @@
+{
+  "_id": "vscyyJXkXh5V0Zi8",
+  "name": "Barber-Surgeon: How have you \"improved\" yourself?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Barber-Surgeon</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "5BR2zJ9HULbMSp8s",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You have a replacement <strong>eye</strong> that can magnify objects, act as a telescope, and provide minimal night vision. You cannot wear anything metal on your head, and the presence of strong magnets make you <em>deprived</em>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.5BR2zJ9HULbMSp8s"
+    },
+    {
+      "_id": "PzeBEkruoFJBbtix",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>One <strong>foot</strong> is mostly metal (kick, d6), and you treat some Tough terrain as <strong>Easy</strong>. Carry a <strong>Oil Can</strong> (6 uses). Without a daily application, you are <em>deprived</em> and noisy.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.PzeBEkruoFJBbtix"
+    },
+    {
+      "_id": "xaeKJGQWE479kn3n",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>One of your fingers has been swapped, the bone replaced by gold and iron. Take a <strong>Hook</strong> and a <strong>Screwdriver</strong> that can attach to the fingertip.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.xaeKJGQWE479kn3n"
+    },
+    {
+      "_id": "YBPGYuvBqe8r0v4Z",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Both <strong>ears</strong> have been surgically enhanced, tripling your hearing. You can focus on a specific sound, such as a conversation, at a great distance. You wear an ear flap to protect against sudden loud noises (WIL save to avoid temporary paralysis).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.YBPGYuvBqe8r0v4Z"
+    },
+    {
+      "_id": "AxNwF0QhHNfno5VN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your <strong>chest</strong> is lined with alchemical sigils, <em>toughening the skin</em> (1 Armor). Wearing other metallic armor nullifies the effect.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.AxNwF0QhHNfno5VN"
+    },
+    {
+      "_id": "JjFbc0APvHMki1RR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>One <strong>arm</strong> is fully metal and comes off at the shoulder. It can be used as a weapon (d8, <em>bulky</em> when not attached) and can move independently if you are within sight of it.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.JjFbc0APvHMki1RR"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!vscyyJXkXh5V0Zi8"
+}

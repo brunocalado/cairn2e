@@ -1,0 +1,437 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Character creator.                                                    *
+     **************************************************************************/
+
+    &.character-creator {
+        height: 100%;
+        color: var(--cairn-ink);
+
+        /* Seven tab panels and a footer. `.window-content` does not scroll: each panel is its
+           own scroller (`scrollable` on the part), so a partial render of one step keeps its
+           scroll position and no other panel can move. Every rule and frame in this window is
+           drawn (`module/ink.js`) — there is no CSS border in this block. */
+        .window-content {
+            color: var(--cairn-ink);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            overflow: hidden;
+        }
+
+        /* Links only exist inside a step's prose (a content link in a blurb, a table result,
+           the Bond). Written as a bare `a` this also reached the rail's entries and painted
+           every one full ink and underlined, so the active tab and a hover could not show. */
+        .creator-step a {
+            color: var(--cairn-ink);
+            text-decoration: underline;
+        }
+
+        /* An entry the draft has not unlocked yet: faint, and not a target. `changeTab` is the
+           real gate; this is what the eye gets. */
+        .cairn-tab[aria-disabled="true"] {
+            color: var(--cairn-ink-faint);
+            pointer-events: none;
+        }
+
+        /* An unlocked entry answers the pointer with full ink, as the edit window's rail does.
+           A locked one carries `pointer-events: none` above, so it never gets here. */
+        .cairn-tab:hover {
+            color: var(--cairn-ink);
+        }
+
+        /* Seven tab entries in 640px: each takes its own width, not a seventh of the rail, or
+           "3 ATTRIBUTES" wraps onto two lines. */
+        .cairn-tab-rail {
+            justify-content: space-between;
+            padding: 0 4px;
+        }
+
+        .cairn-tab {
+            flex: 0 1 auto;
+            white-space: nowrap;
+        }
+
+        /* A capital heading on a drawn rule, content flush beneath it — no box. The grooved
+           border and notched legend that used to be here were the BROWSER's defaults for
+           `fieldset`/`legend`: core styles neither outside `.standard-form`, so nothing in the
+           system ever put them there. The tags are `<section>`/`<h3>`.
+
+           No `display` here: the panel is a `.tab` section and `.tab.active` above is what lays
+           it out and scrolls it. A `display` on the section's own class would outrank core's
+           `.tab:not(.active) { display: none }` and keep every panel on screen at once. */
+        .creator-step {
+            scrollbar-gutter: stable;
+            padding: 8px 0;
+
+            h3 {
+                font-family: var(--cairn-serif);
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+                font-weight: 700;
+                margin: 0;
+            }
+
+            /* A bare heading, or a heading with one control at its right (`.step-heading`): the
+               rule under either is drawn from the element that carries `data-ink`, so the
+               control lives in the wrapper, not in the h3, and the rule is measured under the
+               taller of the two. */
+            > h3,
+            > .step-heading {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin: 0 0 6px;
+                padding-bottom: 2px;
+                flex: 0 0 auto;
+            }
+        }
+
+        .step-heading {
+            > h3 {
+                flex: 1;
+            }
+
+            > button.mini {
+                margin-left: auto;
+            }
+        }
+
+        .starting-gear h4 {
+            font-size: 11px;
+            font-family: var(--cairn-serif);
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+            font-weight: 700;
+            color: var(--cairn-ink);
+        }
+
+        .section-controls {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+
+            .table-name {
+                font-weight: bold;
+            }
+        }
+
+        & button {
+            width: auto;
+            line-height: normal;
+            white-space: nowrap;
+        }
+
+        .creator-background-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* A row is a button with no frame: the rule under it is drawn, the hover is the one
+           permitted fill. `height: auto` because core fixes a button at `--button-size`, which
+           would clip a two-line blurb. */
+        & button.creator-background-row {
+            /* The primitive inverts a hovered button to paper text; on this row's 5% wash that
+               made the name disappear. The ground is overridden below, so the text is too. */
+            --button-hover-text-color: var(--cairn-ink);
+            display: grid;
+            grid-template-columns: 112px 1fr;
+            gap: 12px;
+            align-items: baseline;
+            height: auto;
+            padding: 6px 4px;
+            border: none;
+            text-align: left;
+            white-space: normal;
+
+            &:hover {
+                background: var(--cairn-paper-sunk);
+            }
+        }
+
+        .creator-background-name {
+            font-family: var(--cairn-serif);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+        }
+
+        /* Prose, inside a button: the button primitive sets capitals, tracking and weight, and
+           a blurb wearing them reads as a label. */
+        .creator-background-blurb {
+            font-size: 12px;
+            line-height: 1.35;
+            color: var(--cairn-ink-soft);
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        .background-detail {
+            margin-top: 8px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+
+            .blurb {
+                font-style: italic;
+            }
+        }
+
+        .starting-gear ul {
+            margin: 4px 0 0;
+            padding-left: 18px;
+        }
+
+        .name-chips,
+        .swap-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .chip {
+            font-size: 12px;
+            padding: 2px 8px;
+        }
+
+        /* The line over the field reads left, with the field, not centred like the hints
+           under a control row. Both classes, because the centring `.hint` rule is declared
+           later in this block and would win at equal specificity. */
+        .hint.name-hint {
+            text-align: left;
+            margin: 0 0 6px;
+        }
+
+        /* The label sits in front of the field on one line — the trait rows' layout, at the
+           trait rows' label width, so the two steps with a labelled text field line up. */
+        .name-field {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            > span {
+                font-size: 11px;
+                flex: 0 0 74px;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+            }
+
+            input {
+                flex: 1;
+            }
+        }
+
+        /* Age is `Age [ 27 ] years`: the Name step's labelled row, with the field sized to a
+           number and its unit after it instead of stretching across the panel. */
+        .age-field {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+
+            > span {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+            }
+
+            > span:first-child {
+                flex: 0 0 74px;
+            }
+
+            input {
+                flex: 0 0 64px;
+                text-align: center;
+            }
+        }
+
+        /* The Bond step's second and third headings follow content: the same air over them the
+           HP heading gets over the swap row. */
+        .bond-result + .step-heading,
+        .section-controls + .step-heading {
+            margin-top: 12px;
+        }
+
+        /* Three columns, not flex: the HP box under its own heading is alone in its row and
+           must be the width of one attribute box, not the width of the panel. */
+        .attr-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        /* The step's second heading: room over it so the swap row does not sit on its rule. */
+        .swap-row + .step-heading {
+            margin-top: 12px;
+        }
+
+        /* A box for STR/DEX/WIL is a button (the swap picker); the HP box is a div. The frame is
+           drawn, and so is the picked state's ground: the flood comes from the box's
+           `data-ink-fill` attributes, and the stylesheet only reverses the label to paper. */
+        .attr-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: none;
+            padding: 4px;
+            height: auto;
+            line-height: normal;
+            cursor: default;
+
+            label {
+                font-size: 11px;
+                display: block;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+                font-weight: bold;
+                cursor: inherit;
+            }
+
+            span {
+                font-size: 20px;
+            }
+        }
+
+        & button.attr-box {
+            /* The primitive inverts a hovered button to paper text. This box's ground is the
+               drawn frame with a 14% wash on hover and nothing at all while disabled, so paper
+               text made the `?` vanish and the rolled numbers go white. The picked state
+               reverses to paper below, over its own 92% flood. */
+            --button-hover-text-color: var(--cairn-ink);
+            cursor: pointer;
+
+            &.is-picked {
+                color: var(--cairn-paper);
+            }
+
+            &.is-picked label {
+                color: var(--cairn-paper);
+            }
+
+            &:disabled {
+                cursor: default;
+                opacity: 0.75;
+            }
+        }
+
+        .trait-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 12px;
+        }
+
+        .trait-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            label {
+                font-size: 11px;
+                flex: 0 0 74px;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+            }
+
+            input {
+                flex: 1;
+            }
+        }
+
+        .table-block {
+            margin-bottom: 8px;
+        }
+
+        /* A drawn quote: the bar at its left is a `vline` mark. */
+        .table-result,
+        .bond-result,
+        .omen-result {
+            padding-left: 8px;
+            margin: 4px 0;
+        }
+
+        /* Back / Next, under the panels, with a drawn rule over them (the rule is the first
+           child, so the two buttons wrap onto the line under it). */
+        .creator-footer {
+            flex: 0 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px 0;
+
+            .cairn-tab-rule {
+                flex: 0 0 100%;
+            }
+        }
+
+        /* The Review: one list, label in the gutter, value in the track. Core colours `dt`/`dd`
+           for its own dark theme, so both are told the ink. The gutter is fixed rather than
+           `max-content`: a Background table's name ("Fieldwarden: What got the better of you?")
+           would otherwise push every value to the far right. */
+        .creator-review {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 6px 12px;
+            margin: 0;
+
+            dt {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+                font-weight: 700;
+                color: var(--cairn-ink);
+                /* Core embosses every `dl dt` with `text-shadow: 1px 1px #000` (foundry2.css);
+                   on paper that reads as a smeared bold. */
+                text-shadow: none;
+            }
+
+            dd {
+                margin: 0;
+                color: var(--cairn-ink);
+            }
+        }
+
+        /* A drawn table result or Bond arrives as a paragraph; in the list it is a value. */
+        .creator-review dd p {
+            margin: 0;
+        }
+
+        /* The Status heading sits under the list with the air of a second heading. */
+        .creator-review + .step-heading {
+            margin-top: 12px;
+        }
+
+        .creator-status {
+            margin: 0 0 4px;
+        }
+
+        /* The footer's Create wears the weight the Review's button had. */
+        .creator-footer button.create {
+            font-size: 16px;
+            font-weight: 700;
+            padding: 6px 18px;
+        }
+
+        .hint {
+            font-style: italic;
+            opacity: 0.75;
+            text-align: center;
+        }
+    }
+}

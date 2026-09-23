@@ -1,0 +1,31 @@
+{
+  "_id": "hzpzcdcEWTtlBTa0",
+  "name": "Skirt, silk",
+  "type": "gear",
+  "img": "icons/equipment/leg/skirt-cloth-tasset-purple.webp",
+  "system": {
+    "description": "<p>Skirt, silk (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hzpzcdcEWTtlBTa0",
+  "folder": "XycVdoNLEuiHY9my"
+}

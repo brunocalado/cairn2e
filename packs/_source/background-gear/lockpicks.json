@@ -1,0 +1,31 @@
+{
+  "_id": "i3fbJIbB6lJ6FyS0",
+  "name": "Lockpicks",
+  "type": "gear",
+  "img": "icons/tools/hand/lockpicks-steel-grey.webp",
+  "system": {
+    "description": "<p>Lockpicks</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!i3fbJIbB6lJ6FyS0",
+  "folder": "2zMlRQXjmfTFAB7Z"
+}

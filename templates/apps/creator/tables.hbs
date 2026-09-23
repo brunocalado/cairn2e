@@ -1,0 +1,14 @@
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="tables">
+    <h3 data-ink="hline" data-ink-seed="step-tables" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.CharacterCreator.Tables"}}</h3>
+    {{#each tables}}
+    <div class="table-block">
+        <div class="section-controls">
+            <button type="button" data-action="rollTable" data-index="{{this.index}}">
+                <i class="fas fa-dice-d6"></i> {{this.formula}}
+            </button>
+            <span class="table-name">{{this.name}}</span>
+        </div>
+        {{#if this.rolled}}<div class="table-result" data-ink="vline" data-ink-seed="table-{{this.index}}" data-ink-w="1.8">{{this.text}}</div>{{/if}}
+    </div>
+    {{/each}}
+</section>

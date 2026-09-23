@@ -1,0 +1,39 @@
+{
+  "_id": "sSmhzeX3lcNGnfnC",
+  "name": "Hexenbane",
+  "type": "background",
+  "img": "icons/sundries/survival/stake-rough-simple-brown.webp",
+  "system": {
+    "description": "<blockquote><p>You are a mere digit on the unerring hand of justice. You go where others fear to tread, unyielding and unbroken.</p></blockquote>",
+    "names": [
+      "Percival",
+      "Felix",
+      "Isolde",
+      "Wolfram",
+      "Aldric",
+      "Eira",
+      "Oswin",
+      "Ivor",
+      "Brunhilda",
+      "Beatrix"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.1PmyvreQQiGD6vGK",
+      "Compendium.cairn2e.background-gear.Item.PzyEhx24dBdeQyWq",
+      "Compendium.cairn2e.background-gear.Item.xdDnbv6De7W1mrwi",
+      "Compendium.cairn2e.weapons.Item.qLSAVP83onsMvq0d"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.8OhA0huEap2KItci",
+      "Compendium.cairn2e.background-tables.RollTable.8zh8YUIC8DlMxcBI"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!sSmhzeX3lcNGnfnC"
+}

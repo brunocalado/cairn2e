@@ -1,0 +1,99 @@
+{
+  "_id": "Q0ItCwyuKWmbKpkh",
+  "name": "Ettin",
+  "type": "npc",
+  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 16,
+        "max": 16
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 6,
+        "max": 6
+      }
+    },
+    "hp": {
+      "value": 10,
+      "max": 10
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "XCGPIVyUBj9MaqLF",
+      "name": "Club",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>club (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!Q0ItCwyuKWmbKpkh.XCGPIVyUBj9MaqLF"
+    },
+    {
+      "name": "The two-headed kin of giants.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Prefer caves and underground hovels.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "yyPxfRSavTUeasO9",
+      "_key": "!actors.items!Q0ItCwyuKWmbKpkh.yyPxfRSavTUeasO9"
+    },
+    {
+      "name": "Cannot be surprised.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "sOZCINj4N5mr7e4u",
+      "_key": "!actors.items!Q0ItCwyuKWmbKpkh.sOZCINj4N5mr7e4u"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!Q0ItCwyuKWmbKpkh"
+}

@@ -1,0 +1,39 @@
+{
+  "_id": "9Lg08dWVL792cCHF",
+  "name": "Prowler",
+  "type": "background",
+  "img": "icons/equipment/back/cloak-hooded-red.webp",
+  "system": {
+    "description": "<blockquote><p>You are a specter in the night, a fleeting shadow that slips by its prey, unseen. Each kill is a test of cunning and animal determination, a contest between life and death. You know that one day you will lose. You look forward to it.</p></blockquote>",
+    "names": [
+      "Winda",
+      "Brielle",
+      "Theron",
+      "Chayse",
+      "Nuja",
+      "Dev",
+      "Raven",
+      "Arawan",
+      "Sable",
+      "Baruani"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.OpD7PkB568OxnkRT",
+      "Compendium.cairn2e.background-gear.Item.1WrwqFNAEVwO8jl6",
+      "Compendium.cairn2e.background-gear.Item.iEFwocGnyOoWuPzK",
+      "Compendium.cairn2e.background-gear.Item.Do2tcqARCv1s7aE6"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.sBBdv01d9DmsKV3u",
+      "Compendium.cairn2e.background-tables.RollTable.JeSXIRVztOxQaDYF"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!9Lg08dWVL792cCHF"
+}

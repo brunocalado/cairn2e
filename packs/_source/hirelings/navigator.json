@@ -1,0 +1,211 @@
+{
+  "_id": "MXgJggN468vIUxMF",
+  "name": "Navigator",
+  "type": "npc",
+  "img": "icons/skills/trades/academics-astronomy-navigation-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 13,
+        "max": 13
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Navigator",
+    "dayRate": 10,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "OKiAyld4kXiFXJv1",
+      "_key": "!actors.items!MXgJggN468vIUxMF.OKiAyld4kXiFXJv1"
+    },
+    {
+      "name": "Torch",
+      "type": "gear",
+      "img": "icons/sundries/lights/torch-black.webp",
+      "system": {
+        "description": "<p>Torch (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Gj69jHG5kISwUIxz",
+      "_key": "!actors.items!MXgJggN468vIUxMF.Gj69jHG5kISwUIxz"
+    },
+    {
+      "name": "Dagger",
+      "type": "gear",
+      "img": "icons/weapons/daggers/dagger-bone-grey.webp",
+      "system": {
+        "description": "<p>Dagger (d6 damage)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "E1JRhm4ViQThaXB3",
+      "_key": "!actors.items!MXgJggN468vIUxMF.E1JRhm4ViQThaXB3"
+    },
+    {
+      "name": "Compass",
+      "type": "gear",
+      "img": "icons/tools/navigation/compass-chain-blue.webp",
+      "system": {
+        "description": "<p>Compass</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 75,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "LTz4Psv6DPlOpL9C",
+      "_key": "!actors.items!MXgJggN468vIUxMF.LTz4Psv6DPlOpL9C"
+    },
+    {
+      "name": "Sextant",
+      "type": "gear",
+      "img": "icons/tools/navigation/sextant-brass-brown.webp",
+      "system": {
+        "description": "<p>Sextant</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "yRvf05WhGVboJ9CY",
+      "_key": "!actors.items!MXgJggN468vIUxMF.yRvf05WhGVboJ9CY"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!MXgJggN468vIUxMF"
+}

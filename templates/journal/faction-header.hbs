@@ -1,0 +1,11 @@
+{{!-- A faction's name, and nothing else — the same reasoning as `route-header.hbs`.
+
+      Core's page header carries a heading LEVEL and a "Display Page Title" switch, because a text
+      page is a section of a document and those two decide how it folds into the table of
+      contents. A faction is not a section of anything: it is one standing power in a region,
+      drawn as its own block, and its title is always its name. --}}
+<header class="journal-header">
+    {{formInput fields.name value=name classes="title"
+                aria=(object label=(localize "JOURNALENTRYPAGE.FIELDS.name.label"))
+                placeholder=(localize "JOURNALENTRYPAGE.FIELDS.name.label")}}
+</header>

@@ -1,0 +1,108 @@
+{
+  "_id": "EVTSWa2WXvGCqCjA",
+  "name": "Jongleur: What happened at your final performance?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Jongleur</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "X3boGHzzgyWNLU3L",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Despite your training in the deadly arts, an actor died and you were blamed. Take a light-weight <strong>Rapier</strong> (d6) and a false identity.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.X3boGHzzgyWNLU3L"
+    },
+    {
+      "_id": "aremZspLRXF9uugo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The crowd loved your catchy tune about a noble and his romantic failings. The noble in question, not so much. Take the <em>Read Mind</em> <strong>Spellbook</strong> and a warrant for your arrest. Read Mind: You can hear the surface thoughts of nearby creatures. <em>Long-term possession can cause the reader to mistake the thoughts of others as their own.</em></p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.aremZspLRXF9uugo"
+    },
+    {
+      "_id": "kRuleNtsWSy8pUnH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your debut composition reduced the audience to a gibbering mess, murmuring of bright creatures descending from the night sky. Later you noticed that the notes resembled stellar constellations. Take a <strong>Book On Astronomy</strong>, and a lot of questions.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.kRuleNtsWSy8pUnH"
+    },
+    {
+      "_id": "T6hToRGPExSZf47v",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You mocked a forgotten trickster god and were cursed for it. You speak only in perfect rhyme. Ironically, this has only made you more popular among your peers. Take a <strong>Thesaurus</strong> (20gp). Without it, you are <em>deprived</em>.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.T6hToRGPExSZf47v"
+    },
+    {
+      "_id": "6tqm2sgcXkyCp4HT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were scarred in an on-stage accident. The crowd cheered, thinking it was part of the act. Take well-worn <strong>Stage Mail</strong> (1 Armor), a memorable scar, and a fear of applause.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.6tqm2sgcXkyCp4HT"
+    },
+    {
+      "_id": "LXlGN8iDUeT2gtit",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your respectable puppeteering skills were matched only by your mimicry. You were so good you were branded a witch (literally) and banished. Take an <strong>Uncanny Hand-Puppet</strong> and a <strong>Rabbit Skull</strong> (<em>petty</em>) that protects against charms.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.LXlGN8iDUeT2gtit"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!EVTSWa2WXvGCqCjA"
+}

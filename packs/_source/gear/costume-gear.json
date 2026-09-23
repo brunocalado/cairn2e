@@ -1,0 +1,30 @@
+{
+  "_id": "7Wnavu7ZBS1W8hbB",
+  "name": "Costume Gear",
+  "type": "gear",
+  "img": "icons/commodities/treasure/mask-wood-tan.webp",
+  "system": {
+    "description": "<p>Costume Gear (Face Paint, Disguise)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 15,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7Wnavu7ZBS1W8hbB"
+}

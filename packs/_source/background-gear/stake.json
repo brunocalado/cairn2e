@@ -1,0 +1,31 @@
+{
+  "_id": "gKRNHApjYFA7OwCo",
+  "name": "Stake",
+  "type": "gear",
+  "img": "icons/sundries/survival/stake-rough-simple-brown.webp",
+  "system": {
+    "description": "<p>Stake (d6)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gKRNHApjYFA7OwCo",
+  "folder": "EIIp0S3aKJcOC0QK"
+}

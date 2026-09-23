@@ -1,0 +1,30 @@
+{
+  "_id": "jIUcDxlW7tojBgaG",
+  "name": "Compass",
+  "type": "gear",
+  "img": "icons/tools/navigation/compass-chain-blue.webp",
+  "system": {
+    "description": "<p>Compass</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 75,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!jIUcDxlW7tojBgaG"
+}

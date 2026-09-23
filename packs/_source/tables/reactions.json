@@ -1,0 +1,93 @@
+{
+  "_id": "3nbxjvFKsudTga50",
+  "name": "Reactions",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>When the PCs encounter an NPC whose reaction to the party is not obvious, the Warden may roll 2d6 and consult this table.</p>",
+  "formula": "2d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "CmYj4GrFZJ7bjk3K",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hostile",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!3nbxjvFKsudTga50.CmYj4GrFZJ7bjk3K"
+    },
+    {
+      "_id": "2Nb3B6xqNoAAMkdl",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Wary",
+      "weight": 1,
+      "range": [
+        3,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!3nbxjvFKsudTga50.2Nb3B6xqNoAAMkdl"
+    },
+    {
+      "_id": "Zu58HaBjexAhkszB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Curious",
+      "weight": 1,
+      "range": [
+        6,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!3nbxjvFKsudTga50.Zu58HaBjexAhkszB"
+    },
+    {
+      "_id": "GHBe6lpXDEdwHkqs",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Kind",
+      "weight": 1,
+      "range": [
+        9,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!3nbxjvFKsudTga50.GHBe6lpXDEdwHkqs"
+    },
+    {
+      "_id": "SMe4r1FqNBn4z7Bg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Helpful",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!3nbxjvFKsudTga50.SMe4r1FqNBn4z7Bg"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!3nbxjvFKsudTga50"
+}

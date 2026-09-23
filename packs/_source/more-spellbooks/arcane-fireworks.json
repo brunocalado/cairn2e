@@ -1,0 +1,31 @@
+{
+  "_id": "ha2MYqgAYEul41xB",
+  "name": "Arcane Fireworks",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>Target flame becomes a great conflagration of heat, light and sound.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ha2MYqgAYEul41xB",
+  "folder": "MCt2VTDHSjLFlLso"
+}

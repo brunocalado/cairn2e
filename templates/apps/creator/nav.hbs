@@ -1,0 +1,16 @@
+{{!-- The sheet rail (`parts/sheet-nav.hbs`) with one extra state: an entry the draft has not
+      unlocked yet is inert and set in faint ink. `changeTab` is the real gate; `aria-disabled`
+      is what the eye and the screen reader get.
+
+      The two rules are drawn, like every other rule in the system, and the rail and its rules
+      are one element because a part's template is a single element. --}}
+<div class="cairn-nav-block">
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="creator-rule-over" data-ink-w="1.8"></div>
+    <nav class="tabs cairn-tab-rail" data-group="primary">
+        {{#each tabs as |tab|}}
+        <a class="cairn-tab {{tab.cssClass}}" data-action="tab" data-group="primary" data-tab="{{tab.id}}"
+            {{#if tab.locked}}aria-disabled="true"{{/if}}>{{localize tab.label}}</a>
+        {{/each}}
+    </nav>
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="creator-rule-under" data-ink-w="1.8"></div>
+</div>

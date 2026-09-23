@@ -1,0 +1,15 @@
+{
+  "_id": "FRlZF57kBrPyqTT3",
+  "name": "Roll Morale",
+  "type": "script",
+  "img": "icons/sundries/flags/banner-flag-white.webp",
+  "scope": "global",
+  "command": "cairn2e.morale();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!FRlZF57kBrPyqTT3"
+}

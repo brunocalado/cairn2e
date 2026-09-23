@@ -1,0 +1,19 @@
+{{!-- The tab rail, shared by the NPC and item sheets. Its own render part, so the set of tabs can
+      change without rebuilding the tab bodies beneath it.
+
+      The two rules are DRAWN, like every other rule in the system — the strip used to sit between
+      two CSS borders, and a machined line a few pixels from the window's drawn frame reads as a
+      seam between two designs. The rail and its rules are one element for the same reason the
+      character sheet's strip is: a part's template is a single element, and the rules belong to
+      the strip rather than floating between parts. --}}
+<div class="cairn-nav-block">
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="nav-rule-over" data-ink-w="1.8"></div>
+    <nav class="tabs cairn-tab-rail" data-group="primary">
+        {{#each tabs as |tab|}}
+        <a class="cairn-tab {{tab.cssClass}}" data-action="tab" data-group="primary" data-tab="{{tab.id}}">
+            {{localize tab.label}}
+        </a>
+        {{/each}}
+    </nav>
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="nav-rule-under" data-ink-w="1.8"></div>
+</div>

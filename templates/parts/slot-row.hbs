@@ -1,0 +1,86 @@
+{{!-- One numbered inventory line, plus its Fatigue circle.
+
+      Three shapes: empty, a continuation of the item above, or an item — a sack of coin is an
+      item like any other (`data/item-coin.js`), its value on its tag. A multi-slot
+      item is drawn as ONE block as tall as the slots it fills — its first row carries the name,
+      its continuations carry nothing, and a drawn bracket in the gutter runs the height of the
+      pair. The block used to be a band of `--cairn-paper-sunk` instead, which is the one fill
+      this sheet permits and was being spent here on a mark the eye reads as a highlight rather
+      than as a join. The bracket is the mark the printed sheet uses, and it is drawn in the same
+      ink as every other rule on the page.
+
+      The row expands into nothing. It used to be a `<details>`: clicking the name unfolded the
+      item's description under it, which pushed every row below it down the ledger and moved the
+      numbered lines the layout is built on. The name opens the item's own sheet instead, and the
+      description is posted to chat from the scroll control — so the ten lines never move.
+
+      The circle is inert on an occupied slot: Fatigue cannot be marked over something carried.
+
+      `draggable` is a CLASS, not the HTML attribute. v14 binds dragging through
+      `DragDrop({ dragSelector: ".draggable" })` on every sheet (`ux/drag-drop.mjs`), and it sets
+      the attribute itself on what it finds. A hand-written `draggable="true"` makes the browser
+      start a drag the sheet knows nothing about, carrying an empty `dataTransfer` — which every
+      drop target then refuses in silence. A continuation row is the same item drawn again, so it
+      is not a second drag source. --}}
+<li class="cairn-slot{{#if row.empty}} is-empty{{/if}}{{#if row.continuation}} is-continuation{{/if}}{{#if row.item.isUsedUp}} used-up{{/if}}{{#if (gt row.spans 1)}} is-block{{/if}}{{#if row.item}}{{#unless row.continuation}} draggable{{/unless}}{{/if}}"
+    {{!-- No rule under the last slot: the ledger's own frame already closes it. --}}
+    {{!-- ...and none between two rows of the same item: that is the one place the ledger's lines
+          would cut a single entry in half. `joined` is false on the block's LAST row, so the
+          rule that separates the block from the next thing carried is still drawn. --}}
+    {{#unless row.last}}{{#unless row.joined}}data-ink="hline" data-ink-seed="slot-{{row.n}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}{{/unless}}
+    {{#if (gt row.spans 1)}}data-spans="{{row.spans}}"{{/if}}
+    {{#if row.item}}data-item-id="{{row.item.id}}"{{/if}}>
+
+    <span class="cairn-slot-number">{{row.n}}</span>
+
+    {{!-- The bracket that ties a multi-slot item's rows together, drawn once on the FIRST of
+          them and sized in CSS to reach the foot of the last. Its seed is the item's own id, so
+          the stroke keeps its silhouette across every re-render of the ledger. --}}
+    {{#if (gt row.spans 1)}}{{#unless row.continuation}}
+    <span class="cairn-slot-bracket" data-ink="bracket" data-ink-w="1" data-ink-a="0.5"
+        data-ink-seed="bracket-{{row.item.id}}"></span>
+    {{/unless}}{{/if}}
+
+    {{#if row.empty}}
+    <span class="cairn-slot-rule"></span>
+
+    {{else if row.continuation}}
+    <span class="cairn-slot-body"></span>
+
+    {{else}}
+    <span class="cairn-slot-body">
+        {{!-- The name IS the affordance, as it was when this was a disclosure — only now it opens
+              the item rather than unfolding it. `itemEdit` is that handler already, so the row
+              and the pencil are one action and cannot drift apart. It is a sibling of the
+              controls and never their ancestor, so a click on a control is that control's and
+              nothing else's. The use pips are the one control it does contain, and they are
+              safe because core dispatches to the innermost `data-action` only. A Fatigue opens
+              too: it carries no numbers, but it carries a description, and "which Fatigue is
+              this one" is a note worth writing. --}}
+        <span class="cairn-item-name-and-tags" data-action="itemEdit">
+            <span class="cairn-item-title">
+                {{#if row.item.system.equipped}}<strong>{{row.item.name}}</strong>{{else}}{{row.item.name}}{{/if}}
+            </span>
+            {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.item.system}}
+            {{!-- A container on the ten (a Cart you pull, a bag) carries its capacity chip here
+                  too. Its contents are read on its own sheet's Contents tab: this row cannot
+                  unfold without moving the numbered lines under it. --}}
+            {{#if row.item.system.isContainer}}<span class="cairn-item-tag">{{row.item.system.contentsSlots}}/{{row.item.system.capacity}}</span>{{/if}}
+            {{#if row.item.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=row.item.usesDisplay editable=@root.editable}}{{/if}}
+        </span>
+
+        {{> "systems/cairn2e/templates/parts/item-controls.hbs" item=row.item editable=@root.editable}}
+    </span>
+    {{/if}}
+
+    {{!-- On a sheet the user may not write, the circle is the mark and not the control: a marked
+          one still says a Fatigue is there. --}}
+    {{#if row.fatigue.inert}}
+    <span class="cairn-fatigue-dot is-inert"></span>
+    {{else if @root.editable}}
+    <a class="cairn-fatigue-dot{{#if row.fatigue.marked}} is-marked{{/if}}" data-action="fatigueToggle"
+        data-tooltip="{{#if row.fatigue.marked}}{{localize 'CAIRN.RemoveFatigue'}}{{else}}{{localize 'CAIRN.AddFatigue'}}{{/if}}"></a>
+    {{else}}
+    <span class="cairn-fatigue-dot {{#if row.fatigue.marked}}is-marked{{else}}is-inert{{/if}}"></span>
+    {{/if}}
+</li>

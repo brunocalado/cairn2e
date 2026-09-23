@@ -1,0 +1,31 @@
+{
+  "_id": "4RjugyHfmWSFP7gE",
+  "name": "Liquid Air",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p><em>Floats of its own volition, bouncing off of whatever it touches.</em></p><p>The air around you becomes swimmable.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4RjugyHfmWSFP7gE",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

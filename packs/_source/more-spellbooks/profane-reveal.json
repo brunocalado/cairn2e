@@ -1,0 +1,31 @@
+{
+  "_id": "D7oM6zWQSjy1hZcv",
+  "name": "Profane Reveal",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>Target an empty space to reveal invisible objects or creatures.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!D7oM6zWQSjy1hZcv",
+  "folder": "MCt2VTDHSjLFlLso"
+}

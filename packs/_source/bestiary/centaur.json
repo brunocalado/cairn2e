@@ -1,0 +1,129 @@
+{
+  "_id": "UAND3CKszNefOyxL",
+  "name": "Centaur",
+  "type": "npc",
+  "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "UjWtDnKqbCub5C5X",
+      "name": "Spear",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>spear (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!UAND3CKszNefOyxL.UjWtDnKqbCub5C5X"
+    },
+    {
+      "_id": "PEwovn36ZblehSLY",
+      "name": "Short Bow",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>short bow (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!UAND3CKszNefOyxL.PEwovn36ZblehSLY"
+    },
+    {
+      "name": "Creatures with the lower body and legs of a horse, but a humanoid upper body.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "KP7ZHCoeatBB2aeW",
+      "_key": "!actors.items!UAND3CKszNefOyxL.KP7ZHCoeatBB2aeW"
+    },
+    {
+      "name": "Rarely found alone, preferring the company of their own.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "uK7oJ9eLhHzrYqSh",
+      "_key": "!actors.items!UAND3CKszNefOyxL.uK7oJ9eLhHzrYqSh"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!UAND3CKszNefOyxL"
+}

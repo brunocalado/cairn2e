@@ -1,0 +1,31 @@
+{
+  "_id": "j20RGjkyFAMCOOE9",
+  "name": "Wizard Mark",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p><em>Inside the front cover is a small pocket containing a thin pad of paper, listing the name and date of death of all previous owners.</em></p><p>Your finger can shoot a stream of ulfire-colored paint. This paint is only visible to you and can be seen at any distance, even through solid objects.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!j20RGjkyFAMCOOE9",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

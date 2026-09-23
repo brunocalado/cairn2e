@@ -1,0 +1,31 @@
+{
+  "_id": "h3EXPHVgXZXRxCn2",
+  "name": "Drill",
+  "type": "gear",
+  "img": "icons/tools/hand/drill-steel-brown-grey.webp",
+  "system": {
+    "description": "<p>Drill (manual)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!h3EXPHVgXZXRxCn2",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

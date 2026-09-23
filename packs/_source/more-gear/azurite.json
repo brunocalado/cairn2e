@@ -1,0 +1,31 @@
+{
+  "_id": "tDQCAwqgZrRZCT2N",
+  "name": "Azurite",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-rough-cushion-blue.webp",
+  "system": {
+    "description": "<p>Deep blue and crumbling, ground for pigment as often as it is worn.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!tDQCAwqgZrRZCT2N",
+  "folder": "Oo11ISGG2Z4h2h8D"
+}

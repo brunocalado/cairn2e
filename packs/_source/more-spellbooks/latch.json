@@ -1,0 +1,31 @@
+{
+  "_id": "UARGdkRVbxWKhYts",
+  "name": "Latch",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-purple.webp",
+  "system": {
+    "description": "<p>An unlocked box, cabinet or door opens or closes at your command.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UARGdkRVbxWKhYts",
+  "folder": "MCt2VTDHSjLFlLso"
+}

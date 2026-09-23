@@ -1,0 +1,31 @@
+{
+  "_id": "dfV6GzgbUVgvZ6QI",
+  "name": "Diamond",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-diamond-silver-.webp",
+  "system": {
+    "description": "<p>Small, colourless, and it throws white fire in candlelight.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 500,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!dfV6GzgbUVgvZ6QI",
+  "folder": "HJvY3JTRuL5xJNFj"
+}

@@ -1,0 +1,9 @@
+{{!-- An item read out loud: whatever is written on it. Posted from the scroll control on an
+      inventory row (`actor-sheet.js#onItemPost`), which is where the row's own inline description
+      went — a description that unfolded in the ledger moved the ten numbered lines every time it
+      opened, and what a player actually wants with it is to show the table.
+
+      The item's name is the message's `flavor`, so it is the caption. --}}
+{{{description}}}
+{{!-- An optional footer: what reading this aloud cost (a cast's Fatigue). --}}
+{{#if note}}<p class="cairn-card-note">{{note}}</p>{{/if}}

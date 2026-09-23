@@ -1,0 +1,30 @@
+{
+  "_id": "FgArC8sR078bwJEr",
+  "name": "Sword",
+  "type": "gear",
+  "img": "icons/weapons/swords/sword-guard-steel-green.webp",
+  "system": {
+    "description": "<p>Sword (d8 damage)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FgArC8sR078bwJEr"
+}

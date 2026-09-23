@@ -1,0 +1,39 @@
+{
+  "_id": "c9Jgft6oJMFuU7NQ",
+  "name": "Foundling",
+  "type": "background",
+  "img": "icons/equipment/neck/amulet-engraved-wood.webp",
+  "system": {
+    "description": "<blockquote><p>An odd birthmark, a strange smell: somehow, the touch of <em>elsewhere</em> still lingers. Wherever you are, you have trouble fitting in. Roll on the <strong>Omens</strong> table (even if you're not the youngest player), but keep the results private for now.</p></blockquote>",
+    "names": [
+      "Faunus",
+      "Snowdrop",
+      "Wisp",
+      "Silverdew",
+      "Brim",
+      "Solstice",
+      "Steeleye",
+      "Artea",
+      "Gossamer",
+      "Hazel"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.hr6RqxaPWUX568aZ",
+      "Compendium.cairn2e.background-gear.Item.XeZbxNBpgvQJ8T8Z",
+      "Compendium.cairn2e.weapons.Item.xEjdizfTpn66xhpK",
+      "Compendium.cairn2e.weapons.Item.a7ny2xCcpEwZTDuM"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.T5KkrjcVEru9bHYV",
+      "Compendium.cairn2e.background-tables.RollTable.lVqUbRdzVVOElCO8"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!c9Jgft6oJMFuU7NQ"
+}

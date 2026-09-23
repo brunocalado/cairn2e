@@ -1,0 +1,143 @@
+{
+  "_id": "z4JN06x2IDlR53XY",
+  "name": "Goblin",
+  "type": "npc",
+  "img": "icons/creatures/magical/humanoid-silhouette-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "5Qmw1UNEFr0CUrAz",
+      "name": "Dagger",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>dagger (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!z4JN06x2IDlR53XY.5Qmw1UNEFr0CUrAz"
+    },
+    {
+      "_id": "lo225FmX7VAH2MhF",
+      "name": "Sling",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>sling (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!z4JN06x2IDlR53XY.lo225FmX7VAH2MhF"
+    },
+    {
+      "name": "Small, grotesque humanoids with skin in earthly tones of green, brown, and grey.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Z8nSNEbmiAp45ksM",
+      "_key": "!actors.items!z4JN06x2IDlR53XY.Z8nSNEbmiAp45ksM"
+    },
+    {
+      "name": "Avoid combat, only attacking when advantageous, using hit-and-run tactics.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "pgVPhhQJLyLFONEf",
+      "_key": "!actors.items!z4JN06x2IDlR53XY.pgVPhhQJLyLFONEf"
+    },
+    {
+      "name": "Sometimes are found using dire wolves as mounts.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "a473NWjtxmnPOt4U",
+      "_key": "!actors.items!z4JN06x2IDlR53XY.a473NWjtxmnPOt4U"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!z4JN06x2IDlR53XY"
+}

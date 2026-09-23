@@ -1,0 +1,26 @@
+{{!-- A gear item read in place: `@Embed[Item.…]` inside a journal page.
+
+      The tag row is `parts/item-tags.hbs`, the same partial the item sheet and the inventory
+      slot use, so a weapon reads the same wherever it is shown. `showEquipped` is off: an item
+      quoted into a page belongs to nobody yet, so "Equipped" would be a claim about a character
+      that is not in the picture.
+
+      `@Embed[Item.… description]` skips this template entirely and renders the prose alone —
+      note the option goes inside the brackets, not in a trailing `{…}`, which is the caption. --}}
+<div class="cairn-embed-head">
+    <img class="cairn-embed-portrait" src="{{img}}" alt="" />
+    <div class="cairn-embed-title">
+        <span class="cairn-embed-name">{{name}}</span>
+        <span class="cairn-item-tags">{{> "systems/cairn2e/templates/parts/item-tags.hbs" system=system}}</span>
+    </div>
+</div>
+
+{{#if description}}<div class="cairn-embed-body">{{{description}}}</div>{{/if}}
+
+{{!-- A Relic's recharge condition is the one thing about it a Warden has to remember, and it is
+      a separate field from the description (`srd-2e/wardens-guide/reliquary.md`). --}}
+{{#if recharge}}
+<div class="cairn-embed-body cairn-embed-recharge">
+    <b>{{localize 'CAIRN.Recharge'}}</b> {{{recharge}}}
+</div>
+{{/if}}

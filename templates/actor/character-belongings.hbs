@@ -1,0 +1,26 @@
+{{!-- What is the character's but not under their direct possession: a sword dropped when Fatigue
+      came in, a crest left at an inn, and every mule and cart, which are never direct possession
+      at all — you may hold the rein, but if you run, whether the beast comes is the Warden's to
+      say. Written down so it is not forgotten; weighing nothing, because nothing you are not
+      holding can cost you a slot.
+
+      This is the only zone whose "add" control makes something the character does not have to
+      hand. A thing remembered after the fact cannot be created on the ten and then set aside — a
+      full inventory has no room to hold it for that one instant.
+
+      It draws the same list as Petty. The two hold the same kind of row and differ only in what
+      put it there, so they are one template and the eye finds every control in the same place on
+      both. --}}
+<section class="tab {{tabs.belongings.cssClass}}" data-group="primary" data-tab="belongings">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Belongings'}}</h4>
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="belongingCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Add'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-belongings" data-ink-w="1" data-ink-a="0.34"></div>
+    {{> "systems/cairn2e/templates/parts/plain-list.hbs" rows=inventory.belongings seed="belonging"
+        empty=(localize 'CAIRN.NoBelongings')}}
+</section>

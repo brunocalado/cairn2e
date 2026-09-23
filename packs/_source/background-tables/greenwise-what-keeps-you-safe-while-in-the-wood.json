@@ -1,0 +1,108 @@
+{
+  "_id": "Ody3I6yTN4OcQBqA",
+  "name": "Greenwise: What keeps you safe while in the Wood?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Greenwise</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "mW98HoJGpHafBEZb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Amadou</strong> A vermilion fungus that catches fire quite easily. 3 uses.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.mW98HoJGpHafBEZb"
+    },
+    {
+      "_id": "k3cCC1IjW5dYS8yR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Delphinium</strong> Breathe water for up to one hour. 1 use, but can be divided into fractional doses.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.k3cCC1IjW5dYS8yR"
+    },
+    {
+      "_id": "CvqX6HZ6Dh4aLS0u",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Tacky Stalk</strong> A woody reed that hardens into a permanent adhesive when chewed. 2 uses.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.CvqX6HZ6Dh4aLS0u"
+    },
+    {
+      "_id": "8byUEeCnhv4N62sY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Wisp Lantern</strong> Caged in wrought iron, provides a dim light so long as the wisp is able to feed on nearby pain and fear.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.8byUEeCnhv4N62sY"
+    },
+    {
+      "_id": "4NQzDkQSHAYUEH0h",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Seed Bomb</strong> A canvas sack filled with seeds that explode on impact. d6 damage (<em>blast</em>, 3 uses).</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.4NQzDkQSHAYUEH0h"
+    },
+    {
+      "_id": "kvEfnJbUbFbMXN5B",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Briarvine</strong> Entangles any creature up to horse size (STR to break free). Reusable.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.kvEfnJbUbFbMXN5B"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!Ody3I6yTN4OcQBqA"
+}

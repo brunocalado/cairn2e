@@ -1,0 +1,25 @@
+{{!-- What a growth changed. The run is the outcome field's own choices with the blank last,
+      wearing NONE and chosen on open: most growths in the Growth chapter move no number. The two
+      blocks under it are one question asked two ways; `growth.js#promptGrowthGain` shows the one
+      the chosen button wants. --}}
+<div class="cairn-gain-dialog">
+    <div class="cairn-field-label">{{localize 'CAIRN.Growth.ApplyAttr'}}</div>
+    <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Growth.ApplyAttr'}}">
+        {{#each choices as |c|}}
+        <label class="cairn-choice-option">
+            <input type="radio" name="attr" value="{{c.value}}" {{checked c.selected}} />
+            <span>{{c.label}}</span>
+        </label>
+        {{/each}}
+    </div>
+    <div class="cairn-field cairn-gain-number" hidden>
+        <label for="gain-to">{{localize 'CAIRN.Growth.ApplyTo'}}</label>
+        <input id="gain-to" type="number" name="to" min="0" step="1" />
+    </div>
+    <div class="cairn-gain-text">
+        <label class="cairn-edit-label" for="gain-text">{{localize 'CAIRN.Growth.Gained'}}</label>
+        <textarea id="gain-text" class="cairn-edit-text" name="text" rows="4"
+            placeholder="{{localize 'CAIRN.Growth.GainedPlaceholder'}}"
+            data-ink="box" data-ink-seed="gain-text" data-ink-w="1.6">{{gained}}</textarea>
+    </div>
+</div>

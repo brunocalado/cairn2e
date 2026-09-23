@@ -1,0 +1,204 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+/******************************************************************************
+ * Fonts. Lora (Cyreal), the face Cairn 2e's own books are set in — see the   *
+ * InDesign packages the author published. Two files, both VARIABLE over the  *
+ * 400-700 weight axis, so 400 / 500 / 700 all come out of one download each: *
+ * upright for everything, italic for `petty`, `bulky` and rules emphasis     *
+ * (Alegreya shipped no italic, so those were synthesised obliques before).   *
+ *                                                                           *
+ * SIL Open Font License 1.1 — fonts/OFL.txt, bundled as the license          *
+ * requires. "Lora" is a Reserved Font Name: the two files are the author's   *
+ * own TTFs put through the reference WOFF2 encoder and nothing else. Do NOT  *
+ * subset them and do NOT instance them to static weights — OFL-FAQ 2.2.1 vs  *
+ * 2.6: either one counts as a Modified Version and forfeits the name.        *
+ *                                                                           *
+ * Lora has no `smcp` table. Every LABEL is therefore set in real capitals    *
+ * at a smaller size (`--cairn-label-track`), never `font-variant:            *
+ * small-caps`, which the browser would fake by scaling a capital down and    *
+ * thinning its stroke with it. The one exception is `.name-input`: it shows  *
+ * text the player typed, and forcing it uppercase would be a decision about  *
+ * their data, not about our labels.                                          *
+ ******************************************************************************/
+
+/* url()s are relative to css/, where the built file lives — not to this source file. */
+@font-face {
+    src: url("../fonts/Lora-Variable.woff2") format("woff2");
+    font-family: "Lora";
+    font-weight: 400 700;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("../fonts/Lora-Italic-Variable.woff2") format("woff2");
+    font-family: "Lora";
+    font-weight: 400 700;
+    font-style: italic;
+}
+
+/******************************************************************************
+ * Design tokens, scoped to the system.                                       *
+ *                                                                           *
+ * Two inks and a paper, and nothing else. The Cairn book look is stark       *
+ * ink-on-paper and it is deliberately theme-independent: anything inside a   *
+ * system WINDOW paints its own light ground and dark ink in both of          *
+ * Foundry's themes, so a dark-theme user still gets a paper sheet rather     *
+ * than white core text on a forced-light background. Anything the system     *
+ * draws inside core's OWN chrome — chat cards, the sidebar tab — uses the    *
+ * swapping `--cairn-surface-*` pair below instead, so it follows the user's  *
+ * theme.                                                                     *
+ *                                                                           *
+ * Note `--cairn-rule` and `--cairn-hairline` are WIDTHS, not colours: a rule *
+ * is always ink, only its weight varies. Colour lives in `--cairn-ink*`.     *
+ *                                                                           *
+ * Every file in css/src/ is one nested `.cairn2e { … }` block: the scope     *
+ * class is written once per file and every rule sits under it. Native CSS    *
+ * nesting, depth ≤ 3 below the wrapper. tools/build-css.mjs joins the files, *
+ * in its own order, into the one css/cairn2e.min.css Foundry loads.          *
+ * `@font-face` cannot be nested, so the two faces stay above.                *
+ ******************************************************************************/
+
+.cairn2e {
+    --cairn-ink: #191813;
+    --cairn-ink-soft: rgba(25, 24, 19, 0.62);
+    --cairn-ink-faint: rgba(25, 24, 19, 0.28);
+    --cairn-paper: #f8f6f1;
+    --cairn-paper-sunk: rgba(25, 24, 19, 0.05);
+    /* `ink.js`'s `blood`, for the one printed word the sheet sets in it: a feature's
+       "Critical Damage:" lead on the NPC's Features tab. */
+    --cairn-blood: rgb(110 20 20);
+    /* Which way money moves, in the store's cart and till (maintainer's call, 2026-09-22). The
+       monochrome rule yields here because the two directions are the ONE thing a shopper reads
+       off that column at a glance, and a minus sign is not enough at 11px. Both are ground well
+       down toward ink — a web-bright green or red on paper would read as a form validating
+       itself — and neither is used anywhere else. */
+    --cairn-gain: rgb(47 92 58);
+    --cairn-loss: rgb(140 46 46);
+    /* The candle on the wordmark's "i": the one hue the monochrome rule yields to (maintainer's
+       call, 2026-09-16), and only in the two places that draw that flame — the pause banner and
+       the sidebar rail button. Nothing else may. */
+    --cairn-candle: #d9a84a;
+    /* The same flame at the peak of its flicker, and lit on the rail while the game is paused. */
+    --cairn-candle-lit: #f5be5a;
+    /* The sidebar rail button's dark: the wordmark's own black, chosen against a bright scene by
+       eye (`&[data-tab="cairn2e"]` below says why it is opaque). Core's six control properties
+       read these; nothing else does. */
+    --cairn-rail-bg: #16130f;
+    --cairn-rail-border: #3a3128;
+    --cairn-rail-icon: #c07a2c;
+    --cairn-rail-hover-bg: #221c16;
+    --cairn-rail-hover-border: #5a4a36;
+    --cairn-rail-active-bg: #2a221a;
+    --cairn-rail-active-border: #7a6448;
+    --cairn-rule: 2px;
+    --cairn-hairline: 1px;
+    --cairn-radius: 2px;
+    /* Labels are set in CAPITALS, not small caps: Lora has no `smcp`, and a browser-faked
+       small cap is a scaled capital — 23% less ink than the text around it (measured).
+       Real capitals at a smaller size carry the same structural read and fake nothing.
+       The tracking opens them up; without it capitals set tight and read as shouting. */
+    --cairn-label-track: 0.04em;
+    /* There is deliberately no "optical caps nudge" token here, and adding one back is a mistake
+       that has been made twice. The premise — that all-caps text rides high in its line box
+       because it never uses the descender space — is arithmetically false for Lora. The leftover
+       space above the caps and below the baseline cancel:
+
+           nudge = ((fontBoundingBoxAscent  - actualBoundingBoxAscent)
+                  - (fontBoundingBoxDescent - actualBoundingBoxDescent)) / 2
+
+       Lora caps measure 0 at 10px and 0.5px at 12px — never the 2px the old token carried, and
+       never the 3px one caller scaled it to. If a real optical correction is ever needed, DERIVE
+       it from TextMetrics at the size in question; never hand-pick a constant, and never scale
+       one element's constant for another. `checks/ink-slab.check.mjs` holds the line. */
+    --cairn-serif: "Lora", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+
+    /* The ledger's own metrics, and the page height derived from them.
+
+       One numbered line is 28px with 4px of air under it — `--cairn-slot-gap` was core's
+       `ol li { margin-bottom: 0.25rem }` (foundry2.css:3419) before it was restated as ours,
+       because the bracket over a multi-slot item is sized from it. Both live here rather than on
+       `.cairn-slot`, because the character sheet's page height is computed FROM them.
+
+       Ten lines, nine gaps between them, and the 3px the ledger block holds above the first and
+       below the last: 322px, and that is what every tab on the character sheet is tall. The
+       inventory is the tallest thing the sheet has to show and the only one with a fixed size —
+       ten slots is the rule, enforced on the documents — so it is the one the page is measured
+       from, and the two shorter tabs are shorter content on the same page rather than a page
+       that changes size under the reader. A ledger made longer by the world's slot-limit setting
+       scrolls inside it. */
+    --cairn-slot-h: 28px;
+    --cairn-slot-gap: 4px;
+    --cairn-tab-max-h: calc(10 * var(--cairn-slot-h) + 9 * var(--cairn-slot-gap) + 6px);
+
+    /* The scrollbar, everywhere this system draws one.
+
+       These are CORE's two variables, re-declared on the system's own scope: at 14.367 core
+       styles every scrollbar with `* { scrollbar-width: thin; scrollbar-color:
+       var(--color-scrollbar) var(--color-scrollbar-track) }` (foundry2.css:13992-13994) and sets
+       `--color-scrollbar: #782e22` — the dark red — at the theme level. A custom property is
+       inherited, so redeclaring the pair here hands core's own rule our values at every element
+       inside a system window, and nothing outside one is touched. That is the whole mechanism:
+       there is no separate scrollbar selector to write, and no `!important` (the file has none).
+
+       Ink at a third on paper: present enough to grab, quiet enough that a list of ten ruled
+       lines is not competing with a bar down its edge. The track is the paper it sits on rather
+       than `transparent`, so the channel reads as part of the sheet and not as a hole in it.
+
+       There are no `::-webkit-scrollbar` rules here, deliberately. Core sets `scrollbar-color` on
+       every element, and Chromium's own rule is that the pseudo-elements stop applying once that
+       property is anything but `auto` — so a block of them would be at best redundant and at
+       worst dead CSS that reads like the thing doing the work. Removing core's declaration to get
+       them back would cost Firefox, which has no such pseudo-elements at all. What IS verified in
+       a client: core's `*` rule reads these two variables, and inside a system window it reads
+       the values below rather than the red. */
+    --color-scrollbar: rgba(25, 24, 19, 0.34);
+    --color-scrollbar-track: var(--cairn-paper-sunk);
+
+    /* The swapping pair. Anything the system draws inside core's OWN
+       chrome — a chat card, the sidebar tab — reads these instead of the fixed ink/paper pair,
+       so it follows the user's theme instead of burning a white rectangle into a dark log.
+       The LANGUAGE does not change when they swap: still flat, still ruled, still small caps,
+       still no gradient. Only which token is ground and which is text. */
+    --cairn-surface-fg: var(--cairn-ink);
+    --cairn-surface-bg: var(--cairn-paper);
+
+    /* The swap keys on `.themed.theme-*`, which is what core stamps on a themed CONTAINER — not
+       on the bare `theme-dark` that `body` also carries. The distinction is not pedantry: at
+       14.367 the chat log is hard-wired light (`ChatPopout.DEFAULT_OPTIONS.classes` is literally
+       `["chat-popout", "themed", "theme-light"]`, and the sidebar log renders
+       `.chat-log.plain.themed.theme-light` whatever `core.uiConfig.colorScheme` says), while
+       `#interface` does follow the setting. Keying on `body.theme-dark` would put a dark card in
+       a permanently light log — the exact failure this pair exists to prevent, inverted.
+       The light rule comes second on purpose: where both match — a light chat log inside a dark
+       interface — the nearer, lighter container is the one the card actually sits on. */
+    &:is(.themed.theme-dark, .themed.theme-dark *) {
+        --cairn-surface-fg: var(--cairn-paper);
+        --cairn-surface-bg: var(--cairn-ink);
+    }
+
+    &:is(.themed.theme-light, .themed.theme-light *) {
+        --cairn-surface-fg: var(--cairn-ink);
+        --cairn-surface-bg: var(--cairn-paper);
+    }
+
+    /* Contents — the banners in file order. Fonts and the Tokens banner sit above this block at
+       column 0, and the `@keyframes` below its closing brace.
+
+         The primitives, by number: Form controls (2-5) · Tabs (6) · the chat message (9) · the
+           tooltip (10) · the enriched chip (11) · the document embed (12)
+         The window and the sheet: Window shell · Sheet skeleton
+         Actor sheets: The character sheet · The character's tab strip, and Gold · The Fatigue
+           track, and the Identity tab · Portrait and name · The inventory · Inventory lists ·
+           NPC sheet · The party sheet
+         Item sheets
+         Windows: Character creator · The character edit window · The Scars window · The route
+           form · The journey window · The store window · Dialogs drawn from a template ·
+           Kettlewright importer · Hireling promotion · Monster generator
+         Journal pages: The route journal page · The faction journal page
+         Core's own chrome: Table draws · Combat tracker · Warden sidebar tab · The token HUD */
+}

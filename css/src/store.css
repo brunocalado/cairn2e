@@ -1,0 +1,328 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The store window (module/apps/store.js) — a settlement's shelves, one  *
+     * window on every client.                                                *
+     *                                                                       *
+     * The Warden's window is two bands: the head (which store, and the four  *
+     * controls on it) over the shelves. A shopper's is a grid:               *
+     * the head across the top, the rail and the two left-hand tabs — the     *
+     * shelves and their own priced things — down the left, the cart down     *
+     * the right, and the sum across the foot. The one selector that tells    *
+     * the two apart is `:has(.cairn-store-cart)`: the Warden's window has no *
+     * cart part at all, so its content lays out in one column with no class  *
+     * set from JavaScript.                                                   *
+     *                                                                       *
+     * Every list is Primitive 7, the ledger's own row — image, name, tags,   *
+     * and the price at the right in tabular ink — so a Rope reads here       *
+     * exactly as it reads on the sheet. A cart line is that row again: one   *
+     * line per unit, so three Rations are three things to carry, which is    *
+     * what they are.                                                         *
+     *                                                                       *
+     * This window holds the system's THIRD exception to the monochrome rule  *
+     * (maintainer's call, 2026-09-22): which way money moves is a colour —   *
+     * `--cairn-loss` out, `--cairn-gain` in — on a cart line's figure, on    *
+     * the till's Buying and Selling, and on the glyph beside Confirm. It     *
+     * marks a committed DIRECTION and never a label, so a shelf price and a  *
+     * Yours price stay ink, and "gold after" stays bold ink because it is a  *
+     * state the character is left in rather than a movement. No row carries  *
+     * a fill: the till wears a drawn frame, and the one permitted fill in    *
+     * this system belongs to row hover.                                      *
+     *                                                                       *
+     * The Warden's three controls on the name are square and glyph-only,     *
+     * the way the journey's counters are: "New" carries the word because it  *
+     * is the one a first-time Warden must find; open-to-players, settings    *
+     * and delete all act on the store named beside them, and each says what  *
+     * it does in its tooltip. Open-to-players was a full-width band across   *
+     * a foot of its own until 2026-09-22; it is the same kind of thing as    *
+     * the other two, and the Warden's window has no foot at all now. The     *
+     * settings FORM is a dialog, so its rules are at the wrapper above.      *
+     **************************************************************************/
+
+    &.cairn-store {
+        .window-content {
+            display: grid;
+            gap: 10px;
+            grid-template-areas: "head" "left";
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: auto minmax(0, 1fr);
+        }
+
+        /* A shopper's window has a cart, and the cart is the second column. It has no head at
+           all — the part is dropped for them — so there is no head row here either: an empty
+           one would still carry the 10px gap under it. The rail sits over the left column only;
+           the cart starts level with it. */
+        .window-content:has(.cairn-store-cart) {
+            grid-template-areas: "nav cart" "left cart" "foot foot";
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            grid-template-rows: auto minmax(0, 1fr) auto;
+        }
+
+        .cairn-store-head {
+            grid-area: head;
+        }
+
+        .cairn-nav-block {
+            grid-area: nav;
+        }
+
+        /* Both tabs share the one area; the inactive one is `display: none` by core's rule and
+           takes no room. `.tab.active` above lays the panel out as a column; the list inside it
+           is the scroller, so the foot stays put. */
+        .cairn-store-catalog,
+        .cairn-store-yours {
+            grid-area: left;
+        }
+
+        .cairn-store-cart {
+            display: flex;
+            flex-direction: column;
+            grid-area: cart;
+            min-height: 0;
+            /* The containing block for the upright below — load-bearing, not tidying. */
+            position: relative;
+        }
+
+        /* The upright between the shelves and the cart, drawn like every other rule in the
+           system. It is absolute so it costs the cart's column no line of its own, and it sits
+           in the grid's 10px gap rather than inside either panel. */
+        .cairn-store-divide {
+            bottom: 0;
+            left: -6px;
+            position: absolute;
+            top: 0;
+            width: 1px;
+        }
+
+        .cairn-store-foot {
+            grid-area: foot;
+        }
+
+        /* A shelf scrolls DOWN, and never sideways. `overflow-y: auto` alone is not enough to
+           say so: a computed `visible` on one axis becomes `auto` when the other is not visible
+           (CSS Overflow 3), so both of these panes were already horizontal scrollers. A row of
+           four flex children that each land inside the box still measures one pixel wider than
+           it — sub-pixel rounding, not a layout fault (measured 2026-09-22 on 14.368:
+           `.cairn-store-list` scrollWidth 735 over a clientWidth of 734, every child ending at
+           734) — and one pixel is all `auto` needs to draw a bar. That is what a full shelf
+           did: the vertical bar appears, the row is remeasured a little narrower, and a
+           horizontal bar comes up under it.
+
+           Written `clip` for what it means, and it computes to `hidden` here: the same rule that
+           promotes `visible` to `auto` demotes `clip` to `hidden` when the other axis scrolls,
+           so a `clip` beside an `auto` is not reachable. Either way the bar is gone. */
+        .cairn-store-list,
+        .cairn-store-cart-lines {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-x: clip;
+            overflow-y: auto;
+        }
+
+        .cairn-store-manage {
+            align-items: center;
+            display: flex;
+            gap: 8px;
+        }
+
+        /* The store's name takes the line; the buttons keep their size. */
+        .cairn-store-manage select {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .cairn-store-manage button {
+            flex: 0 0 auto;
+        }
+
+        /* Square, sized as the journey's counters: `--button-size` holds a button's height,
+           because core writes `min-height: var(--button-size)` on the element itself. */
+        .cairn-store-manage button[aria-label] {
+            --button-size: 28px;
+            height: 28px;
+            min-height: 28px;
+            min-width: 28px;
+            padding: 0;
+            width: 28px;
+        }
+
+        /* Square, so the inked ground a control wears on hover is a square and not a tall
+           slot: the `+` on a shelf row and the × on a cart line are the same cell. The ledger's
+           own controls stay 18 wide, because a row there carries four of them in a line and
+           they are read as one group. */
+        .cairn-item-controls a {
+            width: 26px;
+        }
+
+        .cairn-store-img {
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            flex: 0 0 auto;
+            height: 22px;
+            object-fit: cover;
+            width: 22px;
+        }
+
+        /* The name and its tags shrink; the price never does, and it is pushed to the right so a
+           column of rows reads down as a price list. */
+        .cairn-store-row .cairn-item-name-and-tags,
+        .cairn-store-line-name {
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .cairn-store-price {
+            flex: 0 0 auto;
+            font-variant-numeric: tabular-nums;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* In the cart the money is a COLUMN, not a thing shoved up against the control beside
+           it: a fixed width ranges every figure on the same right edge, and the drawn upright
+           after it is what separates the money from the × — they used to touch, and the eye
+           read them as one cell. */
+        .cairn-store-line .cairn-store-price {
+            min-width: 72px;
+            text-align: right;
+        }
+
+        .cairn-store-line-divide {
+            align-self: stretch;
+            flex: 0 0 auto;
+            margin: 3px 2px;
+            width: 1px;
+        }
+
+        /* Which way the money goes, said in colour because the sign alone is not enough at this
+           size. The two tokens are the store's and nothing else's (see the palette block). */
+        .cairn-store-price.is-gain { color: var(--cairn-gain); }
+        .cairn-store-price.is-loss { color: var(--cairn-loss); }
+
+        /* Where a group of the shopper's own things sits — on them, in a named container, among
+           the Belongings — as a capital label between the rows, not a row of its own. */
+        .cairn-store-group {
+            color: var(--cairn-ink-soft);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            list-style: none;
+            margin: 8px 0 2px;
+            text-transform: uppercase;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        /* The cart's heading, at the rail's height so the two columns start level. */
+        .cairn-store-heading {
+            line-height: 18px;
+            margin: 0 0 4px;
+            padding-bottom: 6px;
+        }
+
+        /* The sum: five labelled figures on one line, the label a capital over its number. Gold
+           after is the answer, so it is bold; the rest are the working. Core colours `dl dt` and
+           `dl dd` from its own text tokens and gives the term a drop shadow (foundry2.css), which
+           on paper in the dark theme is light-on-light; both are said again here in ink. */
+        /* The till: the working spread across the left, the answer and its button at the right
+           end. One drawn frame around both, because this band is where the money changes hands
+           and the rest of the window is a list. No fill — `--cairn-paper-sunk` is row hover's
+           and nothing else's, and a filled bar under a paper sheet reads as web chrome. */
+        .cairn-store-till {
+            align-items: center;
+            display: grid;
+            gap: 12px;
+            grid-template-columns: minmax(0, 1fr) auto;
+            padding: 8px 10px;
+        }
+
+        /* The button and the glyph beside it, on one line. The glyph is a fixed cell, so the
+           band does not move when the answer changes — which is exactly what the line of words
+           that used to sit here did. */
+        .cairn-store-till-act {
+            align-items: center;
+            display: flex;
+            gap: 8px;
+        }
+
+        .cairn-store-till-act button {
+            flex: 1 1 auto;
+            min-width: 160px;
+        }
+
+        /* Will it go through? One glyph, ink by default, and the two directions the cart's own
+           money already speaks: blocked is loss, settled is gain. A question — the coin needs a
+           container — is soft ink, because nothing is wrong. */
+        .cairn-store-status {
+            align-items: center;
+            color: var(--cairn-ink-soft);
+            display: flex;
+            flex: 0 0 auto;
+            font-size: 16px;
+            height: 20px;
+            justify-content: center;
+            width: 20px;
+        }
+
+        .cairn-store-status.is-ok { color: var(--cairn-gain); }
+        .cairn-store-status.is-blocked { color: var(--cairn-loss); }
+
+        .cairn-store-sum {
+            display: flex;
+            gap: 14px;
+            justify-content: space-between;
+            margin: 0;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+            }
+
+            dt {
+                color: var(--cairn-ink-soft);
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: var(--cairn-label-track);
+                text-shadow: none;
+                text-transform: uppercase;
+            }
+
+            dd {
+                color: var(--cairn-ink);
+                font-variant-numeric: tabular-nums;
+                margin: 0;
+                white-space: nowrap;
+            }
+        }
+
+        .cairn-store-sum-after dd {
+            font-weight: 700;
+        }
+
+        /* The two flows in the sum wear the cart's colours, so the band and the column agree.
+           "Gold after" stays bold ink: it is a state the character is left in, not a direction
+           money moved, and colouring it would make three coloured figures out of five. */
+        .cairn-store-sum-buy dd { color: var(--cairn-loss); }
+
+        .cairn-store-sum-sell dd { color: var(--cairn-gain); }
+
+        /* Held back: the same button, faded, and no hand for it. */
+        .cairn-store-foot button:disabled {
+            cursor: default;
+            opacity: 0.4;
+        }
+
+    }
+}

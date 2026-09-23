@@ -1,0 +1,30 @@
+{
+  "_id": "lAOJ4KhINKHkQFKY",
+  "name": "Lantern",
+  "type": "gear",
+  "img": "icons/sundries/lights/lantern-bullseye-signal-copper.webp",
+  "system": {
+    "description": "<p>Lantern (holds 6 uses of oil, poured from an Oil Can)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 6
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lAOJ4KhINKHkQFKY"
+}

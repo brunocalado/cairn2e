@@ -1,0 +1,39 @@
+{
+  "_id": "wmtIcEHzB7KFovJL",
+  "name": "Jongleur",
+  "type": "background",
+  "img": "icons/tools/instruments/lute-gold-brown.webp",
+  "system": {
+    "description": "<blockquote><p>What inspires the soul more than song, words, and spectacle? Why practice for years to master the arcane when you've already got real magic inside?</p></blockquote>",
+    "names": [
+      "Jax",
+      "Selene",
+      "Baladria",
+      "Ada",
+      "Mort",
+      "Saylor",
+      "Tripp",
+      "Lantos",
+      "Echo",
+      "Jubilo"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.EoG1sRr48FLQFv5U",
+      "Compendium.cairn2e.gear.Item.5YhwJSdfOq8wWj9E",
+      "Compendium.cairn2e.background-gear.Item.oZZRcAyNICFYEN2n",
+      "Compendium.cairn2e.weapons.Item.xEjdizfTpn66xhpK"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.EVTSWa2WXvGCqCjA",
+      "Compendium.cairn2e.background-tables.RollTable.i6wLjHgCkOLLIF91"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!wmtIcEHzB7KFovJL"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "hKFH48ZkCQ0QQiih",
+  "name": "Stakes & Mallet",
+  "type": "gear",
+  "img": "icons/sundries/survival/stake-rough-heavy-brown.webp",
+  "system": {
+    "description": "<p>Stakes & Mallet (3 stakes)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 5,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hKFH48ZkCQ0QQiih",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

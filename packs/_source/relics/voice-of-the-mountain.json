@@ -1,0 +1,31 @@
+{
+  "_id": "6sNQwXRxTVBZEYeH",
+  "name": "Voice of the Mountain",
+  "type": "gear",
+  "img": "icons/magic/lightning/explosion-stone-smoke-teal.webp",
+  "system": {
+    "description": "<p>A rough pebble imbued with the essence of a mountain spirit. Crush to call forth an earthquake or similar natural disaster. Do not expect to be spared.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6sNQwXRxTVBZEYeH",
+  "folder": "UlnseD8X1WIqJdUA"
+}

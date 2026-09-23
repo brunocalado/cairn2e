@@ -1,0 +1,78 @@
+{{!-- One member's line. Two lines, in fact, on a grid: the member's place in the marching order
+      and a portrait spanning both, then who they are with the row's two controls on the first
+      line, and what they are carrying on the second, under the name.
+
+      The journey's crew row (`templates/apps/journey/watch.hbs`) puts all of that on one line,
+      and this row tried to as well. It does not fit: the crew row carries three tags and this
+      one carries up to seven — the whole 2e statline plus slots and Fatigue — and at the sheet's
+      600px a long name was ellipsed to make room for them. A name is the one thing on the row
+      that must be read in full, so the load takes its own line instead.
+
+      `data-index` is the member's place in `system.members`, NOT its place in the list being
+      drawn. The two tabs are filtered views of one array and the array's order is the party's
+      marching order, so a row that carried its screen position would edit the wrong member.
+      `order` is that same place, printed: the Party tab may read 1 and 3 with the Followers
+      tab's 2 between them, because a mule can walk second.
+
+      The last two readings are a player character's alone: an NPC keeps no ten-slot ledger and
+      takes no Fatigue, so the follower's row simply has fewer tags rather than empty ones. --}}
+<li class="cairn-slot cairn-party-member draggable{{#unless deployed}} is-held{{/unless}}"
+    data-uuid="{{uuid}}" data-index="{{index}}"
+    {{#unless @last}}data-ink="hline" data-ink-seed="party-member-{{id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+
+    <span class="cairn-slot-number" data-tooltip-text="{{localize 'CAIRN.Party.Order'}}">{{order}}</span>
+
+    {{!-- The portrait alone opens the member's sheet: a name is read, and a control the eye does
+          not expect under a word is the mis-click the remove control already keeps away from. --}}
+    <button type="button" class="cairn-party-who" data-action="memberOpen"
+            data-tooltip-text="{{localize 'CAIRN.Party.OpenSheet' name=name}}"
+            aria-label="{{localize 'CAIRN.Party.OpenSheet' name=name}}">
+        <img class="cairn-party-portrait" src="{{img}}" alt="" />
+    </button>
+
+    {{!-- The name, and at its right every condition the member is under. A condition is its own
+          icon: the token HUD and the member's sheet already taught the table what each looks
+          like, and the hover says it in words. --}}
+    <span class="cairn-party-headline">
+        <span class="cairn-party-name">{{name}}</span>
+        {{#each conditions as |c|}}
+        <img class="cairn-party-condition" src="{{c.img}}" alt="{{c.label}}" data-tooltip-text="{{c.label}}" />
+        {{/each}}
+    </span>
+
+    <span class="cairn-item-controls">
+        {{#if @root.editable}}
+        <a data-action="memberRemove" data-tooltip="{{localize 'CAIRN.Party.Remove'}}"><i class="fas fa-xmark"></i></a>
+        {{/if}}
+    </span>
+
+    {{!-- Held back, not removed: the member stays on the roster and the party's token leaves
+          them where they are. The switch reports the row it sits on, which carries the index. --}}
+    {{> "systems/cairn2e/templates/parts/toggle.hbs" value=deployed tooltip=deployHint
+        action="memberDeployToggle"}}
+
+    {{!-- Second line: everything the member is walking around with. --}}
+    <span class="cairn-party-load">
+        <span class="cairn-item-tag" data-tooltip-text="{{localize 'CAIRN.HitProtection'}}">
+            {{localize 'CAIRN.HitProtection'}} {{hp.value}}/{{hp.max}}
+        </span>
+        {{#each abilities as |a|}}
+        <span class="cairn-item-tag" data-tooltip-text="{{localize a.key}}">
+            {{localize a.key}} {{a.value}}/{{a.max}}
+        </span>
+        {{/each}}
+        <span class="cairn-item-tag" data-tooltip-text="{{localize 'CAIRN.Armor'}}">
+            <i class="fas fa-shield-halved" inert></i> {{armor}}
+        </span>
+        {{#if slots}}
+        <span class="cairn-item-tag" data-tooltip-text="{{localize 'CAIRN.Slots'}}">
+            <i class="fas fa-box-open" inert></i> {{slots.used}}/{{slots.max}}
+        </span>
+        {{/if}}
+        {{#if fatigue}}
+        <span class="cairn-item-tag" data-tooltip-text="{{localize 'CAIRN.Fatigue'}}">
+            <i class="fas fa-weight-hanging" inert></i> {{fatigue}}
+        </span>
+        {{/if}}
+    </span>
+</li>

@@ -1,0 +1,31 @@
+{
+  "_id": "IC5ZRN3lwLAGCOWL",
+  "name": "Quill & Ink",
+  "type": "gear",
+  "img": "icons/tools/scribal/ink-quill-red.webp",
+  "system": {
+    "description": "<p>Quill &amp; Ink</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!IC5ZRN3lwLAGCOWL",
+  "folder": "cH1FO0n5vIRu4oSk"
+}

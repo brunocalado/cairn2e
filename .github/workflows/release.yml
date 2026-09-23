@@ -1,0 +1,85 @@
+# Pushing a tag like v0.2.0 publishes a GitHub Release with two files:
+#
+#   system.json   the manifest, stamped with the tag's version and this release's download URL
+#   cairn2e.zip   the installable system, compendium packs built from packs/_source/ and the
+#                 stylesheet built from css/src/
+#
+# Foundry installs from https://github.com/<owner>/cairn2e/releases/latest/download/system.json,
+# which GitHub always redirects to the newest release's copy — so that one URL never changes.
+#
+# The release notes are the tag's own section of CHANGELOG.md. A tag with no section fails here,
+# before anything is published.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Take the release notes from CHANGELOG.md
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v head="## [$VERSION]" '
+            index($0, head) == 1 { found = 1; next }
+            found && /^## \[/    { exit }
+            found                { print }
+          ' CHANGELOG.md > release-notes.md
+          if ! grep -q '[^[:space:]]' release-notes.md; then
+            echo "::error::CHANGELOG.md has no '## [$VERSION]' section. Write it, commit, and tag again."
+            exit 1
+          fi
+
+      - run: npm ci
+
+      # Validating against the DataModels needs a Foundry install, which a runner does not have.
+      # The sources are validated locally by `npm run packs` before they are committed.
+      - name: Build the compendium packs
+        run: node tools/build-packs.mjs --no-validate
+
+      # css/cairn2e.min.css is gitignored build output, like the packs: without this step the zip
+      # ships a system with no stylesheet at all. No source map: it carries every source in full,
+      # five times the stylesheet's size, for an inspector nobody opens on an installed system.
+      - name: Build the stylesheet
+        run: node tools/build-css.mjs --no-sourcemap
+
+      - name: Stamp the manifest
+        run: |
+          REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
+          jq --arg version "${GITHUB_REF_NAME#v}" \
+             --arg manifest "$REPO_URL/releases/latest/download/system.json" \
+             --arg download "$REPO_URL/releases/download/$GITHUB_REF_NAME/cairn2e.zip" \
+             --arg changelog "$REPO_URL/blob/$GITHUB_REF_NAME/CHANGELOG.md" \
+             '.version = $version | .manifest = $manifest | .download = $download | .changelog = $changelog' \
+             system.json > system.stamped.json
+          mv system.stamped.json system.json
+
+      # Only what the system loads, plus its licences and credits. packs/_source/ and css/src/ are
+      # the editable forms and stay out: Foundry reads the built LevelDB and the built stylesheet.
+      - name: Zip the system
+        run: |
+          zip -r cairn2e.zip \
+            system.json module templates css lang assets fonts scenes packs \
+            LICENSE README.md CHANGELOG.md docs/CREDITS.md \
+            -x 'packs/_source/*' 'css/src/*'
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body_path: release-notes.md
+          files: |
+            system.json
+            cairn2e.zip

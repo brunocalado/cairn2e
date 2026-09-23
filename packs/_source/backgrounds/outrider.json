@@ -1,0 +1,39 @@
+{
+  "_id": "TVNyNrpdHsZRHLJL",
+  "name": "Outrider",
+  "type": "background",
+  "img": "icons/environment/creatures/horse-brown.webp",
+  "system": {
+    "description": "<blockquote><p>Your coin comes from escorting caravans, tracking fugitives, or lending your blade to a cause. You've been a savior, an executioner, a hero, and even a villain. Yours is not a solitary path, however: you'll always have your horse.</p></blockquote>",
+    "names": [
+      "Drake",
+      "Cyra",
+      "Keir",
+      "Darius",
+      "Valen",
+      "Rorik",
+      "Yara",
+      "Rui",
+      "Talon",
+      "Jory"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.weapons.Item.WwEEaLMmjSyap9kH",
+      "Compendium.cairn2e.background-gear.Item.3ZwvVAf2JgCAQ6OG",
+      "Compendium.cairn2e.weapons.Item.qLSAVP83onsMvq0d",
+      "Compendium.cairn2e.gear.Item.B5pPWtT8ZvgBm70C"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.fjPAmZ9t77KBgZtT",
+      "Compendium.cairn2e.background-tables.RollTable.iwnWLLNfRcYLE5z6"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!TVNyNrpdHsZRHLJL"
+}

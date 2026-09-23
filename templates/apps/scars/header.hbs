@@ -1,0 +1,14 @@
+{{!-- What happened, in the table's own terms: the amount of HP lost, which is the row to read.
+      The number is printed, not typed — it comes from the hit — and the row under it can still be
+      changed by picking another one in the list below, because a Warden at the table is allowed to
+      say otherwise. Opened from the Scars tab there was no hit, so there is no number to print and
+      the lead only says a row is to be picked. --}}
+<header class="cairn-scars-head">
+    {{#if hpLost}}
+    <p class="cairn-scars-lead">{{localize 'CAIRN.Scar.Lead'}}</p>
+    <p class="cairn-scars-lost"><span class="cairn-scars-lost-n">{{hpLost}}</span>
+        <span class="cairn-scars-lost-label">{{localize 'CAIRN.Scar.HpLost'}}</span></p>
+    {{else}}
+    <p class="cairn-scars-lead">{{localize 'CAIRN.Scar.LeadPick'}}</p>
+    {{/if}}
+</header>

@@ -1,0 +1,108 @@
+{
+  "_id": "nftkT42PlPV4Fkdv",
+  "name": "Bonekeeper: What tool was invaluable in your work?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Bonekeeper</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "sGErquJ5pN3vuqHr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Manacles</strong> Though old, it's still effective even against the very strong. You don't have the key.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.sGErquJ5pN3vuqHr"
+    },
+    {
+      "_id": "rySpiyuSHmEW9f17",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sponge</strong> Supposedly made from the remains of a rare sea creature. It never seems to dry out.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.rySpiyuSHmEW9f17"
+    },
+    {
+      "_id": "o9eYeb4KiwYwFxxQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Pulley</strong> Great for moving gravestones, rocks, or even bodies.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.o9eYeb4KiwYwFxxQ"
+    },
+    {
+      "_id": "TCfDZD3ZW1rEbHBX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Incense</strong> Perfect for rituals or to keep the flies at bay. Cools the blood.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.TCfDZD3ZW1rEbHBX"
+    },
+    {
+      "_id": "KcAAdLXqUJL7Bs6J",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Crowbar</strong> d6 damage. Sometimes you just need to get the damn thing open!</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.KcAAdLXqUJL7Bs6J"
+    },
+    {
+      "_id": "wmnvDXtX1CAiN1DC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Repellent</strong> Powerful stuff. Its faded label makes it unclear what it is actually <em>meant</em> to repel, though. Perhaps everything. 3 uses.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.wmnvDXtX1CAiN1DC"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!nftkT42PlPV4Fkdv"
+}

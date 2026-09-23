@@ -1,0 +1,30 @@
+{
+  "_id": "MLu8HRRZKwQjdGBU",
+  "name": "Containers",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-canvas-grey.webp",
+  "system": {
+    "description": "<p>Containers (Sack, Waterskin, etc.)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!MLu8HRRZKwQjdGBU"
+}

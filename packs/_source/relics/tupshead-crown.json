@@ -1,0 +1,31 @@
+{
+  "_id": "ddAU0Wwb54j2rXOk",
+  "name": "Tupshead Crown",
+  "type": "gear",
+  "img": "icons/magic/control/control-influence-crown-gold.webp",
+  "system": {
+    "description": "<p>A beautifully rendered ram's head helm wrought from tough alpine oak. The horns can be used as weapons (d6+d6).</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ddAU0Wwb54j2rXOk",
+  "folder": "UlnseD8X1WIqJdUA"
+}

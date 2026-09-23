@@ -1,0 +1,39 @@
+{
+  "_id": "AGnYUNNVhcOOqfr7",
+  "name": "Rill Runner",
+  "type": "background",
+  "img": "icons/tools/fishing/net-simple-brown.webp",
+  "system": {
+    "description": "<blockquote><p>You sing the stories of rivers and lakes, your talents soothing friends and the elements alike. You've seen more than most, but somehow it never seems to be enough.</p></blockquote>",
+    "names": [
+      "Gale",
+      "Piper",
+      "Brook",
+      "Adair",
+      "Stone",
+      "Dale",
+      "Wren",
+      "Cliff",
+      "Rain",
+      "Robin"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.NwbUROMIr6JlFFzg",
+      "Compendium.cairn2e.armor.Item.WvHpP6L5AyMd6oO7",
+      "Compendium.cairn2e.gear.Item.jIUcDxlW7tojBgaG",
+      "Compendium.cairn2e.weapons.Item.a7ny2xCcpEwZTDuM"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.xTBgdmiEhk6iidqA",
+      "Compendium.cairn2e.background-tables.RollTable.6kBvpnelADVAJYGI"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!AGnYUNNVhcOOqfr7"
+}

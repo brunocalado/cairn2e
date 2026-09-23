@@ -1,0 +1,327 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The route journal page (module/apps/route-page-sheet.js) — one path of *
+     * a pointcrawl, in its journal.                                          *
+     *                                                                       *
+     * Two faces. The EDIT window is the journey's route form, through the    *
+     * same partial, over two endpoint selects in a ruled property list       *
+     * (Primitive 7b) — so describing a route reads the same wherever it is   *
+     * done. The VIEW is what the journal draws: a heading, one ruled line    *
+     * saying where the route runs and what it costs, the Warden's prose, and *
+     * the one button that begins it.                                        *
+     *                                                                       *
+     * The view's scope class sits INSIDE the template's root, never on it:   *
+     * core's journal window strips the root's class list before appending    *
+     * the page (`JournalEntrySheet#_renderPageView`), so a rule written      *
+     * against the root matches nothing. Colour is inherited, like the        *
+     * enriched chip's (Primitive 11), because the page belongs to core's     *
+     * journal sheet and that sheet has no `.themed` ancestor to key on.      *
+     **************************************************************************/
+
+    &.cairn-route .window-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* The total, under the four runs: the arithmetic the Warden is watching while they pick. */
+    .cairn-route-total {
+        font-family: var(--cairn-serif);
+        font-size: 12px;
+        font-weight: 700;
+        margin: 2px 0 0;
+        text-align: right;
+    }
+
+    /* `&`, not a descendant: the scope class and this one are on the SAME element, because
+       core's journal window strips the template's root (the trap Primitive 11 pays for too). */
+    &.cairn-route-view {
+        font-family: var(--cairn-serif);
+
+        .cairn-route-title {
+            border-bottom: var(--cairn-rule) solid currentcolor;
+            font-family: var(--cairn-serif);
+            margin: 0 0 6px;
+            padding-bottom: 4px;
+        }
+
+        /* Where it runs and what it costs, as one capital line — the journey window's own route
+           caption, one window over. */
+        .cairn-route-line {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            margin: 0 0 8px;
+            text-transform: uppercase;
+        }
+
+        .cairn-route-description {
+            margin-bottom: 8px;
+        }
+
+        /* The buttons, in somebody else's window. Primitive 2 paints an ink button on paper, and
+           core's journal page is neither — so the frame and the label follow the page's own
+           colour, as the enriched chip and the embed do.
+
+           The hover does NOT invert, and that is the whole point of this rule: inverting needs a
+           paper to invert onto, and this page has none — it has no `.themed` ancestor at all
+           (trap 9), so `--cairn-paper` on hover put light text on a light fill in the dark theme
+           and the label could not be read. The chip's answer instead: the colour never moves and
+           the mark is a wash, which is the one fill this system permits. */
+        button.cairn-journey-start {
+            --button-text-color: currentcolor;
+            --button-border-color: currentcolor;
+            --button-hover-background-color: var(--cairn-paper-sunk);
+            --button-hover-border-color: currentcolor;
+            --button-hover-text-color: currentcolor;
+            width: auto;
+        }
+    }
+
+    /**************************************************************************
+     * The faction journal page (module/apps/faction-page-sheet.js) — one     *
+     * standing power in a region, in its journal.                            *
+     *                                                                       *
+     * Two faces, like the route above it. The EDIT window is five open lists *
+     * in the sheet's own vocabulary — zone heads with their drawn rules,     *
+     * `.cairn-slot` rows (Primitive 7), ruled row inputs — so adding an      *
+     * agent reads like adding a milestone to a growth. The VIEW is the       *
+     * faction as the SRD's own example prints one: the name, one line of     *
+     * tags, then advantages, agents, agenda and obstacles.                   *
+     *                                                                       *
+     * Same two journal rules as the route: the scope class sits INSIDE the   *
+     * template's root, because core strips the root's class list before      *
+     * appending the page; and every colour in the view is INHERITED, because *
+     * core's journal sheet has no `.themed` ancestor, so `--cairn-ink` there *
+     * is the light theme's ink whatever the page is drawn on. That applies   *
+     * to what the view borrows as much as to what it owns — a tag's own rule *
+     * names `--cairn-ink`, and inside this page it has to be told not to.    *
+     **************************************************************************/
+
+    &.cairn-faction .window-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* The form is the scroller, not the window: the name field above it and Save below it stay
+       put while five open lists grow past the height. Without this a faction with a dozen traits
+       simply ran off the bottom of the window with nothing to drag — the lists have no ceiling by
+       design, so the form must have one.
+
+       `flex: 1` with `min-height: 0`, and the pair is the point: a flex item's `min-height`
+       defaults to its CONTENT, so the section claims the height of everything in it and pushes
+       the footer out of the window instead of scrolling. `overflow: hidden auto` names BOTH axes
+       deliberately — beside a scrolling axis a computed `visible` is promoted to `auto`, so
+       naming only `overflow-y` would let a row a sub-pixel too wide draw a horizontal bar. */
+    &.cairn-faction .cairn-faction-form {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden auto;
+
+        /* Core's `.standard-form` — which this part carries for its footer and field styling —
+           is a flex column with `gap: var(--spacer-16)`, so it put 16px between EVERY pair of
+           children. A zone heading and the rule that belongs to it are siblings, so the rule
+           floated a quarter-inch under its own word. Spacing on this form is the zone's own top
+           margin, as it is on every other sheet in the system. */
+        gap: 0;
+    }
+
+    /* Traits flow instead of stacking. Each one is a single word off a d20 column, and a
+       full-width ruled row per word turned a dozen of them into a window of rules with nothing in
+       it. This is Primitive 8's tag with an input inside: the tag's box is the edge, so the field
+       carries none of its own — including the bottom rule Primitive 3 gives every input by
+       default, which inside a bordered box reads as a second, shorter edge.
+
+       `field-sizing: content` is what makes the run read as words rather than as a row of equal
+       boxes; where it is not supported the bounds below still keep a tag from claiming the line. */
+    .cairn-faction-traits {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cairn-faction-trait {
+        align-items: center;
+        border: var(--cairn-hairline) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+        display: inline-flex;
+        gap: 4px;
+        padding: 1px 5px;
+    }
+
+    .cairn-faction-trait input[type="text"] {
+        background: none;
+        border: none;
+        field-sizing: content;
+        font-size: 12px;
+        height: 20px;
+        max-width: 14rem;
+        /* Low enough that a short trait is a short tag: at 5rem every word in the d20 columns sat
+           on the floor and the run read as a row of equal boxes again, which is the thing the
+           tags replaced. */
+        min-width: 3.5rem;
+        padding: 0;
+
+        &:focus {
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+    }
+
+    /* The remove mark is the row control at tag scale, and it keeps the soft ink those wear
+       until the pointer is on them. */
+    .cairn-faction-trait a {
+        color: var(--cairn-ink-soft);
+        font-size: 10px;
+        line-height: 1;
+
+        &:hover {
+            color: var(--cairn-ink);
+        }
+    }
+
+    /* The four short fields of an agent share one row, so the chain of command reads as a list of
+       people and not as a form. The WIL box is the one fixed width among them: it holds two
+       digits and nothing else, and letting it flex made the motivation beside it jump as the
+       number changed. */
+    .cairn-faction-agent .cairn-slot-body {
+        display: flex;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .cairn-faction-wil {
+        flex: 0 0 3rem;
+        text-align: center;
+    }
+
+    /* A goal that is done is struck through, on the form and in the reading alike. Not a hue,
+       and not a second glyph: the switch beside it already says which state it is in. */
+    .cairn-faction-goals-edit .cairn-row-input.is-done {
+        text-decoration: line-through;
+    }
+
+    &.cairn-faction-view {
+        font-family: var(--cairn-serif);
+
+        .cairn-faction-title {
+            border-bottom: var(--cairn-rule) solid currentcolor;
+            font-family: var(--cairn-serif);
+            margin: 0 0 6px;
+        }
+
+        /* What the faction is, then how it behaves — each word off its own table, so each is its
+           own tag rather than a sentence they were joined into. */
+        .cairn-faction-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin: 0 0 10px;
+        }
+
+        /* Primitive 8's own rule names `--cairn-ink`, which on this page is the light theme's ink
+           on whatever the journal is drawn in. Inside the view it follows the text, like the
+           enriched chip and the embed. */
+        .cairn-item-tag {
+            border-color: currentcolor;
+        }
+
+        .cairn-faction-heading {
+            border-bottom: var(--cairn-hairline) solid currentcolor;
+            font-size: 12px;
+            letter-spacing: var(--cairn-label-track);
+            margin: 10px 0 4px;
+            text-transform: uppercase;
+        }
+
+        .cairn-faction-list,
+        .cairn-faction-goals {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .cairn-faction-objective {
+            font-size: 15px;
+            margin: 0 0 6px;
+        }
+
+        /* The same mark the edit form uses, so a goal looks like itself in both faces. */
+        .cairn-faction-goals li.is-done {
+            text-decoration: line-through;
+        }
+
+        .cairn-faction-motive {
+            opacity: 0.75;
+        }
+
+        .cairn-faction-rank {
+            font-size: 11px;
+        }
+
+        .cairn-faction-description {
+            margin-top: 10px;
+        }
+
+        .cairn-faction-controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        /* The same treatment the route's buttons needed, and for the same reason: Primitive 2
+           inverts onto `--cairn-paper`, and this page has no paper to invert onto. The frame and
+           the label follow the page's colour and the hover is a wash. */
+        .cairn-faction-controls button {
+            --button-text-color: currentcolor;
+            --button-border-color: currentcolor;
+            --button-hover-background-color: var(--cairn-paper-sunk);
+            --button-hover-border-color: currentcolor;
+            --button-hover-text-color: currentcolor;
+            width: auto;
+        }
+    }
+
+    /* The store's settings form (`templates/apps/store/settings.hbs`), which opens in a DIALOG
+       and not in the store window — so these rules live at the wrapper and not inside
+       `&.cairn-store` below. A rule written in there simply never matches: the dialog's root
+       carries `cairn2e dialog`, and `.cairn-store` is the store window's own class.
+
+       The name is a ruled field like every other input. The two rates are core's
+       `<range-picker>`, which draws its own number box beside the track, so the form needs no
+       read-out. Core declares the four range tokens ON `input[type=range]` itself
+       (`foundry2.css` 448-453) rather than on a root, so an override has to name that element —
+       and what it otherwise brings is a thumb ringed in `--color-warm-1`, core's orange. On
+       paper the track is an open hairline and the thumb a solid ink stop. */
+    .cairn-store-settings {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cairn-store-settings range-picker > input[type="range"] {
+        --range-track-color: transparent;
+        --range-track-border-color: var(--cairn-ink-faint);
+        --range-thumb-background-color: var(--cairn-ink);
+        --range-thumb-border-color: var(--cairn-ink);
+    }
+
+    /* What a rate means, under the slider that sets it — italic and soft, like the foot's reason
+       for holding Confirm back. */
+    .cairn-store-hint {
+        color: var(--cairn-ink-soft);
+        font-size: 11px;
+        font-style: italic;
+        margin: -6px 0 0;
+    }
+}

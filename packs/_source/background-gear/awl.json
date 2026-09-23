@@ -1,0 +1,31 @@
+{
+  "_id": "ejA2Lk6QmLx2xNVW",
+  "name": "Awl",
+  "type": "gear",
+  "img": "icons/tools/hand/awl.webp",
+  "system": {
+    "description": "<p>Awl (d6)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ejA2Lk6QmLx2xNVW",
+  "folder": "cH1FO0n5vIRu4oSk"
+}

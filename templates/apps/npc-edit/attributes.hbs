@@ -1,0 +1,46 @@
+{{!-- Maxima and the three numbers an NPC has that a character does not. A current value moves
+      every session and belongs on the sheet under its brush cap; a maximum moves once, which is
+      what a form is for. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="attributes">
+    <div class="cairn-edit-col-head">
+        <span></span>
+        <span>{{localize 'CAIRN.Edit.Max'}}</span>
+    </div>
+
+    {{#each abilities as |ability|}}
+    <div class="cairn-field">
+        <label for="cairn-edit-{{ability.key}}">{{localize ability.key}}</label>
+        <input id="cairn-edit-{{ability.key}}" type="number" name="system.abilities.{{ability.key}}.max"
+            value="{{ability.max}}" min="0" step="1" />
+    </div>
+    {{/each}}
+
+    <div class="cairn-field">
+        <label for="cairn-edit-hp">{{localize 'CAIRN.HitProtection'}}</label>
+        <input id="cairn-edit-hp" type="number" name="system.hp.max" value="{{system.hp.max}}"
+            min="0" step="1" />
+    </div>
+
+    {{!-- The character's form has no Armor row because a PC's armour is summed from what is
+          worn. An NPC's is intrinsic — a monster's hide is not a worn item (`NpcData.armor`) —
+          and adds to equipped armour under the same cap of 3, so here the number is real. --}}
+    <div class="cairn-field">
+        <label for="cairn-edit-armor">{{localize 'CAIRN.Armor'}}</label>
+        <input id="cairn-edit-armor" type="number" name="system.armor" value="{{system.armor}}"
+            min="0" max="3" step="1" />
+    </div>
+
+    {{!-- Empty means "use this actor's own WIL" (`NpcData.morale` is nullable): a led group
+          saves on its leader's WIL, a lone creature on its own. --}}
+    <div class="cairn-field">
+        <label for="cairn-edit-morale">{{localize 'CAIRN.Morale'}}</label>
+        <input id="cairn-edit-morale" type="number" name="system.morale" value="{{system.morale}}"
+            min="0" max="20" step="1" placeholder="WIL" />
+    </div>
+
+    <div class="cairn-field">
+        <label for="cairn-edit-slots">{{localize 'CAIRN.Slots'}}</label>
+        <input id="cairn-edit-slots" type="number" name="system.slots.max" value="{{system.slots.max}}"
+            min="0" step="1" />
+    </div>
+</section>

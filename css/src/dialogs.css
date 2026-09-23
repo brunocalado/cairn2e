@@ -1,0 +1,129 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Dialogs drawn from a template — the damage dialog (Impaired / Enhanced *
+     * / Blast, and a second weapon) and the growth-gain dialog.              *
+     **************************************************************************/
+
+    /* Rows of switches at the field primitive's 26px touch pill to pill: the sheets space their
+       rows with drawn rules, the dialog has none, so it takes a plain gap. Scoped by its own
+       class, never `.application.dialog` — see the tier picker above. */
+    .cairn-damage-dialog,
+    .cairn-gain-dialog {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .cairn-damage-dialog {
+        /* The heading over the second-weapon rows. The field primitive only sets this word as a
+           field's own child; here it heads a group of fields, so it is set the same way itself. */
+        > .cairn-field-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+            margin-top: 4px;
+        }
+    }
+
+    /* The growth-gain dialog: the run of buttons, then one of two blocks, laid out as the damage
+       dialog is above — a dialog has no drawn rules between rows. Its heading takes no top
+       margin: it opens the dialog rather than heading a second group. */
+    .cairn-gain-dialog {
+        > .cairn-field-label {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        .cairn-gain-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+    }
+
+    /**************************************************************************
+     * Kettlewright importer — file-picker dialog and post-import summary.   *
+     **************************************************************************/
+
+    &.cairn-kw-import {
+        .hint {
+            margin: 0 0 8px;
+            font-size: var(--font-size-13, 13px);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+        }
+    }
+
+    &.cairn-kw-summary {
+        ul {
+            margin: 0;
+            padding-left: 1.2em;
+        }
+
+        li {
+            margin: 2px 0;
+
+            &.warning {
+                font-weight: 700;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    /**************************************************************************
+     * Hireling promotion — the confirming dialog.                           *
+     **************************************************************************/
+
+    /* Core paints a read-only control in its secondary text colour, which on this paper is a warm
+       brown — a third ink the sheet does not have (`.hint` is put back to ink for every window in
+       the field rules above). The preview is the last look at text whose sources are deleted by
+       the same button, so it is set in the ink everything else is. */
+    &.cairn-promote {
+        textarea[readonly] {
+            color: var(--cairn-ink);
+            cursor: default;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 1.2em;
+        }
+
+        li {
+            margin: 2px 0;
+        }
+    }
+
+    /**************************************************************************
+     * Monster generator — the tier picker dialog.                           *
+     **************************************************************************/
+
+    /* Four tier choices with descriptive labels read better stacked than in a row. Narrowed to
+       the tier picker by its own class: written as `&.application.dialog` it would stack EVERY
+       dialog's buttons vertically, since every dialog the system opens carries
+       `classes: [SYSTEM_ID]` — including two-button confirms. */
+    &.cairn-tier-picker .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+
+        > button {
+            width: 100%;
+        }
+    }
+}

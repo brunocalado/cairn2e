@@ -1,0 +1,194 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Combat tracker — two sides, no initiative.                            *
+     *                                                                       *
+     * 2e's round is side-based: every able PC acts, then their opponents    *
+     * (`core-rules.md`). The tracker draws one headed row per side and one  *
+     * row per combatant, and the side still owed actions is the heading in  *
+     * full ink. There is no initiative column because there is no           *
+     * initiative.                                                           *
+     *                                                                       *
+     * Like the sidebar tab below, this panel sits in core's chrome and must *
+     * follow the user's theme, so it is built from the swapping             *
+     * `--cairn-surface-*` pair and never from fixed ink on fixed paper.     *
+     **************************************************************************/
+
+    /* The panel itself: `#combat.combat-sidebar` wearing the scope class, so everything below —
+       core's inherited header included — is inside `.cairn2e` and the ink button primitive
+       reaches every control in it. On the dark sidebar that is an ink glyph in an ink frame on
+       near-black: the tracker rendered as a column of empty squares (live client, 2026-09-21).
+       Same cure as the Warden tab: the controls take the swapping pair, and the rest of the
+       panel takes the sheet's vocabulary — Lora, capitals with tracking for the status label,
+       the 2px corner, a soft-ink hover — in whichever ink the theme gives it. */
+    &.combat-sidebar {
+        /* `:is(button, a.button)` for the same reason the Warden tab spells it out: the generic
+           rule weighs (0,2,1) and a bare `button` here would lose to it. */
+        & :is(button, a.button) {
+            --button-background-color: transparent;
+            --button-border-color: var(--cairn-surface-fg);
+            --button-text-color: var(--cairn-surface-fg);
+            --button-hover-background-color: var(--cairn-surface-fg);
+            --button-hover-border-color: var(--cairn-surface-fg);
+            --button-hover-text-color: var(--cairn-surface-bg);
+        }
+
+        /* An inline control is a bare glyph, never a framed button: soft ink at rest, full ink
+           on hover and when its state is on (hidden, defeated, acted), no fill for either — the
+           generic `.active` inversion is a filled square, which beside a token thumbnail reads
+           as a second thumbnail. `--button-size` is core's own sidebar value, which the generic
+           36px otherwise overrides from a later layer. */
+        & :is(button, a.button).inline-control {
+            --button-size: 1.5rem;
+            --button-border-color: transparent;
+            --button-hover-border-color: transparent;
+            --button-hover-background-color: transparent;
+            --button-hover-text-color: var(--cairn-surface-fg);
+            --button-text-color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+
+            &.active {
+                background: transparent;
+                border-color: transparent;
+                color: var(--cairn-surface-fg);
+            }
+
+            &:focus-visible {
+                outline-color: var(--cairn-surface-fg);
+            }
+        }
+
+        /* Encounter name and status — the header's two words of text. Core sets them in Signika at
+           15–16px; here they are the sheet's label: serif capitals, tracked, in soft ink. */
+        .encounter-name,
+        .encounter-title {
+            color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+            font-family: var(--cairn-serif);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        .encounter-count {
+            color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Rows. The same hover fill the sheet's list rows use — ink at a twentieth — rather than
+           core's white wash, and the system's corner instead of core's 4px. */
+        .combatant {
+            border-radius: var(--cairn-radius);
+            font-family: var(--cairn-serif);
+
+            &:is(:hover, .hover) {
+                background: color-mix(in srgb, var(--cairn-surface-fg) 5%, transparent);
+            }
+
+            .token-image {
+                border-radius: var(--cairn-radius);
+            }
+
+            /* Hidden and defeated rows. Core dims them to `--color-text-subtle`, a warm brown in
+               the dark theme, and strikes a defeated name through in `--color-warm-3`. State is
+               not a hue here: the strike stays, and both rows sit at the soft ink. */
+            &:is(.hide, .defeated) {
+                color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+            }
+
+            &.defeated .name {
+                color: inherit;
+            }
+        }
+    }
+
+    /* The side heading. It is an `<li>` because a render part must produce exactly one top-level
+       element and `<ol>` takes no other child — so `list-style: none` is doing real work here,
+       not tidying. */
+    .cairn-combat-side {
+        border-bottom: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
+        color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        letter-spacing: var(--cairn-label-track);
+        list-style: none;
+        margin: 8px 0 2px;
+        /* 8px inline to sit on the same gutter core gives `.combatant` — measured in a live
+           client 2026-09-20, where a heading at 0 started a full token-width left of every row
+           it labels. */
+        padding: 0 8px 3px;
+        text-transform: uppercase;
+
+        /* The side that still owes actions. Weight and ink say it — the palette has no colour
+           for state, and a tracker is the last place to start inventing one. */
+        &.is-active {
+            border-bottom: var(--cairn-rule) solid var(--cairn-surface-fg);
+            color: var(--cairn-surface-fg);
+            font-weight: 700;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    /* A combatant that has acted. Spent, not disabled: the row still opens its sheet, still pings,
+       still takes the Warden's controls. It reads back at the soft ink every secondary thing in
+       the system uses. */
+    .combatant.is-resolved {
+        opacity: 0.55;
+    }
+
+    /* The Morale prompt. It is a demand, not a caption, so it is full ink at the rule weight
+       rather than the soft ink a side heading gets when it is not acting — and it sits inside the
+       list because a render part gets exactly one top-level element (see the template). */
+    .cairn-combat-morale {
+        border-bottom: var(--cairn-rule) solid var(--cairn-surface-fg);
+        color: var(--cairn-surface-fg);
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        font-style: italic;
+        letter-spacing: var(--cairn-label-track);
+        list-style: none;
+        margin: 0 0 4px;
+        padding: 2px 8px 4px;
+    }
+
+    /* The Morale roll, and the first-round DEX save in its own narrow column left of the acted
+       mark. The DEX save exists only in round one, so the row is a column narrower for the rest
+       of the fight — deliberate: a permanently reserved gutter for a control that appears once
+       would cost every later round the width. */
+    .cairn-combat-morale-roll,
+    .cairn-combat-dex {
+        align-items: center;
+        display: flex;
+        flex: 0 0 28px;
+        justify-content: center;
+    }
+
+    /* The result. Two glyphs rather than two colours: a bolt for a PC who acts, a bar for one who
+       loses the turn. The palette has no red and this is not the place to invent one — the words
+       are in the tooltip, where a 300px sidebar can actually hold them. */
+    .cairn-combat-dex-mark {
+        color: var(--cairn-surface-fg);
+        font-size: 13px;
+
+        &.fa-ban {
+            color: color-mix(in srgb, var(--cairn-surface-fg) 55%, transparent);
+        }
+    }
+
+    /* The acted control sits where core's initiative column used to, so it inherits that column's
+       place in the row rather than pushing the name around. */
+    .cairn-combat-acted {
+        align-items: center;
+        display: flex;
+        flex: 0 0 var(--combatant-initiative-width, 44px);
+        justify-content: center;
+    }
+}

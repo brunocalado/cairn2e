@@ -1,0 +1,108 @@
+{
+  "_id": "lduaZOXAPFp3EHFC",
+  "name": "Scrivener: What work did you keep for yourself?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Scrivener</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "aqvmLyvWjxrY1yiU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>The Wild Tongue</strong>. A bundle of leather-bound scrolls. A seminal work, cataloging the hidden languages of beasts and how to understand them.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.aqvmLyvWjxrY1yiU"
+    },
+    {
+      "_id": "HCDSQDjCo7hROXIz",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>The Silent Symphony</strong>. Bound in fluorescent wrap. Very rare, it chronicles the subtle signs used by those employing invisibility magic.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.HCDSQDjCo7hROXIz"
+    },
+    {
+      "_id": "YgyXfTAyg00diMHr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>A Treatise on the Abyss</strong>. A nondescript black book. An in-depth, largely theoretical text describing the <strong>Roots</strong>, as well as information about the location of a nearby <strong>Gate</strong>.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.YgyXfTAyg00diMHr"
+    },
+    {
+      "_id": "54b8ip6xunADhok2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>The Star Waltz</strong>. A comet-shaped clasp bound in a fine leather cover. Detailed astronomical charts, celestial movements, and stellar festivals. Highly valued (100gp) for its usefulness to travelers.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.54b8ip6xunADhok2"
+    },
+    {
+      "_id": "fZe3Xs39vlz5g5GI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>The Cathedral and the Canopy</strong>. Large-leaf binding over vellum. Nominally a children's storybook, the margins detail information about traveling, eating, and sleeping in the cloud forests.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.fZe3Xs39vlz5g5GI"
+    },
+    {
+      "_id": "sfeHUbMOnESME4ks",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Garden of Glass</strong>. Bound in the cover of another book. A heretical work, it describes the materials, procedures, and optimal locations required to open a <strong>Gate</strong>.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.sfeHUbMOnESME4ks"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!lduaZOXAPFp3EHFC"
+}

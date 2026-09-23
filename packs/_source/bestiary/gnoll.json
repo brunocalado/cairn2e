@@ -1,0 +1,99 @@
+{
+  "_id": "t5uw03ti8rzMEBqm",
+  "name": "Gnoll",
+  "type": "npc",
+  "img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "RnSpAmGqjce8CPyO",
+      "name": "Spear",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>spear (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!t5uw03ti8rzMEBqm.RnSpAmGqjce8CPyO"
+    },
+    {
+      "name": "Ferocious humanoid hyenas spawned from arcane experiments long ago.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "0zfSzZskVFktwwpj",
+      "_key": "!actors.items!t5uw03ti8rzMEBqm.0zfSzZskVFktwwpj"
+    },
+    {
+      "name": "Deadly warriors, they attack as a pack (as detachment) or on their own.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "0MAJq7WYIxOaFJWu",
+      "_key": "!actors.items!t5uw03ti8rzMEBqm.0MAJq7WYIxOaFJWu"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!t5uw03ti8rzMEBqm"
+}

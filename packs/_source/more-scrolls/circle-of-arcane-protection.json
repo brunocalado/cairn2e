@@ -1,0 +1,31 @@
+{
+  "_id": "D4qMnZI7eGxRT0Is",
+  "name": "Circle of Arcane Protection",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>Magical or godly beings cannot enter a 10ft circle.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!D4qMnZI7eGxRT0Is",
+  "folder": "FeXVyrcexT1LlyqR"
+}

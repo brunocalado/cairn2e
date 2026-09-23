@@ -1,0 +1,211 @@
+{
+  "_id": "CnWBimOupJ7CJURe",
+  "name": "Local Guide",
+  "type": "npc",
+  "img": "icons/tools/navigation/map-marked-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 10,
+        "max": 10
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 11,
+        "max": 11
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Local Guide",
+    "dayRate": 5,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "HsEfgTz6SWEGwSIH",
+      "_key": "!actors.items!CnWBimOupJ7CJURe.HsEfgTz6SWEGwSIH"
+    },
+    {
+      "name": "Torch",
+      "type": "gear",
+      "img": "icons/sundries/lights/torch-black.webp",
+      "system": {
+        "description": "<p>Torch (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "VgUbFPhHrQBGbFKc",
+      "_key": "!actors.items!CnWBimOupJ7CJURe.VgUbFPhHrQBGbFKc"
+    },
+    {
+      "name": "Compass",
+      "type": "gear",
+      "img": "icons/tools/navigation/compass-chain-blue.webp",
+      "system": {
+        "description": "<p>Compass</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 75,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "J6mpAXnhMeTpxPUv",
+      "_key": "!actors.items!CnWBimOupJ7CJURe.J6mpAXnhMeTpxPUv"
+    },
+    {
+      "name": "Rope",
+      "type": "gear",
+      "img": "icons/sundries/survival/rope-coil-brown.webp",
+      "system": {
+        "description": "<p>Rope (25ft)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "cZdRsslXU2J0aTgv",
+      "_key": "!actors.items!CnWBimOupJ7CJURe.cZdRsslXU2J0aTgv"
+    },
+    {
+      "name": "Shovel",
+      "type": "gear",
+      "img": "icons/tools/hand/shovel-spade-steel-grey.webp",
+      "system": {
+        "description": "<p>Shovel</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "bCcRxUW2xWQi7vre",
+      "_key": "!actors.items!CnWBimOupJ7CJURe.bCcRxUW2xWQi7vre"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!CnWBimOupJ7CJURe"
+}

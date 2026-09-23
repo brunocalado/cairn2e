@@ -1,0 +1,14 @@
+{{!-- A damage roll's body: the roll itself, and — when the message carries target ids in its
+      SYSTEM_ID "targets" flag — the Warden's Apply control, which `renderChatMessageHTML` wires
+      and hides from everyone else.
+
+      The roll is rendered here rather than left to core. Core rebuilds a roll message's block from
+      `message.rolls` only while the stored content has no element children (ChatMessage
+      #renderRollContent); a card body has children, so the card renders the roll itself. The label
+      is the message's flavor, so it is the caption. --}}
+{{{rollHTML}}}
+{{#if hasTargets}}
+<button type="button" class="cairn-card-action apply-dmg">
+    <i class="fas fa-user-minus" inert></i>{{localize 'CAIRN.ApplyDamage'}}
+</button>
+{{/if}}

@@ -1,0 +1,31 @@
+{
+  "_id": "MIspjY2SIWWlS0L4",
+  "name": "Mirrorwalk",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p><em>Will not open unless the owner politely knocks on the cover.</em></p><p>A mirror becomes a gateway to another mirror that you looked into today.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!MIspjY2SIWWlS0L4",
+  "folder": "CUFHa1lIQAt4nRUN"
+}

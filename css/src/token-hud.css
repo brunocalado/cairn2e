@@ -1,0 +1,57 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The token HUD's status palette.                                        *
+     **************************************************************************/
+
+    /* `&.status-effects` is `.cairn2e.status-effects` — the palette itself, not a descendant.
+       The class is put there by `module/token-hud.js` rather than on `#token-hud`, because the
+       primitives above reach `button`, `input` and `a` by type and the HUD is core's dark chrome:
+       scoping the whole thing would give it ink glyphs on a dark bar. The palette holds nothing
+       but these rows. Colours are core's for the same reason — this is not paper. */
+    &.status-effects {
+        grid-template-columns: repeat(2, 130px);
+        text-align: left;
+        font-size: var(--font-size-12);
+        color: var(--control-icon-color);
+
+        .effect-row {
+            position: relative;
+        }
+
+        /* The image stretches to the whole cell so the entire row is the click target, and the
+           padding keeps the picture itself inside core's own 24px box on the left. */
+        .effect-control {
+            width: 100%;
+            height: var(--effect-size);
+            padding-right: calc(100% - var(--effect-size));
+        }
+
+        /* `pointer-events: none` is the whole mechanism: the name lies over the image and the
+           click falls through to it, so core's own handler needs no change and the right-click
+           overlay keeps working. */
+        .effect-name {
+            position: absolute;
+            inset: 0 0 0 calc(var(--effect-size) + 4px);
+            pointer-events: none;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            line-height: var(--effect-size);
+        }
+
+        .effect-control.active + .effect-name {
+            color: var(--control-active-icon-color);
+        }
+
+        .effect-row:hover .effect-name {
+            color: var(--control-hover-icon-color);
+        }
+    }
+}

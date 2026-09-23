@@ -1,0 +1,318 @@
+{
+  "_id": "roUrgHLE6vzbe7we",
+  "name": "Monster Feature",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Feature column of the Monster Appearance table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "w9ji00Eafq7aT27T",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Antennae",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.w9ji00Eafq7aT27T"
+    },
+    {
+      "_id": "8MPhpm68oRflJtQJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Beak",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.8MPhpm68oRflJtQJ"
+    },
+    {
+      "_id": "BBC2isAbFV065CdO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Carapace",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.BBC2isAbFV065CdO"
+    },
+    {
+      "_id": "fdB2bLbQqHpEyqOc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Claws",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.fdB2bLbQqHpEyqOc"
+    },
+    {
+      "_id": "OPHgS97JWy08iKyf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fangs",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.OPHgS97JWy08iKyf"
+    },
+    {
+      "_id": "DYKtLIUSk9UJH3A9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Feathers",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.DYKtLIUSk9UJH3A9"
+    },
+    {
+      "_id": "7TCkggNVj9EhbdbM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fur",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.7TCkggNVj9EhbdbM"
+    },
+    {
+      "_id": "HEvx3vfBaMd0CMhs",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Gilled",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.HEvx3vfBaMd0CMhs"
+    },
+    {
+      "_id": "MqogHG05nZMkFKSB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Horns",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.MqogHG05nZMkFKSB"
+    },
+    {
+      "_id": "ydt2sgyFynp5dyou",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Markings",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.ydt2sgyFynp5dyou"
+    },
+    {
+      "_id": "Gkimx8HK39NOgoJ0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Scales",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.Gkimx8HK39NOgoJ0"
+    },
+    {
+      "_id": "PBOz61sKTDBn7960",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Shell",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.PBOz61sKTDBn7960"
+    },
+    {
+      "_id": "eCvbvpmYlQ1nF1ED",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Snout",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.eCvbvpmYlQ1nF1ED"
+    },
+    {
+      "_id": "FQKq1vV2RJXCVzl6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tail",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.FQKq1vV2RJXCVzl6"
+    },
+    {
+      "_id": "EjeM1clMNtMSfXsd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Talons",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.EjeM1clMNtMSfXsd"
+    },
+    {
+      "_id": "zqh9f8CSfyhWI49k",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tentacles",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.zqh9f8CSfyhWI49k"
+    },
+    {
+      "_id": "pqNzToRnnEA60IDy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Trunk",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.pqNzToRnnEA60IDy"
+    },
+    {
+      "_id": "fE64jkE6rDRQgBsG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tusks",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.fE64jkE6rDRQgBsG"
+    },
+    {
+      "_id": "3XeHsCCAx4Ej0ekI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Voice",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.3XeHsCCAx4Ej0ekI"
+    },
+    {
+      "_id": "be0ieYW7CbCn5MF0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Wings",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!roUrgHLE6vzbe7we.be0ieYW7CbCn5MF0"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!roUrgHLE6vzbe7we"
+}

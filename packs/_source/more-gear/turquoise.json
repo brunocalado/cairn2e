@@ -1,0 +1,31 @@
+{
+  "_id": "qDml4cyFVVqj5taF",
+  "name": "Turquoise",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-fragments-turquoise.webp",
+  "system": {
+    "description": "<p>Sky-blue veined with black, opaque and lightly porous.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qDml4cyFVVqj5taF",
+  "folder": "Oo11ISGG2Z4h2h8D"
+}

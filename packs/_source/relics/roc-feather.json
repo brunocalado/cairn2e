@@ -1,0 +1,31 @@
+{
+  "_id": "qinbJqKkbiJ9a9bF",
+  "name": "Roc Feather",
+  "type": "gear",
+  "img": "icons/magic/fire/projectile-feathers-embers-gold.webp",
+  "system": {
+    "description": "<p>Hold while falling to float safely to the ground from any height.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qinbJqKkbiJ9a9bF",
+  "folder": "GrRVMrn19Cm4uCtB"
+}

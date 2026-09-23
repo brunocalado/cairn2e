@@ -1,0 +1,31 @@
+{
+  "_id": "nFPBIheTBZQNC8X9",
+  "name": "Emerald",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-diamond-green.webp",
+  "system": {
+    "description": "<p>Deep green, with the fine internal flaws no emerald is without.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 500,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!nFPBIheTBZQNC8X9",
+  "folder": "HJvY3JTRuL5xJNFj"
+}

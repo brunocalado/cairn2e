@@ -1,0 +1,39 @@
+{
+  "_id": "uHeVtLnvR5zKBmVc",
+  "name": "Kettlewright",
+  "type": "background",
+  "img": "icons/containers/kitchenware/pot-meal.webp",
+  "system": {
+    "description": "<blockquote><p>You are known by the smell of molten metal and the jingle of tin. You are no mere merchant but an artisan of fire and metal.</p></blockquote>",
+    "names": [
+      "Fergus",
+      "Eon",
+      "Bram",
+      "Idris",
+      "Hester",
+      "Darragh",
+      "Seren",
+      "Rónán",
+      "Berek",
+      "Lorenz"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.ECXuYWUMvkblsbjP",
+      "Compendium.cairn2e.background-gear.Item.tYoShme2VBMRH8E5",
+      "Compendium.cairn2e.gear.Item.kWbQCs7Zt0qwwh8F",
+      "Compendium.cairn2e.background-gear.Item.t1bQOmGavkjNt28s"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.5M8GOZJszHL8D9qC",
+      "Compendium.cairn2e.background-tables.RollTable.nx6Fb0IFhGFBSswI"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!uHeVtLnvR5zKBmVc"
+}

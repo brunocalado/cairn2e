@@ -1,0 +1,318 @@
+{
+  "_id": "6A0l62GRP4brKPr9",
+  "name": "Monster Attack",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Type column of the Monster Attacks table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "gBWsjCu6bEwzIYn9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bites",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.gBWsjCu6bEwzIYn9"
+    },
+    {
+      "_id": "4CCREM2nmshEvj50",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Blunts",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.4CCREM2nmshEvj50"
+    },
+    {
+      "_id": "GPg1EprnOuNc3BAx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Burns",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.GPg1EprnOuNc3BAx"
+    },
+    {
+      "_id": "hsL0Tf3Z8zHK651a",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Freezes",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.hsL0Tf3Z8zHK651a"
+    },
+    {
+      "_id": "PJ6J3s23Nnxbdja6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Gases",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.PJ6J3s23Nnxbdja6"
+    },
+    {
+      "_id": "TqgBeSGI6uhy6beL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Kicks",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.TqgBeSGI6uhy6beL"
+    },
+    {
+      "_id": "xXOXIZLg4zuzz8gi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Punches",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.xXOXIZLg4zuzz8gi"
+    },
+    {
+      "_id": "7T5FNn95DR944mXm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Shoots",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.7T5FNn95DR944mXm"
+    },
+    {
+      "_id": "iFURvDjajREKvEA9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Slams",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.iFURvDjajREKvEA9"
+    },
+    {
+      "_id": "oSEuCBHnz5MVj3ko",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Slashes",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.oSEuCBHnz5MVj3ko"
+    },
+    {
+      "_id": "hORJOHsssPbaBe1F",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Slices",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.hORJOHsssPbaBe1F"
+    },
+    {
+      "_id": "7qizK12w6AQ0cey3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Smashes",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.7qizK12w6AQ0cey3"
+    },
+    {
+      "_id": "5yB9C0BuBGNtd6EX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sprays",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.5yB9C0BuBGNtd6EX"
+    },
+    {
+      "_id": "LCsjvxWqH89l8erv",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Squeezes",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.LCsjvxWqH89l8erv"
+    },
+    {
+      "_id": "ceCxjIswB7pAkFBg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Stabs",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.ceCxjIswB7pAkFBg"
+    },
+    {
+      "_id": "2TQHp4cPbsyVoezM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Stings",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.2TQHp4cPbsyVoezM"
+    },
+    {
+      "_id": "zMckCyiEnNoIQzhc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Throws",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.zMckCyiEnNoIQzhc"
+    },
+    {
+      "_id": "S2dogALhG0JF12RV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Touches",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.S2dogALhG0JF12RV"
+    },
+    {
+      "_id": "NHklMgBB571yelzt",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Whips",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.NHklMgBB571yelzt"
+    },
+    {
+      "_id": "wqMNLIMtXsi613oo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Zaps",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6A0l62GRP4brKPr9.wqMNLIMtXsi613oo"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!6A0l62GRP4brKPr9"
+}

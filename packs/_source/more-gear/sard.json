@@ -1,0 +1,31 @@
+{
+  "_id": "aMvuoFzHIOtip0E3",
+  "name": "Sard",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-rough-cushion-red.webp",
+  "system": {
+    "description": "<p>Brown-red and even-coloured, a carver's stone.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!aMvuoFzHIOtip0E3",
+  "folder": "Qai89dBcno9Coube"
+}

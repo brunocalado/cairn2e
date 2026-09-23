@@ -1,0 +1,31 @@
+{
+  "_id": "0OG2boZPeUEGQJ4b",
+  "name": "Illusory Landscape",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>You can make one type of terrain appear like another.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!0OG2boZPeUEGQJ4b",
+  "folder": "MCt2VTDHSjLFlLso"
+}

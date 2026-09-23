@@ -1,0 +1,31 @@
+{
+  "_id": "hr6RqxaPWUX568aZ",
+  "name": "Salt Pouch",
+  "type": "gear",
+  "img": "icons/containers/bags/coinpouch-cloth-purple.webp",
+  "system": {
+    "description": "<p>Salt Pouch</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hr6RqxaPWUX568aZ",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

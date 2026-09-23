@@ -1,0 +1,31 @@
+{
+  "_id": "s2Unv0JcvzVfPol2",
+  "name": "Elemental Wall",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>A straight wall of ice or fire 50ft long and 10ft high rises from the ground.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!s2Unv0JcvzVfPol2",
+  "folder": "HeofFbO6OthG77Yu"
+}

@@ -1,0 +1,168 @@
+{
+  "_id": "49PEvMHXBYdwiEmB",
+  "name": "Face",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "ZfpsEQmGz0FBEIeS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bony",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.ZfpsEQmGz0FBEIeS"
+    },
+    {
+      "_id": "eSOqJZAtEYRfxy5k",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Broken",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.eSOqJZAtEYRfxy5k"
+    },
+    {
+      "_id": "591Acue49wLAwKzp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Chiseled",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.591Acue49wLAwKzp"
+    },
+    {
+      "_id": "11lKzfABht3fjFGy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Elongated",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.11lKzfABht3fjFGy"
+    },
+    {
+      "_id": "YRlblDljg8crJVdU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pale",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.YRlblDljg8crJVdU"
+    },
+    {
+      "_id": "qyMpvklH0mLNLhXn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Perfect",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.qyMpvklH0mLNLhXn"
+    },
+    {
+      "_id": "5JankREapDR3JUTd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rakish",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.5JankREapDR3JUTd"
+    },
+    {
+      "_id": "HNqMLgjRLHrrzONH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sharp",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.HNqMLgjRLHrrzONH"
+    },
+    {
+      "_id": "sBtnwL2xjqMgQ68G",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Square",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.sBtnwL2xjqMgQ68G"
+    },
+    {
+      "_id": "SVbEKYa1DtEbJrkJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sunken",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!49PEvMHXBYdwiEmB.SVbEKYa1DtEbJrkJ"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!49PEvMHXBYdwiEmB"
+}

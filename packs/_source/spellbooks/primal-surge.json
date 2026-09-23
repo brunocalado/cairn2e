@@ -1,0 +1,31 @@
+{
+  "_id": "4tvuw76LVc5ZCpyK",
+  "name": "Primal Surge",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p><em>The owner is haunted by strange visions of their own ancestors.</em></p><p>A creature rapidly evolves into a future version of its species.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4tvuw76LVc5ZCpyK",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

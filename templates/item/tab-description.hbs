@@ -1,0 +1,43 @@
+{{!-- The description, typed straight into the page.
+
+      This is `<prose-mirror>`, the real v14 element, and NOT the `{{editor}}` helper. The helper
+      emits `<div class="editor"><div class="editor-content" data-edit="…">` and then leaves it
+      there: nothing in the v2 framework ever activates that markup — only `appv1`'s
+      `FormApplication` did (`client/appv1/api/form-application-v1.mjs`), and
+      `createEditorInput` reaches the element itself only when `CONFIG.TextEditor.engines` carries
+      a renderer, which in 14.367 is empty. The pencil it drew opened nothing at all.
+
+      With no `toggled` attribute the editor is always active, so there is no button to press and
+      the box is simply a field: the same way the character edit window's Bond and Omen boxes
+      behave. It wears that window's drawn box too, and its toolbar is hidden
+      (`css/src/item-sheet.css`) — `item-sheet.js#_onRender` saves it on focusout, so nothing depends on
+      a control that is not on screen.
+
+      The field stays rich: every description in the compendium is HTML, `<em>bulky</em>`
+      included, and the formatting keyboard shortcuts still work. --}}
+<section class="tab {{tabs.description.cssClass}}" data-group="primary" data-tab="description">
+    {{#if growth}}
+    <h4 class="cairn-zone">{{localize 'CAIRN.Description'}}</h4>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-description" data-ink-w="1" data-ink-a="0.34"></div>
+    {{/if}}
+    <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-description" data-ink-w="1.6">
+        <prose-mirror name="system.description" value="{{system.description}}"
+            data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}></prose-mirror>
+    </div>
+    {{#if growth}}
+    {{!-- A growth's tab is two parts under two headings. The first box is the story; the second is
+          what it gave. The SRD's growths are mostly prose gains, and the one that moved a maximum
+          is printed here too — full width, no label gutter, because it is one fact and not a form
+          row. The textarea is the edit window's own plain-text box (`.cairn-edit-text`), not a
+          second ProseMirror: a gain is a sentence. --}}
+    <h4 class="cairn-zone">{{localize 'CAIRN.Growth.Gained'}}</h4>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-gained" data-ink-w="1" data-ink-a="0.34"></div>
+    {{#if growth.hasOutcome}}
+    <div class="cairn-growth-outcome">{{growth.outcomeLabel}} <s>{{growth.from}}</s> &rarr; {{growth.to}}</div>
+    {{/if}}
+    <textarea class="cairn-edit-text cairn-growth-gained" name="system.gained" rows="4"
+        placeholder="{{localize 'CAIRN.Growth.GainedPlaceholder'}}"
+        data-ink="box" data-ink-seed="growth-gained" data-ink-w="1.6"
+        {{#unless editable}}disabled{{/unless}}>{{system.gained}}</textarea>
+    {{/if}}
+</section>

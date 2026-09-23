@@ -1,0 +1,26 @@
+{{!-- Core's journal window strips every class off this template's ROOT before it appends the
+      page into its own article (`JournalEntrySheet#_renderPageView` calls
+      `sheet.element.removeAttribute("class")`), so the scope class lives on the element INSIDE
+      it — nothing in the stylesheet reaches the root.
+
+      One ruled block: where the route runs, what it is made of, what it costs in watches, the
+      Warden's own prose, and the way in. --}}
+<div>
+    <div class="cairn2e cairn-route-view">
+        {{!-- Always, at one level: a route is not a section of a document, so the heading
+              controls core puts on a page were taken off its header (`route-header.hbs`). --}}
+        <h2 class="cairn-route-title">{{name}}</h2>
+        <p class="cairn-route-line">
+            {{localize (concat "CAIRN.Journey.Paths." system.path)}} &middot;
+            {{localize (concat "CAIRN.Journey.Distances." system.distance)}} &middot;
+            {{localize (concat "CAIRN.Journey.Terrains." system.terrain)}}{{#if system.vast}} &middot; +{{system.vast}}{{/if}}
+            &mdash; <strong>{{localize "CAIRN.Journey.NeedsWatches" n=watches}}</strong>
+        </p>
+        {{#if description}}<div class="cairn-route-description">{{{description}}}</div>{{/if}}
+        {{#if canBegin}}
+        <button type="button" class="cairn-journey-start" data-action="beginJourney">
+            <i class="fas fa-route" inert></i> {{localize "CAIRN.Journey.Start"}}
+        </button>
+        {{/if}}
+    </div>
+</div>

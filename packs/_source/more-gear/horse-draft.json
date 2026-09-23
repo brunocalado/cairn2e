@@ -1,0 +1,31 @@
+{
+  "_id": "R8uwbEVATuGEbHXr",
+  "name": "Horse, draft",
+  "type": "gear",
+  "img": "icons/environment/creatures/horse-brown.webp",
+  "system": {
+    "description": "<p>Horse, draft (+3 slots)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 40,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 3,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!R8uwbEVATuGEbHXr",
+  "folder": "ARzrDNEhwsW3YANG"
+}

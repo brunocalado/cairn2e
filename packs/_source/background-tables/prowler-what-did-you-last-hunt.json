@@ -1,0 +1,108 @@
+{
+  "_id": "sBBdv01d9DmsKV3u",
+  "name": "Prowler: What did you last hunt?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Prowler</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "58KuungPDOYDYM5r",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <em>mock firefly</em>, baiting water carriers with its glowing lure. Take an <strong>Alchemical Limb</strong> (d8, <em>petty</em> when worn) to replace the one it tore off and an <strong>Oil Can</strong> (6 uses). The limb is immune to heat and poison. Needs to be oiled daily.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.58KuungPDOYDYM5r"
+    },
+    {
+      "_id": "NbAkse9lpRK9wC7n",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>An <em>ice nettle</em>, trapping and draining sheep. You lost your commission when the fungus you introduced killed half the flock. Take a <strong>Rime Seed</strong> (1 use). It freezes any body of water, no matter the size. Don't eat it.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.NbAkse9lpRK9wC7n"
+    },
+    {
+      "_id": "CJYyKaET1AU5kxbQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <em>silver marsh crawler</em> that killed someone close to you. You now carry its <strong>Tooth</strong> (<em>petty</em>) on a chain around your neck as a warning to others of its kind. <em>The tooth hums softly when something is stalking you</em>.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.CJYyKaET1AU5kxbQ"
+    },
+    {
+      "_id": "SOqQOd34OcDYqVCS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A malicious <em>forest spirit</em> that poisoned a homestead. You saved a <strong>Heartseed</strong> from the roots of a dying tree. (Plant it to create a new forest.) Also, take <strong>Iron Bracers</strong> (+1 Armor, <em>bulky</em>).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.SOqQOd34OcDYqVCS"
+    },
+    {
+      "_id": "k6VgXer5MMT1BqYh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <em>hollow wolf</em> that had been frightening travelers. You took pity on the half-starved creature and nursed it back to health. Now it is loyal to you unto death. It is also a great tunneler. 5 HP, 11 STR, 13 DEX, 8 WIL, teeth (d6).</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.k6VgXer5MMT1BqYh"
+    },
+    {
+      "_id": "anuJtPegtHAUSS9U",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>An <em>azure warbler</em>. The gametes attract a sizeable profit, if properly extracted. You succeeded but left its nest to the wolves. Take a <strong>Paring Knife</strong> (d6), <strong>an extra 20gp</strong>, and a pang of regret.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.anuJtPegtHAUSS9U"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!sBBdv01d9DmsKV3u"
+}

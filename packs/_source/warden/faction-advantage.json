@@ -1,0 +1,318 @@
+{
+  "_id": "QC5UuI9cI0w2H52N",
+  "name": "Faction Advantage",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Advantage column of the Faction Advantages table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "72WT2neHaRgT40VC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Alliances",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.72WT2neHaRgT40VC"
+    },
+    {
+      "_id": "ZEqeEOtmiAGvk3SZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Anonymity",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.ZEqeEOtmiAGvk3SZ"
+    },
+    {
+      "_id": "WZB0QATQDNBJBfZT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Apparatus",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.WZB0QATQDNBJBfZT"
+    },
+    {
+      "_id": "3vLu6SSSRKMy07ax",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Beliefs",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.3vLu6SSSRKMy07ax"
+    },
+    {
+      "_id": "Mhc6JMxf5O6wqiZD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Charisma",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.Mhc6JMxf5O6wqiZD"
+    },
+    {
+      "_id": "IyplwZdC3WGlk9hP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Conviction",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.IyplwZdC3WGlk9hP"
+    },
+    {
+      "_id": "AD5GFsKcfmEtRY44",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fealty",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.AD5GFsKcfmEtRY44"
+    },
+    {
+      "_id": "z6EOmU9aZtsBOQX7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Force",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.z6EOmU9aZtsBOQX7"
+    },
+    {
+      "_id": "O4h0MT4vBE0l9k91",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Information",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.O4h0MT4vBE0l9k91"
+    },
+    {
+      "_id": "Lihg8jPzbpjHJ3cV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Lineage",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.Lihg8jPzbpjHJ3cV"
+    },
+    {
+      "_id": "CEkA8cFqwhDDMGOH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Magic",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.CEkA8cFqwhDDMGOH"
+    },
+    {
+      "_id": "MM26doj2gwDEpbtE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Members",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.MM26doj2gwDEpbtE"
+    },
+    {
+      "_id": "7lhpxV1vOpvbFpNK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Popularity",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.7lhpxV1vOpvbFpNK"
+    },
+    {
+      "_id": "rVFR3sotvgXH5zSi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Position",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.rVFR3sotvgXH5zSi"
+    },
+    {
+      "_id": "j7zhv1pFXVvRBlwM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Renown",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.j7zhv1pFXVvRBlwM"
+    },
+    {
+      "_id": "JtL45GcGvu4wFmmx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Resources",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.JtL45GcGvu4wFmmx"
+    },
+    {
+      "_id": "IzEA0ffveVwE7gZJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ruthlessness",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.IzEA0ffveVwE7gZJ"
+    },
+    {
+      "_id": "ItLB1GqKoAB1ksXT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Specialization",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.ItLB1GqKoAB1ksXT"
+    },
+    {
+      "_id": "nnbCWT9DmfXMFhzw",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Subterfuge",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.nnbCWT9DmfXMFhzw"
+    },
+    {
+      "_id": "UDzaEaEgA6nchGFE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Wealth",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!QC5UuI9cI0w2H52N.UDzaEaEgA6nchGFE"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!QC5UuI9cI0w2H52N"
+}

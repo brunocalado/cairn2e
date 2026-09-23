@@ -1,0 +1,31 @@
+{
+  "_id": "c93L1fsC1rF8jdcO",
+  "name": "Beer",
+  "type": "gear",
+  "img": "icons/consumables/drinks/alcohol-beer-mug-yellow.webp",
+  "system": {
+    "description": "<p>Beer (pitcher)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 2,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!c93L1fsC1rF8jdcO",
+  "folder": "7rqfs1jHTkbTjMVH"
+}

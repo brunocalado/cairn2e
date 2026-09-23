@@ -1,0 +1,15 @@
+{
+  "_id": "8UaYzxdyp4z2sC64",
+  "name": "Restore Abilities",
+  "type": "script",
+  "img": "icons/tools/medical/bandages-gauze.webp",
+  "scope": "global",
+  "command": "cairn2e.restoreAbilities();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!8UaYzxdyp4z2sC64"
+}

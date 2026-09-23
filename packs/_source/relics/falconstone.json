@@ -1,0 +1,31 @@
+{
+  "_id": "BW0UMG3Dflx43Sy7",
+  "name": "Falconstone",
+  "type": "gear",
+  "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+  "system": {
+    "description": "<p>Perceive the world through the eyes and ears of a nearby bird of prey. You feel whatever it feels but have no control over it.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Kill and eat a common quarry, cooking the meat alongside the stone.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BW0UMG3Dflx43Sy7",
+  "folder": "UlnseD8X1WIqJdUA"
+}

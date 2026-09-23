@@ -1,0 +1,31 @@
+{
+  "_id": "Cz3SKUnzHDL4ruT3",
+  "name": "Scry",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p><em>The owner's eyes turn milky-white for an hour after use.</em></p><p>You can see through the eyes of a creature you touched earlier today.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Cz3SKUnzHDL4ruT3",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

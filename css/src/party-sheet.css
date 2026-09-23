@@ -1,0 +1,162 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The party sheet.                                                      *
+     *                                                                       *
+     * A page of other people's numbers. Nothing on it is a field: the whole  *
+     * sheet is one list of rows, each read and none set, because a party in  *
+     * 2e has no statistics of its own — what it has is a roster, and the     *
+     * order of that roster is the marching order.                            *
+     *                                                                       *
+     * The row is the journey crew's row (`&.cairn-journey` above), one       *
+     * window over: who on the left, a drawn upright, what they are carrying, *
+     * then paper, then the switch. The declarations are repeated rather than *
+     * shared because that block is scoped to the journey WINDOW — a selector *
+     * added to it would never match a sheet — and two short copies beat      *
+     * hoisting a layout out of the window it was designed in.                *
+     **************************************************************************/
+
+    &.party {
+        /* A resizable window with a real height to fill, like the item sheets — not the
+           character's auto-height page, so the list takes what is left and scrolls. */
+        .tab.active {
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* Five columns, two rows: order, portrait, then name / controls / switch on the first
+           row and the tags on the second. `.cairn-slot` is a flex line; this row is a grid
+           because the portrait spans both of its lines and a flex item cannot. `align-items:
+           start` is what puts the name on the portrait's top edge rather than centred on it. */
+        .cairn-party-member {
+            align-items: start;
+            column-gap: 8px;
+            display: grid;
+            grid-template-columns: 18px 44px minmax(0, 1fr) auto auto;
+            grid-template-rows: auto auto;
+            /* The rule between rows is stroked on the box's bottom edge; without this the
+               second line's tag frames sit on that same pixel and the stroke crosses them. */
+            padding-bottom: 6px;
+            row-gap: 4px;
+        }
+
+        /* The one control beside a 44×26 switch: a square cell the switch's height, so the two
+           read as a pair. The ledger keeps its narrow cells — six of them share a line there.
+           The glyph is its own rule rather than nested under the anchor, because the stylesheet
+           stops at three levels of nesting. */
+        .cairn-party-member .cairn-item-controls a {
+            width: 26px;
+        }
+
+        .cairn-party-member .cairn-item-controls i {
+            font-size: 18px;
+        }
+
+        /* The order and the portrait stand beside both lines. The number is the ledger's own
+           column (`.cairn-slot-number`), so a row here is numbered the way a slot is; its line
+           height is the ledger's 26px, which would set the figure's top under the name's, so it
+           is given the name's own line instead. */
+        .cairn-party-member .cairn-slot-number,
+        .cairn-party-who {
+            grid-row: 1 / 3;
+        }
+
+        .cairn-party-member .cairn-slot-number {
+            line-height: 1;
+            padding-top: 1px;
+        }
+
+        /* The portrait is the one thing on the row that opens the member's sheet, so it is the
+           whole button — no frame and no fill, because the picture's own hairline is its edge.
+           `height: auto` is load-bearing: core sizes every `button` to `--button-size`. */
+        .cairn-party-who {
+            background: none;
+            border: none;
+            display: block;
+            height: auto;
+            line-height: 0;
+            padding: 0;
+        }
+
+        .cairn-party-who:hover {
+            background: none;
+        }
+
+        .cairn-party-portrait {
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            display: block;
+            height: 44px;
+            object-fit: cover;
+            width: 44px;
+        }
+
+        /* Held back from the group's map movements. The row stays on the list and stays
+           legible, because who is NOT walking out is as much of an answer as who is. The switch
+           keeps its full ink: it is the control that says so, and a faded control reads as a
+           disabled one. */
+        .cairn-party-member.is-held .cairn-party-who,
+        .cairn-party-member.is-held .cairn-party-headline,
+        .cairn-party-member.is-held .cairn-party-load {
+            opacity: 0.5;
+        }
+
+        /* The name and its conditions share the portrait's top edge. `line-height: 1` on the
+           name is what puts the type's top there rather than a half-leading below it, and
+           `min-width: 0` is what lets the name ellipse instead of pushing the switch off. */
+        .cairn-party-headline {
+            align-items: center;
+            display: flex;
+            gap: 6px;
+            grid-column: 3;
+            min-width: 0;
+        }
+
+        .cairn-party-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /* A person's name is read, not pressed: the serif at text size, not a control's. */
+            font-family: var(--cairn-serif);
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .cairn-party-member .cairn-item-controls {
+            grid-column: 4;
+        }
+
+        .cairn-party-member .cairn-switch {
+            grid-column: 5;
+        }
+
+        /* What the member is walking around with, as Tags (Primitive 8), under the name and
+           never under the picture: the grid places it in the name's column, so nothing here has
+           to know how wide the portrait is. Tabular figures so a column of rows reads down
+           rather than each line being measured on its own. It wraps within itself when even
+           the full width is not enough — seven tags at the sheet's 600px. */
+        .cairn-party-load {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            font-variant-numeric: tabular-nums;
+            gap: 4px;
+            grid-column: 3 / 6;
+        }
+
+        /* A condition is its own icon at tag height, at the name's right. */
+        .cairn-party-condition {
+            border: none;
+            flex: 0 0 auto;
+            height: 16px;
+            width: 16px;
+        }
+    }
+}

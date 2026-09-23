@@ -1,0 +1,31 @@
+{
+  "_id": "XMOZVjYjh90brJTZ",
+  "name": "Parliament's Promise",
+  "type": "gear",
+  "img": "icons/equipment/head/helm-norman-bird.webp",
+  "system": {
+    "description": "<p>A helmet in the form of an owl's head. Its wearer can twist their head around like an owl and can see in darkness with perfect clarity. While wearing the helm, the wearer loses the ability to speak, uttering only the simplest of cooing noises.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XMOZVjYjh90brJTZ",
+  "folder": "UlnseD8X1WIqJdUA"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "mjaiBaXegnRfCP5u",
+  "name": "Icy Tempest",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p>Hail deals 1d10 damage in a 20ft radius.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!mjaiBaXegnRfCP5u",
+  "folder": "MCt2VTDHSjLFlLso"
+}

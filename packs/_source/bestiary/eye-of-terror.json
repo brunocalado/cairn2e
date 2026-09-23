@@ -1,0 +1,113 @@
+{
+  "_id": "uPIKbEukpfEH2u0i",
+  "name": "Eye of Terror",
+  "type": "npc",
+  "img": "icons/creatures/eyes/void-single-black-purple.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 9,
+        "max": 9
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 16,
+        "max": 16
+      }
+    },
+    "hp": {
+      "value": 15,
+      "max": 15
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "0aLGxVOaSafY12Eo",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!uPIKbEukpfEH2u0i.0aLGxVOaSafY12Eo"
+    },
+    {
+      "name": "Floating spheres with large mouths, enormous eyes, and several small eyes set atop long stalks.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "LDQipe5VeBv40Orj",
+      "_key": "!actors.items!uPIKbEukpfEH2u0i.LDQipe5VeBv40Orj"
+    },
+    {
+      "name": "They are highly intelligent, intensely greedy, and completely insane.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "7gVl4h5ScopjHobI",
+      "_key": "!actors.items!uPIKbEukpfEH2u0i.7gVl4h5ScopjHobI"
+    },
+    {
+      "name": "Can cast the following spells at will: Charm, Phobia, Telekinesis, Sleep, Shuffle, Vision.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Magic used against them requires a WIL save or it fizzles out.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Uaoh5u4mjZvZZN5G",
+      "_key": "!actors.items!uPIKbEukpfEH2u0i.Uaoh5u4mjZvZZN5G"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!uPIKbEukpfEH2u0i"
+}

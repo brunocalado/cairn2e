@@ -1,0 +1,31 @@
+{
+  "_id": "zQTBi3hQK9C3v8Oo",
+  "name": "Bewildering Fog",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>A hazy fog surrounds you in a radius of 20ft. Attacks within the mist are impaired.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!zQTBi3hQK9C3v8Oo",
+  "folder": "FeXVyrcexT1LlyqR"
+}

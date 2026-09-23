@@ -1,0 +1,100 @@
+{
+  "_id": "cZxd2mne4IwhCh4Q",
+  "name": "Gelatinous Ooze",
+  "type": "npc",
+  "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 6,
+        "max": 6
+      },
+      "WIL": {
+        "value": 3,
+        "max": 3
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "EEohubBTqmOLlF4w",
+      "name": "Devouring Touch",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>devouring touch (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!cZxd2mne4IwhCh4Q.EEohubBTqmOLlF4w"
+    },
+    {
+      "name": "Large shapeless masses of transparent jelly.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Mindlessly hunt for food in dungeons and underground caverns.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "gfBsZzJuYLsbCsMl",
+      "_key": "!actors.items!cZxd2mne4IwhCh4Q.gfBsZzJuYLsbCsMl"
+    },
+    {
+      "name": "The target is engulfed, losing d6 STR damage per round until they are consumed.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZMkYeeJzwE3frM0j",
+      "_key": "!actors.items!cZxd2mne4IwhCh4Q.ZMkYeeJzwE3frM0j"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!cZxd2mne4IwhCh4Q"
+}

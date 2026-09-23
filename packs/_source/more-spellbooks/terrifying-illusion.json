@@ -1,0 +1,31 @@
+{
+  "_id": "qORzntzeaYzWAbB0",
+  "name": "Terrifying Illusion",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p>A target is hunted by a terrible creature only they can see. Its attacks do 1d10 damage; on Critical Damage they must pass a WIL save or become catatonic.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qORzntzeaYzWAbB0",
+  "folder": "MCt2VTDHSjLFlLso"
+}

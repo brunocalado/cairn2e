@@ -1,0 +1,31 @@
+{
+  "_id": "xT9aqvZ3f1hfAcYY",
+  "name": "Purge Text",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p>Mundane or magical writing vanishes at your touch.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xT9aqvZ3f1hfAcYY",
+  "folder": "MCt2VTDHSjLFlLso"
+}

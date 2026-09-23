@@ -1,0 +1,10 @@
+{{!-- A live `<prose-mirror>`, not the `{{editor}}` helper: the helper emits appv1 markup that
+      nothing in the v2 framework activates, so the pencil it drew opened nothing (see
+      `templates/item/tab-description.hbs` for the whole finding). With no `toggled` attribute the
+      editor is active the moment it is in the DOM, and the sheet commits it on focusout. --}}
+<section class="tab {{tabs.recharge.cssClass}}" data-group="primary" data-tab="recharge">
+    <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-recharge" data-ink-w="1.6">
+        <prose-mirror name="system.recharge" value="{{system.recharge}}"
+            data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}></prose-mirror>
+    </div>
+</section>

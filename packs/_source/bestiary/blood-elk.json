@@ -1,0 +1,114 @@
+{
+  "_id": "gsjzGysQBDF61agK",
+  "name": "Blood Elk",
+  "type": "npc",
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 5,
+        "max": 5
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "CcvG0lCQRU9vejfm",
+      "name": "Horns",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>horns (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!gsjzGysQBDF61agK.CcvG0lCQRU9vejfm"
+    },
+    {
+      "name": "Born from violence resulting from a greedy or selfish act.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "kh3HIjWLNBvuQvq3",
+      "_key": "!actors.items!gsjzGysQBDF61agK.kh3HIjWLNBvuQvq3"
+    },
+    {
+      "name": "Kill their victims for sustenance, but gains no succor.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>They are always hungry.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XSMW8tozEvQHNynf",
+      "_key": "!actors.items!gsjzGysQBDF61agK.XSMW8tozEvQHNynf"
+    },
+    {
+      "name": "Gores its victims by ripping out their entrails.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ThqMP37nEnQhdYpG",
+      "_key": "!actors.items!gsjzGysQBDF61agK.ThqMP37nEnQhdYpG"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!gsjzGysQBDF61agK"
+}

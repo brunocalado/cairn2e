@@ -1,0 +1,31 @@
+{
+  "_id": "QBo9pFFRcH2JD7fL",
+  "name": "X-Ray Vision",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p><em>Long-term exposure can cause hair loss, blurry vision, and fatigue.</em></p><p>You can see through walls, dirt, clothing, etc.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QBo9pFFRcH2JD7fL",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

@@ -1,0 +1,114 @@
+{
+  "_id": "KQoHW7iCgS0SiSuN",
+  "name": "Mind Lasher",
+  "type": "npc",
+  "img": "icons/creatures/tentacles/tentacle-eyes-yellow-pink.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 18,
+        "max": 18
+      }
+    },
+    "hp": {
+      "value": 12,
+      "max": 12
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "NVr3GJHdWs5NE4Hm",
+      "name": "Tentacles",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>tentacles (d6, <em>blast</em>)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": true,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!KQoHW7iCgS0SiSuN.NVr3GJHdWs5NE4Hm"
+    },
+    {
+      "name": "Humanoid creatures with purple skin and squid-like heads.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Dwell deep underground or in spacefaring vessels. Feed on the brains of other humanoids, absorbing their memories and life essence. Highly intelligent, but evil beyond belief.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nfaAW8tkjcamFHrx",
+      "_key": "!actors.items!KQoHW7iCgS0SiSuN.nfaAW8tkjcamFHrx"
+    },
+    {
+      "name": "Mind Blast",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Nearby targets must save WIL or lose 1d4 WIL and become paralyzed.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "pO0VFyJ3j6Pa1tt7",
+      "_key": "!actors.items!KQoHW7iCgS0SiSuN.pO0VFyJ3j6Pa1tt7"
+    },
+    {
+      "name": "A tentacle rips the victim's brain out of their skull.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4J09r8xbl97kYuv2",
+      "_key": "!actors.items!KQoHW7iCgS0SiSuN.4J09r8xbl97kYuv2"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!KQoHW7iCgS0SiSuN"
+}

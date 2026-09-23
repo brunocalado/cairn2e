@@ -1,0 +1,318 @@
+{
+  "_id": "75KzYKQj3Ri7S6lh",
+  "name": "Backgrounds",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll or choose a Background during character creation, then refer to that background for the next few steps.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "07EorZEc9xTOulAq",
+      "type": "document",
+      "name": "Aurifex",
+      "img": "icons/consumables/potions/potion-vial-tube-yellow.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.yzASUY7GeOLANy1x",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.07EorZEc9xTOulAq"
+    },
+    {
+      "_id": "Rp1Vx025GPtnjMdC",
+      "type": "document",
+      "name": "Barber-Surgeon",
+      "img": "icons/tools/hand/sewing-needle-thread.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.FGZvC8fphUMlWaCY",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.Rp1Vx025GPtnjMdC"
+    },
+    {
+      "_id": "ZEsN1H65EcgCcpwj",
+      "type": "document",
+      "name": "Beast Handler",
+      "img": "icons/commodities/claws/claw-canine-brown-grey.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.j0S3855r94C5pCGD",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.ZEsN1H65EcgCcpwj"
+    },
+    {
+      "_id": "x9qR8ntcxE7I7Skm",
+      "type": "document",
+      "name": "Bonekeeper",
+      "img": "icons/commodities/bones/skull-monster-beige.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.t91VLgLSOPLzI3Fw",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.x9qR8ntcxE7I7Skm"
+    },
+    {
+      "_id": "DqLhpnctB69rRDp5",
+      "type": "document",
+      "name": "Cutpurse",
+      "img": "icons/containers/bags/coinpouch-simple-leather-tan.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.AHPmOk0vIgmxHp5N",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.DqLhpnctB69rRDp5"
+    },
+    {
+      "_id": "GH3p4FaF0HMFODaM",
+      "type": "document",
+      "name": "Fieldwarden",
+      "img": "icons/environment/settlement/scarecrow.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.D8FPT0azM7l8OwHg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.GH3p4FaF0HMFODaM"
+    },
+    {
+      "_id": "X2GfLqzP9ari5OAi",
+      "type": "document",
+      "name": "Fletchwind",
+      "img": "icons/containers/ammunition/arrows-quiver-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.WByT1Ppx0DQmSsYB",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.X2GfLqzP9ari5OAi"
+    },
+    {
+      "_id": "xk2AwpGk4MeqdMdH",
+      "type": "document",
+      "name": "Foundling",
+      "img": "icons/equipment/neck/amulet-engraved-wood.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.c9Jgft6oJMFuU7NQ",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.xk2AwpGk4MeqdMdH"
+    },
+    {
+      "_id": "PKsbdiB7DVdv3QX1",
+      "type": "document",
+      "name": "Fungal Forager",
+      "img": "icons/consumables/mushrooms/umbonate-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.nTpcD8DoDShW8uC3",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.PKsbdiB7DVdv3QX1"
+    },
+    {
+      "_id": "MMrH7iaxPgbk05iD",
+      "type": "document",
+      "name": "Greenwise",
+      "img": "icons/consumables/plants/sprout-leaf-herb-green.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.7e6Ptrj4R5OSsxOo",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.MMrH7iaxPgbk05iD"
+    },
+    {
+      "_id": "eQx0eF9NnMNVHfFG",
+      "type": "document",
+      "name": "Half Witch",
+      "img": "icons/equipment/head/hat-pointed-leather-black-glowing.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.cRgDgPuhTICXLsqh",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.eQx0eF9NnMNVHfFG"
+    },
+    {
+      "_id": "FGcvg3LIdNKJI1sp",
+      "type": "document",
+      "name": "Hexenbane",
+      "img": "icons/sundries/survival/stake-rough-simple-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.sSmhzeX3lcNGnfnC",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.FGcvg3LIdNKJI1sp"
+    },
+    {
+      "_id": "giD0S1cz5jNF4jsM",
+      "type": "document",
+      "name": "Jongleur",
+      "img": "icons/tools/instruments/lute-gold-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.wmtIcEHzB7KFovJL",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.giD0S1cz5jNF4jsM"
+    },
+    {
+      "_id": "rFbr63HVuyOdFx4V",
+      "type": "document",
+      "name": "Kettlewright",
+      "img": "icons/containers/kitchenware/pot-meal.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.uHeVtLnvR5zKBmVc",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.rFbr63HVuyOdFx4V"
+    },
+    {
+      "_id": "YIMB5NQGgq4nEuIq",
+      "type": "document",
+      "name": "Marchguard",
+      "img": "icons/equipment/shield/shield-round-boss-wood-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.CzeddFwhFkt7iimK",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.YIMB5NQGgq4nEuIq"
+    },
+    {
+      "_id": "wKdzESPed6D4bZFL",
+      "type": "document",
+      "name": "Mountebank",
+      "img": "icons/sundries/gaming/game-playing-cards-deck.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.HoLI6Fj5oQmkLJAG",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.wKdzESPed6D4bZFL"
+    },
+    {
+      "_id": "niRb5cL3WXiEyB50",
+      "type": "document",
+      "name": "Outrider",
+      "img": "icons/environment/creatures/horse-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.TVNyNrpdHsZRHLJL",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.niRb5cL3WXiEyB50"
+    },
+    {
+      "_id": "TFDYfVCixPFHzu9z",
+      "type": "document",
+      "name": "Prowler",
+      "img": "icons/equipment/back/cloak-hooded-red.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.9Lg08dWVL792cCHF",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.TFDYfVCixPFHzu9z"
+    },
+    {
+      "_id": "eQTi5CMHkErxTNmT",
+      "type": "document",
+      "name": "Rill Runner",
+      "img": "icons/tools/fishing/net-simple-brown.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.AGnYUNNVhcOOqfr7",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.eQTi5CMHkErxTNmT"
+    },
+    {
+      "_id": "z9if4KfR9NfzJEGU",
+      "type": "document",
+      "name": "Scrivener",
+      "img": "icons/tools/scribal/ink-quill-red.webp",
+      "documentUuid": "Compendium.cairn2e.backgrounds.Item.i83o5YtvjZy7C5nF",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!75KzYKQj3Ri7S6lh.z9if4KfR9NfzJEGU"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!75KzYKQj3Ri7S6lh"
+}

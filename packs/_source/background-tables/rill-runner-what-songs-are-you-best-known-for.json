@@ -1,0 +1,108 @@
+{
+  "_id": "xTBgdmiEhk6iidqA",
+  "name": "Rill Runner: What songs are you best known for?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Rill Runner</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "ZrHdOVhjt3uzkrNG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>The Tinker's Two-Step</em>. A humorous fairy tale about a gift-giving traveler. Start with a <strong>Reed Whistle</strong>. Anyone in earshot must pass a WIL save to perform an act of violence.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.ZrHdOVhjt3uzkrNG"
+    },
+    {
+      "_id": "sWo8ZwYyl76TWHHc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>The Sylph and Her Lover</em>. A bawdy tale of lost love. Start with a <strong>Breeze Knot</strong> (3 charges). Creates a strong breeze. <strong>Recharge</strong>: Tie it to a mast during a storm.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.sWo8ZwYyl76TWHHc"
+    },
+    {
+      "_id": "WZlCS35dGBs4uzF2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>Harper's Devotion</em>. A sad, short tale about a musician that falls in love with a star. Start with a <strong>Celestial Lute</strong>. Reveals the constellations above, no matter the weather.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.WZlCS35dGBs4uzF2"
+    },
+    {
+      "_id": "ZP5mfcpEvnAG4gU5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>The Reed Fisher</em>. A celebrated song about a massive carp that always seems to get away. Begin with a spool of <strong>River Twine</strong> (5 uses). Each dip into the river guarantees a catch, though it might not be pleasant.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.ZP5mfcpEvnAG4gU5"
+    },
+    {
+      "_id": "CDZcv0tVR4nEEBGn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>Song of the Silver Stream</em>. A wordless lullaby that mimics flowing water. Take a <strong>Stone Flute</strong> that can calm almost any river.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.CDZcv0tVR4nEEBGn"
+    },
+    {
+      "_id": "6BvIvO3rlcNKqb8b",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>The Thrush and the Meadow</em>. A moody tale told in alternating chorus. Start with a <strong>Feather Quill</strong> (1 use, <em>petty</em>). A map drawn with this quill reveals the most expedient course between any two points.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.6BvIvO3rlcNKqb8b"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!xTBgdmiEhk6iidqA"
+}

@@ -1,0 +1,28 @@
+{{!-- The free-choice damage roll. Impaired and Enhanced are one row because the rule makes them
+      one choice: a die is substituted by d4 or by d12, never both — the two switches turn each
+      other off (wired in rolls.js#promptDamageOptions). Blast starts from the weapon. --}}
+<div class="cairn-damage-dialog">
+    <div class="cairn-field cairn-prop-pair">
+        <label for="dmg-impaired">{{localize 'CAIRN.Impaired'}}</label>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="impaired" value=false id="dmg-impaired"}}
+        <label for="dmg-enhanced">{{localize 'CAIRN.Enhanced'}}</label>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="enhanced" value=false id="dmg-enhanced"}}
+    </div>
+    <div class="cairn-field">
+        <label for="dmg-blast">{{localize 'CAIRN.Blast'}}</label>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="blast" value=blast id="dmg-blast"}}
+    </div>
+    {{#if weapons.length}}
+    {{!-- Two weapons at once: roll both dice, keep the highest (core-rules.md). One at most — the
+          switches turn each other off in rolls.js#promptDamageOptions. Each toggle's input is
+          named `second.<itemId>`, never a shared `second`: FormDataExtended folds same-named
+          checkboxes into one value. --}}
+    <div class="cairn-field-label">{{localize 'CAIRN.SecondWeapon'}}</div>
+    {{#each weapons as |w|}}
+    <div class="cairn-field">
+        <label for="dmg-second-{{w.id}}">{{w.name}} <span class="cairn-item-tag">{{w.damage}}</span></label>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field=(concat "second." w.id) value=false id=(concat "dmg-second-" w.id)}}
+    </div>
+    {{/each}}
+    {{/if}}
+</div>

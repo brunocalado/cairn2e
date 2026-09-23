@@ -1,0 +1,31 @@
+{
+  "_id": "WfcLBI2cQoKreKN8",
+  "name": "Fortify",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p>Damage from heat, ice, acid or electricity are impaired against a target for the next hour.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WfcLBI2cQoKreKN8",
+  "folder": "MCt2VTDHSjLFlLso"
+}

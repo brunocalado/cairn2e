@@ -1,0 +1,31 @@
+{
+  "_id": "Jlwmk0eq0vwy2jLH",
+  "name": "Spellsaw",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p><em>Wrapped in stained leather, it should be oiled at least once a month.</em></p><p>A whirling blade flies from your chest, clearing any plant material in its way. It is otherwise harmless.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Jlwmk0eq0vwy2jLH",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

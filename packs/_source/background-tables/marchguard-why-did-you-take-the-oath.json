@@ -1,0 +1,108 @@
+{
+  "_id": "0JSuAmZridlP5xAS",
+  "name": "Marchguard: Why did you take the Oath?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Marchguard</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "oRIQNm7JfeqrjaGY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your family has a long tradition of serving, and you were trained from an early age on how to survive in the wild. When taking the Supply action, your yield increases by one step (e.g. 1d4 &gt; 1d6).</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.oRIQNm7JfeqrjaGY"
+    },
+    {
+      "_id": "9J21hGG0937Fikx8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>As a convict, the Oath was simply a means of avoiding punishment. Take a set of <strong>Lockpicks</strong> and the <strong>Key</strong> (<em>petty</em>) to a safehouse.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.9J21hGG0937Fikx8"
+    },
+    {
+      "_id": "oe1HDLAIPYzWKsAI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Noble-born, you joined to escape family trouble. Take a <strong>Goosefelt Tarp</strong> (fits two) that you stole before leaving home.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.oe1HDLAIPYzWKsAI"
+    },
+    {
+      "_id": "76UXXBGkGz3fj1cv",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>When your family lost everything, you took the Oath to avoid becoming a burden. Take extra <strong>Rations</strong> (3 uses) and a brace of <strong>Throwing Knives</strong> (d6).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.76UXXBGkGz3fj1cv"
+    },
+    {
+      "_id": "jtmkobGIJVqPAYiW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your life was saved by a member of the <strong>Marchguard</strong>, and you were inspired to join their ranks. Take a <strong>Snare Trap</strong> and a <strong>Sketchbook</strong> filled with detailed drawings.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.jtmkobGIJVqPAYiW"
+    },
+    {
+      "_id": "fLe87K7r5OnxFHFd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were in a dark place and decided that your life needed a little direction. You're still not so sure it was the right choice. Take an <strong>Oilskin Coat</strong> and <strong>Mapping Paper</strong>.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.fLe87K7r5OnxFHFd"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!0JSuAmZridlP5xAS"
+}

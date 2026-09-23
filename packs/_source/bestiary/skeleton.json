@@ -1,0 +1,143 @@
+{
+  "_id": "uk0xN6WDPzmPB32W",
+  "name": "Skeleton",
+  "type": "npc",
+  "img": "icons/magic/death/undead-skeleton-tusk-purple.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 0,
+        "max": 0
+      }
+    },
+    "hp": {
+      "value": 5,
+      "max": 5
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "eadeyCRUIhapJzWe",
+      "name": "Rusty Sword",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>rusty sword (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!uk0xN6WDPzmPB32W.eadeyCRUIhapJzWe"
+    },
+    {
+      "_id": "TlxSfNEML10lk1O1",
+      "name": "Bow",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bow (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!uk0xN6WDPzmPB32W.TlxSfNEML10lk1O1"
+    },
+    {
+      "name": "Frequently found serving a master or necromancer, often in groups of 3 or more.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "LdO7qf6w6DPEwi3U",
+      "_key": "!actors.items!uk0xN6WDPzmPB32W.LdO7qf6w6DPEwi3U"
+    },
+    {
+      "name": "Found wearing whatever was on them at the time of their death.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "aBl9QIjHu5WfTZFv",
+      "_key": "!actors.items!uk0xN6WDPzmPB32W.aBl9QIjHu5WfTZFv"
+    },
+    {
+      "name": "If a skeleton is killed and its bones are not scattered, it reforms.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "yWVVm18yUwBSb24k",
+      "_key": "!actors.items!uk0xN6WDPzmPB32W.yWVVm18yUwBSb24k"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!uk0xN6WDPzmPB32W"
+}

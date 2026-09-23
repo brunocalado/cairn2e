@@ -1,0 +1,31 @@
+{
+  "_id": "gJdBtG0fnS8XIAJA",
+  "name": "Root Knife",
+  "type": "gear",
+  "img": "icons/weapons/daggers/dagger-curved-guard.webp",
+  "system": {
+    "description": "<p>Root Knife (d6)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gJdBtG0fnS8XIAJA",
+  "folder": "bayXvK0U8aq9eTKM"
+}

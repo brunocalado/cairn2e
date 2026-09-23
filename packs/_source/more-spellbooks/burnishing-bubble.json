@@ -1,0 +1,31 @@
+{
+  "_id": "lbhbmynEcpNHw3XY",
+  "name": "Burnishing Bubble",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>Target is enclosed by an impenetrable sphere that rolls along the ground, unless they pass a DEX save.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lbhbmynEcpNHw3XY",
+  "folder": "MCt2VTDHSjLFlLso"
+}

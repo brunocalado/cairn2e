@@ -1,0 +1,108 @@
+{
+  "_id": "qjjSsrTFWF1tDmDj",
+  "name": "Greenwise: How has the Wood failed you ?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Greenwise</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "vQ4HSME4EUlCGJmc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>An ill-tempered forest spirit cursed you for stealing, marking you as an enemy of their kind. Take a <strong>Bezoar Stone</strong>. Ingesting it cures any poison (1 use, unless retrieved).</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.vQ4HSME4EUlCGJmc"
+    },
+    {
+      "_id": "RtsYXmYbFrjF67jV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A close friend disappeared into the forest. Now you see their face in any tea you brew. Take a <strong>Soporific Concoction</strong> (3 uses).</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.RtsYXmYbFrjF67jV"
+    },
+    {
+      "_id": "AYCgks4cPnb208Nl",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were poisoned, losing your sense of taste and smell. You can now withstand noxious fumes and always carry <strong>Antitoxin</strong> (2 uses).</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.AYCgks4cPnb208Nl"
+    },
+    {
+      "_id": "yuWwbVc2g9wr1dyM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your radical experiments turned your skin green, and you now gain nourishment as a plant. You don't need <strong>Rations</strong>, but a day without sufficient sunlight and water leaves you <em>deprived</em>.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.yuWwbVc2g9wr1dyM"
+    },
+    {
+      "_id": "lXlm2LLjv1wv3BBQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your impressive corpseflower won a local contest then promptly killed a judge. You fled, but not without the <strong>Prize Money (100gp)</strong> and a warrant for your arrest.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.lXlm2LLjv1wv3BBQ"
+    },
+    {
+      "_id": "EpIGuC2XvAZogAPh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You created a restorative tincture that also causes accidental infertility. Take a <strong>Healing Potion</strong> that completely restores STR. Only you know of its unintended side-effects.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.EpIGuC2XvAZogAPh"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!qjjSsrTFWF1tDmDj"
+}

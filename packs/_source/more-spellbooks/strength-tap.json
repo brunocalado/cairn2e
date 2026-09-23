@@ -1,0 +1,31 @@
+{
+  "_id": "JG4HFzvXbXXkwbs3",
+  "name": "Strength Tap",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>A target you touch loses 1d6 STR, which is transferred to you (up to your max STR).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!JG4HFzvXbXXkwbs3",
+  "folder": "MCt2VTDHSjLFlLso"
+}

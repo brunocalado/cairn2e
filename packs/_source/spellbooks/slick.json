@@ -1,0 +1,31 @@
+{
+  "_id": "zpPiGJCnGO0pmlSB",
+  "name": "Slick",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p><em>Gloves are required for handling, lest the book is dropped in a most comical fashion.</em></p><p>Every surface in a 30ft radius becomes extremely slippery.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!zpPiGJCnGO0pmlSB",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

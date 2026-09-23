@@ -1,0 +1,31 @@
+{
+  "_id": "mfcvlpDFsLcqcH3Z",
+  "name": "Snuff",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p><em>If left in one place for long periods, nearby light sources eventually dim, then finally go out.</em></p><p>The source of any mundane light you can see is instantly snuffed out.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!mfcvlpDFsLcqcH3Z",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

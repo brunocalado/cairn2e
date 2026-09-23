@@ -1,0 +1,113 @@
+{
+  "_id": "PsBF7hBvAzj1Bt7u",
+  "name": "Swine Thing",
+  "type": "npc",
+  "img": "icons/creatures/mammals/livestock-pig-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 16,
+        "max": 16
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 13,
+        "max": 13
+      }
+    },
+    "hp": {
+      "value": 9,
+      "max": 9
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "RhsrLNs6nHEEQEpO",
+      "name": "Gore",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>gore (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!PsBF7hBvAzj1Bt7u.RhsrLNs6nHEEQEpO"
+    },
+    {
+      "name": "Obese humanoids that transform into massive porcine monstrosities to feast on human flesh.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "zIjdh24wseXu5C4g",
+      "_key": "!actors.items!PsBF7hBvAzj1Bt7u.zIjdh24wseXu5C4g"
+    },
+    {
+      "name": "Prefer to hunt in isolated settlements close to forests and wetlands.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Can only shapeshift at night.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "NaSDwIy8BtGLf6Cc",
+      "_key": "!actors.items!PsBF7hBvAzj1Bt7u.NaSDwIy8BtGLf6Cc"
+    },
+    {
+      "name": "Charm",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Target obeys the swine's every command until it is killed. WIL save once per round to break free.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "mMIK5A2yY6q4iwlj",
+      "_key": "!actors.items!PsBF7hBvAzj1Bt7u.mMIK5A2yY6q4iwlj"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!PsBF7hBvAzj1Bt7u"
+}

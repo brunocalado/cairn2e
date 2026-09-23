@@ -1,0 +1,31 @@
+{
+  "_id": "ufymRIo6wVWl2ePD",
+  "name": "Wonder Bar",
+  "type": "gear",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-orange.webp",
+  "system": {
+    "description": "<p>Pressing the switch on the side of this iron bar freezes it in place, even in midair. Once frozen, it cannot be moved by any force until the switch is depressed.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Hold the bar with both hands without letting go for one continuous hour (WIL save to succeed). You can make only one attempt each day.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ufymRIo6wVWl2ePD",
+  "folder": "UlnseD8X1WIqJdUA"
+}

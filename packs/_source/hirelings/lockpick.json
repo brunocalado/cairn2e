@@ -1,0 +1,241 @@
+{
+  "_id": "4CcbG7kE14FCBbPa",
+  "name": "Lockpick",
+  "type": "npc",
+  "img": "icons/tools/hand/lockpicks-steel-grey.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 9,
+        "max": 9
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 11,
+        "max": 11
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Lockpick",
+    "dayRate": 10,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "y4BGNSL3u4z0kWgW",
+      "_key": "!actors.items!4CcbG7kE14FCBbPa.y4BGNSL3u4z0kWgW"
+    },
+    {
+      "name": "Lantern",
+      "type": "gear",
+      "img": "icons/sundries/lights/lantern-bullseye-signal-copper.webp",
+      "system": {
+        "description": "<p>Lantern (holds 6 uses of oil, poured from an Oil Can)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 6
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "6BGCv5VLO4iVkC2P",
+      "_key": "!actors.items!4CcbG7kE14FCBbPa.6BGCv5VLO4iVkC2P"
+    },
+    {
+      "name": "Oil Can",
+      "type": "gear",
+      "img": "icons/tools/cooking/can.webp",
+      "system": {
+        "description": "<p>Oil Can (6 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 6,
+          "max": 6
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "0blqeqFFgEvhsCQP",
+      "_key": "!actors.items!4CcbG7kE14FCBbPa.0blqeqFFgEvhsCQP"
+    },
+    {
+      "name": "Cudgel",
+      "type": "gear",
+      "img": "icons/weapons/clubs/club-banded-brown.webp",
+      "system": {
+        "description": "<p>Cudgel (d6 damage)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "iEGeCewLVKlX0d9S",
+      "_key": "!actors.items!4CcbG7kE14FCBbPa.iEGeCewLVKlX0d9S"
+    },
+    {
+      "name": "Lockpick",
+      "type": "gear",
+      "img": "icons/tools/hand/lockpicks-steel-grey.webp",
+      "system": {
+        "description": "<p>Lockpick</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "39LkIphIQ2Ge3dci",
+      "_key": "!actors.items!4CcbG7kE14FCBbPa.39LkIphIQ2Ge3dci"
+    },
+    {
+      "name": "Metal File",
+      "type": "gear",
+      "img": "icons/tools/hand/saw-hacksaw-brass-grey.webp",
+      "system": {
+        "description": "<p>Metal File</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "7d3jprIBsZe1uqfE",
+      "_key": "!actors.items!4CcbG7kE14FCBbPa.7d3jprIBsZe1uqfE"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!4CcbG7kE14FCBbPa"
+}

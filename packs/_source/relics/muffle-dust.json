@@ -1,0 +1,31 @@
+{
+  "_id": "V4hvoeirBDl8Kg3E",
+  "name": "Muffle Dust",
+  "type": "gear",
+  "img": "icons/magic/earth/projectile-boulder-dust.webp",
+  "system": {
+    "description": "<p>A pouch of fine dust that muffles all sound in a 40ft radius when scattered.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!V4hvoeirBDl8Kg3E",
+  "folder": "GrRVMrn19Cm4uCtB"
+}

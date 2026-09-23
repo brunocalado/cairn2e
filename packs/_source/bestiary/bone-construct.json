@@ -1,0 +1,99 @@
+{
+  "_id": "MBPkwOy53lCUh4bo",
+  "name": "Bone Construct",
+  "type": "npc",
+  "img": "icons/creatures/magical/construct-golem-stone-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 5,
+        "max": 5
+      },
+      "WIL": {
+        "value": 3,
+        "max": 3
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 3,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "cRFIQ3gdEGwbCi3B",
+      "name": "Sharpened Arms",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>sharpened arms (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!MBPkwOy53lCUh4bo.cRFIQ3gdEGwbCi3B"
+    },
+    {
+      "name": "Gigantic, four-armed constructs made of bone and sorcery.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "TcZtPRnSIvtwg1De",
+      "_key": "!actors.items!MBPkwOy53lCUh4bo.TcZtPRnSIvtwg1De"
+    },
+    {
+      "name": "Mindless guardians that stand ready to attack any creature other than their creator.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "aA7k1OAdK6OUIpPK",
+      "_key": "!actors.items!MBPkwOy53lCUh4bo.aA7k1OAdK6OUIpPK"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!MBPkwOy53lCUh4bo"
+}

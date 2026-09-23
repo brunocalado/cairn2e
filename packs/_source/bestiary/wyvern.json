@@ -1,0 +1,114 @@
+{
+  "_id": "6kUdvsJigHM9JFmZ",
+  "name": "Wyvern",
+  "type": "npc",
+  "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 13,
+        "max": 13
+      }
+    },
+    "hp": {
+      "value": 11,
+      "max": 11
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "EGHFJOukaZWFbgsg",
+      "name": "Stinger",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>stinger (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!6kUdvsJigHM9JFmZ.EGHFJOukaZWFbgsg"
+    },
+    {
+      "name": "Large, intelligent, winged reptiles.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Dwell in any terrain, but favor dry cliffs.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "wMzqSHUYxFvCGEsK",
+      "_key": "!actors.items!6kUdvsJigHM9JFmZ.wMzqSHUYxFvCGEsK"
+    },
+    {
+      "name": "Shy away from other creatures, preferring to silently stalk their targets from afar.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "7qCm0YgkHCCSDGIi",
+      "_key": "!actors.items!6kUdvsJigHM9JFmZ.7qCm0YgkHCCSDGIi"
+    },
+    {
+      "name": "The victim is impaled and held in place. The wyvern then bites their head off.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "2f71eZOUKcV7z2eP",
+      "_key": "!actors.items!6kUdvsJigHM9JFmZ.2f71eZOUKcV7z2eP"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!6kUdvsJigHM9JFmZ"
+}

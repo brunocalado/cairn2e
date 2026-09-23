@@ -1,0 +1,22 @@
+{{!-- The system's own copy of core's `templates/generic/tab-navigation.hbs`, minus the vertical
+      variant and the icons this window never uses. Local so the part resolves under
+      `systems/cairn2e/` like every other part, and so the offline check can read it.
+
+      The nav and the rule under it are ONE root element, the way the sheet's own strip is
+      (`parts/actor-tabs.hbs`): a part's template is a single element, and the rule belongs to
+      the strip above it rather than floating between two parts.
+
+      The rule is drawn, not a border — the same `hline` at the same weight as the rule under the
+      sheet's Inventory / Petty / Belongings strip. There is deliberately NO rule above the strip:
+      core's `nav.tabs` brings its own `border-top`, which put a second, machined line a few
+      pixels under the window's drawn frame. --}}
+<div class="cairn-edit-nav">
+    <nav class="tabs cairn-edit-tabs" data-group="primary" aria-roledescription="{{localize 'SHEETS.FormNavLabel'}}">
+        {{#each tabs as |tab|}}
+        <a data-action="tab" data-group="{{tab.group}}" data-tab="{{tab.id}}" class="{{tab.cssClass}}">
+            <span>{{localize tab.label}}</span>
+        </a>
+        {{/each}}
+    </nav>
+    <div class="cairn-edit-rule" data-ink="hline" data-ink-seed="edit-tab-rule" data-ink-w="1.8"></div>
+</div>

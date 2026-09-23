@@ -1,0 +1,102 @@
+{{!-- A Background's three lists, stacked as zones rather than sat in three narrow columns.
+
+      They used to be a three-column grid of read-only `<ul>`s, which fitted while nothing on the
+      tab could be clicked. An editable row is an input and a control, and none of that survives a
+      160px column — so the lists run down the tab on the zone idiom the Petty, Belongings and
+      NPC Items tabs already use: heading, drawn rule, then a `.cairn-plain-list` of `.cairn-slot` rows. The
+      tab scrolls, which is what the part's `scrollable` is for.
+
+      NAMES is typed. The inputs are indexed (`system.names.0`, `.1`, …) because
+      `DocumentSheetV2#_processFormData` runs `foundry.utils.expandObject` over the form and
+      `ArrayField._cast` turns the resulting integer-keyed object back into an array — so a plain
+      form submit reaches the model with no help. The indices have to stay contiguous or the array
+      comes back with holes, which is why removing a row rewrites the whole array rather than
+      blanking one input.
+
+      TABLES and STARTING GEAR are dropped, never typed: a RollTable or an Item dragged onto this
+      sheet appends its uuid to the list its type belongs to. The row shows the document's
+      resolved name, and a uuid that no longer resolves says so — a silently blank row is how a
+      background loses a table without anybody noticing.
+
+      STARTING GOLD is one ruled row above the lists: every background opens its SRD list with
+      `3d6 Gold Pieces`, a formula the generator rolls into one sack of coin (`data/item-coin.js`). --}}
+<section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-prop-row">
+            <label for="bg-gold-{{item.id}}">{{localize 'CAIRN.BackgroundStartingGold'}}</label>
+            <input id="bg-gold-{{item.id}}" class="cairn-prop-number" type="text" name="system.startingGold"
+                value="{{system.startingGold}}" maxlength="12" />
+        </div>
+    </div>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Names'}}</h4>
+        <a class="cairn-zone-add" data-action="nameAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.AddName'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-bg-names" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list">
+        {{#each system.names as |n i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="bg-name-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                <input class="cairn-row-input" type="text" name="system.names.{{i}}" value="{{n}}" />
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="nameRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.BackgroundNoNames'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.StartingGear'}}</h4>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-bg-gear" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list">
+        {{#each startingGear as |g i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="bg-gear-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                {{#if g.ok}}
+                <span class="cairn-item-title">{{g.name}}</span>
+                {{else}}
+                <span class="cairn-item-title cairn-broken" data-tooltip="{{g.uuid}}">{{localize 'CAIRN.BackgroundBrokenRef'}}</span>
+                {{/if}}
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="gearRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.BackgroundNoGear'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Tables'}}</h4>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-bg-tables" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list">
+        {{#each tables as |t i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="bg-table-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                {{#if t.ok}}
+                <span class="cairn-item-title">{{t.name}}</span>
+                {{else}}
+                <span class="cairn-item-title cairn-broken" data-tooltip="{{t.uuid}}">{{localize 'CAIRN.BackgroundBrokenRef'}}</span>
+                {{/if}}
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="tableRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.BackgroundNoTables'}}</li>
+        {{/each}}
+    </ol>
+</section>

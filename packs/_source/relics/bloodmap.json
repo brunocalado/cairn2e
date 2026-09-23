@@ -1,0 +1,31 @@
+{
+  "_id": "XEmUOyL7rFWrzUw3",
+  "name": "Bloodmap",
+  "type": "gear",
+  "img": "icons/magic/earth/strike-stone-stalactite-blood-red.webp",
+  "system": {
+    "description": "<p>A blank leather parchment that absorbs any blood spilled on its surface before rolling into a tight scroll. Unroll to see a rough map revealing the current location of any remaining blood. The image disappears after a few minutes.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Pour a pint of your own life essence onto the map, blood for blood. You are <em>deprived</em> until you can rest and eat a Ration.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XEmUOyL7rFWrzUw3",
+  "folder": "UlnseD8X1WIqJdUA"
+}

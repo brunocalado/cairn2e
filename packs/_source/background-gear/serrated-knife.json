@@ -1,0 +1,31 @@
+{
+  "_id": "x89IPsPuvTrESmM5",
+  "name": "Serrated Knife",
+  "type": "gear",
+  "img": "icons/weapons/daggers/dagger-serrated-black.webp",
+  "system": {
+    "description": "<p>Serrated Knife (d6)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!x89IPsPuvTrESmM5",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

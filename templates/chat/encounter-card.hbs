@@ -1,0 +1,17 @@
+{{!-- Warden-only "Add to scene" control, appended by `module/encounters.js#renderEncounterButton`
+      to the foot of a RollTable draw's body: what would be placed, and the control to place it.
+      Not a card of its own — the message element is already the card. --}}
+<section class="cairn-table-foot">
+    <ul class="cairn-encounter-rows">
+        {{#each rows}}
+        <li><strong>{{this.count}}</strong> &times; {{this.label}}</li>
+        {{/each}}
+    </ul>
+    {{#if added}}
+    <p class="cairn-encounter-done">{{localize "CAIRN.Encounter.Added"}}</p>
+    {{else}}
+    <button type="button" class="cairn-card-action cairn-encounter-add">
+        <i class="fas fa-map-location-dot" inert></i>{{localize "CAIRN.Encounter.Add"}}
+    </button>
+    {{/if}}
+</section>

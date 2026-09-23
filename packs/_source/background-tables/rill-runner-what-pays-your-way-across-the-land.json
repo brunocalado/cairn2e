@@ -1,0 +1,108 @@
+{
+  "_id": "6kBvpnelADVAJYGI",
+  "name": "Rill Runner: What pays your way across the land?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Rill Runner</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "HYRhkxnQrtqMSOBN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Performance</strong> Performing at taverns always yields both room and board. Sometimes you even get tips! Start with an extra <strong>10gp</strong>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.HYRhkxnQrtqMSOBN"
+    },
+    {
+      "_id": "0j0cRQplOzWYxQwO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Bodyguard</strong> You are a protector for those afraid to travel alone. Start with a <strong>Rapier</strong> (d8).</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.0j0cRQplOzWYxQwO"
+    },
+    {
+      "_id": "X9kDydAxnpwseEuD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Wares</strong> You buy low and sell high, always making just enough to get by. Take a <strong>single item</strong> worth <strong>20gp</strong> (or less) from the [gear](/second-edition/players-guide/marketplace#gear) table.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.X9kDydAxnpwseEuD"
+    },
+    {
+      "_id": "d4QiugTbfKgSUXco",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Transport</strong> You deliver \"delicate\" packages throughout the lands. You have at least one contact in any major town.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.d4QiugTbfKgSUXco"
+    },
+    {
+      "_id": "LTP0BaEbZ2mZL6A5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sailor's Friend</strong> Over troubled waters and dangerous winds, you always make sure a ship reaches its destination. For you, passage is always free.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.LTP0BaEbZ2mZL6A5"
+    },
+    {
+      "_id": "Xg2mHZEgEkCUDfIB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Guide</strong> You shepherd caravans and travelers across water-soaked lands. Start a <strong>map</strong> (<em>petty</em>) relevant to your next journey.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.Xg2mHZEgEkCUDfIB"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!6kBvpnelADVAJYGI"
+}

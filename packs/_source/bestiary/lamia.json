@@ -1,0 +1,114 @@
+{
+  "_id": "KrU9qgCjCtVifs6n",
+  "name": "Lamia",
+  "type": "npc",
+  "img": "icons/creatures/reptiles/snake-fangs-bite-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 11,
+        "max": 11
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 16,
+        "max": 16
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "af4riB6CDCwZOmGB",
+      "name": "Toothy Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>toothy bite (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!KrU9qgCjCtVifs6n.af4riB6CDCwZOmGB"
+    },
+    {
+      "name": "Centaur-like creatures that prey on the life force of others, seducing their victims through heightened charm and intelligence.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Their upper bodies are typically humanoid, the lower half any number of animal hybrids.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nS2xfhrTAv8ef5RU",
+      "_key": "!actors.items!KrU9qgCjCtVifs6n.nS2xfhrTAv8ef5RU"
+    },
+    {
+      "name": "Inherently magical.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Can create illusions, charm creatures, and disguise themselves at will.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "5A28FFcsZssYZmki",
+      "_key": "!actors.items!KrU9qgCjCtVifs6n.5A28FFcsZssYZmki"
+    },
+    {
+      "name": "The target takes d6 WIL damage as their spirit is slowly sapped away. They then become enthralled to the Lamia, obeying its every command while in its presence.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "5xtCbZqq1GrAzCfi",
+      "_key": "!actors.items!KrU9qgCjCtVifs6n.5xtCbZqq1GrAzCfi"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!KrU9qgCjCtVifs6n"
+}

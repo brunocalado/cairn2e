@@ -1,0 +1,113 @@
+{{!-- The printed sheet's top: the portrait at the far left, the name beside it with the two
+      conditions on its line, and the Background line under it with the three procedures on
+      that one. Two lines, not two columns: the name runs all the way to the conditions, and
+      the chips keep the right edge of each (`.cairn-header-line`).
+
+      There is not one border in this file. Every frame is drawn at runtime by `module/ink.js`
+      from the element's measured size — that is what `data-ink` marks. The portrait alone has
+      none: a drawn line against the hard edge of a picture never read as a frame, only ever as a
+      line that had missed. --}}
+<div class="cairn-sheet-header cairn-actor-header">
+
+    <div class="cairn-header-row">
+        <div class="cairn-portrait-frame">
+            <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" />
+        </div>
+
+        <div class="cairn-header-main">
+            {{!-- Line one: the name, and the two conditions at its right. The chips share one
+                  visual language with the three procedures on the line below: a drawn frame,
+                  washed with ink on hover and flooded with it when a condition is on. They are
+                  the same kind of thing — a state you can set and an action you can take — and
+                  they were reading as two because one was a chip and the other a button.
+
+                  The fill alphas are here rather than in `ink.js` because they ARE the design:
+                  0.14 is a wash a dark label reads through, 0.92 is a ground a paper label
+                  reverses out of, and 0.74 is that ground lifted just enough that hovering an on
+                  chip says something. A label is never drawn the same colour as the ground under
+                  it in any of the four states — that is what `css/src/character-sheet.css` pairs with each
+                  of these. --}}
+            <div class="cairn-header-line">
+                <input class="name-input" type="text" name="name" value="{{actor.name}}"
+                    placeholder="{{localize 'CAIRN.Name'}}"
+                    data-ink="box" data-ink-seed="actor-name" data-ink-w="1.6" />
+                <div class="cairn-conditions">
+                    <button type="button" class="cairn-chip cairn-condition{{#if system.panicked}} is-on{{/if}}"
+                        data-action="conditionToggle" data-condition="panicked"
+                        data-ink="box" data-ink-seed="panicked" data-ink-w="1.6"
+                        {{#if system.panicked}}data-ink-fill="always" data-ink-fill-a="0.92" data-ink-fill-hover-a="0.74"{{else}}data-ink-fill="hover" data-ink-fill-a="0.14"{{/if}}>
+                        <span>{{localize 'CAIRN.Condition.Panicked'}}</span>
+                    </button>
+                    <button type="button" class="cairn-chip cairn-condition{{#if system.deprived}} is-on{{/if}}"
+                        data-action="conditionToggle" data-condition="deprived"
+                        data-ink="box" data-ink-seed="deprived" data-ink-w="1.6"
+                        {{#if system.deprived}}data-ink-fill="always" data-ink-fill-a="0.92" data-ink-fill-hover-a="0.74"{{else}}data-ink-fill="hover" data-ink-fill-a="0.14"{{/if}}>
+                        <span>{{localize 'CAIRN.Condition.Deprived'}}</span>
+                    </button>
+                </div>
+            </div>
+
+            {{!-- Line two: the Background-and-age line, and the three procedures at its right.
+
+                  Background is a dropped Item, not typed text: the twenty 2e backgrounds are
+                  compendium documents carrying the name lists, starting gear and d6 tables.
+                  Dropping another one over it is the ONLY way to change it — there is no picker
+                  in the edit window, because a field editable in two places is two sources of
+                  truth one save apart.
+
+                  Age follows it on the same line after a dash, read-only, as "32 years" and
+                  nothing more — the number and its unit say what they are without a label — in
+                  the Background's own size and ink so "Kettlewright – 39 years" reads as one
+                  fact, and only once it has been set: a character whose age is still 0 is one
+                  whose creation never rolled it, and "0 years" printed on the sheet is a fact
+                  that is not true. The Background is first, so it stands in the same place
+                  whether the age is there or not, and the line sits centred in the height under
+                  the name rather than pinned to its top. Editing stays in the window behind the
+                  quill. --}}
+            <div class="cairn-header-line">
+                <div class="cairn-header-sub cairn-background-line">
+                    <div class="cairn-background-slot{{#unless backgroundItem}} is-empty{{/unless}}"
+                        data-drop="background"
+                        data-tooltip="{{localize 'CAIRN.DropBackground'}}">
+                        {{#if backgroundItem}}
+                        <a data-action="openBackground" data-tooltip="{{backgroundItem.fullName}}">{{backgroundItem.name}}</a>
+                        {{else}}
+                        <span>{{localize 'CAIRN.DropBackground'}}</span>
+                        {{/if}}
+                    </div>
+                    {{#if system.age}}
+                    <span>&ndash;</span>
+                    <div class="cairn-age">
+                        <span>{{system.age}}</span>
+                        <span class="cairn-age-unit">{{localize 'CAIRN.Years'}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+
+                {{!-- Rest and Restore are shut while Deprived — the rule, not a UI choice. A
+                      disabled one keeps its label at full strength and takes a red line through
+                      it: the one colour on the sheet, and it says only this. The strike is
+                      measured from the LABEL and drawn over the content, so it crosses the word
+                      and not the chip. --}}
+                <div class="cairn-sheet-actions">
+                    <button type="button" class="cairn-chip" data-action="rest"
+                        data-ink="box" data-ink-seed="rest" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14"
+                        {{#if system.deprived}}disabled data-tooltip="{{localize 'CAIRN.Notify.DeprivedNoRecovery'}}"{{/if}}>
+                        <span{{#if system.deprived}} data-ink="strike" data-ink-seed="strike-rest" data-ink-c="red" data-ink-w="1.5" data-ink-layer="over"{{/if}}>{{localize 'CAIRN.Rest'}}</span>
+                    </button>
+                    <button type="button" class="cairn-chip" data-action="restoreAbilities"
+                        data-ink="box" data-ink-seed="restore" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14"
+                        {{#if system.deprived}}disabled data-tooltip="{{localize 'CAIRN.Notify.DeprivedNoRecovery'}}"{{/if}}>
+                        <span{{#if system.deprived}} data-ink="strike" data-ink-seed="strike-restore" data-ink-c="red" data-ink-w="1.5" data-ink-layer="over"{{/if}}>{{localize 'CAIRN.RestoreAbilities'}}</span>
+                    </button>
+                    <button type="button" class="cairn-chip" data-action="dieOfFate"
+                        data-ink="box" data-ink-seed="fate" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14">
+                        <span>{{localize 'CAIRN.DieOfFate'}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> "systems/cairn2e/templates/parts/attribute-row.hbs" abilities=abilities system=system seed="cap" editable=editable}}
+</div>

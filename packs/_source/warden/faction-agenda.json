@@ -1,0 +1,318 @@
+{
+  "_id": "AD6hmMPT7LxNgObC",
+  "name": "Faction Agenda",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Agenda column of the Faction Agendas table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "tAMgNZw3CRjR6TZ9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ascend to a Higher Plane",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.tAMgNZw3CRjR6TZ9"
+    },
+    {
+      "_id": "h66p0Pe9Gf55ZHgD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Collect Artifacts",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.h66p0Pe9Gf55ZHgD"
+    },
+    {
+      "_id": "nWPzPqeJN2KSElLJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cultivate a Rare Resource",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.nWPzPqeJN2KSElLJ"
+    },
+    {
+      "_id": "ep28sc4VN0peWKJV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Defend Something",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.ep28sc4VN0peWKJV"
+    },
+    {
+      "_id": "MBiwrGVbah6tckIl",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Destroy Something",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.MBiwrGVbah6tckIl"
+    },
+    {
+      "_id": "PZiyqeI8iLaRc37l",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Dominate Others",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.PZiyqeI8iLaRc37l"
+    },
+    {
+      "_id": "lujrrI0LiLXGXQMu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Enrich Themselves",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.lujrrI0LiLXGXQMu"
+    },
+    {
+      "_id": "EgiHi60Hqbj51dRK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Establish a Colony",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.EgiHi60Hqbj51dRK"
+    },
+    {
+      "_id": "VDWohD2bC3rUSSiO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Establish a New Order",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.VDWohD2bC3rUSSiO"
+    },
+    {
+      "_id": "g5AM7v0serAQw3kE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Explore Uncharted Lands",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.g5AM7v0serAQw3kE"
+    },
+    {
+      "_id": "krin2usuBat1ZVRY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Forge an Alliance",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.krin2usuBat1ZVRY"
+    },
+    {
+      "_id": "iI0Du8rgRXOhASf7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Infiltrate Another Faction",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.iI0Du8rgRXOhASf7"
+    },
+    {
+      "_id": "8uuCFtybFlfbUF4z",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Preserve the Status Quo",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.8uuCFtybFlfbUF4z"
+    },
+    {
+      "_id": "Yn2s2aIL4olXAtcq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Protect a Secret",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.Yn2s2aIL4olXAtcq"
+    },
+    {
+      "_id": "2vBLxskuU1c2CYcM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Purge the Land",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.2vBLxskuU1c2CYcM"
+    },
+    {
+      "_id": "wfrgBVmfGbTyTCfp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Reveal a Secret",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.wfrgBVmfGbTyTCfp"
+    },
+    {
+      "_id": "46pYUHEz7ITHY0ZS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Revenge",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.46pYUHEz7ITHY0ZS"
+    },
+    {
+      "_id": "EyahP6RcHMzpv1Aq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Revive a Former Power",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.EyahP6RcHMzpv1Aq"
+    },
+    {
+      "_id": "GKIPgxAFi9kx47jn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Seek New Leadership",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.GKIPgxAFi9kx47jn"
+    },
+    {
+      "_id": "JSXHaakJ1sLZOhpf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Spread a Belief",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AD6hmMPT7LxNgObC.JSXHaakJ1sLZOhpf"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!AD6hmMPT7LxNgObC"
+}

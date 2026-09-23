@@ -1,0 +1,12 @@
+{{!-- The player characters on the roster, in marching order. Drop an Actor anywhere on the sheet
+      to add it; drag a row onto another to move it. Nothing here is a field: every number is the
+      member's own and is set on the member's own sheet, which the name opens. --}}
+<section class="tab {{tabs.members.cssClass}}" data-group="primary" data-tab="members">
+    <ul class="cairn-plain-list cairn-party-list">
+        {{#each members as |m|}}
+        {{> "systems/cairn2e/templates/parts/party-row.hbs"}}
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Party.NoMembers'}}</li>
+        {{/each}}
+    </ul>
+</section>

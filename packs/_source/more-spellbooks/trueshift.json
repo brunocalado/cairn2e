@@ -1,0 +1,31 @@
+{
+  "_id": "niC4XgyyEbxMot5z",
+  "name": "Trueshift",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p>A willing target takes on a new form (keeping only their WIL), but must pass a WIL save to shift out.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!niC4XgyyEbxMot5z",
+  "folder": "dbsFyDgpaspE6vMK"
+}

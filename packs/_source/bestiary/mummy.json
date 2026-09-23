@@ -1,0 +1,100 @@
+{
+  "_id": "eCD43s6PDOWVl0tm",
+  "name": "Mummy",
+  "type": "npc",
+  "img": "icons/commodities/treasure/doll-mummy.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 6,
+        "max": 6
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "MD0UsH8nLFRXC0vy",
+      "name": "Necrotic Touch",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>necrotic touch (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!eCD43s6PDOWVl0tm.MD0UsH8nLFRXC0vy"
+    },
+    {
+      "name": "Undead humanoids wrapped in funerary cloth.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Found in pyramids, ruins, temples, and tombs.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "zMrB5ibjMyBzORO1",
+      "_key": "!actors.items!eCD43s6PDOWVl0tm.zMrB5ibjMyBzORO1"
+    },
+    {
+      "name": "Target is infected with mummy rot, and is unable to recover STR until they are cured by a specialist healer. The target is also deprived.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "OMDNynKuAAiKuKD4",
+      "_key": "!actors.items!eCD43s6PDOWVl0tm.OMDNynKuAAiKuKD4"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!eCD43s6PDOWVl0tm"
+}

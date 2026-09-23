@@ -1,0 +1,21 @@
+{{!-- The party sheet's top, on the actor header's skeleton so it lines up with the other two at
+      the same window width: portrait, then the one name field. Nothing else — a party has no
+      statistics, so there is no sub-line of numbers to carry and no chips to offer. The frame
+      around the name is drawn at runtime by `module/ink.js`; the portrait has none, as on the
+      character's and the NPC's. --}}
+<div class="cairn-sheet-header cairn-actor-header">
+
+    <div class="cairn-header-row">
+        <div class="cairn-portrait-frame">
+            <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" />
+        </div>
+
+        <div class="cairn-header-main">
+            <div class="cairn-header-line">
+                <input class="name-input" type="text" name="name" value="{{actor.name}}"
+                    placeholder="{{localize 'CAIRN.Name'}}"
+                    data-ink="box" data-ink-seed="actor-name" data-ink-w="1.6" />
+            </div>
+        </div>
+    </div>
+</div>

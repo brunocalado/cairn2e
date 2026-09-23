@@ -1,0 +1,31 @@
+{
+  "_id": "UaNWcJcfW2EVToaF",
+  "name": "Veilsilk Grip",
+  "type": "gear",
+  "img": "icons/magic/nature/root-vine-entangled-hand.webp",
+  "system": {
+    "description": "<p>A hand wearing this glove can phase through solid objects.</p><p><em>Petty.</em></p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Snip off one of the fingers.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UaNWcJcfW2EVToaF",
+  "folder": "UlnseD8X1WIqJdUA"
+}

@@ -1,0 +1,318 @@
+{
+  "_id": "AYlo7v4W3HiuueL3",
+  "name": "Monster Weakness",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Weakness column of the Monster Traits table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "35PAccBZ6aQxPRqD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Alcohol",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.35PAccBZ6aQxPRqD"
+    },
+    {
+      "_id": "UVsQidOjFFKSXsXu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cold",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.UVsQidOjFFKSXsXu"
+    },
+    {
+      "_id": "GJWs5ML2gz6rrwJl",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Conversation",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.GJWs5ML2gz6rrwJl"
+    },
+    {
+      "_id": "vT5BDSAAAGCQsePr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Flattery",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.vT5BDSAAAGCQsePr"
+    },
+    {
+      "_id": "VgwCi7Zn7jdNRSDz",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Games",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.VgwCi7Zn7jdNRSDz"
+    },
+    {
+      "_id": "qujwoXnXAgEi6uK2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Gifts",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.qujwoXnXAgEi6uK2"
+    },
+    {
+      "_id": "XbwDizN0ll0B1WC3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Iron",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.XbwDizN0ll0B1WC3"
+    },
+    {
+      "_id": "X1gSCnXF46uelREj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Loud Noises",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.X1gSCnXF46uelREj"
+    },
+    {
+      "_id": "cPhJxScgeLep2dyh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Mirrors",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.cPhJxScgeLep2dyh"
+    },
+    {
+      "_id": "CAEcAKLcNUNpjC6z",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bright Colors",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.CAEcAKLcNUNpjC6z"
+    },
+    {
+      "_id": "9bodYFS6GNKCAB1f",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Moonlight",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.9bodYFS6GNKCAB1f"
+    },
+    {
+      "_id": "HZDhXwWYviPmwMLP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Music",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.HZDhXwWYviPmwMLP"
+    },
+    {
+      "_id": "II8GFYOsfZgQse1H",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Prepared Meals",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.II8GFYOsfZgQse1H"
+    },
+    {
+      "_id": "aegAAdScmFxEtlpZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Puzzles",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.aegAAdScmFxEtlpZ"
+    },
+    {
+      "_id": "vBPDFOZ7F1V2eFLT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Religious Icons",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.vBPDFOZ7F1V2eFLT"
+    },
+    {
+      "_id": "Z5TLH0jEaCDy1qAR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Salt",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.Z5TLH0jEaCDy1qAR"
+    },
+    {
+      "_id": "MKd3YGrI7AYgDMjZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Silver",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.MKd3YGrI7AYgDMjZ"
+    },
+    {
+      "_id": "UqmmoREI03xk6nZU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sunlight",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.UqmmoREI03xk6nZU"
+    },
+    {
+      "_id": "2J7WyqTfFLacJHeU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "True Name",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.2J7WyqTfFLacJHeU"
+    },
+    {
+      "_id": "AAF2EStfLr2R5Nqs",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Weak Spot",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AYlo7v4W3HiuueL3.AAF2EStfLr2R5Nqs"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!AYlo7v4W3HiuueL3"
+}

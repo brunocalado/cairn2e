@@ -1,0 +1,31 @@
+{
+  "_id": "n1LvpcqMnU4REom7",
+  "name": "Lapis Lazuli",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-rough-oval-blue.webp",
+  "system": {
+    "description": "<p>Night-blue, dusted with gold flecks of pyrite.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!n1LvpcqMnU4REom7",
+  "folder": "Qai89dBcno9Coube"
+}

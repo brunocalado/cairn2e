@@ -1,0 +1,13 @@
+{{!-- Everyone travelling with the party who is not a player character: hirelings, mounts, the
+      Half-Witch's raven, anyone met on the road. One `npc` subtype covers all of them
+      (`module/data/actor-npc.js`), so the tab is told apart by the member's type and not by a
+      list of its own. Same row, two readings fewer — an NPC has no ten slots and no Fatigue. --}}
+<section class="tab {{tabs.followers.cssClass}}" data-group="primary" data-tab="followers">
+    <ul class="cairn-plain-list cairn-party-list">
+        {{#each followers as |m|}}
+        {{> "systems/cairn2e/templates/parts/party-row.hbs"}}
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Party.NoFollowers'}}</li>
+        {{/each}}
+    </ul>
+</section>

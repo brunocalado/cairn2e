@@ -1,0 +1,31 @@
+{
+  "_id": "VwBbJ68oI8cDl0or",
+  "name": "Star Sapphire",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-radiant-blue.webp",
+  "system": {
+    "description": "<p>Blue, and a six-rayed star crosses the dome as the stone turns.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 500,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VwBbJ68oI8cDl0or",
+  "folder": "HJvY3JTRuL5xJNFj"
+}

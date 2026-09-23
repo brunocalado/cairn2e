@@ -1,0 +1,31 @@
+{
+  "_id": "332E8oBpLJwew3bA",
+  "name": "Gorgon's Gaze",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p>Target is transformed into a statue on a failed WIL save. A success reverses the spell; holder must pass a WIL save or the book is destroyed.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!332E8oBpLJwew3bA",
+  "folder": "dbsFyDgpaspE6vMK"
+}

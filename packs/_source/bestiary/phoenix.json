@@ -1,0 +1,113 @@
+{
+  "_id": "oPARiLr9Mu0Mu2P1",
+  "name": "Phoenix",
+  "type": "npc",
+  "img": "icons/magic/fire/flame-burning-embers-orange.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "l6FdGQdqoRRXDNRP",
+      "name": "Talons",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>talons (d10+d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!oPARiLr9Mu0Mu2P1.l6FdGQdqoRRXDNRP"
+    },
+    {
+      "name": "Intelligent, hawk-like spirits of pure flame, found in isolated deserts and high mountains.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "MH9GyV9hriq3ZGSg",
+      "_key": "!actors.items!oPARiLr9Mu0Mu2P1.MH9GyV9hriq3ZGSg"
+    },
+    {
+      "name": "If killed, they explode in a burst of flames.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>They are reborn 1d3 days later from the ashes.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "MPekUy1c2cukPOI5",
+      "_key": "!actors.items!oPARiLr9Mu0Mu2P1.MPekUy1c2cukPOI5"
+    },
+    {
+      "name": "Their feathers are highly-sought after for their healing properties.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "stQ7V4nxvAlSDD9X",
+      "_key": "!actors.items!oPARiLr9Mu0Mu2P1.stQ7V4nxvAlSDD9X"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!oPARiLr9Mu0Mu2P1"
+}

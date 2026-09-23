@@ -1,0 +1,90 @@
+{{!-- Everything permanent about this character, in the two kinds 2e has.
+
+      Cairn files Scars under Growth — "with some notable exceptions (such as Scars), growth
+      should always stem from a character's experiences in the game world" (Warden's Guide,
+      Growth) — so this is one tab with a zone each. Scars are the table-driven kind, oldest
+      first, which is the only order they have. Growth is the kind the Warden grants from what
+      happened in play.
+
+      Pending and taken are told apart by what the row OFFERS, not by a colour: a scar whose gain
+      is still owed carries the die that takes it. The tag under the text is the record — "Max Hit
+      Protection 4 → 7" — and it is printed, never editable: the number that rules is the
+      character's own maximum, and it is edited in the edit window behind the quill. It sits under
+      the sentence rather than beside it: beside, a three-line sentence left it floating mid-row
+      with nothing to align to.
+
+      A growth's second tag is its milestone progress, and it is absent when the growth was never
+      a checklist — "0/0" would claim a list that does not exist.
+
+      The Scars add takes a Scar with no hit behind it: a Warden handing one out, or a character
+      being written up after the fact. --}}
+<section class="tab {{tabs.growth.cssClass}}" data-group="primary" data-tab="growth">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Scar.Title'}}</h4>
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="scarCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Scar.Add'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-scars" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list cairn-record-list">
+        {{#each scars as |s|}}
+        <li class="cairn-record draggable" data-item-id="{{s.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="scar-{{s.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-record-body">
+                <span class="cairn-record-text"><strong>{{s.name}}</strong> {{{s.description}}}</span>
+                {{#if s.outcome}}<span class="cairn-item-tag cairn-record-tag">{{s.outcome}}</span>{{/if}}
+            </span>
+            <span class="cairn-item-controls">
+                {{#if @root.editable}}{{#if s.pending}}
+                <a data-action="scarResolve" data-tooltip="{{localize 'CAIRN.Scar.Resolve'}}"><i class="fas fa-dice-d6"></i></a>
+                {{/if}}{{/if}}
+                <a data-action="itemEdit" data-tooltip="{{localize 'CAIRN.EditItem'}}"><i class="fas fa-pencil"></i></a>
+                {{#if @root.editable}}
+                <a data-action="itemDelete" data-tooltip="{{localize 'CAIRN.DeleteItem'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Scar.None'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Growth.Zone'}}</h4>
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="growthCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Growth.Add'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list cairn-record-list">
+        {{#each growth as |g|}}
+        <li class="cairn-record draggable" data-item-id="{{g.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="growth-{{g.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-record-body">
+                <span class="cairn-record-text"><strong>{{g.name}}</strong> {{{g.description}}}</span>
+                {{#if g.tags}}
+                <span class="cairn-record-tags">
+                    {{#if g.outcome}}<span class="cairn-item-tag cairn-record-tag">{{g.outcome}}</span>{{/if}}
+                    {{#if g.progress}}<span class="cairn-item-tag cairn-record-tag">{{g.progress}}</span>{{/if}}
+                </span>
+                {{/if}}
+            </span>
+            <span class="cairn-item-controls">
+                {{#if @root.editable}}{{#unless g.resolved}}
+                <a data-action="growthApply" data-tooltip="{{localize 'CAIRN.Growth.Apply'}}"><i class="fas fa-arrow-up"></i></a>
+                {{/unless}}{{/if}}
+                <a data-action="itemEdit" data-tooltip="{{localize 'CAIRN.EditItem'}}"><i class="fas fa-pencil"></i></a>
+                {{#if @root.editable}}
+                <a data-action="itemDelete" data-tooltip="{{localize 'CAIRN.DeleteItem'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Growth.None'}}</li>
+        {{/each}}
+    </ol>
+</section>

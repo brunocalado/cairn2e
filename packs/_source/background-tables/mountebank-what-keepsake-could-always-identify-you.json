@@ -1,0 +1,108 @@
+{
+  "_id": "JV4SWIZgxSOD1Gc5",
+  "name": "Mountebank: What keepsake could always identify you?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Mountebank</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "IVXVC1eSDwqI9qlF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Royal Crest</strong> Born into royalty, you chose a different life. The crest grants you access but also alerts your family of your whereabouts. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.IVXVC1eSDwqI9qlF"
+    },
+    {
+      "_id": "GAEUM8eRYgbmpBM3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Miracle Oil</strong> A smelly, slippery concoction. 2 uses.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.GAEUM8eRYgbmpBM3"
+    },
+    {
+      "_id": "gi6qG4buurHsjh5U",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Surgeon's Soap</strong> A lye and ash block that makes skin temporarily transparent, revealing the anatomy within. 4 uses.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.gi6qG4buurHsjh5U"
+    },
+    {
+      "_id": "EYvjhxuzbNnPfHOQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Goat Powder</strong> Derived from the placenta of a baby goat.  Temporarily cures any affliction, but symptoms return within hours.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.EYvjhxuzbNnPfHOQ"
+    },
+    {
+      "_id": "XjFRLHEHhpS7YhEW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Cursed Sapphire</strong> Worth <strong>200gp</strong>, it noticeably returns to your pocket shortly after you spend it. You can't seem to get rid of it.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.XjFRLHEHhpS7YhEW"
+    },
+    {
+      "_id": "l0RWi8GT6biHTIOM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Alchemical Tattoo</strong> A dog, cat, or bird that can leave your body on demand. It follows your commands to the best of its abilities and can pass its injuries (<em>as STR loss</em>) back onto you. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.l0RWi8GT6biHTIOM"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!JV4SWIZgxSOD1Gc5"
+}

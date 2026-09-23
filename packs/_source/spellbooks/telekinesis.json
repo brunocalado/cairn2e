@@ -1,0 +1,31 @@
+{
+  "_id": "QIJDWsqfwepCurEw",
+  "name": "Telekinesis",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p><em>The owner can summon the book through mental command alone (WIL save or become deprived afterwards).</em></p><p>You may mentally 1 move item under 60lbs.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QIJDWsqfwepCurEw",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

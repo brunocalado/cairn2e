@@ -1,0 +1,8 @@
+{{!-- A die and what it meant: the roll line, the outcome's name, and the rule's prose under it.
+      The journey's lost/weather/Supply dice and a faction's d6 are the same card — the caption is
+      the message's `flavor`, and the roll line is the Roll's own chat template, as on a save. --}}
+{{{rollHTML}}}
+<p class="cairn-card-outcome {{resultCls}}">{{lead}}</p>
+{{#if text}}
+<p>{{text}}</p>
+{{/if}}

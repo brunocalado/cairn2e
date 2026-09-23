@@ -1,0 +1,31 @@
+{
+  "_id": "E00dtVkRzbDi6l0Z",
+  "name": "Summon Elemental",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p>A being of fire, wire, earth, or wind manifests from available matter to perform a single task for the caster. It follows this command against its will.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!E00dtVkRzbDi6l0Z",
+  "folder": "dbsFyDgpaspE6vMK"
+}

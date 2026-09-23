@@ -1,0 +1,48 @@
+{
+  "_id": "mdSEDNINvbfEa7cW",
+  "name": "Die of Fate",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Optionally, roll 1d6 whenever the outcome of an event is uncertain or to simulate an element of randomness and chance.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "CgyushRGodptuNw3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "3 or under: bad luck for the PCs.",
+      "weight": 1,
+      "range": [
+        1,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!mdSEDNINvbfEa7cW.CgyushRGodptuNw3"
+    },
+    {
+      "_id": "dJ4CrdiBdnTKWhvN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "4 or more: the outcome favors the PCs.",
+      "weight": 1,
+      "range": [
+        4,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!mdSEDNINvbfEa7cW.dJ4CrdiBdnTKWhvN"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!mdSEDNINvbfEa7cW"
+}

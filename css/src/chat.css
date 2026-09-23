@@ -1,0 +1,380 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Primitive 9 — the chat message. Every <li> in the log is drawn by     *
+     * this system's own CONFIG.ChatMessage.template, which gives it the      *
+     * `.cairn2e` scope class, so these rules reach the whole message and     *
+     * never leak into another system's log.                                  *
+     *                                                                       *
+     * A message sits in a panel the USER has themed, so it is the one place  *
+     * in the system built from the swapping `--cairn-surface-*` pair rather  *
+     * than from fixed ink on fixed paper.                                    *
+     **************************************************************************/
+
+    /* The message IS the card. Core pads a message by 8px inside its own 2px parchment border,
+       which framed a card inside a frame; the system's template replaces that markup outright,
+       so the padding and border go and what a card posts is only its body. */
+    &.cairn-message {
+        background: var(--cairn-surface-bg);
+        border: var(--cairn-rule) solid var(--cairn-surface-fg);
+        border-radius: var(--cairn-radius);
+        color: var(--cairn-surface-fg);
+        font-family: var(--cairn-serif);
+        overflow: hidden;
+        padding: 0;
+
+        /* The sender line and the timestamp, standing on the card's paper: they take the card's
+           ink instead of `--color-dark-4`, which is a tan-on-parchment grey and unreadable on
+           either ground. The rule under it closes the caption's frame: the caption carried a rule
+           below and nothing above, so the two lines read as one two-line block rather than as a
+           header and a title. A message with no caption keeps the rule, which gives every message
+           in the log the same structure. */
+        .message-header {
+            border-bottom: var(--cairn-rule) solid var(--cairn-surface-fg);
+            color: var(--cairn-surface-fg);
+            column-gap: 10px;
+            font-family: var(--cairn-serif);
+            padding: 7px 11px 6px;
+        }
+
+        /* The name is the only thing on that row that wants space, so it takes all of it.
+           Core styles `.message-sender`, and this template writes `.cairn-message-sender` — so
+           core's `flex: 3` and `white-space: nowrap` never applied, the name fell through to
+           `.flexrow > * { flex: 1 }` while `.message-metadata` kept core's `flex: 2`, and a name
+           of three words wrapped inside a third of the card with two thirds of the row empty.
+
+           The basis is 0, not `auto`: `.flexrow` is `flex-wrap: wrap`, and a wrap is decided from
+           base sizes BEFORE any shrink happens, so an auto basis sends the timestamp to a line of
+           its own as soon as the name is long. `overflow-wrap` is what breaks a single word longer
+           than the whole row, which `min-width: 0` alone would only let overflow. */
+        .cairn-message-sender {
+            flex: 1 1 0;
+            font-weight: 700;
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .message-metadata {
+            flex: 0 0 auto;
+        }
+
+        /* A message that went to some of the table and not all of it. Core says this with a blue
+           ground and a blue border; the contract has two colour exceptions and this is not one, so
+           it is said with the sunk ground and, in the header, with the words "To: name".
+           The wash is LAYERED over the card's paper rather than replacing it: `--cairn-paper-sunk`
+           is a translucent ink, and on its own it would composite against the dark sidebar behind
+           the log instead of against the card, which paints the message almost black. */
+        &:is(.whisper, .blind) {
+            background:
+                linear-gradient(var(--cairn-paper-sunk), var(--cairn-paper-sunk)),
+                var(--cairn-surface-bg);
+        }
+
+        /* An emote is the table's own voice rather than a character's. */
+        &.emote .message-content {
+            font-style: italic;
+        }
+    }
+
+    /* The whispered-to line, under the sender on its own row. */
+    .cairn-message-to {
+        flex: 0 0 100%;
+        font-size: 11px;
+        opacity: 0.75;
+    }
+
+    /* The message's caption — its `flavor`, drawn between the sender line and the body: capitals
+       over a 2px rule, ink on the card's own paper, the tab rail's language rather than a filled
+       bar. A filled bar sat as a second dark band directly under the header, and its capitals rode
+       high in it because the chat log's line-height is core's, not ours. `line-height: 1` here so
+       the caption's height is its own. */
+    .cairn-card-title {
+        /* The wash is mixed from the card's own TEXT colour, not from `--cairn-paper-sunk`: that
+           token is ink at 5% in both themes, and ink on ink says nothing in a dark log. At 7% of
+           whichever colour is the ink, the band reads the same amount on paper and on ink. Mixed
+           INTO `--cairn-surface-bg` rather than layered as a translucent fill, because a
+           translucent fill composites against the sidebar behind the card, not against the card. */
+        background: color-mix(in srgb, var(--cairn-surface-fg) 7%, var(--cairn-surface-bg));
+        border-bottom: var(--cairn-rule) solid var(--cairn-surface-fg);
+        font-size: 11px;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: var(--cairn-label-track);
+        font-weight: 700;
+        padding: 6px 11px 5px;
+    }
+
+    /* A card is the densest surface the system draws and it had the least air of any of them:
+       the frame was something the text leaned on rather than a margin around it.
+
+       This padding is the message body's ONLY padding, and it has to be: the element carries both
+       `.message-content` (core's) and `.cairn-card-body` (ours). A `.cairn-message .message-content`
+       rule zeroing core's `padding: 2px 0` sat here for exactly that reason, and being one class
+       heavier it silently beat this one — the body had no gutter at all, whatever number was
+       written here. Core is already beaten by the cascade layer, so the zeroing rule was never
+       needed; anything that sets padding on the body has to be this selector or it is dead. */
+    .cairn-card-body {
+        padding: 10px 11px 11px;
+
+        p {
+            margin: 3px 0;
+        }
+    }
+
+    /* A body's opening line, where the card has something to name before it says anything: the
+       watch card's rolled category, and anything else that used to be a second title. */
+    .cairn-card-lead {
+        font-weight: 700;
+        margin: 0 0 4px;
+    }
+
+    .cairn-card-roll {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: var(--cairn-hairline) solid var(--cairn-surface-fg);
+        padding-bottom: 2px;
+    }
+
+    .cairn-card-formula {
+        font-style: italic;
+        opacity: 0.75;
+    }
+
+    /* A store card's lines: the thing and its price at the two ends, as on the shelves. */
+    .cairn-store-card-lines {
+        list-style: none;
+        margin: 0 0 4px;
+        padding: 0;
+
+        li {
+            display: flex;
+            gap: 8px;
+            justify-content: space-between;
+            margin: 0;
+        }
+
+        li span:last-child {
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+    }
+
+    /* A card's footer line — what reading the item aloud cost. Secondary, like the formula. */
+    .cairn-card-note {
+        font-size: 11px;
+        font-style: italic;
+        opacity: 0.75;
+    }
+
+    .cairn-card-total {
+        font-size: 20px;
+        font-variant-numeric: tabular-nums;
+        font-weight: 700;
+    }
+
+    /* The palette's first exception: a pass/fail that reads as pass/fail is worth the hue. */
+    .cairn-card-outcome {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: var(--cairn-label-track);
+        font-weight: 700;
+
+        &.success {
+            color: var(--color-level-success-border);
+        }
+
+        &.failure {
+            color: var(--color-level-error-border);
+        }
+    }
+
+    /* The damage card (`templates/chat/damage-result-card.hbs`). A hit is an event, so the card
+       says it as a sentence with the amount at display size; what the dice and the armor did is a
+       footnote for whoever wants to audit it, and the two scores the blow actually moved are a
+       quiet ruled pair under a hairline. The shape it replaces was three bold labels, a colon each
+       and the subtraction in parentheses — a receipt for a sword blow. */
+    .cairn-damage-lead {
+        font-size: 15px;
+        line-height: 1.35;
+        margin: 0;
+    }
+
+    .cairn-damage-amount {
+        font-size: 21px;
+        font-variant-numeric: tabular-nums;
+        font-weight: 700;
+    }
+
+    .cairn-damage-source {
+        font-size: 11px;
+        font-style: italic;
+        margin: 2px 0 0;
+        opacity: 0.7;
+    }
+
+    /* The note `module/chat.js#reverseHit` appends to a card whose hit has been given back. A
+       rule above it, because it contradicts the numbers printed over it and has to read as a
+       later correction rather than as part of the receipt. Surface pair, like everything else
+       this system draws inside core's chat log. */
+    .cairn-damage-reversed {
+        border-top: var(--cairn-hairline) solid var(--cairn-surface-fg);
+        font-size: 11px;
+        font-style: italic;
+        margin: 6px 0 0;
+        padding-top: 4px;
+    }
+
+    .cairn-damage-state {
+        border-top: var(--cairn-hairline) solid var(--cairn-surface-fg);
+        list-style: none;
+        margin: 9px 0 0;
+        padding: 7px 0 0;
+
+        li {
+            align-items: baseline;
+            display: flex;
+            gap: 8px;
+            justify-content: space-between;
+            padding: 2px 0;
+        }
+    }
+
+    .cairn-damage-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: var(--cairn-label-track);
+        opacity: 0.7;
+        text-transform: uppercase;
+    }
+
+    .cairn-damage-value {
+        font-variant-numeric: tabular-nums;
+
+        s {
+            opacity: 0.55;
+        }
+    }
+
+    /* The save the hit now owes, cut off from the record of what it did. */
+    .cairn-damage-consequence {
+        border-top: var(--cairn-hairline) solid var(--cairn-surface-fg);
+        margin-top: 9px;
+        padding-top: 7px;
+    }
+
+    /* The one card with nothing left to report: it is the whole body, so it is set like a stamp
+       rather than like a line of text. Its footnote centres with it. */
+    .cairn-damage-dead {
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        margin: 4px 0;
+        text-align: center;
+
+        + .cairn-damage-source {
+            text-align: center;
+        }
+    }
+
+    /* A message's action. The log is ~272px wide and a card's button is the only thing that says
+       what it does — there is no row of icons around it to carry the meaning, the way there is on
+       a sheet — so it is full width and set at body scale rather than the sheet's 10px row-control
+       scale. Measured 2026-09-18, the four controls were 14×14 (an unlabelled glyph), 110×36,
+       252×36 and 36 tall, all in 10px capitals: three widths, two element types, one with no
+       label at all.
+
+       Written as `&.cairn-message .cairn-card-action` and not on the class alone: Primitive 2's
+       `& :is(button, a.button):where(…)` is (0,2,1) — `:is()` takes its most specific argument,
+       `a.button` — so a bare `.cairn-card-action` at (0,2,0) loses to it and the label stays at
+       10px. This is (0,3,0), and it says where the control lives besides. */
+    &.cairn-message .cairn-card-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        /* Core sets `.chat-message button { height: var(--input-height) }`; this button's height
+           is its own padding. */
+        height: auto;
+        margin-top: 6px;
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+
+    /* Controls inside a message follow the surface pair, not the book pair — an ink-on-paper
+       button in a dark chat log is the exact failure this pair exists to prevent. Written at the
+       control because that is where core declares `--button-*` (see "Form controls" above), and
+       `&.cairn-message` rather than a descendant because the scope class and the message class sit
+       on the same <li>. */
+    &.cairn-message :is(button, a.button) {
+        --button-background-color: transparent;
+        --button-border-color: var(--cairn-surface-fg);
+        --button-text-color: var(--cairn-surface-fg);
+        --button-hover-background-color: var(--cairn-surface-fg);
+        --button-hover-border-color: var(--cairn-surface-fg);
+        --button-hover-text-color: var(--cairn-surface-bg);
+    }
+
+    /* The roll line (CairnRoll.CHAT_TEMPLATE). Core folds `.dice-tooltip` itself and paints
+       nothing here that survives — its `.dice-formula` / `.dice-total` bars are not drawn at all
+       any more, so only the faces underneath need rules. */
+    .cairn-roll {
+        cursor: var(--cursor-pointer);
+        user-select: none;
+    }
+
+    .cairn-roll-part {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        border-bottom: var(--cairn-hairline) solid var(--cairn-surface-fg);
+        font-size: 11px;
+        padding: 2px 0;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .cairn-roll-part-formula {
+        font-style: italic;
+        opacity: 0.75;
+    }
+
+    .cairn-roll-part-total {
+        font-variant-numeric: tabular-nums;
+        font-weight: 700;
+    }
+
+    /* One die face per item. A maximum is heavier, a minimum lighter, and a die the formula threw
+       away is struck through — the same weight-and-opacity vocabulary the sheets use for state. */
+    .cairn-roll-faces {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        gap: 4px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-variant-numeric: tabular-nums;
+
+        .max {
+            font-weight: 700;
+        }
+
+        .min {
+            opacity: 0.6;
+        }
+
+        :is(.discarded, .rerolled) {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+    }
+}

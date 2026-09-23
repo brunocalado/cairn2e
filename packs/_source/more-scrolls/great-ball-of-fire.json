@@ -1,0 +1,31 @@
+{
+  "_id": "ek6MUAdOb0gIgyu9",
+  "name": "Great Ball of Fire",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>You fire a ball of flame (1d10 damage) up to 20 feet away.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ek6MUAdOb0gIgyu9",
+  "folder": "FeXVyrcexT1LlyqR"
+}

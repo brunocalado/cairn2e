@@ -1,0 +1,31 @@
+{
+  "_id": "52wLQizQh9GXHUbi",
+  "name": "Objectify",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p><em>The owner experiences intense pareidolia for days after use.</em></p><p>You become any inanimate object between the size of a grand piano and an apple.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!52wLQizQh9GXHUbi",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

@@ -1,0 +1,39 @@
+{
+  "_id": "AHPmOk0vIgmxHp5N",
+  "name": "Cutpurse",
+  "type": "background",
+  "img": "icons/containers/bags/coinpouch-simple-leather-tan.webp",
+  "system": {
+    "description": "<blockquote><p>You live in the grey space between those who have power and those who don’t. You find opportunity where others see only chaos. With nimble fingers, you unburden both the richest merchant and the lowliest guard.</p></blockquote>",
+    "names": [
+      "Arlo",
+      "Lyra",
+      "Eamon",
+      "Salina",
+      "Elara",
+      "Freya",
+      "Bull",
+      "Sparrow",
+      "Ivy",
+      "Silas"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.DtXSWNyYvXnNW4b9",
+      "Compendium.cairn2e.background-gear.Item.RV47DKefkELnh0j3",
+      "Compendium.cairn2e.background-gear.Item.i3fbJIbB6lJ6FyS0",
+      "Compendium.cairn2e.background-gear.Item.VDq4qOC5X2OVlDub"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.bseo3vI7GWMqenXA",
+      "Compendium.cairn2e.background-tables.RollTable.5NDBvLrhDDzACBRR"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!AHPmOk0vIgmxHp5N"
+}

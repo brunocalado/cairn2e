@@ -1,0 +1,31 @@
+{
+  "_id": "D3FqR61punqaXs2k",
+  "name": "Trick Playing Cards",
+  "type": "gear",
+  "img": "icons/sundries/gaming/game-playing-cards-deck.webp",
+  "system": {
+    "description": "<p>Trick Playing Cards</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!D3FqR61punqaXs2k",
+  "folder": "v2BuenTVcdL7RExD"
+}

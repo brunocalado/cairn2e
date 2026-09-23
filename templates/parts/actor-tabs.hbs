@@ -1,0 +1,52 @@
+{{!-- The tab strip both actor sheets wear. For a character it carries Gold (`showGold`), because
+      Gold is the number that changes most in play and it belongs beside the things it buys — and
+      past the petty threshold it occupies slots, so the inventory below has to account for it
+      anyway. An NPC has no purse in 2e (the Marketplace prices a hireling per day), so its strip
+      ends at the last tab. The active tab wears a brush
+      slab; Gold wears a drawn box; the rule under the strip is drawn, not a border. All of them,
+      like every other mark on the sheet, are inked by `module/ink.js` from the element's measured
+      size.
+
+      Each slab is seeded by its own tab id rather than sharing one key. Only one is ever inked at
+      a time, so they are never seen together — but a seed that changes with the tab means moving
+      between them moves the brush mark too, instead of stamping the identical silhouette in a new
+      place. --}}
+<div class="cairn-tab-block">
+    <nav class="tabs cairn-tab-strip" data-group="primary">
+        {{#each tabs as |tab|}}
+        {{!-- The slab sits INSIDE the label, not in the tab. Core stretches every tab in the strip
+              to the same width, so a slab measured from the tab box is the width of the longest
+              label whatever this one says — a mark around ORIGIN the width of INVENTORY.
+              Measured from the label it hugs the word it is marking. --}}
+        <a class="cairn-tab {{tab.cssClass}}" data-action="tab" data-group="primary" data-tab="{{tab.id}}">
+            <span>{{localize tab.label}}<span class="cairn-slab" data-ink="slab" data-ink-seed="tab-{{tab.id}}"></span></span>
+        </a>
+        {{/each}}
+
+        {{#if showGold}}
+        {{!-- Gold wears the chip treatment, not a brush slab. It sits at the far right of the
+              strip on its own, with no upright between it and the last tab: the chip's drawn box
+              already separates it from a row of bare capitals, and a second vertical mark 10px
+              from it was one rule doing a job the box had done. A solid black mark this far down the
+              page, with a field cut into it, read as a blot rather than as a control — and it was
+              the only thing on the sheet drawn that way. An outlined box on paper puts it in the
+              same family as Panicked and Rest, which is what it is: a thing on the sheet you can
+              set. The label and the number share a BASELINE inside `.cairn-gold-pair`, and that
+              pair is what the chip centres — a fixed-height box centring two different type sizes
+              directly leaves the number sitting off the word's feet. --}}
+        <label class="cairn-chip cairn-gold" data-ink="box" data-ink-seed="gold" data-ink-w="1.6">
+            <span class="cairn-gold-pair">
+                <span class="cairn-gold-label">{{localize 'CAIRN.Gold'}}</span>
+                {{!-- Text, not number, so `maxlength` applies; digits are enforced as it is typed
+                      by `actor-sheet.js#_attachPartListeners`. No `name`: `system.gold` is DERIVED — the sum
+                      of the character's coin sacks (`data/item-coin.js`) — so the form must never
+                      submit it. The chip's `change` turns the typed number into a difference and
+                      moves that much coin (`module/coin.js#adjustGold`). --}}
+                <input class="cairn-digits cairn-gold-input" type="text" value="{{system.gold}}"
+                    maxlength="5" inputmode="numeric" pattern="[0-9]*" />
+            </span>
+        </label>
+        {{/if}}
+    </nav>
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="tab-rule" data-ink-w="1.8"></div>
+</div>

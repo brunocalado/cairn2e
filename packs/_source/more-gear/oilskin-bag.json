@@ -1,0 +1,31 @@
+{
+  "_id": "jAjEcR1YrKhpCVmA",
+  "name": "Oilskin Bag",
+  "type": "gear",
+  "img": "icons/containers/bags/case-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>Oilskin Bag</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!jAjEcR1YrKhpCVmA",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

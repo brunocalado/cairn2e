@@ -1,0 +1,33 @@
+{{!-- The actor's `feature` Items, one per line, in the actor's own item order — for a bestiary
+      creature that is the SRD's bullet order. A row prints the name in bold and the description
+      after it on the same line — with a colon between them when the name is a label rather than
+      a sentence — which reproduces the SRD's own `**Label**: text` typography and gives a plain
+      bullet a bold lead sentence. Critical Damage is one of them, not a tab: a feature flagged
+      `critical` prints "Critical Damage:" before its name, in blood, and the name is the clause. --}}
+<section class="tab {{tabs.features.cssClass}}" data-group="primary" data-tab="features">
+    {{!-- No heading: the tab strip already says "Features". Only the add control, at the right. --}}
+    <div class="cairn-zone-head">
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="featureCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.AddFeature'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-npc-features" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list cairn-feature-list">
+        {{#each features as |f|}}
+        <li class="cairn-feature draggable" data-item-id="{{f.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="feature-{{f.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-feature-text">{{#if f.critical}}<span class="cairn-feature-critical">{{localize 'CAIRN.CriticalDamageFull'}}:</span> {{/if}}<strong>{{f.name}}</strong>{{#if f.description}}{{#if f.isLabel}}:{{/if}} {{{f.description}}}{{/if}}</span>
+            <span class="cairn-item-controls">
+                <a data-action="itemEdit" data-tooltip="{{localize 'CAIRN.EditItem'}}"><i class="fas fa-pencil"></i></a>
+                {{#if @root.editable}}
+                <a data-action="itemDelete" data-tooltip="{{localize 'CAIRN.DeleteItem'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.NoFeatures'}}</li>
+        {{/each}}
+    </ol>
+</section>

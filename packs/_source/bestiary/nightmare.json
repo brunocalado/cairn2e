@@ -1,0 +1,99 @@
+{
+  "_id": "vSGdln4UVFTM0TYM",
+  "name": "Nightmare",
+  "type": "npc",
+  "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "wgyebsiBry1vGqjM",
+      "name": "Flaming Hooves",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>flaming hooves (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!vSGdln4UVFTM0TYM.wgyebsiBry1vGqjM"
+    },
+    {
+      "name": "Intelligent, demonic horses with eyes like burning coals, smoldering nostrils, and flaming hooves.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "KLUSUWpS7px4AIeT",
+      "_key": "!actors.items!vSGdln4UVFTM0TYM.KLUSUWpS7px4AIeT"
+    },
+    {
+      "name": "Melee attacks against the Nightmare are impaired due to the thick clouds of smoke it produces.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XlSw90r1CjQpeXw0",
+      "_key": "!actors.items!vSGdln4UVFTM0TYM.XlSw90r1CjQpeXw0"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!vSGdln4UVFTM0TYM"
+}

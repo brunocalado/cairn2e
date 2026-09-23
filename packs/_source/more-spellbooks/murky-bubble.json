@@ -1,0 +1,31 @@
+{
+  "_id": "txBx2Z3a3An9pGLF",
+  "name": "Murky Bubble",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p>You create a bubble supernatural shadow within a 20ft radius.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!txBx2Z3a3An9pGLF",
+  "folder": "MCt2VTDHSjLFlLso"
+}

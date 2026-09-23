@@ -1,0 +1,143 @@
+{
+  "_id": "UvlkKAau3zqcnZqK",
+  "name": "Sphinx",
+  "type": "npc",
+  "img": "icons/creatures/abilities/lion-roar-yellow.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 18,
+        "max": 18
+      }
+    },
+    "hp": {
+      "value": 18,
+      "max": 18
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "uMpyvMqU5e5v3rNo",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d8+d8, <em>blast</em>)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": true,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!UvlkKAau3zqcnZqK.uMpyvMqU5e5v3rNo"
+    },
+    {
+      "_id": "xFzblHZTCKqwDX1p",
+      "name": "Beak",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>beak (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!UvlkKAau3zqcnZqK.xFzblHZTCKqwDX1p"
+    },
+    {
+      "name": "Mythical beasts with the upper body and head of a human, the wings of an eagle, and the body of a lion.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Immune to magic of any kind.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "D6oNpnJsS3Nre8zQ",
+      "_key": "!actors.items!UvlkKAau3zqcnZqK.D6oNpnJsS3Nre8zQ"
+    },
+    {
+      "name": "Poses riddles to anyone they meet.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Failure to answer correctly is usually met with death. They know almost everything worth knowing.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "cE7El19cpyj5ZsGC",
+      "_key": "!actors.items!UvlkKAau3zqcnZqK.cE7El19cpyj5ZsGC"
+    },
+    {
+      "name": "Roar",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Anyone in earshot must save WIL or flee in fear.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "czjWfCcipgQXbmBZ",
+      "_key": "!actors.items!UvlkKAau3zqcnZqK.czjWfCcipgQXbmBZ"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!UvlkKAau3zqcnZqK"
+}

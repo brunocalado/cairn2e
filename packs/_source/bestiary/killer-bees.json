@@ -1,0 +1,113 @@
+{
+  "_id": "gPLwxao8nq9RRwhy",
+  "name": "Killer Bees",
+  "type": "npc",
+  "img": "icons/creatures/invertebrates/wasp-swarm-attack.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 6,
+        "max": 6
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "bP3F2EftaRjrWaOt",
+      "name": "Sting",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>sting (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!gPLwxao8nq9RRwhy.bP3F2EftaRjrWaOt"
+    },
+    {
+      "name": "Oversized bees that build underground hives.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Hyper-aggressive, attack anything that comes near.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "V2yUyI3EamvH7uz8",
+      "_key": "!actors.items!gPLwxao8nq9RRwhy.V2yUyI3EamvH7uz8"
+    },
+    {
+      "name": "Produce special honey that heals 1d6 STR.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>3 uses.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "w7MMFcxxAUWIDwXm",
+      "_key": "!actors.items!gPLwxao8nq9RRwhy.w7MMFcxxAUWIDwXm"
+    },
+    {
+      "name": "When the bees cause STR damage, the stingers are lodged into the target, dealing d4 damage each round until removed.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "5w4kTkItPjCgv6Sn",
+      "_key": "!actors.items!gPLwxao8nq9RRwhy.5w4kTkItPjCgv6Sn"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!gPLwxao8nq9RRwhy"
+}

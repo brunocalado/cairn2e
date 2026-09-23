@@ -1,0 +1,18 @@
+{{!-- A journey card with no die on it: the route at the start (with the button that opens the
+      tracker on this client), a watch's summary, the arrival. `module/cairn2e.js` wires the
+      button; the card itself draws no frame — the message element is the card. --}}
+{{#if lead}}
+<p class="cairn-card-lead">{{lead}}</p>
+{{/if}}
+{{#if lines.length}}
+<ul class="cairn-journey-lines">
+    {{#each lines}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+{{#if open}}
+<button type="button" class="cairn-card-action open-journey">
+    <i class="fas fa-route" inert></i>{{localize "CAIRN.Journey.OpenButton"}}
+</button>
+{{/if}}

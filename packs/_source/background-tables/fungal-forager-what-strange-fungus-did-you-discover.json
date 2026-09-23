@@ -1,0 +1,108 @@
+{
+  "_id": "juirr6mZR7xZTm81",
+  "name": "Fungal Forager: What strange fungus did you discover?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Fungal Forager</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "dBbA644asRzLxtBg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Shrieking Trumpet</strong>. When exposed to light, it screams so loudly that all nearby attacks (including your own) are <em>impaired</em>. 2 uses.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!juirr6mZR7xZTm81.dBbA644asRzLxtBg"
+    },
+    {
+      "_id": "HCBhAjGhf8C2sBAn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Torch Fungus</strong>. When crushed, it creates a cold blue light for a short while. 2 uses.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!juirr6mZR7xZTm81.HCBhAjGhf8C2sBAn"
+    },
+    {
+      "_id": "8vuQGiUDzWTJXeLP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Murderous Truffle</strong>. Pungent, highly toxic, and very rare (worth 50gp to assassins).  Illegal pretty much everywhere. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!juirr6mZR7xZTm81.8vuQGiUDzWTJXeLP"
+    },
+    {
+      "_id": "bdSMVBAseCyvfKKI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Hellcap</strong>. Exposure to its aroma causes intense nausea and vomiting. Either way, it clears the room. Bottled (1 use).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!juirr6mZR7xZTm81.bdSMVBAseCyvfKKI"
+    },
+    {
+      "_id": "W2UBbgTZWKxa1ZTj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sproutcup</strong>. Ingest to shrink down to the size of a mouse. (Your belongings stay the same size.) You return to normal size within the hour, often in fits and starts. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!juirr6mZR7xZTm81.W2UBbgTZWKxa1ZTj"
+    },
+    {
+      "_id": "e5DwNw05IMEIeccj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Rootflower</strong>. A white fungus found only on corpses deep underground. Ingest to restore d6 WIL. You will dream of the dead and their stories. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!juirr6mZR7xZTm81.e5DwNw05IMEIeccj"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!juirr6mZR7xZTm81"
+}

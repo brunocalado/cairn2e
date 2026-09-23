@@ -1,0 +1,30 @@
+{
+  "_id": "5YhwJSdfOq8wWj9E",
+  "name": "Simple Instruments",
+  "type": "gear",
+  "img": "icons/tools/instruments/pipe-flute-brown.webp",
+  "system": {
+    "description": "<p>Simple Instruments (Pipes, Lute, etc.)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!5YhwJSdfOq8wWj9E"
+}

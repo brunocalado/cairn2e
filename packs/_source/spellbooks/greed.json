@@ -1,0 +1,31 @@
+{
+  "_id": "6pPvOqmqHOFvvPtP",
+  "name": "Greed",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p><em>The cover changes depending on the owner, subtly hinting at their deepest desires.</em></p><p>A creature develops the overwhelming urge to possess a visible item of your choice.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6pPvOqmqHOFvvPtP",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

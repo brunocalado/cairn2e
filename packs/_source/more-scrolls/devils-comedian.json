@@ -1,0 +1,31 @@
+{
+  "_id": "eS1DVV364awD7nkI",
+  "name": "Devil's Comedian",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>WIL save or target laughs uncontrollably, unable to take any action.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!eS1DVV364awD7nkI",
+  "folder": "FeXVyrcexT1LlyqR"
+}

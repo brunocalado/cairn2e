@@ -1,0 +1,31 @@
+{
+  "_id": "l14gFr9VQY8HUOKl",
+  "name": "Attract",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>Two objects are strongly magnetically attracted to each other if they come within 10 feet.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!l14gFr9VQY8HUOKl",
+  "folder": "HeofFbO6OthG77Yu"
+}

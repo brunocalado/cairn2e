@@ -1,0 +1,31 @@
+{
+  "_id": "DxZ0SfzGVUqD1IA9",
+  "name": "Beguilement",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>Target humanoid must make a WIL save or is controlled telepathically.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DxZ0SfzGVUqD1IA9",
+  "folder": "lDgQDymeafBKCA97"
+}

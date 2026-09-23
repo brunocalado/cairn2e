@@ -1,0 +1,31 @@
+{
+  "_id": "kgGP0bwoh4lAZw4R",
+  "name": "A Blade Called Hope",
+  "type": "gear",
+  "img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
+  "system": {
+    "description": "<p>A thin, curved sword that glows with faint light, visible only in total darkness. When bathed in heavy sunlight, its first attack is <em>Enhanced</em>.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!kgGP0bwoh4lAZw4R",
+  "folder": "UlnseD8X1WIqJdUA"
+}

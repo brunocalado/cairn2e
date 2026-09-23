@@ -1,0 +1,38 @@
+{{!-- What a hit did, once it was applied. The caption is the message's `flavor` ("Damage").
+
+      The shape is a sentence first, the arithmetic second and the two numbers the blow moved
+      third: a hit is an event, and three bold labels with a subtraction in parentheses read as a
+      receipt of one. `dmg` is 0 exactly when the armor stopped the blow outright, which is why
+      that branch tests the amount rather than a flag of its own — and it is a branch the card
+      needs, because "0 (2−3)" reads as a bug rather than as an attack that failed. --}}
+{{#if dead}}
+<p class="cairn-card-outcome failure cairn-damage-dead">{{localize 'CAIRN.Dead'}}</p>
+<p class="cairn-damage-source">{{localize 'CAIRN.Hit.DeadNote'}}</p>
+{{else if dmg}}
+<p class="cairn-damage-lead">{{{lead}}}</p>
+<p class="cairn-damage-source">{{source}}</p>
+<ul class="cairn-damage-state">
+    {{#if hpChanged}}
+    <li>
+        <span class="cairn-damage-label">{{localize 'CAIRN.Hit.HpLabel'}}</span>
+        <span class="cairn-damage-value"><s>{{hp}}</s> &rarr; {{newHp}}</span>
+    </li>
+    {{/if}}
+    {{#if strChanged}}
+    <li>
+        <span class="cairn-damage-label">{{localize 'CAIRN.Hit.StrLabel'}}</span>
+        <span class="cairn-damage-value"><s>{{str}}</s> &rarr; {{newStr}}</span>
+    </li>
+    {{/if}}
+</ul>
+{{#if showCriticalSave}}
+<div class="cairn-damage-consequence">
+    <p class="cairn-card-outcome failure">{{localize 'CAIRN.Hit.Carried'}}</p>
+    <p>{{localize 'CAIRN.Hit.CriticalPrompt'}}</p>
+    <button type="button" class="cairn-card-action roll-str-save">{{localize 'CAIRN.RollStrSave'}}</button>
+</div>
+{{/if}}
+{{else}}
+<p class="cairn-damage-lead">{{localize 'CAIRN.Hit.Absorbed'}}</p>
+<p class="cairn-damage-source">{{source}}</p>
+{{/if}}

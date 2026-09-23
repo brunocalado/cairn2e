@@ -1,0 +1,39 @@
+{
+  "_id": "i83o5YtvjZy7C5nF",
+  "name": "Scrivener",
+  "type": "background",
+  "img": "icons/tools/scribal/ink-quill-red.webp",
+  "system": {
+    "description": "<blockquote><p>You copy ancient texts and illuminate manuscripts, recording the voices of the clever, the great, and the powerful. You will prove that the pen truly is mightier than the sword.</p></blockquote>",
+    "names": [
+      "Lazlo",
+      "Stilo",
+      "Akshara",
+      "Pisa",
+      "Ji-Yun",
+      "Kalamos",
+      "Hugo",
+      "Shui",
+      "Kalam",
+      "Julius"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.IC5ZRN3lwLAGCOWL",
+      "Compendium.cairn2e.background-gear.Item.UkAcsDGoueRs7shL",
+      "Compendium.cairn2e.background-gear.Item.ejA2Lk6QmLx2xNVW",
+      "Compendium.cairn2e.background-gear.Item.VAZXY9tIL6GJHMv2"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.lduaZOXAPFp3EHFC",
+      "Compendium.cairn2e.background-tables.RollTable.5RemuIefkkjofLNA"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!i83o5YtvjZy7C5nF"
+}

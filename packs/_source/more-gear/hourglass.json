@@ -1,0 +1,31 @@
+{
+  "_id": "t8pStHMfLvW5B1xA",
+  "name": "Hourglass",
+  "type": "gear",
+  "img": "icons/sundries/misc/hourglass-wood.webp",
+  "system": {
+    "description": "<p>Hourglass</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!t8pStHMfLvW5B1xA",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

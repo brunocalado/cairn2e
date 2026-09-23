@@ -1,0 +1,31 @@
+{
+  "_id": "iq6og4aW80PLwYew",
+  "name": "Find Virulence",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>Detects poison in any creature or object within 30ft.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!iq6og4aW80PLwYew",
+  "folder": "FeXVyrcexT1LlyqR"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "vS8ZiTbGqvMaY0Ll",
+  "name": "Ring of the Snake",
+  "type": "gear",
+  "img": "icons/equipment/finger/ring-stone-snake-gold.webp",
+  "system": {
+    "description": "<p>A wrought-iron serpent ring. Place it on your finger and fall into a sleep so deep that most will think you are dead. If the ring is removed, you will awaken feeling refreshed. Otherwise, the effect will wear off after one month.</p><p><em>Petty.</em></p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Bury the ring with a corpse. A month later, exhume the corpse and retrieve it.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!vS8ZiTbGqvMaY0Ll",
+  "folder": "UlnseD8X1WIqJdUA"
+}

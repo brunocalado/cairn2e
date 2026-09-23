@@ -1,0 +1,31 @@
+{
+  "_id": "p4vK8jtHXW8iKlRA",
+  "name": "Honest Earworm",
+  "type": "gear",
+  "img": "icons/environment/creatures/bug-worm-glow.webp",
+  "system": {
+    "description": "<p>A foul-smelling, pinky-sized worm that feeds on earwax by crawling into the ear canal of a sleeping person. The victim then loses the ability to lie for 1d4 hours.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!p4vK8jtHXW8iKlRA",
+  "folder": "GrRVMrn19Cm4uCtB"
+}

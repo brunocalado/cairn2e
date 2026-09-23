@@ -1,0 +1,38 @@
+{
+  "_id": "yzASUY7GeOLANy1x",
+  "name": "Aurifex",
+  "type": "background",
+  "img": "icons/consumables/potions/potion-vial-tube-yellow.webp",
+  "system": {
+    "description": "<blockquote><p>You are an artisan of the arcane, a smith of subtle forces. In the crucible of your workshop, the laws that govern this world are warped to suit your needs.</p></blockquote>",
+    "names": [
+      "Hestia",
+      "Basil",
+      "Rune",
+      "Prism",
+      "Ember",
+      "Quintess",
+      "Aludel",
+      "Mordant",
+      "Salaman",
+      "Jazia"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.lAOJ4KhINKHkQFKY",
+      "Compendium.cairn2e.gear.Item.DEIG5kYj2mhV3hRM",
+      "Compendium.cairn2e.background-gear.Item.1xLPGZIJcr5EUPbB",
+      "Compendium.cairn2e.background-gear.Item.THISSJjaFQw84CRy"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.H68PtSfwpICGQJDc",
+      "Compendium.cairn2e.background-tables.RollTable.6YRhrMB2JxoxD5az"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!yzASUY7GeOLANy1x"
+}

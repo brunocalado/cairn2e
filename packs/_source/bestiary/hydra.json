@@ -1,0 +1,99 @@
+{
+  "_id": "V7ZbTkevyfsgPfwQ",
+  "name": "Hydra",
+  "type": "npc",
+  "img": "icons/creatures/reptiles/serpent-horned-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 13,
+        "max": 13
+      },
+      "DEX": {
+        "value": 7,
+        "max": 7
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 12,
+      "max": 12
+    },
+    "role": "monster",
+    "armor": 2,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "XsDJRGq18GAon5XS",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d12, <em>blast</em>)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d12",
+        "blast": true,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!V7ZbTkevyfsgPfwQ.XsDJRGq18GAon5XS"
+    },
+    {
+      "name": "Large reptilians with nine serpentine heads.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Very difficult to throw off once their quarry is detected.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "8YLo4N8PNqCSBhvP",
+      "_key": "!actors.items!V7ZbTkevyfsgPfwQ.8YLo4N8PNqCSBhvP"
+    },
+    {
+      "name": "On taking Critical Damage, the hydra loses one head.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>It then continues fighting until no heads remains.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "MXa7mTA2CgIWOwlq",
+      "_key": "!actors.items!V7ZbTkevyfsgPfwQ.MXa7mTA2CgIWOwlq"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!V7ZbTkevyfsgPfwQ"
+}

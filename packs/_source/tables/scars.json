@@ -1,0 +1,198 @@
+{
+  "_id": "0whgKNJNa4v6GzVs",
+  "name": "Scars",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d12",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "vyyynrwf6hSQBIdA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Lasting Scar: Roll 1d6. 1: Neck, 2: Hands, 3: Eye, 4: Chest, 5: Legs, 6: Ear. Roll 1d6. If the total is higher than your max HP, take the new result.",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.vyyynrwf6hSQBIdA"
+    },
+    {
+      "_id": "CjWniGCQKZ8GVxt6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rattling Blow: You’re disoriented and shaken. Describe how you refocus. Roll 1d6. If the total is higher than your max HP, take the new result.",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.CjWniGCQKZ8GVxt6"
+    },
+    {
+      "_id": "7aFk1WGDtgfWUwd5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Walloped: You’re sent flying and land flat on your face, winded. You are deprived until you rest for a few hours. Then, roll 1d6. Add that amount to your max HP.",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.7aFk1WGDtgfWUwd5"
+    },
+    {
+      "_id": "OmKAHY2W8nlozNEb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Broken Limb: Roll 1d6. 1-2: Leg, 3-4: Arm, 5: Rib, 6: Skull. Once mended, roll 2d6. If the total is higher than your max HP, take the new result.",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.OmKAHY2W8nlozNEb"
+    },
+    {
+      "_id": "f1VrHVD8HHhzioVJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Diseased: You’re afflicted with a gross, uncomfortable infection. When you get over it, roll 2d6. If the total is higher than your max HP, take the new result.",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.f1VrHVD8HHhzioVJ"
+    },
+    {
+      "_id": "yLfH4n2cfqYpgqJ0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Reorienting Head Wound: Roll 1d6. 1-2: STR, 3-4: DEX, 5-6: WIL. Roll 3d6. If the total is higher than your current attribute, take the new result.",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.yLfH4n2cfqYpgqJ0"
+    },
+    {
+      "_id": "KKW7Y7d7MhgPqn6R",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hamstrung: You can barely move until you get serious help and rest. After recovery, roll 3d6. If the total is higher than your max DEX, take the new result.",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.KKW7Y7d7MhgPqn6R"
+    },
+    {
+      "_id": "60HgfKMYhKBxwnLF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Deafened: You cannot hear anything until you find extraordinary aid. Regardless, make a WIL save. If you pass, increase your max WIL by 1d4.",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.60HgfKMYhKBxwnLF"
+    },
+    {
+      "_id": "SVkoys9JTBOilcga",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Re-brained: Some hidden part of your psyche is knocked loose. Roll 3d6. If the total is higher than your max WIL, take the new result.",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.SVkoys9JTBOilcga"
+    },
+    {
+      "_id": "XpGFfDF8JE7rAfMA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sundered: An appendage is torn off, crippled, or useless. (The Warden will tell you which.) Then make a WIL save. If you pass, increase your max WIL by 1d6.",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.XpGFfDF8JE7rAfMA"
+    },
+    {
+      "_id": "8GNYrz5YLzzL8PFd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Mortal Wound: You are deprived and out of action. You die in one hour unless healed. Upon recovery, roll 2d6. Take the new result as your max HP.",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.8GNYrz5YLzzL8PFd"
+    },
+    {
+      "_id": "DJvBqkEOKEBCRK9M",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Doomed: Death seemed ever so close, but somehow you survived. If your next save against critical damage is a fail, you die horribly. If you pass, roll 3d6. If the total is higher than your max HP, take the new result.",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0whgKNJNa4v6GzVs.DJvBqkEOKEBCRK9M"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!0whgKNJNa4v6GzVs"
+}

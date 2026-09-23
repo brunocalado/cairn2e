@@ -1,0 +1,31 @@
+{
+  "_id": "8ZosH6vqr37G6XDN",
+  "name": "Flare",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p><em>Faintly glows in complete darkness.</em></p><p>A bright ball of energy fires a trail of light into the sky, revealing your location to friend or foe.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!8ZosH6vqr37G6XDN",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

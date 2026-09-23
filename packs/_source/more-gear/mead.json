@@ -1,0 +1,31 @@
+{
+  "_id": "3e21dtes7VRG0qH9",
+  "name": "Mead",
+  "type": "gear",
+  "img": "icons/consumables/drinks/alcohol-beer-stein-wooden-brown.webp",
+  "system": {
+    "description": "<p>Mead (half-gallon pitcher)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!3e21dtes7VRG0qH9",
+  "folder": "7rqfs1jHTkbTjMVH"
+}

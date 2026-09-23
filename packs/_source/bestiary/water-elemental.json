@@ -1,0 +1,114 @@
+{
+  "_id": "1pOPOSwS835V8bZ5",
+  "name": "Water Elemental",
+  "type": "npc",
+  "img": "icons/magic/water/water-jet-wave-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 16,
+        "max": 16
+      },
+      "WIL": {
+        "value": 4,
+        "max": 4
+      }
+    },
+    "hp": {
+      "value": 14,
+      "max": 14
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "7cKm3OGxP43nRfN1",
+      "name": "Spray",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>spray (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!1pOPOSwS835V8bZ5.7cKm3OGxP43nRfN1"
+    },
+    {
+      "name": "Rare spirits of lakes, rivers, and seas.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "3yLs7XjOZxhsa2jH",
+      "_key": "!actors.items!1pOPOSwS835V8bZ5.3yLs7XjOZxhsa2jH"
+    },
+    {
+      "name": "Mundane attacks against the Water Elemental are impaired.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "BWmQLjDQr6ubvv7j",
+      "_key": "!actors.items!1pOPOSwS835V8bZ5.BWmQLjDQr6ubvv7j"
+    },
+    {
+      "name": "Target is enveloped by the water and drowns in three rounds.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "AcjEkojZtdf6Tk3C",
+      "_key": "!actors.items!1pOPOSwS835V8bZ5.AcjEkojZtdf6Tk3C"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!1pOPOSwS835V8bZ5"
+}

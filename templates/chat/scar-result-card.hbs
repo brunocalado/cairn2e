@@ -1,0 +1,11 @@
+{{!-- What the character came away with. Posted when the Scar is taken, and again when a gain
+      roll that was waiting on the fiction is finally made — the table hears the second one too,
+      because it is the one that moves a number. --}}
+<p><strong>{{name}}</strong> {{text}}</p>
+{{#if outcome}}
+<p class="cairn-card-outcome success">{{outcome}}</p>
+{{else if pending}}
+<p>{{localize 'CAIRN.Scar.Deferred'}}</p>
+{{else}}
+<p>{{localize 'CAIRN.Scar.NoChange'}}</p>
+{{/if}}

@@ -1,0 +1,38 @@
+{{!-- The shelves: one `.cairn-slot` line per listed Item, the ledger's own row so a Rope reads
+      here as it reads on the sheet — image, name, its tags, and the price at the right. The name
+      opens the item's sheet, as it does on the ledger. The Warden's × takes the row off the
+      shelf and nothing else; the item itself is untouched. A shopper's `+` puts one in the cart,
+      and so does dragging the row there — the `+` because a drag alone is fiddly and unreachable
+      on touch; the row carries `draggable` for the window's own DragDrop.
+
+      The list is always drawn, empty or not: it is the Warden's drop target, and a first drop
+      lands on an empty shelf. The rule under a row is drawn ink and only emitted when a row
+      follows, as on every list in the system. A panel of the left-hand tab group, drawn active
+      for the Warden with no rail to pick it from. --}}
+<section class="tab cairn-store-catalog {{tabs.catalog.cssClass}}" data-group="primary" data-tab="catalog">
+    <ol class="cairn-plain-list cairn-store-list">
+        {{#each rows as |row|}}
+        <li class="cairn-slot cairn-store-row draggable" data-uuid="{{row.uuid}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="store-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <img class="cairn-store-img" src="{{row.img}}" alt="" />
+            <span class="cairn-item-name-and-tags" data-action="openItem">
+                <span class="cairn-item-title">{{row.name}}</span>
+                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system}}
+                {{#if row.inCart}}<span class="cairn-item-tag">{{localize "CAIRN.Store.InCart"}} &times;{{row.inCart}}</span>{{/if}}
+            </span>
+            <span class="cairn-store-price">{{row.cost}} {{localize "CAIRN.GoldAbbrev"}}</span>
+            <span class="cairn-item-controls">
+                {{#if ../isGM}}
+                <a data-action="storeRemove" data-tooltip="{{localize 'CAIRN.Store.Remove'}}"><i class="fas fa-xmark"></i></a>
+                {{else}}
+                <a data-action="cartAdd" data-tooltip="{{localize 'CAIRN.Store.AddToCart'}}"><i class="fas fa-plus"></i></a>
+                {{/if}}
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">
+            {{#if isGM}}{{#if store}}{{localize "CAIRN.Store.DropHint"}}{{else}}{{localize "CAIRN.Store.NoStore"}}{{/if}}{{else}}{{localize "CAIRN.Store.Empty"}}{{/if}}
+        </li>
+        {{/each}}
+    </ol>
+</section>

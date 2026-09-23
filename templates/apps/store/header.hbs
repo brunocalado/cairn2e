@@ -1,0 +1,31 @@
+{{!-- The head, and it is the Warden's alone: which store, then everything that acts on it —
+      New, Open to players, Settings, Delete. All but New are square and glyph-only, each saying
+      what it does in its tooltip; "Open to players" was a full-width band across the foot and is
+      one of these now, because it acts on the store named beside it like the other two.
+      A shopper has no head at all — the part is dropped for them (`store.js#_configureRenderParts`),
+      because their own name is not news and their gold is the first figure in the foot. --}}
+<header class="cairn-store-head">
+    <div class="cairn-store-manage">
+        {{#if stores.length}}
+        <select name="store" aria-label="{{localize 'CAIRN.Store.Pick'}}">
+            {{#each stores as |s|}}
+            <option value="{{s.id}}"{{#if s.selected}} selected{{/if}}>{{s.name}}</option>
+            {{/each}}
+        </select>
+        {{/if}}
+        <button type="button" data-action="storeNew">
+            <i class="fas fa-plus" inert></i> {{localize "CAIRN.Store.New"}}
+        </button>
+        {{#if store}}
+        <button type="button" data-action="storeOpenAll" data-tooltip-text="{{localize 'CAIRN.Store.OpenAll'}}" aria-label="{{localize 'CAIRN.Store.OpenAll'}}">
+            <i class="fas fa-users" inert></i>
+        </button>
+        <button type="button" data-action="storeSettings" data-tooltip-text="{{localize 'CAIRN.Store.Settings'}}" aria-label="{{localize 'CAIRN.Store.Settings'}}">
+            <i class="fas fa-gear" inert></i>
+        </button>
+        <button type="button" data-action="storeDelete" data-tooltip-text="{{localize 'CAIRN.Store.Delete'}}" aria-label="{{localize 'CAIRN.Store.Delete'}}">
+            <i class="fas fa-trash" inert></i>
+        </button>
+        {{/if}}
+    </div>
+</header>

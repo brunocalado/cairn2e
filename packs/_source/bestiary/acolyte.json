@@ -1,0 +1,99 @@
+{
+  "_id": "pGDHBbOKzt91FN2v",
+  "name": "Acolyte",
+  "type": "npc",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "XEoe5RbW36MmLHFZ",
+      "name": "Ceremonial Dagger",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>ceremonial dagger (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!pGDHBbOKzt91FN2v.XEoe5RbW36MmLHFZ"
+    },
+    {
+      "name": "Holy servants bound to a particular deity.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Typically travel in groups of four or more.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "02IVtR3XApwjAJxP",
+      "_key": "!actors.items!pGDHBbOKzt91FN2v.02IVtR3XApwjAJxP"
+    },
+    {
+      "name": "Carry a holy symbol (Ward once per day).",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "K0oQsFxYe7CBHbBM",
+      "_key": "!actors.items!pGDHBbOKzt91FN2v.K0oQsFxYe7CBHbBM"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!pGDHBbOKzt91FN2v"
+}

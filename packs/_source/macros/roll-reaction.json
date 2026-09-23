@@ -1,0 +1,15 @@
+{
+  "_id": "MOvnBf7DT7WaPULe",
+  "name": "Roll Reaction",
+  "type": "script",
+  "img": "icons/skills/social/diplomacy-handshake-gray.webp",
+  "scope": "global",
+  "command": "cairn2e.reaction();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!MOvnBf7DT7WaPULe"
+}

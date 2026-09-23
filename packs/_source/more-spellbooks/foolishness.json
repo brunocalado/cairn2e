@@ -1,0 +1,31 @@
+{
+  "_id": "2fpq5ALZ4lneFqkG",
+  "name": "Foolishness",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p>A target you touch becomes vulnerable to wild mood swings, sweeping conclusions and silly behavior. They also lose 1d6 WIL for 24 hours (down to a minimum of 1).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2fpq5ALZ4lneFqkG",
+  "folder": "MCt2VTDHSjLFlLso"
+}

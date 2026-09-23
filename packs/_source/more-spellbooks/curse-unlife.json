@@ -1,0 +1,31 @@
+{
+  "_id": "xjlIrUxduJ2KShGr",
+  "name": "Curse Unlife",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>Deals 1d4+2 STR loss to one undead, ignoring armor and resistances.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xjlIrUxduJ2KShGr",
+  "folder": "MCt2VTDHSjLFlLso"
+}

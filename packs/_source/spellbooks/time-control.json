@@ -1,0 +1,31 @@
+{
+  "_id": "fIQGHFc2T2lHKdpY",
+  "name": "Time Control",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-purple.webp",
+  "system": {
+    "description": "<p><em>Alternates its appearance as either impossibly old or freshly written.</em></p><p>Time in a 50ft bubble slows down or increases by 10% for 30 seconds.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!fIQGHFc2T2lHKdpY",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

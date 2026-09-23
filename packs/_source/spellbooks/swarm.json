@@ -1,0 +1,31 @@
+{
+  "_id": "Qu9XUC190UbVe6ch",
+  "name": "Swarm",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p><em>Easily broken into a dozen distinct parts that slowly move towards one another over time.</em></p><p>You become a swarm of crows, rats, or piranhas. You can only be harmed by <em>blast</em> attacks.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Qu9XUC190UbVe6ch",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

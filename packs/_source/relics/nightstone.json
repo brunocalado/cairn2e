@@ -1,0 +1,31 @@
+{
+  "_id": "dw18981vHCLomH2M",
+  "name": "Nightstone",
+  "type": "gear",
+  "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+  "system": {
+    "description": "<p>Rare moon-shaped stones dredged from underwater caves and jungle dolines. Swallow whole to relieve all fatigue and deprivation as if you had a good night's sleep and a good meal. The stone will eventually pass through your system. It isn't fun.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!dw18981vHCLomH2M",
+  "folder": "GrRVMrn19Cm4uCtB"
+}

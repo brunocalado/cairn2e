@@ -1,0 +1,31 @@
+{
+  "_id": "kJ4kfBxC0WkZP31D",
+  "name": "Command",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>A target obeys a single three-word command that does not cause it harm.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!kJ4kfBxC0WkZP31D",
+  "folder": "cY8dColvFmUwDJFw"
+}

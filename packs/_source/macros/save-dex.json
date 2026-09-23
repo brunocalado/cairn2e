@@ -1,0 +1,15 @@
+{
+  "_id": "K1N14Q8WrUBJEqwN",
+  "name": "DEX",
+  "type": "script",
+  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+  "scope": "global",
+  "command": "cairn2e.save(\"DEX\");",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!K1N14Q8WrUBJEqwN"
+}

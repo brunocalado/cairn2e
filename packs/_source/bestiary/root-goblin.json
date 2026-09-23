@@ -1,0 +1,113 @@
+{
+  "_id": "pagAn2kbroErhz8P",
+  "name": "Root Goblin",
+  "type": "npc",
+  "img": "icons/magic/nature/root-vine-thorned-coil-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "3kn6Knj3GYR41ZG0",
+      "name": "Spear",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>spear (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!pagAn2kbroErhz8P.3kn6Knj3GYR41ZG0"
+    },
+    {
+      "name": "Avoid combat unless they have the advantage (such as greater numbers).",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "iFwikmNhu8Z6d0t7",
+      "_key": "!actors.items!pagAn2kbroErhz8P.iFwikmNhu8Z6d0t7"
+    },
+    {
+      "name": "Guard their stolen goods to the death.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "JdGtY1B8iVRuV9sc",
+      "_key": "!actors.items!pagAn2kbroErhz8P.JdGtY1B8iVRuV9sc"
+    },
+    {
+      "name": "Root Goblins prize spellbooks and are always willing to trade.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nBabWU7Oa2w6sCQ5",
+      "_key": "!actors.items!pagAn2kbroErhz8P.nBabWU7Oa2w6sCQ5"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!pagAn2kbroErhz8P"
+}

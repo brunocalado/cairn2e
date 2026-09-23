@@ -1,0 +1,108 @@
+{
+  "_id": "7vestEIKwunmJzeO",
+  "name": "Barber-Surgeon: What rare tool is essential to your work?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Barber-Surgeon</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "KZnKHajSGWOEnYi5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Regrowth Salve</strong> Regrows a body part over the course of a day. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.KZnKHajSGWOEnYi5"
+    },
+    {
+      "_id": "vRJMjHwksLIcmYUf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Graftgrub</strong> A small worm that can fuse inanimate objects with parts of the body.  1 use.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.vRJMjHwksLIcmYUf"
+    },
+    {
+      "_id": "QR8F4VrQBAzjMOmR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Woundwax</strong> Heals wounds from fire or chemicals (restoring full STR) but nothing else. 2 uses.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.QR8F4VrQBAzjMOmR"
+    },
+    {
+      "_id": "ZNnHfVAfOwmj1MH0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Quicksilver</strong> A stimulant. Go first in combat, and automatically pass any WIL saves for one hour. <em>Addictive</em>: Save STR or become <em>deprived</em> after 24 hours without it. 4 uses.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.ZNnHfVAfOwmj1MH0"
+    },
+    {
+      "_id": "UPXgyy6CwH7lV2gy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Pneuma Pump</strong> Portable iron lungs (<em>bulky</em>). Enables life-saving surgery or underwater breathing.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.UPXgyy6CwH7lV2gy"
+    },
+    {
+      "_id": "u6s9PmVDWjOOE34K",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Lodestone</strong> Draws out dangerous elements from the body and acts as a powerful magnetic force.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.u6s9PmVDWjOOE34K"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!7vestEIKwunmJzeO"
+}

@@ -1,0 +1,30 @@
+{
+  "_id": "qLSAVP83onsMvq0d",
+  "name": "Crossbow",
+  "type": "gear",
+  "img": "icons/weapons/crossbows/crossbow-heavy-black.webp",
+  "system": {
+    "description": "<p>Crossbow (d8 damage, <em>bulky</em>)</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 30,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qLSAVP83onsMvq0d"
+}

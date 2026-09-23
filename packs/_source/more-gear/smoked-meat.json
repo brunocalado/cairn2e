@@ -1,0 +1,31 @@
+{
+  "_id": "UYMZMEjqOvH0cVNq",
+  "name": "Smoked Meat",
+  "type": "gear",
+  "img": "icons/consumables/food/cooked-hock-bone-drumstick-brown.webp",
+  "system": {
+    "description": "<p>Smoked Meat (pound)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 3,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UYMZMEjqOvH0cVNq",
+  "folder": "oZhGiDOcu7cDovBl"
+}

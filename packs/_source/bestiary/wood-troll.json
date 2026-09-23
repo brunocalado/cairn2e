@@ -1,0 +1,144 @@
+{
+  "_id": "EKi5i5rpwcOftaUK",
+  "name": "Wood Troll",
+  "type": "npc",
+  "img": "icons/magic/nature/tree-animated-stump-mushrooms-teal.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 7,
+        "max": 7
+      }
+    },
+    "hp": {
+      "value": 10,
+      "max": 10
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "4i7pvDEdupWBWlcT",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!EKi5i5rpwcOftaUK.4i7pvDEdupWBWlcT"
+    },
+    {
+      "_id": "NC6GtnbNZH7iQzi7",
+      "name": "Club",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>club (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!EKi5i5rpwcOftaUK.NC6GtnbNZH7iQzi7"
+    },
+    {
+      "name": "Large humanoids with elongated arms made of bark or root.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>They live in forests, sharing a deep connection with the vegetation around them.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "RHIhNmJBpHz9WeBE",
+      "_key": "!actors.items!EKi5i5rpwcOftaUK.RHIhNmJBpHz9WeBE"
+    },
+    {
+      "name": "If killed, they will slowly regenerate unless their corpse is taken out of the forest or burned with fire.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "dPXfjoioBzl3C9Jn",
+      "_key": "!actors.items!EKi5i5rpwcOftaUK.dPXfjoioBzl3C9Jn"
+    },
+    {
+      "name": "Moss and twigs begin growing out of target's wounds.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "f1bEsDnrVwNgkB5H",
+      "_key": "!actors.items!EKi5i5rpwcOftaUK.f1bEsDnrVwNgkB5H"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!EKi5i5rpwcOftaUK"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "LV60yBoT2XGZzV1r",
+  "name": "Inn Meal, good",
+  "type": "gear",
+  "img": "icons/consumables/food/plate-steak-grilled-brown-green.webp",
+  "system": {
+    "description": "<p>Inn Meal, good (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 2,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!LV60yBoT2XGZzV1r",
+  "folder": "oZhGiDOcu7cDovBl"
+}

@@ -1,0 +1,57 @@
+{{!-- An NPC's equipment, drawn as a plain list rather than the character sheet's ten ruled lines.
+
+      The ledger states one PC rule — "Characters have a total of ten inventory slots"
+      (`srd-2e/players-guide/character-creation.md`) — and nothing in 2e binds a monster or a
+      hireling to a slot count: the Wardens' Guide says only "Give them equipment appropriate to
+      their station". `CairnItem` agrees, refusing nothing on a non-character. On an NPC the ten
+      lines were therefore decoration that HID things: every bestiary monster carries `slots.max`
+      of 0, so the list drew no rows at all and the Acolyte's Ceremonial Dagger reached no surface.
+
+      Every carried item is here, *petty* ones included — and a container too, as one more row:
+      there is no Belongings tab to send it to. The tags say what each thing is, minus *petty* and
+      *bulky*, which mean nothing without a slot count. The head carries the "used / max" count
+      only when the NPC has been given a capacity.
+
+      Each row carries the control cluster the character's slot row carries, in the same order,
+      so an item is worked the same way on both sheets. --}}
+<section class="tab {{tabs.items.cssClass}}" data-group="primary" data-tab="items">
+    {{!-- No heading: the tab strip already says "Items". The head keeps the add control at the
+          right and, only when the NPC has a capacity behind the quill, the count at the left. --}}
+    <div class="cairn-zone-head">
+        {{#if system.slotsMax}}
+        <span class="cairn-zone-count">{{system.slotsUsed}} / {{system.slotsMax}}</span>
+        {{/if}}
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="itemCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.AddItem'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-npc-items" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list">
+        {{#each inventory.carried as |item|}}
+        <li class="cairn-slot draggable{{#if item.isUsedUp}} used-up{{/if}}" data-item-id="{{item.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="npc-item-{{item.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                {{!-- The name opens the item, as on the slot row: `itemEdit` is that handler
+                      already, so the row and the pencil are one action. --}}
+                <span class="cairn-item-name-and-tags" data-action="itemEdit">
+                    <span class="cairn-item-title">
+                        {{#if item.system.equipped}}<strong>{{item.name}}</strong>{{else}}{{item.name}}{{/if}}
+                    </span>
+                    {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=item.system noSlotTags=true}}
+                    {{#if item.system.isContainer}}
+                    <span class="cairn-item-tag">{{item.system.contentsSlots}}/{{item.system.capacity}}</span>
+                    {{#unless item.system.carried}}<span class="cairn-item-tag">{{localize 'CAIRN.SetAsideTag'}}</span>{{/unless}}
+                    {{/if}}
+                    {{#if item.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=item.usesDisplay editable=@root.editable}}{{/if}}
+                </span>
+
+                {{> "systems/cairn2e/templates/parts/item-controls.hbs" item=item editable=@root.editable}}
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.NoItems'}}</li>
+        {{/each}}
+    </ol>
+</section>

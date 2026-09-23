@@ -1,0 +1,100 @@
+{
+  "_id": "b5vPUgbvJxfHgTG3",
+  "name": "Shambling Mound",
+  "type": "npc",
+  "img": "icons/magic/nature/plant-bamboo-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 6,
+        "max": 6
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 9,
+      "max": 9
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "IeZw21D5l1RCrQi8",
+      "name": "Tendrils",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>tendrils (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!b5vPUgbvJxfHgTG3.IeZw21D5l1RCrQi8"
+    },
+    {
+      "name": "Tall humanoids made of slimy vegetation.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Dwell in dark swamps and damp undergrounds.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "dsnRZsaGzln3HnKe",
+      "_key": "!actors.items!b5vPUgbvJxfHgTG3.dsnRZsaGzln3HnKe"
+    },
+    {
+      "name": "Target is swallowed whole and dragged away.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "27wm7FpHOkeWm093",
+      "_key": "!actors.items!b5vPUgbvJxfHgTG3.27wm7FpHOkeWm093"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!b5vPUgbvJxfHgTG3"
+}

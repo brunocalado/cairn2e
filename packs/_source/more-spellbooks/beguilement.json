@@ -1,0 +1,31 @@
+{
+  "_id": "LZDU9O7FcMya6Pfi",
+  "name": "Beguilement",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p>Target humanoid must make a WIL save or is controlled telepathically.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!LZDU9O7FcMya6Pfi",
+  "folder": "dbsFyDgpaspE6vMK"
+}

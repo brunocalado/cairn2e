@@ -1,0 +1,39 @@
+{
+  "_id": "WByT1Ppx0DQmSsYB",
+  "name": "Fletchwind",
+  "type": "background",
+  "img": "icons/containers/ammunition/arrows-quiver-brown.webp",
+  "system": {
+    "description": "<blockquote><p>You strike from afar, but that does not make you a coward. You are a musician, the song of your bowstring naught but a warning, singing the silent promise of a quick death.</p></blockquote>",
+    "names": [
+      "Flint",
+      "Feather",
+      "Crier",
+      "Thunder",
+      "Falcon",
+      "Pluck",
+      "Needle",
+      "Warsong",
+      "Hawk",
+      "Cai"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.weapons.Item.xNFvJV971IDEj7zZ",
+      "Compendium.cairn2e.background-gear.Item.x89IPsPuvTrESmM5",
+      "Compendium.cairn2e.background-gear.Item.1WrwqFNAEVwO8jl6",
+      "Compendium.cairn2e.background-gear.Item.knyvKDHoSvB3XB8G"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.i1HwJlO1wbOqTqD7",
+      "Compendium.cairn2e.background-tables.RollTable.oZDjcZQ7mBlNO1jC"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WByT1Ppx0DQmSsYB"
+}

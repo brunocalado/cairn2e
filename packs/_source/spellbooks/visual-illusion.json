@@ -1,0 +1,31 @@
+{
+  "_id": "vqnI7wLaGjW8IzBd",
+  "name": "Visual Illusion",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-purple.webp",
+  "system": {
+    "description": "<p><em>Filled with rich, colorful pages very much like a children's bedtime story.</em></p><p>A silent, immobile, room-sized illusion of your choice appears.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!vqnI7wLaGjW8IzBd",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

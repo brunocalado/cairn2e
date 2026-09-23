@@ -1,0 +1,31 @@
+{
+  "_id": "Y3sIM4DITkfvyubE",
+  "name": "Sway Will",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p>A target is compelled to follow a stated course of action, without understanding why.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Y3sIM4DITkfvyubE",
+  "folder": "MCt2VTDHSjLFlLso"
+}

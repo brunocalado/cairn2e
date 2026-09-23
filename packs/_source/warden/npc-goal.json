@@ -1,0 +1,318 @@
+{
+  "_id": "dtYtko9JNSzI9FGN",
+  "name": "NPC Goal",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll what an NPC is trying to achieve.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "VnFnKQ7stdCxDyy1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ascension",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.VnFnKQ7stdCxDyy1"
+    },
+    {
+      "_id": "QNq2OC90BbvJUyly",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cleansing",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.QNq2OC90BbvJUyly"
+    },
+    {
+      "_id": "b9fAuC0Dkp2lPe56",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Conservation",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.b9fAuC0Dkp2lPe56"
+    },
+    {
+      "_id": "B4S4oGCn8Cek4gqd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Defense",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.B4S4oGCn8Cek4gqd"
+    },
+    {
+      "_id": "9fdEpvqDysNrAbRq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Domination",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.9fdEpvqDysNrAbRq"
+    },
+    {
+      "_id": "TjY5ECFxFlrYnvv6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Enrichment",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.TjY5ECFxFlrYnvv6"
+    },
+    {
+      "_id": "ANIVIkTnSPuJqPsC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Expansion",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.ANIVIkTnSPuJqPsC"
+    },
+    {
+      "_id": "XqfDAicsGmBu2mPQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Freedom",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.XqfDAicsGmBu2mPQ"
+    },
+    {
+      "_id": "ABvWqLF2oSiuiUjj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Healing",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.ABvWqLF2oSiuiUjj"
+    },
+    {
+      "_id": "VkKZMJ9VA7b11ESN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Integration",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.VkKZMJ9VA7b11ESN"
+    },
+    {
+      "_id": "IuTjsX9zHU5EVADT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Justice",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.IuTjsX9zHU5EVADT"
+    },
+    {
+      "_id": "Bi5XQWTmBUJ9WTKn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Peace",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.Bi5XQWTmBUJ9WTKn"
+    },
+    {
+      "_id": "B0XYxR1NibVwCUEe",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Power",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.B0XYxR1NibVwCUEe"
+    },
+    {
+      "_id": "MLVQBVmIefIxK7Qb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Preservation",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.MLVQBVmIefIxK7Qb"
+    },
+    {
+      "_id": "2p5jREhSR4YWmdHn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Purification",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.2p5jREhSR4YWmdHn"
+    },
+    {
+      "_id": "F6j1ixR1kfzUIeNi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Redemption",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.F6j1ixR1kfzUIeNi"
+    },
+    {
+      "_id": "FE7UPF3NOF1wM0qV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Revenge",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.FE7UPF3NOF1wM0qV"
+    },
+    {
+      "_id": "aiO4T4Y1crjIbI7K",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Survival",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.aiO4T4Y1crjIbI7K"
+    },
+    {
+      "_id": "fSpFlidugwLHtIsY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Unity",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.fSpFlidugwLHtIsY"
+    },
+    {
+      "_id": "IFkyLURKPhEQEdot",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Wealth",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dtYtko9JNSzI9FGN.IFkyLURKPhEQEdot"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!dtYtko9JNSzI9FGN"
+}

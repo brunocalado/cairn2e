@@ -1,0 +1,114 @@
+{
+  "_id": "KEqwPXOzZEK0ywgK",
+  "name": "Red Cap",
+  "type": "npc",
+  "img": "icons/weapons/sickles/scythe-wrapped-red.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 6,
+        "max": 6
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "w7lxX7qbjdDGT5cm",
+      "name": "Dual Sickles",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>dual sickles (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!KEqwPXOzZEK0ywgK.w7lxX7qbjdDGT5cm"
+    },
+    {
+      "name": "Born from blood left to rot in the land of Fairy.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Their hats are a deep red from the blood they bathe in.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "qldQLh2XH3A8fxWd",
+      "_key": "!actors.items!KEqwPXOzZEK0ywgK.qldQLh2XH3A8fxWd"
+    },
+    {
+      "name": "Ignore those with little to live for, as there is no pleasure in their murder.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "blbezfmSH1MZFl2U",
+      "_key": "!actors.items!KEqwPXOzZEK0ywgK.blbezfmSH1MZFl2U"
+    },
+    {
+      "name": "Target is eviscerated, the spray of their blood restoring STR loss suffered by the Red Cap.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "YuULBsSRFwaIrTXX",
+      "_key": "!actors.items!KEqwPXOzZEK0ywgK.YuULBsSRFwaIrTXX"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!KEqwPXOzZEK0ywgK"
+}

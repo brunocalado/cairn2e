@@ -1,0 +1,318 @@
+{
+  "_id": "aTfLXvuPhaejcE1P",
+  "name": "Monster Physique",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Physique column of the Monster Appearance table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "FxKR4zBOfjPi7bRI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Albino",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.FxKR4zBOfjPi7bRI"
+    },
+    {
+      "_id": "Q8tAz0VJKUQfYuPp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Black",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.Q8tAz0VJKUQfYuPp"
+    },
+    {
+      "_id": "scGQ8LlwxuH6YCXt",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Crystalline",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.scGQ8LlwxuH6YCXt"
+    },
+    {
+      "_id": "YdVGvzGhtyVHHxpz",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Emaciated",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.YdVGvzGhtyVHHxpz"
+    },
+    {
+      "_id": "HgyD1xhenObiGQIG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Eyeless",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.HgyD1xhenObiGQIG"
+    },
+    {
+      "_id": "vyPBMPnDFJaaBmU7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Feathered",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.vyPBMPnDFJaaBmU7"
+    },
+    {
+      "_id": "lk0csGZcBCqKkh5C",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Gelatinous",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.lk0csGZcBCqKkh5C"
+    },
+    {
+      "_id": "dMDUg8MvVgURLNWo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Glowing",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.dMDUg8MvVgURLNWo"
+    },
+    {
+      "_id": "Cey7Py9ACoyAmYvm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hardened",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.Cey7Py9ACoyAmYvm"
+    },
+    {
+      "_id": "Of2zxGdC6acfEjJa",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Headless",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.Of2zxGdC6acfEjJa"
+    },
+    {
+      "_id": "yRoKOCs92mCUkLqQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Horned",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.yRoKOCs92mCUkLqQ"
+    },
+    {
+      "_id": "bSG2fXxG3ODYmfyv",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hunched",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.bSG2fXxG3ODYmfyv"
+    },
+    {
+      "_id": "CVLXgzXknCRwSNDP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Iridescent",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.CVLXgzXknCRwSNDP"
+    },
+    {
+      "_id": "BnVmKZz1Lwzf0QCK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Polyocular",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.BnVmKZz1Lwzf0QCK"
+    },
+    {
+      "_id": "agjr4kwsu9WkjuXI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Scaled",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.agjr4kwsu9WkjuXI"
+    },
+    {
+      "_id": "vJWytRuJ013LEih4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Segmented",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.vJWytRuJ013LEih4"
+    },
+    {
+      "_id": "GYi9dprli1krsNp9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Skeletal",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.GYi9dprli1krsNp9"
+    },
+    {
+      "_id": "HTs69IEcYPEih7tP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Slimy",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.HTs69IEcYPEih7tP"
+    },
+    {
+      "_id": "6vlCJTHjE9BxPnZ1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Translucent",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.6vlCJTHjE9BxPnZ1"
+    },
+    {
+      "_id": "VdzCYXCa9rwliC51",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Twisted",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTfLXvuPhaejcE1P.VdzCYXCa9rwliC51"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!aTfLXvuPhaejcE1P"
+}

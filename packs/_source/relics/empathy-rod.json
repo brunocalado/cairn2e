@@ -1,0 +1,31 @@
+{
+  "_id": "urmgy4RSoMEnQezp",
+  "name": "Empathy Rod",
+  "type": "gear",
+  "img": "icons/tools/fishing/rod-brown-gold.webp",
+  "system": {
+    "description": "<p>When two creatures touch this wooden pole at the same time, their physical and emotional states become fully intertwined until they let go.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Give the rod to a former enemy as a gift. This is a one-way transaction.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!urmgy4RSoMEnQezp",
+  "folder": "UlnseD8X1WIqJdUA"
+}

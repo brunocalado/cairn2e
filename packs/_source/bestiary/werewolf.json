@@ -1,0 +1,144 @@
+{
+  "_id": "cD9GooeBCjIpOqQJ",
+  "name": "Werewolf",
+  "type": "npc",
+  "img": "icons/creatures/abilities/wolf-howl-moon-white.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 6,
+        "max": 6
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "Ec7pmkelUX3cP5hb",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!cD9GooeBCjIpOqQJ.Ec7pmkelUX3cP5hb"
+    },
+    {
+      "_id": "cgnYIWS3y90ucKJF",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!cD9GooeBCjIpOqQJ.cgnYIWS3y90ucKJF"
+    },
+    {
+      "name": "Ferocious lycanthropes that can transform into a wolf-shape at will.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "el5l5s8bKGktqiix",
+      "_key": "!actors.items!cD9GooeBCjIpOqQJ.el5l5s8bKGktqiix"
+    },
+    {
+      "name": "Mundane attacks are impaired against werewolves, but attacks with weapons made of silver are enhanced.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "6dYxO9ZuRA0viBoc",
+      "_key": "!actors.items!cD9GooeBCjIpOqQJ.6dYxO9ZuRA0viBoc"
+    },
+    {
+      "name": "Target becomes infected with lycanthropy, transforming into a werewolf by the next full moon.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Rm8X0gYDHb9UcUhg",
+      "_key": "!actors.items!cD9GooeBCjIpOqQJ.Rm8X0gYDHb9UcUhg"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!cD9GooeBCjIpOqQJ"
+}

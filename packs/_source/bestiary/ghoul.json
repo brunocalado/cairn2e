@@ -1,0 +1,100 @@
+{
+  "_id": "Ir4qQCf5bAAlyALC",
+  "name": "Ghoul",
+  "type": "npc",
+  "img": "icons/magic/death/undead-zombie-grave-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 3,
+        "max": 3
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "J9yTjHJJ5xg4S4k1",
+      "name": "Elongated Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>elongated claws (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!Ir4qQCf5bAAlyALC.J9yTjHJJ5xg4S4k1"
+    },
+    {
+      "name": "Grey-skinned man-things wearing shredded clothes that crave only the flesh of the living.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "LdTbQbId2DGhDb0p",
+      "_key": "!actors.items!Ir4qQCf5bAAlyALC.LdTbQbId2DGhDb0p"
+    },
+    {
+      "name": "Target is deprived from their necrotic wound, dying in d4 days unless treated by a priest or skilled healer. If the body is not burned it later rises as a Ghoul as well.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "D2IOvWoYauoOj37X",
+      "_key": "!actors.items!Ir4qQCf5bAAlyALC.D2IOvWoYauoOj37X"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!Ir4qQCf5bAAlyALC"
+}

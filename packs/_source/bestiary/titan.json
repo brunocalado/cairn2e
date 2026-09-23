@@ -1,0 +1,113 @@
+{
+  "_id": "0ZUPubHwkHQ3Fqnv",
+  "name": "Titan",
+  "type": "npc",
+  "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 16,
+        "max": 16
+      },
+      "DEX": {
+        "value": 15,
+        "max": 15
+      },
+      "WIL": {
+        "value": 18,
+        "max": 18
+      }
+    },
+    "hp": {
+      "value": 18,
+      "max": 18
+    },
+    "role": "monster",
+    "armor": 3,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "dCNmIonGlqGcrvhU",
+      "name": "Lightning Sword",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>lightning sword (d12)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d12",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!0ZUPubHwkHQ3Fqnv.dCNmIonGlqGcrvhU"
+    },
+    {
+      "name": "Mythical, humanoid giants of radiant beauty and powerfully athletic bodies.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Beneficent of character, but prone to megalomania.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "IKC6mX68w5cfMdFa",
+      "_key": "!actors.items!0ZUPubHwkHQ3Fqnv.IKC6mX68w5cfMdFa"
+    },
+    {
+      "name": "Natives of other planes of existence, but sometimes have strongholds in the mortal world.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "5k4Eb4PnWBvsF4xR",
+      "_key": "!actors.items!0ZUPubHwkHQ3Fqnv.5k4Eb4PnWBvsF4xR"
+    },
+    {
+      "name": "Can levitate, shape shift, and sculpt elements at will.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "YT7EhLbNPA473vMK",
+      "_key": "!actors.items!0ZUPubHwkHQ3Fqnv.YT7EhLbNPA473vMK"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!0ZUPubHwkHQ3Fqnv"
+}

@@ -1,0 +1,113 @@
+{
+  "_id": "HuLTkhFFrI4yNekj",
+  "name": "Gargoyle",
+  "type": "npc",
+  "img": "icons/creatures/magical/construct-gargoyle-stone-gray.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 4,
+        "max": 4
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 3,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "z3L0kQfToLK0daRL",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!HuLTkhFFrI4yNekj.z3L0kQfToLK0daRL"
+    },
+    {
+      "name": "Magical, slow-moving statues of monstrous winged creatures, typically employed as guards or watchdogs.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "cH5ALbidMKNrYc0f",
+      "_key": "!actors.items!HuLTkhFFrI4yNekj.cH5ALbidMKNrYc0f"
+    },
+    {
+      "name": "Prowl at nights but fear the day, when the sun's light freezes them in place.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "d6eQP6cWvJY7G7Mm",
+      "_key": "!actors.items!HuLTkhFFrI4yNekj.d6eQP6cWvJY7G7Mm"
+    },
+    {
+      "name": "Immune to charms and magical sleep.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "thCZC1yxjkZV4GeI",
+      "_key": "!actors.items!HuLTkhFFrI4yNekj.thCZC1yxjkZV4GeI"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!HuLTkhFFrI4yNekj"
+}

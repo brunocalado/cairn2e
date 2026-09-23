@@ -1,0 +1,318 @@
+{
+  "_id": "5NuRYMoj1M3sgac1",
+  "name": "NPC Quirk",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll a physical or behavioural Quirk for an NPC.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "AGMByASGn771xPEI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Alert",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.AGMByASGn771xPEI"
+    },
+    {
+      "_id": "2ssoBJ5tpwWNwuCP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bald",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.2ssoBJ5tpwWNwuCP"
+    },
+    {
+      "_id": "CX2aonhUzQ4C2DpP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bright Eyes",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.CX2aonhUzQ4C2DpP"
+    },
+    {
+      "_id": "rlBBF6wA2j7eET18",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Broad Face",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.rlBBF6wA2j7eET18"
+    },
+    {
+      "_id": "KxcFnQKl2fsTQDmm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Crooked Teeth",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.KxcFnQKl2fsTQDmm"
+    },
+    {
+      "_id": "0wisOmYzC0yFFhG7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Gaunt",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.0wisOmYzC0yFFhG7"
+    },
+    {
+      "_id": "rJbufCrMa4eOGd01",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Good Posture",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.rJbufCrMa4eOGd01"
+    },
+    {
+      "_id": "JBJDnlyZjdLM4L7e",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Grimy",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.JBJDnlyZjdLM4L7e"
+    },
+    {
+      "_id": "uAtUOSYlnRleP3d0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Harsh Voice",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.uAtUOSYlnRleP3d0"
+    },
+    {
+      "_id": "N682jisxDoCIO0VD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Heavy Brow",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.N682jisxDoCIO0VD"
+    },
+    {
+      "_id": "c1sL5GSO2MEcAbNm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Limps",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.c1sL5GSO2MEcAbNm"
+    },
+    {
+      "_id": "IUXgdmbpw02MdzlW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Missing Ear",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.IUXgdmbpw02MdzlW"
+    },
+    {
+      "_id": "bXCLyQxUCsa407qC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Muscular",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.bXCLyQxUCsa407qC"
+    },
+    {
+      "_id": "E8I3rdybJR05DufV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Notable Hair",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.E8I3rdybJR05DufV"
+    },
+    {
+      "_id": "eAMDFmAYi58YL9GR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pleasant Voice",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.eAMDFmAYi58YL9GR"
+    },
+    {
+      "_id": "HN4Wa6dY3QEWkB1c",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Squints",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.HN4Wa6dY3QEWkB1c"
+    },
+    {
+      "_id": "OR0WnEwEgUY3oBbp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Strong",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.OR0WnEwEgUY3oBbp"
+    },
+    {
+      "_id": "5V4PFmQNgS1baaOp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Thick Eyebrows",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.5V4PFmQNgS1baaOp"
+    },
+    {
+      "_id": "9aghzNY6WhD5lvFh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tired",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.9aghzNY6WhD5lvFh"
+    },
+    {
+      "_id": "LHTEU733u8rPcI0j",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Young",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NuRYMoj1M3sgac1.LHTEU733u8rPcI0j"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!5NuRYMoj1M3sgac1"
+}

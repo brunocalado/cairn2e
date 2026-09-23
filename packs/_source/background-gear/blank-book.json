@@ -1,0 +1,31 @@
+{
+  "_id": "UkAcsDGoueRs7shL",
+  "name": "Blank Book",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-bound-brown.webp",
+  "system": {
+    "description": "<p>Blank Book</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UkAcsDGoueRs7shL",
+  "folder": "cH1FO0n5vIRu4oSk"
+}

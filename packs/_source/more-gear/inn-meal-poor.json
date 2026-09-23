@@ -1,0 +1,31 @@
+{
+  "_id": "gJCzHcBuasyyBlau",
+  "name": "Inn Meal, poor",
+  "type": "gear",
+  "img": "icons/consumables/food/plate-fish-bowl-bones-brown.webp",
+  "system": {
+    "description": "<p>Inn Meal, poor (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gJCzHcBuasyyBlau",
+  "folder": "oZhGiDOcu7cDovBl"
+}

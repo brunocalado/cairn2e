@@ -1,0 +1,15 @@
+{
+  "_id": "ucFx97BSC93VpXbj",
+  "name": "Rest",
+  "type": "script",
+  "img": "icons/sundries/survival/waterskin-leather-brown.webp",
+  "scope": "global",
+  "command": "cairn2e.rest();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!ucFx97BSC93VpXbj"
+}

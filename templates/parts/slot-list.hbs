@@ -1,0 +1,29 @@
+{{!-- The inventory as the printed Cairn sheet draws it: `slotsMax` numbered ruled lines, always
+      all of them. An empty slot is a line, not nothing — which is why this layout has no dead
+      space to leave. A *bulky* item (or a stack) occupies as many numbered lines as it has slots;
+      the printed sheet draws that as one block two lines tall rather than a row plus a
+      continuation mark, and so does this. *Petty* occupies none and has its own tab.
+
+      Never an eleventh line. Ten is a hard cap enforced on the documents (`module/documents/
+      item.js`, `actor.js`): a write that would not fit is refused before it lands, so there is
+      no "over capacity" for a sheet to draw.
+
+      The column of circles down the right is the printed sheet's Fatigue track: one circle per
+      slot. The ledger, the circles and the word FATIGUE stand inside ONE drawn frame, with an
+      upright between the ledger and the track — the word belongs to the structure, not beside it. An occupied circle is inert — Fatigue cannot be marked over a thing being carried —
+      so with all ten slots full there is nothing to click, which is the rule:
+      "If a character is forced to add Fatigue to their inventory but they have no free slots,
+      they must drop an item" (`srd-2e/players-guide/core-rules.md`). --}}
+<div class="cairn-slot-block" data-ink="box" data-ink-seed="ledger" data-ink-w="1.4" data-ink-a="0.5">
+    {{!-- The upright that separates the ledger from the Fatigue track. It is absolutely placed
+          rather than a column of its own, because the circles live inside the rows — see
+          `.cairn-fatigue-rule` in the stylesheet for the arithmetic. --}}
+    <span class="cairn-fatigue-rule" data-ink="vline" data-ink-seed="fatigue-rule" data-ink-w="1" data-ink-a="0.3"></span>
+    <ol class="cairn-slot-list">
+        {{#each inventory.rows as |row|}}
+        {{> "systems/cairn2e/templates/parts/slot-row.hbs" row=row}}
+        {{/each}}
+    </ol>
+    <span class="cairn-fatigue-label">{{localize 'CAIRN.Fatigue'}}</span>
+</div>
+

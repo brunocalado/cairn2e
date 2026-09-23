@@ -1,0 +1,31 @@
+{
+  "_id": "vUYMC5ZKY9lph7Wr",
+  "name": "Reject Unlife",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p>Nearby undead are immobilized for 30 seconds or until you take another action.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!vUYMC5ZKY9lph7Wr",
+  "folder": "MCt2VTDHSjLFlLso"
+}

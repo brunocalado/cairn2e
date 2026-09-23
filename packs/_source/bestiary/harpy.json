@@ -1,0 +1,113 @@
+{
+  "_id": "zf1q8Ia3AAfPkYoi",
+  "name": "Harpy",
+  "type": "npc",
+  "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 7,
+        "max": 7
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "C7fBahJ1tTTAGClx",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!zf1q8Ia3AAfPkYoi.C7fBahJ1tTTAGClx"
+    },
+    {
+      "name": "Hideous monstrosities with the body of a giant eagle and a humanoid head.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4J3o9ptTU2rd9OwY",
+      "_key": "!actors.items!zf1q8Ia3AAfPkYoi.4J3o9ptTU2rd9OwY"
+    },
+    {
+      "name": "Their movements and flight are clumsy due to their disproportionate size.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Rely on charmed victims to do anything of note.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "zudiGi5YTqkS5DX4",
+      "_key": "!actors.items!zf1q8Ia3AAfPkYoi.zudiGi5YTqkS5DX4"
+    },
+    {
+      "name": "Song",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Anyone nearby must save WIL or be charmed by its voice, following the harpy and defending it from any threat.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "QPskQmkkj6NPgvGc",
+      "_key": "!actors.items!zf1q8Ia3AAfPkYoi.QPskQmkkj6NPgvGc"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!zf1q8Ia3AAfPkYoi"
+}

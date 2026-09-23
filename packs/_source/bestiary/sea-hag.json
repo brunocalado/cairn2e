@@ -1,0 +1,113 @@
+{
+  "_id": "V6SW9RnvGQIw8E01",
+  "name": "Sea Hag",
+  "type": "npc",
+  "img": "icons/creatures/magical/spirit-poison-smoke-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 11,
+        "max": 11
+      },
+      "DEX": {
+        "value": 15,
+        "max": 15
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "i5yH3TCt0FafZ9Uo",
+      "name": "Long Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>long claws (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!V6SW9RnvGQIw8E01.i5yH3TCt0FafZ9Uo"
+    },
+    {
+      "name": "Ghostly, green-skinned hags that dwell in seaweed forests and warm shallow waters.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "9ojmgbtS0rTEsuAT",
+      "_key": "!actors.items!V6SW9RnvGQIw8E01.9ojmgbtS0rTEsuAT"
+    },
+    {
+      "name": "Immune to magic from spellbooks.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "tgPdl4gqX2WYdJpN",
+      "_key": "!actors.items!V6SW9RnvGQIw8E01.tgPdl4gqX2WYdJpN"
+    },
+    {
+      "name": "Hideous Gaze",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>A target is overcome with fear (HP drops to 0). WIL save each round to break the spell.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "yE6Q9DmywxGcvYyg",
+      "_key": "!actors.items!V6SW9RnvGQIw8E01.yE6Q9DmywxGcvYyg"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!V6SW9RnvGQIw8E01"
+}

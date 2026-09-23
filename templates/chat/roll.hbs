@@ -1,0 +1,20 @@
+{{!-- A roll, drawn the way a card draws one (CairnRoll.CHAT_TEMPLATE): the formula in soft italic
+      at the left, the total large and tabular at the right, a hairline under them, and the dice
+      faces folded beneath.
+
+      Three things here are core's and must stay: `dice-roll`, because Dice So Nice hides that
+      element until its dice land; `data-action="expandRoll"`, which the ChatLog toggles `expanded`
+      on; and a `.dice-tooltip` child, which core's CSS opens when it is. `dice-total` stays on the
+      total because `combat/damage.js#onClickChatMessageApplyButton` reads the rolled number back
+      out of the DOM.
+
+      `flavor` is never drawn here — it is the message's caption (`templates/chat/message.hbs`), and
+      drawing it in both places printed it twice. A private roll arrives as `???` / `?`, which needs
+      nothing special. --}}
+<div class="dice-roll cairn-roll" data-action="expandRoll">
+    <div class="cairn-card-roll">
+        <span class="cairn-card-formula">{{formula}}</span>
+        <span class="cairn-card-total">{{total}}</span>
+    </div>
+    {{{tooltip}}}
+</div>

@@ -1,0 +1,31 @@
+{
+  "_id": "HPI7vn4XQZuAeGka",
+  "name": "Hatred",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p><em>Long term exposure to the book can cause suspicion, paranoia and distrust of others.</em></p><p>A creature develops a deep hatred of another creature or group and wishes to destroy them.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!HPI7vn4XQZuAeGka",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "QxMcA9stKeV6Ypt4",
+  "name": "Uncurse",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p>A person or object you touch is freed from a curse or nefarious spell.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QxMcA9stKeV6Ypt4",
+  "folder": "MCt2VTDHSjLFlLso"
+}

@@ -1,0 +1,14 @@
+{{!-- A sack's one property: how much is in it. Its weight is not asked — it is read off this
+      number (`_derived.js#slotsForItem`): "A bag of coins worth less than 100gp is *petty* and
+      does not occupy a slot" (`srd-2e/players-guide/character-creation.md`), and every hundred
+      is a slot. The tag under the name on the ledger says the same number, so nothing here has
+      to. --}}
+<section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-prop-row">
+            <label for="coin-value-{{item.id}}">{{localize 'CAIRN.CoinValue'}}</label>
+            <input id="coin-value-{{item.id}}" class="cairn-prop-number" type="text" name="system.value"
+                value="{{system.value}}" min="0" maxlength="6" inputmode="numeric" data-dtype="Number" />
+        </div>
+    </div>
+</section>

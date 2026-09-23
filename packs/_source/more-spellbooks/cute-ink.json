@@ -1,0 +1,31 @@
+{
+  "_id": "xlAXMYADtai0ZrIf",
+  "name": "Cute Ink",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p>A single page in a book can be altered to hide its true content.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xlAXMYADtai0ZrIf",
+  "folder": "MCt2VTDHSjLFlLso"
+}

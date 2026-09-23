@@ -1,0 +1,31 @@
+{{!-- The foot is the shopper's till, and the Warden has no part in it at all: their window
+      drops this part (`store.js#_configureRenderParts`). One drawn frame holds the working on
+      the left and the answer on the right: gold now, what the buying costs, what the selling
+      brings, gold after, and the number that matters more in Cairn, the slots used now and as
+      they will stand. Beside Confirm is one glyph saying whether the trade will go through, with
+      the reason in its tooltip: a disabled button takes no pointer and so opens no tooltip of
+      its own, and a line of words there pushed the button about every time the answer changed. --}}
+<footer class="cairn-store-foot">
+    <div class="cairn-store-till" data-ink="box" data-ink-seed="store-till" data-ink-w="1.6">
+        <dl class="cairn-store-sum">
+            <div><dt>{{localize "CAIRN.Store.GoldNow"}}</dt><dd>{{character.gold}}</dd></div>
+            <div class="cairn-store-sum-buy"><dt>{{localize "CAIRN.Store.Buying"}}</dt><dd>&minus;{{summary.buyTotal}}</dd></div>
+            <div class="cairn-store-sum-sell"><dt>{{localize "CAIRN.Store.SellingTotal"}}</dt><dd>+{{summary.sellTotal}}</dd></div>
+            <div class="cairn-store-sum-after"><dt>{{localize "CAIRN.Store.GoldAfter"}}</dt><dd>{{summary.goldAfter}}</dd></div>
+            <div><dt>{{localize "CAIRN.Slots"}}</dt><dd>{{summary.slotsUsed}}/{{slotsMax}} &rarr; {{summary.slotsAfter}}/{{slotsMax}}</dd></div>
+        </dl>
+        <div class="cairn-store-till-act">
+            <button type="button" data-action="checkout" {{#unless summary.ok}}disabled{{/unless}}>
+                <i class="fas fa-coins" inert></i> {{localize "CAIRN.Store.Confirm"}}
+            </button>
+            {{!-- Whether the trade will go through, in one glyph that never changes size, so the
+                  till's layout does not move under the reader's pointer when the answer does.
+                  It carries the reason in its own tooltip because a DISABLED button takes no
+                  pointer and opens none. --}}
+            <span class="cairn-store-status {{status.tone}}" data-tooltip-text="{{status.label}}"
+                  role="img" aria-label="{{status.label}}">
+                <i class="fas {{status.icon}}" inert></i>
+            </span>
+        </div>
+    </div>
+</footer>

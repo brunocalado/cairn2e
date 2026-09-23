@@ -1,0 +1,31 @@
+{
+  "_id": "Jn3uUcsPuTkh75C4",
+  "name": "Assassin's Goblets",
+  "type": "gear",
+  "img": "icons/consumables/drinks/wine-amphora-clay-gray.webp",
+  "system": {
+    "description": "<p>A pair of fragile wine flutes. Any liquid poured into one is swapped with the other.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Jn3uUcsPuTkh75C4",
+  "folder": "UlnseD8X1WIqJdUA"
+}

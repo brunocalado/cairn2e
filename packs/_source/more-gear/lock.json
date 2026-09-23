@@ -1,0 +1,31 @@
+{
+  "_id": "YIgMWNexXwxKqJMb",
+  "name": "Lock",
+  "type": "gear",
+  "img": "icons/svg/padlock.svg",
+  "system": {
+    "description": "<p>Lock (key included)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!YIgMWNexXwxKqJMb",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

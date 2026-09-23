@@ -1,0 +1,31 @@
+{
+  "_id": "YFnX1RP6FZ19c3gt",
+  "name": "Runic Slumber",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>A rune you draw puts the reader into a magical sleep that lasts 1d6 hours.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!YFnX1RP6FZ19c3gt",
+  "folder": "FeXVyrcexT1LlyqR"
+}

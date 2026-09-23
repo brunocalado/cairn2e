@@ -1,0 +1,31 @@
+{
+  "_id": "KUQaNGi5JCk4eIFN",
+  "name": "Push/Pull",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p><em>Any force against the book is comically amplified.</em></p><p>An object of any size is pulled directly towards you or pushed directly away from you with the strength of one man.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KUQaNGi5JCk4eIFN",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

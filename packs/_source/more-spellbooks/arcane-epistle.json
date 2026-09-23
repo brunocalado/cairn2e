@@ -1,0 +1,31 @@
+{
+  "_id": "U6uDHn2ngpNywE69",
+  "name": "Arcane Epistle",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>You write a letter that only its intended reader can understand.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!U6uDHn2ngpNywE69",
+  "folder": "MCt2VTDHSjLFlLso"
+}

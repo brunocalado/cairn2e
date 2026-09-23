@@ -1,0 +1,108 @@
+{
+  "_id": "6OKpPmolyINpNtZt",
+  "name": "Fieldwarden: What tool saved your life?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Fieldwarden</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "ZLjbILhSvG9plnRF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Bloodvine Whip</strong> d8 damage. On <strong>Critical Damage</strong>, it drains the target's blood, granting the weapon's next attack the <em>blast</em> quality</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.ZLjbILhSvG9plnRF"
+    },
+    {
+      "_id": "4HQa0YQx4cqtEDSY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Clatter Keeper</strong> A hand-cranked device that emits a loud noise, frightening away most creatures.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.4HQa0YQx4cqtEDSY"
+    },
+    {
+      "_id": "sgDi66QX8XzG4dh6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sun Stick</strong> Provides ample warmth and light for up to one hour. <strong>Recharge</strong>: Leave in heavy sunlight for a full day. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.sgDi66QX8XzG4dh6"
+    },
+    {
+      "_id": "ywTl1pGCU7aOgeAo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Root Tether</strong> When thrown, binds a creature as large as a wolf to the soil for a short time.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.ywTl1pGCU7aOgeAo"
+    },
+    {
+      "_id": "qHEEynzKDjh1J2UR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Greenwhistle</strong> A small flute that calms plants, making passage through areas heavy with plant life a bit easier.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.qHEEynzKDjh1J2UR"
+    },
+    {
+      "_id": "YnYfV47U730tYhCr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Everbloom Band</strong> A circlet adorned with flowers that never wilt. On <strong>Critical Damage</strong>, the flowers dissolve into dust, but you act as if your save succeeded (STR loss still occurs).</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.YnYfV47U730tYhCr"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!6OKpPmolyINpNtZt"
+}

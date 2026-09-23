@@ -1,0 +1,32 @@
+{{!-- What a scar is, as three printed rows: which row of the Scars table it came from, what it
+      did to which maximum, and whether the gain has been taken yet.
+
+      Read-only, all of it, and deliberately. The number that rules is the character's own stored
+      maximum; `system.outcome` is the record of what this scar did to it, kept so deleting the
+      scar can put it back. A second editable copy of a maximum would drift from the first, and
+      the maxima are edited in one place — the character's edit window.
+
+      The outcome row is absent until the gain happens, which is why the STATE row is the
+      last one and the one that draws no rule. --}}
+<section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-prop-row" data-ink="hline" data-ink-seed="scar-entry"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">
+            <label>{{localize 'CAIRN.Scar.Entry'}}</label>
+            <span class="cairn-prop-value">{{scar.entry}}</span>
+        </div>
+
+        {{#if scar.hasOutcome}}
+        <div class="cairn-field cairn-prop-row" data-ink="hline" data-ink-seed="scar-outcome"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">
+            <label>{{scar.outcomeLabel}}</label>
+            <span class="cairn-prop-value"><s>{{scar.from}}</s> &rarr; {{scar.to}}</span>
+        </div>
+        {{/if}}
+
+        <div class="cairn-field cairn-prop-row">
+            <label>{{localize 'CAIRN.Scar.State'}}</label>
+            <span class="cairn-prop-value">{{localize scar.stateLabel}}</span>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,108 @@
+{
+  "_id": "T5KkrjcVEru9bHYV",
+  "name": "Foundling: Who took you in?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Foundling</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "ejSrZ2kI39UFaiLq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>An old hunter. You were both quite happy, until it all ended. Take a <strong>Weathered Longbow</strong> (d8, <em>bulky</em>) and a <strong>Leather Jerkin</strong> (1 Armor).</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.ejSrZ2kI39UFaiLq"
+    },
+    {
+      "_id": "wZ5Tr1UMBKwtAGjT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A wizened apothecary, who taught you the healing arts but maintained a clinical detachment. Take a <strong>Healing Unguent</strong> (restores d4 STR, 1 use).</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.wZ5Tr1UMBKwtAGjT"
+    },
+    {
+      "_id": "elCZVEBQ11fKIvAR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A druid, who taught you the language of trees. When it came time to , you took with you only a <strong>Gnarled Staff</strong> (d8) and left a promise that one day you would return.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.elCZVEBQ11fKIvAR"
+    },
+    {
+      "_id": "eM8vCSgXNGADaBmA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A gruff blacksmith from a sleepy river town. You were always kept at arm's length. Now the forge is cold, and you've moved on. Take a <strong>Smith's Apron</strong> (<em>petty</em>) and a set of <strong>Oft-mended Chain Mail</strong> (2 Armor, <em>bulky</em>).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.eM8vCSgXNGADaBmA"
+    },
+    {
+      "_id": "UGPfWVRsVlZBbIha",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A troupe of traveling entertainers. For a time, they were like family to you. One day you woke up and they were gone with no explanation. Take a <strong>Storybook</strong>, a <strong>Dagger</strong> (d6), and some burning questions.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.UGPfWVRsVlZBbIha"
+    },
+    {
+      "_id": "Fsvbl7Afn0i0XMDY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The monks of a secluded forest monastery. When their rules became too strict, and you snuck away. Take a <strong>Monk's Habit</strong> (warm, <em>petty</em>) and a <strong>Spellbook</strong> of <em>Control Plants</em>. Control Plants: Nearby plants and trees obey you and gain the ability to move at a slow pace. <em>Leaves grow along the spine, and it smells faintly of decay.</em></p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.Fsvbl7Afn0i0XMDY"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!T5KkrjcVEru9bHYV"
+}

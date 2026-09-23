@@ -1,0 +1,241 @@
+{
+  "_id": "DVemvG4HrxHObzp3",
+  "name": "Scholar",
+  "type": "npc",
+  "img": "icons/sundries/books/book-embossed-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 7,
+        "max": 7
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 15,
+        "max": 15
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Scholar",
+    "dayRate": 20,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "7pi6b1i4yBzi6jWm",
+      "_key": "!actors.items!DVemvG4HrxHObzp3.7pi6b1i4yBzi6jWm"
+    },
+    {
+      "name": "Candle",
+      "type": "gear",
+      "img": "icons/sundries/lights/candle-lit-yellow.webp",
+      "system": {
+        "description": "<p>Candle (3 uses, dim)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ziEnMHizcjDWyxSh",
+      "_key": "!actors.items!DVemvG4HrxHObzp3.ziEnMHizcjDWyxSh"
+    },
+    {
+      "name": "Parchment & Ink",
+      "type": "gear",
+      "img": "icons/tools/scribal/ink-quill-red.webp",
+      "system": {
+        "description": "<p>Parchment &amp; Ink (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ptTIlGicrjlwM8f9",
+      "_key": "!actors.items!DVemvG4HrxHObzp3.ptTIlGicrjlwM8f9"
+    },
+    {
+      "name": "Stylus",
+      "type": "gear",
+      "img": "icons/skills/trades/academics-scribe-quill-gray.webp",
+      "system": {
+        "description": "<p>Stylus</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "wbYhqzr4Ti4FDTJt",
+      "_key": "!actors.items!DVemvG4HrxHObzp3.wbYhqzr4Ti4FDTJt"
+    },
+    {
+      "name": "Staff",
+      "type": "gear",
+      "img": "icons/weapons/staves/staff-simple-carved.webp",
+      "system": {
+        "description": "<p>Staff (d6 damage)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "jmxhdY3FGP8w9pOd",
+      "_key": "!actors.items!DVemvG4HrxHObzp3.jmxhdY3FGP8w9pOd"
+    },
+    {
+      "name": "Robes",
+      "type": "gear",
+      "img": "icons/equipment/chest/robe-collared-blue.webp",
+      "system": {
+        "description": "<p>Robes (<em>petty</em>)</p>",
+        "slots": 0,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "MhMaTEdTVAii6klj",
+      "_key": "!actors.items!DVemvG4HrxHObzp3.MhMaTEdTVAii6klj"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!DVemvG4HrxHObzp3"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "6QXVX9BbFC1Epqix",
+  "name": "Betterwand",
+  "type": "gear",
+  "img": "icons/weapons/wands/wand-gem-blue.webp",
+  "system": {
+    "description": "<p>Vibrates with increased intensity when pointed at the best of a series of objects.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Willingly accept a poor deal or trade while in possession of the wand.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6QXVX9BbFC1Epqix",
+  "folder": "UlnseD8X1WIqJdUA"
+}

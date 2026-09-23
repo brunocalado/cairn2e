@@ -1,0 +1,31 @@
+{
+  "_id": "MfoCSTxeS6oriunT",
+  "name": "Beast Form",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p><em>Covered in thick fur, its edges lined with small teeth.</em></p><p>You and your possessions transform into a mundane animal.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!MfoCSTxeS6oriunT",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

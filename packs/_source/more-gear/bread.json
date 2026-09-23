@@ -1,0 +1,31 @@
+{
+  "_id": "0CmxUSfbtPFMBz5v",
+  "name": "Bread",
+  "type": "gear",
+  "img": "icons/consumables/grains/bread-loaf-boule-rustic-brown.webp",
+  "system": {
+    "description": "<p>Bread (four loaves)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!0CmxUSfbtPFMBz5v",
+  "folder": "oZhGiDOcu7cDovBl"
+}

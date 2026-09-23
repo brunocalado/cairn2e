@@ -1,0 +1,318 @@
+{
+  "_id": "w5LY9VuVkl9yZMV9",
+  "name": "Monster Category",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll a monster Group, then pick or roll one of the listed 2e bestiary monsters.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "rhPUrRJHxBKj8BXZ",
+      "type": "text",
+      "name": "Avian",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Phoenix, Roc, Wyvern</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.rhPUrRJHxBKj8BXZ"
+    },
+    {
+      "_id": "8nuITmetuKletUgB",
+      "type": "text",
+      "name": "Beast",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Blood Elk, Grizzly Bear, Killer Bees, Night Cat, Viper, Wolf</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.8nuITmetuKletUgB"
+    },
+    {
+      "_id": "I4V5vVPPVewbxLQy",
+      "type": "text",
+      "name": "Behemoth",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Green Dragon, Purple Worm</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.I4V5vVPPVewbxLQy"
+    },
+    {
+      "_id": "B1uENVTDzZBKsx9d",
+      "type": "text",
+      "name": "Construct",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Bone Construct, Cobblehounds, Gargoyle</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.B1uENVTDzZBKsx9d"
+    },
+    {
+      "_id": "Upx1nssqrpL8wHR2",
+      "type": "text",
+      "name": "Demon",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Hellhound, Nightmare</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.Upx1nssqrpL8wHR2"
+    },
+    {
+      "_id": "q9hl7lBWb0aUzEEl",
+      "type": "text",
+      "name": "Extraplanar",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Eye of Terror, Mind Lasher</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.q9hl7lBWb0aUzEEl"
+    },
+    {
+      "_id": "quE2L5BvZULpC0xu",
+      "type": "text",
+      "name": "Fey",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Boggart, Dryad, Frost Elf, Pixie, Red Cap, Night Hag, Sea Hag, Will-o-Wisp</p>",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.quE2L5BvZULpC0xu"
+    },
+    {
+      "_id": "LIAP3D3E4wPBnqXZ",
+      "type": "text",
+      "name": "Giant",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Ettin, Sky Giant, Storm Giant, Titan</p>",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.LIAP3D3E4wPBnqXZ"
+    },
+    {
+      "_id": "dB8ulL8FRlgGNNkW",
+      "type": "text",
+      "name": "Goblinoid",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Bugbear, Goblin, Hobgoblin, Ogre, Root Goblin, Troll, Wood Troll</p>",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.dB8ulL8FRlgGNNkW"
+    },
+    {
+      "_id": "YdiaglLHA9vs7jrN",
+      "type": "text",
+      "name": "Humanoid",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Acolyte, Bandit, Gnoll, Hooded Men, Triton</p>",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.YdiaglLHA9vs7jrN"
+    },
+    {
+      "_id": "Cuvdn4MWGW44wDPS",
+      "type": "text",
+      "name": "Hybrid",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Centaur, Manticore, Minotaur, Owlbear</p>",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.Cuvdn4MWGW44wDPS"
+    },
+    {
+      "_id": "g5RkGbTZQJnfSj36",
+      "type": "text",
+      "name": "Incorporeal",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Invisible Stalker, Shadow</p>",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.g5RkGbTZQJnfSj36"
+    },
+    {
+      "_id": "eJ7rc8jExoLrqIPL",
+      "type": "text",
+      "name": "Insectoid",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Aranea, Burrowing Horror, Cave Locust, Giant Scorpion</p>",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.eJ7rc8jExoLrqIPL"
+    },
+    {
+      "_id": "L21D9flRJyoJVkxE",
+      "type": "text",
+      "name": "Lizard",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Basilisk, Hydra, Kobold, Naga, Reptilian</p>",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.L21D9flRJyoJVkxE"
+    },
+    {
+      "_id": "FR7yuzE3F2o64FZs",
+      "type": "text",
+      "name": "Magical",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Blink Dog, Warp Panther, Water Elemental</p>",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.FR7yuzE3F2o64FZs"
+    },
+    {
+      "_id": "K2XYI1BL0CEfwCNo",
+      "type": "text",
+      "name": "Mythical",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Banshee, Griffon, Harpy, Hydra, Lamia, Unicorn</p>",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.K2XYI1BL0CEfwCNo"
+    },
+    {
+      "_id": "SzyOslNDBz2z5HRA",
+      "type": "text",
+      "name": "Plant",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Creeping Vines, Root Witch, Shambling Mound, Treant</p>",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.SzyOslNDBz2z5HRA"
+    },
+    {
+      "_id": "xLwSu4kO1pJPX33p",
+      "type": "text",
+      "name": "Shape Shifter",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Swine Thing, Werewolf</p>",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.xLwSu4kO1pJPX33p"
+    },
+    {
+      "_id": "OTfLO6tv7DktKTlp",
+      "type": "text",
+      "name": "Undead",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Crypt Guardian, Ghost, Ghoul, Lich, Mummy, Skeleton, Vampire, Wight, Zombie</p>",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.OTfLO6tv7DktKTlp"
+    },
+    {
+      "_id": "pd02T6e7A0TNTNdM",
+      "type": "text",
+      "name": "Unusual",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Gelatinous Ooze, Mimic, Rust Monster, Warrior Snail</p>",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!w5LY9VuVkl9yZMV9.pd02T6e7A0TNTNdM"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!w5LY9VuVkl9yZMV9"
+}

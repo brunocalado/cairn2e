@@ -1,0 +1,31 @@
+{
+  "_id": "2fI1T2bAezmH7Rqs",
+  "name": "Invisible Tether",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-purple.webp",
+  "system": {
+    "description": "<p><em>Its pages are not attached by glue or thread, yet stay together nonetheless.</em></p><p>Two objects within 10ft of each other cannot be moved more than 10ft apart.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2fI1T2bAezmH7Rqs",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

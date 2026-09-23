@@ -1,0 +1,23 @@
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="name">
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-name" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "CAIRN.CharacterCreator.PickName"}}</h3>
+        <button type="button" class="mini" data-action="rollName">
+            <i class="fas fa-dice"></i> {{localize "CAIRN.CharacterCreator.RollName"}}
+        </button>
+    </div>
+    <div class="name-chips">
+        {{#each names}}
+        <button type="button" class="chip" data-action="setName" data-name="{{this}}">{{this}}</button>
+        {{/each}}
+    </div>
+    <p class="hint name-hint">{{localize "CAIRN.CharacterCreator.NameHint"}}</p>
+    {{!-- The label wraps the field rather than pointing at an id: the edit windows use fixed
+          ids (`for="cairn-edit-age"`) because one of each is ever open, but the creator is one
+          window per instance (`id: "cairn2e-character-creator-{id}"`) and two open side by
+          side would share the id. --}}
+    <label class="name-field">
+        <span>{{localize "CAIRN.Name"}}</span>
+        <input type="text" name="charname" value="{{draft.name}}"
+            placeholder="{{localize 'CAIRN.CharacterCreator.NamePlaceholder'}}" />
+    </label>
+</section>

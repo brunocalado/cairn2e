@@ -1,0 +1,31 @@
+{
+  "_id": "JgO6JNq5x4tjMRdk",
+  "name": "Aquamarine",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-asscher-blue.webp",
+  "system": {
+    "description": "<p>Pale sea-blue and flawlessly clear.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!JgO6JNq5x4tjMRdk",
+  "folder": "Qai89dBcno9Coube"
+}

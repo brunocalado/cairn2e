@@ -1,0 +1,40 @@
+{{!-- The checklist a growth is being earned through. What it did to a maximum is printed on
+      the Description tab, under WHAT WAS GAINED, beside the words the Warden writes there.
+
+      MILESTONES are the Warden's checklist (`srd-2e/wardens-guide/growth.md` — Faction
+      Advancement, and the resolution of a Bond). They are typed, and the inputs are indexed
+      (`system.milestones.0.text`, `.1.text`, …) because `DocumentSheetV2#_processFormData` runs
+      `foundry.utils.expandObject` over the form and `ArrayField._cast` turns the resulting
+      integer-keyed object back into an array — so a plain form submit reaches the model with no
+      help. The tick is the system's toggle primitive, whose checkbox stays in the form and is
+      only taken out of the visual order, so an unticked one still submits `false`. The indices have to stay contiguous or the array comes back with holes, which is why
+      removing a row rewrites the whole array rather than blanking one input.
+
+      Nothing here gates the outcome on the list being complete. The SRD states no such rule, and
+      inventing one would put the Warden's judgement inside the software. --}}
+<section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Growth.Milestones'}}</h4>
+        <a class="cairn-zone-add" data-action="milestoneAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Growth.AddMilestone'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-milestones" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list">
+        {{#each system.milestones as |m i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="growth-ms-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                {{> "systems/cairn2e/templates/parts/toggle.hbs" field=(concat "system.milestones." i ".done") value=m.done}}
+                <input class="cairn-row-input" type="text" name="system.milestones.{{i}}.text" value="{{m.text}}"
+                    placeholder="{{localize 'CAIRN.Growth.MilestonePlaceholder'}}" />
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="milestoneRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Growth.NoMilestones'}}</li>
+        {{/each}}
+    </ol>
+</section>

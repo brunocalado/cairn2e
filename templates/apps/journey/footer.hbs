@@ -1,0 +1,14 @@
+{{!-- The Warden's foot: show the window to everyone, end the journey. Resolving the watch is not
+      here — it belongs under the Action heading, with the rolls that watch still owes — and
+      neither is the hand on the two numbers, which sits on the line that counts them. A player
+      has no foot. --}}
+<footer class="cairn-journey-foot">
+{{#if journey}}
+{{#if isGM}}
+    <div class="cairn-journey-warden">
+        <button type="button" data-action="pushToAll"><i class="fas fa-users" inert></i> {{localize "CAIRN.Journey.Push"}}</button>
+        <button type="button" data-action="endJourney"><i class="fas fa-flag-checkered" inert></i> {{localize "CAIRN.Journey.End"}}</button>
+    </div>
+{{/if}}
+{{/if}}
+</footer>

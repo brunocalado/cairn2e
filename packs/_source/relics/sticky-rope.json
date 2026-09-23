@@ -1,0 +1,31 @@
+{
+  "_id": "FnEJcg3Xyk6gE6iC",
+  "name": "Sticky Rope",
+  "type": "gear",
+  "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
+  "system": {
+    "description": "<p>A 100ft rope that can stick to any surface.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Cut off 10ft of rope, which then withers away.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FnEJcg3Xyk6gE6iC",
+  "folder": "UlnseD8X1WIqJdUA"
+}

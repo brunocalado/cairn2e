@@ -1,0 +1,168 @@
+{
+  "_id": "qHD7gG0y6sLQUQ9t",
+  "name": "Hair",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "2yQXieqpC21TUqbx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bald",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.2yQXieqpC21TUqbx"
+    },
+    {
+      "_id": "WIsdVt8OUDBWGI3E",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Braided",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.WIsdVt8OUDBWGI3E"
+    },
+    {
+      "_id": "QPGEyTei0k4u0qei",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Curly",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.QPGEyTei0k4u0qei"
+    },
+    {
+      "_id": "puR19pDcKrKOKM0H",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Filthy",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.puR19pDcKrKOKM0H"
+    },
+    {
+      "_id": "lnT0dugJKIxk348M",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Frizzy",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.lnT0dugJKIxk348M"
+    },
+    {
+      "_id": "TB1ztyCWl9BsLCCd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Long",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.TB1ztyCWl9BsLCCd"
+    },
+    {
+      "_id": "YMlAeBcIlbAlOqDy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Luxurious",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.YMlAeBcIlbAlOqDy"
+    },
+    {
+      "_id": "SBEonnYmypW0qUCP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Oily",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.SBEonnYmypW0qUCP"
+    },
+    {
+      "_id": "iT3CsrPZKd4JJ7os",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Wavy",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.iT3CsrPZKd4JJ7os"
+    },
+    {
+      "_id": "vB0P7BsqCZRnCcjg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Wispy",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qHD7gG0y6sLQUQ9t.vB0P7BsqCZRnCcjg"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!qHD7gG0y6sLQUQ9t"
+}

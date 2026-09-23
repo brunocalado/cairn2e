@@ -1,0 +1,15 @@
+{
+  "_id": "CvQ9vA7upRgv5VDk",
+  "name": "Die Of Fate",
+  "type": "script",
+  "img": "icons/sundries/gaming/dice-runed-brown.webp",
+  "scope": "global",
+  "command": "cairn2e.dieOfFate();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!CvQ9vA7upRgv5VDk"
+}

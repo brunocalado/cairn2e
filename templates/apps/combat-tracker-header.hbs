@@ -1,0 +1,85 @@
+{{!-- The tracker's header: encounter selector, encounter name, round label and the context menu.
+
+      Core's header also puts Roll All and Roll NPC beside the round label. Both roll
+      `CONFIG.Combat.initiative` into `combatant.initiative`, and 2e has no initiative: the order
+      is fixed by side (`core-rules.md` → Combat → Rounds), and the only opening roll — each PC's
+      first-round DEX save — lives on the row itself. The two spacers keep the label centred
+      against the menu on the right, as core's non-GM branch already does. Everything else is
+      core's markup, so its layout and its actions still apply. --}}
+<header class="combat-tracker-header">
+
+    {{#if user.isGM}}
+    <nav class="encounters {{ css }}" aria-label="{{ localize "COMBAT.NavLabel" }}">
+
+        {{#if displayCycle}}
+        <button type="button" class="inline-control icon fa-solid fa-plus" data-action="createCombat"
+                data-tooltip aria-label="{{ localize "COMBAT.Create" }}"></button>
+
+        <div class="cycle-combats">
+            <button type="button" class="inline-control icon fa-solid fa-caret-left" data-action="cycleCombat"
+                    {{#if previousId}}data-combat-id="{{ previousId }}" {{else}}disabled{{/if}}
+                    data-tooltip aria-label="{{ localize "COMBAT.EncounterPrevious" }}"></button>
+            <div class="encounter-count">
+                <span class="value">{{ currentIndex }}</span>
+                <span class="separator">&sol;</span>
+                <span class="max">{{ combats.length }}</span>
+            </div>
+            <button type="button" class="inline-control icon fa-solid fa-caret-right" data-action="cycleCombat"
+                    {{#if nextId}}data-combat-id="{{ nextId }}" {{else}}disabled{{/if}}
+                    data-tooltip aria-label="{{ localize "COMBAT.EncounterNext" }}"></button>
+        </div>
+
+        <button type="button" class="inline-control icon fa-solid fa-gear" data-action="trackerSettings"
+                data-tooltip aria-label="{{ localize "COMBAT.Settings" }}"></button>
+
+        {{else if combats.length}}
+        <button type="button" class="inline-control icon fa-solid fa-plus" data-action="createCombat"
+                data-tooltip aria-label="{{ localize "COMBAT.Create" }}"></button>
+        {{#each combats}}
+        <button type="button" class="inline-control {{#if active}}active{{/if}}" data-action="cycleCombat"
+                data-combat-id="{{ id }}" {{#if name}}data-tooltip aria-label="{{name}}"{{/if}}>
+            {{ label }}
+        </button>
+        {{/each}}
+        <button type="button" class="inline-control icon fa-solid fa-gear" data-action="trackerSettings"
+                data-tooltip aria-label="{{ localize "COMBAT.Settings" }}"></button>
+
+        {{else}}
+        <button type="button" class="combat-control-lg" data-action="createCombat">
+            <i class="fa-solid fa-plus" inert></i>
+            <span>{{ localize "COMBAT.Create" }}</span>
+        </button>
+        {{/if}}
+    </nav>
+    {{/if}}
+
+    {{#if combat.name}}
+    <h2 class="encounter-name">{{ combat.name }}</h2>
+    {{/if}}
+
+    <div class="encounter-controls {{#if hasCombat}}combat{{/if}}">
+        <div class="control-buttons left flexrow">
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+        </div>
+
+        <strong class="encounter-title">
+            {{#if combats.length}}
+            {{#if combat.round}}
+            {{ localize "COMBAT.Round" round=combat.round }}
+            {{else}}
+            {{ localize "COMBAT.NotStarted" }}
+            {{/if}}
+            {{else}}
+            {{ localize "COMBAT.None" }}
+            {{/if}}
+        </strong>
+
+        <div class="control-buttons right flexrow">
+            <div class="spacer"></div>
+            <button type="button" class="encounter-context-menu inline-control combat-control icon fa-solid fa-ellipsis-vertical"
+                    {{#unless (and user.isGM hasCombat)}}disabled{{/unless}}></button>
+        </div>
+    </div>
+
+</header>

@@ -1,0 +1,113 @@
+{
+  "_id": "ZGjnojfqo6CFq12v",
+  "name": "Root Witch",
+  "type": "npc",
+  "img": "icons/magic/nature/root-vine-entangled-hand.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 9,
+        "max": 9
+      },
+      "DEX": {
+        "value": 16,
+        "max": 16
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "Rkzb0tQGQ91I90jY",
+      "name": "Tuber-Fingers",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>tuber-fingers (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!ZGjnojfqo6CFq12v.Rkzb0tQGQ91I90jY"
+    },
+    {
+      "name": "Excellent tunnelers that hide underground near water.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Wiggle tiny fronds into the air as lures.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "KUBWRMMyw7ZfWQxE",
+      "_key": "!actors.items!ZGjnojfqo6CFq12v.KUBWRMMyw7ZfWQxE"
+    },
+    {
+      "name": "Above-ground, appear vaguely humanoid with the face of a rotted tree stump.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "jkwSGE2CjhqVyCOz",
+      "_key": "!actors.items!ZGjnojfqo6CFq12v.jkwSGE2CjhqVyCOz"
+    },
+    {
+      "name": "Will exchange rare minerals for a “fresh corpse” of any kind.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "wF72p1lcRnfN9PKP",
+      "_key": "!actors.items!ZGjnojfqo6CFq12v.wF72p1lcRnfN9PKP"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!ZGjnojfqo6CFq12v"
+}

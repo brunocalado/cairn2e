@@ -1,0 +1,31 @@
+{
+  "_id": "ujBl7zF6VutTKPjy",
+  "name": "Harbinger's Bell",
+  "type": "gear",
+  "img": "icons/magic/sonic/bell-alarm-red-purple.webp",
+  "system": {
+    "description": "<p>Hang at chest height to ring when danger is imminent.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Melt and reforge. Each time, roll a d6. On a 1-2, it breaks forever.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ujBl7zF6VutTKPjy",
+  "folder": "UlnseD8X1WIqJdUA"
+}

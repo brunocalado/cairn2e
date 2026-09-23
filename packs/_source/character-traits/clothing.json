@@ -1,0 +1,168 @@
+{
+  "_id": "dUzV5raQw1S6QEUI",
+  "name": "Clothing",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "GHbHuAD9n7pXGfoe",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Antique",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.GHbHuAD9n7pXGfoe"
+    },
+    {
+      "_id": "77h82GNDOdfeINXo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bloody",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.77h82GNDOdfeINXo"
+    },
+    {
+      "_id": "IUcABH2cSBrrqQFi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Elegant",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.IUcABH2cSBrrqQFi"
+    },
+    {
+      "_id": "ArFtXU6sZjF1Ts8v",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Filthy",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.ArFtXU6sZjF1Ts8v"
+    },
+    {
+      "_id": "vPQmqppHKnTd1y4l",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Foreign",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.vPQmqppHKnTd1y4l"
+    },
+    {
+      "_id": "ojm8d7di11ZGNKiG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Frayed",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.ojm8d7di11ZGNKiG"
+    },
+    {
+      "_id": "IZUCh9rv3JtLDBfF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Frumpy",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.IZUCh9rv3JtLDBfF"
+    },
+    {
+      "_id": "Hw90Z9fzFfEkGFkW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Livery",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.Hw90Z9fzFfEkGFkW"
+    },
+    {
+      "_id": "uxjdYKie48682ets",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rancid",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.uxjdYKie48682ets"
+    },
+    {
+      "_id": "xpAwOXQWd7WgCujY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Soiled",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!dUzV5raQw1S6QEUI.xpAwOXQWd7WgCujY"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!dUzV5raQw1S6QEUI"
+}

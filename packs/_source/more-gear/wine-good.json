@@ -1,0 +1,31 @@
+{
+  "_id": "DFozNyWpcuFSc7hR",
+  "name": "Wine, good",
+  "type": "gear",
+  "img": "icons/consumables/drinks/wine-bottle-glass-white.webp",
+  "system": {
+    "description": "<p>Wine, good (bottle)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DFozNyWpcuFSc7hR",
+  "folder": "7rqfs1jHTkbTjMVH"
+}

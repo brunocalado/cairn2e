@@ -1,0 +1,108 @@
+{
+  "_id": "5NDBvLrhDDzACBRR",
+  "name": "Cutpurse: What helps you steal?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Cutpurse</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "KNTDR1Oyw4cB3vEx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Catring</strong> 2 charges. Climb up walls and fall safely. <strong>Recharge</strong>: Place the ring on a stray cat's tail.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.KNTDR1Oyw4cB3vEx"
+    },
+    {
+      "_id": "OA9CAxOrVNZJWtKY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Gildfinger</strong> 1 charge. A finger glove that mimics any mundane key. <strong>Recharge</strong>: Bundle it with at least 100gp for a night.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.OA9CAxOrVNZJWtKY"
+    },
+    {
+      "_id": "wPmIHXo5i8c9hrFx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Glimpse Glass</strong> 3 uses. A monocle that lets you see through walls or other obstructions. It shatters after the last use.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.wPmIHXo5i8c9hrFx"
+    },
+    {
+      "_id": "oABGMCHmCO9HXdNA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sweetwhistle</strong> 1 charge. Listeners hear a soft, familiar voice in the distance that they cannot resist following. <strong>Recharge</strong>: Lose a dear memory. (Describe it.)</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.oABGMCHmCO9HXdNA"
+    },
+    {
+      "_id": "59U0r7VKk3tXAJOj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Vagrant's Veil</strong> 1 charge. Wear it to blend seamlessly into crowds, appearing as a simple pauper. <strong>Recharge</strong>: Donate the day's winnings to the poor. <em>Petty</em></p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.59U0r7VKk3tXAJOj"
+    },
+    {
+      "_id": "jIUtEnCDCXtoK4Nj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Reverse Teetotum</strong> 1 use. When spun, time skips backwards 30 seconds. Everyone remembers what happened.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.jIUtEnCDCXtoK4Nj"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!5NDBvLrhDDzACBRR"
+}

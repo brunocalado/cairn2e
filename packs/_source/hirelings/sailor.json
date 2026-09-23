@@ -1,0 +1,241 @@
+{
+  "_id": "3TPfAnMBaNC4rHFH",
+  "name": "Sailor",
+  "type": "npc",
+  "img": "icons/environment/people/commoner.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 9,
+        "max": 9
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Sailor",
+    "dayRate": 5,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "mtIXplXvYXkv0T19",
+      "_key": "!actors.items!3TPfAnMBaNC4rHFH.mtIXplXvYXkv0T19"
+    },
+    {
+      "name": "Lantern",
+      "type": "gear",
+      "img": "icons/sundries/lights/lantern-bullseye-signal-copper.webp",
+      "system": {
+        "description": "<p>Lantern (holds 6 uses of oil, poured from an Oil Can)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 6
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZvvwaCJ0UTcHhLZo",
+      "_key": "!actors.items!3TPfAnMBaNC4rHFH.ZvvwaCJ0UTcHhLZo"
+    },
+    {
+      "name": "Oil Can",
+      "type": "gear",
+      "img": "icons/tools/cooking/can.webp",
+      "system": {
+        "description": "<p>Oil Can (6 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 6,
+          "max": 6
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "jjiOWmwYz0stgTeM",
+      "_key": "!actors.items!3TPfAnMBaNC4rHFH.jjiOWmwYz0stgTeM"
+    },
+    {
+      "name": "Sling",
+      "type": "gear",
+      "img": "icons/weapons/slings/sling-leather.webp",
+      "system": {
+        "description": "<p>Sling (d6 damage)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4orlTNQaEDAVCwaN",
+      "_key": "!actors.items!3TPfAnMBaNC4rHFH.4orlTNQaEDAVCwaN"
+    },
+    {
+      "name": "Spyglass",
+      "type": "gear",
+      "img": "icons/tools/navigation/spyglass-telescope-brass-blue.webp",
+      "system": {
+        "description": "<p>Spyglass</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 40,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "PA5gByDHQj4XnmrR",
+      "_key": "!actors.items!3TPfAnMBaNC4rHFH.PA5gByDHQj4XnmrR"
+    },
+    {
+      "name": "Rope",
+      "type": "gear",
+      "img": "icons/sundries/survival/rope-coil-brown.webp",
+      "system": {
+        "description": "<p>Rope (25ft)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "oVOZ9ist7smWlw1U",
+      "_key": "!actors.items!3TPfAnMBaNC4rHFH.oVOZ9ist7smWlw1U"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!3TPfAnMBaNC4rHFH"
+}

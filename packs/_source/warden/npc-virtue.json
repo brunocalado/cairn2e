@@ -1,0 +1,318 @@
+{
+  "_id": "vBIffty3kEHrHCy1",
+  "name": "NPC Virtue",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll an NPC's defining Virtue.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "oZpwEW0mF6nkgYKG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cautious",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.oZpwEW0mF6nkgYKG"
+    },
+    {
+      "_id": "daUHGLMUrostuh0k",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Compassionate",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.daUHGLMUrostuh0k"
+    },
+    {
+      "_id": "DYkrGq6MZaZ2eNmd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Connected",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.DYkrGq6MZaZ2eNmd"
+    },
+    {
+      "_id": "YCtEFxneJ107iLZO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Courageous",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.YCtEFxneJ107iLZO"
+    },
+    {
+      "_id": "QIFgAnzHHqIGwXLT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Disciplined",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.QIFgAnzHHqIGwXLT"
+    },
+    {
+      "_id": "G5yLvkwKiTnADaqO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Discreet",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.G5yLvkwKiTnADaqO"
+    },
+    {
+      "_id": "o8xGdevg31ovvbTG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Honest",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.o8xGdevg31ovvbTG"
+    },
+    {
+      "_id": "IGRjg9qpCi347PjH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Intelligent",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.IGRjg9qpCi347PjH"
+    },
+    {
+      "_id": "ptrzmyQxYlhkDYIL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Judicious",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.ptrzmyQxYlhkDYIL"
+    },
+    {
+      "_id": "js8CaigaldbgBcpq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Loyal",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.js8CaigaldbgBcpq"
+    },
+    {
+      "_id": "D6SJuA2vKRZQu6U6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Methodical",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.D6SJuA2vKRZQu6U6"
+    },
+    {
+      "_id": "SYuL9n5QED2V1Urg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Meticulous",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.SYuL9n5QED2V1Urg"
+    },
+    {
+      "_id": "viHxBkVElEudHCJz",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Polite",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.viHxBkVElEudHCJz"
+    },
+    {
+      "_id": "YJJc29TaYaZR4tX5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Popular",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.YJJc29TaYaZR4tX5"
+    },
+    {
+      "_id": "O4hAYXFoJJ36WT1t",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pragmatic",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.O4hAYXFoJJ36WT1t"
+    },
+    {
+      "_id": "9F7SAF8rviNT9l7s",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Resourceful",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.9F7SAF8rviNT9l7s"
+    },
+    {
+      "_id": "kgRUNSR9VaRyDZFL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Suave",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.kgRUNSR9VaRyDZFL"
+    },
+    {
+      "_id": "PKAJ25vDDr2hWydp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Shrewd",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.PKAJ25vDDr2hWydp"
+    },
+    {
+      "_id": "SrU2G7j5KhDAF38k",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tenacious",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.SrU2G7j5KhDAF38k"
+    },
+    {
+      "_id": "VZqZqAviCqmUnE9T",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Witty",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vBIffty3kEHrHCy1.VZqZqAviCqmUnE9T"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!vBIffty3kEHrHCy1"
+}

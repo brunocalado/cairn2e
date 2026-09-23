@@ -1,0 +1,31 @@
+{
+  "_id": "oXJIYAOuQS4v856j",
+  "name": "Whistle-Rope",
+  "type": "gear",
+  "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
+  "system": {
+    "description": "<p>15ft of highly flexible leather. Swirl in the air to generate a powerful subsonic effect that drives away wildlife. Also works underwater.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!oXJIYAOuQS4v856j",
+  "folder": "UlnseD8X1WIqJdUA"
+}

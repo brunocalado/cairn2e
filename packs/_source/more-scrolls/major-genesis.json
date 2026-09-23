@@ -1,0 +1,31 @@
+{
+  "_id": "Y4IJtWRvs7BRGH8A",
+  "name": "Major Genesis",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>Creates an object of nonliving stone or metal no greater than 5 cubic foot in size.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Y4IJtWRvs7BRGH8A",
+  "folder": "FeXVyrcexT1LlyqR"
+}

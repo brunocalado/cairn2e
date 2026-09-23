@@ -1,0 +1,31 @@
+{
+  "_id": "pANWHPgQRM45qUeE",
+  "name": "Sardonyx",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-rough-cushion-red-white.webp",
+  "system": {
+    "description": "<p>Red and white in flat bands, meant to be carved through one layer into the next.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!pANWHPgQRM45qUeE",
+  "folder": "Qai89dBcno9Coube"
+}

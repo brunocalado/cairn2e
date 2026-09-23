@@ -1,0 +1,31 @@
+{
+  "_id": "VAZXY9tIL6GJHMv2",
+  "name": "Badge",
+  "type": "gear",
+  "img": "icons/sundries/misc/badge-law-sheriff.webp",
+  "system": {
+    "description": "<p>Badge (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VAZXY9tIL6GJHMv2",
+  "folder": "cH1FO0n5vIRu4oSk"
+}

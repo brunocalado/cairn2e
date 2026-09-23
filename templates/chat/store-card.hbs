@@ -1,0 +1,21 @@
+{{!-- The record of a checkout, posted to everyone: what was bought and for how much, what was
+      sold and for how much, and the gold before and after. The store's name is the message's
+      `flavor`, so it is the caption, and the speaker is the character; the card draws no frame —
+      the message element is the card. --}}
+{{#if bought.length}}
+<p class="cairn-card-lead">{{localize "CAIRN.Store.Bought"}}</p>
+<ul class="cairn-store-card-lines">
+    {{#each bought}}
+    <li><span>{{name}}{{#if (gt qty 1)}} &times;{{qty}}{{/if}}</span><span>{{total}} {{localize "CAIRN.GoldAbbrev"}}</span></li>
+    {{/each}}
+</ul>
+{{/if}}
+{{#if sold.length}}
+<p class="cairn-card-lead">{{localize "CAIRN.Store.Sold"}}</p>
+<ul class="cairn-store-card-lines">
+    {{#each sold}}
+    <li><span>{{name}}</span><span>{{price}} {{localize "CAIRN.GoldAbbrev"}}</span></li>
+    {{/each}}
+</ul>
+{{/if}}
+<p class="cairn-card-note">{{localize "CAIRN.Store.GoldLine" before=goldBefore after=goldAfter}}</p>

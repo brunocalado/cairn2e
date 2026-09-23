@@ -1,0 +1,108 @@
+{
+  "_id": "cq1s3kWOqpCFbbCt",
+  "name": "Beast Handler: What creature is your specialty?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Beast Handler</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "KNjga68Q1WmeVqzO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Arachnids</strong> Take a <strong>Quick-Flame Rod</strong> and an <strong>Oil Can</strong> (6 uses). It can destroy a large spider nest in seconds.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.KNjga68Q1WmeVqzO"
+    },
+    {
+      "_id": "IKjmhsXgTWIDGynz",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Felines</strong> Take a sack of <strong>Whiskerwort</strong>. Its odor can calm and control even the largest of cats.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.IKjmhsXgTWIDGynz"
+    },
+    {
+      "_id": "v1XgWbp1MEIbYDPg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Canines</strong> Take a wreath of <strong>Wolfsbane</strong> and a <strong>Large Net</strong>. Effective against werewolves as well.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.v1XgWbp1MEIbYDPg"
+    },
+    {
+      "_id": "e6HqzFbSM44dxJos",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Birds</strong> Take a <strong>Warble-Whistle</strong> (3 charges). It can imitate any bird call and can even be used to send simple messages. <strong>Recharge</strong>: Feed a baby bird as its mother would, then blow.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.e6HqzFbSM44dxJos"
+    },
+    {
+      "_id": "3M534EaT11d8SLdQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Rodents</strong> Take a <strong>Pan Flute</strong> that emits a high-pitched sound that only rodents can hear. So long as you play, they will follow, even to their deaths.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.3M534EaT11d8SLdQ"
+    },
+    {
+      "_id": "dIBEFM7ooMVqiEgq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Serpents</strong> Take a <strong>Warming Stone</strong> that generates an irresistible heat and a vial of <strong>Antitoxin</strong> (2 uses).</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.dIBEFM7ooMVqiEgq"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!cq1s3kWOqpCFbbCt"
+}

@@ -1,0 +1,25 @@
+{{!-- A drawn table (CONFIG.RollTable.resultTemplate): the table's description, the roll that
+      picked the row, and the drawn results as ruled rows.
+
+      Three things here are not ours to rename. `module/encounters.js#parseEncounterCard` walks
+      `.table-draw .table-results li[data-result-id]` to decide whether a draw is an encounter, and
+      reads `.description` inside the row — and `.description` comes from core's own
+      `TableResult#getHTML`, which arrives already rendered as `details` and is passed through
+      untouched.
+
+      The row art is the table's own image at list scale. Core's template drew it at icon size,
+      which made every row 56px tall; here it is a stamp beside the line. --}}
+<div class="table-draw" data-table-id="{{table.id}}">
+    {{#if description}}
+    <div class="cairn-table-description">{{{description}}}</div>
+    {{/if}}
+    {{{rollHTML}}}
+    <ul class="table-results">
+        {{#each results}}
+        <li class="cairn-table-row" data-result-id="{{id}}">
+            <img class="cairn-table-icon" src="{{icon}}" alt="">
+            <div class="cairn-table-text">{{{details}}}</div>
+        </li>
+        {{/each}}
+    </ul>
+</div>

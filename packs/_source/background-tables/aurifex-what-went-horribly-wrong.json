@@ -1,0 +1,108 @@
+{
+  "_id": "H68PtSfwpICGQJDc",
+  "name": "Aurifex: What went horribly wrong?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Aurifex</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "BGCpP581PjZF1NvT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>There was an explosion, and you lost your sense of smell. Well, almost: you can sniff out gold as a pig does truffles. Take a <strong>Tin of Snuff</strong> (6 uses) to dampen the impact. Use it every day or become <em>deprived</em>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.BGCpP581PjZF1NvT"
+    },
+    {
+      "_id": "JyPJKBIcUaSt0yMy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You dematerialized a beloved pet. Now it follows you around, invisible but always present. Although it cannot interact with the physical realm, you are able to share its senses. (Add a <strong>Fatigue</strong> each time.) It follows basic commands.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.JyPJKBIcUaSt0yMy"
+    },
+    {
+      "_id": "uFETZce01P1O2UuZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were exposed to a long-acting truth serum whose effects have yet to wear off. The disorder has its advantages: you cannot repeat lies you've heard, either.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.uFETZce01P1O2UuZ"
+    },
+    {
+      "_id": "yB01A6oI9HlSCuHT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were adept at creating <em>fake</em> gold, which is almost as good. Eventually, your ruse was discovered, and you had to make a hasty retreat. Take a heavy <strong>Metal Ingot</strong> and <strong>Gold Powder</strong> (3 uses).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.yB01A6oI9HlSCuHT"
+    },
+    {
+      "_id": "72HZZQSl40IVYLcP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your alchemical recipe worked, but a rival stole the blueprint before your claims could be proven. Take a prototype <strong>Blunderbuss</strong> (d12, <em>blast</em>, <em>bulky</em>) that takes one round to reload, and a taste for revenge.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.72HZZQSl40IVYLcP"
+    },
+    {
+      "_id": "zDVrI95LmIMYmSLT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Ridiculed for discovering how to turn gold into <em>lead</em>, you were a laughing stock. Take a bottle of <strong>Universal Solvent</strong> (2 uses) that dissolves anything it touches into its constituent parts.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.zDVrI95LmIMYmSLT"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!H68PtSfwpICGQJDc"
+}

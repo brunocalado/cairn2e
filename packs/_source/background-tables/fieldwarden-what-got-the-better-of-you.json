@@ -1,0 +1,108 @@
+{
+  "_id": "AQs8glEIIOGW3H23",
+  "name": "Fieldwarden: What got the better of you?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Fieldwarden</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "WwhUi0JgoCYDMA7N",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A voracious swarm of pests that swallowed crops and animals alike. With nothing to defend, you left. Take <strong>Gale Seed Extract</strong> (3 uses).  Ingesting it lets you sprint with a speed four times your regular rate. Afterward you add two <strong>Fatigue</strong>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.WwhUi0JgoCYDMA7N"
+    },
+    {
+      "_id": "FvhcCmBz7nQwDNBh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A crop spirit, angered by a poor tithing. The fires consumed nearly everything, and afterward you were able to gather a pouch of <strong>Fireseeds</strong> (d8, <em>blast</em>, 4 uses).</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.FvhcCmBz7nQwDNBh"
+    },
+    {
+      "_id": "6C9HaxvSOg3XnV9F",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>An antlered, toothy demon that nearly ended you. Take a blood-stained <strong>Bone Knife</strong> (d6). On <strong>Critical Damage</strong>, its next attack becomes <em>enhanced</em> from contact with blood.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.6C9HaxvSOg3XnV9F"
+    },
+    {
+      "_id": "Vo4GsTlmLsmEuzTN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><em>The Withering</em>, a type of stem rot from the <strong>Roots</strong>. Take a <strong>Diseased Crop</strong> (6 uses) that quickly decays any plant it touches.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.Vo4GsTlmLsmEuzTN"
+    },
+    {
+      "_id": "uXZl94LgHfAD2Cb5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Wolves, or so you thought. You are now a <strong>Werewolf</strong> [8 HP, 15 STR, 14 DEX, claws (d6+d6), bite (d8)]. Your WIL remains the same. You can <em>turn</em> at will (once per day) but must make a WIL save to revert. Anyone left alive from your attacks must make a WIL save to avoid infection.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.uXZl94LgHfAD2Cb5"
+    },
+    {
+      "_id": "UmCeOr81RFwkxwUv",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Crop thieves. Not all of them survived, but you were outnumbered. Start with +d4 HP and a <strong>Cusped Falchion</strong> (d8).</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.UmCeOr81RFwkxwUv"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!AQs8glEIIOGW3H23"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "BsGoIT3g6Da23NAU",
+  "name": "Leap",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p><em>When thrown, it just keeps going.</em></p><p>You jump up to 10ft high, once.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BsGoIT3g6Da23NAU",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

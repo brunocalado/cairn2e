@@ -1,0 +1,31 @@
+{
+  "_id": "ELZBQGSjxAAveLRb",
+  "name": "Disguise",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p><em>The surface makes a perfect mirror.</em></p><p>You may alter the appearance of one character at will as long as they remain humanoid. Attempts to duplicate other characters will seem uncanny.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ELZBQGSjxAAveLRb",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

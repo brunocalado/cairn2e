@@ -1,0 +1,108 @@
+{
+  "_id": "wbxYggWeDHmSki2z",
+  "name": "Half Witch: What did you bring back from the Unseelie Court?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Half Witch</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "ChC17DKH1xy0DJdn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>Black Rose Fiddle</strong> (<em>bulky</em>). Its music causes intense sadness and immobility in nearby mortals. (Others are merely fascinated.) You don't know how to play.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.ChC17DKH1xy0DJdn"
+    },
+    {
+      "_id": "yWdHTPFNjIg6R6c1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Paper legs</strong>. You are extremely light, and can fall a few stories without getting hurt. Try to avoid tearing them or getting them wet.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.yWdHTPFNjIg6R6c1"
+    },
+    {
+      "_id": "5MM2G3Y3Ts4ZEUVe",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>Living Nightmare</strong> that dwells within you but manifests whenever you are in danger. It has your same <strong>Attributes</strong> and <strong>HP</strong> and attacks with claws (d8+d8). It disappears on <strong>Critical Damage</strong> (take 1d4 WIL damage), re-appearing again on the next full moon.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.5MM2G3Y3Ts4ZEUVe"
+    },
+    {
+      "_id": "1RTWOAqMa1Eth25U",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>Raven Familiar</strong> [8 HP, 3 STR, 11 DEX, 13 WIL, beak, (d6)]. It speaks as an intelligent being and is entirely devoted to you.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.1RTWOAqMa1Eth25U"
+    },
+    {
+      "_id": "1nLzDfQTglYKANPx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>Briar Thorn</strong>. It can pierce any organic material (quite painfully) but when removed leaves no trace of the intrusion.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.1nLzDfQTglYKANPx"
+    },
+    {
+      "_id": "Q0poEebNEssZGFma",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A Fae creature's <strong>True Name</strong>. Use it to summon its owner for an act of great service, but only once. It could also fetch a hefty price, from the right buyer.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.Q0poEebNEssZGFma"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!wbxYggWeDHmSki2z"
+}

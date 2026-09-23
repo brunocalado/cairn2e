@@ -1,0 +1,318 @@
+{
+  "_id": "Vw0TiS8AYT8JAVHu",
+  "name": "Faction Trait 2",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Trait 2 column of the Faction Traits table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "yLUj4tsJAuB1RikS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Adaptable",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.yLUj4tsJAuB1RikS"
+    },
+    {
+      "_id": "eem120fsZ9ZCRiMK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bankrupt",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.eem120fsZ9ZCRiMK"
+    },
+    {
+      "_id": "6HOf0DLHMw5ddvFE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Brutal",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.6HOf0DLHMw5ddvFE"
+    },
+    {
+      "_id": "6X38AmzXsDEQW8pQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Collaborative",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.6X38AmzXsDEQW8pQ"
+    },
+    {
+      "_id": "aYMIOqwlPMdou9mE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Corrupt",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.aYMIOqwlPMdou9mE"
+    },
+    {
+      "_id": "7x9kkhWb2UsDQh5D",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Craven",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.7x9kkhWb2UsDQh5D"
+    },
+    {
+      "_id": "jL1MjzRJvcUXXAEH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cruel",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.jL1MjzRJvcUXXAEH"
+    },
+    {
+      "_id": "iKGMgA0bSimzHM8i",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cunning",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.iKGMgA0bSimzHM8i"
+    },
+    {
+      "_id": "r6ohfC7dClqDrgmI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cynical",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.r6ohfC7dClqDrgmI"
+    },
+    {
+      "_id": "iPsNb8TG8AHwJ5QF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Deceptive",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.iPsNb8TG8AHwJ5QF"
+    },
+    {
+      "_id": "tpYZRmVJr3YiHHBy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Generous",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.tpYZRmVJr3YiHHBy"
+    },
+    {
+      "_id": "t0quuVLGAvZgqGxW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Incompetent",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.t0quuVLGAvZgqGxW"
+    },
+    {
+      "_id": "0qB7hvUccRAy5EtO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Manipulative",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.0qB7hvUccRAy5EtO"
+    },
+    {
+      "_id": "PMsYRXNHi1YWqmed",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Mercurial",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.PMsYRXNHi1YWqmed"
+    },
+    {
+      "_id": "CCbtrrPfHHdiznMD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Repressed",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.CCbtrrPfHHdiznMD"
+    },
+    {
+      "_id": "Cp29AehBmPcJ1cx3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ruthless",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.Cp29AehBmPcJ1cx3"
+    },
+    {
+      "_id": "NDMFlhP6MMy3pYvK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Selfish",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.NDMFlhP6MMy3pYvK"
+    },
+    {
+      "_id": "r7eDjuGHk9lJctYe",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Stealthy",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.r7eDjuGHk9lJctYe"
+    },
+    {
+      "_id": "EB7IsRKiAD9OJD2Y",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Threatened",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.EB7IsRKiAD9OJD2Y"
+    },
+    {
+      "_id": "GvdascuuJG5NayO7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Xenophobic",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Vw0TiS8AYT8JAVHu.GvdascuuJG5NayO7"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!Vw0TiS8AYT8JAVHu"
+}

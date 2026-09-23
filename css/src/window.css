@@ -1,0 +1,197 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Window shell.                                                         *
+     **************************************************************************/
+
+    &.sheet.actor {
+        min-height: 480px;
+        min-width: 480px;
+    }
+
+    /* An item sheet is as tall as its own content and no taller — a converted subtype's window is
+       sized to its ruled column (`item-sheet.js`, SHEET_HEIGHT), which is well under the actor's
+       floor. The width still holds: the header's portrait and name need it. */
+    &.sheet.item {
+        min-height: 300px;
+        min-width: 480px;
+    }
+
+    /* Except the character sheet, which has no fixed height to be floored against: it is sized
+       to its own content (`position.height: "auto"`, `actor-sheet.js`), and a floor is one more
+       number that has to be kept in step with a layout nobody is measuring. */
+    &.sheet.actor.character {
+        min-height: 0;
+    }
+
+    /* Core paints a form label with `--color-form-label` (`.standard-form .form-group > label`,
+       foundry2.css:5407) — a washed tan that is unreadable on paper. Every label inside a system
+       window is ink. */
+    .window-content label {
+        color: var(--cairn-ink);
+    }
+
+    /* The paper, and the printed sheet's double rule around it. The window FRAME belongs to
+       core and is not ours to restyle, so the rule is drawn just inside it, on the content
+       box.
+
+       The grain is a seamless 512px tile drawn at 256px, composited with `multiply`. `multiply`
+       and not `soft-light` or `overlay`: those carry a `b·(1−b)` term that vanishes as the
+       backdrop approaches white, and on a ground as light as this one they measure ±2 levels of
+       255 — invisible. The tile's contrast is already baked down to the strength the sheet wants,
+       so there is no opacity to tune here; it averages 0.8% below white.
+
+       `position: relative` is load-bearing, not tidying: it is the containing block the drawn
+       ink layer's canvas is positioned against (`module/ink.js`). */
+    .window-content {
+        position: relative;
+        background-color: var(--cairn-paper);
+        background-image: url("../assets/paper-grain.webp");
+        background-blend-mode: multiply;
+        background-size: 256px 256px;
+        border: 4px double var(--cairn-ink);
+        color: var(--cairn-ink);
+        font-family: var(--cairn-serif);
+        gap: 8px;
+        padding: 8px;
+    }
+
+    /* The drawn layer. Every frame and rule the sheet shows is inked onto this canvas by
+       `module/ink.js`, which measures each `[data-ink]` element at its real size — so nothing
+       here tiles and no two boxes share a silhouette. It sits UNDER the content and is inert:
+       the sheet is still a form, and a stray canvas must never eat a click. */
+    .cairn-ink {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Anything the ink is drawn around has to sit above the lower layer. */
+    .window-content > *:not(.cairn-ink, .cairn-ink-over) {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* The upper layer, for the few things that must be drawn ON the content rather than behind
+       it — a frame round an opaque picture, which under the picture loses its inner half. */
+    .cairn-ink-over {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    /* Core paints headings with `color: var(--color-text-emphatic)` (foundry2.css:3283–3311)
+       and glows an active tab label with a 10px crimson `text-shadow` off its own shadow token
+       (:5811). On the forced-paper ground the first reads as pale core text and the second is
+       a crimson halo the two-ink palette does not allow. (There is no `-webkit-text-fill-color`
+       anywhere in 14.367 — the workaround that used to sit here was obsolete.) */
+    .window-content :is(h1, h2, h3, h4, h5, h6) {
+        color: var(--cairn-ink);
+        font-family: var(--cairn-serif);
+    }
+
+    .tabs a {
+        text-shadow: none;
+    }
+
+    /* And core haloes EVERY hovered link the same way, at 8px (:3480) — so every control on the
+       sheet that is an `<a>` lit up warm under the pointer, which is the one colour on this page
+       nobody chose. Killed here for all of them at once; what a control says instead is its own
+       business, and for an icon control it is the inked cell at `.cairn-item-controls`.
+
+       The attribute caps keep the ink halo they paint on themselves: those rules are more
+       specific than this one, so they survive it without an exception being written here. The
+       editors and the window header are core's own chrome and are left to it, the same
+       exclusions the button and input primitives carry. */
+    & a:hover:where(:not(.window-header *, .editor *, prose-mirror *, code-mirror *)) {
+        text-shadow: none;
+    }
+
+    /* Editors fill the tab that holds them. The old `min-height: 480px` was taller than an
+       item sheet's whole window (480×480), which is what clipped them. */
+    .editor {
+        flex: 1;
+        min-height: 0;
+    }
+
+    /**************************************************************************
+     * Sheet skeleton — the render parts, and the one element that scrolls.   *
+     *                                                                       *
+     * Core makes `.window-content` a `display: flex; flex-flow: column` box  *
+     * with `overflow: hidden` (foundry2.css:7075). Every render part is a    *
+     * direct child of it, in PARTS declaration order: header, [toolbar],     *
+     * nav, then one `<section class="tab">` per tab.                        *
+     *                                                                       *
+     * The ACTIVE tab section is the scroller. `min-height: 0` is not         *
+     * optional — a flex item defaults to `min-height: auto` and refuses to   *
+     * shrink below its content, which is exactly how the old sheet clipped   *
+     * a long inventory with no scrollbar and no way to reach it.             *
+     **************************************************************************/
+
+    /* Both actor headers are `.cairn-sheet-header .cairn-actor-header`; the drawing is under
+       the latter, below. This only keeps the header out of the flex column's shrinking. */
+    .cairn-sheet-header {
+        flex: 0 0 auto;
+    }
+
+    /* `.tab[data-tab]:not(.active) { display: none }` is core's (foundry2.css:7060); this only
+       has to say what the active one does.
+
+       No `scrollbar-gutter: stable`. It held the last 10px of every tab free for a scrollbar
+       that is almost never there — the character sheet is a fixed page and its ten slots fit —
+       and everything inside the tab stopped 10px short of the tab rule above it, which read as
+       a strip of dead paper down the right edge. Content in a reserved gutter is clipped, so a
+       negative margin could not reach it either. The price is a 10px reflow at the moment a tab
+       first overflows, which for this sheet is a house-ruled slot limit and nothing else. */
+    .tab.active {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+        overflow: hidden auto;
+    }
+
+    /* Every tab on the character sheet is exactly one page tall, and the page is the inventory
+       ledger (`--cairn-tab-max-h`, measured from the slot metrics at the top of this file).
+
+       Both bounds, not just the maximum. A maximum alone caps Petty and Belongings, the two
+       that grow without limit — but it does nothing for the same tab holding two
+       items, and the window is sized to its content, so the sheet still shrank by 190px the
+       moment the reader changed tab. A sheet that resizes under the pointer is worse than one
+       with a short tab on it. With the two bounds equal the sheet is a fixed page again, arrived
+       at by measuring the ledger rather than by picking a window height and hoping: the
+       inventory, which is what the sheet opens on and the only tab whose height is fixed by a
+       rule, ends flush with the frame and has no dead space under it at all.
+
+       `flex: 0 0 auto` because the height is stated here; `overflow: hidden auto` on the rule
+       above is what gives the two variable tabs — and a ledger a world has house-ruled past ten
+       slots — a scrollbar instead of a clipped foot.
+
+       Deliberately NOT applied to every `.tab` in the system: see the NPC rule under it for
+       what each sheet takes and why. */
+    &.character .tab.active {
+        flex: 0 0 auto;
+        height: var(--cairn-tab-max-h);
+        max-height: var(--cairn-tab-max-h);
+    }
+
+    /* The NPC sheet takes the same ceiling and only the ceiling: it is a fixed-width,
+       auto-height window like the character's, and with no cap it was exactly as tall as its
+       longest list (a hireling with 14 items: 476px of tab, 728px of window). A short tab
+       keeps its own height. The item sheets keep `flex: 1`: they are resizable windows with a
+       real height to fill, and capping their tabs at the character's page would strand the rest
+       of the window as bare paper. */
+    &.npc .tab.active {
+        max-height: var(--cairn-tab-max-h);
+    }
+}

@@ -1,0 +1,184 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Primitive 10 — the tooltip.                                            *
+     *                                                                       *
+     * Core's tooltip is ONE element (`#tooltip`) parented to the document    *
+     * body, so it sits outside every `.cairn2e` scope and no descendant      *
+     * selector can reach it. `TooltipManager#activate` copies the            *
+     * `data-tooltip-class` of the nearest ancestor that carries one onto     *
+     * the tooltip just before it opens, and `module/cairn2e.js` stamps that  *
+     * attribute on the root of every system window and every system chat     *
+     * card — so a tooltip raised from inside this system arrives wearing     *
+     * the scope class and reads the rules below, and one raised anywhere     *
+     * else keeps core's dark slab. That is the whole mechanism; there is     *
+     * nothing to select here and nothing global to override.                 *
+     *                                                                       *
+     * Paper and ink, NOT the swapping `--cairn-surface-*` pair: the manager  *
+     * hard-codes `themed theme-dark` on the element before our classes land, *
+     * so anything keyed on the theme would come out dark over a light sheet. *
+     * The tooltip is the same ground as the control the pointer is on.       *
+     *                                                                       *
+     * Core's `box-shadow` and `backdrop-filter` go with the palette: no      *
+     * glow, no blur, and a 2px ink frame is what says "on top" everywhere    *
+     * else here. `text-align` is deliberately NOT set — core's own           *
+     * `.text-right` is how a left-expanding tooltip ranges its text, and     *
+     * this file is a later cascade layer, so a declaration here would beat   *
+     * it at any specificity and quietly break that.                          *
+     **************************************************************************/
+
+    &.cairn-tooltip {
+        backdrop-filter: none;
+        background: var(--cairn-paper);
+        border: var(--cairn-rule) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+        box-shadow: none;
+        color: var(--cairn-ink);
+        font-family: var(--cairn-serif);
+        font-size: 12px;
+        line-height: 1.35;
+        max-width: 260px;
+        padding: 6px 8px;
+        -webkit-backdrop-filter: none;
+    }
+
+    /**************************************************************************
+     * Primitive 11 — the enriched chip.                                     *
+     *                                                                       *
+     * What `module/enrichers.js` puts into running prose: `[[/save WIL]]`,   *
+     * `@Condition[deprived]`, `@Rule[panic]`, `[[/table Reactions]]`.        *
+     *                                                                       *
+     * A chip lands wherever text is enriched, and most of those places are   *
+     * NOT this system's windows — core's journal sheet above all. So the     *
+     * scope class is on the chip ITSELF and every rule here is compound      *
+     * (`&.cairn-enriched`), exactly as Primitive 10 is: there is no `.cairn2e`   *
+     * ancestor to descend from.                                             *
+     *                                                                       *
+     * Colour, face and size are all deliberately UNSET: the chip inherits   *
+     * every one of them. A chip marks a word in somebody else's sentence,    *
+     * so it takes that sentence's ink and that sentence's type. Lora here    *
+     * would drop a serif word into core's Signika paragraph, and a fixed     *
+     * ink would do worse.                                                    *
+     *                                                                       *
+     * The swapping `--cairn-surface-*` pair is NOT the answer here, and      *
+     * that cost a round trip (measured in a live client 2026-09-20): core's  *
+     * journal sheet has no `.themed` ancestor AT ALL — the theme sits on     *
+     * `body.theme-dark`, which this file must never key on (see the pair's   *
+     * own comment: the chat log is hard-wired light, so body-keying inverts  *
+     * it). With neither `.themed.theme-*` rule matching, the chip fell back  *
+     * to fixed ink and rendered near-black on a dark page. `currentColor`    *
+     * has no such hole: it is right in the journal, on the sheet, and in a   *
+     * chat card, because in all three the surrounding text is already the    *
+     * colour the chip wants.                                                 *
+     *                                                                       *
+     * No fill and no border — Primitive 8's rule, and doubly so here: a      *
+     * bordered box mid-paragraph breaks the line. The mark is an underline,  *
+     * which is Primitive 3's idiom (1px hairline thickening to the 2px rule) *
+     * carried into prose: dotted where the chip only explains itself,        *
+     * solid where clicking it does something.                                *
+     **************************************************************************/
+
+    &.cairn-enriched {
+        text-decoration: underline dotted currentcolor var(--cairn-hairline);
+        text-underline-offset: 3px;
+    }
+
+    /* The two that act. Solid says "this is a control", the thickening says which one the
+       pointer is on — the same 1px → 2px move a ruled field makes on focus. */
+    &:is(.cairn-enriched-save, .cairn-enriched-table) {
+        cursor: pointer;
+        text-decoration-style: solid;
+
+        &:is(:hover, :focus-visible) {
+            text-decoration-thickness: var(--cairn-rule);
+        }
+
+        /* Reachable by keyboard (the chips carry `tabindex`), and marked the way everything
+           else in the system marks focus. */
+        &:focus-visible {
+            outline: var(--cairn-hairline) solid currentcolor;
+            outline-offset: 2px;
+        }
+    }
+
+    /**************************************************************************
+     * Primitive 12 — the document embed.                                    *
+     *                                                                       *
+     * `@Embed[Actor.…]` and `@Embed[Item.…]`, drawn by the data models'      *
+     * `toEmbed` into core's journal page. Carries the scope class itself     *
+     * for the same reason Primitive 11 does.                                 *
+     *                                                                       *
+     * Unlike the chip, this one DOES set the system's face: an embed is a    *
+     * block, a distinct object dropped onto somebody else's page, not a      *
+     * word inside their sentence. Lora is right here and wrong there.        *
+     *                                                                       *
+     * Colour is still inherited. A stat block on a dark journal page has to  *
+     * be legible on that page, and `currentColor` is the only thing that is  *
+     * correct in the journal, on a sheet and in a chat card alike — the      *
+     * `--cairn-surface-*` pair has no answer in a journal, which has no      *
+     * `.themed` ancestor at all (see Primitive 11).                          *
+     *                                                                       *
+     * The frame is drawn in `currentColor` at the structural rule weight, so *
+     * it is the one ink value that follows the page with the text.           *
+     **************************************************************************/
+
+    &.cairn-embed {
+        border: var(--cairn-rule) solid currentcolor;
+        border-radius: var(--cairn-radius);
+        display: flex;
+        flex-direction: column;
+        font-family: var(--cairn-serif);
+        gap: 6px;
+        padding: 8px 10px;
+
+        .cairn-embed-head {
+            align-items: center;
+            display: flex;
+            gap: 8px;
+        }
+
+        .cairn-embed-portrait {
+            border: var(--cairn-hairline) solid currentcolor;
+            border-radius: var(--cairn-radius);
+            flex: 0 0 auto;
+            height: 40px;
+            object-fit: cover;
+            width: 40px;
+        }
+
+        .cairn-embed-name {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        /* The statline reads as one line of the book: numbers bold, labels not, wrapping only
+           when the page is too narrow to hold it. */
+        .cairn-embed-statline {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 12px;
+            gap: 10px;
+        }
+
+        .cairn-embed-features {
+            font-size: 12px;
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .cairn-embed-body {
+            font-size: 13px;
+
+            :is(p, ul):first-child { margin-top: 0; }
+            :is(p, ul):last-child { margin-bottom: 0; }
+        }
+    }
+}

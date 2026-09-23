@@ -1,0 +1,31 @@
+{
+  "_id": "WmwkNy6uxRKUmR2z",
+  "name": "Pyrite",
+  "type": "gear",
+  "img": "icons/commodities/stone/ore-chunk-yellow-gold.webp",
+  "system": {
+    "description": "<p>Brassy cubes that have been sold as gold more than once.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WmwkNy6uxRKUmR2z",
+  "folder": "zp21eCWEd0bf48mP"
+}

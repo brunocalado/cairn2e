@@ -1,0 +1,157 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The Scars window (module/apps/scars.js) — the twelve rows of the      *
+     * table, the one for the HP lost already chosen.                        *
+     *                                                                       *
+     * It is a list and a foot, and both are the sheet's own devices: the    *
+     * rows are Primitive 7 and the buttons are Primitive 2, so nothing here *
+     * invents a control. What IS particular to this window is "chosen": a   *
+     * row is picked, not toggled, so the mark is the row's number filled    *
+     * with ink — the same fill a marked Fatigue circle wears — and never a  *
+     * hue, a tint or a border.                                              *
+     **************************************************************************/
+
+    &.cairn-scars {
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* The list is the only part that gives: the head says what happened and the foot holds the
+           buttons, and a foot pushed off the bottom of a fixed window is a window with no way to
+           take the scar. `scrollable` on the rows part makes the `<ol>` itself the scroller, so
+           the two bounds have to be set here — `min-height: 0` because a flex item's automatic
+           minimum is its content, which is twelve paragraphs. */
+        .cairn-scars-head,
+        .cairn-scars-foot {
+            flex: 0 0 auto;
+        }
+
+        .cairn-scars-list {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
+        .cairn-scars-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .cairn-scars-lead {
+            margin: 0;
+            font-family: var(--cairn-serif);
+        }
+
+        /* The number reads as the thing that chose the row, so it is set at the size the sheet
+           gives a stat and its label rides under the figure's baseline, as Gold's does. */
+        .cairn-scars-lost {
+            margin: 0;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .cairn-scars-lost-n {
+            font-family: var(--cairn-serif);
+            font-size: 22px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cairn-scars-lost-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-scars-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            padding: 4px 2px;
+            cursor: var(--cursor-pointer);
+
+            /* Hover is said with the text alone. The rule under each row is a canvas stroke, not
+               a border, so a ground painted on the row cannot meet it — the sunk fill sat inside
+               the ink line with a gap on every edge and read as a misregistered box. */
+            &:hover .cairn-scars-text {
+                color: var(--cairn-ink);
+            }
+        }
+
+        /* The row number carries the choice. Off, it is a plain figure in soft ink; chosen, it is
+           paper on ink — the inversion Primitive 2 uses for a pressed button, which is what a
+           chosen row is. */
+        .cairn-scars-n {
+            flex: 0 0 auto;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--cairn-radius);
+            font-family: var(--cairn-serif);
+            font-variant-numeric: tabular-nums;
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-scars-row.selected {
+            .cairn-scars-n {
+                background: var(--cairn-ink);
+                color: var(--cairn-paper);
+            }
+
+            .cairn-scars-text {
+                color: var(--cairn-ink);
+            }
+        }
+
+        .cairn-scars-text {
+            font-family: var(--cairn-serif);
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-scars-foot {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .cairn-scars-outcome {
+            margin: 0;
+            font-family: var(--cairn-serif);
+        }
+
+        .cairn-scars-note {
+            margin: 0;
+            font-family: var(--cairn-serif);
+            font-size: 11px;
+            color: var(--cairn-ink-soft);
+        }
+
+        /* The buttons share the whole width: two split it, the one that is left after the
+           location die is rolled takes all of it, so the irreversible button is never a stub in
+           a corner. */
+        .cairn-scars-buttons {
+            display: flex;
+            gap: 8px;
+
+            button {
+                flex: 1 1 0;
+            }
+        }
+    }
+}

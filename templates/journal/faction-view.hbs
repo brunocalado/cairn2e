@@ -1,0 +1,87 @@
+{{!-- Core's journal window strips every class off this template's ROOT before it appends the page
+      into its own article (`JournalEntrySheet#_renderPageView` calls
+      `sheet.element.removeAttribute("class")`), so the scope class lives on the element INSIDE it
+      — nothing in the stylesheet reaches the root.
+
+      The faction as the SRD's own example prints one: what it is, what it has, who acts for it,
+      what it wants and what is in the way. The Warden's two controls are at the foot, and a
+      player reading a revealed page sees neither. --}}
+<div>
+    <div class="cairn2e cairn-faction-view">
+        {{!-- Always at one level: a faction is not a section of a document, so the heading
+              controls core puts on a page were taken off its header (`faction-header.hbs`). --}}
+        <h2 class="cairn-faction-title">{{name}}</h2>
+
+        {{#if identity.length}}
+        <p class="cairn-faction-line">
+            {{#each identity as |word|}}<span class="cairn-item-tag">{{word}}</span>{{/each}}
+        </p>
+        {{/if}}
+
+        {{#if system.advantages.length}}
+        <h3 class="cairn-faction-heading">{{localize 'CAIRN.Faction.Advantages'}}</h3>
+        <ul class="cairn-faction-list">
+            {{#each system.advantages as |a|}}
+            <li><strong>{{a.name}}</strong>{{#if a.note}} — {{a.note}}{{/if}}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+
+        {{#if agents.length}}
+        <h3 class="cairn-faction-heading">{{localize 'CAIRN.Faction.Agents'}}</h3>
+        <ul class="cairn-faction-list">
+            {{!-- In rank order, because that is what the array is. The first one is who saves when
+                  this faction is opposed, and the mark says so without a second column. --}}
+            {{#each agents as |agent|}}
+            <li>
+                {{#if agent.isHighest}}<i class="fas fa-crown cairn-faction-rank"
+                    data-tooltip-text="{{localize 'CAIRN.Faction.HighestRanking'}}"></i> {{/if}}
+                <strong>{{agent.name}}</strong>{{#if agent.role}}, {{agent.role}}{{/if}}
+                &middot; {{localize 'CAIRN.Faction.Wil'}} {{agent.wil}}
+                {{#if agent.motivation}}<em class="cairn-faction-motive"> — {{agent.motivation}}</em>{{/if}}
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+
+        {{#if hasAgenda}}
+        <h3 class="cairn-faction-heading">{{localize 'CAIRN.Faction.Agenda'}}</h3>
+        {{#if system.agenda.objective}}
+        <p class="cairn-faction-objective">{{system.agenda.objective}}</p>
+        {{/if}}
+        {{#if goals.length}}
+        <ol class="cairn-faction-goals">
+            {{#each goals as |g|}}
+            <li{{#if g.done}} class="is-done"{{/if}}>{{g.text}}</li>
+            {{/each}}
+        </ol>
+        {{/if}}
+        {{/if}}
+
+        {{#if openObstacles.length}}
+        <h3 class="cairn-faction-heading">{{localize 'CAIRN.Faction.Obstacles'}}</h3>
+        <ul class="cairn-faction-list">
+            {{#each openObstacles as |o|}}<li>{{o.text}}</li>{{/each}}
+        </ul>
+        {{/if}}
+
+        {{#if description}}<div class="cairn-faction-description">{{{description}}}</div>{{/if}}
+
+        {{#if isWarden}}
+        {{!-- The two rolls a faction has. The d6 STATES its consequence and changes nothing on the
+              page: which advantage is lost is the Warden's call about the fiction, and a picker
+              for it would put that call inside the software. --}}
+        <div class="cairn-faction-controls">
+            <button type="button" data-action="factionAction">
+                <i class="fas fa-dice-d6" inert></i> {{localize 'CAIRN.Faction.RollAction'}}
+            </button>
+            {{#if highest}}
+            <button type="button" data-action="agentSave"
+                data-tooltip-text="{{localize 'CAIRN.Faction.OpposedHint'}}">
+                <i class="fas fa-dice-d20" inert></i> {{localize 'CAIRN.Faction.OpposedSave'}}
+            </button>
+            {{/if}}
+        </div>
+        {{/if}}
+    </div>
+</div>

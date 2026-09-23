@@ -1,0 +1,128 @@
+{
+  "_id": "kFbvZVWKe94H9MjP",
+  "name": "Griffon",
+  "type": "npc",
+  "img": "icons/creatures/birds/raptor-hawk-flying.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 15,
+        "max": 15
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 7,
+      "max": 7
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "eCEFvhjQfUsNEDXp",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!kFbvZVWKe94H9MjP.eCEFvhjQfUsNEDXp"
+    },
+    {
+      "name": "Ravenous hybrids, with the head and wings of an eagle and the lower body of a lion.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XAOndzatjTCNmbVj",
+      "_key": "!actors.items!kFbvZVWKe94H9MjP.XAOndzatjTCNmbVj"
+    },
+    {
+      "name": "Can be used as mounts if taken young and properly trained.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "b2CL3YzlpJ4EvgFd",
+      "_key": "!actors.items!kFbvZVWKe94H9MjP.b2CL3YzlpJ4EvgFd"
+    },
+    {
+      "name": "Fly and attack at astonishing speeds, diving in to scoop up their prey.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "7wCKajlWWjxPQzrL",
+      "_key": "!actors.items!kFbvZVWKe94H9MjP.7wCKajlWWjxPQzrL"
+    },
+    {
+      "name": "Tears flesh and bone from its victim with its razor-sharp beak.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "wofWuMFiA3joUWsC",
+      "_key": "!actors.items!kFbvZVWKe94H9MjP.wofWuMFiA3joUWsC"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!kFbvZVWKe94H9MjP"
+}

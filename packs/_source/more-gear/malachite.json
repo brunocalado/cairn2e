@@ -1,0 +1,31 @@
+{
+  "_id": "msTNC2xaaQKowoDA",
+  "name": "Malachite",
+  "type": "gear",
+  "img": "icons/commodities/stone/geode-raw-green.webp",
+  "system": {
+    "description": "<p>Green in concentric bands, like rings cut from a tree.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!msTNC2xaaQKowoDA",
+  "folder": "zp21eCWEd0bf48mP"
+}

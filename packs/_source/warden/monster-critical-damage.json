@@ -1,0 +1,318 @@
+{
+  "_id": "i8NAvwjHjyXRzmjp",
+  "name": "Monster Critical Damage",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Critical Damage column of the Monster Attacks table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "3Nsp34umdreZt0fh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Asphyxiates",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.3Nsp34umdreZt0fh"
+    },
+    {
+      "_id": "zwd4QFpXgXthGBU4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bleeds",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.zwd4QFpXgXthGBU4"
+    },
+    {
+      "_id": "3HMjPN07DAwZg9sI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Blinds",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.3HMjPN07DAwZg9sI"
+    },
+    {
+      "_id": "P3c3vuji63fzCPDm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Breaks",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.P3c3vuji63fzCPDm"
+    },
+    {
+      "_id": "iadzLvUvB7bk9lSH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Crushes",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.iadzLvUvB7bk9lSH"
+    },
+    {
+      "_id": "VK1PjishuoalFjBN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Decays",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.VK1PjishuoalFjBN"
+    },
+    {
+      "_id": "UKBT5qzNXJyD2KY3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Dissolves",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.UKBT5qzNXJyD2KY3"
+    },
+    {
+      "_id": "IT0UqmxOjjApGEI7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ensnares",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.IT0UqmxOjjApGEI7"
+    },
+    {
+      "_id": "EG7eVS6r4UpU3iFq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Explodes",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.EG7eVS6r4UpU3iFq"
+    },
+    {
+      "_id": "jxG0S8UyAUaVxxLS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Grapples",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.jxG0S8UyAUaVxxLS"
+    },
+    {
+      "_id": "9yBSJbfPQL5q5iJq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Incapacitates",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.9yBSJbfPQL5q5iJq"
+    },
+    {
+      "_id": "d75QH7SDZwDOGDGJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Lacerates",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.d75QH7SDZwDOGDGJ"
+    },
+    {
+      "_id": "LbeE2JLd2JHd0dcy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Liquefies",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.LbeE2JLd2JHd0dcy"
+    },
+    {
+      "_id": "MkdNXD0CdzPRR0Ap",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Paralyzes",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.MkdNXD0CdzPRR0Ap"
+    },
+    {
+      "_id": "DaAMkDgJ0JjXn2FI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Petrifies",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.DaAMkDgJ0JjXn2FI"
+    },
+    {
+      "_id": "FmugqfhKaoJEiYAx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Poisons",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.FmugqfhKaoJEiYAx"
+    },
+    {
+      "_id": "1m0YA2I6u29NsOWV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Punctures",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.1m0YA2I6u29NsOWV"
+    },
+    {
+      "_id": "fQY1022IskBP4v8g",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Severs",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.fQY1022IskBP4v8g"
+    },
+    {
+      "_id": "rjUHZKdFDxB8FGcI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tramples",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.rjUHZKdFDxB8FGcI"
+    },
+    {
+      "_id": "ZtIflXVoqQT9cP7B",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Weakens",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i8NAvwjHjyXRzmjp.ZtIflXVoqQT9cP7B"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!i8NAvwjHjyXRzmjp"
+}

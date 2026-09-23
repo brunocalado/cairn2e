@@ -1,0 +1,144 @@
+{
+  "_id": "0RAFpsih56wkQOOS",
+  "name": "Burrowing Horror",
+  "type": "npc",
+  "img": "icons/creatures/invertebrates/beetle-grub-larvae-gray.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 16,
+        "max": 16
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 4,
+        "max": 4
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "of6ziB5RYJUGJKt9",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!0RAFpsih56wkQOOS.of6ziB5RYJUGJKt9"
+    },
+    {
+      "_id": "OwZ88bT7JTV2gQST",
+      "name": "Acid Squirt",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>acid squirt (d8, <em>blast</em>)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": true,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!0RAFpsih56wkQOOS.OwZ88bT7JTV2gQST"
+    },
+    {
+      "name": "Huge insectoids with multiple legs and shiny black eyes.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Subsist from dirt, roots, and flesh.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "aLmI2m5Wh8koc9Z1",
+      "_key": "!actors.items!0RAFpsih56wkQOOS.aLmI2m5Wh8koc9Z1"
+    },
+    {
+      "name": "Burrow just beneath surfaces to ambush unsuspecting creatures.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "g4BNcSRoxGZgrsin",
+      "_key": "!actors.items!0RAFpsih56wkQOOS.g4BNcSRoxGZgrsin"
+    },
+    {
+      "name": "Target loses a body part. Roll 1d6. 1: Head, 2-4: Leg, 5-6: Arm.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ln5zfE8SK08AgqwR",
+      "_key": "!actors.items!0RAFpsih56wkQOOS.ln5zfE8SK08AgqwR"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!0RAFpsih56wkQOOS"
+}

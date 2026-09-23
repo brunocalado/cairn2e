@@ -1,0 +1,54 @@
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="attributes">
+    {{!-- A player's roll button locks after its one roll. It stays in the heading, disabled,
+          and the hint under it says why: a control that vanished would read as a bug. --}}
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-attributes" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "STR"}} &middot; {{localize "DEX"}} &middot; {{localize "WIL"}}</h3>
+        <button type="button" class="mini" data-action="rollAttributes" {{#if attrsLocked}}disabled{{/if}}>
+            <i class="fas fa-dice"></i> {{localize "CAIRN.CharacterCreator.Roll3d6"}}
+        </button>
+    </div>
+    {{#if once}}<p class="hint">{{localize "CAIRN.CharacterCreator.OnceHint"}}</p>{{/if}}
+
+    {{!-- The boxes are the swap picker, and their frames are drawn (`module/ink.js`): a picked
+          box is flooded with ink and its label reversed to paper, a hovered one washed — the
+          same four-state pairing the sheet's condition chips use. `aria-pressed` carries the
+          picked state for the reader, `.is-picked` for the stylesheet. Every box is on screen
+          from the first visit and prints "?" until its roll lands, so rolling HP first has
+          somewhere to show and nothing moves when the attributes arrive. A box is inert until
+          there is something to swap, and inert again after the swap — disabled, not removed,
+          so the row never moves. --}}
+    <div class="attr-row">
+        {{#each attrBoxes}}
+        <button type="button" class="attr-box{{#if this.picked}} is-picked{{/if}}"
+            data-action="swapPick" data-attr="{{this.key}}"
+            aria-pressed="{{#if this.picked}}true{{else}}false{{/if}}"
+            data-ink="box" data-ink-seed="attr-{{this.key}}" data-ink-w="1.6"
+            {{#if this.picked}}data-ink-fill="always" data-ink-fill-a="0.92" data-ink-fill-hover-a="0.74"{{else}}data-ink-fill="hover" data-ink-fill-a="0.14"{{/if}}
+            {{#unless ../attrs}}disabled{{/unless}}{{#if ../swapDone}}disabled{{/if}}>
+            <label>{{localize this.key}}</label>
+            <span>{{#if this.value}}{{this.value}}{{else}}?{{/if}}</span>
+        </button>
+        {{/each}}
+    </div>
+
+    <div class="swap-row">
+        <span class="hint">{{#if swapDone}}{{localize "CAIRN.CharacterCreator.Swapped"}}{{else}}{{localize "CAIRN.CharacterCreator.SwapHint"}}{{/if}}</span>
+        <button type="button" data-action="swapAttributes" {{#unless canSwap}}disabled{{/unless}}>
+            <i class="fas fa-right-left"></i> {{localize "CAIRN.CharacterCreator.Swap"}}
+        </button>
+    </div>
+
+    {{!-- HP is a box too but not a button: it is not part of the swap. --}}
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-hp" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{localize "CAIRN.CharacterCreator.HitProtection"}}</h3>
+        <button type="button" class="mini" data-action="rollHp" {{#if hpLocked}}disabled{{/if}}>
+            <i class="fas fa-dice-d6"></i> {{localize "CAIRN.CharacterCreator.RollHp"}}
+        </button>
+    </div>
+    <div class="attr-row">
+        <div class="attr-box hp-box" data-ink="box" data-ink-seed="attr-hp" data-ink-w="1.6">
+            <label>{{localize "CAIRN.HitProtection"}}</label>
+            <span>{{#if draft.hp}}{{draft.hp}}{{else}}?{{/if}}</span>
+        </div>
+    </div>
+</section>

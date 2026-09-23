@@ -1,0 +1,31 @@
+{
+  "_id": "IPbov0cLCcRyGD9G",
+  "name": "Eye Patch",
+  "type": "gear",
+  "img": "icons/svg/eye.svg",
+  "system": {
+    "description": "<p>Eye Patch (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 3,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!IPbov0cLCcRyGD9G",
+  "folder": "XycVdoNLEuiHY9my"
+}

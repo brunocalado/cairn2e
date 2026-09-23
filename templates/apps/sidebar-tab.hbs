@@ -1,0 +1,39 @@
+{{#if canCreateActor}}
+<section class="cairn-tool-group flexcol">
+    <h4 class="divider">{{localize "CAIRN.Sidebar.Characters"}}</h4>
+    <button type="button" data-action="openCharacterCreator">
+        <i class="fas fa-skull" inert></i> {{localize "CAIRN.CharacterGenerator"}}
+    </button>
+    <button type="button" data-action="importKettlewright">
+        <i class="fas fa-file-import" inert></i> {{localize "CAIRN.KWImport.Button"}}
+    </button>
+</section>
+{{/if}}
+
+{{#if isGM}}
+<section class="cairn-tool-group flexcol">
+    <h4 class="divider">{{localize "CAIRN.Sidebar.Warden"}}</h4>
+    <button type="button" data-action="generateNpc">
+        <i class="fas fa-user" inert></i> {{localize "CAIRN.GenerateNpc"}}
+    </button>
+    <button type="button" data-action="generateHireling">
+        <i class="fas fa-hand-holding-dollar" inert></i> {{localize "CAIRN.GenerateHireling"}}
+    </button>
+    <button type="button" data-action="generateMonster">
+        <i class="fas fa-dragon" inert></i> {{localize "CAIRN.GenerateMonster"}}
+    </button>
+    <button type="button" data-action="generateFaction">
+        <i class="fas fa-sitemap" inert></i> {{localize "CAIRN.FactionGen.Button"}}
+    </button>
+    <button type="button" data-action="openStore">
+        <i class="fas fa-store" inert></i> {{localize "CAIRN.Store.Button"}}
+    </button>
+</section>
+
+<section class="cairn-tool-group flexcol">
+    <h4 class="divider">{{localize "CAIRN.Sidebar.Travel"}}</h4>
+    <button type="button" data-action="openJourney">
+        <i class="fas fa-route" inert></i> {{localize "CAIRN.Journey.Button"}}
+    </button>
+</section>
+{{/if}}

@@ -1,0 +1,1074 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The character sheet.                                                  *
+     *                                                                       *
+     * Its own layout, not the three-track grid the NPC header uses: the two  *
+     * conditions ride the name's own line, where the printed sheet puts      *
+     * them, and the portrait sits beside them.                               *
+     *                                                                       *
+     * Nothing in here draws a frame or a rule. Every box, ring and rule is   *
+     * inked by `module/ink.js` from the element's measured size — that is    *
+     * what a `data-ink` attribute in the templates marks. A CSS border is a  *
+     * machined line and reads as a web form, and a tiled SVG wobble is worse *
+     * because it repeats.                                                    *
+     **************************************************************************/
+
+    /* A brush slab: the filled ground a reversed-out label sits on. The element paints nothing
+       itself — it is an empty span that exists to be MEASURED, and `module/ink.js` inks the brush
+       mark over its box. That is also how the active tab works: `display: none` gives it a zero
+       rect, and the ink layer skips a zero rect, so the same CSS toggle that used to hide an image
+       now withholds the mark. Sized a few pixels past its box because a slab that stops at the
+       label's own edge reads shorter than the outlined chip beside it.
+
+       Being a span is why every rule that styles the label beside it — in `.cairn-cap`,
+       `.cairn-gold` and `.cairn-tab` — is written `span:not(.cairn-slab)`. A bare `span` there
+       outranks this block and would give the slab `position: relative`, which drops it back into
+       the flow and hands the ink layer the wrong box to measure. */
+    .cairn-slab {
+        height: calc(100% + 8px);
+        inset: -4px -2px;
+        pointer-events: none;
+        position: absolute;
+        width: calc(100% + 4px);
+    }
+
+    .cairn-actor-header {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .cairn-header-row {
+        align-items: flex-start;
+        display: flex;
+        gap: 12px;
+    }
+
+    /* Two lines, not two columns. The name runs to the conditions on its own line, and the
+       Background-and-age stack (the role line, on an NPC) runs to the procedures on the line
+       under it, so the name has the whole width the chips on ITS line leave and not the width
+       the widest chip row leaves: as two columns, the name stopped where Rest / Restore / Die
+       of Fate began and left a blank the size of a chip beside Panicked. A grid could not do it
+       either — a column is one width for both rows.
+
+       The height is the chip column's — a 36px condition chip, 6px, a 24px action chip — stated
+       as a floor so a sheet with a one-line sub-line (a plain NPC, a character with no age) is
+       no shorter than one with two; the second line takes the rest and the procedures sit at
+       its foot. No gap between the lines: the name's box has its own bottom stroke for a
+       separator. */
+    .cairn-actor-header .cairn-header-main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        min-height: 66px;
+        min-width: 0;
+    }
+
+    /* One line: the text at the left, taking every pixel the chips leave (`flex: 1` with
+       `min-width: 0`, which is what lets a long name scroll inside its box instead of pushing
+       the chips out), the chips flush right. The second line fills the height left under the
+       name, its stack at the top and its chips at the foot. */
+    .cairn-header-line {
+        align-items: flex-start;
+        column-gap: 12px;
+        display: flex;
+
+        > .name-input,
+        > .cairn-header-sub {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        > .cairn-conditions {
+            flex: 0 0 auto;
+            margin-left: auto;
+        }
+
+        > .cairn-sheet-actions {
+            align-self: flex-end;
+            flex: 0 0 auto;
+            margin-left: auto;
+        }
+
+        &:last-child {
+            flex: 1;
+        }
+    }
+
+    /* Under the name: the NPC's stack — the role, and a hireling's career on its own line
+       beneath it. A tight one: no gap between the lines, each at a bare line-height, at the top
+       of its line so it sits right under the name's box. */
+    .cairn-header-sub {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    /* The character's sub-line is one line, not a stack: the Background, then a dash and the
+       age once it is set — "Kettlewright – 39 years" — in one size and one ink, stated here
+       once so the three parts cannot drift apart, and centred in the height under the name
+       instead of pinned to its top, so the single line sits in the middle of the space the
+       two lines used to fill. */
+    .cairn-header-sub.cairn-background-line {
+        align-items: baseline;
+        align-self: center;
+        color: var(--cairn-ink);
+        flex-direction: row;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    /* The NPC's stack starts a little under the name's stroke rather than on it. The base class
+       stays flush because the character's centred line shares it, and a padding there would move
+       a centred line by half of it. */
+    .cairn-header-sub.cairn-role-line {
+        padding-top: 4px;
+    }
+
+    /* Read-only: the number and its unit, with no field around them and no label — "32 years"
+       says what it is. Edited in the window behind the quill, and rendered only when it is
+       more than 0. Size and ink are the row's. */
+    .cairn-age {
+        align-items: baseline;
+        display: flex;
+        gap: 4px;
+    }
+
+    .cairn-age-unit {
+        font-style: italic;
+    }
+
+    /* The name is the page's one large voice, set on the paper rather than reversed out of an ink
+       banner: the sheet now has five inked caps and a gold slab, and a sixth solid block at the
+       top made the whole thing read as a form with a title bar. It wears the item sheet's drawn
+       box (`parts/*-header.hbs` mark it, `ink.js` draws it) — the Gold chip's mark at the Gold
+       chip's weight. */
+    .cairn-actor-header .name-input {
+        background: none;
+        border: none;
+        color: var(--cairn-ink);
+        font-family: var(--cairn-serif);
+        font-size: 30px;
+        font-weight: 700;
+        height: auto;
+        line-height: 1.05;
+        /* The air inside the drawn box. Measured: the glyphs' ascent and descent fill the
+           32px line exactly, so with no padding the stroke sits on the letters. 2px is all the
+           36px condition chip beside it leaves without growing the line. */
+        padding: 2px 10px;
+
+        &::placeholder {
+            color: var(--cairn-ink-faint);
+        }
+    }
+
+    /* A drop target, not a field. The twenty backgrounds are compendium Items carrying the name
+       list, the starting gear and the two d6 tables — typing the name gave the sheet a string the
+       system could do nothing with. */
+    .cairn-background-slot {
+        align-items: center;
+        color: var(--cairn-ink-soft);
+        display: flex;
+        flex: 0 0 auto;
+        font-size: 13px;
+        font-style: italic;
+        gap: 6px;
+        min-height: 18px;
+
+        a {
+            color: var(--cairn-ink);
+            cursor: pointer;
+            font-style: normal;
+        }
+
+        &.is-empty {
+            opacity: 0.5;
+        }
+
+    }
+
+    /* Deprived and Panicked, side by side on the name's line. Off is an empty drawn frame, on is
+       a brush slab — the smallest difference that still reads across a table. Both are the same
+       height in either state, which is why the slab is oversized rather than the box shrunk. */
+    .cairn-conditions {
+        display: flex;
+        flex: 0 0 auto;
+        gap: 7px;
+    }
+
+    /* One primitive for both the conditions and the three procedures. They are the same kind of
+       thing — a state you can set and an action you can take — and styling them differently made
+       the header read as two unrelated control strips. A drawn frame; the ground inside it is
+       washed on hover and flooded when a condition is on (`data-ink-fill*` in the template). */
+    .cairn-chip {
+        align-items: center;
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        flex: 0 0 auto;
+        font-family: var(--cairn-serif);
+        font-size: 9px;
+        font-weight: 700;
+        height: 24px;
+        justify-content: center;
+        letter-spacing: var(--cairn-label-track);
+        line-height: 1;
+        padding: 0 8px;
+        position: relative;
+        text-transform: uppercase;
+        user-select: none;
+
+        span {
+            color: var(--cairn-ink-soft);
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .cairn-condition {
+        width: 86px;
+
+        input[type="checkbox"] {
+            height: 100%;
+            inset: 0;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+        }
+    }
+
+    /* The label against the ground the ink layer paints behind it, in all four states. This is a
+       pairing, not two independent choices, and getting it wrong stays invisible until someone
+       hovers: a hovered OFF chip used to be handed a paper label over a ground that was never
+       filled, and the word disappeared into the page.
+
+           off          bare paper        soft ink   the resting weight of a label
+           off + hover  a 0.14 ink wash   full ink   darkens WITH the ground, so it gains contrast
+           on           a 0.92 ink flood  paper      reversed out
+           on + hover   a 0.74 ink flood  paper      still solid enough to reverse out of
+
+       No text-shadow halo on either filled state: the flood is solid, so there are no dry-brush
+       gaps for a letter to fall into.
+
+       `:where(:not(:disabled))` and not a bare `:not()`, which would carry a class's worth of
+       specificity and outrank the `.is-on` rule under it. `.cairn-gold` is excluded: it wears the
+       chip's box but it is a field, and a field does not answer the pointer. */
+    .cairn-chip:hover:where(:not(:disabled, .cairn-gold)) span {
+        color: var(--cairn-ink);
+    }
+
+    .cairn-chip.is-on span {
+        color: var(--cairn-paper);
+    }
+
+    /* No drawn frame at all. A hand-drawn line against the hard, straight edge of a picture
+       never read as a frame — behind it, in front of it, round or square, padded or flush, it
+       only ever read as a line that had missed. The picture's own edge is the frame. */
+    /* As tall as the chips beside it and no taller: it stretches to the row, whose height the
+       header grid sets from the chip column (`.cairn-header-main`'s `min-height`). The width is
+       that height copied by hand — `aspect-ratio` cannot derive it from a stretched flex height
+       (measured: it resolved from the width instead and grew the row to the picture) — so it is
+       the one number here that can drift; the picture's `object-fit: cover` hides a small one. A
+       stated height went stale once already: it said 54 while the column measured 66. */
+    .cairn-portrait-frame {
+        align-self: stretch;
+        display: flex;
+        flex: 0 0 auto;
+        height: auto;
+        overflow: hidden;
+        width: 66px;
+    }
+
+    .cairn-actor-header .portrait {
+        border: none;
+        border-radius: 0;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Five separate boxes, not one frame with dividers: the gap is what lets each box's own wear
+       be seen, and the drawn outlines want air between them.
+
+       The extra space above is on top of the header's own 9px gap. The five brush marks are the
+       heaviest thing on the sheet, and at one gap's distance they crowd the row of chips over
+       them. */
+    .cairn-attributes {
+        display: grid;
+        gap: 9px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        margin-top: 8px;
+    }
+
+    /* No bottom padding. It was clearance for a drawn rule under each block; the five rules are
+       gone — they marked a boundary the cap above already marks, and at this size five short
+       segments across the header read as clutter rather than as structure. With the rule gone the
+       padding is slack between the values and the tab strip, and nothing else. */
+    .cairn-stat {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cairn-cap {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: var(--cairn-label-track);
+        line-height: 1;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+
+        /* The label is a block that carries the cap's padding, so its box IS the cap's box: a
+           click anywhere on the mark lands on the link. As an inline word inside a padded cap it
+           took the click on the three letters alone, while the whole mark lit up under the
+           pointer — three quarters of a control that answered the hover and not the press.
+           Symmetric on purpose: the slab is centred on the cap, so an uneven padding puts the
+           label off-centre inside its own mark. The plain caps (HP, ARMOR) carry the same
+           padding so the five stay aligned. */
+        a,
+        span:not(.cairn-slab) {
+            color: var(--cairn-paper);
+            display: block;
+            padding: 5px 0;
+            position: relative;
+            text-shadow: 0 0 4px var(--cairn-ink), 0 0 2px var(--cairn-ink);
+            z-index: 1;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+
+            /* The focus ring, held off the word so it does not cut the letters. Paper rather
+               than ink, because it sits on the mark. The mark under it lifts as well
+               (`data-ink-lift`, `module/ink.js`), so the keyboard sees what the pointer sees. */
+            &:focus-visible {
+                outline: var(--cairn-hairline) solid var(--cairn-paper);
+                outline-offset: 3px;
+            }
+        }
+
+        /* Only the three that are rolls. The brush mark re-inks to blood red (painted, in
+           `module/ink.js` — the colour cannot come from here, because a CSS ground would be a
+           rectangle behind a ragged shape) and the word comes up to pure white with a firmer
+           halo. Nothing changes size or position. HP and ARMOR are labels and get none of this;
+           that they do NOT change under the pointer is what says they are not rolls.
+
+           `:has(:focus-visible)`, not `:focus-within`, and the same pair is written into the
+           ink layer's own test so the drawn half and the styled half stay in step. Clicking a cap
+           leaves its link focused, and under `:focus-within` the word stayed lit after the
+           pointer had moved on, which read as stuck. The keyboard still gets it. */
+        &.is-rollable {
+            cursor: pointer;
+
+            &:hover a,
+            &:has(:focus-visible) a {
+                /* White on the inked slab, deliberately — not `--cairn-paper`, which would change
+                   what the lit word looks like. */
+                color: #fff;
+                text-shadow: 0 0 5px var(--cairn-ink), 0 0 2px var(--cairn-ink), 0 0 1px var(--cairn-ink);
+            }
+        }
+
+        /* The attribute caps are the one place five slabs sit side by side, and a slab as wide as
+           its grid column leaves the row reading as one black bar with seams in it. Held off both
+           edges so the 9px grid gap becomes a gap the eye can actually see.
+
+           Vertically it is held tight. The mark is painted a few pixels past this box on every
+           side — that overshoot is what frays its edges — so a generous box here is a mark that
+           reaches down into the value under it. */
+        .cairn-slab {
+            inset: -2px 9%;
+            height: calc(100% + 4px);
+            width: 82%;
+        }
+    }
+
+    /* A single row that never breaks: a stepper, the value, a stepper. It was a grid with
+       `align-items: baseline`, and the maximum — its own grid cell, 26px wide for a "/ NN" that
+       wanted more once the thin space was counted — wrapped onto a second line. The whole block
+       then stood 36px tall against the 21px of the number, and the five stat blocks no longer
+       agreed on where their values sat. A flex row with `nowrap` cannot do that, whatever the
+       cell arithmetic says.
+
+       Every part of it is still a FIXED width, and the group is centred in the stat block rather
+       than spread across it — so the two steppers land at the same place in all five blocks
+       whatever digits are between them, and they land BESIDE the number instead of out at the
+       block's edges.
+
+       The gap is 2px. The steppers belong to the number they change, and at the old 26px of slack
+       either side they read as belonging to the block instead; their own 18px cells carry the
+       hit area, so the visual gap can close without the click target shrinking with it. */
+    .cairn-stat-value {
+        align-items: center;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 2px;
+        height: 30px;
+        justify-content: center;
+        margin-top: 8px;
+        white-space: nowrap;
+    }
+
+    /* The number and its maximum, split down a fixed divide: the current value is ranged right
+       against it and the maximum starts at it, so a "9" becoming a "10" puts a digit on the left
+       and moves nothing else — not the slash, not the maximum, and not the steppers either side.
+       A centred pair would re-centre by half a digit. Armor has no maximum and sits alone in the
+       left half, flush to the same divide.
+
+       Each half is as wide as its own widest content and no wider, measured in a client: 28px is
+       two of Lora's tabular figures at 21px, 24px is "/NN" at 12px. Stating the two halves
+       outright is what keeps the divide where the arithmetic puts it rather than where the
+       leftover space does, and fixing the whole box at their sum is what stops a single-digit
+       value from re-centring the row.
+
+       `align-items: flex-start` is what makes the maximum read as a superscript: both boxes hang
+       from the same top edge, so the small one sits against the big one's cap line instead of on
+       its baseline. */
+    .cairn-stat-number {
+        align-items: flex-start;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        gap: 1px;
+        white-space: nowrap;
+        width: 53px;
+
+        > .cairn-stat-current {
+            flex: 0 0 28px;
+            text-align: right;
+        }
+
+        > .cairn-stat-max {
+            flex: 0 0 24px;
+            text-align: left;
+        }
+    }
+
+    /* The printed number. It is text on all five blocks now — it used to be an input on four of
+       them, styled until it stopped looking like one, and the whole of that fight is gone with
+       it: no ground to clear, no border to remove, no spinner, no focus ring, no `height: 1em`
+       to undo Chrome's input metrics, and no width measured back off the browser on every
+       keystroke. A line of text sits on the row's baseline because that is what text does.
+
+       It is a LABEL on all five, and the three lines below are what make it one rather than
+       something that merely looks like one. `pointer-events: none` is the load-bearing one: the
+       number is inside a flex row whose other two children are buttons, and without it a drag
+       that starts on the digits selects them, which is the single clearest tell that a piece of
+       text is expecting to be edited. The cursor and the selection go with it, so there is
+       nothing left for a pointer to discover. The steppers keep their own pointer events, because
+       they are siblings and not children — `pointer-events` is not inherited past this box.
+
+       The number is written from the two steppers beside it and from the edit window behind the
+       quill, and from nowhere else. It used to open a field on click as well; a value editable in
+       two places is two clamps and two commits to keep in step, and the sheet face was the worse
+       of the two places to keep one.
+
+       Tabular figures, like every other number in the system. Lora's proportional "1" is 8px at
+       this size against a "0" of 13, so a proportional 11 becoming a 12 moved its own left edge
+       by five pixels without changing digit count — the jitter the fixed cells above exist to
+       stop, arriving from inside the cell instead. */
+    .cairn-stat-current {
+        cursor: default;
+        font-size: 21px;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    /* The steppers either side of a current value, and now the ONLY way that value moves on the
+       sheet face — so they are drawn as controls rather than as hints at one. Full ink at rest
+       and bold, not the soft ink they wore while a click on the number was the real way in: a
+       control that is the only way in cannot also be the quietest thing in its block. ONE colour
+       token per state, never a colour and an opacity stacked — the first cut was faint ink at
+       0.45 opacity, an effective alpha of 0.13, and nobody could see it at all.
+
+       Hovering INVERTS it, which is Primitive 2's language and the same thing every other button
+       on this sheet does: there is no darker ink left to go to from full, so the ground is what
+       answers the pointer. Pressing lifts that ground to soft ink rather than deepening it —
+       exactly as the condition chips lift from 0.92 to 0.74 when an on chip is hovered — so the
+       press reads as a release rather than as a second, heavier hover.
+
+       The hit area is a fixed 18px square with the glyph centred in it by flex rather than by
+       padding — padding that has to be re-derived every time the glyph's size changes is how one
+       of these ends up a pixel off its twin. It is ALWAYS laid out — pressable, hovered, pressed
+       or at a limit — so a stat block is the same size in every state and nothing on the row
+       moves. The square is the whole of the click target, which is why the 2px gap to the number
+       costs nothing: about 9px of it is glyph and the rest is reachable slack. */
+    .cairn-stat-value .cairn-step {
+        align-items: center;
+        border-radius: var(--cairn-radius);
+        color: var(--cairn-ink);
+        cursor: pointer;
+        display: flex;
+        flex: 0 0 auto;
+        font-size: 16px;
+        font-weight: 700;
+        height: 18px;
+        justify-content: center;
+        line-height: 1;
+        padding: 0;
+        user-select: none;
+        width: 18px;
+
+        &:hover {
+            background: var(--cairn-ink);
+            color: var(--cairn-paper);
+        }
+
+        &:active {
+            background: var(--cairn-ink-soft);
+            color: var(--cairn-paper);
+        }
+
+        /* Nothing further this way: muted and inert, but the cell stays. Against a stepper that
+           is now full ink and bold, faint ink reads as unavailable at a glance — which is the
+           whole of what the `aria-disabled` on it says to everyone else. */
+        &.is-limit {
+            background: none;
+            color: var(--cairn-ink-faint);
+            cursor: default;
+            font-weight: 400;
+            pointer-events: none;
+        }
+    }
+
+    /* The maximum is the number a player checks against on every save, so it has to be legible
+       at a glance even though it is not editable here — it opens in the edit window with every
+       other number. It was `--cairn-ink-faint` at 10px, which is the weight for a ruled line and
+       not for a value.
+
+       12px against the current value's 21 is a little over half, and at that ratio hanging it
+       from the same top edge (`align-items: flex-start` on the number) reads as a superscript
+       rather than as a second, smaller number standing beside the first. `line-height: 1` is
+       what makes that top edge the glyph's own: at the inherited line height the box is taller
+       than the text in it and the "/10" floats a few pixels below the cap line it is meant to
+       meet. The template writes it as "/10" with no space for the same reason — a thin space is
+       a word gap, and a superscript has none. */
+    .cairn-stat-max {
+        color: var(--cairn-ink-soft);
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+    }
+
+    .cairn-actor-header .cairn-sheet-actions {
+        display: flex;
+        gap: 6px;
+
+        /* The generic button primitive sets `--button-size: 36px`, which core applies as a
+           `min-height` — so a chip that is a <button> came out half again as tall as the two
+           that are <label>s beside it. The token is the way to answer it; a plain `height` is
+           not enough on its own. */
+        button.cairn-chip {
+            --button-size: 24px;
+            min-height: 24px;
+        }
+
+        button.cairn-chip[disabled] {
+            /* Disabled has to stay READABLE — a player needs to see WHICH action is shut — so it
+               is struck through rather than faded. `opacity` has to be reset as well: the generic
+               button primitive fades a disabled control to 0.45, which multiplies the colour
+               whatever it is set to.
+
+               There is no `text-decoration` here, and that is deliberate. The strike is drawn on
+               the ink layer in red (`data-ink="strike"` on the label, `module/ink.js`) — the one
+               colour the sheet allows itself, saying only that the rules have shut this action.
+               A `line-through` is a ruled line, which is the machined mark this whole layer
+               exists to avoid; recolouring it red would leave the one coloured thing on the page
+               as the only one not drawn by hand. */
+            cursor: default;
+            opacity: 1;
+
+            span {
+                color: var(--cairn-ink);
+            }
+        }
+    }
+
+    /**************************************************************************
+     * The character's tab strip, and Gold.                                  *
+     **************************************************************************/
+
+    /* Gold rides the tab strip because it is the number that changes most in play, and past the
+       petty threshold it occupies slots — so the ledger underneath has to account for it anyway. */
+    .cairn-tab-block {
+        flex: 0 0 auto;
+    }
+
+    /* The three tabs sit together at the left and Gold at the far right, with the separator's
+       `margin-left: auto` carrying all the slack between them. Core's `.tabs` gives every tab
+       `flex: 1` and spreads them across the strip, which put ORIGIN a hand's width from the
+       tab before it and made the strip read as three headings rather than one control. */
+    /* The 9px on the left is the first tab's brush mark. The slab is painted 16px past the label
+       on each side, the tab pads the label by 10, and the bristles overshoot the box again — so
+       the ink of ITEMS reached 8px to the left of the tab rule underneath, measured off the
+       canvas, and the strip read as spilling past the page. The rule stays where it was; the
+       ink now lands on its left edge and never past it (the ninth pixel is one stray bristle). */
+    .cairn-tab-strip {
+        align-items: center;
+        border: none;
+        display: flex;
+        gap: 14px;
+        padding-left: 9px;
+    }
+
+    .cairn-tab-strip .cairn-tab {
+        align-items: center;
+        border: none;
+        /* An unselected tab is still a label a player has to read to choose it. It was
+           `--cairn-ink-faint`, which is the weight of a ruled line. */
+        color: var(--cairn-ink-soft);
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-size: 9px;
+        font-weight: 700;
+        height: 24px;
+        justify-content: center;
+        letter-spacing: var(--cairn-label-track);
+        line-height: 1;
+        padding: 0 10px;
+        position: relative;
+        text-transform: uppercase;
+
+        /* Held off the label's own edges by a fixed amount rather than a share of the box: the
+           slab is measured from the word now, and a word wants the same margin of ink around it
+           whether it is ORIGIN or INVENTORY.
+
+           The top inset is 1.2px deeper than the bottom one, and that asymmetry is the whole
+           vertical correction for this mark. Nudging the LABEL cannot do it here: the slab is
+           positioned inside the label, so the two move together and their offset never changes.
+           Capitals ride high in a line box, so the mark has to ride up with them. Measured off
+           the painted alpha at this size rather than guessed. */
+        .cairn-slab {
+            display: none;
+            inset: -5.2px -16px;
+            height: calc(100% + 12px);
+            width: calc(100% + 32px);
+        }
+
+        span:not(.cairn-slab) {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .cairn-tab-strip .cairn-tab.active {
+        color: var(--cairn-paper);
+        text-shadow: 0 0 4px var(--cairn-ink), 0 0 2px var(--cairn-ink);
+
+        .cairn-slab {
+            display: block;
+        }
+    }
+
+    /* Gold wears the chip's box and the chip's type, but it is not a chip: it is a field, and a
+       field does not react to the pointer passing over it. It carries no `data-ink-fill`, so the
+       ink layer never washes it, and the label rule below never changes on hover — the caret is
+       the whole affordance. It used to sit on a brush slab with the field cut into it, which at
+       this size read as a blot rather than as a control.
+
+       The word and the number are ONE size and ONE line-height, so their baselines coincide by
+       construction and nothing has to be nudged: the pair is a flex row aligned on the baseline,
+       and the chip centres that row in its 24px box. The label is bold and the number is not —
+       the label is a label, and the number is the thing being read. See
+       `checks/ink-slab.check.mjs` for why no hand-picked offset is allowed anywhere near this.
+
+       The box is a fixed width even though the field inside it sizes to its digits. The ink
+       layer seeds a box's silhouette from its measured size, so a box that grows with the number
+       would draw itself a new outline on every keystroke. */
+    .cairn-tab-strip .cairn-gold {
+        cursor: text;
+        /* The `auto` is what pushes Gold to the far right of the strip. It used to sit on the
+           upright that stood between the last tab and the chip; the upright is gone — the chip's
+           own drawn box already separates it from a row of bare capitals, and a second vertical
+           mark 10px away was one rule doing a job the box had done — so the margin moves here. */
+        margin-left: auto;
+        padding: 0 10px;
+        width: 104px;
+    }
+
+    .cairn-gold-pair {
+        align-items: baseline;
+        display: flex;
+        gap: 6px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Written under `.cairn-gold` so it outranks `.cairn-chip span`, which would otherwise hand
+       the word the soft ink of a chip label. It is not soft: it names a value the player reads. */
+    .cairn-tab-strip .cairn-gold .cairn-gold-label {
+        color: var(--cairn-ink);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: var(--cairn-label-track);
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    .cairn-tab-strip .cairn-gold input {
+        background: none;
+        border: none;
+        color: var(--cairn-ink);
+        /* The width is set from the rendered text by `actor-sheet.js#_onRender`, because the pair
+           is centred in the box and any reserved-but-unused width shifts it. `field-sizing:
+           content` gets close but reserves about one `ch` per character, which is wider than
+           Lora's digits actually advance. `height: auto` still matters: core gives every input a
+           height, and left implicit the field stood 32px tall in a 24px chip and hung out of the
+           bottom of the drawn box. */
+        font-size: 11px;
+        font-weight: 400;
+        height: auto;
+        letter-spacing: var(--cairn-label-track);
+        line-height: 1;
+        padding: 0;
+        text-align: center;
+
+        /* The caret is the focus cue. Core's ring is a pale rounded rectangle, which inside a
+           hand-drawn box reads as a second, wrong outline. */
+        &:focus {
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+    }
+
+    /* The box a drawn `hline` is measured from — on the sheet under its tab strip, and in the
+       edit window under its tab bar and over its buttons. One height, because it is one mark:
+       the ink painter strokes a line through a box this tall, and a box of another height is a
+       line of another weight wherever it is used. */
+    .cairn-tab-rule,
+    .cairn-edit-rule {
+        height: 7px;
+    }
+
+    /**************************************************************************
+     * The Fatigue track, and the Identity tab.                              *
+     **************************************************************************/
+
+    /* The ledger's frame is drawn from this box, so it spans the tab's full width — flush with
+       the tab rule above on both sides. The insets the printed layout needs (the number's margin
+       at the left, the FATIGUE column at the right) are padding on the LIST, and the FATIGUE
+       label is laid over that right padding rather than standing beside the list as a flex
+       sibling — which is what used to stop a row's hover band 15px short of the frame. */
+    .cairn-slot-block {
+        padding: 3px 0;
+        position: relative;
+    }
+
+    .cairn-slot-block .cairn-slot-list {
+        padding: 0 15px 0 4px;
+    }
+
+    /* The upright between the ledger and the Fatigue circles. The circles sit at the end of each
+       row rather than in a column of their own, so there is no element to hang this off: it is
+       placed from the right edge over the label column (15px) + the dot (12) + the dot's own
+       margin (8), which puts it in the middle of the 16px gutter between the last control and
+       the circle — 8px clear of the circle and ~7px clear of the control's cell. It used to sit
+       6px further right "to clear the circles", which spent the whole gutter on the circle side
+       and left the trash glyph touching the line. */
+    .cairn-fatigue-rule {
+        bottom: 3px;
+        position: absolute;
+        right: 35px;
+        top: 3px;
+        width: 1px;
+    }
+
+    /* The printed sheet runs the word down the side of the circles, INSIDE the ledger's frame.
+       Laid over the rows' right padding rather than beside the list, so a row keeps the whole
+       width under it. `pointer-events: none` so it never sits between the pointer and a row. */
+    .cairn-fatigue-label {
+        align-items: center;
+        bottom: 3px;
+        color: var(--cairn-ink-soft);
+        display: flex;
+        font-size: 9px;
+        font-weight: 700;
+        justify-content: center;
+        letter-spacing: var(--cairn-label-track);
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        text-orientation: mixed;
+        text-transform: uppercase;
+        top: 3px;
+        width: 15px;
+        writing-mode: vertical-rl;
+    }
+
+    /* One circle per slot. A 12px ring is small enough that a border reads as a drawn dot rather
+       than a machined one, and the ink layer strokes outlines but cannot fill — a marked circle
+       has to be solid. */
+    .cairn-fatigue-dot {
+        border: 1.2px solid var(--cairn-ink);
+        border-radius: 50%;
+        cursor: pointer;
+        flex: 0 0 auto;
+        height: 12px;
+        margin-left: 8px;
+        opacity: 0.45;
+        width: 12px;
+
+        &.is-marked {
+            background: var(--cairn-ink);
+            opacity: 1;
+        }
+
+        /* A slot with something in it: Fatigue cannot be marked over a carried thing, so with all
+           ten full there is nothing to click until an item is dropped. That is the rule, not a
+           limitation — `srd-2e/players-guide/core-rules.md` under Deprivation & Fatigue. */
+        &.is-inert {
+            cursor: default;
+            opacity: 0.14;
+        }
+    }
+
+    /* The bracket that says two numbered lines are one entry, drawn in the gutter between the
+       slot number and the name. It replaces the band of `--cairn-paper-sunk` the continuation
+       row used to wear: that band is the one fill this sheet permits, it is the same mark a row
+       hover once made, and a highlight is not what a printed ledger uses to join two lines — a
+       brace is. The element paints nothing itself. It is an empty span that exists to be
+       MEASURED, and `module/ink.js` strokes the bracket over its box, hooks turning inward by
+       exactly the 5px width set here.
+
+       It is drawn on the FIRST row of the block and reaches down over the rows below it, which
+       is what `--cairn-span` is for: a percentage height on an absolutely positioned box
+       resolves against its containing block — the first row — so N rows is N × 100%, and the
+       row height stays the row's business rather than being restated here. The count comes off
+       the row's own `data-spans`, and it is data: how many slots the thing occupies. Ten is the
+       ceiling because ten is the inventory.
+
+       The gaps BETWEEN those rows have to be added back, one fewer than the rows themselves, and
+       that is the whole reason `--cairn-slot-gap` exists: the 4px is core's own `li` margin
+       (foundry2.css), so the ledger's pitch is restated here as ours. A number this arithmetic
+       depends on cannot be one another project's stylesheet is free to change — the bracket
+       would come up short of its last row, and by more the further it reached.
+
+       3px off the top and the foot so the stroke stops short of the ruled lines either side of
+       the block rather than running into them. */
+    .cairn-slot[data-spans="2"] { --cairn-span: 2; }
+    .cairn-slot[data-spans="3"] { --cairn-span: 3; }
+    .cairn-slot[data-spans="4"] { --cairn-span: 4; }
+    .cairn-slot[data-spans="5"] { --cairn-span: 5; }
+    .cairn-slot[data-spans="6"] { --cairn-span: 6; }
+    .cairn-slot[data-spans="7"] { --cairn-span: 7; }
+    .cairn-slot[data-spans="8"] { --cairn-span: 8; }
+    .cairn-slot[data-spans="9"] { --cairn-span: 9; }
+    .cairn-slot[data-spans="10"] { --cairn-span: 10; }
+
+    .cairn-slot-bracket {
+        height: calc(var(--cairn-span, 1) * 100% + (var(--cairn-span, 1) - 1) * var(--cairn-slot-gap) - 6px);
+        left: 19px;
+        pointer-events: none;
+        position: absolute;
+        top: 3px;
+        width: 5px;
+    }
+
+    .cairn-plain-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cairn-identity {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* A zone is a heading, then a rule on its own line, then its content. The rule is drawn
+       (`data-ink="hline"`) at hairline weight and a third of the ink — a divider, not the
+       structural stroke the tab rule is. The two used to be the same weight, so a page with four
+       of them had no hierarchy: every line said "here begins something" at the same volume. Both
+       span the content's full width, edge to edge, so the eye reads them as the same kind of
+       line at two weights and not as two different things. */
+    .cairn-zone {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 10px 0 0;
+    }
+
+    /* A heading with a control at its far right. The row aligns on its foot, so the control sits
+       on the word's feet rather than floating in the middle of the row's box — and, with no word
+       at all, at the foot of the line the word would have taken.
+
+       Without a heading — the NPC's tabs, where the tab strip already says where the reader is —
+       the head is only as tall as the 11px add control, so `min-height` holds the heading's line
+       and the head carries the heading's top margin itself (a heading inside it gives its own
+       up, so a head with one is no taller than before): the rule under it stays where it is on
+       every tab. The add control keeps the right edge on its own (`margin-left: auto`). Identity's
+       bare headings, with no head around them, keep the margin on `.cairn-zone`. */
+    .cairn-zone-head {
+        align-items: flex-end;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        margin-top: 10px;
+        min-height: 15px;
+
+        .cairn-zone {
+            margin-top: 0;
+        }
+    }
+
+    /* A capacity, printed in the label voice at the head's left: "3 / 10". */
+    .cairn-zone-count {
+        color: var(--cairn-ink-soft);
+        font-size: 12px;
+    }
+
+    /* The "add" control: a glyph and a word, small and quiet, at the same size and the same
+       right edge on every heading that has one. It is styled to the label voice rather than the
+       button one because it lives on a heading row, and a framed button there would be the
+       loudest thing on the tab. */
+    .cairn-zone-add {
+        align-items: baseline;
+        color: var(--cairn-ink-soft);
+        cursor: pointer;
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-size: 9px;
+        font-weight: 700;
+        gap: 4px;
+        letter-spacing: var(--cairn-label-track);
+        margin-left: auto;
+        text-transform: uppercase;
+
+        i {
+            font-size: 8px;
+        }
+
+        &:hover {
+            color: var(--cairn-ink);
+        }
+    }
+
+    /* The rule is an EMPTY box that exists to be measured — `module/ink.js` strokes the line over
+       it — so it has a height and no content, and that combination is exactly what a flex column
+       squeezes to nothing. Every tab on the character sheet is a fixed-height flex column now
+       (`--cairn-tab-max-h`), and a tab holding more than fits shrinks its children to try: an item
+       with text cannot go below its own content, but this one has none, so it collapsed to 0 and
+       `paintInk` skipped it — `if (!rect.width || !rect.height) continue`. The rule on a tab of
+       loose items vanished the moment that tab had enough in it to scroll, and Identity's survived
+       only because its content happens to fit.
+
+       `flex: 0 0 auto` is the whole fix: content inside a scroller keeps its natural size, because
+       the scroller exists to be scrolled rather than to compress what is in it. */
+    .cairn-zone-rule {
+        flex: 0 0 auto;
+        height: 7px;
+    }
+
+    /* Read-only. The traits are edited in the edit window; here each is a label and a value on
+       its own drawn rule — the same grid, gaps and rules the inputs sat on, with the field gone.
+       The value carries the rule (`data-ink-at="bottom"`) rather than the cell, so a blank trait
+       still draws its line: an empty ruled space says "nothing written here" where an empty cell
+       says nothing at all. */
+    .cairn-trait-grid {
+        align-items: baseline;
+        column-gap: 10px;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr);
+        row-gap: 2px;
+    }
+
+    .cairn-trait-label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: var(--cairn-label-track);
+        text-transform: uppercase;
+    }
+
+    /* The height an input had here, so the rows fall where they fell. */
+    .cairn-trait-value {
+        line-height: 26px;
+        min-height: 26px;
+        overflow: hidden;
+        padding: 0 2px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Bond and Omen as read text. The ProseMirror editor that used to sit here carried its own
+       chrome and a launcher button; the enriched HTML is set on the paper instead. */
+    /* The question a Background table asked, over its answer: the trait-label voice, so it
+       reads as the label of the paragraph under it and not as a fourth zone heading. */
+    .cairn-identity-question {
+        font-size: 11px;
+        letter-spacing: var(--cairn-label-track);
+        margin: 6px 0 0;
+        text-transform: uppercase;
+    }
+
+    .cairn-identity-text {
+        font-size: 13px;
+        line-height: 1.45;
+        min-height: 26px;
+        padding: 2px 2px 4px;
+        /* The Bond and the Omen are one sentence each and have no breaks to keep; the description
+           is several things joined by them, and without this it prints as one paragraph. */
+        white-space: pre-line;
+
+        p {
+            margin: 0 0 0.4em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    /**************************************************************************
+     * Portrait and name section.                                            *
+     **************************************************************************/
+
+    .portrait {
+        border: var(--cairn-rule) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+        height: 140px;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    /* The item's name, set on the paper like the character's and boxed in drawn ink. It used to
+       be paper lettering reversed out of a solid ink slab; the character sheet dropped that
+       treatment first, and for the same reason — a sheet that already carries inked caps and a
+       row of tags reads as a web form with a title bar the moment a solid block lands on top of
+       it. What says "this is a field" is the box (`parts/item-header.hbs` marks it, `ink.js`
+       draws it), which is the Gold chip's mark at the Gold chip's weight.
+
+       No rule under it: the box is already its edge, and Primitive 3's underline inside a drawn
+       frame is two edges. Foundry imports this file as `layer(system)`, declared after every one
+       of core's own layers (foundry2.css:5), so an ordinary declaration here beats core at any
+       specificity. */
+    .name-input {
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        background: none;
+        border: none;
+        color: var(--cairn-ink);
+        font-family: var(--cairn-serif);
+        font-size: 23px;
+        font-weight: 700;
+        height: 100%;
+        /* The air inside the drawn box; without it the lettering sits on the stroke. */
+        padding: 0 10px;
+
+        &::placeholder {
+            color: var(--cairn-ink-faint);
+        }
+    }
+}

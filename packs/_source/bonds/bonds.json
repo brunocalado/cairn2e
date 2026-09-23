@@ -1,0 +1,318 @@
+{
+  "_id": "bwB2rik5biBasY06",
+  "name": "Bonds",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation, after Traits.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "9BSsoLlFlSJbqOIb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You inherited a <strong>Single Gem</strong> (500gp, cold and brittle) from a long-dead relative. It arrived with a warning: squander your newfound riches, and a debt long thought forgotten would be called in.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.9BSsoLlFlSJbqOIb"
+    },
+    {
+      "_id": "YF8i4jAzeOy4bkyC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A distant cousin left you a small inheritance. Take <strong>20Gp</strong> and a <strong>Strange Compass</strong> (<em>petty</em>) that always points towards something deep in the Wood.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.YF8i4jAzeOy4bkyC"
+    },
+    {
+      "_id": "HNfLYUlgHEmoBmth",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You carry a <strong>Portrait</strong> in a locket (<em>petty</em>) of a past love who disappeared into the Wood long ago. Somehow you know that they are still alive.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.HNfLYUlgHEmoBmth"
+    },
+    {
+      "_id": "B7WmKVHYDVR1luY3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You found a <strong>Tiny Crystal Prism</strong> (<em>petty</em>) buried in the dirt. When held up to the light, it shows visions of an unknown location deep within the Wood. Sometimes you feel a presence looking back at you.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.B7WmKVHYDVR1luY3"
+    },
+    {
+      "_id": "EtVBWq2HlPKTybv4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You once freed a Naiad from a choked stream. In return, it gave you some <strong>Silver Moss</strong> (petty). Swallow it near water, and the creature will come, once, to repay its debt.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.EtVBWq2HlPKTybv4"
+    },
+    {
+      "_id": "hCTXcoZXEd8r6WCS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You inherited an old <strong>Journal</strong>, bound in bark. Each evening, its pages are filled with the events of the day, crassly written from the journal's perspective. The writing is crude but accurate.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.hCTXcoZXEd8r6WCS"
+    },
+    {
+      "_id": "tPvgnVKfqkTlBEjh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You protect a long-dormant family secret. Take one half of an <strong>Ancient Key</strong> (<em>petty</em>). They say that if joined with its twin, it opens a <strong>Gate</strong> through any door.</p>",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.tPvgnVKfqkTlBEjh"
+    },
+    {
+      "_id": "iBHXBw8EgSjpDF0s",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You received a <strong>Letter</strong> (<em>petty</em>) detailing incontrovertible proof that your true parentage is that of Fae nobility. The note also indicates a date and location where you are to meet the letter's author, deep in the the Wood.</p>",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.iBHXBw8EgSjpDF0s"
+    },
+    {
+      "_id": "dZA8nQp1C7dPyTIb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You owe a great debt to a member of the nobility and carry their <strong>Signet Ring</strong> (<em>petty</em>), which serves as proof of their protection as well as your obligation.</p>",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.dZA8nQp1C7dPyTIb"
+    },
+    {
+      "_id": "xMN76OAHKLNRy87p",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You consumed a <strong>Mischievous Spirit</strong> that wreaks havoc on your insides, demanding to be taken home, deep in the Wood. It occupies one slot but absorbs one <strong>Fatigue</strong> each day. It wants you alive (for now).</p>",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.xMN76OAHKLNRy87p"
+    },
+    {
+      "_id": "iTkUeUtSAML1Ybtk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A roaming storyteller once spun you tales of great treasure hidden deep in the Wood. You thought it naught but fancy, till they gave you <strong>A Rolled-Up Map</strong> (<em>petty</em>) marked with an X.</p>",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.iTkUeUtSAML1Ybtk"
+    },
+    {
+      "_id": "ilMo9oaqvZGULrLH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>During your travels, you met a dying hunter who asked you to deliver a message to their loved ones. Take a <strong>Letter</strong> (<em>petty</em>), sealed with tree sap. It is addressed only to the <strong>Lord Of Winter</strong>.</p>",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.ilMo9oaqvZGULrLH"
+    },
+    {
+      "_id": "EYpeK6XUKTaDUhHb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You found a wounded beast in the forest but chose to ignore it. You see it everywhere now, but only when you're alone. It looks sad but not angry. You cannot become <em>panicked</em> when acting alone.</p>",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.EYpeK6XUKTaDUhHb"
+    },
+    {
+      "_id": "MHDSgahiUzned8qJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You promised a childhood friend that you'd bring them back a rare gift, something unique in all the world. Take a <strong>Bracelet</strong> (<em>petty</em>) woven from twine and wildflowers.</p>",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.MHDSgahiUzned8qJ"
+    },
+    {
+      "_id": "bm83U5TY3NioxRhj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You crossed a creature of the Wood, and it cursed you with a <strong>Stone Heart</strong>. With each passing month, the stone grows heavier by one slot. Until your debt is lifted, you cannot truly die.</p>",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.bm83U5TY3NioxRhj"
+    },
+    {
+      "_id": "Qp1ch8hcwQwrstUR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You carved a <strong>Whistle</strong> (<em>petty</em>) from an <strong>Oak Lord's</strong> branch. Your act did not go unnoticed. You cannot seem to rid yourself of the whistle either.</p>",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.Qp1ch8hcwQwrstUR"
+    },
+    {
+      "_id": "C7ekar9poXJjyGPC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The <strong>Dawn Brigade</strong> did your family a service, giving you a dried <strong>Blood-Red Flower</strong> (<em>petty</em>) as proof. When the flower turns white, it means the favor is owed.</p>",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.C7ekar9poXJjyGPC"
+    },
+    {
+      "_id": "vgj0z4SnOWm9F7kQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>An entertainer once visited your home, filling it with story and song. He left one day without a word, leaving behind only <strong>A Miniature Lute</strong>. Something rattles inside.</p>",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.vgj0z4SnOWm9F7kQ"
+    },
+    {
+      "_id": "j7YUNVOUVTN0r9oT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A white crow appeared to you in a dream, holding a twig in its mouth. You awoke the next morning with the <strong>Twig</strong> (<em>petty</em>) in your hand. You believe it brings you luck. It smells faintly of sulfur.</p>",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.j7YUNVOUVTN0r9oT"
+    },
+    {
+      "_id": "caUqk8DPyuRghoqR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>One of your ancestors wronged a <strong>Moss Witch</strong>, who cursed their bloodline. Your visage causes mirrors to shatter. You've noticed that the shards can sometimes reveal illusions.</p>",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.caUqk8DPyuRghoqR"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!bwB2rik5biBasY06"
+}

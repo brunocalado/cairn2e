@@ -1,0 +1,168 @@
+{
+  "_id": "4i5F19vElK6IxjDO",
+  "name": "Vice",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "ZV8tAC5X8oQUgCIB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Aggressive",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.ZV8tAC5X8oQUgCIB"
+    },
+    {
+      "_id": "G2fl0W5U6ZcgBheX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Bitter",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.G2fl0W5U6ZcgBheX"
+    },
+    {
+      "_id": "P35yiEpFwDV5YmXh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Craven",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.P35yiEpFwDV5YmXh"
+    },
+    {
+      "_id": "PvkH5F8phC9aUQSi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Deceitful",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.PvkH5F8phC9aUQSi"
+    },
+    {
+      "_id": "xgA4ZPZSChgo5NVA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Greedy",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.xgA4ZPZSChgo5NVA"
+    },
+    {
+      "_id": "CrcSP1ZPR2qaZ1nt",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Lazy",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.CrcSP1ZPR2qaZ1nt"
+    },
+    {
+      "_id": "9KOArn1jAGB9QPSo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Nervous",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.9KOArn1jAGB9QPSo"
+    },
+    {
+      "_id": "jIauXIrxflsLSAra",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rude",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.jIauXIrxflsLSAra"
+    },
+    {
+      "_id": "u4cYFJrF9W8XPvYi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Vain",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.u4cYFJrF9W8XPvYi"
+    },
+    {
+      "_id": "WxDpJ9c8MM7yJCZ5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Vengeful",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!4i5F19vElK6IxjDO.WxDpJ9c8MM7yJCZ5"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!4i5F19vElK6IxjDO"
+}

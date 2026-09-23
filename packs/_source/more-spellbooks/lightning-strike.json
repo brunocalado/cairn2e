@@ -1,0 +1,31 @@
+{
+  "_id": "FKzWeQ1qiafAXtVT",
+  "name": "Lightning Strike",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p>Electricity flings from your fingertips doing 1d10 damage (blast) in a line.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FKzWeQ1qiafAXtVT",
+  "folder": "MCt2VTDHSjLFlLso"
+}

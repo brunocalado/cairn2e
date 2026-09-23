@@ -1,0 +1,22 @@
+{{!-- The faces behind a roll (CairnRoll.TOOLTIP_TEMPLATE), one ruled row per die term — the list
+      row primitive at chat scale. Core folds the `.dice-tooltip` wrapper itself
+      (`grid-template-rows: 0fr` until the roll carries `.expanded`), so this only draws what is
+      inside it.
+
+      `classes` comes from `DiceTerm#getResultCSS`: min, max, discarded, rerolled. They are said
+      with weight and a strike, never with a hue. --}}
+{{#if parts.length}}
+<div class="dice-tooltip">
+    <div class="wrapper">
+        {{#each parts}}
+        <div class="cairn-roll-part">
+            <span class="cairn-roll-part-formula">{{formula}}</span>
+            <ol class="cairn-roll-faces">
+                {{#each rolls}}<li class="{{classes}}">{{{result}}}</li>{{/each}}
+            </ol>
+            <span class="cairn-roll-part-total">{{total}}</span>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{/if}}

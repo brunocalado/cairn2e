@@ -1,0 +1,40 @@
+{{!-- Role, and the two facts the Marketplace gives someone the party pays. Name is NOT here — it is
+      typed on the sheet, and a field editable in two places is two sources of truth one save
+      apart. Background, Traits and the d20 fields are on this window's Details tab. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="general">
+    {{!-- Role is a row of ink buttons, the segmented control every other short closed range on
+          an item sheet uses — a native select is the one control this design has no primitive for.
+          The label beside a group cannot be a `<label for>` (a group is not one control), so the
+          row's word is a span and the group carries its own `aria-label`, as the gear sheet's
+          Damage row does. --}}
+    <div class="cairn-field">
+        <span class="cairn-field-label">{{localize 'CAIRN.Role.Label'}}</span>
+        <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Role.Label'}}">
+            {{#each roleOptions as |opt|}}
+            <label class="cairn-choice-option">
+                <input type="radio" name="system.role" value="{{opt.value}}" {{checked opt.selected}} />
+                <span>{{localize opt.label}}</span>
+            </label>
+            {{/each}}
+        </div>
+    </div>
+    {{!-- Shown for every person, whatever the role (`marketplace.md` § Hirelings per day). Filling
+          a Career is what makes someone a paid hand on the face of the sheet — the header prints
+          the trade and price whenever there is one — so the field cannot be behind the role that
+          the Warden may not have set yet.
+
+          The Career die fills this row AND the rate under it: the Marketplace fixes the rate to
+          the trade, so the two are one roll. --}}
+    <div class="cairn-field cairn-die-row">
+        <label for="cairn-edit-career">{{localize 'CAIRN.Career'}}</label>
+        <input id="cairn-edit-career" type="text" name="system.career" value="{{system.career}}" autofocus />
+        <button type="button" class="mini" data-action="rollDetail" data-key="career"
+            data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+    </div>
+    <div class="cairn-field cairn-unit-row">
+        <label for="cairn-edit-dayrate">{{localize 'CAIRN.DayRate'}}</label>
+        <input id="cairn-edit-dayrate" class="cairn-edit-digits" type="number" name="system.dayRate"
+            value="{{system.dayRate}}" min="0" step="1" />
+        <span class="cairn-field-unit">{{localize 'CAIRN.Edit.RateUnit'}}</span>
+    </div>
+</section>

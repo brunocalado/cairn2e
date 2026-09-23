@@ -1,0 +1,31 @@
+{
+  "_id": "0LxWh7HQBrXbfoCU",
+  "name": "Widget",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p><em>Smells of iron and rust, sweat and effort. Faint sounds of harsh labor emanate from deep within its pages.</em></p><p>A primitive version of a drawn tool or item appears before you and disappears after a short time.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!0LxWh7HQBrXbfoCU",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

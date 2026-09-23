@@ -1,0 +1,31 @@
+{
+  "_id": "COJ7801nJzJqnIVu",
+  "name": "Sense",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p><em>The book's previous owner is always aware of the book's current location.</em></p><p>Choose one kind of object (key, gold, arrow, jug, etc). You can sense the nearest example.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!COJ7801nJzJqnIVu",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

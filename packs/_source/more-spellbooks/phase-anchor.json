@@ -1,0 +1,31 @@
+{
+  "_id": "3vT7Ph1zNHgW1DL9",
+  "name": "Phase Anchor",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>Binds an extraplanar creature to your will until it performs a task specific task, after which they must pass a WIL save to escape (good luck).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!3vT7Ph1zNHgW1DL9",
+  "folder": "dbsFyDgpaspE6vMK"
+}

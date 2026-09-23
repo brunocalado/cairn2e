@@ -1,0 +1,49 @@
+{{!-- The cart: what is being bought, then what is being sold. One line is one unit — three
+      Rations are three lines — so a line carries no counter, and its × takes one off. The whole
+      column is the drop target for a shelf row or an own row; the `+` on those rows does the
+      same thing.
+
+      A line is name / price / ×, in that order and in three columns, so every figure in the
+      list ranges on the same right edge. The drawn upright between the price and the × is what
+      keeps the money and the control from reading as one thing. Which way the money goes is the
+      colour, not a word: out is `--cairn-loss`, in is `--cairn-gain`, and that is why a sell
+      line needs no *Selling* tag. --}}
+<section class="cairn-store-cart">
+    {{!-- Paints nothing: an empty span the ink layer strokes a vline over, the way the journey
+          crew's row is divided. It is the cart's own left edge rather than a grid track of its
+          own, because a track would need a render part to put an element in it. --}}
+    <span class="cairn-store-divide" data-ink="vline" data-ink-seed="store-divide"
+          data-ink-w="1" data-ink-a="0.42"></span>
+    <h3 class="cairn-edit-group cairn-store-heading" data-ink="hline" data-ink-seed="store-cart" data-ink-w="1.8" data-ink-at="bottom">
+        {{localize "CAIRN.Store.Cart"}}
+    </h3>
+    <ol class="cairn-plain-list cairn-store-cart-lines">
+        {{#each cart.buy as |line|}}
+        <li class="cairn-slot cairn-store-line" data-uuid="{{line.uuid}}"
+            {{#if line.rule}}data-ink="hline" data-ink-seed="cart-buy-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/if}}>
+            <span class="cairn-store-line-name">{{line.name}}</span>
+            <span class="cairn-store-price is-loss">&minus;{{line.price}} {{localize "CAIRN.GoldAbbrev"}}</span>
+            <span class="cairn-store-line-divide" data-ink="vline" data-ink-seed="cart-rule-buy-{{@index}}"
+                  data-ink-w="0.9" data-ink-a="0.3"></span>
+            <span class="cairn-item-controls">
+                <a data-action="cartRemove" data-tooltip="{{localize 'CAIRN.Store.TakeOut'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{/each}}
+        {{#each cart.sell as |line|}}
+        <li class="cairn-slot cairn-store-line" data-sell-id="{{line.id}}"
+            {{#if line.rule}}data-ink="hline" data-ink-seed="cart-sell-{{line.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/if}}>
+            <span class="cairn-store-line-name">{{line.name}}</span>
+            <span class="cairn-store-price is-gain">+{{line.price}} {{localize "CAIRN.GoldAbbrev"}}</span>
+            <span class="cairn-store-line-divide" data-ink="vline" data-ink-seed="cart-rule-sell-{{line.id}}"
+                  data-ink-w="0.9" data-ink-a="0.3"></span>
+            <span class="cairn-item-controls">
+                <a data-action="cartRemove" data-tooltip="{{localize 'CAIRN.Store.TakeOut'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{/each}}
+        {{#if cart.empty}}
+        <li class="cairn-empty">{{localize "CAIRN.Store.CartEmpty"}}</li>
+        {{/if}}
+    </ol>
+</section>

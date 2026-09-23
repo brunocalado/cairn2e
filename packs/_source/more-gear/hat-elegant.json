@@ -1,0 +1,31 @@
+{
+  "_id": "QBPi4gjbAhtx6Fki",
+  "name": "Hat, elegant",
+  "type": "gear",
+  "img": "icons/equipment/head/hat-cocked-feather-green.webp",
+  "system": {
+    "description": "<p>Hat, elegant (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 30,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QBPi4gjbAhtx6Fki",
+  "folder": "XycVdoNLEuiHY9my"
+}

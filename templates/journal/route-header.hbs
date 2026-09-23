@@ -1,0 +1,15 @@
+{{!-- A route's name, and nothing else.
+
+      Core's own page header carries a heading LEVEL and a "Display Page Title" switch, because a
+      text page is a section of a document and those decide how it folds into the table of
+      contents. A route is not a section of anything: it is one path between two points, drawn as
+      a ruled block whose title is always its name. Both controls were therefore two ways to make
+      the page render wrong, and neither answered a question a Warden has.
+
+      The name field itself stays — it is what the map pin, the journey's head and both endpoint
+      selects read. --}}
+<header class="journal-header">
+    {{formInput fields.name value=name classes="title"
+                aria=(object label=(localize "JOURNALENTRYPAGE.FIELDS.name.label"))
+                placeholder=(localize "JOURNALENTRYPAGE.FIELDS.name.label")}}
+</header>

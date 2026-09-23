@@ -1,0 +1,143 @@
+{
+  "_id": "b0AmvOFVGrpAVAhc",
+  "name": "Naga",
+  "type": "npc",
+  "img": "icons/creatures/reptiles/snake-poised-white.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "BIwdEcX1QgqUMdSz",
+      "name": "Sword",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>sword (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!b0AmvOFVGrpAVAhc.BIwdEcX1QgqUMdSz"
+    },
+    {
+      "_id": "DzV7AJvoOGhTcI1E",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!b0AmvOFVGrpAVAhc.DzV7AJvoOGhTcI1E"
+    },
+    {
+      "name": "Humanoids with the lower body, tail, and neck of snakes.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Dwell in hot jungles and temples lost to time.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZKY1DqI68XUal644",
+      "_key": "!actors.items!b0AmvOFVGrpAVAhc.ZKY1DqI68XUal644"
+    },
+    {
+      "name": "Use cunning and hypnosis to capture other creatures to be enslaved.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "UqKd04iR31AxK1kf",
+      "_key": "!actors.items!b0AmvOFVGrpAVAhc.UqKd04iR31AxK1kf"
+    },
+    {
+      "name": "Gaze",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>A target facing the Naga is hypnotized, falling under its will. Its victims cannot be compelled to violence.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "YYgsPmhN4WrcZSTW",
+      "_key": "!actors.items!b0AmvOFVGrpAVAhc.YYgsPmhN4WrcZSTW"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!b0AmvOFVGrpAVAhc"
+}

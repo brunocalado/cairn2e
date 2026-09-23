@@ -1,0 +1,31 @@
+{
+  "_id": "Evjq9aHo9jGPhET8",
+  "name": "Amethyst",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-rough-purple.webp",
+  "system": {
+    "description": "<p>Violet, faceted, darkening towards the point.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Evjq9aHo9jGPhET8",
+  "folder": "Qai89dBcno9Coube"
+}

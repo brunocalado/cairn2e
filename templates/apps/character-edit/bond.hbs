@@ -1,0 +1,11 @@
+{{!-- The field wears a drawn box, the same `box` the Gold chip wears: without it the text sat on
+      bare paper with nothing to say it could be typed into, and the tab read as a paragraph
+      someone had already written. The placeholder says the same thing again for an empty one.
+
+      A thousand characters is the cap, held both here and in `_processFormData` — `maxlength`
+      stops the typing and the pasting, and the submit path stops everything else. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="bond">
+    <textarea class="cairn-edit-text" name="system.bond" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.Edit.BondPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-bond" data-ink-w="1.6">{{system.bond}}</textarea>
+</section>

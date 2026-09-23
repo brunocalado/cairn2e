@@ -1,0 +1,83 @@
+{
+  "_id": "51ZRlG0GfSLiyI2m",
+  "name": "Boggart",
+  "type": "npc",
+  "img": "icons/creatures/magical/spirit-mischief-fire-ice-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 4,
+        "max": 4
+      },
+      "DEX": {
+        "value": 17,
+        "max": 17
+      },
+      "WIL": {
+        "value": 13,
+        "max": 13
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Wild, hairy tricksters that prize shiny trinkets above coin.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "epjYYxl3VKzjBnzg",
+      "_key": "!actors.items!51ZRlG0GfSLiyI2m.epjYYxl3VKzjBnzg"
+    },
+    {
+      "name": "Boggarts have true names that describe their true nature.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Knowing these names gives a person control over them.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nFqa2XGV4R7z1xpK",
+      "_key": "!actors.items!51ZRlG0GfSLiyI2m.nFqa2XGV4R7z1xpK"
+    },
+    {
+      "name": "Magic",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>The Boggart can <em>bring objects to life</em>,  <em>sow confusion</em>, <em>create magical disguises</em>, use <em>telekinesis</em>, and <em>teleport</em>.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "EjT5a6Sla6pttKy0",
+      "_key": "!actors.items!51ZRlG0GfSLiyI2m.EjT5a6Sla6pttKy0"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!51ZRlG0GfSLiyI2m"
+}

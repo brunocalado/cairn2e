@@ -1,0 +1,168 @@
+{
+  "_id": "MHAu6K93kL0uQ8xn",
+  "name": "Skin",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "gsH5OIvrjUBCIlhj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Birthmarked",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.gsH5OIvrjUBCIlhj"
+    },
+    {
+      "_id": "chDRJSL8xamoqKDo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Marked",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.chDRJSL8xamoqKDo"
+    },
+    {
+      "_id": "gp284xHcRE3XFDAR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Oily",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.gp284xHcRE3XFDAR"
+    },
+    {
+      "_id": "QAqOgM9EQH8FeIV3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rosy",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.QAqOgM9EQH8FeIV3"
+    },
+    {
+      "_id": "ddE5ZRQbkMBgfiMI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Scarred",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.ddE5ZRQbkMBgfiMI"
+    },
+    {
+      "_id": "ScGke8Vv7b5pxhUJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Soft",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.ScGke8Vv7b5pxhUJ"
+    },
+    {
+      "_id": "USUwwiV5HJojnP19",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tanned",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.USUwwiV5HJojnP19"
+    },
+    {
+      "_id": "rg55ZSk12X6TsTpL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tattooed",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.rg55ZSk12X6TsTpL"
+    },
+    {
+      "_id": "D7Ey7TAmFn0Weicl",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Weathered",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.D7Ey7TAmFn0Weicl"
+    },
+    {
+      "_id": "xw0MQHcDPY7xYAjX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Webbed",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MHAu6K93kL0uQ8xn.xw0MQHcDPY7xYAjX"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!MHAu6K93kL0uQ8xn"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "XF2OrK3HvRD2rEMv",
+  "name": "Carnelian",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-rough-cushion-orange-red.webp",
+  "system": {
+    "description": "<p>Warm orange-red, glowing when held to a light.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XF2OrK3HvRD2rEMv",
+  "folder": "Oo11ISGG2Z4h2h8D"
+}

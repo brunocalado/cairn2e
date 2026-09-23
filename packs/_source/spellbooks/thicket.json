@@ -1,0 +1,31 @@
+{
+  "_id": "CoP5xe09qorFSC3d",
+  "name": "Thicket",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p><em>Wrapped in vines that must be destroyed again with each use.</em></p><p>A thicket of trees and dense brush up to 50ft wide suddenly sprouts up.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!CoP5xe09qorFSC3d",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

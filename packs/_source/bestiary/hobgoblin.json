@@ -1,0 +1,113 @@
+{
+  "_id": "ATFrtiiZ6Trl9s9t",
+  "name": "Hobgoblin",
+  "type": "npc",
+  "img": "icons/creatures/magical/humanoid-horned-rider.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 11,
+        "max": 11
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 2,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "8HFYaOUzM3A4ZFsb",
+      "name": "Mace",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>mace (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!ATFrtiiZ6Trl9s9t.8HFYaOUzM3A4ZFsb"
+    },
+    {
+      "name": "Large and burly relatives of goblins.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Dwell in underground fortresses until called for war.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "kILdwVsbyC5OX01L",
+      "_key": "!actors.items!ATFrtiiZ6Trl9s9t.kILdwVsbyC5OX01L"
+    },
+    {
+      "name": "Automatically succeed in Morale Saves if a commander is present.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ik4Ec51gvHyfCQLH",
+      "_key": "!actors.items!ATFrtiiZ6Trl9s9t.ik4Ec51gvHyfCQLH"
+    },
+    {
+      "name": "Trained to fight together.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Damage dealt is <em>enhanced</em> if an ally is also engaged with the same enemy.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "AQ6vDstWiXJOQTO0",
+      "_key": "!actors.items!ATFrtiiZ6Trl9s9t.AQ6vDstWiXJOQTO0"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!ATFrtiiZ6Trl9s9t"
+}

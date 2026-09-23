@@ -1,0 +1,31 @@
+{
+  "_id": "LPjbm6vE1WgTsqQi",
+  "name": "Illuminate",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p><em>When held in light, the pages become a prism of vibrant rainbows.</em></p><p>A floating light moves as you command.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!LPjbm6vE1WgTsqQi",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

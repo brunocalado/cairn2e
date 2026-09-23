@@ -1,0 +1,31 @@
+{
+  "_id": "orZ5L1XqEiYm7mHT",
+  "name": "Agate",
+  "type": "gear",
+  "img": "icons/commodities/stone/geode-raw-brown.webp",
+  "system": {
+    "description": "<p>Banded brown and cream, cut from a geode and polished smooth.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!orZ5L1XqEiYm7mHT",
+  "folder": "zp21eCWEd0bf48mP"
+}

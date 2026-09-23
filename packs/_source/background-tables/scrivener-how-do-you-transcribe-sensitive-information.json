@@ -1,0 +1,108 @@
+{
+  "_id": "5RemuIefkkjofLNA",
+  "name": "Scrivener: How do you transcribe sensitive information?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Scrivener</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "SDlW4CTXdYwEMaPx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Fib Ink</strong> Glows when used to write true statements but fades if used to write false ones.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.SDlW4CTXdYwEMaPx"
+    },
+    {
+      "_id": "sAnSlgqZ64sInpvf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Cipher Stone</strong> A pair of sharp black stones. Each one decrypts any message written by the other.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.sAnSlgqZ64sInpvf"
+    },
+    {
+      "_id": "yLdPhwwsfHAuqpgB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Everquill</strong> A quill that writes on any surface. You still need ink. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.yLdPhwwsfHAuqpgB"
+    },
+    {
+      "_id": "AiBbtcHrlMnz3LUF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Whisper Vial</strong> Whisper a message into the vial, and it will play it back to whoever opens it next.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.AiBbtcHrlMnz3LUF"
+    },
+    {
+      "_id": "x1HzLLs3HPD0hfcX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sanguine Lens</strong> Extracts blood from a target without their knowledge. A stolen drop placed on the eye reveals memories from the past day.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.x1HzLLs3HPD0hfcX"
+    },
+    {
+      "_id": "pcRexujUdJGi4gBZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Echo Leaf</strong> A blank parchment. Whomever unfurls it sees their actions of the day slowly revealed in a tight scrawl. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.pcRexujUdJGi4gBZ"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!5RemuIefkkjofLNA"
+}

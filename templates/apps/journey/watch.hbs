@@ -1,0 +1,148 @@
+{{!-- What this watch looks like: the sky over it, who is walking under it, and what the party
+      does with it. Three headings, one per question, each with its own drawn rule.
+
+      The weather is a segmented control rather than a combobox — six rows plus Auto is a closed
+      range, and a run shows the whole Difficulty scale with today marked on it, which a dropdown
+      hides behind a click. Auto is the empty value: it hands the day back to the dice, which is
+      also what every new day does on its own. Each button's row of the table is its tooltip
+      rather than a line of prose under the run: the run is seven buttons wide and needs the whole
+      band to stay on one line, and a sentence that changes length under it moved everything
+      below by however long today's reading happened to be.
+
+      The heading carries the three watches of the day at its right, because the sky is the sky
+      OF a watch — the day's number is up in the header with the route.
+
+      The party's own rolls sit under THEIR heading, not under the action's: the SRD hands both to
+      the table rather than the Warden ("The party rolls 1d6 to see if they get lost"; "One or
+      more party members may hunt, fish, or forage"). They are also the buttons that come and go,
+      and under the action they pushed the watch's one button down a row every time one appeared.
+
+      A roster row reads left to right in one direction: who they are, a drawn rule, then what
+      they are carrying into the night — Rations left, Fatigue carried, and Deprived, which is
+      what decides whether tonight's camp restores anything. At the far right, for the Warden,
+      the one control: take them off this journey.
+
+      The list IS who is travelling, and it is dropped into rather than derived — the SRD charges
+      "each party member (and their mounts)", so a mount and a hired guide belong on it and no
+      rule about players or ownership can put them there. Drag a party onto the list and its
+      members arrive at once; drag one Actor and it arrives alone.
+
+      A player sees every control set and none of them movable, and keeps the party's two rolls,
+      which the SRD hands the table rather than the Warden. --}}
+<section class="cairn-journey-watch">
+{{#if journey}}
+    <h3 class="cairn-edit-group cairn-journey-heading" data-ink="hline" data-ink-seed="journey-weather"
+        data-ink-w="1.8" data-ink-at="bottom">
+        <span>{{localize "CAIRN.Journey.Weather"}}</span>
+        <ol class="cairn-journey-watches">
+            {{#each watches}}<li class="{{#if current}}current{{/if}}">{{label}}</li>{{/each}}
+        </ol>
+    </h3>
+
+    <div class="cairn-choice cairn-journey-weather" role="radiogroup" aria-label="{{localize 'CAIRN.Journey.SetWeather'}}">
+        {{#each weathers as |w|}}
+        <label class="cairn-choice-option" data-tooltip-text="{{w.effect}}">
+            <input type="radio" name="weather" value="{{w.key}}" data-action="setWeather"
+                   {{checked w.selected}} {{disabled (not ../isGM)}} />
+            <span>{{w.label}}</span>
+        </label>
+        {{/each}}
+    </div>
+
+    {{!-- The table says "or", so the Warden chooses which toll the weather takes. --}}
+    {{#if isGM}}
+    {{#if weather}}
+    <div class="cairn-journey-weather-toll">
+        {{#if weather.fatigue}}<button type="button" data-action="addFatigue"><i class="fas fa-weight-hanging" inert></i> {{localize "CAIRN.Journey.AddFatigue"}}</button>{{/if}}
+        {{#if weather.watch}}<button type="button" data-action="adjust" data-field="watchesNeeded" data-delta="1"><i class="fas fa-plus" inert></i> {{localize "CAIRN.Journey.AddWatch"}}</button>{{/if}}
+    </div>
+    {{/if}}
+    {{/if}}
+
+    <h3 class="cairn-edit-group cairn-journey-heading" data-ink="hline" data-ink-seed="journey-party"
+        data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.Journey.PartyHeading"}}</h3>
+
+    {{#if need.lost}}
+    <button type="button" class="cairn-journey-roll" data-action="rollLost">
+        <i class="fas fa-compass" inert></i> {{localize "CAIRN.Journey.RollLost" odds=route.lostOdds}}
+    </button>
+    {{/if}}
+    {{!-- Supply has two answers and the SRD gives both: forage for a rolled bounty, or "encounter
+          homes and small villages, spending gold and a full watch to resupply". One watch, two
+          ways to take it — the same shape the weather's "or" wears above. --}}
+    {{#if need.supply}}
+    <div class="cairn-journey-supply">
+        <button type="button" data-action="rollSupply">
+            <i class="fas fa-leaf" inert></i> {{localize "CAIRN.Journey.RollSupply"}}
+        </button>
+        <button type="button" data-action="resupply">
+            <i class="fas fa-house-chimney" inert></i> {{localize "CAIRN.Journey.Resupply"}}
+        </button>
+    </div>
+    {{/if}}
+
+    <ul class="cairn-plain-list cairn-journey-crew">
+        {{#each party as |pc|}}
+        <li class="cairn-slot cairn-journey-member" data-actor-id="{{pc.id}}" data-actor-uuid="{{pc.uuid}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="journey-member-{{pc.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <button type="button" class="cairn-journey-who" data-action="openSheet" data-actor-id="{{pc.id}}"
+                    aria-label="{{localize 'CAIRN.Journey.OpenSheet' name=pc.name}}">
+                <img class="cairn-journey-portrait" src="{{pc.img}}" alt="" />
+                <span class="cairn-journey-name">{{pc.name}}</span>
+            </button>
+            {{!-- Paints nothing: an empty span the ink layer strokes a vline over, the way the
+                  Fatigue track's rule is drawn. --}}
+            <span class="cairn-journey-divide" data-ink="vline" data-ink-seed="journey-divide-{{pc.id}}"
+                  data-ink-w="0.9" data-ink-a="0.42"></span>
+            <span class="cairn-journey-load">
+                <span class="cairn-item-tag" data-tooltip-text="{{localize 'CAIRN.Journey.Rations'}}">
+                    <i class="fas fa-drumstick-bite" inert></i> {{pc.rations}}
+                </span>
+                <span class="cairn-item-tag" data-tooltip-text="{{localize 'CAIRN.Journey.Fatigue'}}">
+                    <i class="fas fa-weight-hanging" inert></i> {{pc.fatigue}}
+                </span>
+                {{#if pc.deprived}}<span class="cairn-item-tag">{{localize "CAIRN.Condition.Deprived"}}</span>{{/if}}
+            </span>
+            {{!-- Primitive 7's control cell, the same one every other list row in the system
+                  wears. `{{#each}}` swaps the context for the row, so the Warden flag is one
+                  frame up. --}}
+            {{#if ../isGM}}
+            <span class="cairn-item-controls">
+                <a data-action="removeCrew" data-tooltip="{{localize 'CAIRN.Journey.RemoveCrew'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+            {{/if}}
+        </li>
+        {{else}}
+        <li class="cairn-journey-member cairn-journey-empty">{{localize "CAIRN.Journey.DropCrew"}}</li>
+        {{/each}}
+    </ul>
+
+    <h3 class="cairn-edit-group cairn-journey-heading" data-ink="hline" data-ink-seed="journey-action"
+        data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.Journey.Action"}}</h3>
+
+    {{!-- One row: the closed list of four, and the button that spends the watch on whichever is
+          chosen. Nothing else — a roll the watch owes belongs to whoever owes it, above. --}}
+    <div class="cairn-journey-take">
+        <div class="cairn-choice cairn-journey-action" role="radiogroup" aria-label="{{localize 'CAIRN.Journey.Action'}}">
+            {{#each actions as |a|}}
+            <label class="cairn-choice-option">
+                <input type="radio" name="action" value="{{a.key}}" data-action="setAction"
+                       {{checked a.selected}} {{disabled (not ../isGM)}} />
+                <span>{{a.label}}</span>
+            </label>
+            {{/each}}
+        </div>
+        {{!-- The reading goes on the WRAPPER, not the button: a disabled button raises no pointer
+              event of its own, and core reads the tooltip from the element the pointer enters
+              (the same rule the toggle partial spells out). On the wrapper it is reachable in
+              both states, and it says what the watch still owes while the button is dead. --}}
+        {{#if isGM}}
+        <span class="cairn-journey-resolve-wrap" data-tooltip-text="{{resolveHint}}">
+            <button type="button" class="cairn-journey-resolve" data-action="resolveWatch" {{disabled (not canResolve)}}>
+                <i class="fas fa-hourglass-end" inert></i> {{localize "CAIRN.Journey.Resolve"}}
+            </button>
+        </span>
+        {{/if}}
+    </div>
+{{/if}}
+</section>

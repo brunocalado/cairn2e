@@ -1,0 +1,31 @@
+{
+  "_id": "1t1C1sJ4VgEmXtTe",
+  "name": "Phobia",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p><em>Over time, haunting, abstract art begins to fill its pages.</em></p><p>A nearby creature becomes terrified of an object of your choice.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1t1C1sJ4VgEmXtTe",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

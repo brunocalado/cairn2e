@@ -1,0 +1,31 @@
+{{!-- The tracker's controls.
+
+      Core's footer offers Previous Turn and Next Turn beside the round buttons, and both are
+      meaningless here: 2e has no per-combatant turn to walk (`core-rules.md` → Combat), so the
+      only thing that advances is the round. The player-side "End Turn" block goes with them —
+      a player marks their own row acted instead, on the row itself.
+
+      Everything that remains is the Warden's, which is also who it is shown to. --}}
+<nav class="combat-controls" data-tooltip-direction="UP">
+    {{#if hasCombat}}
+        {{#if user.isGM}}
+            {{#if combat.round}}
+                <button type="button" class="inline-control combat-control icon fa-solid fa-backward-step"
+                        data-action="previousRound" data-tooltip
+                        aria-label="{{localize "COMBAT.RoundPrev"}}"></button>
+                <button type="button" class="combat-control combat-control-lg" data-action="endCombat">
+                    <i class="fa-solid fa-xmark" inert></i>
+                    <span>{{localize "COMBAT.End"}}</span>
+                </button>
+                <button type="button" class="inline-control combat-control icon fa-solid fa-forward-step"
+                        data-action="nextRound" data-tooltip
+                        aria-label="{{localize "COMBAT.RoundNext"}}"></button>
+            {{else}}
+                <button type="button" class="combat-control combat-control-lg" data-action="startCombat">
+                    <i class="fa-solid fa-swords" inert></i>
+                    <span>{{localize "COMBAT.Begin"}}</span>
+                </button>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+</nav>

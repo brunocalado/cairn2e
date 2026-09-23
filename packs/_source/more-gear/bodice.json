@@ -1,0 +1,31 @@
+{
+  "_id": "Y5RGgLRaIhaDEpJD",
+  "name": "Bodice",
+  "type": "gear",
+  "img": "icons/equipment/chest/vest-leather-pink.webp",
+  "system": {
+    "description": "<p>Bodice (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 30,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Y5RGgLRaIhaDEpJD",
+  "folder": "XycVdoNLEuiHY9my"
+}

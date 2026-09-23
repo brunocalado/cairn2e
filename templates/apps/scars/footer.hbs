@@ -1,0 +1,20 @@
+{{!-- The row's own dice, then the one irreversible button.
+
+      A location die is offered until it is rolled; the gain is NOT a button here — where
+      the row takes it at once, Take this Scar rolls it, and where the row defers it ("once
+      mended", "after recovery") it waits on the fiction and is offered on the character's Scars
+      tab instead. --}}
+<footer class="cairn-scars-foot">
+    {{#if location}}
+    <p class="cairn-scars-outcome">{{localize 'CAIRN.Scar.Location'}}: <strong>{{location}}</strong></p>
+    {{/if}}
+    {{#if deferredNote}}
+    <p class="cairn-scars-note">{{localize 'CAIRN.Scar.Deferred'}}</p>
+    {{/if}}
+    <div class="cairn-scars-buttons">
+        {{#if canRollLocation}}
+        <button type="button" data-action="scarRollLocation">{{localize 'CAIRN.Scar.RollLocation'}}</button>
+        {{/if}}
+        <button type="button" data-action="scarConfirm">{{localize 'CAIRN.Scar.Take'}}</button>
+    </div>
+</footer>

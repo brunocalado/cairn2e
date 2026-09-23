@@ -1,0 +1,241 @@
+{
+  "_id": "M5XGBHmoquHAAlWW",
+  "name": "Blacksmith",
+  "type": "npc",
+  "img": "icons/skills/trades/smithing-anvil-silver-red.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 9,
+        "max": 9
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Blacksmith",
+    "dayRate": 15,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "fPF4PWaCR1N10lIW",
+      "_key": "!actors.items!M5XGBHmoquHAAlWW.fPF4PWaCR1N10lIW"
+    },
+    {
+      "name": "Lantern",
+      "type": "gear",
+      "img": "icons/sundries/lights/lantern-bullseye-signal-copper.webp",
+      "system": {
+        "description": "<p>Lantern (holds 6 uses of oil, poured from an Oil Can)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 6
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "CtPJlik4NS3NjiK8",
+      "_key": "!actors.items!M5XGBHmoquHAAlWW.CtPJlik4NS3NjiK8"
+    },
+    {
+      "name": "Oil Can",
+      "type": "gear",
+      "img": "icons/tools/cooking/can.webp",
+      "system": {
+        "description": "<p>Oil Can (6 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 6,
+          "max": 6
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "CiDUqUIrSlY0Tg0Z",
+      "_key": "!actors.items!M5XGBHmoquHAAlWW.CiDUqUIrSlY0Tg0Z"
+    },
+    {
+      "name": "Hammer",
+      "type": "gear",
+      "img": "icons/tools/smithing/hammer-sledge-steel-grey.webp",
+      "system": {
+        "description": "<p>Hammer (d6)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "hSf0Mb0zYdnzG6AB",
+      "_key": "!actors.items!M5XGBHmoquHAAlWW.hSf0Mb0zYdnzG6AB"
+    },
+    {
+      "name": "Iron Tongs",
+      "type": "gear",
+      "img": "icons/tools/smithing/tongs-steel-grey.webp",
+      "system": {
+        "description": "<p>Iron Tongs</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XIPDRcvIFhECTnmC",
+      "_key": "!actors.items!M5XGBHmoquHAAlWW.XIPDRcvIFhECTnmC"
+    },
+    {
+      "name": "Gambeson",
+      "type": "gear",
+      "img": "icons/equipment/chest/vest-cloth-tattered-tan.webp",
+      "system": {
+        "description": "<p>Gambeson (+1 Armor)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 15,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 1,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "WziaVTlMMBOkb6bK",
+      "_key": "!actors.items!M5XGBHmoquHAAlWW.WziaVTlMMBOkb6bK"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!M5XGBHmoquHAAlWW"
+}

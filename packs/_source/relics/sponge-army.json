@@ -1,0 +1,31 @@
+{
+  "_id": "HM80JRjwvp2SEcPK",
+  "name": "Sponge Army",
+  "type": "gear",
+  "img": "icons/magic/acid/dissolve-arm-flesh.webp",
+  "system": {
+    "description": "<p>A dozen miniature soldiers made of carved sea sponges. When splashed with water, they grow to full size [8 HP, 6 STR, 13 DEX, 5 WIL, hardened sponge (d6), <em>detachment</em>] and follow the orders of the person they see until they are destroyed or dry out completely (about 10 minutes).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!HM80JRjwvp2SEcPK",
+  "folder": "GrRVMrn19Cm4uCtB"
+}

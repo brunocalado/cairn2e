@@ -1,0 +1,318 @@
+{
+  "_id": "PsJ5CZ0Xt7y63Rsz",
+  "name": "Faction Obstacle",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Obstacle column of the Faction Agendas table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "kmQiVCyDMJZTcO1q",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A geographic barrier or impassable terrain.",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.kmQiVCyDMJZTcO1q"
+    },
+    {
+      "_id": "FhH4yu2GMTX0Jfeh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A key piece of information must first be discovered.",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.FhH4yu2GMTX0Jfeh"
+    },
+    {
+      "_id": "wY6zVGLtyJIvQjKy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A particular object or Relic is required.",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.wY6zVGLtyJIvQjKy"
+    },
+    {
+      "_id": "ADmrfsSCm3l73x8F",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A powerful figure or foe must be eliminated.",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.ADmrfsSCm3l73x8F"
+    },
+    {
+      "_id": "zlHSEufoXr6Jtqdb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A rare but necessary resource must first be acquired.",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.zlHSEufoXr6Jtqdb"
+    },
+    {
+      "_id": "YbrjDhr57hIgGKpG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A serious debt forces the faction to make dire choices.",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.YbrjDhr57hIgGKpG"
+    },
+    {
+      "_id": "zd5ZSWipipRARfFr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "A well-known prophecy predicts imminent failure.",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.zd5ZSWipipRARfFr"
+    },
+    {
+      "_id": "zH1FwNFmJsxwODPE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "An alliance with an enemy must first be brokered.",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.zH1FwNFmJsxwODPE"
+    },
+    {
+      "_id": "qVxYTxeoBIEeG5BV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "An internal schism threatens to tear the faction apart.",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.qVxYTxeoBIEeG5BV"
+    },
+    {
+      "_id": "32TQ6i9Hk8mx6y6Z",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Another faction has the same goal.",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.32TQ6i9Hk8mx6y6Z"
+    },
+    {
+      "_id": "GVMB81tJFRejOpTT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Another faction stands in opposition.",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.GVMB81tJFRejOpTT"
+    },
+    {
+      "_id": "Mf3J4CiNkUTrStlT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Commoners stand openly in opposition.",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.Mf3J4CiNkUTrStlT"
+    },
+    {
+      "_id": "CamQ4f2s6NGb3HmG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Considerable capital is required.",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.CamQ4f2s6NGb3HmG"
+    },
+    {
+      "_id": "dB0Nd0HKj04nDgpL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Contravenes an established code, with a heavy penalty.",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.dB0Nd0HKj04nDgpL"
+    },
+    {
+      "_id": "JDHDLZhvuGohieUZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hindered by cultural taboos.",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.JDHDLZhvuGohieUZ"
+    },
+    {
+      "_id": "K4GRCsaoyu6APKBu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Many must die, either as a necessity or consequence.",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.K4GRCsaoyu6APKBu"
+    },
+    {
+      "_id": "juRXhELEmJmwZtmy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Must be carried out at a rare or exact moment.",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.juRXhELEmJmwZtmy"
+    },
+    {
+      "_id": "IERByDVDGDtxZvEF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Must be carried out in absolute secrecy.",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.IERByDVDGDtxZvEF"
+    },
+    {
+      "_id": "9HYlRnd6i62r2Rgo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Requires a specialist of an uncommon sort.",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.9HYlRnd6i62r2Rgo"
+    },
+    {
+      "_id": "JcJdog3smuwUXm5R",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "The outcome would lead to unavoidable war.",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!PsJ5CZ0Xt7y63Rsz.JcJdog3smuwUXm5R"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!PsJ5CZ0Xt7y63Rsz"
+}

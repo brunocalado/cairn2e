@@ -1,0 +1,31 @@
+{
+  "_id": "Ut1jIeQjGNRY0WIM",
+  "name": "Coin of the Father",
+  "type": "gear",
+  "img": "icons/commodities/currency/coin-engraved-sun-smile-copper.webp",
+  "system": {
+    "description": "<p>Flip this worthless-looking hunk of flat metal in the air, and it will transform into d100 gold coins. The illusory coins disappear after one hour.</p><p><em>Petty.</em></p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Carry the coin for three days without spending or earning any money.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Ut1jIeQjGNRY0WIM",
+  "folder": "UlnseD8X1WIqJdUA"
+}

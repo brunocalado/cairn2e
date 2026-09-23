@@ -1,0 +1,318 @@
+{
+  "_id": "BDKyGlI0ETujTfn5",
+  "name": "Faction Trait 1",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Trait 1 column of the Faction Traits table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "fWOutkzfAP7504JI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cautious",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.fWOutkzfAP7504JI"
+    },
+    {
+      "_id": "aFNk9a8NgeAy5cEa",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Connected",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.aFNk9a8NgeAy5cEa"
+    },
+    {
+      "_id": "6U0dbDsu3S0C1YLX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Decadent",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.6U0dbDsu3S0C1YLX"
+    },
+    {
+      "_id": "4Oy0AedbGPgF1WFn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Disciplined",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.4Oy0AedbGPgF1WFn"
+    },
+    {
+      "_id": "PqbWHLGZpoJwx7na",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Discreet",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.PqbWHLGZpoJwx7na"
+    },
+    {
+      "_id": "49HgWjiHnYomQj2M",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Dogmatic",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.49HgWjiHnYomQj2M"
+    },
+    {
+      "_id": "KDCaAAJ2gNJDHXTu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Enigmatic",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.KDCaAAJ2gNJDHXTu"
+    },
+    {
+      "_id": "7HboCEU3mXwkKzwh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fierce",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.7HboCEU3mXwkKzwh"
+    },
+    {
+      "_id": "ianHTvaQAkqfe3kM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Incorruptible",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.ianHTvaQAkqfe3kM"
+    },
+    {
+      "_id": "0Q59tWm8QLAbvfRj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Intellectual",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.0Q59tWm8QLAbvfRj"
+    },
+    {
+      "_id": "4Ofo50CBDcCdIUol",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Judicious",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.4Ofo50CBDcCdIUol"
+    },
+    {
+      "_id": "imSr6oE8lREcEdjR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Keen",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.imSr6oE8lREcEdjR"
+    },
+    {
+      "_id": "8qwRiSNp5PDiPLW8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Loyal",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.8qwRiSNp5PDiPLW8"
+    },
+    {
+      "_id": "XLkvtBGhvGXJBpij",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Meticulous",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.XLkvtBGhvGXJBpij"
+    },
+    {
+      "_id": "pgWfisvTANYNeREe",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Popular",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.pgWfisvTANYNeREe"
+    },
+    {
+      "_id": "DSPbhLEqbcYk8pUc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pragmatic",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.DSPbhLEqbcYk8pUc"
+    },
+    {
+      "_id": "bnay4xLm7gDVYKSb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Resourceful",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.bnay4xLm7gDVYKSb"
+    },
+    {
+      "_id": "Xc4mrCkwadqmja5S",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Secretive",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.Xc4mrCkwadqmja5S"
+    },
+    {
+      "_id": "NScTClgxWPDZfOES",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Shrewd",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.NScTClgxWPDZfOES"
+    },
+    {
+      "_id": "6bYFDqE3BLakO1GC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tenacious",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BDKyGlI0ETujTfn5.6bYFDqE3BLakO1GC"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!BDKyGlI0ETujTfn5"
+}

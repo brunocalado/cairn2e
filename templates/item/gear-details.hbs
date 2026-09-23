@@ -1,0 +1,216 @@
+{{!-- Everything about a carried thing that is not prose, on one ruled column — the character
+      sheet's own lines: the label in the gutter, the control in the track, and a drawn rule under
+      every row but the last. No rule under the foot of the list: it closes nothing, and inside a
+      window that already carries a double frame it reads as a second one.
+
+      One template for every gear, because a gear is one thing with three axes (`data/item-gear.js`)
+      and the rows are those axes in order: what it does physically (the die, Blast, the armour
+      value), its magical economy (what using it costs), its charges, what it holds — and then
+      what it costs to carry and to buy. A Blade Called Hope shows `d6` lit and `relic` lit on the
+      same sheet; a Mule shows a capacity with *petty* and *bulky* off. No axis hides behind a mode
+      switch: the tag row on the ledger already says what an item is without one.
+
+      But an axis row is drawn only when it says something. A Torch has no die, no armour, no
+      magic, no charges and holds nothing, and the five rows saying so were the whole sheet; so
+      `axes.*` (`item-sheet.js#_prepareContext`) is true for an axis with a VALUE, and that is the
+      only test. The Add row at the foot offers the axes not on show and commits the first option
+      of the one clicked (`item-sheet.js#AXES`, `open`), so a row never appears empty and the
+      sheet never has to remember anything the document cannot answer; the row itself goes once
+      every axis is on show. Blast and Takes Slots follow their axis as before: a rider on a die,
+      a rider on a capacity.
+
+      There is no EQUIPPED row. Equipped is not a fact about the thing — a Plate is armour 3 and
+      bulky wherever it sits, but being held is true only of one character's copy at one moment — so
+      it is toggled where that is true, on the carrier's own inventory line. Set Aside is the same
+      kind of fact and lives on the same line. --}}
+<section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
+    <div class="cairn-prop-list">
+        {{#if axes.damage}}
+        {{!-- The die, or none. Buttons, not a dropdown: the whole range is six short words, so a
+              list that has to be opened to be read hides nothing but itself — and the one in use
+              is then legible from across the table. The choices come from the field's own
+              `choices` with the blank LAST (`item-sheet.js#_prepareContext`): a blank die is the
+              model's own "not a weapon", and since the row is only ever added with a die in it,
+              that button is the one that takes the row away — so it sits at the end of the run
+              with the word None on it rather than leading with an unlabelled dash. The row is its
+              own, because six buttons do not fit a half-width track and a label parked out of
+              the gutter breaks the column the eye runs down. The label beside a group cannot be
+              a `<label for>` — a group is not one control — so the group carries its own
+              `aria-label`. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-damage">
+            <span class="cairn-field-label">{{localize 'CAIRN.Damage'}}</span>
+            <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Damage'}}">
+                {{#each damageChoices as |die|}}
+                <label class="cairn-choice-option">
+                    <input type="radio" name="system.damage" value="{{die}}" {{checked (eq ../system.damage die)}} />
+                    <span>{{#if die}}{{die}}{{else}}{{localize 'CAIRN.None'}}{{/if}}</span>
+                </label>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if system.damage}}
+        {{!-- Blast is a property of a weapon; without a die it means nothing, so it is drawn only
+              under one. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-blast">
+            <label for="gear-blast-{{item.id}}">{{localize 'CAIRN.Blast'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.blast" value=system.blast
+                id=(concat "gear-blast-" item.id)}}
+        </div>
+        {{/if}}
+
+        {{#if axes.armor}}
+        {{!-- Armour is 0-3 and nothing else, so it is four buttons instead of a number field. The
+              choices come from the DataModel's own bounds, so nobody can type a 7 and be answered
+              with a validation error. Zero is "not armour", and it is last in the run wearing that
+              word: it is what removes the row, the same as the blank die above. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-armor">
+            <span class="cairn-field-label">{{localize 'CAIRN.Armor'}}</span>
+            <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Armor'}}">
+                {{#each armorChoices as |choice|}}
+                <label class="cairn-choice-option">
+                    <input type="radio" name="system.armor" value="{{choice.value}}" data-dtype="Number"
+                        {{checked (eq ../system.armor choice.value)}} />
+                    <span>{{choice.label}}</span>
+                </label>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if axes.magic}}
+        {{!-- What using it costs: nothing, a Fatigue (Spellbook), the item itself (Scroll), or a
+              charge with a recharge condition (Relic) — `core-rules.md` → Magic. Three answers to
+              one question, so one row, with the field's fourth choice — None — last in the run
+              where the other rows keep theirs, because that is the button that takes the row away.
+              The header's caption follows this row. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-magic">
+            <span class="cairn-field-label">{{localize 'CAIRN.Magic'}}</span>
+            <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Magic'}}">
+                {{#each magicChoices as |kind|}}
+                <label class="cairn-choice-option">
+                    <input type="radio" name="system.magic" value="{{kind}}" {{checked (eq ../system.magic kind)}} />
+                    <span>{{localize (concat "CAIRN.MagicKind." kind)}}</span>
+                </label>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if axes.uses}}
+        {{!-- Uses is the consumable's charges — Rations 3, Bandages 3, a Torch 3, a relic's. Most
+              gear is not spent by using it, so the pair is an axis like the others: it is asked
+              for from the Add row, which opens it at 1 of 1, and typing a 0 into Max retires the
+              row again — the number is the state, the same way a capacity of 0 retires its own.
+
+              Text, not `type="number"`. A number input still lets a minus sign, an `e` and a
+              decimal point be typed into it — `min` only refuses the SUBMIT, and being told
+              "-3 is not a valid number of uses" after the fact is the wrong way to learn that a
+              count has no sign. These hold digits only, enforced as they are typed and clamped
+              to the field's own floor on the way out (`item-sheet.js#_attachPartListeners`); `data-dtype`
+              turns the string back into a number for the update. --}}
+        <div class="cairn-field cairn-prop-row cairn-prop-pair"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-uses">
+            <label for="gear-uses-{{item.id}}">{{localize 'CAIRN.Uses'}}</label>
+            <input id="gear-uses-{{item.id}}" class="cairn-prop-number" type="text" name="system.uses.value"
+                value="{{system.uses.value}}" min="0" maxlength="4" inputmode="numeric" data-dtype="Number" />
+            <label for="gear-maxuses-{{item.id}}">{{localize 'CAIRN.MaxUses'}}</label>
+            <input id="gear-maxuses-{{item.id}}" class="cairn-prop-number" type="text" name="system.uses.max"
+                value="{{system.uses.max}}" min="0" maxlength="4" inputmode="numeric" data-dtype="Number" />
+        </div>
+        {{!-- Food the wilderness procedure spends a use of at Make Camp. A mark and not a name, so
+              a Warden's own hardtack counts; it rides under Uses because a Ration is eaten a use
+              at a time. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-ration">
+            <label for="gear-ration-{{item.id}}">{{localize 'CAIRN.Ration'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.ration" value=system.ration
+                id=(concat "gear-ration-" item.id)}}
+        </div>
+        {{/if}}
+
+        {{#if axes.capacity}}
+        {{!-- What it holds. Zero holds nothing; a Mule is 6, a bag of holding whatever the Warden
+              says. A capacity makes the Contents tab appear. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-capacity">
+            <label for="gear-capacity-{{item.id}}">{{localize 'CAIRN.Capacity'}}</label>
+            <input id="gear-capacity-{{item.id}}" class="cairn-prop-number" type="text" name="system.capacity"
+                value="{{system.capacity}}" min="0" maxlength="4" inputmode="numeric" data-dtype="Number" />
+        </div>
+        {{/if}}
+
+        {{#if system.isContainer}}
+        {{!-- Takes Slots: the character hauls it — a bag on the back, a cart pulled with both
+              hands — so it costs what any item costs, by the *petty* / *bulky* row below. Off, it
+              hauls itself (a mule, a wagon), costs none, and is never under direct possession:
+              such a thing is always among the character's Belongings and its Set Aside toggle is
+              not offered. Drawn only for a container, as Blast only for a weapon. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-takes-slots">
+            <label for="gear-takes-slots-{{item.id}}" data-tooltip="{{localize 'CAIRN.TakesSlotsHint'}}">{{localize 'CAIRN.TakesSlots'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.takesSlots" value=system.takesSlots
+                id=(concat "gear-takes-slots-" item.id)}}
+        </div>
+        {{/if}}
+
+        {{!-- What carrying it costs of the ten, as one contiguous scale — the Armour row above is
+              the same control for the same reason. Two of the buttons wear 2e's word instead of a
+              digit, because *petty* IS zero and *bulky* IS two: the word teaches the rule where the
+              choice is made, and the eye still reads a scale with two landmarks. Two toggles stood
+              here before, which could say both at once and needed a validation clause to police
+              each other; one number can say neither.
+
+              On a container the character hauls this says what it costs on the ten (a Cart is
+              bulky); on one that hauls itself it changes nothing.
+
+              A Scroll is zero by rule — the model forces it on save — so on one the other buttons
+              are drawn unavailable and the label carries the reason. They used to take the click
+              and go nowhere, which reads as a broken control rather than as a rule, and the number
+              they wrote sat masked in the document until the item stopped being a Scroll. The
+              label beside a group cannot be a `<label for>`: a group is not one control, so the
+              group carries its own `aria-label`. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-slots">
+            <span class="cairn-field-label"
+                {{#if pettyByRule}}data-tooltip="{{localize 'CAIRN.SlotCostLocked'}}"{{/if}}>{{localize 'CAIRN.SlotCost'}}</span>
+            <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.SlotCost'}}">
+                {{#each slotChoices as |choice|}}
+                <label class="cairn-choice-option">
+                    <input type="radio" name="system.slots" value="{{choice.value}}" data-dtype="Number"
+                        {{checked (eq ../system.slots choice.value)}} {{#if choice.disabled}}disabled{{/if}} />
+                    <span>{{choice.label}}</span>
+                </label>
+                {{/each}}
+            </div>
+        </div>
+
+        {{!-- Last of the fields, and the last row only when every axis is on show: the rule under
+              it is the Add row's, drawn only when there is an Add row for it to sit over. --}}
+        <div class="cairn-field cairn-prop-row"
+            {{#if addable.length}}data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-trade"{{/if}}>
+            <label for="gear-cost-{{item.id}}">{{localize 'CAIRN.Cost'}}</label>
+            <input id="gear-cost-{{item.id}}" class="cairn-prop-number" type="text" name="system.cost"
+                value="{{system.cost}}" min="0" maxlength="4" inputmode="numeric" data-dtype="Number" />
+        </div>
+
+        {{#if addable.length}}
+        {{!-- The axes not on show, as the same segmented buttons the axes themselves use — one
+              click draws the row, blank, and nothing is written until it is filled. Anchors,
+              not radios: this is an action, not a value the form holds. --}}
+        <div class="cairn-field cairn-prop-row">
+            <span class="cairn-field-label">{{localize 'CAIRN.AddProperty'}}</span>
+            <div class="cairn-choice" role="group" aria-label="{{localize 'CAIRN.AddProperty'}}">
+                {{#each addable as |axis|}}
+                <a class="cairn-choice-option" data-action="axisAdd" data-axis="{{axis.id}}">{{localize axis.label}}</a>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</section>

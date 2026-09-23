@@ -1,0 +1,69 @@
+{{!-- What the Wilderness Events table said about the watch that just ended — one row, or two
+      through a night the party travelled. It used to be a card whispered to the Wardens, which
+      meant the only person who could read it was the one already looking at this window, and it
+      scrolled away; it lives here now, and here it can be thrown back.
+
+      The heading carries the watch the events came from, so nobody reads last night's Encounter
+      as this morning's.
+
+      An Encounter brings its creatures and their Reaction with it, drawn silently from the
+      `Wilderness Encounter` table. Putting them on the map is a click on the map: the button
+      hands the pointer over and the next click is where they appear. That is the Warden's and
+      only the Warden's — a player has no canvas write and no business placing a monster. --}}
+<section class="cairn-journey-events">
+{{#if events.length}}
+    <h3 class="cairn-edit-group cairn-journey-heading" data-ink="hline" data-ink-seed="journey-events"
+        data-ink-w="1.8" data-ink-at="bottom">
+        <span>{{localize "CAIRN.Journey.Events"}}</span>
+        <span class="cairn-journey-events-when">{{eventsWatch}}</span>
+    </h3>
+
+    {{#each events as |e|}}
+    <div class="cairn-journey-event">
+        <p class="cairn-journey-event-head">
+            <span class="cairn-journey-event-name">{{e.category}}</span>
+            {{#if e.canEdit}}
+            <button type="button" data-action="rerollEvent" data-index="{{e.index}}"
+                    data-tooltip-text="{{localize 'CAIRN.Journey.RerollEvent'}}"
+                    aria-label="{{localize 'CAIRN.Journey.RerollEvent'}}">
+                <i class="fas fa-rotate" inert></i>
+            </button>
+            {{/if}}
+        </p>
+
+        {{!-- The row's own prose, as the table stores it. --}}
+        <div class="cairn-journey-event-text">{{{e.text}}}</div>
+
+        {{#if e.party}}
+        <p class="cairn-journey-event-party">{{localize "CAIRN.Journey.ExhaustionReminder"}} {{e.party}}</p>
+        {{/if}}
+
+        {{#if e.encounter}}
+        <div class="cairn-journey-met">
+            <ul class="cairn-journey-met-rows">
+                {{#each e.encounter.rows as |row|}}
+                <li><strong>{{row.countFormula}}</strong> &times; {{row.label}}</li>
+                {{/each}}
+            </ul>
+            {{#if e.encounter.reaction}}
+            <p class="cairn-journey-met-reaction">
+                <span class="cairn-journey-met-label">{{localize "CAIRN.Reaction"}}</span>
+                <strong>{{e.encounter.reaction.label}}</strong>
+                <span class="cairn-journey-met-total">{{e.encounter.reaction.total}}</span>
+            </p>
+            {{/if}}
+            {{#if e.canEdit}}
+            {{#if e.encounter.placed}}
+            <p class="cairn-journey-met-done">{{localize "CAIRN.Journey.Placed"}}</p>
+            {{else}}
+            <button type="button" class="cairn-journey-place" data-action="placeEncounter" data-index="{{e.index}}">
+                <i class="fas fa-map-location-dot" inert></i> {{localize "CAIRN.Journey.PlaceEncounter"}}
+            </button>
+            {{/if}}
+            {{/if}}
+        </div>
+        {{/if}}
+    </div>
+    {{/each}}
+{{/if}}
+</section>

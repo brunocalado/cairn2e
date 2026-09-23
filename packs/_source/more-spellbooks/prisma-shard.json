@@ -1,0 +1,31 @@
+{
+  "_id": "H1SEITtiHjbRghc1",
+  "name": "Prisma Shard",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>An array of hypnotic lights fascinate nearby creatures, unless they pass a WIL save.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!H1SEITtiHjbRghc1",
+  "folder": "MCt2VTDHSjLFlLso"
+}

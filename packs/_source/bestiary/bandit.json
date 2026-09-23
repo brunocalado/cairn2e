@@ -1,0 +1,143 @@
+{
+  "_id": "Sf81FfBtnGKTSeXP",
+  "name": "Bandit",
+  "type": "npc",
+  "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 9,
+        "max": 9
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": 13,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "nDl2yJslmhWHLEGA",
+      "name": "Short Sword",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>short sword (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!Sf81FfBtnGKTSeXP.nDl2yJslmhWHLEGA"
+    },
+    {
+      "_id": "8EHwE0jqyW0zUBeI",
+      "name": "Short Bow",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>short bow (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!Sf81FfBtnGKTSeXP.8EHwE0jqyW0zUBeI"
+    },
+    {
+      "name": "Outlaws who raid settlements, attack ships, or ambush travelers.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Groups of four or more are a <em>detachment</em>.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "2v4a43geHbeWQxeb",
+      "_key": "!actors.items!Sf81FfBtnGKTSeXP.2v4a43geHbeWQxeb"
+    },
+    {
+      "name": "A detachment always travels with one leader wearing chain mail or similar (2 Armor) and a long sword (d10) or crossbow (d8).",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "GKLOd7RD4XqOXixa",
+      "_key": "!actors.items!Sf81FfBtnGKTSeXP.GKLOd7RD4XqOXixa"
+    },
+    {
+      "name": "Loyal",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>When testing Morale, save using the leader's WIL (13). If the leader dies, the others will flee.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "9BFlB9Y6vIIC2YNI",
+      "_key": "!actors.items!Sf81FfBtnGKTSeXP.9BFlB9Y6vIIC2YNI"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!Sf81FfBtnGKTSeXP"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "wSHIeNMq5G5wJLRU",
+  "name": "Auditory Illusion",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p><em>Produces random and occasionally inopportune sounds throughout the day.</em></p><p>You create illusory sounds that seem to come from a direction of your choice.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!wSHIeNMq5G5wJLRU",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

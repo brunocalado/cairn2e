@@ -1,0 +1,31 @@
+{
+  "_id": "VDq4qOC5X2OVlDub",
+  "name": "Black Outfit",
+  "type": "gear",
+  "img": "icons/equipment/chest/shirt-collared-grey.webp",
+  "system": {
+    "description": "<p>Black Outfit (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VDq4qOC5X2OVlDub",
+  "folder": "2zMlRQXjmfTFAB7Z"
+}

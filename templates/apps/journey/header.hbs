@@ -1,0 +1,54 @@
+{{!-- Where the party is and when. The day and the route share the top line — the day is what the
+      Warden says out loud and the route is the standing description of it, so one is the heading
+      and the other is its caption rather than two bands.
+
+      Under them the journey in watches, one tick per watch with the travelled ones inked. The
+      weather's "add one watch to the journey" and the Warden's NEEDED counter both grow it,
+      because both make the route longer.
+
+      Then the line that counts them. The Warden's hand on the two numbers sits on that same line:
+      the counters carry no figure of their own, because the bar above them and the sentence
+      beside them already say 1 of 10, and a third copy would only be a third thing to keep in
+      step. What each pair moves is its tooltip.
+
+      The three watches of the day belong to the sky over them, so they are in the watch part's
+      Weather heading, not here. --}}
+<section class="cairn-journey-head">
+{{#if journey}}
+    <div class="cairn-journey-top">
+        <span class="cairn-journey-day">{{localize "CAIRN.Journey.Day" day=journey.day}}</span>
+        <p class="cairn-journey-route">
+            {{route.path}} &middot; {{route.distance}} &middot; {{route.terrain}}{{#if route.terrainRaised}} <span class="cairn-journey-raised">{{localize "CAIRN.Journey.Raised"}}</span>{{/if}} &middot; {{route.season}}
+        </p>
+    </div>
+
+    <div class="cairn-journey-progress">
+        <ol class="cairn-journey-ticks" role="progressbar" aria-valuemin="0"
+            aria-valuemax="{{journey.watchesNeeded}}" aria-valuenow="{{journey.progress}}">
+            {{#each ticks}}<li class="{{#if done}}done{{/if}}"></li>{{/each}}
+        </ol>
+        <div class="cairn-journey-count">
+            <p class="cairn-journey-progress-label">
+                {{#if journey.arrived}}{{localize "CAIRN.Journey.Arrived"}}{{else}}{{localize "CAIRN.Journey.Progress" progress=journey.progress needed=journey.watchesNeeded}}{{/if}}
+                {{#if journey.lost}}<span class="cairn-journey-flag">{{localize "CAIRN.Journey.LostFlag"}}</span>{{/if}}
+                {{#if journey.sleepDeprived}}<span class="cairn-journey-flag">{{localize "CAIRN.Journey.SleepDeprived"}}</span>{{/if}}
+            </p>
+            {{#if isGM}}
+            <div class="cairn-journey-adjust">
+                <span class="cairn-journey-adjust-label">{{localize "CAIRN.Journey.Needed"}}</span>
+                <button type="button" data-action="adjust" data-field="watchesNeeded" data-delta="-1"
+                        data-tooltip-text="{{localize 'CAIRN.Journey.FewerNeeded'}}" aria-label="{{localize 'CAIRN.Journey.FewerNeeded'}}">&minus;</button>
+                <button type="button" data-action="adjust" data-field="watchesNeeded" data-delta="1"
+                        data-tooltip-text="{{localize 'CAIRN.Journey.MoreNeeded'}}" aria-label="{{localize 'CAIRN.Journey.MoreNeeded'}}">+</button>
+                <span class="cairn-journey-adjust-label">{{localize "CAIRN.Journey.TravelledLabel"}}</span>
+                <button type="button" data-action="adjust" data-field="progress" data-delta="-1"
+                        data-tooltip-text="{{localize 'CAIRN.Journey.FewerTravelled'}}" aria-label="{{localize 'CAIRN.Journey.FewerTravelled'}}">&minus;</button>
+                <button type="button" data-action="adjust" data-field="progress" data-delta="1"
+                        data-tooltip-text="{{localize 'CAIRN.Journey.MoreTravelled'}}" aria-label="{{localize 'CAIRN.Journey.MoreTravelled'}}">+</button>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+{{/if}}
+</section>

@@ -1,0 +1,31 @@
+{
+  "_id": "PzyEhx24dBdeQyWq",
+  "name": "Blessed Tinctures",
+  "type": "gear",
+  "img": "icons/tools/laboratory/vials-blue-pink.webp",
+  "system": {
+    "description": "<p>Blessed Tinctures</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!PzyEhx24dBdeQyWq",
+  "folder": "VyQWK1tMrTe9Gy9a"
+}

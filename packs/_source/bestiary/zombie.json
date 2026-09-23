@@ -1,0 +1,114 @@
+{
+  "_id": "7KMzQLdbbqyeHlWp",
+  "name": "Zombie",
+  "type": "npc",
+  "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 12,
+        "max": 12
+      },
+      "DEX": {
+        "value": 6,
+        "max": 6
+      },
+      "WIL": {
+        "value": 3,
+        "max": 3
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "NBFFQ0VPQOuTt8nP",
+      "name": "Jagged Nails",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>jagged nails (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!7KMzQLdbbqyeHlWp.NBFFQ0VPQOuTt8nP"
+    },
+    {
+      "name": "Re-animated corpse brought back through necromantic ritual or fell influence.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Immune to all mind-influencing effects.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "cl4Xvb3Aq7zqTYH3",
+      "_key": "!actors.items!7KMzQLdbbqyeHlWp.cl4Xvb3Aq7zqTYH3"
+    },
+    {
+      "name": "If not utterly destroyed (by fire, complete dismemberment, etc.), the Zombie will rise again within a few minutes.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "g1XK3DU5ZEN1TYvf",
+      "_key": "!actors.items!7KMzQLdbbqyeHlWp.g1XK3DU5ZEN1TYvf"
+    },
+    {
+      "name": "Target is infected and becomes deprived. Without the services of a specialist or healer, they will become a zombie in 1d4 days.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "xa1mTW8GLX4vTJDc",
+      "_key": "!actors.items!7KMzQLdbbqyeHlWp.xa1mTW8GLX4vTJDc"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!7KMzQLdbbqyeHlWp"
+}

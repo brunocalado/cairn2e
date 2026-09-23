@@ -1,0 +1,29 @@
+{{!-- Primitive 5 — the toggle. A pill and a knob in the two inks: the track is faint ink off and
+      full ink on, the knob is paper either way and slides the difference. This is the system's
+      only on/off control — a square box is core's furniture and says nothing this does not.
+
+      The checkbox itself stays in the form, because it is what `FormDataExtended` reads; it is
+      only taken out of the visual order, so `name`, `checked` and `disabled` behave exactly as
+      they would on a bare input. Pass `id` when a label elsewhere in the row points at it.
+
+      `action` makes it a control instead of a form field — the switch then reports to the
+      application's actions map on click and carries no `name`. It goes on the INPUT, never on the
+      surrounding `<label>`: a label forwards a click to its input, so a `data-action` on the label
+      would match the label's own click and again on the forwarded one, and the toggle would fire
+      twice and land back where it started. The handler reads whatever the row it sits on names.
+
+      `tooltip` goes on the LABEL, for the mirror reason: core raises a tooltip from the dataset of
+      the element the pointer ENTERS (`TooltipManager##onActivate` reads `event.target.dataset`
+      and nothing above it), and the input is a 1px square nobody's pointer ever enters. On the
+      label it covers the whole pill. `aria-label` stays on the input, which is what a screen
+      reader focuses.
+
+      `tooltip` is the word the switch would carry if it had a label — it has none by design, so
+      the row's own reading is where it goes. --}}
+<label class="cairn-switch"{{#if tooltip}} data-tooltip-text="{{tooltip}}"{{/if}}>
+    <input type="checkbox" {{#if id}}id="{{id}}" {{/if}}{{#if field}}name="{{field}}" {{/if}}
+           {{#if action}}data-action="{{action}}" {{/if}}
+           {{#if tooltip}}aria-label="{{tooltip}}" {{/if}}
+           {{checked value}} {{disabled disabled}} />
+    <span class="cairn-switch-track"><span class="cairn-switch-knob"></span></span>
+</label>

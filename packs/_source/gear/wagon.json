@@ -1,0 +1,31 @@
+{
+  "_id": "WicimNRxtb4MPrsM",
+  "name": "Wagon",
+  "type": "gear",
+  "img": "icons/environment/settlement/wagon.webp",
+  "folder": "gN731jQyxqxRJW0U",
+  "system": {
+    "description": "<p>Wagon (+8 slots, slow)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 200,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 8,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WicimNRxtb4MPrsM"
+}

@@ -1,0 +1,211 @@
+{
+  "_id": "RQfWvlmZr7fKVotE",
+  "name": "Trapper",
+  "type": "npc",
+  "img": "icons/environment/traps/cage-simple-wood.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 11,
+        "max": 11
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 10,
+        "max": 10
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Trapper",
+    "dayRate": 5,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XyC5zHPNWoWPXNur",
+      "_key": "!actors.items!RQfWvlmZr7fKVotE.XyC5zHPNWoWPXNur"
+    },
+    {
+      "name": "Torch",
+      "type": "gear",
+      "img": "icons/sundries/lights/torch-black.webp",
+      "system": {
+        "description": "<p>Torch (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "1xqZFStJpgCXh3Vo",
+      "_key": "!actors.items!RQfWvlmZr7fKVotE.1xqZFStJpgCXh3Vo"
+    },
+    {
+      "name": "Bow",
+      "type": "gear",
+      "img": "icons/weapons/bows/shortbow-leaves-green.webp",
+      "system": {
+        "description": "<p>Bow (d6 damage, <em>bulky</em>)</p>",
+        "slots": 2,
+        "equipped": true,
+        "cost": 20,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "tHInyeNdwexB0tkj",
+      "_key": "!actors.items!RQfWvlmZr7fKVotE.tHInyeNdwexB0tkj"
+    },
+    {
+      "name": "Trap",
+      "type": "gear",
+      "img": "icons/environment/traps/trap-jaw-tan.webp",
+      "system": {
+        "description": "<p>Trap (d6 STR damage)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 35,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "t14hQtqBwrEka44C",
+      "_key": "!actors.items!RQfWvlmZr7fKVotE.t14hQtqBwrEka44C"
+    },
+    {
+      "name": "Sack",
+      "type": "gear",
+      "img": "icons/containers/bags/sack-cloth-brown.webp",
+      "system": {
+        "description": "<p>Sack</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "VkrkyQiT7fFYPAf9",
+      "_key": "!actors.items!RQfWvlmZr7fKVotE.VkrkyQiT7fFYPAf9"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!RQfWvlmZr7fKVotE"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "VYjii3t9NLK4HzFv",
+  "name": "Multiarm",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p><em>After use, the caster is wracked with phantom limb syndrome for a day.</em></p><p>You temporarily gain an extra arm.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VYjii3t9NLK4HzFv",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

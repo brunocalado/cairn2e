@@ -1,0 +1,31 @@
+{
+  "_id": "JmLod19EUO6dDupo",
+  "name": "Create Unlife",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>Creates 1d4 undead skeletons and zombies from corpses. WIL save every hour to control them.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!JmLod19EUO6dDupo",
+  "folder": "MCt2VTDHSjLFlLso"
+}

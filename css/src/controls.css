@@ -1,0 +1,365 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * Form controls — the five control primitives.                           *
+     *                                                                       *
+     * Core declares `--button-*`, `--input-*` and `--checkbox-*` ON THE      *
+     * CONTROL ITSELF (`a.button, button, kbd` at foundry2.css:452;           *
+     * `input, select, textarea, …` at :379; `input[type="checkbox"]` at      *
+     * :441). A custom property is only inherited, so a value set on          *
+     * `.cairn2e` never reaches them — the element's own rule wins at the     *
+     * element. Every override below therefore names the control.             *
+     *                                                                       *
+     * The orange focus/active chrome the maintainer reported                 *
+     * (`Remover-Borda.txt`) is removed core's own way: set                   *
+     * `--button-focus-outline-color: transparent`, which is what core does   *
+     * for `button.plain` (:6005). NOT `outline: none` — that would leave a   *
+     * keyboard user with nothing, and the mechanism is wanted for the ink    *
+     * focus ring that replaces it.                                          *
+     *                                                                       *
+     * Editors are excluded. ProseMirror and CodeMirror ship their own        *
+     * toolbars of `<button>`s, sized and spaced by core; an ink 36px         *
+     * small-caps button is the wrong primitive there.                        *
+     *                                                                       *
+     * Those exclusions sit inside `:where()`, which contributes NO           *
+     * specificity, so these rules weigh only what their own element costs.   *
+     * A bare `:not(.editor *)` would add a class's worth of weight and       *
+     * quietly outrank every ordinary override — `.name-input` came out       *
+     * transparent exactly that way, and it took a baseline capture to see.   *
+     **************************************************************************/
+
+    /* Primitive 2 — ink button. Paper ground, 2px ink frame, ink small-caps label;
+       hover and pressed invert to ink ground / paper label.
+       The window header is excluded with the editors: core's close/minimise controls are
+       `<button class="header-control">` inside the application root, which carries the
+       `.cairn2e` scope, so this rule reached them — and since the stylesheet is a later
+       cascade layer it beat core's own `--button-text-color: var(--color-light-1)` at any
+       specificity. The result was ink-coloured glyphs on the dark header bar: invisible
+       controls that still clicked. The frame is core's, and it is not ours to restyle. */
+    & :is(button, a.button):where(:not(.window-header *, .editor *, prose-mirror *, code-mirror *)) {
+        --button-size: 36px;
+        --button-background-color: transparent;
+        --button-border-color: var(--cairn-ink);
+        --button-text-color: var(--cairn-ink);
+        --button-focus-outline-color: transparent;
+        --button-hover-background-color: var(--cairn-ink);
+        --button-hover-border-color: var(--cairn-ink);
+        --button-hover-text-color: var(--cairn-paper);
+        border-width: var(--cairn-rule);
+        border-radius: var(--cairn-radius);
+        font-family: var(--cairn-serif);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: var(--cairn-label-track);
+        /* Core fades every button over 0.5s; on paper that reads as a web app. */
+        transition: none;
+
+        /* An icon button (`button.icon`, the `fa-*` classes on the button itself) has no label:
+           core draws its glyph through `font-family: var(--font-awesome)`, and the serif above —
+           winning from the later layer — swapped it for a face with no private-use glyphs. Every
+           icon in the combat tracker rendered as a tofu box (live client, 2026-09-21). The
+           label size reverts to whatever core gave the glyph. */
+        &.icon {
+            font-family: var(--font-awesome);
+            font-size: revert-layer;
+            letter-spacing: 0;
+            text-transform: none;
+
+            &.fa-duotone {
+                font-family: var(--font-awesome-duotone);
+            }
+        }
+
+        &:focus-visible {
+            outline: var(--cairn-hairline) solid var(--cairn-ink);
+            outline-offset: 1px;
+        }
+
+        /* Pressed / selected inverts rather than glowing. Core's `.active` rule only
+           draws the (now transparent) outline, so the fill is ours to supply. */
+        &:is(.active, [aria-pressed="true"], .selected) {
+            background: var(--cairn-ink);
+            border-color: var(--cairn-ink);
+            color: var(--cairn-paper);
+            font-weight: 700;
+        }
+
+        &:disabled {
+            opacity: 0.45;
+        }
+    }
+
+    /* Primitive 3 — ruled field, and it is the DEFAULT, not an opt-in class. A field on paper is
+       a line: transparent ground, no box, a 1px ink rule under it that thickens to 2px on focus.
+       Making it opt-in was a mistake caught in a live client — every input the opt-in missed was
+       transparent on transparent, i.e. invisible.
+       Primitive 4 — the boxed field, a value inside a banner — opts OUT of the rule below, since
+       the banner is already its frame. */
+    & :is(input, select, textarea):where(:not([type="checkbox"], [type="radio"], .editor *, prose-mirror *, code-mirror *)) {
+        --input-background-color: transparent;
+        --input-border-color: transparent;
+        --input-box-shadow: none;
+        --input-text-color: var(--cairn-ink);
+        --input-placeholder-color: var(--cairn-ink-soft);
+        --input-focus-outline-color: transparent;
+        /* Readable options in the OS-painted `<select>` popup, which nothing inside `.cairn2e`
+           can reach. */
+        --color-select-option-bg: var(--cairn-paper);
+        background: transparent;
+        border: none;
+        border-bottom: var(--cairn-hairline) solid var(--cairn-ink);
+        border-radius: 0;
+        font-family: var(--cairn-serif);
+        font-variant-numeric: tabular-nums;
+        padding: 0 2px;
+
+        /* Focus thickens the rule rather than drawing an outline; core's own outline is already
+           transparent by the token above, so a keyboard user still sees the change. */
+        &:focus {
+            border-bottom-width: var(--cairn-rule);
+        }
+    }
+    /* No `color` here on purpose. Core already paints an input with
+       `color: var(--input-text-color)` at a one-element specificity, so the token above is
+       enough — and a `color` written at THIS selector would outrank `.name-input`'s paper-on-ink
+       and render the sheet name invisible. */
+
+    /* The bare checkbox. It is NOT the system's toggle any more — `.cairn-switch` below is, and
+       every on/off control is being moved onto it — but a box left unstyled is core's own orange
+       furniture, so the rules stay until the last one is converted.
+
+       A 16px ink square that fills solid when checked. Core draws a Font Awesome glyph pair
+       through ::before/::after in `--checkbox-checked-color`; the tokens are set anyway (anything
+       core still reads must be ink, never orange) and the glyphs are then dropped for a plain
+       box. */
+    & input[type="checkbox"]:where(:not(.editor *, prose-mirror *, code-mirror *)) {
+        --checkbox-checked-color: var(--cairn-ink);
+        --checkbox-background-color: transparent;
+        --checkbox-checkmark-color: transparent;
+        --checkbox-size: 16px;
+        flex: 0 0 16px;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+        background: transparent;
+        border: var(--cairn-rule) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+
+        &::before,
+        &::after {
+            content: none;
+        }
+
+        &:checked {
+            background: var(--cairn-ink);
+        }
+
+        &:focus-visible {
+            outline: var(--cairn-hairline) solid var(--cairn-ink);
+            outline-offset: 2px;
+        }
+    }
+
+    /* Primitive 5 — the toggle. A pill and a knob, in the two inks and nothing else: the track is
+       faint ink off and full ink on, the knob is paper either way and slides the difference. It
+       is the system's ONE answer to on/off, wherever the control appears — an item's *petty*
+       flag, a character's Omen, an NPC's detachment — because two ways of saying yes are two
+       things a reader has to learn.
+
+       The real checkbox stays in the form (it is what `FormDataExtended` reads) and is only taken
+       out of the visual order, so `name` and `checked` behave as they would on a bare input. The
+       switch's focus ring follows the checkbox's, so a keyboard user still sees where they are.
+       The markup is one partial, `templates/parts/toggle.hbs`.
+
+       It carries no label of its own: the word beside it is the row's `.cairn-field` label, in
+       the gutter and pointing at the same checkbox, so clicking either reaches the control. */
+    .cairn-switch {
+        align-items: center;
+        cursor: pointer;
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 8px;
+        user-select: none;
+
+        input[type="checkbox"] {
+            height: 1px;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            width: 1px;
+        }
+    }
+
+    .cairn-switch-track {
+        background: var(--cairn-ink-faint);
+        border-radius: 13px;
+        display: block;
+        height: 26px;
+        position: relative;
+        transition: background 150ms ease;
+        width: 44px;
+    }
+
+    .cairn-switch-knob {
+        background: var(--cairn-paper);
+        border-radius: 50%;
+        display: block;
+        height: 22px;
+        left: 2px;
+        position: absolute;
+        top: 2px;
+        transition: transform 150ms ease;
+        width: 22px;
+    }
+
+    .cairn-switch input:checked ~ .cairn-switch-track {
+        background: var(--cairn-ink);
+
+        .cairn-switch-knob {
+            transform: translateX(18px);
+        }
+    }
+
+    .cairn-switch input:focus-visible ~ .cairn-switch-track {
+        outline: var(--cairn-hairline) solid var(--cairn-ink);
+        outline-offset: 2px;
+    }
+
+    /* Primitive 2, segmented — a short closed range said as a row of buttons rather than typed
+       into a field. Four ink buttons cannot hold a 7, so a bounded number (armour 0-3) never
+       reaches the DataModel wrong and is never answered with a validation error.
+
+       The radios are the group's real state and are only taken out of the visual order, exactly
+       as the switch takes its checkbox out: `FormDataExtended` reads the checked one and casts it
+       through its `data-dtype`. The selected button inverts to ink, the same mark a pressed
+       ink button wears — `:has()` rather than a class, so nothing in JS has to keep a
+       rendered state in step with the input's. */
+    .cairn-choice {
+        display: flex;
+        flex: 0 0 auto;
+        gap: 4px;
+
+        /* A run that cannot fit its track wraps onto a second line instead of squeezing every
+           button until the words spill out of their frames. Nothing wraps today — the widest run
+           is the gear sheet's Add row at 326px in a 334px track — and that 8px is the whole
+           reason this is here: a label one word longer would have gone straight through it. */
+        flex-wrap: wrap;
+
+        input[type="radio"] {
+            height: 1px;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            width: 1px;
+        }
+    }
+
+    /* Ink on both forms: the label inherits it from `.window-content label`, but the option is
+       also an `<a>` when it is an action rather than a value (the gear sheet's Add row), and a
+       link would otherwise take core's link colour. */
+    .cairn-choice-option {
+        align-items: center;
+        border: var(--cairn-rule) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+        color: var(--cairn-ink);
+        cursor: pointer;
+        display: flex;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        height: 24px;
+        justify-content: center;
+        letter-spacing: var(--cairn-label-track);
+        min-width: 28px;
+        padding: 0 6px;
+        position: relative;
+        user-select: none;
+
+        &:hover {
+            background: var(--cairn-paper-sunk);
+        }
+
+        /* `:has()` carries the specificity of its argument, so this lands at (0,2,1) and beats
+           `.window-content label`'s ink — without it the chosen button is paper text on paper. */
+        &:has(input:checked) {
+            background: var(--cairn-ink);
+            color: var(--cairn-paper);
+            font-weight: 700;
+        }
+
+        &:has(input:focus-visible) {
+            outline: var(--cairn-hairline) solid var(--cairn-ink);
+            outline-offset: 2px;
+        }
+
+        /* A button the rules have already answered — a Scroll's slot cost, which is petty by rule
+           and forced on every save; or a whole run a player may read and not move, like the
+           journey's sky. Faint ink and no hover fill: the run still reads as a scale with the
+           true value inverted on it, and nothing about the rest invites a click the DataModel
+           would undo.
+
+           The chosen one is excluded, and that exclusion is the rule. `:has(input:checked)` and
+           `:has(input:disabled)` both land at (0,2,1), so a bare disabled rule coming after it
+           repainted the chosen button's text faint — faint ink on the ink ground it had just been
+           given, i.e. an empty black box where the answer was. `:where()` carries no specificity
+           of its own, so this stays level and simply no longer claims the chosen one. */
+        &:has(input:disabled):where(:not(:has(input:checked))) {
+            border-color: var(--cairn-ink-faint);
+            color: var(--cairn-ink-faint);
+        }
+
+        &:has(input:disabled) {
+            cursor: default;
+        }
+
+        &:has(input:disabled):hover {
+            background: none;
+        }
+    }
+
+    /**************************************************************************
+     * Tabs.                                                                 *
+     **************************************************************************/
+
+    /* Primitive 6 — tab rail. A full-width row of small-caps labels between two 2px ink rules.
+       No pill, no background, no underline shift: the active tab is simply full ink and the
+       others are `--cairn-ink-soft`. */
+    /* The strip and its two drawn rules, as one block — the part's single element, and the rules
+       belong to the strip rather than floating between parts (`parts/sheet-nav.hbs`). */
+    .cairn-nav-block {
+        flex: 0 0 auto;
+    }
+
+    .cairn-tab-rail {
+        display: flex;
+        flex: 0 0 auto;
+        /* Core's `nav.tabs` brings a border of its own (foundry2.css), which laid a machined
+           hairline right under the drawn rule above it — two lines saying one thing. */
+        border: none;
+        /* Core spaces `nav.tabs` with `gap: var(--spacer-16)` and `justify-content: space-evenly`;
+           the rail here divides the full width between its labels instead. */
+        gap: 0;
+        justify-content: stretch;
+        line-height: 32px;
+    }
+
+    .cairn-tab {
+        color: var(--cairn-ink-soft);
+        flex: 1;
+        font-family: var(--cairn-serif);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: var(--cairn-label-track);
+        font-weight: 700;
+        text-align: center;
+
+        &.active {
+            color: var(--cairn-ink);
+        }
+    }
+}

@@ -1,0 +1,108 @@
+{
+  "_id": "tdt9k5kCueOAJOAN",
+  "name": "Half Witch: What concoction do you carry, and what rare ingredients did you gather to make it?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Half Witch</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "F3DlXMPzH3qLXCiE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Rebirth Ash</strong> Remnants of a bark spirit. Sprinkle to reignite a fire that has died or return to life a creature that has died only moments before. 3 uses.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.F3DlXMPzH3qLXCiE"
+    },
+    {
+      "_id": "iP4eqxauvLjDMAhh",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Glamour Feather</strong> Plume of a firebird. Can make any creature appear convincingly as someone (or something) else. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.iP4eqxauvLjDMAhh"
+    },
+    {
+      "_id": "f0cAyTyGQky1YQgd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Hawthorn Seed</strong> An acorn from the other side, gathered on the spring equinox. When planted, it sprouts a luxurious shelter, collapsing at moonrise the next day. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.f0cAyTyGQky1YQgd"
+    },
+    {
+      "_id": "DlfBJXvasXOSuK5s",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Stonetree Sap</strong> Sap obtained in exchange for blood. Hardens when rubbed on any surface (+1 Armor). 3 uses.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.DlfBJXvasXOSuK5s"
+    },
+    {
+      "_id": "rdrVeA1FMC8hgRBB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Nightdust Powder</strong> Made from the ritual burning of six owls. When tossed in the air, day turns to night for a short while. 2 uses.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.rdrVeA1FMC8hgRBB"
+    },
+    {
+      "_id": "xAn2SBTSGHnH0KnM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Hex Stone</strong> Gathered from a river that flows from the <em>other side</em>. Removed from its iron tin, it can absorb the effects of an active magical effect. If destroyed, the magic is released. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.xAn2SBTSGHnH0KnM"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!tdt9k5kCueOAJOAN"
+}

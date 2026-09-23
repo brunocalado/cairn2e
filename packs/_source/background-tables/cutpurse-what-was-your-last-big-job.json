@@ -1,0 +1,108 @@
+{
+  "_id": "bseo3vI7GWMqenXA",
+  "name": "Cutpurse: What was your last big job?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Cutpurse</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "I1C67uXWVfIdhhRA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A noble's summer home. The place was full of fancy wine (+20gp) but not much else. Take <strong>Fence Cutters</strong>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.I1C67uXWVfIdhhRA"
+    },
+    {
+      "_id": "D4g3E2D1ejMlEYdL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A bank. (You were caught.) You bear a brand only visible by firelight, and anyone who sees the mark can ask you for a beer. Take <strong>Retractable Wires</strong>.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.D4g3E2D1ejMlEYdL"
+    },
+    {
+      "_id": "belC2965WXj3EyhT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A guild warehouse. Take a <strong>Ladder</strong> (<em>bulky</em>, 10ft) and <strong>Blinding Powder</strong> (1 use).</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.belC2965WXj3EyhT"
+    },
+    {
+      "_id": "p4D6ZZTjHjRdgRqK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Moneylender. Someone beat you to the job but left behind a <strong>Scroll</strong> of <em>Arcane Eye</em> (<em>petty</em>). <em>Arcane Eye</em>: You can see through a magical floating eyeball that flies around at your command.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.p4D6ZZTjHjRdgRqK"
+    },
+    {
+      "_id": "QPZSdfkpmuV4upj8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Constable's quarters. You escaped but left some friends behind. Take <strong>Strong Silk Rope</strong> (30ft) and a queasy feeling.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.QPZSdfkpmuV4upj8"
+    },
+    {
+      "_id": "VBSUMnaf1o4HBkh9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A university. You were seen but not pursued. You still don't know why. Take <strong>Smoke Pellets</strong> (3 uses).</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.VBSUMnaf1o4HBkh9"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!bseo3vI7GWMqenXA"
+}

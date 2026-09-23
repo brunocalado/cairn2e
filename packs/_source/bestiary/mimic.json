@@ -1,0 +1,113 @@
+{
+  "_id": "zlcaYiW5CDfyGAE8",
+  "name": "Mimic",
+  "type": "npc",
+  "img": "icons/creatures/abilities/mouth-teeth-crooked-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 13,
+        "max": 13
+      },
+      "DEX": {
+        "value": 6,
+        "max": 6
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 9,
+      "max": 9
+    },
+    "role": "monster",
+    "armor": 2,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "4Xe9WpZB1Ho50KVK",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!zlcaYiW5CDfyGAE8.4Xe9WpZB1Ho50KVK"
+    },
+    {
+      "name": "Malicious shape shifters that take on the form of inanimate objects commonly found in dungeons.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "BEoFp7N0RZSgQt1C",
+      "_key": "!actors.items!zlcaYiW5CDfyGAE8.BEoFp7N0RZSgQt1C"
+    },
+    {
+      "name": "Remain motionless while in disguise, surprising anyone that comes near.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "A4VUb62RbPnyTiaL",
+      "_key": "!actors.items!zlcaYiW5CDfyGAE8.A4VUb62RbPnyTiaL"
+    },
+    {
+      "name": "The mimic's saliva is extremely sticky and difficult to remove.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Alchemists will pay up to 150gp for even the smallest vial.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "5hv1LDmUMfMD9Lcx",
+      "_key": "!actors.items!zlcaYiW5CDfyGAE8.5hv1LDmUMfMD9Lcx"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!zlcaYiW5CDfyGAE8"
+}

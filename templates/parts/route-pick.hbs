@@ -1,0 +1,24 @@
+{{!-- One rules table as a run of buttons (Primitive 2, segmented): the name, its watch penalty
+      as a badge, and the row's own detail under it. `name` is the form field — `path` on the
+      journey's route form, `system.path` on a route page — so the two forms draw the same
+      control and cannot drift apart.
+
+      @param name     The form field name.
+      @param label    The row's label, already localized.
+      @param options  The run, from `journey.js#routeChoices`.
+      @param number   True where the value is a number (vast), for `data-dtype`.
+      @param extra    A second class for the row — `cairn-journey-vast` widens the track.
+      @param hint     A sentence belonging to this row, drawn as its third column. --}}
+<div class="cairn-field cairn-journey-pick {{extra}}">
+    <span class="cairn-field-label">{{label}}</span>
+    <div class="cairn-choice" role="radiogroup" aria-label="{{label}}">
+        {{#each options as |opt|}}
+        <label class="cairn-choice-option">
+            <input type="radio" name="{{../name}}" value="{{opt.key}}" {{#if ../number}}data-dtype="Number"{{/if}} {{checked opt.selected}} />
+            <span class="cairn-pick-name">{{opt.label}}{{#if opt.cost}} <span class="cairn-pick-cost">{{opt.cost}}</span>{{/if}}</span>
+            {{#if opt.note}}<span class="cairn-pick-note">{{opt.note}}</span>{{/if}}
+        </label>
+        {{/each}}
+    </div>
+    {{#if hint}}<span class="cairn-journey-vast-note">{{hint}}</span>{{/if}}
+</div>

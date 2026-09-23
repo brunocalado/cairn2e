@@ -1,0 +1,108 @@
+{
+  "_id": "x35sntRErfx45EID",
+  "name": "Beast Handler: What have you learned from the creatures of the wild?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Beast Handler</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "sCO27vKIdx1ytWCd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>That there is far more to the world than meets the eye. With quiet concentration, you can borrow the senses of a nearby creature of your <strong>specialty</strong>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.sCO27vKIdx1ytWCd"
+    },
+    {
+      "_id": "H9vFT0rlNI96m9w6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>That the behavior of beasts is a language in itself. When observing beasts of your <strong>specialty</strong> you gain insight into weather patterns and impending disasters.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.H9vFT0rlNI96m9w6"
+    },
+    {
+      "_id": "K9jVkDbC1uXIRqZp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>That the pulse of the hunt is a powerful impulse. You have a sense for when predators, even those <strong>not of your specialty</strong> are near.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.K9jVkDbC1uXIRqZp"
+    },
+    {
+      "_id": "owPKvCL1PD69VQr6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>That the land is a language unto itself. Your chance of becoming lost in a terrain dominated by the beasts of your <strong>specialty</strong> is reduced by one step (e.g. 4-in-6 becomes 3-in-6).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.owPKvCL1PD69VQr6"
+    },
+    {
+      "_id": "lg78soNOisjpkJ2b",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>That nature's symphony can be heard if you attune to its rhythm. When surrounded by creatures of your <strong>specialty</strong>, they can alert you to approaching danger before it arrives.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.lg78soNOisjpkJ2b"
+    },
+    {
+      "_id": "DYMYMxPrjV5pzomd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>That survival is all about adaptability. Once per day, you may take on a simple feature from a creature of your <strong>specialty</strong> (webbed fingers, night vision, etc.). Add a <strong>Fatigue</strong> each time.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.DYMYMxPrjV5pzomd"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!x35sntRErfx45EID"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "oaWP2VaeCFQOdZgu",
+  "name": "Anchor",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p><em>If a rope is pulled through the iron loop on its spine, it becomes as heavy as an elephant.</em></p><p>A strong wire sprouts from your arms, affixing itself to two points within 50ft on each side.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!oaWP2VaeCFQOdZgu",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

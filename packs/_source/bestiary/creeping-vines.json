@@ -1,0 +1,100 @@
+{
+  "_id": "Gn4gUYSuPwdHUem2",
+  "name": "Creeping Vines",
+  "type": "npc",
+  "img": "icons/magic/nature/root-vine-spiral-thorns-teal.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 10,
+        "max": 10
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 2,
+        "max": 2
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "SSGq11T7whFHTpEB",
+      "name": "Vines",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>vines (d4, <em>blast</em>)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d4",
+        "blast": true,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!Gn4gUYSuPwdHUem2.SSGq11T7whFHTpEB"
+    },
+    {
+      "name": "Appear as an inert, typical vine.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Attacks passing creatures to use their corpses as fertilizer.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "dA3AMB3WBxrJYEPi",
+      "_key": "!actors.items!Gn4gUYSuPwdHUem2.dA3AMB3WBxrJYEPi"
+    },
+    {
+      "name": "Target is pulled into the air where they asphyxiate within a few minutes.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Tk6JzPRaWXd7dEeg",
+      "_key": "!actors.items!Gn4gUYSuPwdHUem2.Tk6JzPRaWXd7dEeg"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!Gn4gUYSuPwdHUem2"
+}

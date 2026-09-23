@@ -1,0 +1,31 @@
+{
+  "_id": "OZmuEYhAGSibIstF",
+  "name": "Kraken's Curse",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>Tentacles grapple all within 20 ft, STR save to break free.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!OZmuEYhAGSibIstF",
+  "folder": "MCt2VTDHSjLFlLso"
+}

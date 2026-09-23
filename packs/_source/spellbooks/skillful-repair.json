@@ -1,0 +1,31 @@
+{
+  "_id": "GnPKsj28KTEJS4Hm",
+  "name": "Skillful Repair",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p><em>Sewn from the vellum of one hundred books, no two pages are alike.</em></p><p>You make minor repairs to a nonliving object.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!GnPKsj28KTEJS4Hm",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "VJI4DiSg5Sswru2s",
+  "name": "Mule",
+  "type": "gear",
+  "img": "icons/environment/creatures/horse-tan.webp",
+  "folder": "gN731jQyxqxRJW0U",
+  "system": {
+    "description": "<p>Mule (+6 slots, slow)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 30,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 6,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VJI4DiSg5Sswru2s"
+}

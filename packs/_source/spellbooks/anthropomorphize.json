@@ -1,0 +1,31 @@
+{
+  "_id": "eVDfkqmfdOMWjVks",
+  "name": "Anthropomorphize",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-detail.webp",
+  "system": {
+    "description": "<p><em>Whimpers, purrs and growls depending on its treatment.</em></p><p>An animal either gains human intelligence or human appearance for one day.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!eVDfkqmfdOMWjVks",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

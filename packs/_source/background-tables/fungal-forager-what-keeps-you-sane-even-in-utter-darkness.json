@@ -1,0 +1,108 @@
+{
+  "_id": "EinAvDMBXcRTp03D",
+  "name": "Fungal Forager: What keeps you sane, even in utter darkness?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Fungal Forager</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "Ri8iYiGK8NyZJVBz",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Glowsnail</strong> Casts a soft, bioluminescent light. Feeds on one ration every two days.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.Ri8iYiGK8NyZJVBz"
+    },
+    {
+      "_id": "hzKsVrS49rYsk4pS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Silk Moth Shawl</strong> A weatherproof blanket, it can also douse a fire without being damaged.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.hzKsVrS49rYsk4pS"
+    },
+    {
+      "_id": "DIGGBDcy6AnEAXQ8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Milkflower</strong> A gentle stimulant. Chewing it makes you immune to <em>panic</em> for the next hour. 3 uses.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.DIGGBDcy6AnEAXQ8"
+    },
+    {
+      "_id": "ruAo9fdntFMXHGSe",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Luxcompass</strong> Hums softly as it moves closer to the Sun. Eventually the noise becomes unbearably loud.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.ruAo9fdntFMXHGSe"
+    },
+    {
+      "_id": "nvLLCalCiUt1qXXP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sloth-Tarp</strong> A tough and weatherproof fabric, useful for hanging off trees. When inside, you have +1 Armor.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.nvLLCalCiUt1qXXP"
+    },
+    {
+      "_id": "CUBHc662EOGJeqXI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Miner's Grease</strong> Great for dislodging a gem, tool, or limb from a tight crack. Highly explosive. 3 uses.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.CUBHc662EOGJeqXI"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!EinAvDMBXcRTp03D"
+}

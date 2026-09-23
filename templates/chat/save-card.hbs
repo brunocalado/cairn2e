@@ -1,0 +1,8 @@
+{{!-- A save's body. The caption ("STR save") is the message's own `flavor`, drawn by
+      `templates/chat/message.hbs`, and the roll line is the Roll's own chat template — the same
+      one `/r` draws — so the faces fold out of a save exactly as they do out of anything else. --}}
+{{{rollHTML}}}
+<p class="cairn-card-outcome {{resultCls}}">{{resultLabel}}</p>
+{{#if outcomeText}}
+<p>{{outcomeText}}</p>
+{{/if}}

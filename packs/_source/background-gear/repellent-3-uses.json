@@ -1,0 +1,31 @@
+{
+  "_id": "IDgKEN7Ptc87kNmn",
+  "name": "Repellent (3 uses)",
+  "type": "gear",
+  "img": "icons/consumables/plants/dried-herb-bundle-brown.webp",
+  "system": {
+    "description": "<p>Repellent (pick the type, 3 uses)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!IDgKEN7Ptc87kNmn",
+  "folder": "VCf486fS9s17em9n"
+}

@@ -1,0 +1,30 @@
+{
+  "_id": "xNFvJV971IDEj7zZ",
+  "name": "Bow",
+  "type": "gear",
+  "img": "icons/weapons/bows/shortbow-leaves-green.webp",
+  "system": {
+    "description": "<p>Bow (d6 damage, <em>bulky</em>)</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xNFvJV971IDEj7zZ"
+}

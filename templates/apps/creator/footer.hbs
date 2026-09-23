@@ -1,0 +1,21 @@
+{{!-- Back at the left; at the right, Next on steps 1–6 and the one submit button on the
+      Review. Back and Next are `type="button"`, so neither can submit. Create is disabled from
+      the same four conditions `#onSubmit` checks (`canCreate`), and the footer is re-rendered
+      on every tab change, so the button and the Status line on the Review never disagree.
+      The rule above them is drawn, like the two around the rail. --}}
+<footer class="creator-footer">
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="creator-foot-rule" data-ink-w="1.8"></div>
+    <button type="button" data-action="stepBack" {{#if isFirstStep}}disabled{{/if}}>
+        <i class="fas fa-arrow-left"></i> {{localize "CAIRN.CharacterCreator.Back"}}
+    </button>
+    {{#if isLastStep}}
+    <button type="submit" class="create" {{#unless canCreate}}disabled{{/unless}}>
+        <i class="fas fa-skull"></i>
+        {{#if target}}{{localize "CAIRN.CharacterCreator.Apply"}}{{else}}{{localize "CAIRN.CharacterCreator.Create"}}{{/if}}
+    </button>
+    {{else}}
+    <button type="button" data-action="stepNext" {{#unless hasBackground}}disabled{{/unless}}>
+        {{localize "CAIRN.CharacterCreator.Next"}} <i class="fas fa-arrow-right"></i>
+    </button>
+    {{/if}}
+</footer>

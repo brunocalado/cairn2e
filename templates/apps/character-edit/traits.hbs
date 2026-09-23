@@ -1,0 +1,9 @@
+{{!-- The eight d10 traits. This is the tallest tab, and the window is sized to it. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="traits">
+    {{#each traits as |trait|}}
+    <div class="cairn-field">
+        <label for="cairn-edit-{{trait.key}}">{{localize trait.label}}</label>
+        <input id="cairn-edit-{{trait.key}}" type="text" name="system.traits.{{trait.key}}" value="{{trait.value}}" />
+    </div>
+    {{/each}}
+</section>

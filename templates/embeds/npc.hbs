@@ -1,0 +1,42 @@
+{{!-- An NPC read where the Warden is already reading: `@Embed[Actor.…]` inside a journal page.
+
+      This is a stat block, not a sheet. Nothing here is a control, nothing is editable, and the
+      way back to the real Actor is the citation link core wraps this in — so the block itself
+      carries no name link of its own.
+
+      The statline follows `srd-2e/wardens-guide/bestiary.md`, which writes a monster as
+      `N HP, N STR, N DEX, N WIL, attack (dN)` on one line. Keeping that order means a Warden who
+      knows the book can read this without translating. --}}
+<div class="cairn-embed-head">
+    <img class="cairn-embed-portrait" src="{{img}}" alt="" />
+    <div class="cairn-embed-title">
+        <span class="cairn-embed-name">{{name}}</span>
+        {{#if isDetachment}}<span class="cairn-item-tag">{{localize 'CAIRN.Detachment'}}</span>{{/if}}
+    </div>
+</div>
+
+<div class="cairn-embed-statline">
+    <span><b>{{hp.value}}</b> {{localize 'CAIRN.HitProtection'}}</span>
+    {{#if armorTotal}}<span><b>{{armorTotal}}</b> {{localize 'CAIRN.Armor'}}</span>{{/if}}
+    <span><b>{{abilities.STR.value}}</b> {{localize 'STR'}}</span>
+    <span><b>{{abilities.DEX.value}}</b> {{localize 'DEX'}}</span>
+    <span><b>{{abilities.WIL.value}}</b> {{localize 'WIL'}}</span>
+</div>
+
+{{!-- The weapons carry the attack dice, which the SRD prints as part of the statline. Read off
+      the embedded Items rather than restated, so a monster edited on its sheet stays right here. --}}
+{{#if weapons.length}}
+<div class="cairn-embed-statline">
+    {{#each weapons}}<span>{{this.name}} {{#if this.system.damage}}({{this.system.damage}}){{/if}}</span>{{/each}}
+</div>
+{{/if}}
+
+{{#if description}}<div class="cairn-embed-body">{{{description}}}</div>{{/if}}
+
+{{!-- The bullets under a bestiary statblock are `feature` Items. A Critical Damage clause is one
+      of them and reads as one; nothing here promotes it. --}}
+{{#if features.length}}
+<ul class="cairn-embed-features">
+    {{#each features}}<li>{{this.name}}</li>{{/each}}
+</ul>
+{{/if}}

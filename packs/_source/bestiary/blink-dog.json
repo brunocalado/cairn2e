@@ -1,0 +1,99 @@
+{
+  "_id": "TZnCQmgUFBYWC1K9",
+  "name": "Blink Dog",
+  "type": "npc",
+  "img": "icons/creatures/mammals/humanoid-wolf-dog-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 11,
+        "max": 11
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 5,
+        "max": 5
+      }
+    },
+    "hp": {
+      "value": 5,
+      "max": 5
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "BWkXwYHbk1S1kL7d",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!TZnCQmgUFBYWC1K9.BWkXwYHbk1S1kL7d"
+    },
+    {
+      "name": "Teleporting canines in service of a powerful master.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "CQmhg2ktTAZNkOb8",
+      "_key": "!actors.items!TZnCQmgUFBYWC1K9.CQmhg2ktTAZNkOb8"
+    },
+    {
+      "name": "Can phase out of reality at will.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Melee attacks against them are <em>impaired</em>.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "cEuIxRQDSSVLZUGR",
+      "_key": "!actors.items!TZnCQmgUFBYWC1K9.cEuIxRQDSSVLZUGR"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!TZnCQmgUFBYWC1K9"
+}

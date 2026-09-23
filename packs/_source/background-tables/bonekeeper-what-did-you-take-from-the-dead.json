@@ -1,0 +1,108 @@
+{
+  "_id": "RbtEhCkgE6nVNXc7",
+  "name": "Bonekeeper: What did you take from the dead?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Bonekeeper</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "7EVFaZL2dmsfqYz2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>crow-shaped amulet</strong>. You can ask a question of the dead but must add a <strong>Fatigue</strong> each time. They do not always speak truthfully.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.7EVFaZL2dmsfqYz2"
+    },
+    {
+      "_id": "0NV2O2Hu7tEl3PSM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>mortal wound</strong> from a freed <em>revenant</em>. You were healed, but the disfigurement has made you a pariah. You require neither air nor sustenance but are still subject to pain and death. Trapped between worlds, the dead see you as one of their own.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.0NV2O2Hu7tEl3PSM"
+    },
+    {
+      "_id": "e4gRWPe8GT2eGKJ4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>Blood Pail</strong> (<em>bulky</em>) from a local death-cult. Empty it to raise a servant built from whatever is buried below, with 6 HP, 1 Armor, 13 STR, 11 DEX, 4 WIL, and shard fists (d8+d8). Only one servant can be raised at a time. If destroyed, you permanently lose 1d4 STR. <strong>Recharge</strong>: Fill with the blood of a dying warrior.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.e4gRWPe8GT2eGKJ4"
+    },
+    {
+      "_id": "JYmVHVd85cTjK8q5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>burial wagon</strong> (+6 slots, <em>slow</em>) from your last job. It came with a stubborn old <strong>donkey</strong> (+4 slots, only +2 slots if pulling wagon).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.JYmVHVd85cTjK8q5"
+    },
+    {
+      "_id": "cDtwSaiHhCX2CLH5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The <strong>Detect Magic</strong> Spellbook, stolen from an ancient library. Your family worked in service to an obscure underworld deity, but you lost your faith. Though exiled, you continue to serve, even as an apostate. Detect Magic: You can see or hear nearby magical auras. <em>Becomes warm to the touch when magic is used nearby.</em></p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.cDtwSaiHhCX2CLH5"
+    },
+    {
+      "_id": "XTDDY8ZIda8XZyr3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A <strong>plague doctor's mask</strong>, after its owner succumbed to the disease that wiped out everyone you once knew. They should have kept it on.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.XTDDY8ZIda8XZyr3"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!RbtEhCkgE6nVNXc7"
+}

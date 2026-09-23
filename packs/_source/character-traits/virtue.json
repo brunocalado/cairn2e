@@ -1,0 +1,168 @@
+{
+  "_id": "arGCbKWAooB3yqON",
+  "name": "Virtue",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "VDrbnD8rVpAy6VRr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ambitious",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.VDrbnD8rVpAy6VRr"
+    },
+    {
+      "_id": "4mCUnn0SKHgGoU49",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cautious",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.4mCUnn0SKHgGoU49"
+    },
+    {
+      "_id": "fsgFympPWPGR6E5n",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Courageous",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.fsgFympPWPGR6E5n"
+    },
+    {
+      "_id": "QGFeJCORpH23OVGy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Disciplined",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.QGFeJCORpH23OVGy"
+    },
+    {
+      "_id": "5AOknOTHS1zv62dL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Gregarious",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.5AOknOTHS1zv62dL"
+    },
+    {
+      "_id": "qCHQ8E4LhvWPNrqG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Honorable",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.qCHQ8E4LhvWPNrqG"
+    },
+    {
+      "_id": "fcZ2HXz4myGwQ772",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Humble",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.fcZ2HXz4myGwQ772"
+    },
+    {
+      "_id": "39sGFGIMdBqq0qFS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Merciful",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.39sGFGIMdBqq0qFS"
+    },
+    {
+      "_id": "oZYsmi9FNQP6xvjg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Serene",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.oZYsmi9FNQP6xvjg"
+    },
+    {
+      "_id": "CkQFh3jxrXHtSp3E",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tolerant",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!arGCbKWAooB3yqON.CkQFh3jxrXHtSp3E"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!arGCbKWAooB3yqON"
+}

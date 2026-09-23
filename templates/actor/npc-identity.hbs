@@ -1,0 +1,54 @@
+{{!-- The Identity tab: what `wardens-guide/npc-tables.md` and the Character Traits tables give
+      a person. Every row is here for every person — a hireling's six appearance traits are not
+      a different kind of field, and `core-rules.md` § Hirelings rolls them on the same tables a
+      character uses.
+
+      A row with nothing written in it does not draw: this face is a fair copy, and a labelled
+      rule over empty space says only that a question was asked. Every field is always present in
+      the window behind the quill, which is where they are filled — so an NPC nobody has written
+      anything about yet has an empty tab, and that is the honest reading of the state.
+
+      Read-only, all of it, in the character's Identity idiom. It is edited — and rolled — in the
+      window behind the quill: a field editable in two places is two sources of truth one save
+      apart, and a die that writes the document from a face that is otherwise read is the same
+      problem in a new place. No name: it is typed in the header.
+
+      Not rendered at all for a creature (`CairnNpcSheet#_configureRenderParts`): a creature
+      describes itself on Features. --}}
+<section class="tab {{tabs.identity.cssClass}}" data-group="primary" data-tab="identity">
+    <div class="cairn-trait-grid">
+        {{#if system.background}}
+        <span class="cairn-trait-label">{{localize 'CAIRN.Background'}}</span>
+        <span class="cairn-trait-value" data-ink="hline" data-ink-seed="npc-background"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{system.background}}</span>
+        {{/if}}
+        {{#if system.traits.quirk}}
+        <span class="cairn-trait-label">{{localize 'CAIRN.Quirk'}}</span>
+        <span class="cairn-trait-value" data-ink="hline" data-ink-seed="npc-quirk"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{system.traits.quirk}}</span>
+        {{/if}}
+        {{#if system.traits.goal}}
+        <span class="cairn-trait-label">{{localize 'CAIRN.Goal'}}</span>
+        <span class="cairn-trait-value" data-ink="hline" data-ink-seed="npc-goal"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{system.traits.goal}}</span>
+        {{/if}}
+        {{#if system.traits.virtue}}
+        <span class="cairn-trait-label">{{localize 'CAIRN.Trait.Virtue'}}</span>
+        <span class="cairn-trait-value" data-ink="hline" data-ink-seed="npc-virtue"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{system.traits.virtue}}</span>
+        {{/if}}
+        {{#if system.traits.vice}}
+        <span class="cairn-trait-label">{{localize 'CAIRN.Trait.Vice'}}</span>
+        <span class="cairn-trait-value" data-ink="hline" data-ink-seed="npc-vice"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{system.traits.vice}}</span>
+        {{/if}}
+        {{!-- Career and rate are printed in the header, not here. --}}
+        {{#each appearanceTraits as |trait|}}
+        {{#if trait.value}}
+        <span class="cairn-trait-label">{{localize trait.label}}</span>
+        <span class="cairn-trait-value" data-ink="hline" data-ink-seed="npc-trait-{{trait.key}}"
+            data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{trait.value}}</span>
+        {{/if}}
+        {{/each}}
+    </div>
+</section>

@@ -1,0 +1,31 @@
+{
+  "_id": "lIgWwHdOKHAc8GnD",
+  "name": "Thief's Bane",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p>An object appears trapped, even to an experienced thief.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lIgWwHdOKHAc8GnD",
+  "folder": "MCt2VTDHSjLFlLso"
+}

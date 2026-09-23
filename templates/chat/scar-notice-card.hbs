@@ -1,0 +1,10 @@
+{{!-- The table's own reminder: this character owes a Scar. It is posted by whichever client made
+      the hit — the damage card's Apply, or the − stepper on the sheet — so the whole table sees it
+      whatever took the character down.
+
+      The button is the way back in. The window opens by itself on the owner's client, but a window
+      can be closed by accident and a Scar can be rolled a session later, so the card carries the
+      actor's uuid in a flag rather than leaning on the speaker's token, which may be off the canvas
+      by then. --}}
+<p>{{localize 'CAIRN.Scar.Notice' name=name lost=lost}}</p>
+<button type="button" class="cairn-card-action open-scars">{{localize 'CAIRN.Scar.Open'}}</button>

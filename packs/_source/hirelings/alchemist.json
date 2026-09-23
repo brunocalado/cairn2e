@@ -1,0 +1,241 @@
+{
+  "_id": "AvIqjZUClup8iCKz",
+  "name": "Alchemist",
+  "type": "npc",
+  "img": "icons/tools/laboratory/alembic-glass-ball-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 10,
+        "max": 10
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Alchemist",
+    "dayRate": 30,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "HFue4milhZ6dJ7gm",
+      "_key": "!actors.items!AvIqjZUClup8iCKz.HFue4milhZ6dJ7gm"
+    },
+    {
+      "name": "Torch",
+      "type": "gear",
+      "img": "icons/sundries/lights/torch-black.webp",
+      "system": {
+        "description": "<p>Torch (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4q4VjZCJDJlmRn21",
+      "_key": "!actors.items!AvIqjZUClup8iCKz.4q4VjZCJDJlmRn21"
+    },
+    {
+      "name": "Dagger",
+      "type": "gear",
+      "img": "icons/weapons/daggers/dagger-bone-grey.webp",
+      "system": {
+        "description": "<p>Dagger (d6 damage)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "SzOJDJF9YF91g2oH",
+      "_key": "!actors.items!AvIqjZUClup8iCKz.SzOJDJF9YF91g2oH"
+    },
+    {
+      "name": "Acid",
+      "type": "gear",
+      "img": "icons/consumables/potions/vial-cork-green.webp",
+      "system": {
+        "description": "<p>Acid</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "kepdEfsU1WVCQ2n4",
+      "_key": "!actors.items!AvIqjZUClup8iCKz.kepdEfsU1WVCQ2n4"
+    },
+    {
+      "name": "Lens",
+      "type": "gear",
+      "img": "icons/tools/scribal/magnifying-glass.webp",
+      "system": {
+        "description": "<p>Lens</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "9zOrZkkLSZME18YB",
+      "_key": "!actors.items!AvIqjZUClup8iCKz.9zOrZkkLSZME18YB"
+    },
+    {
+      "name": "Gloves",
+      "type": "gear",
+      "img": "icons/equipment/hand/glove-belted-leather-blue.webp",
+      "system": {
+        "description": "<p>Gloves (<em>petty</em>)</p>",
+        "slots": 0,
+        "equipped": false,
+        "cost": 20,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "NWYYXaJI91dbgP6P",
+      "_key": "!actors.items!AvIqjZUClup8iCKz.NWYYXaJI91dbgP6P"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!AvIqjZUClup8iCKz"
+}

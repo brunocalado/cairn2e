@@ -1,0 +1,38 @@
+{
+  "_id": "CzeddFwhFkt7iimK",
+  "name": "Marchguard",
+  "type": "background",
+  "img": "icons/equipment/shield/shield-round-boss-wood-brown.webp",
+  "system": {
+    "description": "<blockquote><p>Bound by blood Oath to patrol the border and protect the realm. Once sworn, the Oath cannot be broken. The Guard always finds their own.</p></blockquote>",
+    "names": [
+      "Gann",
+      "Light",
+      "Saoirse",
+      "Frost",
+      "Thorn",
+      "Reed",
+      "Dirk",
+      "Ragnar",
+      "Brie",
+      "Aasim"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.lAOJ4KhINKHkQFKY",
+      "Compendium.cairn2e.gear.Item.DEIG5kYj2mhV3hRM",
+      "Compendium.cairn2e.weapons.Item.WwEEaLMmjSyap9kH",
+      "Compendium.cairn2e.background-gear.Item.1WrwqFNAEVwO8jl6"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.0JSuAmZridlP5xAS",
+      "Compendium.cairn2e.background-tables.RollTable.NmjiklcayJDLuz6u"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!CzeddFwhFkt7iimK"
+}

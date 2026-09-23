@@ -1,0 +1,113 @@
+{
+  "_id": "Vu54nukvA934ROVa",
+  "name": "Lich",
+  "type": "npc",
+  "img": "icons/magic/death/undead-skeleton-lich-armor.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 18,
+        "max": 18
+      }
+    },
+    "hp": {
+      "value": 14,
+      "max": 14
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "KAM30Eil5Jmx0SWW",
+      "name": "Soul Dagger",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>soul dagger (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!Vu54nukvA934ROVa.KAM30Eil5Jmx0SWW"
+    },
+    {
+      "name": "Powerful sorcerers that paid the ultimate price for immortality: their own life.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Now their thirst for power knows no bounds.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "HQXGncjGVUq3hbVf",
+      "_key": "!actors.items!Vu54nukvA934ROVa.HQXGncjGVUq3hbVf"
+    },
+    {
+      "name": "Maintain unlife by binding themselves to an earthly artifact, which is typically protected by at least d6 other undead servants.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "iNUCNiPFJGTa00IX",
+      "_key": "!actors.items!Vu54nukvA934ROVa.iNUCNiPFJGTa00IX"
+    },
+    {
+      "name": "Carry up to six of the following spellbooks: Animate Object, Arcane Eye, Deafen, Disassemble, Elemental Wall, Frenzy, Gate, Hover, Hatred, Identify Owner, Knock, Pacify, Raise Dead, Raise Spirit, Shield, Sleep, Smoke Form, Telekinesis, Telepathy, Teleport, Vision, Wizard Mark.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "s49c4dGzOB6NR4yl",
+      "_key": "!actors.items!Vu54nukvA934ROVa.s49c4dGzOB6NR4yl"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!Vu54nukvA934ROVa"
+}

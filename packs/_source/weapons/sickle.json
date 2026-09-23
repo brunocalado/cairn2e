@@ -1,0 +1,30 @@
+{
+  "_id": "hEOii1unpB3UBy5L",
+  "name": "Sickle",
+  "type": "gear",
+  "img": "icons/weapons/sickles/sickle-curved.webp",
+  "system": {
+    "description": "<p>Sickle (d6 damage)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 5,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hEOii1unpB3UBy5L"
+}

@@ -1,0 +1,108 @@
+{
+  "_id": "iwnWLLNfRcYLE5z6",
+  "name": "Outrider: What breed is your horse?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Outrider</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "Tv0XA3DHMv99Gved",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Heavy Destrier</strong> A beast built for war, an imposing creature. 8 HP, 1 Armor, hooves (d10+d10), +2 slots.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.Tv0XA3DHMv99Gved"
+    },
+    {
+      "_id": "VTQsGfnudKUnWBZs",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Blacklegged Dandy</strong> Hardy and adaptable. <strong>Tough</strong> or <strong>Perilous</strong> terrain are one step easier. 6 HP. +4 slots.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.VTQsGfnudKUnWBZs"
+    },
+    {
+      "_id": "K3IiqaObJJek9cwP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Rivertooth</strong> Impressively strong, capable of carrying heavy loads. 4 HP. +6 slots (only +2 slots if carrying two people).</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.K3IiqaObJJek9cwP"
+    },
+    {
+      "_id": "MQgxlNQXVtegJxR7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Piebald Cob</strong> Intelligent, it can understand simple commands and even has an instinct for danger. 6 HP. +4 slots.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.MQgxlNQXVtegJxR7"
+    },
+    {
+      "_id": "xbNdMdSuTvGaIMyZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Linden White</strong> Highly trained and agile, it can perform intricate maneuvers in a time of need (no DEX save to flee). 4 HP. +3 slots.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.xbNdMdSuTvGaIMyZ"
+    },
+    {
+      "_id": "98mp070uAE3r6Rts",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Stray Fogger</strong> Wild but very fast (even in <strong>Tough</strong> terrain). Rides light. 4 HP. +2 slots.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.98mp070uAE3r6Rts"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!iwnWLLNfRcYLE5z6"
+}

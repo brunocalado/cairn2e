@@ -1,0 +1,31 @@
+{
+  "_id": "JRaB1j5guyzAB86d",
+  "name": "Roast Goose",
+  "type": "gear",
+  "img": "icons/consumables/food/cooked-drumstick-glazed-turkey-leg.webp",
+  "system": {
+    "description": "<p>Roast Goose (whole)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!JRaB1j5guyzAB86d",
+  "folder": "oZhGiDOcu7cDovBl"
+}

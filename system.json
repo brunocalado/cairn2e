@@ -1,0 +1,284 @@
+{
+  "id": "cairn2e",
+  "title": "Cairn 2e",
+  "description": "Cairn Second Edition for Foundry VTT. A rules-faithful implementation of the Cairn 2e SRD by Yochai Gal — background-driven character creation, roll-under saves, ten inventory slots, Panic, and the 2e bestiary.",
+  "version": "0.0.1",
+  
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.368"
+  },
+  
+  "authors": [
+    {
+      "name": "Mestre Digital",
+      "url": "https://www.youtube.com/c/MestreDigital"
+    }
+  ],
+  
+  "socket": true,
+  "esmodules": [
+    "module/cairn2e.js"
+  ],
+  "styles": [
+    { "src": "css/cairn2e.min.css" }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": { "htmlFields": ["description"] },
+      "party": {}
+    },
+    "Item": {
+      "gear": { "htmlFields": ["description", "recharge"] },
+      "coin": { "htmlFields": ["description"] },
+      "fatigue": { "htmlFields": ["description"] },
+      "background": { "htmlFields": ["description"] },
+      "feature": { "htmlFields": ["description"] },
+      "scar": { "htmlFields": ["description"] },
+      "growth": { "htmlFields": ["description"] }
+    },
+    "JournalEntryPage": {
+      "route": { "htmlFields": ["description"] },
+      "faction": { "htmlFields": ["description"] }
+    }
+  },
+  "packs": [
+    {
+      "name": "character-traits",
+      "label": "Character Traits",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/character-traits",
+      "type": "RollTable"
+    },
+    {
+      "name": "bonds",
+      "label": "Bonds",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/bonds",
+      "type": "RollTable"
+    },
+    {
+      "name": "omens",
+      "label": "Omens",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/omens",
+      "type": "RollTable"
+    },
+    {
+      "name": "backgrounds",
+      "label": "Backgrounds",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/backgrounds",
+      "type": "Item"
+    },
+    {
+      "name": "background-tables",
+      "label": "Background Tables",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/background-tables",
+      "type": "RollTable"
+    },
+    {
+      "name": "background-gear",
+      "label": "Background Gear",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/background-gear",
+      "type": "Item"
+    },
+    {
+      "name": "gear",
+      "label": "Gear",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/gear",
+      "type": "Item"
+    },
+    {
+      "name": "weapons",
+      "label": "Weapons",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/weapons",
+      "type": "Item"
+    },
+    {
+      "name": "armor",
+      "label": "Armor",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/armor",
+      "type": "Item"
+    },
+    {
+      "name": "spellbooks",
+      "label": "Spellbooks",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/spellbooks",
+      "type": "Item"
+    },
+    {
+      "name": "scrolls",
+      "label": "Scrolls",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/scrolls",
+      "type": "Item"
+    },
+    {
+      "name": "relics",
+      "label": "Relics",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/relics",
+      "type": "Item"
+    },
+    {
+      "name": "tables",
+      "label": "Game Tables",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/tables",
+      "type": "RollTable"
+    },
+    {
+      "name": "bestiary",
+      "label": "Bestiary",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/bestiary",
+      "type": "Actor",
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "hirelings",
+      "label": "Hirelings",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/hirelings",
+      "type": "Actor"
+    },
+    {
+      "name": "warden",
+      "label": "Warden Tables",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/warden",
+      "type": "RollTable"
+    },
+    {
+      "name": "macros",
+      "label": "Macros",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/macros",
+      "type": "Macro",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "more-gear",
+      "label": "More Gear",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/more-gear",
+      "type": "Item"
+    },
+    {
+      "name": "more-spellbooks",
+      "label": "More Spellbooks",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/more-spellbooks",
+      "type": "Item"
+    },
+    {
+      "name": "more-scrolls",
+      "label": "More Scrolls",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/more-scrolls",
+      "type": "Item"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Cairn 2e",
+      "sorting": "m",
+      "packs": ["macros"],
+      "folders": [
+        {
+          "name": "Character Creation",
+          "sorting": "m",
+          "color": "#6e5a3c",
+          "packs": ["backgrounds", "background-tables", "background-gear", "character-traits", "bonds", "omens"]
+        },
+        {
+          "name": "Equipment",
+          "sorting": "m",
+          "color": "#4a5a52",
+          "packs": ["gear", "weapons", "armor"]
+        },
+        {
+          "name": "Magic",
+          "sorting": "m",
+          "color": "#4b3f63",
+          "packs": ["spellbooks", "scrolls", "relics"]
+        },
+        {
+          "name": "Reference",
+          "sorting": "m",
+          "color": "#3f5670",
+          "packs": ["tables", "bestiary", "hirelings"]
+        },
+        {
+          "name": "Warden",
+          "sorting": "m",
+          "color": "#6e1414",
+          "packs": ["warden"]
+        },
+        {
+          "name": "Homebrew",
+          "sorting": "m",
+          "color": "#5c5c5c",
+          "packs": ["more-gear", "more-spellbooks", "more-scrolls"]
+        }
+      ]
+    }
+  ],
+  "relationships": {
+    "recommends": [
+      {
+        "id": "dice-so-nice",
+        "type": "module",
+        "manifest": "https://gitlab.com/riccisi/foundryvtt-dice-so-nice/-/raw/master/module/module.json",
+        "compatibility": { "minimum": "6.3.0", "verified": "6.3.0" },
+        "reason": "Rolls the system's own 3D Cairn d20 (assets/dice/cairn-d20.glb)."
+      },
+      {
+        "id": "light-sources",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/brunocalado/light-sources/refs/heads/main/module.json",
+        "compatibility": { "minimum": "0.0.9", "verified": "0.0.9" },
+        "reason": "Lights a Torch, Lantern, Candle Helmet or Lightsucker Candle from the Token HUD and spends its uses; lights Illuminate when it is cast."
+      }
+    ]
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "hbs", "json"],
+      "paths": ["css", "templates", "lang"]
+    }
+  },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "grid": {
+    "type": 1,
+    "distance": 5,
+    "units": "ft",
+    "diagonals": 4
+  },
+  "primaryTokenAttribute": "hp",
+  "secondaryTokenAttribute": "abilities.STR",
+  "url": "https://github.com/brunocalado/cairn2e",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "bugs": "https://github.com/brunocalado/cairn2e/issues",
+  "changelog": "CHANGELOG.md",
+  "manifest": "https://github.com/brunocalado/cairn2e/releases/latest/download/system.json",
+  "download": "https://github.com/brunocalado/cairn2e/releases/latest/download/cairn2e.zip",
+  
+  "background": "systems/cairn2e/assets/background.webp"
+  
+}

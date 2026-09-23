@@ -1,0 +1,31 @@
+{
+  "_id": "qNlLMFkfMXkTrTDw",
+  "name": "Dress, silk",
+  "type": "gear",
+  "img": "icons/equipment/chest/robe-layered-red.webp",
+  "system": {
+    "description": "<p>Dress, silk (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 40,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qNlLMFkfMXkTrTDw",
+  "folder": "XycVdoNLEuiHY9my"
+}

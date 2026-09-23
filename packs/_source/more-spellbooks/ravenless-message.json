@@ -1,0 +1,31 @@
+{
+  "_id": "DHVHkWK6FS01YLKj",
+  "name": "Ravenless Message",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p>You send a short message 1 mile that anyone along its path can hear.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DHVHkWK6FS01YLKj",
+  "folder": "MCt2VTDHSjLFlLso"
+}

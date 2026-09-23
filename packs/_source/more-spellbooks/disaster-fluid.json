@@ -1,0 +1,31 @@
+{
+  "_id": "KS93WEfd5a5WhNiH",
+  "name": "Disaster Fluid",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p>Anything in a 10ft square becomes slippery; DEX save to avoid slipping.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KS93WEfd5a5WhNiH",
+  "folder": "MCt2VTDHSjLFlLso"
+}

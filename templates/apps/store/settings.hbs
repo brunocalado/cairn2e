@@ -1,0 +1,25 @@
+{{!-- A store's own settings. The name is the one the `<select>` and the window's title carry.
+      The two rates are percentages of an item's own `cost`: what the store pays for a thing a
+      character sells, and what it charges for one on the shelf — 100 is the price in the book,
+      above it a markup, below it a sale. Neither touches the Item, so the copy a character buys
+      keeps its own cost and sells back anywhere at what the thing is worth.
+
+      `<range-picker>` is core's own form element and it draws its number box beside the track,
+      so the form needs no read-out of its own; being form-associated, `FormDataExtended` hands
+      both back as Numbers with no `data-dtype`. --}}
+<div class="cairn-store-settings">
+    <div class="cairn-field">
+        <label for="store-name">{{localize "CAIRN.Name"}}</label>
+        <input id="store-name" type="text" name="name" value="{{name}}" autofocus />
+    </div>
+    <div class="cairn-field">
+        <label for="store-sell">{{localize "CAIRN.Store.SellRate"}}</label>
+        <range-picker id="store-sell" name="sellRatio" value="{{sellRatio}}" min="0" max="100" step="5"></range-picker>
+    </div>
+    <p class="cairn-store-hint">{{localize "CAIRN.Store.SellRateHint"}}</p>
+    <div class="cairn-field">
+        <label for="store-buy">{{localize "CAIRN.Store.BuyRate"}}</label>
+        <range-picker id="store-buy" name="buyRatio" value="{{buyRatio}}" min="25" max="300" step="5"></range-picker>
+    </div>
+    <p class="cairn-store-hint">{{localize "CAIRN.Store.BuyRateHint"}}</p>
+</div>

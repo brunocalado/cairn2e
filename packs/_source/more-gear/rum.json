@@ -1,0 +1,31 @@
+{
+  "_id": "NMJaebAwQWRvS9sv",
+  "name": "Rum",
+  "type": "gear",
+  "img": "icons/containers/kitchenware/jug-bottle-clay-brown-gold-blue.webp",
+  "system": {
+    "description": "<p>Rum (bottle)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!NMJaebAwQWRvS9sv",
+  "folder": "7rqfs1jHTkbTjMVH"
+}

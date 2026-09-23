@@ -1,0 +1,39 @@
+{
+  "_id": "7e6Ptrj4R5OSsxOo",
+  "name": "Greenwise",
+  "type": "background",
+  "img": "icons/consumables/plants/sprout-leaf-herb-green.webp",
+  "system": {
+    "description": "<blockquote><p>You delve deep into the <strong>Wood</strong>, prying its secrets from between rough boughs and whispering leaves. To this verdant kingdom, you are no mere scholar but its confidant as well.</p></blockquote>",
+    "names": [
+      "Gunther",
+      "Moss",
+      "Fern",
+      "Lichen",
+      "Root",
+      "Willow",
+      "Sage",
+      "Yarrow",
+      "Rowan",
+      "Ash"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.irSZGw4IkSNFgZVz",
+      "Compendium.cairn2e.background-gear.Item.gJdBtG0fnS8XIAJA",
+      "Compendium.cairn2e.background-gear.Item.Cfzj6x6mEWwotok7",
+      "Compendium.cairn2e.background-gear.Item.nJap3dsHQQD5Cceh"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.qjjSsrTFWF1tDmDj",
+      "Compendium.cairn2e.background-tables.RollTable.Ody3I6yTN4OcQBqA"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7e6Ptrj4R5OSsxOo"
+}

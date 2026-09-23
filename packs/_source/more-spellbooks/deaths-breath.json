@@ -1,0 +1,31 @@
+{
+  "_id": "gNlQLldC8FlQ7AR2",
+  "name": "Death's Breath",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p>You summon a poisonous cloud (d6 STR loss) you can control.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gNlQLldC8FlQ7AR2",
+  "folder": "MCt2VTDHSjLFlLso"
+}

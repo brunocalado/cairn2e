@@ -1,0 +1,131 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * NPC sheet — the Features tab and the Details tab. The header is the   *
+     * character's (`.cairn-actor-header`) and needs nothing of its own.     *
+     **************************************************************************/
+
+    /* PROMOTE, on the title bar: a word among core's icon controls. Core's `button.header-control`
+       gives it the bar's colour, size and no border; this only sets the word — the sheet's label
+       voice — and lets the button be as wide as it. Qualified with `.window-header` on purpose:
+       the ink-button primitive excludes the frame, and this must not become the way back in. */
+    .window-header .cairn-frame-label {
+        font-size: 11px;
+        letter-spacing: var(--cairn-label-track);
+        padding: 0 6px;
+        text-transform: uppercase;
+        width: auto;
+    }
+
+    /* Under the name: the role, and for a hireling their trade and price, printed rather than
+       controlled — the edit window is where they change. */
+    .cairn-header-sub .cairn-role {
+        font-family: var(--cairn-serif);
+        font-size: 12px;
+        letter-spacing: var(--cairn-label-track);
+        text-transform: uppercase;
+    }
+
+    .cairn-header-sub .cairn-career {
+        color: var(--cairn-ink-soft);
+        font-size: 13px;
+        font-style: italic;
+    }
+
+    /* A feature is a line of prose with two controls at its end: the name in bold and the
+       description running on after it, the way the SRD prints `**Label**: text`. The enriched
+       description arrives as `<p>` blocks; the first is inline so the label and the sentence
+       share a line, and any further paragraph starts its own. */
+    .cairn-feature,
+    .cairn-record {
+        align-items: flex-start;
+        display: flex;
+        gap: 8px;
+        margin-bottom: var(--cairn-slot-gap);
+        min-height: var(--cairn-slot-h);
+        padding: 4px 0;
+        position: relative;
+    }
+
+    .cairn-feature {
+        .cairn-feature-text {
+            flex: 1;
+            font-size: 13px;
+            line-height: 1.4;
+            min-width: 0;
+        }
+    }
+
+    .cairn-feature-text p {
+        margin: 0;
+    }
+
+    /* A record row on the character's Growth tab — a Scar or a Growth, which are the same line:
+       a sentence with controls after it, plus the tags underneath. A tag here is a printed record
+       and not a control, so it keeps the tag's ground and never the button's frame. The tags go
+       UNDER the sentence, in a column with it: set beside a sentence that wraps to three lines
+       they hung mid-row, aligned to nothing. The row itself is the feature's line, above. */
+    .cairn-record {
+        .cairn-record-body {
+            align-items: flex-start;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .cairn-record-text {
+            font-size: 13px;
+            line-height: 1.4;
+
+            p {
+                display: inline;
+                margin: 0;
+            }
+        }
+
+        /* Tabular figures so a column of "4 → 7" lines up, and never wrapping mid-record. The
+           tag primitive centres itself on a row's cross axis; under the sentence the cross axis
+           is horizontal, and the record starts where the sentence does. */
+        .cairn-record-tag {
+            align-self: flex-start;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        /* Two tags on one row read as one sentence broken in half unless they are laid side by
+           side: a growth can carry both what it did to a maximum and how far its checklist has
+           got. */
+        .cairn-record-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+    }
+
+    /* The "Critical Damage:" lead of a flagged feature — the one printed word set in blood. */
+    .cairn-feature-critical {
+        color: var(--cairn-blood);
+        font-weight: 700;
+    }
+
+    .cairn-feature-text p:first-of-type {
+        display: inline;
+    }
+
+    /* Written at the element, not as a bare `.mini`: core declares `--button-size` on
+       `a.button, button, kbd` itself, so the selector that overrides it has to name the control
+       (checks/css-scoping.check.mjs enforces this). Every `.mini` in the system is a button. */
+    & button.mini {
+        --button-size: 26px;
+        width: auto;
+        padding: 0 6px;
+    }
+}

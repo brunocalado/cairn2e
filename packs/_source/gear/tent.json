@@ -1,0 +1,30 @@
+{
+  "_id": "uAtHUVkrUHWlKi5x",
+  "name": "Tent",
+  "type": "gear",
+  "img": "icons/sundries/survival/shelter-tent-small.webp",
+  "system": {
+    "description": "<p>Tent (fits 2, <em>bulky</em>)</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!uAtHUVkrUHWlKi5x"
+}

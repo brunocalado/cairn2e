@@ -1,0 +1,31 @@
+{
+  "_id": "FLJ7z1Py8d1ebaZo",
+  "name": "Brandy",
+  "type": "gear",
+  "img": "icons/containers/kitchenware/vase-bottle-brown.webp",
+  "system": {
+    "description": "<p>Brandy (bottle)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 15,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FLJ7z1Py8d1ebaZo",
+  "folder": "7rqfs1jHTkbTjMVH"
+}

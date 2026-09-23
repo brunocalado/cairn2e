@@ -1,0 +1,30 @@
+{
+  "_id": "7UPpQmxPZ5LgNQWN",
+  "name": "Mace",
+  "type": "gear",
+  "img": "icons/weapons/maces/mace-flanged-steel-grey.webp",
+  "system": {
+    "description": "<p>Mace (d8 damage)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7UPpQmxPZ5LgNQWN"
+}

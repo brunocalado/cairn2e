@@ -1,0 +1,31 @@
+{
+  "_id": "Zj0j8OAr0msrqwMA",
+  "name": "Herbs Pouch",
+  "type": "gear",
+  "img": "icons/tools/laboratory/bowl-herbs-green.webp",
+  "system": {
+    "description": "<p>Herbs Pouch (restore 1 STR, 3 uses)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Zj0j8OAr0msrqwMA",
+  "folder": "txYF1azSElMlB2lI"
+}

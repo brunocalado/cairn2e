@@ -1,0 +1,62 @@
+{{!-- The NPC sheet's top, on the character header's skeleton so the two line up at the same
+      window size: portrait, one name field with the Detachment chip on its line, the sub-line
+      with the two roll chips on its line, then the row of brush caps. Every frame is drawn at runtime by `module/ink.js` (`data-ink`); the portrait
+      alone has none, for the reason the character's has none. --}}
+<div class="cairn-sheet-header cairn-actor-header">
+
+    <div class="cairn-header-row">
+        <div class="cairn-portrait-frame">
+            <img class="portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" />
+        </div>
+
+        <div class="cairn-header-main">
+            {{!-- Line one: the ONE name field on the sheet, and for an enemy the Detachment chip
+                  — a state, the condition chip, flooded when on. The Details tab used to carry
+                  a second name field: two controls with one name reach the form as a
+                  RadioNodeList, and StringField casts that array with String() — every submit
+                  wrote "Boggart,Boggart". --}}
+            <div class="cairn-header-line">
+                <input class="name-input" type="text" name="name" value="{{actor.name}}"
+                    placeholder="{{localize 'CAIRN.Name'}}"
+                    data-ink="box" data-ink-seed="actor-name" data-ink-w="1.6" />
+                <div class="cairn-conditions">
+                    <button type="button" class="cairn-chip cairn-condition{{#if system.isDetachment}} is-on{{/if}}"
+                        data-action="detachmentToggle"
+                        data-ink="box" data-ink-seed="detachment" data-ink-w="1.6"
+                        {{#if system.isDetachment}}data-ink-fill="always" data-ink-fill-a="0.92" data-ink-fill-hover-a="0.74"{{else}}data-ink-fill="hover" data-ink-fill-a="0.14"{{/if}}>
+                        <span>{{localize 'CAIRN.Detachment'}}</span>
+                    </button>
+                </div>
+            </div>
+
+            {{!-- Line two: role, and their trade and price when they have one — read here, edited
+                  behind the quill; the one place on the face where the role is printed. At its
+                  right, for an enemy, the two actions in the character's chip language. --}}
+            <div class="cairn-header-line">
+                {{!-- Its own word, as the character's one-line variant has one: the stack wants
+                      air under the name's stroke that the centred character line does not. --}}
+                <div class="cairn-header-sub cairn-role-line">
+                    <span class="cairn-role">{{roleLabel}}</span>
+                    {{#if system.career}}
+                    <span class="cairn-career">{{system.career}} · {{localize 'CAIRN.PerDay' rate=system.dayRate}}</span>
+                    {{/if}}
+                </div>
+                <div class="cairn-sheet-actions">
+                    <button type="button" class="cairn-chip" data-action="rollMorale"
+                        data-ink="box" data-ink-seed="morale" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14">
+                        <span>{{localize 'CAIRN.RollMorale'}}</span>
+                    </button>
+                    <button type="button" class="cairn-chip" data-action="rollReaction"
+                        data-ink="box" data-ink-seed="reaction" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14">
+                        <span>{{localize 'CAIRN.RollReaction'}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- The character's attribute row: the steppers write the CURRENT value; the maxima and the
+          intrinsic armour are in the window behind the quill. `armorTotal` is intrinsic armour
+          plus what is equipped, capped at 3 (`module/data/actor-npc.js`). --}}
+    {{> "systems/cairn2e/templates/parts/attribute-row.hbs" abilities=abilities system=system seed="npc-cap" editable=editable}}
+</div>

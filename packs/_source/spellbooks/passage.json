@@ -1,0 +1,31 @@
+{
+  "_id": "t3Gw5DaTYY8j6TTL",
+  "name": "Passage",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p><em>An object dropped on top of the book inevitably falls through the other side.</em></p><p>Creates a temporary path through wood, stone or brick.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!t3Gw5DaTYY8j6TTL",
+  "folder": "CUFHa1lIQAt4nRUN"
+}

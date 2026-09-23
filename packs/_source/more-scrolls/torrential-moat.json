@@ -1,0 +1,31 @@
+{
+  "_id": "w608hig6TwrCgoHu",
+  "name": "Torrential Moat",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>You summon a powerful wind that deflects arrows, smaller creatures, and noxious gases.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!w608hig6TwrCgoHu",
+  "folder": "FeXVyrcexT1LlyqR"
+}

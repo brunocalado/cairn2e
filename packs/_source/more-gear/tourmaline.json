@@ -1,0 +1,31 @@
+{
+  "_id": "y5Y0zp07yMEz71wG",
+  "name": "Tourmaline",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-teardrop-pink.webp",
+  "system": {
+    "description": "<p>A teardrop that is pink at one end and green at the other.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!y5Y0zp07yMEz71wG",
+  "folder": "Qai89dBcno9Coube"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "lcTEiYbmRRZYmx71",
+  "name": "Leech",
+  "type": "gear",
+  "img": "icons/creatures/invertebrates/leech-attack-green.webp",
+  "system": {
+    "description": "<p>Leech (restores 1 STR, 3 uses)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lcTEiYbmRRZYmx71",
+  "folder": "9PouGVcgtvEJrEzy"
+}

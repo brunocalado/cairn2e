@@ -1,0 +1,38 @@
+{
+  "_id": "t91VLgLSOPLzI3Fw",
+  "name": "Bonekeeper",
+  "type": "background",
+  "img": "icons/commodities/bones/skull-monster-beige.webp",
+  "system": {
+    "description": "<blockquote><p>You are a shepherd to the departed. You listen to the final whispers of the dead as they descend into the cold, unyielding earth. You know that to fully celebrate the gift of life, we must honor its finale as well.</p></blockquote>",
+    "names": [
+      "Rook",
+      "Ebon",
+      "Moro",
+      "Yew",
+      "Pall",
+      "Leth",
+      "Bea",
+      "Barnaby",
+      "Vesper",
+      "Leder"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.lAOJ4KhINKHkQFKY",
+      "Compendium.cairn2e.gear.Item.DEIG5kYj2mhV3hRM",
+      "Compendium.cairn2e.background-gear.Item.gKRNHApjYFA7OwCo",
+      "Compendium.cairn2e.gear.Item.OTCJHK1d9Rk6QIfR"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.RbtEhCkgE6nVNXc7",
+      "Compendium.cairn2e.background-tables.RollTable.nftkT42PlPV4Fkdv"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!t91VLgLSOPLzI3Fw"
+}

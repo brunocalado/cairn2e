@@ -1,0 +1,31 @@
+{
+  "_id": "AEIkWM8jNgsnCuCh",
+  "name": "Sharpened Trowel",
+  "type": "gear",
+  "img": "icons/tools/hand/trowel.webp",
+  "system": {
+    "description": "<p>Sharpened Trowel (d6)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!AEIkWM8jNgsnCuCh",
+  "folder": "WuN39BkGc3MUzAYu"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "D7MhzW8hL4IGAn8C",
+  "name": "Bound",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p>Target can make a single jump to any place they can see.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!D7MhzW8hL4IGAn8C",
+  "folder": "MCt2VTDHSjLFlLso"
+}

@@ -1,0 +1,19 @@
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="traits">
+    <h3 data-ink="hline" data-ink-seed="step-traits" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.CharacterCreator.Traits"}}</h3>
+    <div class="section-controls">
+        <button type="button" data-action="rollAllTraits">
+            <i class="fas fa-dice"></i> {{localize "CAIRN.CharacterCreator.RollAll"}}
+        </button>
+    </div>
+    <div class="trait-grid">
+        {{#each traitRows}}
+        <div class="trait-row">
+            <button type="button" class="mini" data-action="rollTrait" data-trait="{{this.key}}">
+                <i class="fas fa-dice-d10"></i>
+            </button>
+            <label>{{localize this.label}}</label>
+            <input type="text" data-trait-input="{{this.key}}" value="{{this.value}}" />
+        </div>
+        {{/each}}
+    </div>
+</section>

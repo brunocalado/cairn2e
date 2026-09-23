@@ -1,0 +1,31 @@
+{
+  "_id": "Do2tcqARCv1s7aE6",
+  "name": "Spring-Loaded Trap",
+  "type": "gear",
+  "img": "icons/environment/traps/trap-jaw-steel.webp",
+  "system": {
+    "description": "<p>Spring-Loaded Trap (4 STR damage)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Do2tcqARCv1s7aE6",
+  "folder": "aOOxVUFyvLpt9vWg"
+}

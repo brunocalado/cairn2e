@@ -1,0 +1,31 @@
+{
+  "_id": "j7HIETjLHytUPrmo",
+  "name": "Night Sphere",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-purple.webp",
+  "system": {
+    "description": "<p><em>Displays a prominent constellation on its cover.</em></p><p>A 50ft-wide sphere of darkness displaying the night sky appears before you.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!j7HIETjLHytUPrmo",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

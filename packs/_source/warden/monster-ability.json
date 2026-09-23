@@ -1,0 +1,318 @@
+{
+  "_id": "MJVroGZAIBEv3ZFt",
+  "name": "Monster Ability",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Ability column of the Monster Abilities table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "1auJVwQdXWFNdeeU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Absorbs",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.1auJVwQdXWFNdeeU"
+    },
+    {
+      "_id": "sJrzbDLSrs4D5QBG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Amplifies",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.sJrzbDLSrs4D5QBG"
+    },
+    {
+      "_id": "Tw6BA2uwmWhsBhyX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Attracts",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.Tw6BA2uwmWhsBhyX"
+    },
+    {
+      "_id": "DZ27O1gCHKqpTnNU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Binds",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.DZ27O1gCHKqpTnNU"
+    },
+    {
+      "_id": "Rxu7z7yPbiLQQmKE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Camouflages",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.Rxu7z7yPbiLQQmKE"
+    },
+    {
+      "_id": "XRy1ZxHTnHBeYjxu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Conjures",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.XRy1ZxHTnHBeYjxu"
+    },
+    {
+      "_id": "uk1XZG6uG6EzdoA4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Controls",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.uk1XZG6uG6EzdoA4"
+    },
+    {
+      "_id": "llxh25hmfC27K0dX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Disables",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.llxh25hmfC27K0dX"
+    },
+    {
+      "_id": "v8grTND3p3p0k4kc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Duplicates",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.v8grTND3p3p0k4kc"
+    },
+    {
+      "_id": "K6J0nSF1hBtrY0h5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Grows",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.K6J0nSF1hBtrY0h5"
+    },
+    {
+      "_id": "QvZUKvOMF4bfrUJa",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Manipulates",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.QvZUKvOMF4bfrUJa"
+    },
+    {
+      "_id": "MM3UkKBTrMIZHHWf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Reflects",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.MM3UkKBTrMIZHHWf"
+    },
+    {
+      "_id": "OC6ZmlFgCG7JgrVW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Regenerates",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.OC6ZmlFgCG7JgrVW"
+    },
+    {
+      "_id": "1kQFyI6zSC6jfitA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Resists",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.1kQFyI6zSC6jfitA"
+    },
+    {
+      "_id": "A4cgGuDkX6T1HGMK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Reverses",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.A4cgGuDkX6T1HGMK"
+    },
+    {
+      "_id": "3oCvgrsMjmouwOCi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Shapes",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.3oCvgrsMjmouwOCi"
+    },
+    {
+      "_id": "1qPXS21gtOCAxGRP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Shrinks",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.1qPXS21gtOCAxGRP"
+    },
+    {
+      "_id": "A4PKA1jNmzwkIFV7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Transforms",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.A4PKA1jNmzwkIFV7"
+    },
+    {
+      "_id": "JwDkfN2iRiUPhWiF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Traps",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.JwDkfN2iRiUPhWiF"
+    },
+    {
+      "_id": "YZ4vhCRlBeRfep3n",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Zaps",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MJVroGZAIBEv3ZFt.YZ4vhCRlBeRfep3n"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!MJVroGZAIBEv3ZFt"
+}

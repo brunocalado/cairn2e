@@ -1,0 +1,100 @@
+{
+  "_id": "wivVGLFxYMzAYF3r",
+  "name": "Ghost",
+  "type": "npc",
+  "img": "icons/creatures/magical/spirit-undead-ghost-tan-teal.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 15,
+        "max": 15
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "KCQvn1Q55kBfHWsr",
+      "name": "Life Drain",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>life drain (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!wivVGLFxYMzAYF3r.KCQvn1Q55kBfHWsr"
+    },
+    {
+      "name": "Incorporeal spirits of the restless dead, vulnerable only to magic and specific anointed rites.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "BaIl5UMKMECSfgq6",
+      "_key": "!actors.items!wivVGLFxYMzAYF3r.BaIl5UMKMECSfgq6"
+    },
+    {
+      "name": "Target must save WIL or is possessed, acting only on behalf of the ghost's whims.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Ei8G0oV0vd1W64qK",
+      "_key": "!actors.items!wivVGLFxYMzAYF3r.Ei8G0oV0vd1W64qK"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!wivVGLFxYMzAYF3r"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "2V2aL6By3Hcx6R5X",
+  "name": "Spystone",
+  "type": "gear",
+  "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+  "system": {
+    "description": "<p>A smooth, flat stone that is slightly warm to the touch. Squeeze to record audio in a 40ft radius. Squeeze again to play it back, as many times as you like.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>To record a new sound, skip the rock at least three times on a body of water and recover it.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2V2aL6By3Hcx6R5X",
+  "folder": "UlnseD8X1WIqJdUA"
+}

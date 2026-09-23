@@ -1,0 +1,31 @@
+{
+  "_id": "6PVz2OnKHAaHyRtW",
+  "name": "Sculpt Elements",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p><em>Slowly decays on contact with wood or cloth. Bury in dirt or submerge in water to refresh.</em></p><p>Inanimate material behaves like clay in your hands.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6PVz2OnKHAaHyRtW",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "6n8b28bouLbvoC3B",
+  "name": "Cart, big",
+  "type": "gear",
+  "img": "icons/containers/misc/wheelbarrow-white.webp",
+  "system": {
+    "description": "<p>Cart, big (+6 slots)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 6,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6n8b28bouLbvoC3B",
+  "folder": "ARzrDNEhwsW3YANG"
+}

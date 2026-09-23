@@ -1,0 +1,69 @@
+{
+  "_id": "PcqilYiSuhtevnUf",
+  "name": "Pixie",
+  "type": "npc",
+  "img": "icons/creatures/magical/fae-fairy-winged-glowing-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 3,
+        "max": 3
+      },
+      "DEX": {
+        "value": 15,
+        "max": 15
+      },
+      "WIL": {
+        "value": 13,
+        "max": 13
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Tiny humanoids with insectoid wings.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Naturally invisible.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Mud3otrDx4RjygfA",
+      "_key": "!actors.items!PcqilYiSuhtevnUf.Mud3otrDx4RjygfA"
+    },
+    {
+      "name": "Can cast Sleep and Masquerade at will.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "fbwckPb9BYV34LCD",
+      "_key": "!actors.items!PcqilYiSuhtevnUf.fbwckPb9BYV34LCD"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!PcqilYiSuhtevnUf"
+}

@@ -1,0 +1,178 @@
+{
+  "_id": "DN3kLf5QkUy8WYYB",
+  "name": "Wilderness Encounter",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>A generic table of common wild creatures. Each result links a 2e bestiary Actor; the description leads with how many appear.</p>",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "yTBCoCH66fz1gu8k",
+      "type": "document",
+      "name": "Wolf",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d6 Wolves</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.9Dm12tHBZwjMeMQh",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.yTBCoCH66fz1gu8k"
+    },
+    {
+      "_id": "Q2aQ8ViEEhAMOkD5",
+      "type": "document",
+      "name": "Bandit",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d6 Bandits</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.Sf81FfBtnGKTSeXP",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.Q2aQ8ViEEhAMOkD5"
+    },
+    {
+      "_id": "WbcwaRh6uYi6z8MA",
+      "type": "document",
+      "name": "Goblin",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d6 Goblins</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.z4JN06x2IDlR53XY",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.WbcwaRh6uYi6z8MA"
+    },
+    {
+      "_id": "aoFzG2WoSFxgyiAm",
+      "type": "document",
+      "name": "Blood Elk",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d4 Blood Elk</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.gsjzGysQBDF61agK",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.aoFzG2WoSFxgyiAm"
+    },
+    {
+      "_id": "jo4PEg991b997h8A",
+      "type": "document",
+      "name": "Viper",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d4 Vipers</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.C0DdYpn0uREhaCDd",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.jo4PEg991b997h8A"
+    },
+    {
+      "_id": "A3W0fHKZSTQ8Fzvm",
+      "type": "document",
+      "name": "Harpy",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d3 Harpies</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.zf1q8Ia3AAfPkYoi",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.A3W0fHKZSTQ8Fzvm"
+    },
+    {
+      "_id": "Fw3WBZzXgHMzaRaC",
+      "type": "document",
+      "name": "Bugbear",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1d3 Bugbears</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.eyWpVvjYwK9Vgazv",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.Fw3WBZzXgHMzaRaC"
+    },
+    {
+      "_id": "Onir1WODihbgnbAd",
+      "type": "document",
+      "name": "Killer Bees",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1 swarm of Killer Bees</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.gPLwxao8nq9RRwhy",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.Onir1WODihbgnbAd"
+    },
+    {
+      "_id": "r7WmoY1pXk5j0gj8",
+      "type": "document",
+      "name": "Night Cat",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1 Night Cat</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.DZkRy1Lc7GbTjJlU",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.r7WmoY1pXk5j0gj8"
+    },
+    {
+      "_id": "tooOo1i4DuD6DMAx",
+      "type": "document",
+      "name": "Grizzly Bear",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>1 Grizzly Bear</p>",
+      "documentUuid": "Compendium.cairn2e.bestiary.Actor.YPqZ8xfZsj5JXrJM",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!DN3kLf5QkUy8WYYB.tooOo1i4DuD6DMAx"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!DN3kLf5QkUy8WYYB"
+}

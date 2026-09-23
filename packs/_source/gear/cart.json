@@ -1,0 +1,31 @@
+{
+  "_id": "S8va0NhfI1MpGSsu",
+  "name": "Cart",
+  "type": "gear",
+  "img": "icons/containers/misc/wheelbarrow-white.webp",
+  "folder": "gN731jQyxqxRJW0U",
+  "system": {
+    "description": "<p>Cart (+4 slots, <em>bulky</em>). Must be pulled with both hands.</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 30,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 4,
+    "takesSlots": true,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!S8va0NhfI1MpGSsu"
+}

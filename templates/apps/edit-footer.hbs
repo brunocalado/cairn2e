@@ -1,0 +1,25 @@
+{{!-- Save submits the form; Cancel is `type="button"`, so it cannot submit it by accident, and
+      its handler only closes the window — nothing typed above has been written yet.
+
+      Written out rather than looped over a `buttons` context: this footer has exactly these two
+      buttons and it always will, and a literal `data-action` is the only kind
+      `checks/actions-map.check.mjs` can pair with its handler.
+
+      Neither carries `autofocus`: the caret belongs in the first field, not on a button, and two
+      elements claiming it in one window is a race the browser resolves by source order.
+
+      The rule over the buttons is the same drawn `hline` as the one under the tab strip, and it
+      is inside this part's single root for the same reason the strip's is. --}}
+<div class="cairn-edit-foot">
+    <div class="cairn-edit-rule" data-ink="hline" data-ink-seed="edit-foot-rule" data-ink-w="1.8"></div>
+    <footer class="cairn-edit-footer">
+        <button type="submit" class="cairn-edit-button">
+            <i class="fa-solid fa-floppy-disk" inert></i>
+            <span>{{localize 'CAIRN.Edit.Save'}}</span>
+        </button>
+        <button type="button" class="cairn-edit-button" data-action="cancel">
+            <i class="fa-solid fa-xmark" inert></i>
+            <span>{{localize 'CAIRN.Edit.Cancel'}}</span>
+        </button>
+    </footer>
+</div>

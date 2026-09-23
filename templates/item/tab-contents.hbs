@@ -1,0 +1,35 @@
+{{!-- What the container holds. The rows are siblings in the same actor's item collection, each
+      naming this container in `system.container` — so this tab is a filtered view of the actor's
+      items, and it is empty for a container with no actor (a compendium entry, or one sitting in
+      the world Items directory), which can hold nothing.
+
+      No heading over the list: the tab is already called Contents, and a zone head saying ITEMS
+      under it named the same thing twice in a window with one list in it.
+
+      The empty line IS the invitation. "This container is empty" and "Drag an item here" were two
+      lines saying one thing, one of them only when there was nothing to say it about.
+
+      A row is `draggable` — the class v14 binds dragging to (`ux/drag-drop.mjs`), never the HTML
+      attribute — so a held thing can be dragged back out onto the character sheet. Core's own
+      item-sheet handler only knows how to drag an ActiveEffect, so `item-sheet.js#_onDragStart`
+      puts the sibling Item on the transfer. --}}
+<section class="tab {{tabs.contents.cssClass}}" data-group="primary" data-tab="contents">
+    <ol class="cairn-plain-list">
+        {{#each contents as |item|}}
+        <li class="cairn-slot draggable" data-item-id="{{item.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="held-{{item.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                <span class="cairn-item-name-and-tags">
+                    <span class="cairn-item-title">{{item.name}}</span>
+                    {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=item.system}}
+                </span>
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="contentRemove" data-tooltip="{{localize 'CAIRN.TakeOut'}}"><i class="fas fa-arrow-up-from-bracket"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.ContainerDropHint'}}</li>
+        {{/each}}
+    </ol>
+</section>

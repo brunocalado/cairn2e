@@ -1,0 +1,31 @@
+{
+  "_id": "enXXi4WpO2LQnEj6",
+  "name": "Apron, leather",
+  "type": "gear",
+  "img": "icons/equipment/chest/vest-leather-brown.webp",
+  "system": {
+    "description": "<p>Apron, leather (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 15,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!enXXi4WpO2LQnEj6",
+  "folder": "XycVdoNLEuiHY9my"
+}

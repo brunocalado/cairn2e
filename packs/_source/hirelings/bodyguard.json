@@ -1,0 +1,181 @@
+{
+  "_id": "4hjRCTCaeDVhIndK",
+  "name": "Bodyguard",
+  "type": "npc",
+  "img": "icons/environment/people/infantry.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 13,
+        "max": 13
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 9,
+        "max": 9
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "hireling",
+    "background": "",
+    "career": "Bodyguard",
+    "dayRate": 10,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 10
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Rations",
+      "type": "gear",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "system": {
+        "description": "<p>Rations (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "ration": true,
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "g0EvFDUEB7ubrX9s",
+      "_key": "!actors.items!4hjRCTCaeDVhIndK.g0EvFDUEB7ubrX9s"
+    },
+    {
+      "name": "Torch",
+      "type": "gear",
+      "img": "icons/sundries/lights/torch-black.webp",
+      "system": {
+        "description": "<p>Torch (3 uses)</p>",
+        "slots": 1,
+        "equipped": false,
+        "cost": 5,
+        "container": "",
+        "uses": {
+          "value": 3,
+          "max": 3
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "UizEjRj6xqj0Gwev",
+      "_key": "!actors.items!4hjRCTCaeDVhIndK.UizEjRj6xqj0Gwev"
+    },
+    {
+      "name": "Sword",
+      "type": "gear",
+      "img": "icons/weapons/swords/sword-guard-steel-green.webp",
+      "system": {
+        "description": "<p>Sword (d8 damage)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "oR1xAkhwoPe20iSu",
+      "_key": "!actors.items!4hjRCTCaeDVhIndK.oR1xAkhwoPe20iSu"
+    },
+    {
+      "name": "Helmet",
+      "type": "gear",
+      "img": "icons/equipment/head/helmet-viking-iron-gray.webp",
+      "system": {
+        "description": "<p>Helmet (+1 Armor)</p>",
+        "slots": 1,
+        "equipped": true,
+        "cost": 10,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "",
+        "blast": false,
+        "armor": 1,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "gqcLYzYsMRQGvVGE",
+      "_key": "!actors.items!4hjRCTCaeDVhIndK.gqcLYzYsMRQGvVGE"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!4hjRCTCaeDVhIndK"
+}

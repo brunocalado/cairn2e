@@ -1,0 +1,47 @@
+{{!-- One list, drawn by both the Petty and the Belongings tab: the two hold the
+      same kind of row and differ only in which question put it there — zero slots, or not under
+      direct possession — so they are one template and the eye finds every control in the same
+      place on both.
+
+      The "add" control is on the zone heading above this list, on each tab, not
+      in a header row of its own here.
+
+      A container's row is the same 26px line as anything else, and its name opens its sheet like
+      every other name here. It used to be a `<details>` that unfolded to the names of what it
+      held: on an empty bag that was a click that opened a blank strip, and on a full one it was
+      a second, poorer view of the Contents tab the sheet already has. One row, one affordance —
+      the capacity chip says how full it is, and the sheet says what is in it.
+
+      The rule under a row is drawn ink, not a border, and it is only emitted when the row has a
+      row after it — a line belongs BETWEEN two entries, and one under the last one reads as a
+      second zone rule immediately above the real one.
+
+      A row is a drop target: an item of the actor's dropped on it goes inside
+      (`actor-sheet.js#_onDropItem`). The walking figure is the SET ASIDE / TAKE BACK toggle and the
+      hand is EQUIPPED, as on the ten — two different questions, and a mule answers neither: it is
+      in nobody's grip and was never under direct possession to begin with.
+
+      @param rows   The item views to draw.
+      @param seed   Ink seed prefix, so each zone's strokes keep their own silhouette.
+      @param empty  What the zone says when it has nothing in it. --}}
+<ol class="cairn-plain-list">
+    {{#each rows as |row|}}
+    <li class="cairn-slot draggable{{#if row.isUsedUp}} used-up{{/if}}" data-item-id="{{row.id}}"
+        {{#unless @last}}data-ink="hline" data-ink-seed="{{../seed}}-{{row.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+        <div class="cairn-slot-body">
+            {{!-- The name IS the affordance, as on the slot row: `itemEdit` is the pencil's
+                  handler already, so the row and the pencil cannot drift apart. A container
+                  carries its capacity chip here, as it does on the ten. --}}
+            <span class="cairn-item-name-and-tags" data-action="itemEdit">
+                <span class="cairn-item-title">{{#if row.system.equipped}}<strong>{{row.name}}</strong>{{else}}{{row.name}}{{/if}}</span>
+                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system}}
+                {{#if row.system.isContainer}}<span class="cairn-item-tag">{{row.system.contentsSlots}}/{{row.system.capacity}}</span>{{/if}}
+                {{#if row.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=row.usesDisplay editable=@root.editable}}{{/if}}
+            </span>
+        </div>
+        {{> "systems/cairn2e/templates/parts/item-controls.hbs" item=row editable=@root.editable}}
+    </li>
+    {{else}}
+    <li class="cairn-empty">{{empty}}</li>
+    {{/each}}
+</ol>

@@ -1,0 +1,31 @@
+{
+  "_id": "1Vs7t6IB3X14WD6D",
+  "name": "Architect's Perfection",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p>Create a holographic wall, floor, or ceiling that looks absolutely real.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1Vs7t6IB3X14WD6D",
+  "folder": "MCt2VTDHSjLFlLso"
+}

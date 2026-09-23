@@ -1,0 +1,31 @@
+{
+  "_id": "jayJomk3gVGzO7kj",
+  "name": "Skull Whistle",
+  "type": "gear",
+  "img": "icons/magic/death/projectile-skull-animal-green.webp",
+  "system": {
+    "description": "<p>Produces a chilling scream that forces any who hear it (including the blower) to make a WIL save or become temporarily incapacitated.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "<p>Feed the instrument a clump of human hair pulled from a living skull.</p>",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!jayJomk3gVGzO7kj",
+  "folder": "UlnseD8X1WIqJdUA"
+}

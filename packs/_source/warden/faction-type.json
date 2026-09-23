@@ -1,0 +1,318 @@
+{
+  "_id": "pSX8p61spiah0BP2",
+  "name": "Faction Type",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Type column of the Faction Types table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "wK9AMPgvImJNDx15",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Artisans",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.wK9AMPgvImJNDx15"
+    },
+    {
+      "_id": "ZWkqjSdHos5J022Y",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Commoners",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.ZWkqjSdHos5J022Y"
+    },
+    {
+      "_id": "ZGvVvPliE32UaLcr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Criminals",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.ZGvVvPliE32UaLcr"
+    },
+    {
+      "_id": "CkB6Q44O3YThF6Ax",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cultists",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.CkB6Q44O3YThF6Ax"
+    },
+    {
+      "_id": "6P8sJceFltxApAlr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Exiles",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.6P8sJceFltxApAlr"
+    },
+    {
+      "_id": "wFWLQR7QgWIC9qWU",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Explorers",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.wFWLQR7QgWIC9qWU"
+    },
+    {
+      "_id": "UIAcCAyBbT5C0Ph8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Industrialists",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.UIAcCAyBbT5C0Ph8"
+    },
+    {
+      "_id": "IwcYct6VkEptwvfc",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Merchants",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.IwcYct6VkEptwvfc"
+    },
+    {
+      "_id": "ddHlUhBsx2CH1uP9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Military",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.ddHlUhBsx2CH1uP9"
+    },
+    {
+      "_id": "3W3AEcezf1KIUGQ6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Nobles",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.3W3AEcezf1KIUGQ6"
+    },
+    {
+      "_id": "EsyPXzJUKTSODuBB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Nomads",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.EsyPXzJUKTSODuBB"
+    },
+    {
+      "_id": "zmTAYVyzlCD4qfK4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pilgrims",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.zmTAYVyzlCD4qfK4"
+    },
+    {
+      "_id": "g47uUoO7gHlDMWbZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Protectors",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.g47uUoO7gHlDMWbZ"
+    },
+    {
+      "_id": "EeA7aRp1OGD5R20y",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Religious",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.EeA7aRp1OGD5R20y"
+    },
+    {
+      "_id": "WWfTeC1Ws1GtjKvm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Revolutionaries",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.WWfTeC1Ws1GtjKvm"
+    },
+    {
+      "_id": "pBVZYFHMNhBLjAfY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rulers",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.pBVZYFHMNhBLjAfY"
+    },
+    {
+      "_id": "C7VTvTrJWaSi9XVM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Scholars",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.C7VTvTrJWaSi9XVM"
+    },
+    {
+      "_id": "MqF97SxMc9UCJwna",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Settlers",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.MqF97SxMc9UCJwna"
+    },
+    {
+      "_id": "j0J51y2baRNxMo85",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Spies",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.j0J51y2baRNxMo85"
+    },
+    {
+      "_id": "ieru73btr1uiaZI0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Tribe",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!pSX8p61spiah0BP2.ieru73btr1uiaZI0"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!pSX8p61spiah0BP2"
+}

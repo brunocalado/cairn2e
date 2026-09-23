@@ -1,0 +1,113 @@
+{
+  "_id": "eH3GjaMpoQCdWSPU",
+  "name": "Green Dragon",
+  "type": "npc",
+  "img": "icons/creatures/reptiles/dragon-winged-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 15,
+        "max": 15
+      },
+      "WIL": {
+        "value": 18,
+        "max": 18
+      }
+    },
+    "hp": {
+      "value": 12,
+      "max": 12
+    },
+    "role": "monster",
+    "armor": 2,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "6FKR9SSJByMnYSTi",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d12)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d12",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!eH3GjaMpoQCdWSPU.6FKR9SSJByMnYSTi"
+    },
+    {
+      "name": "Forest-dwelling snakes topped with tall green scales.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Collect great hoards of treasure.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "GfW3b8FUkGPUEyc5",
+      "_key": "!actors.items!eH3GjaMpoQCdWSPU.GfW3b8FUkGPUEyc5"
+    },
+    {
+      "name": "Use intelligence and cunning to manipulate the weak into their service.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "XqyL4L1GWFNBkI27",
+      "_key": "!actors.items!eH3GjaMpoQCdWSPU.XqyL4L1GWFNBkI27"
+    },
+    {
+      "name": "Chlorine Gas",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Anyone nearby must make a DEX save to escape its reach or lose 1d4 STR and becomes <em>deprived</em>.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "LAHTKXz2MalrmNr0",
+      "_key": "!actors.items!eH3GjaMpoQCdWSPU.LAHTKXz2MalrmNr0"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!eH3GjaMpoQCdWSPU"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "hzU812Z57kiSfkRq",
+  "name": "Manse",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-purple.webp",
+  "system": {
+    "description": "<p><em>If left inside, both the book and the cottage vanish forever.</em></p><p>A sturdy, furnished cottage appears for hours. You can permit and forbid entry to it at will.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hzU812Z57kiSfkRq",
+  "folder": "CUFHa1lIQAt4nRUN"
+}

@@ -1,0 +1,100 @@
+{
+  "_id": "mKGBIbX2htcnSMu1",
+  "name": "Giant Scorpion",
+  "type": "npc",
+  "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 11,
+        "max": 11
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 4,
+        "max": 4
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "6NkuULYO6gwgaQWt",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d10+d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!mKGBIbX2htcnSMu1.6NkuULYO6gwgaQWt"
+    },
+    {
+      "name": "Horse-sized arachnids commonly found in dry terrain or caverns.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "QZz7wEbG99fp0cPm",
+      "_key": "!actors.items!mKGBIbX2htcnSMu1.QZz7wEbG99fp0cPm"
+    },
+    {
+      "name": "The stinger's poison liquefies the target's insides for an additional d8 STR damage. The STR loss is permanent.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "agURXA1DZY0dPsaE",
+      "_key": "!actors.items!mKGBIbX2htcnSMu1.agURXA1DZY0dPsaE"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!mKGBIbX2htcnSMu1"
+}

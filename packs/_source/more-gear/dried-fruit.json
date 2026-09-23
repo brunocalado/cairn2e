@@ -1,0 +1,31 @@
+{
+  "_id": "7C67dwIW4uzc5Zhd",
+  "name": "Dried Fruit",
+  "type": "gear",
+  "img": "icons/consumables/food/dried-fruit-candy-brown.webp",
+  "system": {
+    "description": "<p>Dried Fruit (pound)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7C67dwIW4uzc5Zhd",
+  "folder": "oZhGiDOcu7cDovBl"
+}

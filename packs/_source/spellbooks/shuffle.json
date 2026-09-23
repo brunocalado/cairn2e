@@ -1,0 +1,31 @@
+{
+  "_id": "9ft4Onl6HMTfY9rC",
+  "name": "Shuffle",
+  "type": "gear",
+  "img": "icons/sundries/books/book-turquoise-moon.webp",
+  "system": {
+    "description": "<p><em>If stolen but not yet read, it reappears wherever its owner last left it.</em></p><p>Two creatures you can see instantly switch places.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!9ft4Onl6HMTfY9rC",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

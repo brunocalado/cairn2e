@@ -1,0 +1,30 @@
+{
+  "_id": "hHDraN8apA23UPS9",
+  "name": "Spear",
+  "type": "gear",
+  "img": "icons/weapons/polearms/spear-flared-gray.webp",
+  "system": {
+    "description": "<p>Spear (d8 damage)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hHDraN8apA23UPS9"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "rsfOlJtV1aDrGtFW",
+  "name": "Babble",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p><em>When the text is read aloud, the words of others become unintelligible.</em></p><p>A creature must loudly and clearly repeat everything you think. It is otherwise mute.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!rsfOlJtV1aDrGtFW",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

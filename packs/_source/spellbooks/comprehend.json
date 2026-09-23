@@ -1,0 +1,31 @@
+{
+  "_id": "2HAG8KGwFJesKSlr",
+  "name": "Comprehend",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p><em>Drips letters, staining whatever it touches.</em></p><p>You become fluent in all languages for a short while.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2HAG8KGwFJesKSlr",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

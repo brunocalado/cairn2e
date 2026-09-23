@@ -1,0 +1,31 @@
+{
+  "_id": "GG8wB9cEW5IQJIwj",
+  "name": "Smoke Form",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p><em>Smells of campfire. The pages cannot be burnt, but are very sensitive to moisture.</em></p><p>Your body becomes a living smoke that you can control.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!GG8wB9cEW5IQJIwj",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

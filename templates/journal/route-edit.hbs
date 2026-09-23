@@ -1,0 +1,24 @@
+{{!-- A route's edit form: where it runs, and what walking it costs.
+
+      The four runs are the journey window's own route form, through the same partial, so the two
+      cannot drift apart. The route names no points: which road it is, is said by where its map
+      pin sits (`module/data/page-route.js`). No season either — the season belongs to the day
+      the party sets out, and the journey window is where it is picked.
+
+      The description is the real `<prose-mirror>` element, exactly as an item sheet writes it:
+      the `{{editor}}` helper emits markup nothing in v2 activates (see
+      `templates/item/tab-description.hbs` for the whole reason). --}}
+<section>
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="system.path" label=(localize "CAIRN.Journey.Path") options=paths}}
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="system.distance" label=(localize "CAIRN.Journey.Distance") options=distances}}
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="system.terrain" label=(localize "CAIRN.Journey.Terrain") options=terrains}}
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="system.vast" label=(localize "CAIRN.Journey.Vast")
+        options=vasts number=true extra="cairn-journey-vast" hint=(localize "CAIRN.Journey.VastHint")}}
+
+    <p class="cairn-route-total">{{localize "CAIRN.Journey.NeedsWatches" n=watches}}</p>
+
+    <div class="cairn-prose-box" data-ink="box" data-ink-seed="route-description" data-ink-w="1.6">
+        <prose-mirror name="system.description" value="{{system.description}}"
+            data-document-uuid="{{uuid}}"></prose-mirror>
+    </div>
+</section>

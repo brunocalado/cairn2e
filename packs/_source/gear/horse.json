@@ -1,0 +1,31 @@
+{
+  "_id": "4UgTnLDhgKLtyK1y",
+  "name": "Horse",
+  "type": "gear",
+  "img": "icons/environment/creatures/horse-brown.webp",
+  "folder": "gN731jQyxqxRJW0U",
+  "system": {
+    "description": "<p>Horse (+4 slots)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 75,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 4,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4UgTnLDhgKLtyK1y"
+}

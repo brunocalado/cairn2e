@@ -1,0 +1,31 @@
+{
+  "_id": "WuMGmsZ7KfIAkZlD",
+  "name": "Obsidian",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-faceted-round-black.webp",
+  "system": {
+    "description": "<p>Black volcanic glass, and sharp wherever it has broken.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WuMGmsZ7KfIAkZlD",
+  "folder": "zp21eCWEd0bf48mP"
+}

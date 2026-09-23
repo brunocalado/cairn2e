@@ -1,0 +1,108 @@
+{
+  "_id": "i1HwJlO1wbOqTqD7",
+  "name": "Fletchwind: How did you earn your bow?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Fletchwind</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "LHA6rELmo6V1nAa2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>War</strong>. If you are first to attack, your bow gains the <em>blast</em> property for the first round.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.LHA6rELmo6V1nAa2"
+    },
+    {
+      "_id": "FdLDJCuH6kzCAJMo",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Falconry</strong>. You keep a falcon [3 hp, 5 STR, 16 DEX, 4 WIL, claws (d6+d6), bite (d8)]. It only eats live game.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.FdLDJCuH6kzCAJMo"
+    },
+    {
+      "_id": "Hdc3t93ktRM10kGT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Hunting</strong>. When taking the Supply action, your ability to secure <strong>Rations</strong> increases by <strong>one step</strong> (e.g. 1d4 becomes 1d6).</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.Hdc3t93ktRM10kGT"
+    },
+    {
+      "_id": "bBq5nFrU1xEHCYVx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Tournaments</strong>. Attacks with your bow are <em>enhanced</em> if the target is immobile.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.bBq5nFrU1xEHCYVx"
+    },
+    {
+      "_id": "lpHKieSvIbVhHsOV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Training</strong>. If you are the first to attack, melee attacks against you are <em>impaired</em> until you take STR damage.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.lpHKieSvIbVhHsOV"
+    },
+    {
+      "_id": "rEsDs8Y4ZSZ5taak",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Scouting</strong>. When taking the Travel action, your presence decreases the chance of getting lost by one step (e.g. 4-in-6 becomes 3-in-6).</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.rEsDs8Y4ZSZ5taak"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!i1HwJlO1wbOqTqD7"
+}

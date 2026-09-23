@@ -1,0 +1,31 @@
+{
+  "_id": "62kzK7UqZwbp2vNz",
+  "name": "Icy Touch",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p><em>Gloves required. Nonflammable.</em></p><p>A thick ice layer spreads across a touched surface, up to 10ft in radius.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!62kzK7UqZwbp2vNz",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

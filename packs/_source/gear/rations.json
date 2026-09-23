@@ -1,0 +1,31 @@
+{
+  "_id": "o6vtsY4SfrFJHnol",
+  "name": "Rations",
+  "type": "gear",
+  "img": "icons/consumables/food/bread-toast-tan.webp",
+  "system": {
+    "description": "<p>Rations (3 uses)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "ration": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!o6vtsY4SfrFJHnol"
+}

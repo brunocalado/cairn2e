@@ -1,0 +1,108 @@
+{
+  "_id": "oZDjcZQ7mBlNO1jC",
+  "name": "Fletchwind: What kind of wood is your bow made from?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Fletchwind</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "QmF1ATDdHwG5zDqx",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Western Yew</strong> (d6, <em>bulky</em>). Can be wielded as a blunt weapon (d6). Noisy.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.QmF1ATDdHwG5zDqx"
+    },
+    {
+      "_id": "qriTFlVWp7aPWlFn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Sessile Oak</strong> (d8, <em>bulky</em>). Slams into targets. On <strong>Critical Damage</strong> something is torn off.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.qriTFlVWp7aPWlFn"
+    },
+    {
+      "_id": "fwrVHi4DZQMVgCma",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Stone Pine</strong> (d6, <em>bulky</em>). Produces one use of <strong>Sticky Sap</strong> per day. The sap is highly explosive.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.fwrVHi4DZQMVgCma"
+    },
+    {
+      "_id": "FSez7wXuxrQ2EUil",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>White Ash</strong> (d6, <em>bulky</em>). Can be used in place of a shield in melee combat (+1 Armor).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.FSez7wXuxrQ2EUil"
+    },
+    {
+      "_id": "JNvJ4oI3Lk2F52ta",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Striped Bamboo</strong> (d6). Collapsible, it only requires one slot (but still requires both hands).</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.JNvJ4oI3Lk2F52ta"
+    },
+    {
+      "_id": "FsBMJHu2CxHkhzvb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Wych Elm</strong> (d6, <em>bulky</em>). Protects the bearer from poisons and toxins, so long as they are holding it.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.FsBMJHu2CxHkhzvb"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!oZDjcZQ7mBlNO1jC"
+}

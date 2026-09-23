@@ -1,0 +1,318 @@
+{
+  "_id": "qAOUXqJ2NWBHZy1w",
+  "name": "Faction Advantage Count",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the number of Advantages a faction has, then roll Faction Advantage that many times (reroll repeats).</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "D8shuAV09iWnHLrw",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.D8shuAV09iWnHLrw"
+    },
+    {
+      "_id": "GmVdFLnZKzT8qlnk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.GmVdFLnZKzT8qlnk"
+    },
+    {
+      "_id": "EyZ6GPsgFbkwLn8a",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.EyZ6GPsgFbkwLn8a"
+    },
+    {
+      "_id": "gKBeUqTz6cjN33W2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.gKBeUqTz6cjN33W2"
+    },
+    {
+      "_id": "fDUHTxAdY7siNABX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.fDUHTxAdY7siNABX"
+    },
+    {
+      "_id": "DGD9J9dNpN0FLv7u",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.DGD9J9dNpN0FLv7u"
+    },
+    {
+      "_id": "k4Pynj8oAvqLt01z",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "1",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.k4Pynj8oAvqLt01z"
+    },
+    {
+      "_id": "b8BaZejH4PMzRxQi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "2",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.b8BaZejH4PMzRxQi"
+    },
+    {
+      "_id": "qOU1uZod3rEUTGk1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "2",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.qOU1uZod3rEUTGk1"
+    },
+    {
+      "_id": "Nq0fDxGBUkpsDkMp",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "2",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.Nq0fDxGBUkpsDkMp"
+    },
+    {
+      "_id": "JhBRG0lEoT7rlRUm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "2",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.JhBRG0lEoT7rlRUm"
+    },
+    {
+      "_id": "OI6FYoxjHvlFuVWC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "2",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.OI6FYoxjHvlFuVWC"
+    },
+    {
+      "_id": "KOOZhTlIL8UBTIqR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "3",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.KOOZhTlIL8UBTIqR"
+    },
+    {
+      "_id": "PcOfP0KWQkyfh8Ya",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "3",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.PcOfP0KWQkyfh8Ya"
+    },
+    {
+      "_id": "EiSojt1zr3HrJWb2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "3",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.EiSojt1zr3HrJWb2"
+    },
+    {
+      "_id": "5OfCI4EuVfxkxICj",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "3",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.5OfCI4EuVfxkxICj"
+    },
+    {
+      "_id": "iH20cAYPwp3Bz7rB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "3",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.iH20cAYPwp3Bz7rB"
+    },
+    {
+      "_id": "A5En67XQVLkFjOCd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "4",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.A5En67XQVLkFjOCd"
+    },
+    {
+      "_id": "zPqpx2u3D7C8Wis7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "4",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.zPqpx2u3D7C8Wis7"
+    },
+    {
+      "_id": "alfrXiEv6HMjQA4r",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "4",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qAOUXqJ2NWBHZy1w.alfrXiEv6HMjQA4r"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!qAOUXqJ2NWBHZy1w"
+}

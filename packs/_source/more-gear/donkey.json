@@ -1,0 +1,31 @@
+{
+  "_id": "FiibVRieLmgcDKkZ",
+  "name": "Donkey",
+  "type": "gear",
+  "img": "icons/environment/creatures/horse-white.webp",
+  "system": {
+    "description": "<p>Donkey (+4 slots, slow)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 4,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FiibVRieLmgcDKkZ",
+  "folder": "ARzrDNEhwsW3YANG"
+}

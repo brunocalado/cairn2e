@@ -1,0 +1,31 @@
+{
+  "_id": "BMqjOgewVHfYaxIX",
+  "name": "Ladder",
+  "type": "gear",
+  "img": "icons/sundries/misc/ladder-white.webp",
+  "system": {
+    "description": "<p>Ladder (10ft, <em>bulky</em>)</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BMqjOgewVHfYaxIX",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

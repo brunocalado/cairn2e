@@ -1,0 +1,15 @@
+{
+  "_id": "RRGbIskYd1RlZNNb",
+  "name": "WIL",
+  "type": "script",
+  "img": "icons/magic/perception/third-eye-blue-red.webp",
+  "scope": "global",
+  "command": "cairn2e.save(\"WIL\");",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!RRGbIskYd1RlZNNb"
+}

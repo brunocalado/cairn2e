@@ -1,0 +1,31 @@
+{
+  "_id": "yyVszq2JsEXDBxuN",
+  "name": "Whispergale",
+  "type": "gear",
+  "img": "icons/magic/air/fog-gas-smoke-gray.webp",
+  "system": {
+    "description": "<p>A balloon-shaped plant that captures a spoken message and delivers it to a location within a day's walk.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "relic",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!yyVszq2JsEXDBxuN",
+  "folder": "GrRVMrn19Cm4uCtB"
+}

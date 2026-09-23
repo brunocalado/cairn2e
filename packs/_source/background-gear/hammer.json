@@ -1,0 +1,31 @@
+{
+  "_id": "t1bQOmGavkjNt28s",
+  "name": "Hammer",
+  "type": "gear",
+  "img": "icons/tools/smithing/hammer-sledge-steel-grey.webp",
+  "system": {
+    "description": "<p>Hammer (d6)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!t1bQOmGavkjNt28s",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

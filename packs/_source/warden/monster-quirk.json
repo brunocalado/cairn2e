@@ -1,0 +1,318 @@
+{
+  "_id": "9XNtKhlnEb3d3rlM",
+  "name": "Monster Quirk",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Quirks column of the Monster Traits table.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "pFyodTomAeeux1se",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Alters Its Size at Will",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.pFyodTomAeeux1se"
+    },
+    {
+      "_id": "GxAzfJle4KDYzqnA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Changes Color at Will",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.GxAzfJle4KDYzqnA"
+    },
+    {
+      "_id": "HHEK29VsUauQMyHR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Collects Rare Flowers",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.HHEK29VsUauQMyHR"
+    },
+    {
+      "_id": "FEXrPS4OJY1MHHpD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Collects Trophies",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.FEXrPS4OJY1MHHpD"
+    },
+    {
+      "_id": "wJTWlEGObAqX1y86",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Does Not Die of Old Age",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.wJTWlEGObAqX1y86"
+    },
+    {
+      "_id": "FLg7lB1YnJfA5E5I",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Draws Symbols",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.FLg7lB1YnJfA5E5I"
+    },
+    {
+      "_id": "ChimqCE5thm818Hb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fascinated by Fire",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.ChimqCE5thm818Hb"
+    },
+    {
+      "_id": "HWmNheFxkxvRkt3F",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hoards Books",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.HWmNheFxkxvRkt3F"
+    },
+    {
+      "_id": "HPgRfO1AfbW5sLt8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Loves a Specific Color",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.HPgRfO1AfbW5sLt8"
+    },
+    {
+      "_id": "7OknJoige09E6rJ2",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Reborn Each Day",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.7OknJoige09E6rJ2"
+    },
+    {
+      "_id": "rfbVW8mEGxlSL9qb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Loves Shiny Objects",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.rfbVW8mEGxlSL9qb"
+    },
+    {
+      "_id": "JwZsdsRYHH7UTdts",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Mimics Voices",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.JwZsdsRYHH7UTdts"
+    },
+    {
+      "_id": "dIy3IpUmRvRn2dol",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Moves in a Straight Line",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.dIy3IpUmRvRn2dol"
+    },
+    {
+      "_id": "mfRzpj87aKLI7NC5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Narrates Everything",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.mfRzpj87aKLI7NC5"
+    },
+    {
+      "_id": "F8efhMe4yU0NbYgL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Obsessively Cleans",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.F8efhMe4yU0NbYgL"
+    },
+    {
+      "_id": "5EUKPvq86MVFVEhu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Plants Grow in Its Wake",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.5EUKPvq86MVFVEhu"
+    },
+    {
+      "_id": "Vqm2JHWwfCknaNmG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sleeps Upside Down",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.Vqm2JHWwfCknaNmG"
+    },
+    {
+      "_id": "WeK6Caxf1csLVMQk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Speaks in Rhymes",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.WeK6Caxf1csLVMQk"
+    },
+    {
+      "_id": "25vvS74CWZHWbR2w",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sweats Rare Minerals",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.25vvS74CWZHWbR2w"
+    },
+    {
+      "_id": "HlaC8lgBxGnHG5yS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Reproduces Asexually",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!9XNtKhlnEb3d3rlM.HlaC8lgBxGnHG5yS"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!9XNtKhlnEb3d3rlM"
+}

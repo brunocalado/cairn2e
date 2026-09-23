@@ -1,0 +1,31 @@
+{
+  "_id": "1uFl6JXvYQ6OI4ZI",
+  "name": "Magic Dampener",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p><em>Relics within 100ft of the spellbook cannot be recharged.</em></p><p>All nearby magical effects have their effectiveness halved.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1uFl6JXvYQ6OI4ZI",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

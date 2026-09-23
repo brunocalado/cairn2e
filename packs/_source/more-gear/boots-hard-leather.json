@@ -1,0 +1,31 @@
+{
+  "_id": "lA8F69O7VD9hoC6G",
+  "name": "Boots, hard leather",
+  "type": "gear",
+  "img": "icons/equipment/feet/boots-collared-simple-leather.webp",
+  "system": {
+    "description": "<p>Boots, hard leather (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lA8F69O7VD9hoC6G",
+  "folder": "XycVdoNLEuiHY9my"
+}

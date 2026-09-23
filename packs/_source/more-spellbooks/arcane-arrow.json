@@ -1,0 +1,31 @@
+{
+  "_id": "92gGtdXAUrW23mE5",
+  "name": "Arcane Arrow",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p>Green energy bursts from your fingers, dealing 1d6 damage and ignoring mundane armor.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!92gGtdXAUrW23mE5",
+  "folder": "MCt2VTDHSjLFlLso"
+}

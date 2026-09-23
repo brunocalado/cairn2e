@@ -1,0 +1,113 @@
+{
+  "_id": "1QwMT47hF4mSEFEh",
+  "name": "Dryad",
+  "type": "npc",
+  "img": "icons/magic/nature/tree-spirit-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 8,
+        "max": 8
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 4,
+      "max": 4
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "5GDIVlkeW6FuhOow",
+      "name": "Knotted Arms",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>knotted arms (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!1QwMT47hF4mSEFEh.5GDIVlkeW6FuhOow"
+    },
+    {
+      "name": "Shy, protective tree spirits that manifest as beautiful, green-skinned humanoids.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "dRUeRLLPx5c4bvrC",
+      "_key": "!actors.items!1QwMT47hF4mSEFEh.dRUeRLLPx5c4bvrC"
+    },
+    {
+      "name": "Unable to travel far from the tree they are bound to.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>They perish if the tree is destroyed.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "ZLNb4hxIUmH4huxP",
+      "_key": "!actors.items!1QwMT47hF4mSEFEh.ZLNb4hxIUmH4huxP"
+    },
+    {
+      "name": "Befuddle",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Target becomes confused, gradually moving further and further away from the host tree. WIL save once per round to break free.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Ui4LbBTNKiFpFw9N",
+      "_key": "!actors.items!1QwMT47hF4mSEFEh.Ui4LbBTNKiFpFw9N"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!1QwMT47hF4mSEFEh"
+}

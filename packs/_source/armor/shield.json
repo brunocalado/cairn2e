@@ -1,0 +1,30 @@
+{
+  "_id": "ImIULTvK8p5ZoWUC",
+  "name": "Shield",
+  "type": "gear",
+  "img": "icons/equipment/shield/shield-round-boss-wood-brown.webp",
+  "system": {
+    "description": "<p>Shield (+1 Armor)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ImIULTvK8p5ZoWUC"
+}

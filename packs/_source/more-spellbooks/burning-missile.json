@@ -1,0 +1,31 @@
+{
+  "_id": "RO7ptQJqx9miMNmU",
+  "name": "Burning Missile",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-roots-green.webp",
+  "system": {
+    "description": "<p>You fire an acid missile that does 1d6 damage to a target for every round it is not washed off.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!RO7ptQJqx9miMNmU",
+  "folder": "MCt2VTDHSjLFlLso"
+}

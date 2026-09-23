@@ -1,0 +1,108 @@
+{
+  "_id": "xUnuriHoFsBZy78E",
+  "name": "Wilderness Event",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>The Warden rolls once on this table after each Wilderness Action (twice at night).</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "EO6MekBV6B8Dz67T",
+      "type": "text",
+      "name": "Encounter",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Roll on an encounter table for that terrain type or location. Don’t forget to roll for NPC reactions if applicable.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xUnuriHoFsBZy78E.EO6MekBV6B8Dz67T"
+    },
+    {
+      "_id": "pcC2mtngYC0o4cYF",
+      "type": "text",
+      "name": "Sign",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The party discovers a clue, spoor, or indication of a nearby encounter, locality, hidden feature, or information about a nearby area.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xUnuriHoFsBZy78E.pcC2mtngYC0o4cYF"
+    },
+    {
+      "_id": "qklAse4DIzHbsale",
+      "type": "text",
+      "name": "Environment",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A shift in weather or terrain.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xUnuriHoFsBZy78E.qklAse4DIzHbsale"
+    },
+    {
+      "_id": "NHEhFCytRNQeYk3t",
+      "type": "text",
+      "name": "Loss",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The party is faced with a choice that costs them a resource (rations, tools, etc), time, or effort.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xUnuriHoFsBZy78E.NHEhFCytRNQeYk3t"
+    },
+    {
+      "_id": "84kldHLS3Sg6yM6D",
+      "type": "text",
+      "name": "Exhaustion",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The party encounters a barrier, forcing effort, care or delays. This might mean spending extra time (and an additional <strong>Wilderness Action</strong>) or adding <strong>Fatigue</strong> to the PC's inventory to represent their difficulties.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xUnuriHoFsBZy78E.84kldHLS3Sg6yM6D"
+    },
+    {
+      "_id": "mI2DDFcevT77XA0B",
+      "type": "text",
+      "name": "Discovery",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The party finds food, treasure, or other useful resources. The <strong>Warden</strong> can instead choose to reveal the primary feature of the area.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xUnuriHoFsBZy78E.mI2DDFcevT77XA0B"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!xUnuriHoFsBZy78E"
+}

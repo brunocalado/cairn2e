@@ -1,0 +1,31 @@
+{
+  "_id": "zWHbZerSLgI6O4Hn",
+  "name": "Dress",
+  "type": "gear",
+  "img": "icons/equipment/chest/robe-layered-teal.webp",
+  "system": {
+    "description": "<p>Dress (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 15,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!zWHbZerSLgI6O4Hn",
+  "folder": "XycVdoNLEuiHY9my"
+}

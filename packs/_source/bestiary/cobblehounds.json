@@ -1,0 +1,99 @@
+{
+  "_id": "X7Qp7k3Z45d8qQMD",
+  "name": "Cobblehounds",
+  "type": "npc",
+  "img": "icons/creatures/magical/construct-stone-earth-gray.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 1,
+        "max": 1
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 12,
+      "max": 12
+    },
+    "role": "monster",
+    "armor": 2,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "Uto3Hf2R77vWq9OL",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!X7Qp7k3Z45d8qQMD.Uto3Hf2R77vWq9OL"
+    },
+    {
+      "name": "Immobile constructs typically used as guardians to great tombs or artifacts.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "HEW17XPRGPxmoYUS",
+      "_key": "!actors.items!X7Qp7k3Z45d8qQMD.HEW17XPRGPxmoYUS"
+    },
+    {
+      "name": "Unaffected by mundane persuasion techniques, but love a good bone.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "yC1Ro626CaVJ2tkg",
+      "_key": "!actors.items!X7Qp7k3Z45d8qQMD.yC1Ro626CaVJ2tkg"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!X7Qp7k3Z45d8qQMD"
+}

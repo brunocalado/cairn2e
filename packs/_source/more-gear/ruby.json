@@ -1,0 +1,31 @@
+{
+  "_id": "2MqTbhayTL7tcsK5",
+  "name": "Ruby",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-oval-red.webp",
+  "system": {
+    "description": "<p>Blood-red and cut oval, the colour holding all the way through.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 500,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2MqTbhayTL7tcsK5",
+  "folder": "HJvY3JTRuL5xJNFj"
+}

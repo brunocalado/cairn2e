@@ -1,0 +1,31 @@
+{
+  "_id": "gGwLjeFKMUTeRI7b",
+  "name": "Master Undead",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>Undead creatures obey your command. Intelligent undead make a WIL save.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gGwLjeFKMUTeRI7b",
+  "folder": "lDgQDymeafBKCA97"
+}

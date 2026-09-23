@@ -1,0 +1,81 @@
+{{!-- Age, the Omen switch and the four maxima. The maxima had a tab of their own and Age and the
+      switch had another; neither filled half its panel, and seven tabs no longer fit the strip the
+      moment the Omen switch was on — the last one ran off the window's right edge. They merge here
+      because they are the same kind of thing: the handful of numbers and flags that are settled
+      once and then left alone.
+
+      Maxima only, and Armor has no box at all: 2e sums it from equipped armour and caps it at 3,
+      so there was never a number here anyone could correctly type. A current value moves every
+      session and belongs where it is read — on the sheet, under its own brush cap.
+
+      Name, Background and Gold are NOT here either — they are typed, dropped and typed on the
+      sheet, and a field editable in two places is two sources of truth one save apart. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="general">
+    {{!-- Text, not `type="number"`: `maxlength` does not apply to a number input, and the
+          spinner's arrows are a control the rest of this form does not have. `data-dtype` is what
+          turns the string back into a number for the update, and `character-edit.js` keeps it to
+          at most four digits as it is typed (`_onRender`) and again as it is saved
+          (`_processFormData`).
+
+          No `pattern`, deliberately. It would put native constraint validation on a control that
+          spends most of its life on a hidden tab, and the browser cannot focus what is
+          `display: none` — an out-of-pattern value silently refused the whole submit and said so
+          only in the console. The two guards above cannot wedge the form, because neither of them
+          can refuse it. --}}
+    <div class="cairn-field cairn-unit-row">
+        <label for="cairn-edit-age">{{localize 'CAIRN.Age'}}</label>
+        <input id="cairn-edit-age" class="cairn-edit-digits" type="text" name="system.age"
+            value="{{system.age}}" maxlength="{{limits.ageDigits}}" inputmode="numeric" data-dtype="Number" autofocus />
+        <span class="cairn-field-unit">{{localize 'CAIRN.Years'}}</span>
+    </div>
+
+    {{!-- Only the youngest character in a party draws an Omen, so most characters have none and
+          an empty Omen heading on their sheet asks a question the rules have already answered.
+          This switch decides whether the Omen tab and the sheet's Omen section exist at all.
+
+          The label in the gutter is the switch's own — a control can carry more than one, so
+          clicking the word toggles it exactly as clicking AGE puts the caret in the field. --}}
+    <div class="cairn-field">
+        <label for="cairn-edit-omen-enabled">{{localize 'CAIRN.Omen'}}</label>
+        <label class="cairn-switch" for="cairn-edit-omen-enabled">
+            <input id="cairn-edit-omen-enabled" type="checkbox" name="system.omen.enabled"
+                {{#if system.omen.enabled}}checked{{/if}} />
+            <span class="cairn-switch-track"><span class="cairn-switch-knob"></span></span>
+        </label>
+    </div>
+
+    {{!-- The maxima are their own group and say so: a heading on the sheet's drawn rule, the same
+          device the creator's steps use. Without it Age, the switch and four more rows were one
+          undifferentiated stack — the panel's 4px gap says nothing about where one thing ends.
+
+          Each maximum is a drawn box with its word inside it, two to a row. Four labelled rows
+          one under another wasted the width and made the reader carry the label across a long
+          ruled line; inside the box there is no line to carry, and the frame is the same `box`
+          the Bond and Omen fields wear, drawn by the same ink layer.
+
+          Text and not `type="number"`, for the reason Age is: `maxlength` does not apply to a
+          number input, and `min`/`max` on one puts NATIVE constraint validation on a control that
+          spends most of its life on a hidden tab — the browser cannot focus what is
+          `display: none`, so an out-of-range value refuses the whole submit and says so only in
+          the console. Two digits is the whole range: `character-edit.js` keeps the field to
+          digits as they are typed (`_onRender`) and clamps it to 0–99 again as it is saved
+          (`_processFormData`), and neither of those can wedge the form. --}}
+    <h3 class="cairn-edit-group" data-ink="hline" data-ink-seed="edit-maxima" data-ink-w="1.8"
+        data-ink-at="bottom">{{localize 'CAIRN.Edit.Maxima'}}</h3>
+
+    <div class="cairn-edit-stats">
+        {{#each abilities as |ability|}}
+        <div class="cairn-edit-stat" data-ink="box" data-ink-seed="edit-max-{{ability.key}}" data-ink-w="1.6">
+            <label for="cairn-edit-{{ability.key}}">{{localize ability.key}}</label>
+            <input id="cairn-edit-{{ability.key}}" type="text" name="system.abilities.{{ability.key}}.max"
+                value="{{ability.max}}" maxlength="{{@root.limits.statDigits}}" inputmode="numeric" data-dtype="Number" />
+        </div>
+        {{/each}}
+
+        <div class="cairn-edit-stat" data-ink="box" data-ink-seed="edit-max-hp" data-ink-w="1.6">
+            <label for="cairn-edit-hp">{{localize 'CAIRN.HitProtection'}}</label>
+            <input id="cairn-edit-hp" type="text" name="system.hp.max" value="{{system.hp.max}}"
+                maxlength="{{@root.limits.statDigits}}" inputmode="numeric" data-dtype="Number" />
+        </div>
+    </div>
+</section>

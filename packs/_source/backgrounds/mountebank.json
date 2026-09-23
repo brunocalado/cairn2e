@@ -1,0 +1,39 @@
+{
+  "_id": "HoLI6Fj5oQmkLJAG",
+  "name": "Mountebank",
+  "type": "background",
+  "img": "icons/sundries/gaming/game-playing-cards-deck.webp",
+  "system": {
+    "description": "<blockquote><p>Wits are your sharpest weapon, a facade your strongest shield. But when you do lose, you lose badly.</p></blockquote>",
+    "names": [
+      "Ambrose",
+      "Lucius",
+      "Beauregard",
+      "Cornelius",
+      "Aria",
+      "Toph",
+      "Indigo",
+      "Delphine",
+      "Solene",
+      "Noa"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.gear.Item.S8va0NhfI1MpGSsu",
+      "Compendium.cairn2e.background-gear.Item.D3FqR61punqaXs2k",
+      "Compendium.cairn2e.background-gear.Item.ZKrs0Ec66fVg6AbD",
+      "Compendium.cairn2e.background-gear.Item.AibKQEfLFNM8TKWl"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.g0GFLlXj9krBzBjd",
+      "Compendium.cairn2e.background-tables.RollTable.JV4SWIZgxSOD1Gc5"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!HoLI6Fj5oQmkLJAG"
+}

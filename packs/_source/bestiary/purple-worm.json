@@ -1,0 +1,100 @@
+{
+  "_id": "5yRzJArPNc54jEoX",
+  "name": "Purple Worm",
+  "type": "npc",
+  "img": "icons/environment/creatures/bug-worm-purple-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 18,
+        "max": 18
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 6,
+        "max": 6
+      }
+    },
+    "hp": {
+      "value": 18,
+      "max": 18
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "KCTxvkprJpyEtvpz",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d12)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d12",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!5yRzJArPNc54jEoX.KCTxvkprJpyEtvpz"
+    },
+    {
+      "name": "Gargantuan worms that lair in enormous burrows deep underground, only coming to the surface to eat.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Found in high deserts and hot tundra.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "JOYXrONpJQYNiUcg",
+      "_key": "!actors.items!5yRzJArPNc54jEoX.JOYXrONpJQYNiUcg"
+    },
+    {
+      "name": "The target is devoured, taking d8 STR damage from the acid in the worm's stomach.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "FIgdsQJkAvgjpmw3",
+      "_key": "!actors.items!5yRzJArPNc54jEoX.FIgdsQJkAvgjpmw3"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!5yRzJArPNc54jEoX"
+}

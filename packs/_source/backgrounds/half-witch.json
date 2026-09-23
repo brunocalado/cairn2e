@@ -1,0 +1,39 @@
+{
+  "_id": "cRgDgPuhTICXLsqh",
+  "name": "Half Witch",
+  "type": "background",
+  "img": "icons/equipment/head/hat-pointed-leather-black-glowing.webp",
+  "system": {
+    "description": "<blockquote><p>Born of both the mortal world and the unseen, you are an enigma to some and feared by many. Yours is the tale of what happens when two worlds collide.</p></blockquote>",
+    "names": [
+      "Solena",
+      "Veles",
+      "Bryn",
+      "Sabine",
+      "Razvan",
+      "Rowena",
+      "Galen",
+      "Nyx",
+      "Vex",
+      "Iwan"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.spellbooks.Item.CoP5xe09qorFSC3d",
+      "Compendium.cairn2e.background-gear.Item.3sH7BdeJI5fJUSHb",
+      "Compendium.cairn2e.background-gear.Item.Zj0j8OAr0msrqwMA",
+      "Compendium.cairn2e.background-gear.Item.IpfgiNhXHJrGVxIP"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.wbxYggWeDHmSki2z",
+      "Compendium.cairn2e.background-tables.RollTable.tdt9k5kCueOAJOAN"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!cRgDgPuhTICXLsqh"
+}

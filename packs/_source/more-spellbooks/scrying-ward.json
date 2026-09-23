@@ -1,0 +1,31 @@
+{
+  "_id": "KfXuwYoCFY2nDxbM",
+  "name": "Scrying Ward",
+  "type": "gear",
+  "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
+  "system": {
+    "description": "<p>For 24 hours you become aware of any magical eavesdropping.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KfXuwYoCFY2nDxbM",
+  "folder": "MCt2VTDHSjLFlLso"
+}

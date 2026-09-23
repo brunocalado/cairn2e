@@ -1,0 +1,47 @@
+{{!-- Step 1 gates everything after it: until a Background is chosen the other six tabs are
+      inert (`changeTab`). Once one is chosen the step's heading IS the chosen Background, with
+      Change at its right, over its blurb and gear — "Roll or choose" is an instruction that no
+      longer applies — and the wizard moves on to the name. --}}
+<section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="background">
+    {{#if hasBackground}}
+    <div class="step-heading" data-ink="hline" data-ink-seed="step-background" data-ink-w="1.8" data-ink-at="bottom">
+        <h3>{{draft.backgroundName}}</h3>
+        <button type="button" class="mini" data-action="changeBackground">
+            {{localize "CAIRN.CharacterCreator.Change"}}
+        </button>
+    </div>
+
+    <div class="background-detail">
+        <div class="blurb">{{{blurb}}}</div>
+        <div class="starting-gear">
+            <h4>{{localize "CAIRN.StartingGear"}}</h4>
+            <ul>
+                {{#if startingGold}}<li>{{startingGold}} {{localize "CAIRN.GoldPieces"}}</li>{{/if}}
+                {{#each startingGear}}<li{{#unless ok}} class="cairn-broken"{{/unless}}>{{name}}</li>{{/each}}
+            </ul>
+        </div>
+    </div>
+
+    {{else}}
+    <h3 data-ink="hline" data-ink-seed="step-background" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.CharacterCreator.Background"}}</h3>
+    <div class="section-controls">
+        <button type="button" data-action="rollBackground">
+            <i class="fas fa-dice-d20"></i> {{localize "CAIRN.CharacterCreator.RollD20"}}
+        </button>
+        <span class="hint">{{localize "CAIRN.CharacterCreator.ChooseBackgroundFirst"}}</span>
+    </div>
+    {{!-- One row per Background, the whole line a button. The rule under a row is drawn
+          (`module/ink.js`) at the inventory's hairline weight, and never under the last, as on
+          every ruled list in the system. The blurb is plain text — two braces, not three. --}}
+    <div class="cairn-plain-list creator-background-list">
+        {{#each backgrounds}}
+        <button type="button" class="creator-background-row{{#if this.selected}} selected{{/if}}"
+            data-action="pickBackground" data-uuid="{{this.uuid}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="bg-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="creator-background-name">{{this.name}}</span>
+            <span class="creator-background-blurb">{{this.blurb}}</span>
+        </button>
+        {{/each}}
+    </div>
+    {{/if}}
+</section>

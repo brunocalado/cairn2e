@@ -1,0 +1,26 @@
+{
+  "name": "cairn2e",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --ext .js ./module --format node_modules/eslint-plugin-i18n-json/formatter.js lang/*",
+    "check": "node checks/run.mjs",
+    "css": "node tools/build-css.mjs",
+    "css:watch": "node tools/build-css.mjs --watch",
+    "packs": "node tools/build-packs.mjs",
+    "packs:extract": "node tools/extract-packs.mjs",
+    "release": "node tools/release.mjs"
+  },
+  "author": "brunocalado",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.4",
+    "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
+    "classic-level": "^3.0.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^8.25.0",
+    "eslint-plugin-i18n-json": "^4.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}

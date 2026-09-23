@@ -1,0 +1,108 @@
+{
+  "_id": "g0GFLlXj9krBzBjd",
+  "name": "Mountebank: How was your fraud exposed?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Mountebank</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "xh5ZVS4WDQkxPcAr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your \"patients\" kept reporting miraculous recoveries, despite your lack of training. Start with <strong>Bandages</strong> (3 uses) and a knack for healing.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.xh5ZVS4WDQkxPcAr"
+    },
+    {
+      "_id": "3r8AJvtPPWKhHkmr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>After seducing a wealthy patron, their family hired a criminal gang to retrieve you. You got away and need to lay low. Start with <strong>Beauty Cream</strong>, 2 uses. Apply to appear irresistibly beautiful for the next 12 hours.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.3r8AJvtPPWKhHkmr"
+    },
+    {
+      "_id": "gnPxePKOzn3OdCrQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were a peddler of fake prophesies, but when one turned out to be true, it drew unwanted attention. Roll on the <strong>Omens</strong> table, but keep the result to yourself. Start with a concealable <strong>Knife</strong> (d6, <em>petty</em>).</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.gnPxePKOzn3OdCrQ"
+    },
+    {
+      "_id": "c6KV7S8uU1qvfsCd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your latest stunt destroyed a priceless artifact and injured a dozen bystanders. Start with a <strong>Captain's Uniform</strong> (<em>petty</em>), a <strong>Ceremonial Sword</strong> (harmless, 60gp), and a <strong>Bouquet of Flowers</strong>.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.c6KV7S8uU1qvfsCd"
+    },
+    {
+      "_id": "aQJ2JRhESqCS2gEN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>You were cursed by a hedgewitch for fooling some innocent village folk. Magic acts unpredictably in your hands (<em>WIL save to avoid disaster</em>). If you are the target of magic, the same applies to its wielder.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.aQJ2JRhESqCS2gEN"
+    },
+    {
+      "_id": "RVA4zJPIDWj13fxX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Your \"seances\" with the dead were in actuality a ruse involving a cleverly hidden spellbook of Auditory Illusion. Inevitably, a patron discovered your secret. Start with the <strong>Spellbook</strong> and a bundle of scarves. Auditory Illusion: You create illusory sounds that seem to come from a direction of your choice. <em>Produces random and occasionally inopportune sounds throughout the day</em>.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.RVA4zJPIDWj13fxX"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!g0GFLlXj9krBzBjd"
+}

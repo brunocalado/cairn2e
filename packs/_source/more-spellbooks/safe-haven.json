@@ -1,0 +1,31 @@
+{
+  "_id": "aS7g4BbBUQBhobBv",
+  "name": "Safe Haven",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
+  "system": {
+    "description": "<p>You summon a floating, invisible refuge for 8 hours. It fits up to 8 people comfortably.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!aS7g4BbBUQBhobBv",
+  "folder": "MCt2VTDHSjLFlLso"
+}

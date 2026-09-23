@@ -1,0 +1,94 @@
+{{!-- The attribute row both actor headers draw: three rollable caps with steppers, HP with
+      steppers, Armor read-only. The steppers write the CURRENT value, and only on a sheet the user
+      may write — an observer reads the numbers and rolls the saves, and the number then sits
+      centred in its cell as Armor's always does.
+
+      @param abilities  [{key, value, max}]
+      @param system     the actor's system — HP and the summed Armor
+      @param seed       ink seed prefix, so each sheet's brush marks keep their own silhouette
+      @param editable   @root.editable — the steppers are drawn only then --}}
+{{!-- Five brush caps, and nothing under them. Each used to sit over a drawn rule; five short
+      segments across the top of the sheet marked no boundary the caps were not already
+      marking, and read as clutter. The cap says where a column begins and the gap says where
+      it ends.
+
+      Every number in this row is a printed LABEL and nothing else — no action, no tab stop,
+      no tooltip, no text cursor, and `pointer-events: none` so a drag across the sheet cannot
+      even select it. It used to be an input styled until it stopped looking like one, then a
+      span that swapped a borderless field in on click; both are gone. A value on the sheet
+      face is read, and it is written in exactly two places: the steppers beside it, and the
+      edit window behind the quill.
+
+      That is the rule the maximum has always followed, and the current value now follows it
+      too. Two ways to type the same number into the same document, a click apart, is two
+      places to keep a clamp, a commit and a re-render in step — and the sheet face is the
+      worse of the two, because it is the one being read at the table.
+
+      The two steppers either side change the CURRENT value by one, clamped to 0 and the
+      maximum. They are always in the row, so nothing moves when one is reached for or runs
+      out of range; a hold repeats, and the writes are coalesced in `_steppers.js`. The plus sits
+      past the maximum rather than between the two numbers, where "11 + /13" read as an
+      expression. --}}
+<div class="cairn-attributes">
+    {{#each abilities as |ability|}}
+    {{!-- The three attribute caps are rolls, and they say so: hovering one re-inks the brush
+          mark in blood red and brightens the word (`data-ink-lift="blood"`, painted in
+          `module/ink.js`; `.is-rollable` in the stylesheet). Deepening the black mark was the
+          first attempt and it was too quiet to read as an affordance at all — at this size a
+          third more ink on an already near-black mark is a change nobody sees.
+
+          The colour is drawn rather than styled for the same reason everything else here is:
+          the mark is a ragged brush silhouette, and a CSS background would put a rectangle
+          behind it. HP and ARMOR below are plain labels and get none of it — the difference
+          IS the affordance. The link keeps the keyboard's focus ring for the same reason. --}}
+    <div class="cairn-stat">
+        <div class="cairn-cap is-rollable" data-ink-lift="blood">
+            <span class="cairn-slab" data-ink="slab" data-ink-seed="{{../seed}}-{{ability.key}}"></span>
+            <a data-action="rollSave" data-ability="{{ability.key}}" tabindex="0"
+                data-tooltip="{{localize 'CAIRN.Save' key=ability.key}}">{{localize ability.key}}</a>
+        </div>
+        <div class="cairn-stat-value">
+            {{#if ../editable}}<a class="cairn-step" data-action="statStep" data-step="-1" data-field="system.abilities.{{ability.key}}.value">&minus;</a>{{/if}}
+            <span class="cairn-stat-number">
+                {{!-- `data-field` and `data-max` are not an affordance: `_steppers.js#markStepLimits`
+                      reads them to decide which of the two steppers has run out of range. --}}
+                <span class="cairn-stat-current"
+                    data-field="system.abilities.{{ability.key}}.value"
+                    data-max="{{ability.max}}">{{ability.value}}</span>
+                <span class="cairn-stat-max">/{{ability.max}}</span>
+            </span>
+            {{#if ../editable}}<a class="cairn-step" data-action="statStep" data-step="1" data-field="system.abilities.{{ability.key}}.value">+</a>{{/if}}
+        </div>
+    </div>
+    {{/each}}
+
+    <div class="cairn-stat">
+        <div class="cairn-cap">
+            <span class="cairn-slab" data-ink="slab" data-ink-seed="{{seed}}-hp"></span>
+            <span>{{localize 'CAIRN.HitProtection'}}</span>
+        </div>
+        <div class="cairn-stat-value">
+            {{#if editable}}<a class="cairn-step" data-action="statStep" data-step="-1" data-field="system.hp.value">&minus;</a>{{/if}}
+            <span class="cairn-stat-number">
+                <span class="cairn-stat-current"
+                    data-field="system.hp.value"
+                    data-max="{{system.hp.max}}">{{system.hp.value}}</span>
+                <span class="cairn-stat-max">/{{system.hp.max}}</span>
+            </span>
+            {{#if editable}}<a class="cairn-step" data-action="statStep" data-step="1" data-field="system.hp.value">+</a>{{/if}}
+        </div>
+    </div>
+
+    {{!-- Armor is summed from equipped items and capped at 3 by rule, so it has no field
+          anywhere and no steppers either — there is nothing here a player could correctly
+          set by hand. --}}
+    <div class="cairn-stat">
+        <div class="cairn-cap">
+            <span class="cairn-slab" data-ink="slab" data-ink-seed="{{seed}}-armor"></span>
+            <span>{{localize 'CAIRN.Armor'}}</span>
+        </div>
+        <div class="cairn-stat-value">
+            <span class="cairn-stat-number"><span class="cairn-stat-current">{{system.armorTotal}}</span></span>
+        </div>
+    </div>
+</div>

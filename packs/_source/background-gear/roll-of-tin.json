@@ -1,0 +1,31 @@
+{
+  "_id": "tYoShme2VBMRH8E5",
+  "name": "Roll of Tin",
+  "type": "gear",
+  "img": "icons/commodities/metal/ingot-copper.webp",
+  "system": {
+    "description": "<p>Roll of Tin</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!tYoShme2VBMRH8E5",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

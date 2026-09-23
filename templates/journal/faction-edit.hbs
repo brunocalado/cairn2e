@@ -1,0 +1,214 @@
+{{!-- A faction's edit form: five open lists and two rolled fields.
+
+      Every list is indexed (`system.agents.0.name`, `.1.name`, …) because
+      `DocumentSheetV2#_processFormData` runs `foundry.utils.expandObject` over the form and
+      `ArrayField._cast` turns the resulting integer-keyed object back into an array — so a plain
+      submit reaches the model with no help. The indices have to stay CONTIGUOUS or the array
+      comes back with holes, which is why removing a row rewrites the whole array rather than
+      blanking one input (`faction-page-sheet.js#removeAt`).
+
+      A die beside a field rolls that field's own SRD table, world copy first — so a Warden who
+      edited "Faction Obstacle" in their world gets their table here, exactly as the one-click
+      generator does. Traits are the one control that rolls a PAIR, because the SRD's trait table
+      is two columns rolled together and a single trait is half an answer.
+
+      The description is the real `<prose-mirror>` element, as the item sheets write it: the
+      `{{editor}}` helper emits markup nothing in v2 activates. --}}
+<section>
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-die-row">
+            <label for="faction-type-{{page.id}}">{{localize 'CAIRN.Faction.Type'}}</label>
+            <input id="faction-type-{{page.id}}" type="text" name="system.type" value="{{system.type}}"
+                placeholder="{{localize 'CAIRN.Faction.TypePlaceholder'}}" />
+            <button type="button" class="mini" data-action="rollField" data-table="Faction Type"
+                data-target="system.type" data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+    </div>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Faction.Traits'}}</h4>
+        <a class="cairn-zone-add" data-action="traitRoll" data-tooltip="{{localize 'CAIRN.Faction.RollTraits'}}">
+            <i class="fas fa-dice-d20" inert></i><span>{{localize 'CAIRN.RollField'}}</span>
+        </a>
+        <a class="cairn-zone-add" data-action="traitAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Faction.AddTrait'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-faction-traits" data-ink-w="1" data-ink-a="0.34"></div>
+    {{!-- A trait is ONE WORD off a d20 column, so it wears the tag the rest of the system gives a
+          short fact (Primitive 8) and the run wraps. A ruled row each was a line of furniture per
+          word, and a faction with a dozen of them filled the window with rules. The tag's own box
+          is the edge, so the input inside it carries none. --}}
+    <ul class="cairn-faction-traits">
+        {{#each system.traits as |t i|}}
+        <li class="cairn-faction-trait" data-index="{{i}}">
+            <input type="text" name="system.traits.{{i}}" value="{{t}}"
+                placeholder="{{localize 'CAIRN.Faction.TraitPlaceholder'}}"
+                aria-label="{{localize 'CAIRN.Faction.Traits'}}" />
+            <a data-action="traitRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Faction.NoTraits'}}</li>
+        {{/each}}
+    </ul>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Faction.Advantages'}}</h4>
+        <a class="cairn-zone-add" data-action="advantageAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Faction.AddAdvantage'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-faction-advantages" data-ink-w="1" data-ink-a="0.34"></div>
+    {{!-- An Item dropped anywhere on this form becomes an advantage; the drop is what fills `item`,
+          and the row shows the link rather than a second field to paste a uuid into. --}}
+    <ol class="cairn-plain-list cairn-faction-advantages">
+        {{#each advantages as |a i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="faction-adv-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                <input class="cairn-row-input cairn-faction-adv-name" type="text"
+                    name="system.advantages.{{i}}.name" value="{{a.name}}"
+                    placeholder="{{localize 'CAIRN.Faction.AdvantagePlaceholder'}}" />
+                <input class="cairn-row-input" type="text" name="system.advantages.{{i}}.note" value="{{a.note}}"
+                    placeholder="{{localize 'CAIRN.Faction.AdvantageNotePlaceholder'}}" />
+            </span>
+            <span class="cairn-item-controls">
+                {{#if a.linked}}
+                <a data-action="openLink" data-tooltip-text="{{a.linked.name}}"><i class="fas fa-eye"></i></a>
+                {{/if}}
+                <a data-action="rollRow" data-list="advantages" data-key="name" data-table="Faction Advantage"
+                    data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></a>
+                <a data-action="advantageRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Faction.NoAdvantages'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Faction.Agents'}}</h4>
+        <a class="cairn-zone-add" data-action="agentAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Faction.AddAgent'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-faction-agents" data-ink-w="1" data-ink-a="0.34"></div>
+    <p class="hint">{{localize 'CAIRN.Faction.AgentsHint'}}</p>
+    {{!-- Rank order. A row is `draggable` so it can be dragged onto another to be promoted or
+          demoted, and an Actor dropped on the form joins the list as a new agent. --}}
+    <ol class="cairn-plain-list cairn-faction-agents">
+        {{#each agents as |agent i|}}
+        <li class="cairn-slot cairn-faction-agent draggable" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="faction-agent-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-number">{{agent.rank}}</span>
+            <span class="cairn-slot-body">
+                <input class="cairn-row-input" type="text" name="system.agents.{{i}}.name" value="{{agent.name}}"
+                    placeholder="{{localize 'CAIRN.Faction.AgentPlaceholder'}}" />
+                <input class="cairn-row-input" type="text" name="system.agents.{{i}}.role" value="{{agent.role}}"
+                    placeholder="{{localize 'CAIRN.Faction.RolePlaceholder'}}" />
+                {{!-- Disabled, not hidden, when an Actor is linked: the number is then that
+                      Actor's and editing it here would write a value nothing reads. A disabled
+                      input submits nothing, so the stored number keeps whatever it had. --}}
+                <input class="cairn-row-input cairn-faction-wil" type="number" min="0" max="20"
+                    name="system.agents.{{i}}.wil" value="{{agent.wil}}" {{disabled agent.linked}}
+                    data-tooltip-text="{{localize 'CAIRN.Faction.Wil'}}" />
+                <input class="cairn-row-input" type="text" name="system.agents.{{i}}.motivation" value="{{agent.motivation}}"
+                    placeholder="{{localize 'CAIRN.Faction.MotivationPlaceholder'}}" />
+            </span>
+            <span class="cairn-item-controls">
+                {{#if agent.linked}}
+                <a data-action="openLink" data-tooltip-text="{{agent.linked.name}}"><i class="fas fa-eye"></i></a>
+                {{/if}}
+                <a data-action="rollRow" data-list="agents" data-key="role" data-table="Faction Agent"
+                    data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></a>
+                <a data-action="agentRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Faction.NoAgents'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Faction.Agenda'}}</h4>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-faction-agenda" data-ink-w="1" data-ink-a="0.34"></div>
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-die-row">
+            <label for="faction-objective-{{page.id}}">{{localize 'CAIRN.Faction.Objective'}}</label>
+            <input id="faction-objective-{{page.id}}" type="text" name="system.agenda.objective"
+                value="{{system.agenda.objective}}" placeholder="{{localize 'CAIRN.Faction.ObjectivePlaceholder'}}" />
+            <button type="button" class="mini" data-action="rollField" data-table="Faction Agenda"
+                data-target="system.agenda.objective" data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
+        </div>
+    </div>
+    {{!-- Goals are their own zone, not a list tucked under the objective. "Agendas are defined by
+          a series of 3-5 goals that build toward a clear objective" — two parts of one thing, and
+          the goals are the part the Warden edits every session. Filed under Agenda with the add
+          control up in that heading, they read as missing. --}}
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Faction.Goals'}}</h4>
+        <a class="cairn-zone-add" data-action="goalAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Faction.AddGoal'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-faction-goals" data-ink-w="1" data-ink-a="0.34"></div>
+    <p class="hint">{{localize 'CAIRN.Faction.GoalsHint'}}</p>
+    <ol class="cairn-plain-list cairn-faction-goals-edit">
+        {{#each goals as |g i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="faction-goal-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-number">{{g.number}}</span>
+            <span class="cairn-slot-body">
+                {{!-- Done, or not done — the system's one on/off control (Primitive 5), which is
+                      also what the obstacle rows below wear. The three-state icon it replaces was
+                      a filled dot nobody could read, and its third state was never produced by
+                      any rule. --}}
+                {{> "systems/cairn2e/templates/parts/toggle.hbs" field=(concat "system.agenda.goals." i ".done")
+                    value=g.done tooltip=(localize 'CAIRN.Faction.Achieved')}}
+                <input class="cairn-row-input{{#if g.done}} is-done{{/if}}" type="text"
+                    name="system.agenda.goals.{{i}}.text" value="{{g.text}}"
+                    placeholder="{{localize 'CAIRN.Faction.GoalPlaceholder'}}" />
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="goalRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Faction.NoGoals'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Faction.Obstacles'}}</h4>
+        <a class="cairn-zone-add" data-action="obstacleAdd">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Faction.AddObstacle'}}</span>
+        </a>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-faction-obstacles" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list">
+        {{#each system.obstacles as |o i|}}
+        <li class="cairn-slot" data-index="{{i}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="faction-obstacle-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                {{> "systems/cairn2e/templates/parts/toggle.hbs" field=(concat "system.obstacles." i ".resolved")
+                    value=o.resolved tooltip=(localize 'CAIRN.Faction.Resolved')}}
+                <input class="cairn-row-input" type="text" name="system.obstacles.{{i}}.text" value="{{o.text}}"
+                    placeholder="{{localize 'CAIRN.Faction.ObstaclePlaceholder'}}" />
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="rollRow" data-list="obstacles" data-key="text" data-table="Faction Obstacle"
+                    data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></a>
+                <a data-action="obstacleRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize 'CAIRN.Faction.NoObstacles'}}</li>
+        {{/each}}
+    </ol>
+
+    <div class="cairn-prose-box" data-ink="box" data-ink-seed="faction-description" data-ink-w="1.6">
+        <prose-mirror name="system.description" value="{{system.description}}"
+            data-document-uuid="{{uuid}}"></prose-mirror>
+    </div>
+</section>

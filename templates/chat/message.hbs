@@ -1,0 +1,40 @@
+{{!-- The chat message itself (CONFIG.ChatMessage.template). Every message in the log is drawn
+      here — typed text, an emote, a whisper, a roll, a table draw, a card this system posts — so
+      nothing in the log is core's parchment and no card has to be framed after the fact.
+
+      Core's ChatLog finds a message by `li.message[data-message-id]` and refreshes
+      `.message-timestamp` in place; those, and the two data-actions, are the only markup it needs
+      from here. `borderColor` (the author's colour on an OOC message) is deliberately not drawn:
+      it arrives as an inline `style` attribute, which no ordinary declaration can override, and
+      the frame is ink.
+
+      The message's `flavor` is the card's caption. Core draws it as a small grey line inside the
+      header; here it is the ruled capitals every card head uses, which is why a card posted by
+      this system passes its title as `flavor` rather than drawing one of its own. --}}
+<li class="chat-message message flexcol cairn2e cairn-message {{cssClass}}" data-message-id="{{message._id}}">
+    <header class="message-header flexrow">
+        <span class="cairn-message-sender">{{alias}}</span>
+        <span class="message-metadata">
+            <time class="message-timestamp">{{timeSince message.timestamp}}</time>
+            {{#if canDelete}}
+            <a aria-label="{{localize 'COMMON.Delete'}}" class="message-delete" data-action="deleteMessage">
+                <i class="fa-solid fa-trash" inert></i>
+            </a>
+            {{/if}}
+            {{#if canClose}}
+            <a aria-label="{{localize 'CHAT.Dismiss'}}" class="message-dismiss" data-action="dismissMessage">
+                <i class="fa-solid fa-xmark" inert></i>
+            </a>
+            {{/if}}
+        </span>
+        {{#if isWhisper}}
+        <span class="cairn-message-to">{{localize 'CHAT.To'}}: {{whisperTo}}</span>
+        {{/if}}
+    </header>
+    {{#if message.flavor}}
+    <div class="cairn-card-title">{{{message.flavor}}}</div>
+    {{/if}}
+    <div class="message-content cairn-card-body">
+        {{{message.content}}}
+    </div>
+</li>

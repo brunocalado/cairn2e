@@ -1,0 +1,31 @@
+{
+  "_id": "8zsOhp2iaFRjKdAh",
+  "name": "Objectify",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>You become any inanimate object between the size of a grand piano and an apple.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!8zsOhp2iaFRjKdAh",
+  "folder": "HeofFbO6OthG77Yu"
+}

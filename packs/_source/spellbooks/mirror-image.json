@@ -1,0 +1,31 @@
+{
+  "_id": "y5nE2YY1TkoQq0Vq",
+  "name": "Mirror Image",
+  "type": "gear",
+  "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+  "system": {
+    "description": "<p><em>Over time, the owner begins to question who is the original, and who is the duplicate.</em></p><p>An illusory duplicate of yourself appears and is under your control.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!y5nE2YY1TkoQq0Vq",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

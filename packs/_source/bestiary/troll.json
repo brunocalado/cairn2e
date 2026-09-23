@@ -1,0 +1,129 @@
+{
+  "_id": "wjZT7MjBexDKVGIt",
+  "name": "Troll",
+  "type": "npc",
+  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 4,
+        "max": 4
+      }
+    },
+    "hp": {
+      "value": 14,
+      "max": 14
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "DFS42FJ0Rhm4wzmI",
+      "name": "Bite",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>bite (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!wjZT7MjBexDKVGIt.DFS42FJ0Rhm4wzmI"
+    },
+    {
+      "_id": "TQVycKoV1aFn450b",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!wjZT7MjBexDKVGIt.TQVycKoV1aFn450b"
+    },
+    {
+      "name": "Giant, warty humanoids of flesh and bark.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Dwell underground or in deep forests, as well as the ruined homes of their former victims. Carnivorous.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "s2ADavDQhDD08ICB",
+      "_key": "!actors.items!wjZT7MjBexDKVGIt.s2ADavDQhDD08ICB"
+    },
+    {
+      "name": "When taking Critical Damage, a Troll will continue fighting, despite loss of flesh and limb.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Only when their STR is 0 are they truly killed. Unless their heads are bathed in acid, fire, or powerful magic, they will fully regenerate within 1d4 days.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "Aev7qNjDNllXBnvQ",
+      "_key": "!actors.items!wjZT7MjBexDKVGIt.Aev7qNjDNllXBnvQ"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!wjZT7MjBexDKVGIt"
+}

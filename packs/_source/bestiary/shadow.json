@@ -1,0 +1,100 @@
+{
+  "_id": "oTpGvNArHXjvHSd8",
+  "name": "Shadow",
+  "type": "npc",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 1,
+        "max": 1
+      },
+      "DEX": {
+        "value": 18,
+        "max": 18
+      },
+      "WIL": {
+        "value": 14,
+        "max": 14
+      }
+    },
+    "hp": {
+      "value": 14,
+      "max": 14
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "vJG2QsB4BPs1TEja",
+      "name": "Draining Touch",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>draining touch (d6, ignores armor)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!oTpGvNArHXjvHSd8.vJG2QsB4BPs1TEja"
+    },
+    {
+      "name": "Incorporeal monsters that look like animated shadows.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Unharmed by mundane attacks, sleep or mind control.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "99ofNe9bget3u5qD",
+      "_key": "!actors.items!oTpGvNArHXjvHSd8.99ofNe9bget3u5qD"
+    },
+    {
+      "name": "Target loses d4 STR. If reduced to 0 STR, they become a shadow as well.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "a6JkQ7gocRPdlxSe",
+      "_key": "!actors.items!oTpGvNArHXjvHSd8.a6JkQ7gocRPdlxSe"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!oTpGvNArHXjvHSd8"
+}

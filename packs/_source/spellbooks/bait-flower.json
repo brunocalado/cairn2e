@@ -1,0 +1,31 @@
+{
+  "_id": "fIy1yQIFBQKQDc0y",
+  "name": "Bait Flower",
+  "type": "gear",
+  "img": "icons/sundries/books/book-eye-purple.webp",
+  "system": {
+    "description": "<p><em>Attracts flies.</em></p><p>A plant sprouts from the ground that emanates the smell of decaying flesh.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!fIy1yQIFBQKQDc0y",
+  "folder": "OFCsBBsWPJ18tVWP"
+}

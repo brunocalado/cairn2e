@@ -1,0 +1,38 @@
+{
+  "_id": "nTpcD8DoDShW8uC3",
+  "name": "Fungal Forager",
+  "type": "background",
+  "img": "icons/consumables/mushrooms/umbonate-brown.webp",
+  "system": {
+    "description": "<blockquote><p>You follow the whisperings of the deep earth, the rhythmic pulse of the mycelium forest that grows beneath the surface. The dark holds no terror for you. Also, you really love mushrooms.</p></blockquote>",
+    "names": [
+      "Unther",
+      "Woozy",
+      "Hilda",
+      "Current",
+      "Leif",
+      "Ratan",
+      "Mourella",
+      "Lal",
+      "Per",
+      "Madrigal"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.background-gear.Item.AEIkWM8jNgsnCuCh",
+      "Compendium.cairn2e.background-gear.Item.eFWBZIBDrdwE0I7x",
+      "Compendium.cairn2e.gear.Item.yQOui5IqPJ0IHTCf",
+      "Compendium.cairn2e.background-gear.Item.kcowoG0KkgeEBpf9"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.juirr6mZR7xZTm81",
+      "Compendium.cairn2e.background-tables.RollTable.EinAvDMBXcRTp03D"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!nTpcD8DoDShW8uC3"
+}

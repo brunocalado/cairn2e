@@ -1,0 +1,108 @@
+{
+  "_id": "NmjiklcayJDLuz6u",
+  "name": "Marchguard: What do you carry as proof of your Oath?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Marchguard</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "3ff4mRPyoDoNpDBt",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Impressive Pin</strong> A metal badge of honor from the Guard. It can open doors but leaves a trail. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.3ff4mRPyoDoNpDBt"
+    },
+    {
+      "_id": "fEcdLTzGgh2kIbM6",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Oath Compass</strong> Points not towards North, but instead to the nearest member of the Guard. It also lets you know when they're getting close.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.fEcdLTzGgh2kIbM6"
+    },
+    {
+      "_id": "ReO9dEft0eL8hWbq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Pullstones</strong> Two jet-black stones. When separated, the stones will always roll toward one another.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.ReO9dEft0eL8hWbq"
+    },
+    {
+      "_id": "Xmc1todn0vFmo3MK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Fireflask</strong> Highly alcoholic, yet strangely delicious. When thrown, it creates a wall of flames 10ft high that burns out after a few minutes. 1 use.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.Xmc1todn0vFmo3MK"
+    },
+    {
+      "_id": "BXn0xEavUZ36zqdM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Pain Band</strong> Touch an injured creature to transfer their wounds to you. (Exchange their lost STR with your own.) <strong>Recharge</strong>: Wear the ring while in perfect health. You will lose 1 STR, permanently. <em>Petty</em>.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.BXn0xEavUZ36zqdM"
+    },
+    {
+      "_id": "MVcqOKvA9T2ar1yi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Poacher's Woe</strong> Strongly-scented arrows (3 uses). The scent is powerful enough to track with ease.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.MVcqOKvA9T2ar1yi"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!NmjiklcayJDLuz6u"
+}

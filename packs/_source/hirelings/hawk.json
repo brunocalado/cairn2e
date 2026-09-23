@@ -1,0 +1,90 @@
+{
+  "_id": "TE0MDSG0VK7Erzvl",
+  "name": "Hawk",
+  "type": "npc",
+  "img": "icons/creatures/birds/raptor-hawk-flying.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 5,
+        "max": 5
+      },
+      "DEX": {
+        "value": 16,
+        "max": 16
+      },
+      "WIL": {
+        "value": 5,
+        "max": 5
+      }
+    },
+    "hp": {
+      "value": 2,
+      "max": 2
+    },
+    "role": "monster",
+    "background": "",
+    "career": "",
+    "dayRate": 0,
+    "traits": {
+      "physique": "",
+      "skin": "",
+      "hair": "",
+      "face": "",
+      "speech": "",
+      "clothing": "",
+      "quirk": "",
+      "goal": "",
+      "virtue": "",
+      "vice": ""
+    },
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d4+d4)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d4",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "5IhsHCNSFJG2imCU",
+      "_key": "!actors.items!TE0MDSG0VK7Erzvl.5IhsHCNSFJG2imCU"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!TE0MDSG0VK7Erzvl"
+}

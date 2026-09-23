@@ -1,0 +1,99 @@
+{
+  "_id": "IOUkASc5r3i8lFrC",
+  "name": "Treant",
+  "type": "npc",
+  "img": "icons/magic/nature/tree-spirit-black.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 15,
+        "max": 15
+      },
+      "DEX": {
+        "value": 3,
+        "max": 3
+      },
+      "WIL": {
+        "value": 12,
+        "max": 12
+      }
+    },
+    "hp": {
+      "value": 10,
+      "max": 10
+    },
+    "role": "monster",
+    "armor": 3,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "s7V5YwKIUpAyIRzj",
+      "name": "Roots",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>roots (d8+d8, <em>blast</em>)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": true,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!IOUkASc5r3i8lFrC.s7V5YwKIUpAyIRzj"
+    },
+    {
+      "name": "Sentient, bipedal trees with a vaguely humanoid face on their trunks.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Found in the deepest part of the wood.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4Xh97n5FmE05CjzF",
+      "_key": "!actors.items!IOUkASc5r3i8lFrC.4Xh97n5FmE05CjzF"
+    },
+    {
+      "name": "Speak slowly and ponderously, with a deep voice.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Timeless, living for thousands of years.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "0AuOLQsvSIJcBUxb",
+      "_key": "!actors.items!IOUkASc5r3i8lFrC.0AuOLQsvSIJcBUxb"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!IOUkASc5r3i8lFrC"
+}

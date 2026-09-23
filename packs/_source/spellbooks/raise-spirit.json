@@ -1,0 +1,31 @@
+{
+  "_id": "DaTFMAlO5ymZsIJS",
+  "name": "Raise Spirit",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p><em>The answers (but not their questions) are forever inscribed in its pages.</em></p><p>The spirit of a nearby corpse manifests and will answer 1 question.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 600,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DaTFMAlO5ymZsIJS",
+  "folder": "CUFHa1lIQAt4nRUN"
+}

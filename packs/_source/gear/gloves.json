@@ -1,0 +1,30 @@
+{
+  "_id": "kWbQCs7Zt0qwwh8F",
+  "name": "Gloves",
+  "type": "gear",
+  "img": "icons/equipment/hand/glove-belted-leather-blue.webp",
+  "system": {
+    "description": "<p>Gloves (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!kWbQCs7Zt0qwwh8F"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "C0QImw3J77AiJH2V",
+  "name": "Word of Pain",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>A single phrase from your lips does 1d10 blast damage. Affected targets are also deafened.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!C0QImw3J77AiJH2V",
+  "folder": "MCt2VTDHSjLFlLso"
+}

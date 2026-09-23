@@ -1,0 +1,32 @@
+{{!-- The shopper's own things a store would take, by where they sit — on the body, in each
+      container, among the Belongings — so the player can see that selling the sack on the mule
+      frees nothing on their back. Each row prices at the Warden's ratio; `+` (or a drag) puts it
+      on the sell side of the cart. Only priced things are here: what has no cost is not for
+      sale, and coin is the payment. A container with something in it is not listed — sold, it
+      would take its contents with it. --}}
+<section class="tab cairn-store-yours {{tabs.yours.cssClass}}" data-group="primary" data-tab="yours">
+    <ol class="cairn-plain-list cairn-store-list">
+        {{#each yours as |group|}}
+        <li class="cairn-store-group">{{group.label}}</li>
+        {{#each group.rows as |row|}}
+        <li class="cairn-slot cairn-store-row draggable" data-item-id="{{row.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="yours-{{row.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <img class="cairn-store-img" src="{{row.img}}" alt="" />
+            <span class="cairn-item-name-and-tags" data-action="openItem">
+                <span class="cairn-item-title">{{row.name}}</span>
+                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system}}
+                {{#if row.inCart}}<span class="cairn-item-tag">{{localize "CAIRN.Store.Selling"}}</span>{{/if}}
+            </span>
+            <span class="cairn-store-price">{{row.price}} {{localize "CAIRN.GoldAbbrev"}}</span>
+            <span class="cairn-item-controls">
+                {{#unless row.inCart}}
+                <a data-action="cartSell" data-tooltip="{{localize 'CAIRN.Store.Sell'}}"><i class="fas fa-plus"></i></a>
+                {{/unless}}
+            </span>
+        </li>
+        {{/each}}
+        {{else}}
+        <li class="cairn-empty">{{localize "CAIRN.Store.NothingToSell"}}</li>
+        {{/each}}
+    </ol>
+</section>

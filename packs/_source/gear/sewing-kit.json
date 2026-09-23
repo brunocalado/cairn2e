@@ -1,0 +1,30 @@
+{
+  "_id": "RFXTI1B6phAqB4hY",
+  "name": "Sewing Kit",
+  "type": "gear",
+  "img": "icons/tools/hand/sewing-needle-thread.webp",
+  "system": {
+    "description": "<p>Sewing Kit</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!RFXTI1B6phAqB4hY"
+}

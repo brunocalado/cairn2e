@@ -1,0 +1,31 @@
+{
+  "_id": "meTlmjzi23j0Rz27",
+  "name": "Boots, reinforced",
+  "type": "gear",
+  "img": "icons/equipment/feet/boots-armored-studded-steel.webp",
+  "system": {
+    "description": "<p>Boots, reinforced (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!meTlmjzi23j0Rz27",
+  "folder": "XycVdoNLEuiHY9my"
+}

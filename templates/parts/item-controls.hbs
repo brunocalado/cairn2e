@@ -1,0 +1,73 @@
+{{!-- The item controls, one cluster in one order on every row that lists a carried thing: the ten
+      numbered lines, the Petty and Belongings list, and an NPC's Items tab. It was written three
+      times and had drifted — the Petty tab had no Post, the NPC row led with Set Aside — so an item
+      behaved differently depending on where it was listed.
+
+      The order: roll, the two "read it aloud" gestures, the two that say where the thing is, then
+      the three that address the item itself. A control that writes the document is drawn only when
+      the sheet is `editable`; one that reads, opens or posts is drawn for anyone who can see the
+      sheet. Core disables every `<button>` on a sheet the user cannot write, but an `<a data-action>`
+      is not a form element and stays live — it would reach an update and a permission toast.
+
+      @param item      the row's item view (`actor-sheet.js#itemView`)
+      @param editable  @root.editable — whether the write controls are drawn at all --}}
+<span class="cairn-item-controls">
+    {{#if item.system.equipped}}{{#if item.system.damage}}
+    <a data-action="rollDamage" data-tooltip="{{localize 'CAIRN.RollDamageHint'}}"><i class="fas fa-dice-d20"></i></a>
+    {{/if}}{{/if}}
+
+    {{#if editable}}
+    {{!-- Cast only shows on an EQUIPPED Spellbook: a spell is cast by holding the book in both
+          hands and reading it aloud, so a book not in hand cannot be read. Consume stands beside
+          it — "They disappear after one use" (`core-rules.md` → Scrolls). A scroll is petty by
+          rule, so it is never on the ten and this control is never drawn there. --}}
+    {{#if item.canCast}}
+    <a data-action="spellCast" data-tooltip="{{localize 'CAIRN.CastSpell'}}"><i class="fas fa-wand-sparkles"></i></a>
+    {{/if}}
+    {{#if item.canConsume}}
+    <a data-action="itemConsume" data-tooltip="{{localize 'CAIRN.ConsumeScroll'}}"><i class="fas fa-wand-sparkles"></i></a>
+    {{/if}}
+
+    {{!-- Equipped is a CLOSED FIST at full ink; unequipped is an OPEN HAND, outlined and soft. It
+          was one glyph in two shades before, and at 18px the difference between them was not a
+          difference anyone could see. Both glyphs sit in the same 18px cell, so toggling one moves
+          nothing else in the row. A zero-slot thing can still be a weapon or a spellbook — the
+          model says so (`documents/item.js#isEquipable`) — and a thing not under direct
+          possession is not equipable, which is the model's answer already. --}}
+    {{#if item.system.isEquipable}}
+    <a data-action="itemEquipToggle" class="cairn-equip{{#if item.system.equipped}} equipped{{/if}}"
+        data-tooltip="{{#if item.system.equipped}}{{localize 'CAIRN.ItemUnequip'}}{{else}}{{localize 'CAIRN.ItemEquip'}}{{/if}}">
+        <i class="{{#if item.system.equipped}}fas fa-hand-fist{{else}}far fa-hand{{/if}}"></i>
+    </a>
+    {{/if}}
+
+    {{!-- Set aside, or taken back: a figure that walks with you, or the camp you left it at — two
+          outlines, not two shades. On the ten the thing is always carried, so only the walking
+          figure is ever drawn there. A Fatigue never carries it: "a character forced to add
+          Fatigue with no free slots must drop an item" (`core-rules.md`), and the escape from that
+          is dropping the item, never the Fatigue. --}}
+    {{#if item.system.isStashable}}
+    <a data-action="setAsideToggle" class="cairn-carried{{#if item.system.carried}} is-on{{/if}}"
+        data-tooltip="{{#if item.system.carried}}{{localize 'CAIRN.SetAside'}}{{else}}{{localize 'CAIRN.TakeBack'}}{{/if}}">
+        <i class="fas {{#if item.system.carried}}fa-person-walking{{else}}fa-campground{{/if}}"></i>
+    </a>
+    {{/if}}
+    {{/if}}
+
+    {{!-- A Fatigue carries none of the three: its circle in the track beside the ten is the only
+          thing that puts one there and the only thing that takes it away. --}}
+    {{#unless item.isFatigue}}
+    <a data-action="itemEdit" data-tooltip="{{localize 'CAIRN.EditItem'}}"><i class="fas fa-pencil"></i></a>
+    {{!-- The description, read out loud, between the pencil and the cross. An item with nothing
+          written keeps the glyph and loses the action, so the row is the same shape on every line
+          and the answer to "why can I not click this" is visible rather than absent. --}}
+    {{#if item.hasDescription}}
+    <a data-action="itemPost" data-tooltip="{{localize 'CAIRN.PostToChat'}}"><i class="fas fa-scroll"></i></a>
+    {{else}}
+    <a class="is-disabled" aria-disabled="true" data-tooltip="{{localize 'CAIRN.PostToChat'}}"><i class="fas fa-scroll"></i></a>
+    {{/if}}
+    {{#if editable}}
+    <a data-action="itemDelete" data-tooltip="{{localize 'CAIRN.DeleteItem'}}"><i class="fas fa-xmark"></i></a>
+    {{/if}}
+    {{/unless}}
+</span>

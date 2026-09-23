@@ -1,0 +1,31 @@
+{
+  "_id": "ahKDSl78KNyBZ5rX",
+  "name": "Quartz",
+  "type": "gear",
+  "img": "icons/commodities/stone/stone-white-quartz-ball.webp",
+  "system": {
+    "description": "<p>A clear six-sided crystal, cold to hold.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ahKDSl78KNyBZ5rX",
+  "folder": "zp21eCWEd0bf48mP"
+}

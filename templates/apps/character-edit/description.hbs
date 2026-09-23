@@ -1,0 +1,13 @@
+{{!-- Everything 2e gives a character that the model has no field of its own for: the career and
+      day rate of a hireling a player took over, the prose written about them while they were the
+      Warden's, the Features they carried as an NPC.
+
+      Drawn box, placeholder and thousand-character cap as on the Bond and Omen tabs — the three
+      are the same control and nothing about them should differ. What differs is the text: this
+      one keeps its line breaks, because it is usually several things joined rather than one
+      sentence (`character-generator.js#toPlainLines`). --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="description">
+    <textarea class="cairn-edit-text" name="system.description" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.Edit.DescriptionPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-description" data-ink-w="1.6">{{system.description}}</textarea>
+</section>

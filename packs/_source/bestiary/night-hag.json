@@ -1,0 +1,99 @@
+{
+  "_id": "REyGXHWEG8ikl6CH",
+  "name": "Night Hag",
+  "type": "npc",
+  "img": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 9,
+        "max": 9
+      },
+      "DEX": {
+        "value": 11,
+        "max": 11
+      },
+      "WIL": {
+        "value": 16,
+        "max": 16
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "wxBqslZdVE81PMDa",
+      "name": "Talons",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>talons (d8+d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!REyGXHWEG8ikl6CH.wxBqslZdVE81PMDa"
+    },
+    {
+      "name": "Hideous old women that dwell in dead forests, swamps, and bogs.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "AMSuaSWElHgfdIgS",
+      "_key": "!actors.items!REyGXHWEG8ikl6CH.AMSuaSWElHgfdIgS"
+    },
+    {
+      "name": "Carry three of the following spellbooks: Arcane Eye, Disguise, Fog Cloud, Identify Owner, Smoke Form.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "qXpH1CupR5bxY8bj",
+      "_key": "!actors.items!REyGXHWEG8ikl6CH.qXpH1CupR5bxY8bj"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!REyGXHWEG8ikl6CH"
+}

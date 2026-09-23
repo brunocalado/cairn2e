@@ -1,0 +1,113 @@
+{
+  "_id": "3l8i1Osmr5GgOXRz",
+  "name": "Storm Giant",
+  "type": "npc",
+  "img": "icons/magic/lightning/bolt-cloud-sky-green.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 18,
+        "max": 18
+      },
+      "DEX": {
+        "value": 16,
+        "max": 16
+      },
+      "WIL": {
+        "value": 18,
+        "max": 18
+      }
+    },
+    "hp": {
+      "value": 18,
+      "max": 18
+    },
+    "role": "monster",
+    "armor": 2,
+    "description": "",
+    "isDetachment": true,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "FrpH3Vi1MfQYRPsL",
+      "name": "Great Sword",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>great sword (d12)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d12",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!3l8i1Osmr5GgOXRz.FrpH3Vi1MfQYRPsL"
+    },
+    {
+      "name": "Building-sized humanoids with bronze-hued skin and light-colored hair.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Live on the highest mountain peaks and rockiest coastlines.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nTuerOQnYzSyICxV",
+      "_key": "!actors.items!3l8i1Osmr5GgOXRz.nTuerOQnYzSyICxV"
+    },
+    {
+      "name": "Unharmed by lightning, can summon storm clouds at their will.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Can fly with the wind as a their chariot.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "xhofEK1D97wXaZQC",
+      "_key": "!actors.items!3l8i1Osmr5GgOXRz.xhofEK1D97wXaZQC"
+    },
+    {
+      "name": "Thunderclap",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Deals 4 STR damage against a single target. Targets wearing metal armor take double damage.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "x46daAduel3cP3Z1",
+      "_key": "!actors.items!3l8i1Osmr5GgOXRz.x46daAduel3cP3Z1"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!3l8i1Osmr5GgOXRz"
+}

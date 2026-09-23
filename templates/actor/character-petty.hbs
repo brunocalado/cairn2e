@@ -1,0 +1,21 @@
+{{!-- *Petty* items: with the character, and weighing nothing. "*Petty* items do not take up any
+      slots" (`srd-2e/players-guide/character-creation.md`), so they are on the person but never
+      on the ten ruled lines — which is the whole reason they need a face of their own. A scroll
+      is *petty* by rule, so this is the only place on a character's sheet one is ever drawn.
+
+      The zone keeps its heading even though the tab carries the same word, exactly as the NPC's
+      Items tab does: the heading is what the "add" control hangs off, and a tab with one zone
+      and no heading would have nowhere to put it. --}}
+<section class="tab {{tabs.petty.cssClass}}" data-group="primary" data-tab="petty">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.PettyItems'}}</h4>
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="pettyCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Add'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-petty" data-ink-w="1" data-ink-a="0.34"></div>
+    {{> "systems/cairn2e/templates/parts/plain-list.hbs" rows=inventory.petty seed="petty"
+        empty=(localize 'CAIRN.NoPettyItems')}}
+</section>

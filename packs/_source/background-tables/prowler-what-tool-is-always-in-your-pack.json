@@ -1,0 +1,108 @@
+{
+  "_id": "JeSXIRVztOxQaDYF",
+  "name": "Prowler: What tool is always in your pack?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Prowler</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "iLnENup0T3Yp48Hb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Fermented Spirits</strong> Keeps you warm at the best of times and as an explosive at the worst. 3 Uses.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.iLnENup0T3Yp48Hb"
+    },
+    {
+      "_id": "uUcG7M8NHrqI0DT1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Trail Shaker</strong> A noisy instrument that reveals nearby trails, even when deeply hidden.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.uUcG7M8NHrqI0DT1"
+    },
+    {
+      "_id": "BvNy7HxsZLJaOMm0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Drowse Balm</strong> A wax bar. If boiled in water, the steam acts as a soporific agent.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.BvNy7HxsZLJaOMm0"
+    },
+    {
+      "_id": "vKFeFMBLdsYcVMtd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Spike and Cord</strong> For traversing difficult terrain or for creating makeshift traps and structures.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.vKFeFMBLdsYcVMtd"
+    },
+    {
+      "_id": "QQdRnx2vo6E1mPs4",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Iron Rattle</strong> A noisemaker for distracting or scaring your quarry. Sounds convincingly like a snake.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.QQdRnx2vo6E1mPs4"
+    },
+    {
+      "_id": "XOFBe765K3YuKPl7",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Hardening Glue</strong> Makes any flat material (cloth, leather, sand) as hard as stone. Expensive (20gp a bottle, 3 uses).</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.XOFBe765K3YuKPl7"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!JeSXIRVztOxQaDYF"
+}

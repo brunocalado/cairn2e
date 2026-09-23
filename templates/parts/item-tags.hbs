@@ -1,0 +1,16 @@
+{{!-- The read-only tag row. One partial, three call sites: under the name on an item sheet,
+      inline on an inventory slot line, and on an NPC's flat list — so an item reads the same in
+      every place. `showEquipped` is off in the slot list, where equipment is already carried by
+      the bold name and the lit hand control. `noSlotTags` is on for the NPC list: *petty* and
+      *bulky* mean nothing without a slot count, and 2e binds no NPC to one. --}}
+{{#if system.blast}}<span class="cairn-item-tag">{{localize 'CAIRN.Blast'}}</span>{{/if}}
+{{#if system.armor}}<span class="cairn-item-tag">{{localize 'CAIRN.Armor'}} {{system.armor}}</span>{{/if}}
+{{#if system.damage}}<span class="cairn-item-tag">{{system.damage}} {{localize 'CAIRN.Damage'}}</span>{{/if}}
+{{!-- A sack says how much is in it; that number is its weight (`data/item-coin.js`), so it
+      sits where the slot words sit, and a sack is never called bulky. --}}
+{{#if system.isCoin}}<span class="cairn-item-tag">{{system.value}} {{localize 'CAIRN.GoldAbbrev'}}</span>{{/if}}
+{{#unless noSlotTags}}
+{{#if system.bulky}}<span class="cairn-item-tag">{{localize 'CAIRN.Bulky'}}</span>{{/if}}
+{{#if system.petty}}<span class="cairn-item-tag">{{localize 'CAIRN.Petty'}}</span>{{/if}}
+{{/unless}}
+{{#if showEquipped}}{{#if system.equipped}}<span class="cairn-item-tag">{{localize 'CAIRN.Equipped'}}</span>{{/if}}{{/if}}

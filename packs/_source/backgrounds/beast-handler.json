@@ -1,0 +1,39 @@
+{
+  "_id": "j0S3855r94C5pCGD",
+  "name": "Beast Handler",
+  "type": "background",
+  "img": "icons/commodities/claws/claw-canine-brown-grey.webp",
+  "system": {
+    "description": "<blockquote><p>You alone can walk among the creatures of the wild, fearless and in control. You share a connection with animals that others can only dream of... so long as you don't become their snack.</p></blockquote>",
+    "names": [
+      "Amara",
+      "Wulf",
+      "Mireille",
+      "Soren",
+      "Freki",
+      "Aster",
+      "Gerrik",
+      "Boreas",
+      "Veda",
+      "Matheus"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.YRTSN6suJvnmWEBs",
+      "Compendium.cairn2e.background-gear.Item.B5Xhzl3zrTqW73zz",
+      "Compendium.cairn2e.background-gear.Item.C7YAqmtKSAk9yony",
+      "Compendium.cairn2e.gear.Item.yQOui5IqPJ0IHTCf"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.cq1s3kWOqpCFbbCt",
+      "Compendium.cairn2e.background-tables.RollTable.x35sntRErfx45EID"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!j0S3855r94C5pCGD"
+}

@@ -1,0 +1,113 @@
+{
+  "_id": "eyWpVvjYwK9Vgazv",
+  "name": "Bugbear",
+  "type": "npc",
+  "img": "icons/creatures/magical/humanoid-silhouette-dashing-blue.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 14,
+        "max": 14
+      },
+      "DEX": {
+        "value": 12,
+        "max": 12
+      },
+      "WIL": {
+        "value": 11,
+        "max": 11
+      }
+    },
+    "hp": {
+      "value": 8,
+      "max": 8
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "nREfi9GDzRh9pVBB",
+      "name": "Club",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>club (d8)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d8",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!eyWpVvjYwK9Vgazv.nREfi9GDzRh9pVBB"
+    },
+    {
+      "name": "Large, goblin-like creatures covered in fur.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "X1l0rDNVJfzs0bY2",
+      "_key": "!actors.items!eyWpVvjYwK9Vgazv.X1l0rDNVJfzs0bY2"
+    },
+    {
+      "name": "Prefer stealth and trickery to gain an advantage.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "UI2l7jJHsDXdMgUb",
+      "_key": "!actors.items!eyWpVvjYwK9Vgazv.UI2l7jJHsDXdMgUb"
+    },
+    {
+      "name": "Often command parties of like creatures (typically goblins).",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "MZ0Xpaeklr7HL7JL",
+      "_key": "!actors.items!eyWpVvjYwK9Vgazv.MZ0Xpaeklr7HL7JL"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!eyWpVvjYwK9Vgazv"
+}

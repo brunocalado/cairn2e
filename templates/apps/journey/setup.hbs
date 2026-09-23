@@ -1,0 +1,46 @@
+{{!-- The route, described once before the journey starts — the Path, Distance and Terrain
+      tables of `procedures.md`, the season the Weather table is read down, and the vast-terrain
+      extra. Every table is a run of buttons rather than a <select>: each is a closed range of
+      three or four rows, and a segmented control shows all of them, with their watch penalties
+      and what they mean, at once — which is what a Warden is comparing when they plan a route.
+
+      The three tables of the ROUTE are one partial, shared with the route journal page's edit
+      form (`templates/journal/route-edit.hbs`) so the two cannot drift; the season is not one of
+      them, because a route has no season. The form arrives set to whatever a double-clicked map
+      pin pre-filled, and the two hidden inputs carry that route's endpoints into the journey.
+
+      Drawn only while nothing is underway; a player sees the waiting note instead. --}}
+<section class="cairn-journey-setup">
+{{#unless journey}}
+{{#if isGM}}
+    <p class="cairn-journey-intro">{{localize "CAIRN.Journey.SetupIntro"}}</p>
+
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="path" label=(localize "CAIRN.Journey.Path") options=paths}}
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="distance" label=(localize "CAIRN.Journey.Distance") options=distances}}
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="terrain" label=(localize "CAIRN.Journey.Terrain") options=terrains}}
+
+    <div class="cairn-field cairn-journey-pick">
+        <span class="cairn-field-label">{{localize "CAIRN.Journey.Season"}}</span>
+        <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Journey.Season'}}">
+            {{#each seasons as |opt|}}
+            <label class="cairn-choice-option">
+                <input type="radio" name="season" value="{{opt.key}}" {{checked opt.selected}} />
+                <span class="cairn-pick-name">{{opt.label}}</span>
+            </label>
+            {{/each}}
+        </div>
+    </div>
+
+    {{!-- The hint belongs to this row, so it sits in it: a third column beside the three buttons
+          rather than a loose line under the form. --}}
+    {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="vast" label=(localize "CAIRN.Journey.Vast")
+        options=vasts number=true extra="cairn-journey-vast" hint=(localize "CAIRN.Journey.VastHint")}}
+
+    <button type="submit" class="cairn-journey-start">
+        <i class="fas fa-route" inert></i> {{localize "CAIRN.Journey.Start"}}
+    </button>
+{{else}}
+    <p class="cairn-journey-intro">{{localize "CAIRN.Journey.Waiting"}}</p>
+{{/if}}
+{{/unless}}
+</section>

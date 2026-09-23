@@ -1,0 +1,51 @@
+{{!-- The Background's two table results, then Traits, Bond and Omen: the things rolled at
+      creation that never change in play, in the order the SRD rolls them.
+
+      Read-only, all of it. They are edited in the edit window behind the quill in the window
+      header, and a field editable in two places is two sources of truth one save apart. The
+      layout is the one the inputs had — the same rules, the same grid, the same gaps — with the
+      interactivity taken out and nothing else.
+
+      The Omen section exists only for a character who has one: the youngest of the party
+      (`srd-2e/players-guide/character-creation.md`). The switch that decides it is in the edit
+      window. --}}
+<section class="tab {{tabs.identity.cssClass}}" data-group="primary" data-tab="identity">
+    <div class="cairn-identity">
+        {{#if backgroundTables.length}}
+        <h4 class="cairn-zone">{{localize 'CAIRN.Background'}}</h4>
+        <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="identity-background" data-ink-w="1" data-ink-a="0.34"></div>
+        {{#each backgroundTables as |table|}}
+        <p class="cairn-identity-question">{{table.question}}</p>
+        <div class="cairn-identity-text">{{table.answer}}</div>
+        {{/each}}
+        {{/if}}
+
+        <h4 class="cairn-zone">{{localize 'CAIRN.CharacterCreator.Traits'}}</h4>
+        <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="identity-traits" data-ink-w="1" data-ink-a="0.34"></div>
+        <div class="cairn-trait-grid">
+            {{#each traits as |trait|}}
+            <span class="cairn-trait-label">{{localize trait.label}}</span>
+            <span class="cairn-trait-value" data-ink="hline" data-ink-seed="trait-{{trait.key}}"
+                data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">{{trait.value}}</span>
+            {{/each}}
+        </div>
+
+        <h4 class="cairn-zone">{{localize 'CAIRN.Bond'}}</h4>
+        <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="identity-bond" data-ink-w="1" data-ink-a="0.34"></div>
+        <div class="cairn-identity-text">{{bond}}</div>
+
+        {{#if hasOmen}}
+        <h4 class="cairn-zone">{{localize 'CAIRN.Omen'}}</h4>
+        <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="identity-omen" data-ink-w="1" data-ink-a="0.34"></div>
+        <div class="cairn-identity-text">{{omenText}}</div>
+        {{/if}}
+
+        {{!-- Last, and only when there is something to print: a character who never had a
+              description — which is most of them — keeps the tab they had. --}}
+        {{#if description}}
+        <h4 class="cairn-zone">{{localize 'CAIRN.Description'}}</h4>
+        <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="identity-description" data-ink-w="1" data-ink-a="0.34"></div>
+        <div class="cairn-identity-text">{{description}}</div>
+        {{/if}}
+    </div>
+</section>

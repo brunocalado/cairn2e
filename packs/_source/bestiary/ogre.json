@@ -1,0 +1,99 @@
+{
+  "_id": "bifOuMtBZh0MYAOj",
+  "name": "Ogre",
+  "type": "npc",
+  "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 16,
+        "max": 16
+      },
+      "DEX": {
+        "value": 8,
+        "max": 8
+      },
+      "WIL": {
+        "value": 6,
+        "max": 6
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 1,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "Uj9RJ8xfdH8uSVLv",
+      "name": "Club",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>club (d10)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d10",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!bifOuMtBZh0MYAOj.Uj9RJ8xfdH8uSVLv"
+    },
+    {
+      "name": "Massive, gluttonous brutes of ill-spirit and low intelligence.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "lHNWpR50V7aIUtEf",
+      "_key": "!actors.items!bifOuMtBZh0MYAOj.lHNWpR50V7aIUtEf"
+    },
+    {
+      "name": "Easily impressed by shiny materials, keeping sacks of gold and treasure in their lairs.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "HUk2MegFynq1hIIJ",
+      "_key": "!actors.items!bifOuMtBZh0MYAOj.HUk2MegFynq1hIIJ"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!bifOuMtBZh0MYAOj"
+}

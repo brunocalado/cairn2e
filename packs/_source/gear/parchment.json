@@ -1,0 +1,30 @@
+{
+  "_id": "7NQNLHQ66u6U31jM",
+  "name": "Parchment",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-blue-tan.webp",
+  "system": {
+    "description": "<p>Parchment (3 uses)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7NQNLHQ66u6U31jM"
+}

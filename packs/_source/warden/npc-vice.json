@@ -1,0 +1,318 @@
+{
+  "_id": "BVXEmTD09ZyTr56E",
+  "name": "NPC Vice",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll an NPC's defining Vice.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "d3yWibUHu1s32v6D",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Aloof",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.d3yWibUHu1s32v6D"
+    },
+    {
+      "_id": "LRd7WMXBXCuPETAf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Corrupt",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.LRd7WMXBXCuPETAf"
+    },
+    {
+      "_id": "23vT4IC7g9A3j6Zq",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Craven",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.23vT4IC7g9A3j6Zq"
+    },
+    {
+      "_id": "7kUezGUnFzFlaVGt",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cruel",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.7kUezGUnFzFlaVGt"
+    },
+    {
+      "_id": "M5IfQlrcexBwfuiX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cynical",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.M5IfQlrcexBwfuiX"
+    },
+    {
+      "_id": "TwhyORlksgaKwaUS",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Deceptive",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.TwhyORlksgaKwaUS"
+    },
+    {
+      "_id": "ZdWgUQa7dQQBto9o",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Greedy",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.ZdWgUQa7dQQBto9o"
+    },
+    {
+      "_id": "0H1OfXLSk1ZhtKK1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Impulsive",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.0H1OfXLSk1ZhtKK1"
+    },
+    {
+      "_id": "nvEOC7UNK46U6GPb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Incompetent",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.nvEOC7UNK46U6GPb"
+    },
+    {
+      "_id": "3lL2rLSe2yilTD71",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Inflexible",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.3lL2rLSe2yilTD71"
+    },
+    {
+      "_id": "FVmDDSxAsJe9wklm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Manipulative",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.FVmDDSxAsJe9wklm"
+    },
+    {
+      "_id": "F0HDkjjnRzd9qZuE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Mercurial",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.F0HDkjjnRzd9qZuE"
+    },
+    {
+      "_id": "qEw1dpxJE36biUSg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Naive",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.qEw1dpxJE36biUSg"
+    },
+    {
+      "_id": "0TZZggiPe5HbW4eE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pedantic",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.0TZZggiPe5HbW4eE"
+    },
+    {
+      "_id": "frPilsTNRoDCcfST",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ruthless",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.frPilsTNRoDCcfST"
+    },
+    {
+      "_id": "BV39DniAG5PlQ8bH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Sarcastic",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.BV39DniAG5PlQ8bH"
+    },
+    {
+      "_id": "QjIxyJGD8AEDvvGD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Selfish",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.QjIxyJGD8AEDvvGD"
+    },
+    {
+      "_id": "VtvdjkEWcGpZiVY1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Stubborn",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.VtvdjkEWcGpZiVY1"
+    },
+    {
+      "_id": "DTuktRTsIWjbDIBY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Vain",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.DTuktRTsIWjbDIBY"
+    },
+    {
+      "_id": "dV5Vma9AeztP8DYD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Xenophobic",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!BVXEmTD09ZyTr56E.dV5Vma9AeztP8DYD"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!BVXEmTD09ZyTr56E"
+}

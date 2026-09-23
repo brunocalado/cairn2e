@@ -1,0 +1,31 @@
+{
+  "_id": "xj5GoUQZGs5ns7Tl",
+  "name": "Lens",
+  "type": "gear",
+  "img": "icons/tools/scribal/magnifying-glass.webp",
+  "system": {
+    "description": "<p>Lens</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xj5GoUQZGs5ns7Tl",
+  "folder": "xJ8NdKkbDLru2KAV"
+}

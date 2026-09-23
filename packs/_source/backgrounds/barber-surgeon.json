@@ -1,0 +1,39 @@
+{
+  "_id": "FGZvC8fphUMlWaCY",
+  "name": "Barber-Surgeon",
+  "type": "background",
+  "img": "icons/tools/hand/sewing-needle-thread.webp",
+  "system": {
+    "description": "<blockquote><p>You walk the line between healer and harrower, knowing the frailty of the flesh but also the secrets that lie within. With the right tools, life and death are merely words.</p></blockquote>",
+    "names": [
+      "Wilmot",
+      "Patch",
+      "Lancet",
+      "Sawbones",
+      "Theo",
+      "Cutwell",
+      "Humor",
+      "Landsford",
+      "Goodeye",
+      "Johanna"
+    ],
+    "startingGold": "3d6",
+    "startingGear": [
+      "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "Compendium.cairn2e.gear.Item.38nboO4axGNV5vQC",
+      "Compendium.cairn2e.background-gear.Item.RD22fSaMtxvVpaJ5",
+      "Compendium.cairn2e.gear.Item.F8yysdbnA0y5L4sA",
+      "Compendium.cairn2e.background-gear.Item.lcTEiYbmRRZYmx71",
+      "Compendium.cairn2e.background-gear.Item.24819C7HGlf9atqs"
+    ],
+    "tables": [
+      "Compendium.cairn2e.background-tables.RollTable.vscyyJXkXh5V0Zi8",
+      "Compendium.cairn2e.background-tables.RollTable.7vestEIKwunmJzeO"
+    ]
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FGZvC8fphUMlWaCY"
+}

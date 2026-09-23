@@ -1,0 +1,108 @@
+{
+  "_id": "8OhA0huEap2KItci",
+  "name": "Hexenbane: To which order do you belong?",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll on this table during character creation for the <strong>Hexenbane</strong> background.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "lKCStTu0JWPi4pXE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Order of the Crossroads</strong>. Take a <strong>Pocket Leyfinder</strong>. It points to nearby ley lines and other sources of arcane power. If you lose it, the punishment is death.</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.lKCStTu0JWPi4pXE"
+    },
+    {
+      "_id": "ImbvacnRiNKTFRY0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Order of the Bleeding Star</strong>. Take a <strong>Star-Iron Mace</strong> (d8). It shines faintly in darkness and becomes very hot in the presence of witchcraft.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.ImbvacnRiNKTFRY0"
+    },
+    {
+      "_id": "wOFIDmyNkCi5OuIs",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Order of the Glass Sigil</strong>. Take a short sword (d8) and chainmail (2 Armor, <em>bulky</em>). You have contacts in most towns (the more rural, the better) willing to provide aid, food, or even weapons.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.wOFIDmyNkCi5OuIs"
+    },
+    {
+      "_id": "XPAYjewJsXBmh9OK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Order of the Blank Eye</strong>. Take a <strong>Voidglass Shard</strong>. Peer through it to see invisible marks, creatures, and other magical effects. Lose the use of your eye for an hour afterwards (you are <em>deprived</em>).</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.XPAYjewJsXBmh9OK"
+    },
+    {
+      "_id": "lCgxft1M9L56BnxD",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Order of Canaas</strong>. Once per day, you can change into a wolf. Take a <strong>Quicksilver Chain</strong>. Without it, you are unable to shift back.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.lCgxft1M9L56BnxD"
+    },
+    {
+      "_id": "FVN3NgQlpRpLf1l8",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p><strong>Order of the Silent Veil</strong>. Take a <strong>Quell Stone</strong> (2 uses) wrapped in burlap. Extinguishes any nearby flames once exposed to air.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.FVN3NgQlpRpLf1l8"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!8OhA0huEap2KItci"
+}

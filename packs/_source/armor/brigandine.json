@@ -1,0 +1,30 @@
+{
+  "_id": "WvHpP6L5AyMd6oO7",
+  "name": "Brigandine",
+  "type": "gear",
+  "img": "icons/equipment/chest/breastplate-banded-leather-brown.webp",
+  "system": {
+    "description": "<p>Brigandine (1 Armor, <em>bulky</em>)</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WvHpP6L5AyMd6oO7"
+}

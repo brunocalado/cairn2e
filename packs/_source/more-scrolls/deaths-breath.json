@@ -1,0 +1,31 @@
+{
+  "_id": "KhzYVkqKVaUVRqms",
+  "name": "Death's Breath",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "system": {
+    "description": "<p>You summon a poisonous cloud (d6 STR loss) you can control.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "scroll",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KhzYVkqKVaUVRqms",
+  "folder": "FeXVyrcexT1LlyqR"
+}

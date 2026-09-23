@@ -1,0 +1,168 @@
+{
+  "_id": "SJxAe0XhGB4BXyGY",
+  "name": "Physique",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "z3XpPqzArDweCoGm",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Athletic",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.z3XpPqzArDweCoGm"
+    },
+    {
+      "_id": "PdTyhJ2siDs85LLv",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Brawny",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.PdTyhJ2siDs85LLv"
+    },
+    {
+      "_id": "ACT8xXCl4seDp69X",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Flabby",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.ACT8xXCl4seDp69X"
+    },
+    {
+      "_id": "7zr9w4tnFqUsgllr",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Lanky",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.7zr9w4tnFqUsgllr"
+    },
+    {
+      "_id": "X18TpLnADyuY0fWY",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Rugged",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.X18TpLnADyuY0fWY"
+    },
+    {
+      "_id": "kur1lg6zPDgOO8JE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Scrawny",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.kur1lg6zPDgOO8JE"
+    },
+    {
+      "_id": "JNjeppCJathE0chX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Short",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.JNjeppCJathE0chX"
+    },
+    {
+      "_id": "8WymbUeuXHErBIdi",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Statuesque",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.8WymbUeuXHErBIdi"
+    },
+    {
+      "_id": "WjHZa6muiPhtFXLI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Stout",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.WjHZa6muiPhtFXLI"
+    },
+    {
+      "_id": "dskEGqVKQSxL6koQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Towering",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!SJxAe0XhGB4BXyGY.dskEGqVKQSxL6koQ"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!SJxAe0XhGB4BXyGY"
+}

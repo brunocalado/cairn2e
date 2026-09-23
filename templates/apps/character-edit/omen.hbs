@@ -1,0 +1,11 @@
+{{!-- Reachable only while the Omen switch on the General tab is on — `_onRender` hides this
+      tab's nav entry otherwise. The panel itself is always in the form, so text written here
+      survives a save made with the switch off and comes back when it is turned on again.
+
+      Drawn box, placeholder and thousand-character cap as on the Bond tab; the two fields are the
+      same field twice and nothing about them should differ. --}}
+<section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="omen">
+    <textarea class="cairn-edit-text" name="system.omen.text" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.Edit.OmenPlaceholder'}}"
+        data-ink="box" data-ink-seed="edit-omen" data-ink-w="1.6">{{system.omen.text}}</textarea>
+</section>

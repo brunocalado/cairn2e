@@ -1,0 +1,31 @@
+{
+  "_id": "5dz5R5vRrd33VEDA",
+  "name": "Stupefaction",
+  "type": "gear",
+  "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+  "system": {
+    "description": "<p>Target temporarily loses sense of place and time. WIL save to overcome.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!5dz5R5vRrd33VEDA",
+  "folder": "MCt2VTDHSjLFlLso"
+}

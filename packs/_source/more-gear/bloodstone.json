@@ -1,0 +1,31 @@
+{
+  "_id": "D0jQ7ltO3SuYtFFB",
+  "name": "Bloodstone",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-rough-oval-green.webp",
+  "system": {
+    "description": "<p>Dark green flecked with red, which the superstitious say is old blood.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!D0jQ7ltO3SuYtFFB",
+  "folder": "Oo11ISGG2Z4h2h8D"
+}

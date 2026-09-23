@@ -1,0 +1,29 @@
+{{!-- Portrait left; the name, and under it the one line that says what this kind of item IS
+      (`item-sheet.js`, SUBTYPE_HINT), to the right of it.
+
+      No tag row. The tags belong on an inventory line, where they tell two carried things apart
+      at a glance — on the item's own sheet they repeat what the fields below them already say,
+      in a window that has room for neither. The line that replaced them is the one thing the
+      sheet cannot say anywhere else.
+
+      The name is ink on paper inside a drawn box, not paper reversed out of a solid slab. The
+      character sheet stopped shouting its name out of a black block for the reason this one
+      stopped too: a sheet already carrying inked caps reads as a web form with a title bar the
+      moment a solid block lands at the top of it. The box is the same mark the Gold chip wears,
+      at the same weight. --}}
+<header class="item-header">
+    <img class="portrait" src="{{item.img}}" data-action="editImage" data-edit="img" data-tooltip="{{item.name}}" />
+    <input class="name-input" type="text" name="name" value="{{item.name}}" placeholder="{{localize 'CAIRN.Name'}}"
+        data-ink="box" data-ink-seed="item-name" data-ink-w="1.6" />
+    {{#if isFeature}}
+    {{!-- The feature's one property, where a caption would go: whether it is a Critical Damage
+          clause. The NPC's Features tab draws the words for a flagged one. --}}
+    <div class="item-header-critical cairn-field">
+        <label for="feature-critical-{{item.id}}">{{localize 'CAIRN.CriticalDamageFull'}}</label>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.critical" value=system.critical
+            id=(concat "feature-critical-" item.id)}}
+    </div>
+    {{else if hint}}
+    <p class="item-header-hint">{{localize hint}}</p>
+    {{/if}}
+</header>

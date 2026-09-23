@@ -1,0 +1,31 @@
+{
+  "_id": "gsRUkDWYwojfVuel",
+  "name": "Hat, straw",
+  "type": "gear",
+  "img": "icons/equipment/head/hat-straw-cloth-mask.webp",
+  "system": {
+    "description": "<p>Hat, straw (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 2,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gsRUkDWYwojfVuel",
+  "folder": "XycVdoNLEuiHY9my"
+}

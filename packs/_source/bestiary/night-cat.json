@@ -1,0 +1,100 @@
+{
+  "_id": "DZkRy1Lc7GbTjJlU",
+  "name": "Night Cat",
+  "type": "npc",
+  "img": "icons/creatures/mammals/cat-hunched-glowing-red.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 9,
+        "max": 9
+      },
+      "DEX": {
+        "value": 14,
+        "max": 14
+      },
+      "WIL": {
+        "value": 5,
+        "max": 5
+      }
+    },
+    "hp": {
+      "value": 6,
+      "max": 6
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "_id": "eqXq70YZVtDCQGi3",
+      "name": "Claws",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>claws (d6+d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_key": "!actors.items!DZkRy1Lc7GbTjJlU.eqXq70YZVtDCQGi3"
+    },
+    {
+      "name": "Intelligent, nocturnal marsupials that make their homes in forests and swamps.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "<p>Hunt in packs.</p>"
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4srrADo3bGlQzPBs",
+      "_key": "!actors.items!DZkRy1Lc7GbTjJlU.4srrADo3bGlQzPBs"
+    },
+    {
+      "name": "The Night Cat begins to eat the target (d4 STR damage) while they are still alive.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": "",
+        "critical": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "vdftySmp9uGgEgna",
+      "_key": "!actors.items!DZkRy1Lc7GbTjJlU.vdftySmp9uGgEgna"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!DZkRy1Lc7GbTjJlU"
+}

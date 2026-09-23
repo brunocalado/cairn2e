@@ -1,0 +1,31 @@
+{
+  "_id": "Cfzj6x6mEWwotok7",
+  "name": "Healing Salve",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-jar-corked-green.webp",
+  "system": {
+    "description": "<p>Healing Salve (restore 1d4 STR, 1 use)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Cfzj6x6mEWwotok7",
+  "folder": "bayXvK0U8aq9eTKM"
+}

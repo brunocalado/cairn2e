@@ -1,0 +1,30 @@
+{
+  "_id": "WwEEaLMmjSyap9kH",
+  "name": "Long Sword",
+  "type": "gear",
+  "img": "icons/weapons/swords/greatsword-crossguard-steel.webp",
+  "system": {
+    "description": "<p>Long Sword (d10 damage, <em>bulky</em>)</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 20,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d10",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WwEEaLMmjSyap9kH"
+}

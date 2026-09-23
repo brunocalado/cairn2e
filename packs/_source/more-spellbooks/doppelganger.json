@@ -1,0 +1,31 @@
+{
+  "_id": "M9xwwp5M2JJPPxSF",
+  "name": "Doppelganger",
+  "type": "gear",
+  "img": "icons/sundries/books/book-purple-glyph.webp",
+  "system": {
+    "description": "<p>You spawn 1d6 decoy duplicates of someone you touch. Decoys are dispelled with a touch.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 300,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "spellbook",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!M9xwwp5M2JJPPxSF",
+  "folder": "MCt2VTDHSjLFlLso"
+}
