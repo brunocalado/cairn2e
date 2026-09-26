@@ -67,6 +67,11 @@ Both are optional:
 - [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
   candles from the token's right-click menu and spends their uses as they burn.
 
+### Other languages
+
+The system is in English. A translation is a separate module, made by the community: install it
+and pick its language in Foundry's settings. To make one, see [Translating Cairn 2e](translating.md).
+
 ---
 
 ## 2. Making a character
