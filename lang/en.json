@@ -1,7 +1,7 @@
 {
   "CAIRN.Actions": {
     "Title": "Actions",
-    "Tooltip": "Whisper, and the Warden's macros",
+    "Tooltip": "Barter, Whisper, and the Warden's macros",
     "Macros": "Macros",
     "MacroMissing": "That macro is gone."
   },
@@ -14,6 +14,7 @@
   "CAIRN.Age": "Age",
   "CAIRN.ApplyDamage": "Apply damage",
   "CAIRN.Armor": "Armor",
+
   "CAIRN.Background": "Background",
   "CAIRN.BackgroundBrokenRef": "Missing document",
   "CAIRN.BackgroundHint": "A Background gives a name list, a starting-gear list, and two d6 tables.",
@@ -22,7 +23,24 @@
   "CAIRN.BackgroundNoTables": "Drag a roll table here.",
   "CAIRN.BackgroundStartingGold": "Starting Gold",
   "CAIRN.Backpack": "Backpack",
-  "CAIRN.Belongings": "Belongings",
+  "CAIRN.Barter": {
+    "Title": "Barter",
+    "Give": "Hand over",
+    "SetAside": "Set aside",
+    "HoldsFatigue": "Something in it cannot be handed over.",
+    "NothingToGive": "Nothing to hand over.",
+    "Coin": "Coin",
+    "CoinOf": "of {max} gp",
+    "To": "To",
+    "Choose": "Choose a character",
+    "NoTargets": "No other player has a character.",
+    "Send": "Hand over",
+    "NobodyToReceive": "Nobody who can take it for {name} is connected — nothing changed hands.",
+    "Refused": "The trade was refused — nothing changed hands.",
+    "LeftBehind": "No room on {name} for: {names}. It stays with you.",
+    "CoinLeftBehind": "No room on {name} for {amount} gp. It stays with you.",
+    "Flavor": "{from} hands to {to}"
+  },  "CAIRN.Belongings": "Belongings",
   "CAIRN.Blast": "Blast",
   "CAIRN.Bond": "Bond",
   "CAIRN.Bulky": "Bulky",

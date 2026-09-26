@@ -5,7 +5,16 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { SYSTEM_ID } from "./constants.js";
 import { gainPlaces, putCoin } from "./coin.js";
+
+/** The query that hands a barter to a client allowed to write the recipient. Registered in
+ *  `module/cairn2e.js`; the name is built from `SYSTEM_ID`, never written out. */
+export const BARTER_QUERY = `${SYSTEM_ID}.barter`;
+
+/** What a barter may carry: gear, and — inside a container that travels — the coin in it. */
+const BARTER_TYPES = new Set(["gear"]);
+const BARTER_CONTENT_TYPES = new Set(["gear", "coin"]);
 
 /**
  * Writing a move between actors. What travels is `transfer-rules.js#bundleItems`; this is the
@@ -36,13 +45,7 @@ export async function receiveItems(actor, bundles) {
   const landed = [];
   for (const { id, data, contents } of bundles) {
     if (data.type === "coin") {
-      const amount = data.system?.value ?? 0;
-      const [place] = gainPlaces(actor, amount);
-      if (place === undefined) {
-        ui.notifications.warn(game.i18n.localize("CAIRN.Notify.CoinNoRoom", { amount }));
-        continue;
-      }
-      if (await putCoin(actor, amount, place)) landed.push(id);
+      if (await landCoin(actor, data.system?.value ?? 0)) landed.push(id);
       continue;
     }
 
@@ -59,4 +62,71 @@ export async function receiveItems(actor, bundles) {
     landed.push(id, ...contents.map((c) => c.id));
   }
   return { landed };
+}
+
+/**
+ * Land `amount` coin on `actor` at the first place the whole of it fits — grown into the sack
+ * already there, or a new one. No question is asked: this may run on another user's client.
+ * @param {Actor} actor
+ * @param {number} amount
+ * @returns {Promise<boolean>}  Whether it landed.
+ */
+export async function landCoin(actor, amount) {
+  if (amount <= 0) return true;
+  const [place] = gainPlaces(actor, amount);
+  if (place === undefined) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Notify.CoinNoRoom", { amount }));
+    return false;
+  }
+  return putCoin(actor, amount, place);
+}
+
+/**
+ * The receiving half of a barter, on a client that may write the recipient — theirs, the
+ * Warden's, or the sender's own when they own both. The payload crossed a socket, so it is
+ * checked before anything is written: a character, gear only (and coin inside a container that
+ * travels), a whole non-negative amount of coin. A refusal writes nothing.
+ * @param {{ targetUuid: string, bundles: object[], coin: number }} payload
+ * @returns {Promise<{ landed: string[], coin: number }|{ refused: string }>}
+ */
+export async function receiveBarter({ targetUuid, bundles, coin } = {}) {
+  const actor = await fromUuid(targetUuid);
+  if (actor?.documentName !== "Actor" || actor.type !== "character") return { refused: "target" };
+  if (!Array.isArray(bundles)) return { refused: "items" };
+  for (const b of bundles) {
+    if (!BARTER_TYPES.has(b?.data?.type)) return { refused: "items" };
+    if (!Array.isArray(b.contents) || b.contents.some((c) => !BARTER_CONTENT_TYPES.has(c?.data?.type))) {
+      return { refused: "items" };
+    }
+  }
+  if (!Number.isInteger(coin) || coin < 0) return { refused: "coin" };
+
+  const { landed } = await receiveItems(actor, bundles);
+  const coinLanded = (await landCoin(actor, coin)) ? coin : 0;
+  return { landed, coin: coinLanded };
+}
+
+/**
+ * Hand a barter to whoever may write the recipient, and answer with what landed — or null when
+ * nobody who could is connected, in which case nothing was written anywhere.
+ *
+ * The recipient's own player first: it is their character, and the trade is between two
+ * players. The active Warden when they are away. `User#query` throws when its user has gone, so
+ * each is tried in turn, as the Scars window's hand-off does (`apps/scars.js`).
+ * @param {Actor} target
+ * @param {{ targetUuid: string, bundles: object[], coin: number }} payload
+ * @returns {Promise<object|null>}
+ */
+export async function deliverBarter(target, payload) {
+  if (target.isOwner) return receiveBarter(payload);
+  const owners = game.users.filter((u) => !u.isGM && u.active && target.testUserPermission(u, "OWNER"));
+  const gm = game.users.activeGM;
+  for (const user of gm ? [...owners, gm] : owners) {
+    try {
+      return await user.query(BARTER_QUERY, payload, { timeout: 20000 });
+    } catch (err) {
+      console.warn(`${SYSTEM_ID} | could not hand the barter to ${user.name}`, err);
+    }
+  }
+  return null;
 }

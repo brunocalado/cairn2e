@@ -8,6 +8,7 @@
 import { SYSTEM_ID, SETTINGS } from "../constants.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { CairnWhisper } from "./whisper.js";
+import { CairnBarter } from "./barter.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -36,7 +37,8 @@ export async function actionMacros() {
 }
 
 /**
- * Actions — the character's table tools, opened from the button left of the sheet's ellipsis.
+ * Actions — the character's table tools, opened from the button left of the sheet's ellipsis:
+ * Barter and Whisper.
  *
  * Table tooling, not a 2e rule: nothing in the SRD asks for it. It lists the system's own tools
  * first and then whatever macros the Warden curated (`SETTINGS.ACTION_MACROS`), each run with this
@@ -52,6 +54,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
     position: { width: 260, height: "auto" },
     window: { icon: "fa-solid fa-bolt", resizable: false },
     actions: {
+      openBarter: CairnActionsMenu.#onOpenBarter,
       openWhisper: CairnActionsMenu.#onOpenWhisper,
       runMacro: CairnActionsMenu.#onRunMacro
     }
@@ -80,6 +83,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
 
   /** The tools a character opens, held one per menu so a second click raises the first. */
   #whisper = null;
+  #barter = null;
 
   get title() {
     return `${game.i18n.localize("CAIRN.Actions.Title")}: ${this.actor.name}`;
@@ -104,6 +108,11 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   _onClose(options) {
     super._onClose(options);
     CairnActionsMenu.#open.delete(this);
+  }
+
+  static async #onOpenBarter() {
+    this.#barter ??= new CairnBarter({ actor: this.actor });
+    await this.#barter.render({ force: true });
   }
 
   static async #onOpenWhisper() {

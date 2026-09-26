@@ -20,7 +20,7 @@
      * ink — never with a hue, a tint or a border.                            *
      **************************************************************************/
 
-    &:is(.cairn-actions, .cairn-whisper, .cairn-action-macros) .window-content {
+    &:is(.cairn-actions, .cairn-whisper, .cairn-action-macros, .cairn-barter) .window-content {
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -30,7 +30,8 @@
        the word alone — the rule under the row is a canvas stroke, and a ground painted on the row
        would sit inside it with a gap on every edge. */
     .cairn-actions-row,
-    .cairn-whisper-user {
+    .cairn-whisper-user,
+    .cairn-barter-row {
         cursor: var(--cursor-pointer);
         padding: 0 2px;
 
@@ -61,9 +62,10 @@
         margin-top: 4px;
     }
 
-    /* The pick mark: soft ink off, paper on ink when picked — the inversion Primitive 2 uses for
-       a pressed button, which is what a picked recipient is. */
-    .cairn-whisper-mark {
+    /* The pick mark, on a whisper's recipient and a barter's thing alike: faint ink off, paper on
+       ink when picked — the inversion Primitive 2 uses for a pressed button, which is what a
+       picked row is. */
+    .cairn-pick-mark {
         align-items: center;
         border-radius: var(--cairn-radius);
         color: var(--cairn-ink-faint);
@@ -74,8 +76,9 @@
         justify-content: center;
     }
 
-    .cairn-whisper-user.selected {
-        .cairn-whisper-mark {
+    .cairn-whisper-user.selected,
+    .cairn-barter-row.selected {
+        .cairn-pick-mark {
             background: var(--cairn-ink);
             color: var(--cairn-paper);
         }
@@ -121,5 +124,35 @@
             flex: 1;
             min-width: 0;
         }
+    }
+
+    /* Barter. A thing inside a container is indented under it, so what goes with the Backpack
+       reads as the Backpack's. A row that cannot be picked on its own — a container's contents
+       while the container is picked, a sack of coin, a container holding something that cannot
+       be given — takes no pointer and sits in faint ink; picked, its mark still says it goes. */
+    .cairn-barter-row {
+        &.is-inside {
+            padding-left: 22px;
+        }
+
+        &.is-locked {
+            cursor: default;
+        }
+
+        &.is-locked:not(.selected) .cairn-item-title {
+            color: var(--cairn-ink-faint);
+        }
+    }
+
+    .cairn-barter-list {
+        max-height: 320px;
+        overflow-x: clip;
+        overflow-y: auto;
+    }
+
+    .cairn-barter-foot {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
     }
 }

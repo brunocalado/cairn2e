@@ -29,6 +29,7 @@ import { CairnRoutePageSheet } from "./apps/route-page-sheet.js";
 import { CairnFactionPageSheet, FACTION_TYPE } from "./apps/faction-page-sheet.js";
 import { registerPointcrawlHooks, ROUTE_TYPE } from "./pointcrawl.js";
 import { CairnScars, SCAR_QUERY } from "./apps/scars.js";
+import { BARTER_QUERY, receiveBarter } from "./transfer.js";
 import { CairnCombat } from "./documents/combat.js";
 import { CairnCombatant } from "./documents/combatant.js";
 import { CairnCombatTracker } from "./apps/combat-tracker.js";
@@ -122,6 +123,10 @@ Hooks.once("init", async function () {
   // A player's click on the journey window — their character's action, the party's rolls — runs on
   // the Warden's client, where the setting can be written. `journey.apply` re-checks who asked.
   CONFIG.queries[journey.JOURNEY_QUERY] = async ({ type, ...data }, { user }) => journey.apply(type, data, user);
+
+  // A barter writes the recipient's character, which the sender may not: the recipient's client,
+  // or the Warden's, makes the write. `receiveBarter` checks the payload before it does.
+  CONFIG.queries[BARTER_QUERY] = async (payload) => receiveBarter(payload);
 
   // The token HUD, for the one control core has no room for: a party token sets its members
   // down and gathers them back in. Read once, when the HUD container is constructed

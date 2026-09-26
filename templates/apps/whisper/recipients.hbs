@@ -11,7 +11,7 @@
         <li class="cairn-slot cairn-whisper-user{{#if u.picked}} selected{{/if}}" data-action="whisperPick"
             data-user-id="{{u.id}}" role="button" aria-pressed="{{#if u.picked}}true{{else}}false{{/if}}"
             {{#unless @last}}data-ink="hline" data-ink-seed="whisper-user-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
-            <span class="cairn-whisper-mark"><i class="fa-solid fa-check" inert></i></span>
+            <span class="cairn-pick-mark"><i class="fa-solid fa-check" inert></i></span>
             <span class="cairn-item-title">{{u.name}}</span>
             {{#if u.isGM}}<span class="cairn-item-tag">{{localize "CAIRN.Whisper.Warden"}}</span>{{/if}}
         </li>

@@ -1,0 +1,11 @@
+{{!-- The record of a barter, as its body: the message's `flavor` says who handed what to whom and
+      is the caption, the speaker is the giver, and the card draws no frame of its own. The lines
+      are the store card's, because a barter is the same kind of record as a checkout. --}}
+<ul class="cairn-store-card-lines">
+    {{#each items}}
+    <li><span>{{this}}</span></li>
+    {{/each}}
+    {{#if coin}}
+    <li><span>{{coin}} {{localize "CAIRN.GoldAbbrev"}}</span></li>
+    {{/if}}
+</ul>

@@ -1,0 +1,23 @@
+{{!-- How much coin, to whom, and the one button. The coin is capped at what the character holds
+      outside any container being handed over (`barter.js#coinMax`) — the coin in a Backpack goes
+      with the Backpack. Send stays dead until there is a recipient and something to give. --}}
+<footer class="cairn-barter-foot">
+    <div class="cairn-field cairn-unit-row">
+        <label for="barter-coin-{{actorId}}">{{localize "CAIRN.Barter.Coin"}}</label>
+        <input id="barter-coin-{{actorId}}" type="number" name="coin" value="{{coin}}" min="0" max="{{coinMax}}" step="1" />
+        <span class="cairn-field-unit">{{localize "CAIRN.Barter.CoinOf" max=coinMax}}</span>
+    </div>
+    <div class="cairn-field">
+        <label for="barter-to-{{actorId}}">{{localize "CAIRN.Barter.To"}}</label>
+        <select id="barter-to-{{actorId}}" name="target">
+            <option value="">{{localize "CAIRN.Barter.Choose"}}</option>
+            {{#each targets as |t|}}
+            <option value="{{t.uuid}}" {{#if t.selected}}selected{{/if}}>{{t.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    {{#unless targets.length}}<p class="cairn-whisper-hint">{{localize "CAIRN.Barter.NoTargets"}}</p>{{/unless}}
+    <button type="button" data-action="barterSend" disabled>
+        <i class="fa-solid fa-handshake" inert></i> {{localize "CAIRN.Barter.Send"}}
+    </button>
+</footer>
