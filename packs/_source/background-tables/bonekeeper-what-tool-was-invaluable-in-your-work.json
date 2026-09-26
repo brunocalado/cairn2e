@@ -23,6 +23,21 @@
       "_key": "!tables.results!nftkT42PlPV4Fkdv.sGErquJ5pN3vuqHr"
     },
     {
+      "_id": "1QS8kMrg2zXr3SzJ",
+      "type": "document",
+      "name": "Manacles",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.lPIZmpl0kNeVeHjz",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.1QS8kMrg2zXr3SzJ"
+    },
+    {
       "_id": "rySpiyuSHmEW9f17",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!nftkT42PlPV4Fkdv.rySpiyuSHmEW9f17"
+    },
+    {
+      "_id": "EdxWzCoCA6d9hJO8",
+      "type": "document",
+      "name": "Sponge",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.lwBMgGS02zYwRSfo",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.EdxWzCoCA6d9hJO8"
     },
     {
       "_id": "o9eYeb4KiwYwFxxQ",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!nftkT42PlPV4Fkdv.o9eYeb4KiwYwFxxQ"
     },
     {
+      "_id": "5pclAAp86MFGmonr",
+      "type": "document",
+      "name": "Pulley",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.8BppvD9SESWlm5lC",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.5pclAAp86MFGmonr"
+    },
+    {
       "_id": "TCfDZD3ZW1rEbHBX",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!nftkT42PlPV4Fkdv.TCfDZD3ZW1rEbHBX"
+    },
+    {
+      "_id": "cnn0xzVJ8eYsnG97",
+      "type": "document",
+      "name": "Incense",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.CPE5ucoX5XYdDBzi",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.cnn0xzVJ8eYsnG97"
     },
     {
       "_id": "KcAAdLXqUJL7Bs6J",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!nftkT42PlPV4Fkdv.KcAAdLXqUJL7Bs6J"
     },
     {
+      "_id": "9jC8OOgQqLBgAd8e",
+      "type": "document",
+      "name": "Crowbar",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.futZXCCxru3SoaeU",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.9jC8OOgQqLBgAd8e"
+    },
+    {
       "_id": "wmnvDXtX1CAiN1DC",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!nftkT42PlPV4Fkdv.wmnvDXtX1CAiN1DC"
+    },
+    {
+      "_id": "Y3IxMGSpkVpRt38d",
+      "type": "document",
+      "name": "Repellent (3 uses)",
+      "img": "icons/consumables/plants/dried-herb-bundle-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.IDgKEN7Ptc87kNmn",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nftkT42PlPV4Fkdv.Y3IxMGSpkVpRt38d"
     }
   ],
   "folder": null,

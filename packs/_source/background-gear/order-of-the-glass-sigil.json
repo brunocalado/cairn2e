@@ -1,0 +1,31 @@
+{
+  "_id": "vzD55F7U01CrsHvV",
+  "name": "Order of the Glass Sigil",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Order of the Glass Sigil</strong>. Take a short sword (d8) and chainmail (2 Armor, <em>bulky</em>). You have contacts in most towns (the more rural, the better) willing to provide aid, food, or even weapons.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!vzD55F7U01CrsHvV",
+  "folder": "VyQWK1tMrTe9Gy9a"
+}

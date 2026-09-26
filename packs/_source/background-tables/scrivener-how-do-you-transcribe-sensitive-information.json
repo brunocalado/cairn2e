@@ -23,6 +23,21 @@
       "_key": "!tables.results!5RemuIefkkjofLNA.SDlW4CTXdYwEMaPx"
     },
     {
+      "_id": "ruIsAKkeeJ8oy25p",
+      "type": "document",
+      "name": "Fib Ink",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.D6pAlAkWuQzDtnDq",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.ruIsAKkeeJ8oy25p"
+    },
+    {
       "_id": "sAnSlgqZ64sInpvf",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5RemuIefkkjofLNA.sAnSlgqZ64sInpvf"
+    },
+    {
+      "_id": "Ba74mJz3mlzFnjN9",
+      "type": "document",
+      "name": "Cipher Stone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.pebwozFmYjfABGu6",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.Ba74mJz3mlzFnjN9"
     },
     {
       "_id": "yLdPhwwsfHAuqpgB",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!5RemuIefkkjofLNA.yLdPhwwsfHAuqpgB"
     },
     {
+      "_id": "Izmfsb8DFvOCw53F",
+      "type": "document",
+      "name": "Everquill",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.VzrVZE7u7PTC3fK2",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.Izmfsb8DFvOCw53F"
+    },
+    {
       "_id": "AiBbtcHrlMnz3LUF",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5RemuIefkkjofLNA.AiBbtcHrlMnz3LUF"
+    },
+    {
+      "_id": "nLj2VCYXcq52pH3v",
+      "type": "document",
+      "name": "Whisper Vial",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.kFG1UnQ6pigr51cI",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.nLj2VCYXcq52pH3v"
     },
     {
       "_id": "x1HzLLs3HPD0hfcX",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!5RemuIefkkjofLNA.x1HzLLs3HPD0hfcX"
     },
     {
+      "_id": "lIqc38CiGtZGrxep",
+      "type": "document",
+      "name": "Sanguine Lens",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.vQpQzGjNwiuyckao",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.lIqc38CiGtZGrxep"
+    },
+    {
       "_id": "pcRexujUdJGi4gBZ",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5RemuIefkkjofLNA.pcRexujUdJGi4gBZ"
+    },
+    {
+      "_id": "DuybgXpqFvAqFlen",
+      "type": "document",
+      "name": "Echo Leaf",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.3SpDCvBpakDYOOBJ",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5RemuIefkkjofLNA.DuybgXpqFvAqFlen"
     }
   ],
   "folder": null,

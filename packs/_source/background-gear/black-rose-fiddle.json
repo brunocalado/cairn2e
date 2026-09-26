@@ -1,0 +1,31 @@
+{
+  "_id": "yPS8pQF0WkshCSej",
+  "name": "Black Rose Fiddle",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A <strong>Black Rose Fiddle</strong> (<em>bulky</em>). Its music causes intense sadness and immobility in nearby mortals. (Others are merely fascinated.) You don't know how to play.</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!yPS8pQF0WkshCSej",
+  "folder": "txYF1azSElMlB2lI"
+}

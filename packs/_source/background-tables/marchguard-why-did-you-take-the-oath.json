@@ -23,6 +23,21 @@
       "_key": "!tables.results!0JSuAmZridlP5xAS.oRIQNm7JfeqrjaGY"
     },
     {
+      "_id": "vMoE1pDvFrzpAuj6",
+      "type": "document",
+      "name": "Born to the Wild",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.j03LUPyFuOktccJv",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.vMoE1pDvFrzpAuj6"
+    },
+    {
       "_id": "9J21hGG0937Fikx8",
       "type": "text",
       "name": "",
@@ -36,6 +51,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!0JSuAmZridlP5xAS.9J21hGG0937Fikx8"
+    },
+    {
+      "_id": "zkHdPGuJ0zBSvHly",
+      "type": "document",
+      "name": "Lockpicks",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.SnMkFBcgfszJzjmf",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.zkHdPGuJ0zBSvHly"
+    },
+    {
+      "_id": "l06ufNgOsJSIgVqF",
+      "type": "document",
+      "name": "Key",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.QVN9ehJopt69l6ou",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.l06ufNgOsJSIgVqF"
     },
     {
       "_id": "oe1HDLAIPYzWKsAI",
@@ -53,6 +98,21 @@
       "_key": "!tables.results!0JSuAmZridlP5xAS.oe1HDLAIPYzWKsAI"
     },
     {
+      "_id": "9aQWrkBR9ICkB37J",
+      "type": "document",
+      "name": "Goosefelt Tarp",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LgBqpQhhyjmDtios",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.9aQWrkBR9ICkB37J"
+    },
+    {
       "_id": "76UXXBGkGz3fj1cv",
       "type": "text",
       "name": "",
@@ -66,6 +126,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!0JSuAmZridlP5xAS.76UXXBGkGz3fj1cv"
+    },
+    {
+      "_id": "ukINPy03xcZ3Q1Lb",
+      "type": "document",
+      "name": "Rations",
+      "img": "icons/consumables/food/bread-toast-tan.webp",
+      "documentUuid": "Compendium.cairn2e.gear.Item.o6vtsY4SfrFJHnol",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.ukINPy03xcZ3Q1Lb"
+    },
+    {
+      "_id": "K2vf0G7f3htCiXdX",
+      "type": "document",
+      "name": "Throwing Knives",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.BFBBWiqXyQCcbuYI",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.K2vf0G7f3htCiXdX"
     },
     {
       "_id": "jtmkobGIJVqPAYiW",
@@ -83,6 +173,36 @@
       "_key": "!tables.results!0JSuAmZridlP5xAS.jtmkobGIJVqPAYiW"
     },
     {
+      "_id": "Sry9PrOT6UxAbJlq",
+      "type": "document",
+      "name": "Snare Trap",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.L3HtfuzAcSRGwQes",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.Sry9PrOT6UxAbJlq"
+    },
+    {
+      "_id": "ROXOA02InFQZ6Md0",
+      "type": "document",
+      "name": "Sketchbook",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.txv2JH2yBZqbBt4Q",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.ROXOA02InFQZ6Md0"
+    },
+    {
       "_id": "fLe87K7r5OnxFHFd",
       "type": "text",
       "name": "",
@@ -96,6 +216,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!0JSuAmZridlP5xAS.fLe87K7r5OnxFHFd"
+    },
+    {
+      "_id": "BG1UoIhRhph30VNL",
+      "type": "document",
+      "name": "Oilskin Coat",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.f3FQmzckWNSPmUHY",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.BG1UoIhRhph30VNL"
+    },
+    {
+      "_id": "Iwqfg7xIBmAz6adP",
+      "type": "document",
+      "name": "Mapping Paper",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.kUUg85UDS41vuGQE",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!0JSuAmZridlP5xAS.Iwqfg7xIBmAz6adP"
     }
   ],
   "folder": null,

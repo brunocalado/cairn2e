@@ -1,0 +1,31 @@
+{
+  "_id": "MWIa2YsDRT2T2AHj",
+  "name": "Briar Thorn",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A <strong>Briar Thorn</strong>. It can pierce any organic material (quite painfully) but when removed leaves no trace of the intrusion.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!MWIa2YsDRT2T2AHj",
+  "folder": "txYF1azSElMlB2lI"
+}

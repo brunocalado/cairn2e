@@ -1,0 +1,31 @@
+{
+  "_id": "xBEa5qiAvTbFRivY",
+  "name": "Regrowth Salve",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Regrowth Salve</strong> Regrows a body part over the course of a day. 1 use.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xBEa5qiAvTbFRivY",
+  "folder": "9PouGVcgtvEJrEzy"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "4s16rvYxwC1L2JN0",
+  "name": "Pain Band",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Pain Band</strong> Touch an injured creature to transfer their wounds to you. (Exchange their lost STR with your own.) <strong>Recharge</strong>: Wear the ring while in perfect health. You will lose 1 STR, permanently. <em>Petty</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4s16rvYxwC1L2JN0",
+  "folder": "GRJalXIEjoCuKkjN"
+}

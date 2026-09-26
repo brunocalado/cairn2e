@@ -1,0 +1,31 @@
+{
+  "_id": "RBW0PDA3FPbYApCs",
+  "name": "Borrowed Senses",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>That there is far more to the world than meets the eye. With quiet concentration, you can borrow the senses of a nearby creature of your <strong>specialty</strong>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!RBW0PDA3FPbYApCs",
+  "folder": "JutabTvswwdsAoBG"
+}

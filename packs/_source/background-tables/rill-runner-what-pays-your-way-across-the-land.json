@@ -23,6 +23,36 @@
       "_key": "!tables.results!6kBvpnelADVAJYGI.HYRhkxnQrtqMSOBN"
     },
     {
+      "_id": "zlUDQ27NTggkxt36",
+      "type": "document",
+      "name": "Performance",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.xE2mA1akQNNsKRYC",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.zlUDQ27NTggkxt36"
+    },
+    {
+      "_id": "wFkLvHaTna8Uf2hA",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.U0Cx718fqe1Sf71L",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.wFkLvHaTna8Uf2hA"
+    },
+    {
       "_id": "0j0cRQplOzWYxQwO",
       "type": "text",
       "name": "",
@@ -36,6 +66,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6kBvpnelADVAJYGI.0j0cRQplOzWYxQwO"
+    },
+    {
+      "_id": "IDQxSw3o193bt29I",
+      "type": "document",
+      "name": "Rapier",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.lkT31MQ2uGNxj9QQ",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.IDQxSw3o193bt29I"
     },
     {
       "_id": "X9kDydAxnpwseEuD",
@@ -53,6 +98,36 @@
       "_key": "!tables.results!6kBvpnelADVAJYGI.X9kDydAxnpwseEuD"
     },
     {
+      "_id": "DeQ2dbpPCxKBols5",
+      "type": "document",
+      "name": "Wares",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.zUxkALwCjUUy7jfa",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.DeQ2dbpPCxKBols5"
+    },
+    {
+      "_id": "EnUfY8zkAFccQd3S",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ebiYhTM4rcHkx5ZN",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.EnUfY8zkAFccQd3S"
+    },
+    {
       "_id": "d4QiugTbfKgSUXco",
       "type": "text",
       "name": "",
@@ -66,6 +141,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6kBvpnelADVAJYGI.d4QiugTbfKgSUXco"
+    },
+    {
+      "_id": "UGVUZFfP0Zle7tIY",
+      "type": "document",
+      "name": "Transport",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ptNfu4uSEvAILuBw",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.UGVUZFfP0Zle7tIY"
     },
     {
       "_id": "LTP0BaEbZ2mZL6A5",
@@ -83,6 +173,21 @@
       "_key": "!tables.results!6kBvpnelADVAJYGI.LTP0BaEbZ2mZL6A5"
     },
     {
+      "_id": "oPU079zqk9TtQmbh",
+      "type": "document",
+      "name": "Sailor's Friend",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.SFXQPKPVX4KfxioO",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.oPU079zqk9TtQmbh"
+    },
+    {
       "_id": "Xg2mHZEgEkCUDfIB",
       "type": "text",
       "name": "",
@@ -96,6 +201,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6kBvpnelADVAJYGI.Xg2mHZEgEkCUDfIB"
+    },
+    {
+      "_id": "b3C77ikbNNLL82RV",
+      "type": "document",
+      "name": "Guide",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.n5wlwslyuHpGYPPz",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.b3C77ikbNNLL82RV"
+    },
+    {
+      "_id": "eD2t06Y63Ml4JjtM",
+      "type": "document",
+      "name": "Map",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.pWeX1kmxVIeKrEpc",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6kBvpnelADVAJYGI.eD2t06Y63Ml4JjtM"
     }
   ],
   "folder": null,

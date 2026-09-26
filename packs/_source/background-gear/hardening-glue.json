@@ -1,0 +1,31 @@
+{
+  "_id": "MSZRzsapAQWoBFB4",
+  "name": "Hardening Glue",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Hardening Glue</strong> Makes any flat material (cloth, leather, sand) as hard as stone. Expensive (20gp a bottle, 3 uses).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!MSZRzsapAQWoBFB4",
+  "folder": "aOOxVUFyvLpt9vWg"
+}

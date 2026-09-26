@@ -1,0 +1,31 @@
+{
+  "_id": "txv2JH2yBZqbBt4Q",
+  "name": "Sketchbook",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>Your life was saved by a member of the <strong>Marchguard</strong>, and you were inspired to join their ranks. Take a <strong>Snare Trap</strong> and a <strong>Sketchbook</strong> filled with detailed drawings.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!txv2JH2yBZqbBt4Q",
+  "folder": "GRJalXIEjoCuKkjN"
+}

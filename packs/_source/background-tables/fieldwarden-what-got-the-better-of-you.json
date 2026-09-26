@@ -23,6 +23,21 @@
       "_key": "!tables.results!AQs8glEIIOGW3H23.WwhUi0JgoCYDMA7N"
     },
     {
+      "_id": "Nu4t8CfLvJwI46kv",
+      "type": "document",
+      "name": "Gale Seed Extract",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.CBhjBZHLs0n6oCyT",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.Nu4t8CfLvJwI46kv"
+    },
+    {
       "_id": "FvhcCmBz7nQwDNBh",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!AQs8glEIIOGW3H23.FvhcCmBz7nQwDNBh"
+    },
+    {
+      "_id": "hBREK073o2VCvB7t",
+      "type": "document",
+      "name": "Fireseeds",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.nAdtHjQXLvIEs8nJ",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.hBREK073o2VCvB7t"
     },
     {
       "_id": "6C9HaxvSOg3XnV9F",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!AQs8glEIIOGW3H23.6C9HaxvSOg3XnV9F"
     },
     {
+      "_id": "BUQZBAJcw4FKzmOZ",
+      "type": "document",
+      "name": "Bone Knife",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.7hlnv0EMhKk0KRDa",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.BUQZBAJcw4FKzmOZ"
+    },
+    {
       "_id": "Vo4GsTlmLsmEuzTN",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!AQs8glEIIOGW3H23.Vo4GsTlmLsmEuzTN"
+    },
+    {
+      "_id": "MJM9X7EKJC9BCSOp",
+      "type": "document",
+      "name": "Diseased Crop",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.SQ34CVKE5D1rlE8q",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.MJM9X7EKJC9BCSOp"
     },
     {
       "_id": "uXZl94LgHfAD2Cb5",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!AQs8glEIIOGW3H23.uXZl94LgHfAD2Cb5"
     },
     {
+      "_id": "iYAyvP1emjJ5tdN3",
+      "type": "document",
+      "name": "Werewolf",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.WcYfLqIcafEIQbGB",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.iYAyvP1emjJ5tdN3"
+    },
+    {
       "_id": "UmCeOr81RFwkxwUv",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!AQs8glEIIOGW3H23.UmCeOr81RFwkxwUv"
+    },
+    {
+      "_id": "ROan4OtNb1ksDw2I",
+      "type": "document",
+      "name": "Cusped Falchion",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.kRjKTZ68lItohrID",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.ROan4OtNb1ksDw2I"
     }
   ],
   "folder": null,

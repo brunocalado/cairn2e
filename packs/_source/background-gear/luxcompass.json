@@ -1,0 +1,31 @@
+{
+  "_id": "rJ2vUjANd4bmb7Gp",
+  "name": "Luxcompass",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Luxcompass</strong> Hums softly as it moves closer to the Sun. Eventually the noise becomes unbearably loud.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!rJ2vUjANd4bmb7Gp",
+  "folder": "WuN39BkGc3MUzAYu"
+}

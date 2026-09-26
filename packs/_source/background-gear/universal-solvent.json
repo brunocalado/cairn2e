@@ -1,0 +1,31 @@
+{
+  "_id": "6ah1r38cnIzZGgZf",
+  "name": "Universal Solvent",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>Ridiculed for discovering how to turn gold into <em>lead</em>, you were a laughing stock. Take a bottle of <strong>Universal Solvent</strong> (2 uses) that dissolves anything it touches into its constituent parts.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6ah1r38cnIzZGgZf",
+  "folder": "FuPdQNZZihi9YB9f"
+}

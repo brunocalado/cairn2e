@@ -23,6 +23,21 @@
       "_key": "!tables.results!x35sntRErfx45EID.sCO27vKIdx1ytWCd"
     },
     {
+      "_id": "Pqul1xoBXDAqtlWw",
+      "type": "document",
+      "name": "Borrowed Senses",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.RBW0PDA3FPbYApCs",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.Pqul1xoBXDAqtlWw"
+    },
+    {
       "_id": "H9vFT0rlNI96m9w6",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!x35sntRErfx45EID.H9vFT0rlNI96m9w6"
+    },
+    {
+      "_id": "A48qRehQxv2LJwxh",
+      "type": "document",
+      "name": "Beast Omens",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.kdzTNlxlBpwqUGg4",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.A48qRehQxv2LJwxh"
     },
     {
       "_id": "K9jVkDbC1uXIRqZp",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!x35sntRErfx45EID.K9jVkDbC1uXIRqZp"
     },
     {
+      "_id": "ddN3Ka549HgtLDdc",
+      "type": "document",
+      "name": "Predator Sense",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.UbSEBR1ZTqKPR5Qf",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.ddN3Ka549HgtLDdc"
+    },
+    {
       "_id": "owPKvCL1PD69VQr6",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!x35sntRErfx45EID.owPKvCL1PD69VQr6"
+    },
+    {
+      "_id": "s2IXTWNFDikpEJdN",
+      "type": "document",
+      "name": "Beast Pathfinder",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.uxFQSEWA0z3aTyqm",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.s2IXTWNFDikpEJdN"
     },
     {
       "_id": "lg78soNOisjpkJ2b",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!x35sntRErfx45EID.lg78soNOisjpkJ2b"
     },
     {
+      "_id": "6Mej4Quo28h0dsn4",
+      "type": "document",
+      "name": "Nature's Alarm",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.bFVN1fquRCBMVD1B",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.6Mej4Quo28h0dsn4"
+    },
+    {
       "_id": "DYMYMxPrjV5pzomd",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!x35sntRErfx45EID.DYMYMxPrjV5pzomd"
+    },
+    {
+      "_id": "paE15lnTCBQzJdz9",
+      "type": "document",
+      "name": "Beast Aspect",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qCwK1tNRj0GROQDd",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!x35sntRErfx45EID.paE15lnTCBQzJdz9"
     }
   ],
   "folder": null,

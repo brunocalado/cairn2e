@@ -1,0 +1,31 @@
+{
+  "_id": "UfBNfUb65boIYD18",
+  "name": "Burial Wagon",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A <strong>burial wagon</strong> (+6 slots, <em>slow</em>) from your last job. It came with a stubborn old <strong>donkey</strong> (+4 slots, only +2 slots if pulling wagon).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UfBNfUb65boIYD18",
+  "folder": "EIIp0S3aKJcOC0QK"
+}

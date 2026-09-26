@@ -1,0 +1,31 @@
+{
+  "_id": "DJkRtDuSnf3U5y2J",
+  "name": "Blacked-Out Ledger",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Always pay your debts</strong>: You always repay what you owe, whether in coin or in kind. You expect nothing less from all others. Take a <strong>Blacked-Out Ledger</strong>, then roll a second time on the <strong>Bonds</strong> table.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DJkRtDuSnf3U5y2J",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

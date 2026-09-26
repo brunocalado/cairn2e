@@ -1,0 +1,31 @@
+{
+  "_id": "vQSvVz6WGcnN4YjW",
+  "name": "Spiked Boots (d8)",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Spiked Boots</strong> Cracks heads (d8) as easily as it does ice and muck. Travel is also a bit slower, but easier.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!vQSvVz6WGcnN4YjW",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

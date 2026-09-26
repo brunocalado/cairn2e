@@ -1,0 +1,31 @@
+{
+  "_id": "zUxkALwCjUUy7jfa",
+  "name": "Wares",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Wares</strong> You buy low and sell high, always making just enough to get by. Take a <strong>single item</strong> worth <strong>20gp</strong> (or less) from the [gear](/second-edition/players-guide/marketplace#gear) table.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!zUxkALwCjUUy7jfa",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

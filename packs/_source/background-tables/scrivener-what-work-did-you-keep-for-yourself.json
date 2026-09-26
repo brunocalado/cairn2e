@@ -23,6 +23,21 @@
       "_key": "!tables.results!lduaZOXAPFp3EHFC.aqvmLyvWjxrY1yiU"
     },
     {
+      "_id": "Kqnghmgp2V0erj3H",
+      "type": "document",
+      "name": "The Wild Tongue",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LUF53H7UnfnwBB0c",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.Kqnghmgp2V0erj3H"
+    },
+    {
       "_id": "HCDSQDjCo7hROXIz",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!lduaZOXAPFp3EHFC.HCDSQDjCo7hROXIz"
+    },
+    {
+      "_id": "vRD8RfCvZsCamNiz",
+      "type": "document",
+      "name": "The Silent Symphony",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.yyYNshn5WnGiDI0Q",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.vRD8RfCvZsCamNiz"
     },
     {
       "_id": "YgyXfTAyg00diMHr",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!lduaZOXAPFp3EHFC.YgyXfTAyg00diMHr"
     },
     {
+      "_id": "UshbvjafXiEPFuEx",
+      "type": "document",
+      "name": "A Treatise on the Abyss",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.aoQ6TvRgoSCAvv4L",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.UshbvjafXiEPFuEx"
+    },
+    {
       "_id": "54b8ip6xunADhok2",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!lduaZOXAPFp3EHFC.54b8ip6xunADhok2"
+    },
+    {
+      "_id": "IJ14OtQN0xg9wlTE",
+      "type": "document",
+      "name": "The Star Waltz",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.iARb63m2FkEq8jFD",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.IJ14OtQN0xg9wlTE"
     },
     {
       "_id": "fZe3Xs39vlz5g5GI",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!lduaZOXAPFp3EHFC.fZe3Xs39vlz5g5GI"
     },
     {
+      "_id": "KHTn1nvidqmGL6ff",
+      "type": "document",
+      "name": "The Cathedral and the Canopy",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.vUpVnz1JTXhk8nB2",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.KHTn1nvidqmGL6ff"
+    },
+    {
       "_id": "sfeHUbMOnESME4ks",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!lduaZOXAPFp3EHFC.sfeHUbMOnESME4ks"
+    },
+    {
+      "_id": "Wb0X6okKrEIHAF1l",
+      "type": "document",
+      "name": "Garden of Glass",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.hDGwJBVygdNay1hW",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!lduaZOXAPFp3EHFC.Wb0X6okKrEIHAF1l"
     }
   ],
   "folder": null,

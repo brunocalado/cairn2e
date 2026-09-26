@@ -1,0 +1,31 @@
+{
+  "_id": "yc8GS1DnyyRIMelH",
+  "name": "Smith's Apron",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A gruff blacksmith from a sleepy river town. You were always kept at arm's length. Now the forge is cold, and you've moved on. Take a <strong>Smith's Apron</strong> (<em>petty</em>) and a set of <strong>Oft-mended Chain Mail</strong> (2 Armor, <em>bulky</em>).</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!yc8GS1DnyyRIMelH",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

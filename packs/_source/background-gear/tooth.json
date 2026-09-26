@@ -1,0 +1,31 @@
+{
+  "_id": "LGSop6UijQMtrW23",
+  "name": "Tooth",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>A <em>silver marsh crawler</em> that killed someone close to you. You now carry its <strong>Tooth</strong> (<em>petty</em>) on a chain around your neck as a warning to others of its kind. <em>The tooth hums softly when something is stalking you</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!LGSop6UijQMtrW23",
+  "folder": "aOOxVUFyvLpt9vWg"
+}

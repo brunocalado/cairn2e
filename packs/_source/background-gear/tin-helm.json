@@ -1,0 +1,31 @@
+{
+  "_id": "7Aj7hCQVdEFQNGgL",
+  "name": "Tin Helm",
+  "type": "gear",
+  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "system": {
+    "description": "<p>You were a military smelter, before peace destroyed your livelihood. Take a <strong>smelting hammer</strong> (d10, <em>bulky</em>) and a <strong>tin helm</strong> (+1 Armor). Given time and adequate materials, you can repair armor.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7Aj7hCQVdEFQNGgL",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

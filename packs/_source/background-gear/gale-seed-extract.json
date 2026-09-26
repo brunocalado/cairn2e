@@ -1,0 +1,31 @@
+{
+  "_id": "CBhjBZHLs0n6oCyT",
+  "name": "Gale Seed Extract",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A voracious swarm of pests that swallowed crops and animals alike. With nothing to defend, you left. Take <strong>Gale Seed Extract</strong> (3 uses).  Ingesting it lets you sprint with a speed four times your regular rate. Afterward you add two <strong>Fatigue</strong>.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!CBhjBZHLs0n6oCyT",
+  "folder": "VCf486fS9s17em9n"
+}

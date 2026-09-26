@@ -1,0 +1,31 @@
+{
+  "_id": "lwBMgGS02zYwRSfo",
+  "name": "Sponge",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Sponge</strong> Supposedly made from the remains of a rare sea creature. It never seems to dry out.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lwBMgGS02zYwRSfo",
+  "folder": "EIIp0S3aKJcOC0QK"
+}

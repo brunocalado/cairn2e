@@ -1,0 +1,31 @@
+{
+  "_id": "UCGz949Ymr5OqJGz",
+  "name": "Smelting Hammer",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>You were a military smelter, before peace destroyed your livelihood. Take a <strong>smelting hammer</strong> (d10, <em>bulky</em>) and a <strong>tin helm</strong> (+1 Armor). Given time and adequate materials, you can repair armor.</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d10",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UCGz949Ymr5OqJGz",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

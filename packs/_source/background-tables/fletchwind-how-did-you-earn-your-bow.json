@@ -23,6 +23,21 @@
       "_key": "!tables.results!i1HwJlO1wbOqTqD7.LHA6rELmo6V1nAa2"
     },
     {
+      "_id": "oQBoCwXsFY6ZFaZS",
+      "type": "document",
+      "name": "War",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.QAADGn2utwPRdVRl",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.oQBoCwXsFY6ZFaZS"
+    },
+    {
       "_id": "FdLDJCuH6kzCAJMo",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!i1HwJlO1wbOqTqD7.FdLDJCuH6kzCAJMo"
+    },
+    {
+      "_id": "7hHE5oLnl5cwvHBW",
+      "type": "document",
+      "name": "Falconry",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.mgKHET3LbU874Lc2",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.7hHE5oLnl5cwvHBW"
     },
     {
       "_id": "Hdc3t93ktRM10kGT",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!i1HwJlO1wbOqTqD7.Hdc3t93ktRM10kGT"
     },
     {
+      "_id": "FrBI0nrVwksaalzj",
+      "type": "document",
+      "name": "Hunting",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.XekEgVaDHdGfbso3",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.FrBI0nrVwksaalzj"
+    },
+    {
       "_id": "bBq5nFrU1xEHCYVx",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!i1HwJlO1wbOqTqD7.bBq5nFrU1xEHCYVx"
+    },
+    {
+      "_id": "jrWHb8kFFQtq1koi",
+      "type": "document",
+      "name": "Tournaments",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.RAksE6ZdSITDKKrq",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.jrWHb8kFFQtq1koi"
     },
     {
       "_id": "lpHKieSvIbVhHsOV",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!i1HwJlO1wbOqTqD7.lpHKieSvIbVhHsOV"
     },
     {
+      "_id": "CkBux3DVN886cqSH",
+      "type": "document",
+      "name": "Training",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.TOjjEYUsFiroYa2M",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.CkBux3DVN886cqSH"
+    },
+    {
       "_id": "rEsDs8Y4ZSZ5taak",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!i1HwJlO1wbOqTqD7.rEsDs8Y4ZSZ5taak"
+    },
+    {
+      "_id": "5UxYiBpbtEfkYuAE",
+      "type": "document",
+      "name": "Scouting",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.6m0dfLNHrj3jl359",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i1HwJlO1wbOqTqD7.5UxYiBpbtEfkYuAE"
     }
   ],
   "folder": null,

@@ -1,0 +1,31 @@
+{
+  "_id": "5SZFAovjMw7UcwI3",
+  "name": "Reed Whistle",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><em>The Tinker's Two-Step</em>. A humorous fairy tale about a gift-giving traveler. Start with a <strong>Reed Whistle</strong>. Anyone in earshot must pass a WIL save to perform an act of violence.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!5SZFAovjMw7UcwI3",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

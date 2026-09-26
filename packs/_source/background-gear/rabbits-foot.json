@@ -1,0 +1,31 @@
+{
+  "_id": "NkAOwcjGzcU4FlyS",
+  "name": "Rabbit's Foot",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Rabbit's Foot</strong> You were wearing it when they found you. They say it is the foot of she who left you and that it protects you from witch magic. <em>Petty</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!NkAOwcjGzcU4FlyS",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

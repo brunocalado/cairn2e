@@ -21,12 +21,15 @@
  *   `core-rules.md` describes hireling creation as exactly that, and a Warden making six of them
  *   does not want a wizard six times.
  *
- * Starting gear is a list of compendium uuids on the Background and is embedded as-is. The d6
- * table results are still prose, and a result that names an item is turned into a real embedded
- * Item on the fly (the maintainer's decision): the clause is parsed for `(_petty_)` / `(_bulky_)`
- * / `(dN)` / `(N uses)` / `(N Armor)` only, its full prose is kept as the item description, and a
- * Marketplace compendium entry is used verbatim where a clause just names one. Results that grant
- * only an ability (no bold item name) become a *petty* Item instead.
+ * Starting gear is a list of compendium uuids on the Background and is embedded as-is. What a d6
+ * table result grants is authored the same way: `document` results sharing the prose result's
+ * range, one per granted Item — a Marketplace line, a `background-gear` document, a sack of coin,
+ * or an ability written as a *petty* gear. Nothing is read out of the prose, because the prose is
+ * what a translation module translates: a grammar parsed in English would grant nothing in any
+ * other language, and it was not reliable in English either.
+ *
+ * The one text grammar left is {@link parseGearLine}, and it serves the Kettlewright importer alone
+ * (`module/kettlewright-import.js`), whose exports are English by decision.
  */
 
 import { CairnActor } from "./documents/actor.js";
@@ -115,15 +118,17 @@ export async function drawBackground() {
 
 /** Draw one d6 Background table (referenced by its full compendium uuid).
  *
- *  Two forms of the same result: `html` as authored, which is what `parseTableResult` reads the
- *  granted items and gold out of, and `text` as a sentence, which is what the character keeps
- *  and every surface shows. Nothing the player sees is markup. */
+ *  A roll lands on one `text` result — the prose, as `html` and as `text`, a sentence that is what
+ *  the character keeps and every surface shows (nothing the player sees is markup) — and on the
+ *  `document` results that share its range, which are what it grants: their uuids are `grants`. */
 export async function drawBackgroundTable(uuid) {
   const table = await fromUuid(uuid);
   if (!table) return null;
   const draw = await table.draw({ displayChat: false });
-  const html = draw.results[0]?.description ?? "";
-  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html) };
+  const prose = draw.results.find((r) => r.type === "text");
+  const grants = draw.results.filter((r) => r.type === "document").map((r) => r.documentUuid);
+  const html = prose?.description ?? "";
+  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html), grants };
 }
 
 /** Draw one d10 trait table; returns the plain trait word. */
@@ -236,27 +241,12 @@ function normalizeDie(die) {
 }
 
 /**
- * Bold phrases the SRD emphasises that are never the name of a granted Item. A bold immediately
- * followed by the word "table" or "step" is filtered separately.
- */
-const NON_ITEM_BOLD = new Set([
-  "bonds", "attributes", "hp", "critical damage", "recharge", "fatigue", "marketplace",
-  "easy", "tough", "perilous", "one step", "enhanced", "impaired", "deprived"
-]);
-
-/** SRD verbs that introduce a "you receive this" clause in a table result. */
-const GRANT_VERB = /\b(?:Take|Carry|Start with|Starting with|You carry|You keep|You start with)\b/;
-
-/**
- * Read mechanical qualifiers from a text fragment — `(d6)`, `(1 Armor)`, `(6 uses)`,
- * `(d12, _blast_, _bulky_)` — plus, when `loose`, bare forms the SRD writes without parentheses
- * (`d6 damage`, `3 uses`, `+1 Armor`). `loose` scanning is skipped when the fragment carries a
- * statblock (`HP`, `STR,`), where a die is a monster's attack, not the item's.
+ * Read mechanical qualifiers from a gear line — `(d6)`, `(1 Armor)`, `(6 uses)`,
+ * `(d12, _blast_, _bulky_)`.
  * @param {string} fragment
- * @param {{ loose?: boolean }} [opts]
  * @returns {{ damage?: string, armor?: number, petty: boolean, bulky: boolean, blast: boolean, uses?: number }}
  */
-function scanQualifiers(fragment, { loose = false } = {}) {
+function scanQualifiers(fragment) {
   const text = stripTags(fragment).replace(/_/g, "");
   const flags = { petty: false, bulky: false, blast: false };
 
@@ -282,18 +272,6 @@ function scanQualifiers(fragment, { loose = false } = {}) {
   if (/\bpetty\b/i.test(text)) flags.petty = true;
   if (/\bbulky\b/i.test(text)) flags.bulky = true;
   if (/\bblast\b/i.test(text)) flags.blast = true;
-
-  const hasStatblock = /\bHP\b/.test(text) || /\bSTR,/.test(text);
-  if (loose && !hasStatblock) {
-    if (!flags.damage) {
-      const bareDie = text.match(/\bd(4|6|8|10|12)\b/);
-      if (bareDie) flags.damage = `d${bareDie[1]}`;
-    }
-    if (flags.armor === undefined) {
-      const bareArmor = text.match(/\+?(\d+)\s*Armor\b/);
-      if (bareArmor) flags.armor = Number(bareArmor[1]);
-    }
-  }
   return flags;
 }
 
@@ -364,99 +342,9 @@ export function parseGearLine(line) {
   const name = (parenStart >= 0 ? plain.slice(0, parenStart) : plain).trim();
   if (!name) return { kind: "none" };
 
-  const q = scanQualifiers(plain); // strict: starting-gear lines always parenthesise their qualifiers
+  const q = scanQualifiers(plain);
   const data = makeItem(name, q, `<p>${mdToHtml(raw)}</p>`);
   return { kind: "item", data };
-}
-
-/**
- * Parse one d6 Background-table result into zero or more Items plus, when no Item is granted, the
- * ability text, which the caller turns into a petty Item.
- *
- * The SRD writes these three ways: `Take a **Item** (quals)` / a leading `A/The **Item** …` /
- * a `**Label**.` or `**Label**:` clause that grants only an ability. Multiple `Take a **X** and a
- * **Y**` items in one clause are all captured. An explicit coin grant (`Take an extra 30gp`) is
- * returned as `gold`.
- * @param {string} html
- * @returns {{ items: object[], gold: number, abilityHtml: string|null }}
- */
-export function parseTableResult(html) {
-  const src = String(html ?? "");
-  const plain = stripTags(src).replace(/_/g, "");
-  if (!plain.trim()) return { items: [], gold: 0, abilityHtml: null };
-
-  const goldM = plain.match(/\b(?:Take|carry)\b[^.]*?\b(?:extra |another )?(\d+)\s*gp\b/i);
-  const gold = goldM ? Number(goldM[1]) : 0;
-
-  const firstBold = src.match(/<strong>([^<]*)<\/strong>/i);
-  const afterFirstBold = firstBold ? stripTags(src.slice(firstBold.index + firstBold[0].length)) : "";
-  const labelled = !!firstBold && /^\s*[.:]/.test(afterFirstBold);
-  const startsWithBold = /^\s*(?:<p>)?\s*<strong>/i.test(src);
-
-  const items = [];
-  const seen = new Set();
-  const add = (name, q) => {
-    const key = name.trim().toLowerCase();
-    // Skip non-items: the stoplist, a bold amount ("+d4 HP", "30gp", "an extra 20gp"), duplicates.
-    if (!key || NON_ITEM_BOLD.has(key) || seen.has(key)) return;
-    if (/\bhp\b/i.test(key) || /\d+\s*gp\b/i.test(key) || /^\+?\d/.test(key)) return;
-    seen.add(key);
-    items.push(makeItem(name, q, src));
-  };
-
-  // (a) Leading "A / The <strong>Item</strong> …" — the phrasing of the "what did you take" tables.
-  const lead = src.match(/^\s*(?:<p>\s*)?(?:A|An|The|One|Both|Two|Your)\s+<strong>([^<]+)<\/strong>(.{0,4})/i);
-  if (lead) {
-    const nextChar = stripTags(lead[2]).trim()[0] ?? "";
-    if (/^[A-Z]/.test(lead[1].trim()) || ".,([".includes(nextChar)) {
-      add(lead[1].trim(), scanQualifiers(plain.split(/\.\s/)[0], { loose: true }));
-    }
-  }
-
-  // (b) A "Take / Carry / …" clause, up to the first sentence break outside parentheses.
-  const grantIdx = src.search(GRANT_VERB);
-  if (grantIdx >= 0) {
-    let clause = src.slice(grantIdx);
-    let depth = 0;
-    for (let i = 0; i < clause.length - 1; i++) {
-      const c = clause[i];
-      if (c === "(") depth++;
-      else if (c === ")") depth = Math.max(0, depth - 1);
-      else if (c === "." && depth === 0 && /[\s<]/.test(clause[i + 1])) { clause = clause.slice(0, i); break; }
-    }
-    const boldRe = /<strong>([^<]+)<\/strong>/gi;
-    let m;
-    while ((m = boldRe.exec(clause))) {
-      const tail = stripTags(clause.slice(m.index + m[0].length));
-      if (/^\s*(?:table\b|step\b)/i.test(tail)) continue;
-      const frag = tail.split(/,\s+(?:an? |the |and )|\band\b/i)[0];
-      add(m[1].trim(), scanQualifiers(`${m[1]} ${frag}`));
-    }
-  }
-
-  // (c) "**Item** — free-standing description" (the marvels / tools / potions tables).
-  if (!items.length && startsWithBold && !labelled && firstBold) {
-    add(firstBold[1].trim(), scanQualifiers(plain, { loose: true }));
-  }
-
-  // (d) "**Item**. …N uses." — some tables label a consumable like an ability but it plainly is
-  //     one (Fungal Forager's fungi). Only promote when an explicit use count settles it.
-  if (!items.length && labelled && firstBold && plain.length < 240 && /\b\d+\s*uses?\b/i.test(plain)) {
-    add(firstBold[1].trim(), scanQualifiers(plain, { loose: true }));
-  }
-
-  // Companions and mounts: a statblock in the blurb is not the item's own die.
-  const isCompanion = /\+\d+\s*slots?\b/i.test(plain) || /\b\d+\s*HP\b/.test(plain);
-  for (const it of items) {
-    if (isCompanion && it.system.damage) {
-      delete it.system.damage;
-      delete it.system.blast;
-      delete it._link;
-      it.img = GEAR_ARTWORK.gear;
-    }
-  }
-
-  return { items, gold, abilityHtml: items.length ? null : (plain.trim() ? src : null) };
 }
 
 /* -------------------------------------------- */
@@ -520,37 +408,6 @@ export function draftFromBackground(background) {
   };
 }
 
-/**
- * A background-table result that grants an ability rather than a thing.
- *
- * It is still something the character HAS, so it becomes a *petty* gear Item — petty because an
- * ability occupies no slot — and lands on the sheet's Petty tab. It used to be appended to
- * `system.biography`; that field is gone, and dropping the text instead would have made the
- * creator quietly produce an incomplete character.
- *
- * Naming it is the fiddly part. A few results open with a bolded label (`**Beast Friend.** You
- * can …`) and that is the name; most do not — "Your family has a long tradition of serving, and
- * you were trained from an early age" is typical — so the fallback is the result's own first
- * sentence, clipped. Falling back to the background's name instead would give every ability from
- * the same background the same name, which is no name at all.
- * @param {string} html  The whole table result, as authored.
- * @param {string} backgroundName
- * @returns {object}  `Item.create` data.
- */
-function abilityItem(html, backgroundName) {
-  const raw = String(html);
-  const label = raw.match(/<strong>([^<]+)<\/strong>/i)?.[1]?.replace(/[.:\s]+$/, "").trim();
-  const plain = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  const sentence = plain.split(/(?<=[.!?])\s/)[0] ?? plain;
-  const clipped = sentence.length > 48 ? `${sentence.slice(0, 47).trimEnd()}\u2026` : sentence;
-  return {
-    name: label || clipped || backgroundName || game.i18n.localize("CAIRN.CharacterCreator.DefaultName"),
-    type: "gear",
-    img: "icons/svg/book.svg",
-    system: { description: raw, slots: 0 }
-  };
-}
-
 /** A draft table draw as the character's stored slot; a blank slot when nothing was drawn. */
 function tableSlot(result) {
   return { question: result?.name ?? "", answer: result?.text ?? "" };
@@ -580,33 +437,34 @@ export async function assembleActorData(draft) {
 
   if (draft.startingGold) gold += await rollTotal(draft.startingGold);
 
-  // Starting gear is a list of compendium uuids, authored on the Background. Each one is
-  // embedded as a detached copy, the same way the Background itself is above, so the character
-  // never reads the pack again once made.
-  for (const uuid of draft.startingGear ?? []) {
-    const doc = await fromUuid(uuid).catch(() => null);
-    if (!doc) {
-      // A background pointing at a document that was deleted or moved. Said out loud rather
-      // than skipped in silence — a character short one item is otherwise indistinguishable
-      // from a background that never listed it.
-      ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MissingStartingGear", { uuid }));
-      continue;
+  // Starting gear, and what each d6 table result grants, are lists of compendium uuids authored
+  // on the Background and on the table. Each one is embedded as a detached copy, the same way the
+  // Background itself is above, so the character never reads the pack again once made.
+  const embed = async (uuids) => {
+    for (const uuid of uuids ?? []) {
+      const doc = await fromUuid(uuid).catch(() => null);
+      if (!doc) {
+        // A background pointing at a document that was deleted or moved. Said out loud rather
+        // than skipped in silence — a character short one item is otherwise indistinguishable
+        // from a background that never listed it.
+        ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MissingStartingGear", { uuid }));
+        continue;
+      }
+      // A granted sack of coin joins the one sack below rather than arriving as a second.
+      if (doc.type === "coin") {
+        gold += doc.system.value;
+        continue;
+      }
+      const source = copyOf(doc);
+      // Armour is worn from the first scene. A pack document ships unequipped, and unequipped
+      // armour counts for nothing (`_derived.js#sumEquippedArmor`) — a Fieldwarden created with
+      // its Brigandine in the pack would start at 0 Armor.
+      if (source.system.armor > 0) source.system.equipped = true;
+      items.push(source);
     }
-    const source = copyOf(doc);
-    // Armour is worn from the first scene. A pack document ships unequipped, and unequipped
-    // armour counts for nothing (`_derived.js#sumEquippedArmor`) — a Fieldwarden created with
-    // its Brigandine in the pack would start at 0 Armor.
-    if (source.system.armor > 0) source.system.equipped = true;
-    items.push(source);
-  }
-
-  for (const result of draft.tableResults ?? []) {
-    if (!result?.html) continue;
-    const parsed = parseTableResult(result.html);
-    for (const data of parsed.items) items.push(await resolveItem(data));
-    gold += parsed.gold;
-    if (parsed.abilityHtml) items.push(abilityItem(parsed.abilityHtml, draft.backgroundName));
-  }
+  };
+  await embed(draft.startingGear);
+  for (const result of draft.tableResults ?? []) await embed(result?.grants);
 
   // Coin is an Item (`data/item-coin.js`): the `3d6 Gold Pieces` every background opens with, and
   // whatever a table result added, are one sack on the body in the same batch as the gear.

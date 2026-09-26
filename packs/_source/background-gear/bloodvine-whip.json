@@ -1,0 +1,31 @@
+{
+  "_id": "CWQaBmhhtLk3hL9p",
+  "name": "Bloodvine Whip",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Bloodvine Whip</strong> d8 damage. On <strong>Critical Damage</strong>, it drains the target's blood, granting the weapon's next attack the <em>blast</em> quality</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": true,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!CWQaBmhhtLk3hL9p",
+  "folder": "VCf486fS9s17em9n"
+}

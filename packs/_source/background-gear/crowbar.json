@@ -1,0 +1,31 @@
+{
+  "_id": "futZXCCxru3SoaeU",
+  "name": "Crowbar",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Crowbar</strong> d6 damage. Sometimes you just need to get the damn thing open!</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!futZXCCxru3SoaeU",
+  "folder": "EIIp0S3aKJcOC0QK"
+}

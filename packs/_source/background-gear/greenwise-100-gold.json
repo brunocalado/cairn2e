@@ -1,0 +1,18 @@
+{
+  "_id": "VRi1nw0gZ3roWWsj",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>Your impressive corpseflower won a local contest then promptly killed a judge. You fled, but not without the <strong>Prize Money (100gp)</strong> and a warrant for your arrest.</p>",
+    "value": 100,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VRi1nw0gZ3roWWsj",
+  "folder": "bayXvK0U8aq9eTKM"
+}

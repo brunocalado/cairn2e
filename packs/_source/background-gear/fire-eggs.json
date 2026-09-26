@@ -1,0 +1,31 @@
+{
+  "_id": "4V9WFTAr4ZHxrOh0",
+  "name": "Fire Eggs",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Fire Eggs</strong> Six small pellets made of sea salt, wood, and crockery-dust. They explode at low heat (d8, <em>blast</em>) but the flames dissipate quickly.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": true,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4V9WFTAr4ZHxrOh0",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

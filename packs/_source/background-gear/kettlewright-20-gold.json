@@ -1,0 +1,18 @@
+{
+  "_id": "XphAFeGeebG7fgTA",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>You deal in home goods and tools, hawking your wares to townspeople across the lands. Take 20gp worth of items from the [gear](/second-edition/players-guide/marketplace#gear) table. You are fluent in the <em>Traveler's Cant</em>.</p>",
+    "value": 20,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XphAFeGeebG7fgTA",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

@@ -23,6 +23,21 @@
       "_key": "!tables.results!8zh8YUIC8DlMxcBI.L6hqlDUHWNddH74L"
     },
     {
+      "_id": "1saSuvB50N6uzpz6",
+      "type": "document",
+      "name": "Honesty",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.3Pslrpap9QWEel6X",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8zh8YUIC8DlMxcBI.1saSuvB50N6uzpz6"
+    },
+    {
       "_id": "YCzRDHXJHGrKD2oi",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!8zh8YUIC8DlMxcBI.YCzRDHXJHGrKD2oi"
+    },
+    {
+      "_id": "6iMOdVNkLRUOqrN2",
+      "type": "document",
+      "name": "Disassemble",
+      "img": "icons/sundries/books/book-embossed-roots-green.webp",
+      "documentUuid": "Compendium.cairn2e.spellbooks.Item.Xv2siBF60jEss7mU",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8zh8YUIC8DlMxcBI.6iMOdVNkLRUOqrN2"
     },
     {
       "_id": "K4iGj2w4DgPOJLx9",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!8zh8YUIC8DlMxcBI.K4iGj2w4DgPOJLx9"
     },
     {
+      "_id": "wxIxEyRsk8mOjjXO",
+      "type": "document",
+      "name": "Selflessness",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.n1gN18fmq8E1AEQH",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8zh8YUIC8DlMxcBI.wxIxEyRsk8mOjjXO"
+    },
+    {
       "_id": "UlnOmb5rbXdGOvEv",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!8zh8YUIC8DlMxcBI.UlnOmb5rbXdGOvEv"
+    },
+    {
+      "_id": "weoyUd8MowWSdySE",
+      "type": "document",
+      "name": "Mercy",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.sK1Q5G2se5JQllDO",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8zh8YUIC8DlMxcBI.weoyUd8MowWSdySE"
     },
     {
       "_id": "Re4hJGAwbAhysBuE",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!8zh8YUIC8DlMxcBI.Re4hJGAwbAhysBuE"
     },
     {
+      "_id": "mc887KCmLaCjUhcr",
+      "type": "document",
+      "name": "Charity",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.gFl05CwktQUBghyk",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8zh8YUIC8DlMxcBI.mc887KCmLaCjUhcr"
+    },
+    {
       "_id": "giQ1fcaMtdbCgKwZ",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!8zh8YUIC8DlMxcBI.giQ1fcaMtdbCgKwZ"
+    },
+    {
+      "_id": "J11Plfa0UWF65bUu",
+      "type": "document",
+      "name": "Valor",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ja7mkKNhdydnTeJL",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8zh8YUIC8DlMxcBI.J11Plfa0UWF65bUu"
     }
   ],
   "folder": null,

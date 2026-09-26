@@ -1,0 +1,31 @@
+{
+  "_id": "jZycdTszlUUeXNHl",
+  "name": "Seed Bomb",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Seed Bomb</strong> A canvas sack filled with seeds that explode on impact. d6 damage (<em>blast</em>, 3 uses).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "d6",
+    "blast": true,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!jZycdTszlUUeXNHl",
+  "folder": "bayXvK0U8aq9eTKM"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "KHxnNL96nXL02SsP",
+  "name": "Hedgewitch's Curse",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>You were cursed by a hedgewitch for fooling some innocent village folk. Magic acts unpredictably in your hands (<em>WIL save to avoid disaster</em>). If you are the target of magic, the same applies to its wielder.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KHxnNL96nXL02SsP",
+  "folder": "v2BuenTVcdL7RExD"
+}

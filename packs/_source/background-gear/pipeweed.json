@@ -1,0 +1,31 @@
+{
+  "_id": "Ldy47pupQPnbpJRi",
+  "name": "Pipeweed",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Pipeweed</strong> Your good luck charm. Conversations tend to flow more easily after a smoke. 6 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 6,
+      "max": 6
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Ldy47pupQPnbpJRi",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

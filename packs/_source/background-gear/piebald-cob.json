@@ -1,0 +1,31 @@
+{
+  "_id": "hN1oB32z0O6MDImS",
+  "name": "Piebald Cob",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Piebald Cob</strong> Intelligent, it can understand simple commands and even has an instinct for danger. 6 HP. +4 slots.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!hN1oB32z0O6MDImS",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

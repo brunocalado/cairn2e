@@ -1,0 +1,31 @@
+{
+  "_id": "AKvMp9GOxgNeOVHQ",
+  "name": "Stone Pine",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Stone Pine</strong> (d6, <em>bulky</em>). Produces one use of <strong>Sticky Sap</strong> per day. The sap is highly explosive.</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!AKvMp9GOxgNeOVHQ",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

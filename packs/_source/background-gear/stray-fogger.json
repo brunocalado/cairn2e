@@ -1,0 +1,31 @@
+{
+  "_id": "k91T19GK4bXOD7Dv",
+  "name": "Stray Fogger",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Stray Fogger</strong> Wild but very fast (even in <strong>Tough</strong> terrain). Rides light. 4 HP. +2 slots.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!k91T19GK4bXOD7Dv",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

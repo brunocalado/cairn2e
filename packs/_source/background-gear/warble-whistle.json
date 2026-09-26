@@ -1,0 +1,31 @@
+{
+  "_id": "1uVj9BEQSnH70DTg",
+  "name": "Warble-Whistle",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Birds</strong> Take a <strong>Warble-Whistle</strong> (3 charges). It can imitate any bird call and can even be used to send simple messages. <strong>Recharge</strong>: Feed a baby bird as its mother would, then blow.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1uVj9BEQSnH70DTg",
+  "folder": "JutabTvswwdsAoBG"
+}

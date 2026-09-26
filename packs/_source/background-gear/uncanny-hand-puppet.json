@@ -1,0 +1,31 @@
+{
+  "_id": "SsePOUjOCpkExzqS",
+  "name": "Uncanny Hand-Puppet",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>Your respectable puppeteering skills were matched only by your mimicry. You were so good you were branded a witch (literally) and banished. Take an <strong>Uncanny Hand-Puppet</strong> and a <strong>Rabbit Skull</strong> (<em>petty</em>) that protects against charms.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!SsePOUjOCpkExzqS",
+  "folder": "BV8i60ZDx9ymjmjh"
+}

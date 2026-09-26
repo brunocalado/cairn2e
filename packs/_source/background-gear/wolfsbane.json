@@ -1,0 +1,31 @@
+{
+  "_id": "AnunDtBy7rD60IPV",
+  "name": "Wolfsbane",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Canines</strong> Take a wreath of <strong>Wolfsbane</strong> and a <strong>Large Net</strong>. Effective against werewolves as well.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!AnunDtBy7rD60IPV",
+  "folder": "JutabTvswwdsAoBG"
+}

@@ -23,6 +23,21 @@
       "_key": "!tables.results!EinAvDMBXcRTp03D.Ri8iYiGK8NyZJVBz"
     },
     {
+      "_id": "KnJVFJOwdYe2Tzgd",
+      "type": "document",
+      "name": "Glowsnail",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.c0r1qv53i57sklKQ",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.KnJVFJOwdYe2Tzgd"
+    },
+    {
       "_id": "hzKsVrS49rYsk4pS",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!EinAvDMBXcRTp03D.hzKsVrS49rYsk4pS"
+    },
+    {
+      "_id": "HvS4NtBK3zKgQWY6",
+      "type": "document",
+      "name": "Silk Moth Shawl",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.wL00mrrO0EVEVOBg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.HvS4NtBK3zKgQWY6"
     },
     {
       "_id": "DIGGBDcy6AnEAXQ8",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!EinAvDMBXcRTp03D.DIGGBDcy6AnEAXQ8"
     },
     {
+      "_id": "XeMBSEvnlyX7NcX0",
+      "type": "document",
+      "name": "Milkflower",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.kuUxvROCFKHSLxhU",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.XeMBSEvnlyX7NcX0"
+    },
+    {
       "_id": "ruAo9fdntFMXHGSe",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!EinAvDMBXcRTp03D.ruAo9fdntFMXHGSe"
+    },
+    {
+      "_id": "7cLld8pXBpDUvuGu",
+      "type": "document",
+      "name": "Luxcompass",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.rJ2vUjANd4bmb7Gp",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.7cLld8pXBpDUvuGu"
     },
     {
       "_id": "nvLLCalCiUt1qXXP",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!EinAvDMBXcRTp03D.nvLLCalCiUt1qXXP"
     },
     {
+      "_id": "ocSViFcodBXcbZ96",
+      "type": "document",
+      "name": "Sloth-Tarp",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.KGtmcOagEBv2HIpe",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.ocSViFcodBXcbZ96"
+    },
+    {
       "_id": "CUBHc662EOGJeqXI",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!EinAvDMBXcRTp03D.CUBHc662EOGJeqXI"
+    },
+    {
+      "_id": "OcvkDVVdPoCa17ga",
+      "type": "document",
+      "name": "Miner's Grease",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LzE2nfhfA3dlemQs",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EinAvDMBXcRTp03D.OcvkDVVdPoCa17ga"
     }
   ],
   "folder": null,

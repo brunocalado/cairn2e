@@ -23,6 +23,36 @@
       "_key": "!tables.results!bseo3vI7GWMqenXA.I1C67uXWVfIdhhRA"
     },
     {
+      "_id": "AxCPNnsQs67Rjg0J",
+      "type": "document",
+      "name": "Fence Cutters",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.2pFzCUSdY8shzK7L",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.AxCPNnsQs67Rjg0J"
+    },
+    {
+      "_id": "ADji6nYTyFyvAkv2",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ytEX0QkKOAlA0l3l",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.ADji6nYTyFyvAkv2"
+    },
+    {
       "_id": "D4g3E2D1ejMlEYdL",
       "type": "text",
       "name": "",
@@ -36,6 +66,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bseo3vI7GWMqenXA.D4g3E2D1ejMlEYdL"
+    },
+    {
+      "_id": "BJS8QaAQtcRMSNof",
+      "type": "document",
+      "name": "Retractable Wires",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Pyu1Bvgy3Trv3HLq",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.BJS8QaAQtcRMSNof"
     },
     {
       "_id": "belC2965WXj3EyhT",
@@ -53,6 +98,36 @@
       "_key": "!tables.results!bseo3vI7GWMqenXA.belC2965WXj3EyhT"
     },
     {
+      "_id": "0A2cLePwwLCmZBOu",
+      "type": "document",
+      "name": "Ladder",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.f1xQn9PMCI6e57um",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.0A2cLePwwLCmZBOu"
+    },
+    {
+      "_id": "UF1mo7eBh1a9WW9w",
+      "type": "document",
+      "name": "Blinding Powder",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Qxg1yA8OiqxNaZ8N",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.UF1mo7eBh1a9WW9w"
+    },
+    {
       "_id": "p4D6ZZTjHjRdgRqK",
       "type": "text",
       "name": "",
@@ -66,6 +141,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bseo3vI7GWMqenXA.p4D6ZZTjHjRdgRqK"
+    },
+    {
+      "_id": "Yy0mthv6HFZ1c3J8",
+      "type": "document",
+      "name": "Arcane Eye",
+      "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+      "documentUuid": "Compendium.cairn2e.scrolls.Item.9CelnZRIKsOcEE92",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.Yy0mthv6HFZ1c3J8"
     },
     {
       "_id": "QPZSdfkpmuV4upj8",
@@ -83,6 +173,21 @@
       "_key": "!tables.results!bseo3vI7GWMqenXA.QPZSdfkpmuV4upj8"
     },
     {
+      "_id": "dyrf2fISyrVIuyoK",
+      "type": "document",
+      "name": "Strong Silk Rope",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.JL4Mbkbcxc73cqSD",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.dyrf2fISyrVIuyoK"
+    },
+    {
       "_id": "VBSUMnaf1o4HBkh9",
       "type": "text",
       "name": "",
@@ -96,6 +201,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bseo3vI7GWMqenXA.VBSUMnaf1o4HBkh9"
+    },
+    {
+      "_id": "DhC4TvEbeCjopsyq",
+      "type": "document",
+      "name": "Smoke Pellets",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ZtPn6BhpGmsEjV1M",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bseo3vI7GWMqenXA.DhC4TvEbeCjopsyq"
     }
   ],
   "folder": null,

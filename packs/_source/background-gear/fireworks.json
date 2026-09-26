@@ -1,0 +1,31 @@
+{
+  "_id": "uiZ0BQSoKrAaZkac",
+  "name": "Fireworks",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Fireworks</strong> A dazzling albeit dangerous display. Enough explosive material to blow off a finger or three. 2 uses remain.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!uiZ0BQSoKrAaZkac",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

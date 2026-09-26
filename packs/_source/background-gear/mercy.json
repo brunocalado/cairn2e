@@ -1,0 +1,31 @@
+{
+  "_id": "sK1Q5G2se5JQllDO",
+  "name": "Mercy",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Mercy</strong>. Choose a <strong>weapon type</strong> (blunt, blade, etc). Attacks with this weapon are <em>enhanced</em>. If your vow is broken, you can never use that weapon type again.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!sK1Q5G2se5JQllDO",
+  "folder": "VyQWK1tMrTe9Gy9a"
+}

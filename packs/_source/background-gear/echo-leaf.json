@@ -1,0 +1,31 @@
+{
+  "_id": "3SpDCvBpakDYOOBJ",
+  "name": "Echo Leaf",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Echo Leaf</strong> A blank parchment. Whomever unfurls it sees their actions of the day slowly revealed in a tight scrawl. <em>Petty</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!3SpDCvBpakDYOOBJ",
+  "folder": "cH1FO0n5vIRu4oSk"
+}

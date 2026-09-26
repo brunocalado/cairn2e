@@ -1,0 +1,31 @@
+{
+  "_id": "kRjKTZ68lItohrID",
+  "name": "Cusped Falchion",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>Crop thieves. Not all of them survived, but you were outnumbered. Start with +d4 HP and a <strong>Cusped Falchion</strong> (d8).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!kRjKTZ68lItohrID",
+  "folder": "VCf486fS9s17em9n"
+}

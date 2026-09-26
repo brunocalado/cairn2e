@@ -1,0 +1,31 @@
+{
+  "_id": "XekEgVaDHdGfbso3",
+  "name": "Hunting",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Hunting</strong>. When taking the Supply action, your ability to secure <strong>Rations</strong> increases by <strong>one step</strong> (e.g. 1d4 becomes 1d6).</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XekEgVaDHdGfbso3",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

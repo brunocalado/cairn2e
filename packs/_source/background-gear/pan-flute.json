@@ -1,0 +1,31 @@
+{
+  "_id": "XBxhkAMiiymXvIHo",
+  "name": "Pan Flute",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Rodents</strong> Take a <strong>Pan Flute</strong> that emits a high-pitched sound that only rodents can hear. So long as you play, they will follow, even to their deaths.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XBxhkAMiiymXvIHo",
+  "folder": "JutabTvswwdsAoBG"
+}

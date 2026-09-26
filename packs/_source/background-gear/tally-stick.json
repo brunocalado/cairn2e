@@ -1,0 +1,31 @@
+{
+  "_id": "FoqAK9jbTA9oCvBe",
+  "name": "Tally Stick",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Loyalty to the work</strong>: Your word is your bond. Once you've accepted a job, you see it through to the end. Take a weathered <strong>Tally Stick</strong>. Once a vow is marked onto its face, the stick hardens (d8) until it is complete. The stick will snap in half if the vow is ever broken.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!FoqAK9jbTA9oCvBe",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

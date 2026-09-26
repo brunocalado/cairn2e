@@ -1,0 +1,31 @@
+{
+  "_id": "BvzLYpL8tjNPyy05",
+  "name": "Voidglass Shard",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Order of the Blank Eye</strong>. Take a <strong>Voidglass Shard</strong>. Peer through it to see invisible marks, creatures, and other magical effects. Lose the use of your eye for an hour afterwards (you are <em>deprived</em>).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BvzLYpL8tjNPyy05",
+  "folder": "VyQWK1tMrTe9Gy9a"
+}

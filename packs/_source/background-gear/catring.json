@@ -1,0 +1,31 @@
+{
+  "_id": "KTSGhGgqEwwFQtFX",
+  "name": "Catring",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Catring</strong> 2 charges. Climb up walls and fall safely. <strong>Recharge</strong>: Place the ring on a stray cat's tail.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KTSGhGgqEwwFQtFX",
+  "folder": "2zMlRQXjmfTFAB7Z"
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "ytEX0QkKOAlA0l3l",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>A noble's summer home. The place was full of fancy wine (+20gp) but not much else. Take <strong>Fence Cutters</strong>.</p>",
+    "value": 20,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ytEX0QkKOAlA0l3l",
+  "folder": "2zMlRQXjmfTFAB7Z"
+}

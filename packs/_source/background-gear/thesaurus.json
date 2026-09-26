@@ -1,0 +1,31 @@
+{
+  "_id": "3dHpGhYn7v9Wh9Ub",
+  "name": "Thesaurus",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>You mocked a forgotten trickster god and were cursed for it. You speak only in perfect rhyme. Ironically, this has only made you more popular among your peers. Take a <strong>Thesaurus</strong> (20gp). Without it, you are <em>deprived</em>.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!3dHpGhYn7v9Wh9Ub",
+  "folder": "BV8i60ZDx9ymjmjh"
+}

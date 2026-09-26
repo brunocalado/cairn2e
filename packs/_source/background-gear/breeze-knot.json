@@ -1,0 +1,31 @@
+{
+  "_id": "qF0NPa3uQZ95j077",
+  "name": "Breeze Knot",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><em>The Sylph and Her Lover</em>. A bawdy tale of lost love. Start with a <strong>Breeze Knot</strong> (3 charges). Creates a strong breeze. <strong>Recharge</strong>: Tie it to a mast during a storm.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qF0NPa3uQZ95j077",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

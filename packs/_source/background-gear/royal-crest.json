@@ -1,0 +1,31 @@
+{
+  "_id": "5Kl8hpqqgPmL9mAP",
+  "name": "Royal Crest",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Royal Crest</strong> Born into royalty, you chose a different life. The crest grants you access but also alerts your family of your whereabouts. <em>Petty</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!5Kl8hpqqgPmL9mAP",
+  "folder": "v2BuenTVcdL7RExD"
+}

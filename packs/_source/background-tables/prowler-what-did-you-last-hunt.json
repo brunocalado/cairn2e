@@ -23,6 +23,36 @@
       "_key": "!tables.results!sBBdv01d9DmsKV3u.58KuungPDOYDYM5r"
     },
     {
+      "_id": "mnZuIViXSZLN2ut8",
+      "type": "document",
+      "name": "Alchemical Limb",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.DrcFePc7O1LrYX90",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.mnZuIViXSZLN2ut8"
+    },
+    {
+      "_id": "sKrrIbSdE14qjNEC",
+      "type": "document",
+      "name": "Oil Can",
+      "img": "icons/tools/cooking/can.webp",
+      "documentUuid": "Compendium.cairn2e.gear.Item.DEIG5kYj2mhV3hRM",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.sKrrIbSdE14qjNEC"
+    },
+    {
       "_id": "NbAkse9lpRK9wC7n",
       "type": "text",
       "name": "",
@@ -36,6 +66,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!sBBdv01d9DmsKV3u.NbAkse9lpRK9wC7n"
+    },
+    {
+      "_id": "orSZezo2fIiQINDe",
+      "type": "document",
+      "name": "Rime Seed",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.NsPPWaaxjuwjO1gy",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.orSZezo2fIiQINDe"
     },
     {
       "_id": "CJYyKaET1AU5kxbQ",
@@ -53,6 +98,21 @@
       "_key": "!tables.results!sBBdv01d9DmsKV3u.CJYyKaET1AU5kxbQ"
     },
     {
+      "_id": "Qp3dg9kTK2mLYO2b",
+      "type": "document",
+      "name": "Tooth",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LGSop6UijQMtrW23",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.Qp3dg9kTK2mLYO2b"
+    },
+    {
       "_id": "SOqQOd34OcDYqVCS",
       "type": "text",
       "name": "",
@@ -66,6 +126,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!sBBdv01d9DmsKV3u.SOqQOd34OcDYqVCS"
+    },
+    {
+      "_id": "yPsScaUz9kzGWTNi",
+      "type": "document",
+      "name": "Heartseed",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4lWjDnDDuFloLcu8",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.yPsScaUz9kzGWTNi"
+    },
+    {
+      "_id": "0GbNClVofvnhXAtQ",
+      "type": "document",
+      "name": "Iron Bracers",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Rdiqu6FYImZLG10c",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.0GbNClVofvnhXAtQ"
     },
     {
       "_id": "k6VgXer5MMT1BqYh",
@@ -83,6 +173,21 @@
       "_key": "!tables.results!sBBdv01d9DmsKV3u.k6VgXer5MMT1BqYh"
     },
     {
+      "_id": "jhlULpISVJ0a4U2q",
+      "type": "document",
+      "name": "Hollow Wolf",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4DGbOldlkgKCSM0r",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.jhlULpISVJ0a4U2q"
+    },
+    {
       "_id": "anuJtPegtHAUSS9U",
       "type": "text",
       "name": "",
@@ -96,6 +201,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!sBBdv01d9DmsKV3u.anuJtPegtHAUSS9U"
+    },
+    {
+      "_id": "CbdJtyxMusKgfy0F",
+      "type": "document",
+      "name": "Paring Knife",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.DEZjfBsajrtrRMD3",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.CbdJtyxMusKgfy0F"
+    },
+    {
+      "_id": "GWqMZftnf7HHcdSm",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.OI18ewoJJr8MkG4I",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!sBBdv01d9DmsKV3u.GWqMZftnf7HHcdSm"
     }
   ],
   "folder": null,

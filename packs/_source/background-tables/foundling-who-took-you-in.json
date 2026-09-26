@@ -23,6 +23,36 @@
       "_key": "!tables.results!T5KkrjcVEru9bHYV.ejSrZ2kI39UFaiLq"
     },
     {
+      "_id": "TnvRnDDKcoP9s7Vo",
+      "type": "document",
+      "name": "Weathered Longbow",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.iEUZVVPNiglkNYa4",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.TnvRnDDKcoP9s7Vo"
+    },
+    {
+      "_id": "hQc5nODhFzhzknIo",
+      "type": "document",
+      "name": "Leather Jerkin",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.DbcvvfOSGpy7DrSX",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.hQc5nODhFzhzknIo"
+    },
+    {
       "_id": "wZ5Tr1UMBKwtAGjT",
       "type": "text",
       "name": "",
@@ -36,6 +66,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!T5KkrjcVEru9bHYV.wZ5Tr1UMBKwtAGjT"
+    },
+    {
+      "_id": "KouvNVCZS7vfcYRN",
+      "type": "document",
+      "name": "Healing Unguent",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.9BtKYG2BNCwCzLCC",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.KouvNVCZS7vfcYRN"
     },
     {
       "_id": "elCZVEBQ11fKIvAR",
@@ -53,6 +98,21 @@
       "_key": "!tables.results!T5KkrjcVEru9bHYV.elCZVEBQ11fKIvAR"
     },
     {
+      "_id": "VDbbDVXgp4voVPJD",
+      "type": "document",
+      "name": "Gnarled Staff",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.1ePmqcscDNh4F8pY",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.VDbbDVXgp4voVPJD"
+    },
+    {
       "_id": "eM8vCSgXNGADaBmA",
       "type": "text",
       "name": "",
@@ -66,6 +126,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!T5KkrjcVEru9bHYV.eM8vCSgXNGADaBmA"
+    },
+    {
+      "_id": "ozws1dxyalV92cHM",
+      "type": "document",
+      "name": "Smith's Apron",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.yc8GS1DnyyRIMelH",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.ozws1dxyalV92cHM"
+    },
+    {
+      "_id": "ig7nHSqEhorGZqYh",
+      "type": "document",
+      "name": "Oft-mended Chain Mail",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.5Dv8yshW76unGOYK",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.ig7nHSqEhorGZqYh"
     },
     {
       "_id": "UGPfWVRsVlZBbIha",
@@ -83,6 +173,36 @@
       "_key": "!tables.results!T5KkrjcVEru9bHYV.UGPfWVRsVlZBbIha"
     },
     {
+      "_id": "AgZJSI9rltmB6EXO",
+      "type": "document",
+      "name": "Storybook",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4N07ZBPkJ0v0Rtll",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.AgZJSI9rltmB6EXO"
+    },
+    {
+      "_id": "OXPMUpW2c0XxqxkP",
+      "type": "document",
+      "name": "Dagger",
+      "img": "icons/weapons/daggers/dagger-bone-grey.webp",
+      "documentUuid": "Compendium.cairn2e.weapons.Item.a7ny2xCcpEwZTDuM",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.OXPMUpW2c0XxqxkP"
+    },
+    {
       "_id": "Fsvbl7Afn0i0XMDY",
       "type": "text",
       "name": "",
@@ -96,6 +216,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!T5KkrjcVEru9bHYV.Fsvbl7Afn0i0XMDY"
+    },
+    {
+      "_id": "fC0s8EvkNfQjfvO8",
+      "type": "document",
+      "name": "Monk's Habit",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.BtXPYd8GDwqaKlsg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.fC0s8EvkNfQjfvO8"
+    },
+    {
+      "_id": "8pUdhSlFrWCtBs1J",
+      "type": "document",
+      "name": "Control Plants",
+      "img": "icons/sundries/books/book-turquoise-moon.webp",
+      "documentUuid": "Compendium.cairn2e.spellbooks.Item.tdbBEG1m1tvTCKAJ",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!T5KkrjcVEru9bHYV.8pUdhSlFrWCtBs1J"
     }
   ],
   "folder": null,

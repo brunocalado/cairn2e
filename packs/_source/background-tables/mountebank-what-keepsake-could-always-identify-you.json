@@ -23,6 +23,21 @@
       "_key": "!tables.results!JV4SWIZgxSOD1Gc5.IVXVC1eSDwqI9qlF"
     },
     {
+      "_id": "T32hbiOvMLo4rUX7",
+      "type": "document",
+      "name": "Royal Crest",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.5Kl8hpqqgPmL9mAP",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.T32hbiOvMLo4rUX7"
+    },
+    {
       "_id": "GAEUM8eRYgbmpBM3",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!JV4SWIZgxSOD1Gc5.GAEUM8eRYgbmpBM3"
+    },
+    {
+      "_id": "UTvQ8pvqTuVOzZKc",
+      "type": "document",
+      "name": "Miracle Oil",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.32JB6AK6twVj4XuO",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.UTvQ8pvqTuVOzZKc"
     },
     {
       "_id": "gi6qG4buurHsjh5U",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!JV4SWIZgxSOD1Gc5.gi6qG4buurHsjh5U"
     },
     {
+      "_id": "tzNI7MIYymj1tuuW",
+      "type": "document",
+      "name": "Surgeon's Soap",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.XO9WDmetatCwW6jy",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.tzNI7MIYymj1tuuW"
+    },
+    {
       "_id": "EYvjhxuzbNnPfHOQ",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!JV4SWIZgxSOD1Gc5.EYvjhxuzbNnPfHOQ"
+    },
+    {
+      "_id": "8dL8Kf0VdtJ7Ks9U",
+      "type": "document",
+      "name": "Goat Powder",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.AyrTAAWCrIgALXhO",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.8dL8Kf0VdtJ7Ks9U"
     },
     {
       "_id": "XjFRLHEHhpS7YhEW",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!JV4SWIZgxSOD1Gc5.XjFRLHEHhpS7YhEW"
     },
     {
+      "_id": "Pj9NFlIe4IuNodkv",
+      "type": "document",
+      "name": "Cursed Sapphire",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.nq2XgprYC73FXra8",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.Pj9NFlIe4IuNodkv"
+    },
+    {
       "_id": "l0RWi8GT6biHTIOM",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!JV4SWIZgxSOD1Gc5.l0RWi8GT6biHTIOM"
+    },
+    {
+      "_id": "5n6vXfIEGg2fr9P3",
+      "type": "document",
+      "name": "Alchemical Tattoo",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.rbEgox1TSSubgBJH",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JV4SWIZgxSOD1Gc5.5n6vXfIEGg2fr9P3"
     }
   ],
   "folder": null,

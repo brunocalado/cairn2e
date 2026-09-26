@@ -1,0 +1,31 @@
+{
+  "_id": "SFXQPKPVX4KfxioO",
+  "name": "Sailor's Friend",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Sailor's Friend</strong> Over troubled waters and dangerous winds, you always make sure a ship reaches its destination. For you, passage is always free.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!SFXQPKPVX4KfxioO",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

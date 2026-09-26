@@ -1,0 +1,31 @@
+{
+  "_id": "4cI7VOx1HmPC04xL",
+  "name": "Soporific Concoction",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A close friend disappeared into the forest. Now you see their face in any tea you brew. Take a <strong>Soporific Concoction</strong> (3 uses).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4cI7VOx1HmPC04xL",
+  "folder": "bayXvK0U8aq9eTKM"
+}

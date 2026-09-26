@@ -1,0 +1,31 @@
+{
+  "_id": "2pFzCUSdY8shzK7L",
+  "name": "Fence Cutters",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A noble's summer home. The place was full of fancy wine (+20gp) but not much else. Take <strong>Fence Cutters</strong>.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2pFzCUSdY8shzK7L",
+  "folder": "2zMlRQXjmfTFAB7Z"
+}

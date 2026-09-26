@@ -1,0 +1,31 @@
+{
+  "_id": "31nDzDagDqWnhCU3",
+  "name": "Amadou",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Amadou</strong> A vermilion fungus that catches fire quite easily. 3 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!31nDzDagDqWnhCU3",
+  "folder": "bayXvK0U8aq9eTKM"
+}

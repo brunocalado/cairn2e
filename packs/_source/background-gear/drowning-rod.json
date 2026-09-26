@@ -1,0 +1,31 @@
+{
+  "_id": "foWMpl8UNZd0vu5d",
+  "name": "Drowning Rod",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Drowning Rod</strong> A finger-sized wooden stick that doubles in size each time it is fully submerged in water. It does not shrink down again.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!foWMpl8UNZd0vu5d",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

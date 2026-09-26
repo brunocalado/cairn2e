@@ -1,0 +1,31 @@
+{
+  "_id": "rk70ICvLW48pgDTp",
+  "name": "Greenwhistle",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Greenwhistle</strong> A small flute that calms plants, making passage through areas heavy with plant life a bit easier.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!rk70ICvLW48pgDTp",
+  "folder": "VCf486fS9s17em9n"
+}

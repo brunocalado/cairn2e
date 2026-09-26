@@ -1,0 +1,31 @@
+{
+  "_id": "rbEgox1TSSubgBJH",
+  "name": "Alchemical Tattoo",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Alchemical Tattoo</strong> A dog, cat, or bird that can leave your body on demand. It follows your commands to the best of its abilities and can pass its injuries (<em>as STR loss</em>) back onto you. <em>Petty</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!rbEgox1TSSubgBJH",
+  "folder": "v2BuenTVcdL7RExD"
+}

@@ -23,6 +23,21 @@
       "_key": "!tables.results!8OhA0huEap2KItci.lKCStTu0JWPi4pXE"
     },
     {
+      "_id": "uw1YAWDTAeNukANR",
+      "type": "document",
+      "name": "Pocket Leyfinder",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.F8E12PoGStCv2Who",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.uw1YAWDTAeNukANR"
+    },
+    {
       "_id": "ImbvacnRiNKTFRY0",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!8OhA0huEap2KItci.ImbvacnRiNKTFRY0"
+    },
+    {
+      "_id": "9sz4zE5ONEJ6VVbQ",
+      "type": "document",
+      "name": "Star-Iron Mace",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.v6emYZBBsFX0dbL0",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.9sz4zE5ONEJ6VVbQ"
     },
     {
       "_id": "wOFIDmyNkCi5OuIs",
@@ -53,6 +83,51 @@
       "_key": "!tables.results!8OhA0huEap2KItci.wOFIDmyNkCi5OuIs"
     },
     {
+      "_id": "EQdr0vnBvqJ0ARal",
+      "type": "document",
+      "name": "Order of the Glass Sigil",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.vzD55F7U01CrsHvV",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.EQdr0vnBvqJ0ARal"
+    },
+    {
+      "_id": "YbdbHoj1wtZS3Nd3",
+      "type": "document",
+      "name": "Sword",
+      "img": "icons/weapons/swords/sword-guard-steel-green.webp",
+      "documentUuid": "Compendium.cairn2e.weapons.Item.FgArC8sR078bwJEr",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.YbdbHoj1wtZS3Nd3"
+    },
+    {
+      "_id": "briiMBQDr7myOPrY",
+      "type": "document",
+      "name": "Chainmail",
+      "img": "icons/commodities/metal/mail-chain-steel.webp",
+      "documentUuid": "Compendium.cairn2e.armor.Item.vYkrBTEXzHrxUzSk",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.briiMBQDr7myOPrY"
+    },
+    {
       "_id": "XPAYjewJsXBmh9OK",
       "type": "text",
       "name": "",
@@ -66,6 +141,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!8OhA0huEap2KItci.XPAYjewJsXBmh9OK"
+    },
+    {
+      "_id": "TPeKuNeTdrbw8NEd",
+      "type": "document",
+      "name": "Voidglass Shard",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.BvzLYpL8tjNPyy05",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.TPeKuNeTdrbw8NEd"
     },
     {
       "_id": "lCgxft1M9L56BnxD",
@@ -83,6 +173,21 @@
       "_key": "!tables.results!8OhA0huEap2KItci.lCgxft1M9L56BnxD"
     },
     {
+      "_id": "62VB9qj2JZHLpOQn",
+      "type": "document",
+      "name": "Quicksilver Chain",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qrBsywERFb1i96w0",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.62VB9qj2JZHLpOQn"
+    },
+    {
       "_id": "FVN3NgQlpRpLf1l8",
       "type": "text",
       "name": "",
@@ -96,6 +201,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!8OhA0huEap2KItci.FVN3NgQlpRpLf1l8"
+    },
+    {
+      "_id": "jwo2FzvlnxNsInbj",
+      "type": "document",
+      "name": "Quell Stone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.mYXU0h65i42LVv6c",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!8OhA0huEap2KItci.jwo2FzvlnxNsInbj"
     }
   ],
   "folder": null,

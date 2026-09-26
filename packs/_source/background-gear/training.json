@@ -1,0 +1,31 @@
+{
+  "_id": "TOjjEYUsFiroYa2M",
+  "name": "Training",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Training</strong>. If you are the first to attack, melee attacks against you are <em>impaired</em> until you take STR damage.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!TOjjEYUsFiroYa2M",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

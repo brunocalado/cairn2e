@@ -1,0 +1,31 @@
+{
+  "_id": "fwoApCOAHLYNM0aH",
+  "name": "Plague Doctor's Mask",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A <strong>plague doctor's mask</strong>, after its owner succumbed to the disease that wiped out everyone you once knew. They should have kept it on.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!fwoApCOAHLYNM0aH",
+  "folder": "EIIp0S3aKJcOC0QK"
+}

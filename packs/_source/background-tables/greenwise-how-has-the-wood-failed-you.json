@@ -23,6 +23,21 @@
       "_key": "!tables.results!qjjSsrTFWF1tDmDj.vQ4HSME4EUlCGJmc"
     },
     {
+      "_id": "At8U4wwRUTiFbJjL",
+      "type": "document",
+      "name": "Bezoar Stone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.wH4qWlaD0vmW9QWr",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.At8U4wwRUTiFbJjL"
+    },
+    {
       "_id": "RtsYXmYbFrjF67jV",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!qjjSsrTFWF1tDmDj.RtsYXmYbFrjF67jV"
+    },
+    {
+      "_id": "lCA5IhWUk4M0Haoa",
+      "type": "document",
+      "name": "Soporific Concoction",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4cI7VOx1HmPC04xL",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.lCA5IhWUk4M0Haoa"
     },
     {
       "_id": "AYCgks4cPnb208Nl",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!qjjSsrTFWF1tDmDj.AYCgks4cPnb208Nl"
     },
     {
+      "_id": "7mvPGAriFNgCixcU",
+      "type": "document",
+      "name": "Antitoxin (2 uses)",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.aBpJxZpULDLBTHKA",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.7mvPGAriFNgCixcU"
+    },
+    {
       "_id": "yuWwbVc2g9wr1dyM",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!qjjSsrTFWF1tDmDj.yuWwbVc2g9wr1dyM"
+    },
+    {
+      "_id": "UC4Qt5qdsoDqNBRM",
+      "type": "document",
+      "name": "Green Skin",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.UpVBZBmRFw4sltaD",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.UC4Qt5qdsoDqNBRM"
     },
     {
       "_id": "lXlm2LLjv1wv3BBQ",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!qjjSsrTFWF1tDmDj.lXlm2LLjv1wv3BBQ"
     },
     {
+      "_id": "NafIwkWXnt5vkZ4D",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.VRi1nw0gZ3roWWsj",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.NafIwkWXnt5vkZ4D"
+    },
+    {
       "_id": "EpIGuC2XvAZogAPh",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!qjjSsrTFWF1tDmDj.EpIGuC2XvAZogAPh"
+    },
+    {
+      "_id": "m8XsEWaiYTzU25uR",
+      "type": "document",
+      "name": "Healing Potion",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.fICdjNx3Gavu5Gfg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!qjjSsrTFWF1tDmDj.m8XsEWaiYTzU25uR"
     }
   ],
   "folder": null,

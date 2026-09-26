@@ -1,0 +1,31 @@
+{
+  "_id": "teRheumzKM0pJXT3",
+  "name": "Shrieking Trumpet",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Shrieking Trumpet</strong>. When exposed to light, it screams so loudly that all nearby attacks (including your own) are <em>impaired</em>. 2 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!teRheumzKM0pJXT3",
+  "folder": "WuN39BkGc3MUzAYu"
+}

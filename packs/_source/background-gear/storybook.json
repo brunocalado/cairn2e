@@ -1,0 +1,31 @@
+{
+  "_id": "4N07ZBPkJ0v0Rtll",
+  "name": "Storybook",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A troupe of traveling entertainers. For a time, they were like family to you. One day you woke up and they were gone with no explanation. Take a <strong>Storybook</strong>, a <strong>Dagger</strong> (d6), and some burning questions.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4N07ZBPkJ0v0Rtll",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

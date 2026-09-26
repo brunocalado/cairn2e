@@ -1,0 +1,31 @@
+{
+  "_id": "DheWLKOxdaqdpBrW",
+  "name": "Death-Whistle",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>To the death, always</strong>: You never back down from a fight, no matter the odds. Take a <strong>Death-Whistle</strong>, 1 charge. Its scream frightens away all who hear it (save WIL or flee). <strong>Recharge</strong>: Capture the final breath of a dying warrior.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DheWLKOxdaqdpBrW",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

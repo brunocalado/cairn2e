@@ -23,6 +23,21 @@
       "_key": "!tables.results!g0GFLlXj9krBzBjd.xh5ZVS4WDQkxPcAr"
     },
     {
+      "_id": "FY4rGaug6pWoQBiu",
+      "type": "document",
+      "name": "Bandages",
+      "img": "icons/sundries/scrolls/scroll-rolled-wrap.webp",
+      "documentUuid": "Compendium.cairn2e.gear.Item.F8yysdbnA0y5L4sA",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.FY4rGaug6pWoQBiu"
+    },
+    {
       "_id": "3r8AJvtPPWKhHkmr",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!g0GFLlXj9krBzBjd.3r8AJvtPPWKhHkmr"
+    },
+    {
+      "_id": "dkpPPtd4XweDzi01",
+      "type": "document",
+      "name": "Beauty Cream",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4HEHe1tB3hHuU2lL",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.dkpPPtd4XweDzi01"
     },
     {
       "_id": "gnPxePKOzn3OdCrQ",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!g0GFLlXj9krBzBjd.gnPxePKOzn3OdCrQ"
     },
     {
+      "_id": "wHFabVYURHVMR7Tp",
+      "type": "document",
+      "name": "Knife",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.BGYt5BrAy8cCxZ5d",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.wHFabVYURHVMR7Tp"
+    },
+    {
       "_id": "c6KV7S8uU1qvfsCd",
       "type": "text",
       "name": "",
@@ -66,6 +111,51 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!g0GFLlXj9krBzBjd.c6KV7S8uU1qvfsCd"
+    },
+    {
+      "_id": "8MoZyfph4OFUvSKR",
+      "type": "document",
+      "name": "Captain's Uniform",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.7VuzBnk4beAbm3vP",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.8MoZyfph4OFUvSKR"
+    },
+    {
+      "_id": "liA3KtuNJnFk3HxO",
+      "type": "document",
+      "name": "Ceremonial Sword",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ykShJoGDtpnPkpMV",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.liA3KtuNJnFk3HxO"
+    },
+    {
+      "_id": "mQoskn0LYeY1DLkZ",
+      "type": "document",
+      "name": "Bouquet of Flowers",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.vxLPzZAAssSfs4TO",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.mQoskn0LYeY1DLkZ"
     },
     {
       "_id": "aQJ2JRhESqCS2gEN",
@@ -83,6 +173,21 @@
       "_key": "!tables.results!g0GFLlXj9krBzBjd.aQJ2JRhESqCS2gEN"
     },
     {
+      "_id": "825eLugLYvkoXkqb",
+      "type": "document",
+      "name": "Hedgewitch's Curse",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.KHxnNL96nXL02SsP",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.825eLugLYvkoXkqb"
+    },
+    {
       "_id": "RVA4zJPIDWj13fxX",
       "type": "text",
       "name": "",
@@ -96,6 +201,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!g0GFLlXj9krBzBjd.RVA4zJPIDWj13fxX"
+    },
+    {
+      "_id": "RFqOrqz0k0Dvc56K",
+      "type": "document",
+      "name": "Auditory Illusion",
+      "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+      "documentUuid": "Compendium.cairn2e.spellbooks.Item.wSHIeNMq5G5wJLRU",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.RFqOrqz0k0Dvc56K"
     }
   ],
   "folder": null,

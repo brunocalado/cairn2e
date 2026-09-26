@@ -1,0 +1,31 @@
+{
+  "_id": "YDJuyPHPiwliN66q",
+  "name": "Screwdriver",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>One of your fingers has been swapped, the bone replaced by gold and iron. Take a <strong>Hook</strong> and a <strong>Screwdriver</strong> that can attach to the fingertip.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!YDJuyPHPiwliN66q",
+  "folder": "9PouGVcgtvEJrEzy"
+}

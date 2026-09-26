@@ -1,0 +1,31 @@
+{
+  "_id": "ssowp07GbBy3zlNG",
+  "name": "Living Nightmare",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A <strong>Living Nightmare</strong> that dwells within you but manifests whenever you are in danger. It has your same <strong>Attributes</strong> and <strong>HP</strong> and attacks with claws (d8+d8). It disappears on <strong>Critical Damage</strong> (take 1d4 WIL damage), re-appearing again on the next full moon.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ssowp07GbBy3zlNG",
+  "folder": "txYF1azSElMlB2lI"
+}

@@ -23,6 +23,21 @@
       "_key": "!tables.results!xTBgdmiEhk6iidqA.ZrHdOVhjt3uzkrNG"
     },
     {
+      "_id": "quOpH8VG4pOhpfQR",
+      "type": "document",
+      "name": "Reed Whistle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.5SZFAovjMw7UcwI3",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.quOpH8VG4pOhpfQR"
+    },
+    {
       "_id": "sWo8ZwYyl76TWHHc",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!xTBgdmiEhk6iidqA.sWo8ZwYyl76TWHHc"
+    },
+    {
+      "_id": "UlIF4f8sT2ps1V2G",
+      "type": "document",
+      "name": "Breeze Knot",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qF0NPa3uQZ95j077",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.UlIF4f8sT2ps1V2G"
     },
     {
       "_id": "WZlCS35dGBs4uzF2",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!xTBgdmiEhk6iidqA.WZlCS35dGBs4uzF2"
     },
     {
+      "_id": "viZpNrKfqiIOtZwJ",
+      "type": "document",
+      "name": "Celestial Lute",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.h0FHhK87PTvpApGh",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.viZpNrKfqiIOtZwJ"
+    },
+    {
       "_id": "ZP5mfcpEvnAG4gU5",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!xTBgdmiEhk6iidqA.ZP5mfcpEvnAG4gU5"
+    },
+    {
+      "_id": "aOA67KufQesmwlVW",
+      "type": "document",
+      "name": "River Twine",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.89BqLVnmimUCnicN",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.aOA67KufQesmwlVW"
     },
     {
       "_id": "CDZcv0tVR4nEEBGn",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!xTBgdmiEhk6iidqA.CDZcv0tVR4nEEBGn"
     },
     {
+      "_id": "MXv5jJRbm9naTBfe",
+      "type": "document",
+      "name": "Stone Flute",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.6jF0zcje2Z856Inl",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.MXv5jJRbm9naTBfe"
+    },
+    {
       "_id": "6BvIvO3rlcNKqb8b",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!xTBgdmiEhk6iidqA.6BvIvO3rlcNKqb8b"
+    },
+    {
+      "_id": "PGaytyGKsQNCN5M0",
+      "type": "document",
+      "name": "Feather Quill",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.NRY3T2EhLhzsILuW",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!xTBgdmiEhk6iidqA.PGaytyGKsQNCN5M0"
     }
   ],
   "folder": null,

@@ -23,6 +23,21 @@
       "_key": "!tables.results!oZDjcZQ7mBlNO1jC.QmF1ATDdHwG5zDqx"
     },
     {
+      "_id": "Xaowxzu983Vp27xF",
+      "type": "document",
+      "name": "Western Yew",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Bjz2eRQ4v6lMrzK6",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.Xaowxzu983Vp27xF"
+    },
+    {
       "_id": "qriTFlVWp7aPWlFn",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!oZDjcZQ7mBlNO1jC.qriTFlVWp7aPWlFn"
+    },
+    {
+      "_id": "P3DL3KqWIjfHs16w",
+      "type": "document",
+      "name": "Sessile Oak",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ezLUjUljK45AvPv2",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.P3DL3KqWIjfHs16w"
     },
     {
       "_id": "fwrVHi4DZQMVgCma",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!oZDjcZQ7mBlNO1jC.fwrVHi4DZQMVgCma"
     },
     {
+      "_id": "hhgjFqxIkKL6pfe3",
+      "type": "document",
+      "name": "Stone Pine",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.AKvMp9GOxgNeOVHQ",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.hhgjFqxIkKL6pfe3"
+    },
+    {
       "_id": "FSez7wXuxrQ2EUil",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!oZDjcZQ7mBlNO1jC.FSez7wXuxrQ2EUil"
+    },
+    {
+      "_id": "4NjfOk3n1ytVlbDg",
+      "type": "document",
+      "name": "White Ash",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.VLia0ygZksPLMBA2",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.4NjfOk3n1ytVlbDg"
     },
     {
       "_id": "JNvJ4oI3Lk2F52ta",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!oZDjcZQ7mBlNO1jC.JNvJ4oI3Lk2F52ta"
     },
     {
+      "_id": "HjlkAUFxjdAACqDS",
+      "type": "document",
+      "name": "Striped Bamboo",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Bss4Lo5uZaNxSOwO",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.HjlkAUFxjdAACqDS"
+    },
+    {
       "_id": "FsBMJHu2CxHkhzvb",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!oZDjcZQ7mBlNO1jC.FsBMJHu2CxHkhzvb"
+    },
+    {
+      "_id": "HlbFsZAhKAbuBX4f",
+      "type": "document",
+      "name": "Wych Elm",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.kfZH0GahkD9zQ1jG",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!oZDjcZQ7mBlNO1jC.HlbFsZAhKAbuBX4f"
     }
   ],
   "folder": null,

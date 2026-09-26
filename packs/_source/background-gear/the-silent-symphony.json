@@ -1,0 +1,31 @@
+{
+  "_id": "yyYNshn5WnGiDI0Q",
+  "name": "The Silent Symphony",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>The Silent Symphony</strong>. Bound in fluorescent wrap. Very rare, it chronicles the subtle signs used by those employing invisibility magic.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!yyYNshn5WnGiDI0Q",
+  "folder": "cH1FO0n5vIRu4oSk"
+}

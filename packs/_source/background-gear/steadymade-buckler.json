@@ -1,0 +1,31 @@
+{
+  "_id": "1EQGGjrrAPYCj2N6",
+  "name": "Steadymade Buckler",
+  "type": "gear",
+  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "system": {
+    "description": "<p><strong>No innocent blood</strong>: No bystander will come to harm on your watch. Take a <strong>Steadymade Buckler</strong> (+1 Armor). While holding this shield, you cannot be moved so long as both feet are planted on firm ground.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1EQGGjrrAPYCj2N6",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

@@ -23,6 +23,21 @@
       "_key": "!tables.results!nx6Fb0IFhGFBSswI.ScBZDRRhpuF0ED8q"
     },
     {
+      "_id": "a4CXR6VaIe5ls1yX",
+      "type": "document",
+      "name": "Fire Eggs",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4V9WFTAr4ZHxrOh0",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nx6Fb0IFhGFBSswI.a4CXR6VaIe5ls1yX"
+    },
+    {
       "_id": "938PeJofLuJ5ixFp",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!nx6Fb0IFhGFBSswI.938PeJofLuJ5ixFp"
+    },
+    {
+      "_id": "ikIXOFiwpvl9Pu5r",
+      "type": "document",
+      "name": "Black Tar",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.jQR4IOKK3Xecmehc",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nx6Fb0IFhGFBSswI.ikIXOFiwpvl9Pu5r"
     },
     {
       "_id": "C1xDi9KqIcoA46gp",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!nx6Fb0IFhGFBSswI.C1xDi9KqIcoA46gp"
     },
     {
+      "_id": "99UDAZZIcOnzy5Wx",
+      "type": "document",
+      "name": "Spiked Boots (d8)",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.vQSvVz6WGcnN4YjW",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nx6Fb0IFhGFBSswI.99UDAZZIcOnzy5Wx"
+    },
+    {
       "_id": "L0zuYoElATk9jHRd",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!nx6Fb0IFhGFBSswI.L0zuYoElATk9jHRd"
+    },
+    {
+      "_id": "DcCPJ0kgeVJYe4Ab",
+      "type": "document",
+      "name": "Tinker's Paste",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.nJeuEIoEh0GlATMU",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nx6Fb0IFhGFBSswI.DcCPJ0kgeVJYe4Ab"
     },
     {
       "_id": "SRy3UjJCpmuidLR4",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!nx6Fb0IFhGFBSswI.SRy3UjJCpmuidLR4"
     },
     {
+      "_id": "pXHeL3SkySLZFGJQ",
+      "type": "document",
+      "name": "Fireworks",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.uiZ0BQSoKrAaZkac",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nx6Fb0IFhGFBSswI.pXHeL3SkySLZFGJQ"
+    },
+    {
       "_id": "CVu5WYmoXmh2Gmnu",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!nx6Fb0IFhGFBSswI.CVu5WYmoXmh2Gmnu"
+    },
+    {
+      "_id": "VVWwRJKzIEYrHebY",
+      "type": "document",
+      "name": "Carrion Cat",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ntO6lCdFDMSmeUAL",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!nx6Fb0IFhGFBSswI.VVWwRJKzIEYrHebY"
     }
   ],
   "folder": null,

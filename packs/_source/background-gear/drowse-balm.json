@@ -1,0 +1,31 @@
+{
+  "_id": "TW5yKKAsks3DHU6g",
+  "name": "Drowse Balm",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Drowse Balm</strong> A wax bar. If boiled in water, the steam acts as a soporific agent.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!TW5yKKAsks3DHU6g",
+  "folder": "aOOxVUFyvLpt9vWg"
+}

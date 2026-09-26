@@ -1,0 +1,31 @@
+{
+  "_id": "lkT31MQ2uGNxj9QQ",
+  "name": "Rapier",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Bodyguard</strong> You are a protector for those afraid to travel alone. Start with a <strong>Rapier</strong> (d8).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lkT31MQ2uGNxj9QQ",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

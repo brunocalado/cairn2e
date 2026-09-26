@@ -23,6 +23,36 @@
       "_key": "!tables.results!cq1s3kWOqpCFbbCt.KNjga68Q1WmeVqzO"
     },
     {
+      "_id": "AZvB9qKq8jMVEhu8",
+      "type": "document",
+      "name": "Quick-Flame Rod",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.74E5R54mzTgcTCOm",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.AZvB9qKq8jMVEhu8"
+    },
+    {
+      "_id": "1qu7hrZYmAoxTnHa",
+      "type": "document",
+      "name": "Oil Can",
+      "img": "icons/tools/cooking/can.webp",
+      "documentUuid": "Compendium.cairn2e.gear.Item.DEIG5kYj2mhV3hRM",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.1qu7hrZYmAoxTnHa"
+    },
+    {
       "_id": "IKjmhsXgTWIDGynz",
       "type": "text",
       "name": "",
@@ -36,6 +66,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!cq1s3kWOqpCFbbCt.IKjmhsXgTWIDGynz"
+    },
+    {
+      "_id": "TgCzUtRl9imaii3c",
+      "type": "document",
+      "name": "Whiskerwort",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Gf8CSI77QabBOrHb",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.TgCzUtRl9imaii3c"
     },
     {
       "_id": "v1XgWbp1MEIbYDPg",
@@ -53,6 +98,36 @@
       "_key": "!tables.results!cq1s3kWOqpCFbbCt.v1XgWbp1MEIbYDPg"
     },
     {
+      "_id": "zRl1Tc5PQz0mxe2a",
+      "type": "document",
+      "name": "Wolfsbane",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.AnunDtBy7rD60IPV",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.zRl1Tc5PQz0mxe2a"
+    },
+    {
+      "_id": "eLdJIyJXtivjEIGt",
+      "type": "document",
+      "name": "Large Net",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.eLyRCyEHOFlEJ367",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.eLdJIyJXtivjEIGt"
+    },
+    {
       "_id": "e6HqzFbSM44dxJos",
       "type": "text",
       "name": "",
@@ -66,6 +141,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!cq1s3kWOqpCFbbCt.e6HqzFbSM44dxJos"
+    },
+    {
+      "_id": "vZNdNZPeCg4tRShs",
+      "type": "document",
+      "name": "Warble-Whistle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.1uVj9BEQSnH70DTg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.vZNdNZPeCg4tRShs"
     },
     {
       "_id": "3M534EaT11d8SLdQ",
@@ -83,6 +173,21 @@
       "_key": "!tables.results!cq1s3kWOqpCFbbCt.3M534EaT11d8SLdQ"
     },
     {
+      "_id": "60hsuSOtp2n0UToU",
+      "type": "document",
+      "name": "Pan Flute",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.XBxhkAMiiymXvIHo",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.60hsuSOtp2n0UToU"
+    },
+    {
       "_id": "dIBEFM7ooMVqiEgq",
       "type": "text",
       "name": "",
@@ -96,6 +201,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!cq1s3kWOqpCFbbCt.dIBEFM7ooMVqiEgq"
+    },
+    {
+      "_id": "R9moSer4eImybVcm",
+      "type": "document",
+      "name": "Warming Stone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.wGB2hbtyPyhpuqnc",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.R9moSer4eImybVcm"
+    },
+    {
+      "_id": "e9Nb8JWC4ouzmVyv",
+      "type": "document",
+      "name": "Antitoxin (2 uses)",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.aBpJxZpULDLBTHKA",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!cq1s3kWOqpCFbbCt.e9Nb8JWC4ouzmVyv"
     }
   ],
   "folder": null,

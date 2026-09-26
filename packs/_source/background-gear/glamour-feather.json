@@ -1,0 +1,31 @@
+{
+  "_id": "xlXXe7jGfxXYlSvE",
+  "name": "Glamour Feather",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Glamour Feather</strong> Plume of a firebird. Can make any creature appear convincingly as someone (or something) else. 1 use.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xlXXe7jGfxXYlSvE",
+  "folder": "txYF1azSElMlB2lI"
+}

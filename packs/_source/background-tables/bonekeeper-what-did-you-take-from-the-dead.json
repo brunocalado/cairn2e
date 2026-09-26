@@ -23,6 +23,21 @@
       "_key": "!tables.results!RbtEhCkgE6nVNXc7.7EVFaZL2dmsfqYz2"
     },
     {
+      "_id": "ZFMeF9MAllhsbrqX",
+      "type": "document",
+      "name": "Crow-Shaped Amulet",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Eteo9tzRD8FuMKoW",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.ZFMeF9MAllhsbrqX"
+    },
+    {
       "_id": "0NV2O2Hu7tEl3PSM",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!RbtEhCkgE6nVNXc7.0NV2O2Hu7tEl3PSM"
+    },
+    {
+      "_id": "4NZLKAtTuhHjR2ra",
+      "type": "document",
+      "name": "Mortal Wound",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.UIINMbOilYR9MA5w",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.4NZLKAtTuhHjR2ra"
     },
     {
       "_id": "e4gRWPe8GT2eGKJ4",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!RbtEhCkgE6nVNXc7.e4gRWPe8GT2eGKJ4"
     },
     {
+      "_id": "E6yKHZn3L0eMXGBt",
+      "type": "document",
+      "name": "Blood Pail",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qT0PMfRtiArjU9JQ",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.E6yKHZn3L0eMXGBt"
+    },
+    {
       "_id": "JYmVHVd85cTjK8q5",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!RbtEhCkgE6nVNXc7.JYmVHVd85cTjK8q5"
+    },
+    {
+      "_id": "jwr4NCXstFp59ryG",
+      "type": "document",
+      "name": "Burial Wagon",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.UfBNfUb65boIYD18",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.jwr4NCXstFp59ryG"
     },
     {
       "_id": "cDtwSaiHhCX2CLH5",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!RbtEhCkgE6nVNXc7.cDtwSaiHhCX2CLH5"
     },
     {
+      "_id": "gBak2H0rrW3VvdUt",
+      "type": "document",
+      "name": "Detect Magic",
+      "img": "icons/sundries/books/book-tooled-gold-purple.webp",
+      "documentUuid": "Compendium.cairn2e.spellbooks.Item.C5dpEqyJYYDE9te5",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.gBak2H0rrW3VvdUt"
+    },
+    {
       "_id": "XTDDY8ZIda8XZyr3",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!RbtEhCkgE6nVNXc7.XTDDY8ZIda8XZyr3"
+    },
+    {
+      "_id": "pwYFjN9fKKXGVnkN",
+      "type": "document",
+      "name": "Plague Doctor's Mask",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.fwoApCOAHLYNM0aH",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!RbtEhCkgE6nVNXc7.pwYFjN9fKKXGVnkN"
     }
   ],
   "folder": null,

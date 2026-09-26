@@ -1,0 +1,31 @@
+{
+  "_id": "1ePmqcscDNh4F8pY",
+  "name": "Gnarled Staff",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>A druid, who taught you the language of trees. When it came time to , you took with you only a <strong>Gnarled Staff</strong> (d8) and left a promise that one day you would return.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1ePmqcscDNh4F8pY",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

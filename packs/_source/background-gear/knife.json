@@ -1,0 +1,31 @@
+{
+  "_id": "BGYt5BrAy8cCxZ5d",
+  "name": "Knife",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>You were a peddler of fake prophesies, but when one turned out to be true, it drew unwanted attention. Roll on the <strong>Omens</strong> table, but keep the result to yourself. Start with a concealable <strong>Knife</strong> (d6, <em>petty</em>).</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BGYt5BrAy8cCxZ5d",
+  "folder": "v2BuenTVcdL7RExD"
+}

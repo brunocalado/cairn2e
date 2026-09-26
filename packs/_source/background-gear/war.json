@@ -1,0 +1,31 @@
+{
+  "_id": "QAADGn2utwPRdVRl",
+  "name": "War",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>War</strong>. If you are first to attack, your bow gains the <em>blast</em> property for the first round.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QAADGn2utwPRdVRl",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

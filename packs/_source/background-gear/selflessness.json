@@ -1,0 +1,31 @@
+{
+  "_id": "n1gN18fmq8E1AEQH",
+  "name": "Selflessness",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Selflessness</strong>. You are immune to <strong>mind-altering magical effects</strong>, such as <em>charm</em>, <em>hatred</em>, <em>frenzy</em>, and so on. If you break this vow, you lose d6 WIL.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!n1gN18fmq8E1AEQH",
+  "folder": "VyQWK1tMrTe9Gy9a"
+}

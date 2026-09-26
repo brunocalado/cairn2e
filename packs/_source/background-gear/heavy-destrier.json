@@ -1,0 +1,31 @@
+{
+  "_id": "qv7CiTSgODz1HV7G",
+  "name": "Heavy Destrier",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Heavy Destrier</strong> A beast built for war, an imposing creature. 8 HP, 1 Armor, hooves (d10+d10), +2 slots.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qv7CiTSgODz1HV7G",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

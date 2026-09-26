@@ -1,0 +1,31 @@
+{
+  "_id": "4HEHe1tB3hHuU2lL",
+  "name": "Beauty Cream",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>After seducing a wealthy patron, their family hired a criminal gang to retrieve you. You got away and need to lay low. Start with <strong>Beauty Cream</strong>, 2 uses. Apply to appear irresistibly beautiful for the next 12 hours.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4HEHe1tB3hHuU2lL",
+  "folder": "v2BuenTVcdL7RExD"
+}

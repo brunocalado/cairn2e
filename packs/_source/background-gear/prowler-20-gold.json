@@ -1,0 +1,18 @@
+{
+  "_id": "OI18ewoJJr8MkG4I",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>An <em>azure warbler</em>. The gametes attract a sizeable profit, if properly extracted. You succeeded but left its nest to the wolves. Take a <strong>Paring Knife</strong> (d6), <strong>an extra 20gp</strong>, and a pang of regret.</p>",
+    "value": 20,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!OI18ewoJJr8MkG4I",
+  "folder": "aOOxVUFyvLpt9vWg"
+}

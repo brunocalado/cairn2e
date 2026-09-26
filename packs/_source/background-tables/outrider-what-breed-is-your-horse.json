@@ -23,6 +23,21 @@
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.Tv0XA3DHMv99Gved"
     },
     {
+      "_id": "vnwWpPSQUqkFo5fT",
+      "type": "document",
+      "name": "Heavy Destrier",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qv7CiTSgODz1HV7G",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.vnwWpPSQUqkFo5fT"
+    },
+    {
       "_id": "VTQsGfnudKUnWBZs",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.VTQsGfnudKUnWBZs"
+    },
+    {
+      "_id": "Oz2AIAzLi9Ys1yrs",
+      "type": "document",
+      "name": "Blacklegged Dandy",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ECmJMMTEuq9xLH3M",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.Oz2AIAzLi9Ys1yrs"
     },
     {
       "_id": "K3IiqaObJJek9cwP",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.K3IiqaObJJek9cwP"
     },
     {
+      "_id": "QcIFUfKpFoPIcaIR",
+      "type": "document",
+      "name": "Rivertooth",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Y682KAUC1WENVPK3",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.QcIFUfKpFoPIcaIR"
+    },
+    {
       "_id": "MQgxlNQXVtegJxR7",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.MQgxlNQXVtegJxR7"
+    },
+    {
+      "_id": "KnvKAPSBxO3MKodD",
+      "type": "document",
+      "name": "Piebald Cob",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.hN1oB32z0O6MDImS",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.KnvKAPSBxO3MKodD"
     },
     {
       "_id": "xbNdMdSuTvGaIMyZ",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.xbNdMdSuTvGaIMyZ"
     },
     {
+      "_id": "zRIrkoHUktLg5DcC",
+      "type": "document",
+      "name": "Linden White",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.b0FQBwj3iQHSNTw5",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.zRIrkoHUktLg5DcC"
+    },
+    {
       "_id": "98mp070uAE3r6Rts",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.98mp070uAE3r6Rts"
+    },
+    {
+      "_id": "XWrjoplECWt6uppz",
+      "type": "document",
+      "name": "Stray Fogger",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.k91T19GK4bXOD7Dv",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.XWrjoplECWt6uppz"
     }
   ],
   "folder": null,

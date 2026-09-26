@@ -1,0 +1,31 @@
+{
+  "_id": "GH02yHndc9PRLj7S",
+  "name": "Woundwax",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Woundwax</strong> Heals wounds from fire or chemicals (restoring full STR) but nothing else. 2 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!GH02yHndc9PRLj7S",
+  "folder": "9PouGVcgtvEJrEzy"
+}

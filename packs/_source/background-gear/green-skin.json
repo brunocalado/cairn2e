@@ -1,0 +1,31 @@
+{
+  "_id": "UpVBZBmRFw4sltaD",
+  "name": "Green Skin",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Your radical experiments turned your skin green, and you now gain nourishment as a plant. You don't need <strong>Rations</strong>, but a day without sufficient sunlight and water leaves you <em>deprived</em>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!UpVBZBmRFw4sltaD",
+  "folder": "bayXvK0U8aq9eTKM"
+}

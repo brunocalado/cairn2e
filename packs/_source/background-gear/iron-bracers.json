@@ -1,0 +1,31 @@
+{
+  "_id": "Rdiqu6FYImZLG10c",
+  "name": "Iron Bracers",
+  "type": "gear",
+  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "system": {
+    "description": "<p>A malicious <em>forest spirit</em> that poisoned a homestead. You saved a <strong>Heartseed</strong> from the roots of a dying tree. (Plant it to create a new forest.) Also, take <strong>Iron Bracers</strong> (+1 Armor, <em>bulky</em>).</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Rdiqu6FYImZLG10c",
+  "folder": "aOOxVUFyvLpt9vWg"
+}

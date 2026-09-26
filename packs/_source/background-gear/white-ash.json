@@ -1,0 +1,31 @@
+{
+  "_id": "VLia0ygZksPLMBA2",
+  "name": "White Ash",
+  "type": "gear",
+  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "system": {
+    "description": "<p><strong>White Ash</strong> (d6, <em>bulky</em>). Can be used in place of a shield in melee combat (+1 Armor).</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 1,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!VLia0ygZksPLMBA2",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

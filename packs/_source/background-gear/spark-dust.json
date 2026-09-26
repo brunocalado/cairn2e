@@ -1,0 +1,31 @@
+{
+  "_id": "JXdlNPsepcQUaPJS",
+  "name": "Spark Dust",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Spark Dust</strong> Ignites easily and quickly. Useful for starting a fire or as an incendiary device (3 uses).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!JXdlNPsepcQUaPJS",
+  "folder": "FuPdQNZZihi9YB9f"
+}

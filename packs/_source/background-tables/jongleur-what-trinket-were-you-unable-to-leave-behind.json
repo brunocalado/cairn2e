@@ -23,6 +23,21 @@
       "_key": "!tables.results!i6wLjHgCkOLLIF91.OlNfkpKcVQ2GWMkW"
     },
     {
+      "_id": "y1i7sE3VmO2cBWQz",
+      "type": "document",
+      "name": "False Cuffs",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.IkmQ2BGG4YzKELmO",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i6wLjHgCkOLLIF91.y1i7sE3VmO2cBWQz"
+    },
+    {
       "_id": "FHMG810y012IXf53",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!i6wLjHgCkOLLIF91.FHMG810y012IXf53"
+    },
+    {
+      "_id": "vBVfjXiYsxYJe3m0",
+      "type": "document",
+      "name": "Pocket Theatre",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.sbaHE98mny4rZ1NH",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i6wLjHgCkOLLIF91.vBVfjXiYsxYJe3m0"
     },
     {
       "_id": "cVSSffDbl42ftmKY",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!i6wLjHgCkOLLIF91.cVSSffDbl42ftmKY"
     },
     {
+      "_id": "jWqqq58mqo1hl1h4",
+      "type": "document",
+      "name": "Ghost Violin",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.3uXSwvudD28ppJZq",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i6wLjHgCkOLLIF91.jWqqq58mqo1hl1h4"
+    },
+    {
       "_id": "OJBw9e8inynOQYYz",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!i6wLjHgCkOLLIF91.OJBw9e8inynOQYYz"
+    },
+    {
+      "_id": "PacOYpWVPkvpvipW",
+      "type": "document",
+      "name": "Tragic Tales",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.GNEAE2tzDbTCKKXH",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i6wLjHgCkOLLIF91.PacOYpWVPkvpvipW"
     },
     {
       "_id": "OrWvFQ3Fl1t4jaHc",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!i6wLjHgCkOLLIF91.OrWvFQ3Fl1t4jaHc"
     },
     {
+      "_id": "EFG598LxOeuw8L6n",
+      "type": "document",
+      "name": "Mythos Mask",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Bm4nyVQu5l6EFRTi",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i6wLjHgCkOLLIF91.EFG598LxOeuw8L6n"
+    },
+    {
       "_id": "3FUr4qaoPNbfYGFK",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!i6wLjHgCkOLLIF91.3FUr4qaoPNbfYGFK"
+    },
+    {
+      "_id": "x24VtGvglyI5sHk1",
+      "type": "document",
+      "name": "Rebreak Glass",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.6kaEavt257Pbi2x8",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!i6wLjHgCkOLLIF91.x24VtGvglyI5sHk1"
     }
   ],
   "folder": null,

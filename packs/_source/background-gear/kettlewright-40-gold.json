@@ -1,0 +1,18 @@
+{
+  "_id": "s4z2uvA45g65mNKC",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>You build small contraptions for local guilds (and don't ask too many questions). Take an extra 40gp and a wanted poster with your face on it. Given time and materials, you can open almost any door or vault.</p>",
+    "value": 40,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!s4z2uvA45g65mNKC",
+  "folder": "6eA1TcuUVcIPoCGf"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "bFVN1fquRCBMVD1B",
+  "name": "Nature's Alarm",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>That nature's symphony can be heard if you attune to its rhythm. When surrounded by creatures of your <strong>specialty</strong>, they can alert you to approaching danger before it arrives.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!bFVN1fquRCBMVD1B",
+  "folder": "JutabTvswwdsAoBG"
+}

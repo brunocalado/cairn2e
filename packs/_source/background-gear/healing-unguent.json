@@ -1,0 +1,31 @@
+{
+  "_id": "9BtKYG2BNCwCzLCC",
+  "name": "Healing Unguent",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A wizened apothecary, who taught you the healing arts but maintained a clinical detachment. Take a <strong>Healing Unguent</strong> (restores d4 STR, 1 use).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!9BtKYG2BNCwCzLCC",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

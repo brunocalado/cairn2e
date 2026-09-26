@@ -340,17 +340,45 @@ each a thing to buy, not a sentence on the Dagger. A background's starting-gear 
 that table does not carry: `Boiled Leather (1 Armor)`, `Twine Bauble`, `Soporific Darts`. Those live in **`background-gear/`**, one Item pack of mixed
 subtypes, so that Weapons stays six documents long for anyone browsing it to buy something.
 
-The pack is exactly the residue of the twenty `## Starting Gear` lists in `srd-2e/backgrounds/`:
-a line that names a Marketplace document points at it, every other line gets a document here.
-Nothing is added that no background names. `cost` is 0 throughout — background issue, not
-merchandise.
+The pack is exactly the residue of two lists: the twenty `## Starting Gear` lists in
+`srd-2e/backgrounds/`, and what each Background d6 table result grants (below). A line that names
+a Marketplace document points at it, every other line gets a document here. Nothing is added that
+no background names. `cost` is 0 throughout — background issue, not merchandise.
 
-The pack is filed by origin, in compendium folders: one `_folder-<slug>.json` per background that
-hands out something of its own, and `_folder-shared.json` for what more than one does — Boiled
-Leather (Fletchwind, Marchguard, Prowler). A document can sit in one folder only, which is why
-Marchguard has none: its one line here is shared (its Long Sword is a Marketplace weapon). Each
-document's `folder` names its folder's `_id`; the folder files are the same shape as
+The pack is filed by origin, in compendium folders: one `_folder-<slug>.json` per background, and
+`_folder-shared.json` for what more than one hands out — Boiled Leather (Fletchwind, Marchguard,
+Prowler) and the 2-use Antitoxin (Beast Handler, Greenwise). A document can sit in one folder only.
+Each document's `folder` names its folder's `_id`; the folder files are the same shape as
 `gear/_folder-transport.json`.
+
+### What a Background d6 result grants
+
+Each of the forty tables in `background-tables/` has one `text` result per face — the prose the
+creator shows and the character keeps — and, **on the same range**, one `document` result per
+thing that face grants. The generator embeds those uuids and reads nothing out of the prose,
+because the prose is what a translation module translates (`module/character-generator.js`,
+`checks/background-grants.check.mjs`). A grant is one of five things:
+
+| The row says | The grant |
+|---|---|
+| a thing the Marketplace sells, unchanged | a `document` result → that Marketplace document |
+| a spell by name (the _Detect Magic_ Spellbook, a Scroll of _Arcane Eye_) | → the `spellbooks/` or `scrolls/` document |
+| a thing of its own, or a Marketplace thing with different uses (Antitoxin, 2 uses) | a document here, named for what differs when a Marketplace name would clash — `Repellent (3 uses)`, `Antitoxin (2 uses)`, `Spiked Boots (d8)` |
+| coin ("Take an extra 30gp") | a `coin` document here, `name: "Gold"`, the amount as `system.value` — folded into the character's one sack |
+| an ability, no thing at all | a *petty* `gear` here (`slots: 0`, `icons/svg/book.svg`) named for what it does, as the sheet lists it on the Petty tab |
+
+A granted document's `description` is the row's whole prose, deliberately the same text the
+`text` result carries: it is what the item said on the sheet when the generator parsed it, and a
+translation translates it twice. A row with no grant does not exist — every face grants something.
+
+The grants were authored on 2026-09-26 from what the generator used to parse out of the prose,
+checked row by row against `srd-2e/backgrounds/`. Where the parser had misread a row, the SRD won:
+the named spell instead of a bare "Spellbook", a weapon's die it had dropped (Crossbow d8, Saw d6,
+Gnarled Staff d8), things it never saw (Hexenbane's sword and chainmail, Prowler's Iron Bracers,
+Fireseeds, River Twine), and coin — "+20gp" and "extra 10gp" granted, while a thing *worth* 20gp
+(the Thesaurus, the Necklace) is no longer also 20gp. Rows whose mechanics the SRD states but the
+system does not automate (a +d4 HP, a 1 Armor chest, the Fatigue a pet costs) stay prose, as they
+were.
 
 Five lines needed a call, settled 2026-09-15 against the SRD:
 

@@ -1,0 +1,31 @@
+{
+  "_id": "Eteo9tzRD8FuMKoW",
+  "name": "Crow-Shaped Amulet",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>A <strong>crow-shaped amulet</strong>. You can ask a question of the dead but must add a <strong>Fatigue</strong> each time. They do not always speak truthfully.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Eteo9tzRD8FuMKoW",
+  "folder": "EIIp0S3aKJcOC0QK"
+}

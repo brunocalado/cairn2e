@@ -1,0 +1,31 @@
+{
+  "_id": "LzE2nfhfA3dlemQs",
+  "name": "Miner's Grease",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Miner's Grease</strong> Great for dislodging a gem, tool, or limb from a tight crack. Highly explosive. 3 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!LzE2nfhfA3dlemQs",
+  "folder": "WuN39BkGc3MUzAYu"
+}

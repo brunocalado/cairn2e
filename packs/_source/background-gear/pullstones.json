@@ -1,0 +1,31 @@
+{
+  "_id": "Lpg22lNT9ZSP0aFX",
+  "name": "Pullstones",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Pullstones</strong> Two jet-black stones. When separated, the stones will always roll toward one another.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Lpg22lNT9ZSP0aFX",
+  "folder": "GRJalXIEjoCuKkjN"
+}

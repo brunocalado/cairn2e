@@ -1,0 +1,31 @@
+{
+  "_id": "G1Il2u914D9omMwC",
+  "name": "Paper Legs",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Paper legs</strong>. You are extremely light, and can fall a few stories without getting hurt. Try to avoid tearing them or getting them wet.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!G1Il2u914D9omMwC",
+  "folder": "txYF1azSElMlB2lI"
+}

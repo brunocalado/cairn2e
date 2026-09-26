@@ -1,0 +1,31 @@
+{
+  "_id": "BtXPYd8GDwqaKlsg",
+  "name": "Monk's Habit",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p>The monks of a secluded forest monastery. When their rules became too strict, and you snuck away. Take a <strong>Monk's Habit</strong> (warm, <em>petty</em>) and a <strong>Spellbook</strong> of <em>Control Plants</em>. Control Plants: Nearby plants and trees obey you and gain the ability to move at a slow pace. <em>Leaves grow along the spine, and it smells faintly of decay.</em></p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BtXPYd8GDwqaKlsg",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

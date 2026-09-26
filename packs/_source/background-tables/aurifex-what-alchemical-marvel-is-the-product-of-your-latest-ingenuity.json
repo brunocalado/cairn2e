@@ -23,6 +23,21 @@
       "_key": "!tables.results!6YRhrMB2JxoxD5az.amgOkqCYBE8F2S3U"
     },
     {
+      "_id": "yLIq2DXjTIagFYw3",
+      "type": "document",
+      "name": "Pyrophoric Gel",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.fU25aQlZH0ZZzF6E",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6YRhrMB2JxoxD5az.yLIq2DXjTIagFYw3"
+    },
+    {
       "_id": "0drqnW6cbVDHL58W",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6YRhrMB2JxoxD5az.0drqnW6cbVDHL58W"
+    },
+    {
+      "_id": "gj3EZ9Oy1Ol1CJ4K",
+      "type": "document",
+      "name": "Blast Sphere",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.o1DUVmYUEeZEocdd",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6YRhrMB2JxoxD5az.gj3EZ9Oy1Ol1CJ4K"
     },
     {
       "_id": "8Euq97LO2dibt7Ex",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!6YRhrMB2JxoxD5az.8Euq97LO2dibt7Ex"
     },
     {
+      "_id": "IWyE9UDAGu3uaN46",
+      "type": "document",
+      "name": "Aqua Vita",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Br8aGcDkFHPBj9JR",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6YRhrMB2JxoxD5az.IWyE9UDAGu3uaN46"
+    },
+    {
       "_id": "V9ifzY0dUHsXdZML",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6YRhrMB2JxoxD5az.V9ifzY0dUHsXdZML"
+    },
+    {
+      "_id": "pNvAjFXIGaVp4erE",
+      "type": "document",
+      "name": "Mimic Stone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.xPsvZ0AyojpgOj8g",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6YRhrMB2JxoxD5az.pNvAjFXIGaVp4erE"
     },
     {
       "_id": "ncBR53xGU2v8LOKD",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!6YRhrMB2JxoxD5az.ncBR53xGU2v8LOKD"
     },
     {
+      "_id": "HvFyqq4r6gtIs8nA",
+      "type": "document",
+      "name": "Spark Dust",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.JXdlNPsepcQUaPJS",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6YRhrMB2JxoxD5az.HvFyqq4r6gtIs8nA"
+    },
+    {
       "_id": "qHnreI6XRZRkvVsh",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6YRhrMB2JxoxD5az.qHnreI6XRZRkvVsh"
+    },
+    {
+      "_id": "RwpaCi6f2M4XNMd6",
+      "type": "document",
+      "name": "Homunculus",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.1WM5z7Fbm8mA5mJY",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6YRhrMB2JxoxD5az.RwpaCi6f2M4XNMd6"
     }
   ],
   "folder": null,

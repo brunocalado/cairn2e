@@ -23,6 +23,21 @@
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.5BR2zJ9HULbMSp8s"
     },
     {
+      "_id": "qx1snWpDAzZeRBtY",
+      "type": "document",
+      "name": "Replacement Eye",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.JSz8fKRzwFpIxWrf",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.qx1snWpDAzZeRBtY"
+    },
+    {
       "_id": "PzeBEkruoFJBbtix",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.PzeBEkruoFJBbtix"
+    },
+    {
+      "_id": "WvPjVxNXndPPN6JP",
+      "type": "document",
+      "name": "Oil Can",
+      "img": "icons/tools/cooking/can.webp",
+      "documentUuid": "Compendium.cairn2e.gear.Item.DEIG5kYj2mhV3hRM",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.WvPjVxNXndPPN6JP"
     },
     {
       "_id": "xaeKJGQWE479kn3n",
@@ -53,6 +83,36 @@
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.xaeKJGQWE479kn3n"
     },
     {
+      "_id": "hTtgfdqM59qrnos6",
+      "type": "document",
+      "name": "Hook",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.72QZzLH6Ek9EZ9Ky",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.hTtgfdqM59qrnos6"
+    },
+    {
+      "_id": "x5PtkTZFiovWtaRx",
+      "type": "document",
+      "name": "Screwdriver",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.YDJuyPHPiwliN66q",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.x5PtkTZFiovWtaRx"
+    },
+    {
       "_id": "YBPGYuvBqe8r0v4Z",
       "type": "text",
       "name": "",
@@ -66,6 +126,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.YBPGYuvBqe8r0v4Z"
+    },
+    {
+      "_id": "GZgYTCWIuMBibmd5",
+      "type": "document",
+      "name": "Enhanced Ears",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Wobfnh3pMxfDcLNI",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.GZgYTCWIuMBibmd5"
     },
     {
       "_id": "AxNwF0QhHNfno5VN",
@@ -83,6 +158,21 @@
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.AxNwF0QhHNfno5VN"
     },
     {
+      "_id": "ygkaoqKyGB3byIq3",
+      "type": "document",
+      "name": "Alchemical Sigils",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.9HcAunD8BHHCKQGZ",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.ygkaoqKyGB3byIq3"
+    },
+    {
       "_id": "JjFbc0APvHMki1RR",
       "type": "text",
       "name": "",
@@ -96,6 +186,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.JjFbc0APvHMki1RR"
+    },
+    {
+      "_id": "QOPWjK1Ed3Kif5PT",
+      "type": "document",
+      "name": "Metal Arm",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.zFiBNnGYRntjd3yv",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.QOPWjK1Ed3Kif5PT"
     }
   ],
   "folder": null,

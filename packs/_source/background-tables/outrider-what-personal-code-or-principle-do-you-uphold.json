@@ -23,6 +23,21 @@
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.AMdKgXEdEkWkDk77"
     },
     {
+      "_id": "9O6thIAbMZWMaJhC",
+      "type": "document",
+      "name": "Steadymade Buckler",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.1EQGGjrrAPYCj2N6",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.9O6thIAbMZWMaJhC"
+    },
+    {
       "_id": "4CEiVJxuMdFnRZjp",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.4CEiVJxuMdFnRZjp"
+    },
+    {
+      "_id": "nCrDqDdkQTfdfd3V",
+      "type": "document",
+      "name": "Wyrmbone Whetstone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.8ongO5gP907EQCC4",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.nCrDqDdkQTfdfd3V"
     },
     {
       "_id": "BP9zMxE3j76TnY3O",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.BP9zMxE3j76TnY3O"
     },
     {
+      "_id": "lN0SEAwKLAUwADfg",
+      "type": "document",
+      "name": "Death-Whistle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.DheWLKOxdaqdpBrW",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.lN0SEAwKLAUwADfg"
+    },
+    {
       "_id": "ASzCXDqqtB659rHl",
       "type": "text",
       "name": "",
@@ -66,6 +111,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.ASzCXDqqtB659rHl"
+    },
+    {
+      "_id": "C05YMPvYvX9IeRiY",
+      "type": "document",
+      "name": "Revere the Dead",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.uxCVpb71dwaeErg8",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.C05YMPvYvX9IeRiY"
+    },
+    {
+      "_id": "QC7LgS0zghe5DmIg",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.wLUKk5pxYpQLE3Fg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.QC7LgS0zghe5DmIg"
     },
     {
       "_id": "jihHunwSfkdVn3dA",
@@ -83,6 +158,21 @@
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.jihHunwSfkdVn3dA"
     },
     {
+      "_id": "mkHJMO9XARAPyrqw",
+      "type": "document",
+      "name": "Tally Stick",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.FoqAK9jbTA9oCvBe",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.mkHJMO9XARAPyrqw"
+    },
+    {
       "_id": "eywBqyeWw7YKA2sY",
       "type": "text",
       "name": "",
@@ -96,6 +186,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.eywBqyeWw7YKA2sY"
+    },
+    {
+      "_id": "IX5QphkKpWW6LPli",
+      "type": "document",
+      "name": "Blacked-Out Ledger",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.DJkRtDuSnf3U5y2J",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.IX5QphkKpWW6LPli"
     }
   ],
   "folder": null,

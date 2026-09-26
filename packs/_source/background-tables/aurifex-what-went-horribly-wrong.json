@@ -23,6 +23,21 @@
       "_key": "!tables.results!H68PtSfwpICGQJDc.BGCpP581PjZF1NvT"
     },
     {
+      "_id": "kLG2ZrFUJPhOQgY3",
+      "type": "document",
+      "name": "Tin of Snuff",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.5clwUMOrBdXtNVix",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.kLG2ZrFUJPhOQgY3"
+    },
+    {
       "_id": "JyPJKBIcUaSt0yMy",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!H68PtSfwpICGQJDc.JyPJKBIcUaSt0yMy"
+    },
+    {
+      "_id": "4IfBRFqpuejRSUgx",
+      "type": "document",
+      "name": "Invisible Pet",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.e8ikGgxT7ZLy7wwf",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.4IfBRFqpuejRSUgx"
     },
     {
       "_id": "uFETZce01P1O2UuZ",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!H68PtSfwpICGQJDc.uFETZce01P1O2UuZ"
     },
     {
+      "_id": "I1ujtWLhoZpamhtH",
+      "type": "document",
+      "name": "Truth Serum",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.B0ZefbK4fv915fBd",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.I1ujtWLhoZpamhtH"
+    },
+    {
       "_id": "yB01A6oI9HlSCuHT",
       "type": "text",
       "name": "",
@@ -66,6 +111,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!H68PtSfwpICGQJDc.yB01A6oI9HlSCuHT"
+    },
+    {
+      "_id": "rgUbz3yiM7B3qs68",
+      "type": "document",
+      "name": "Metal Ingot",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ez13VGlo7DC0CzoL",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.rgUbz3yiM7B3qs68"
+    },
+    {
+      "_id": "Kdqf8nyM2zappwIb",
+      "type": "document",
+      "name": "Gold Powder",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.HQNowNfmVb9iAIbO",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.Kdqf8nyM2zappwIb"
     },
     {
       "_id": "72HZZQSl40IVYLcP",
@@ -83,6 +158,21 @@
       "_key": "!tables.results!H68PtSfwpICGQJDc.72HZZQSl40IVYLcP"
     },
     {
+      "_id": "f06cQcOsxz5JMjJd",
+      "type": "document",
+      "name": "Blunderbuss",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.CYdGohEWS3Y1qOtI",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.f06cQcOsxz5JMjJd"
+    },
+    {
       "_id": "zDVrI95LmIMYmSLT",
       "type": "text",
       "name": "",
@@ -96,6 +186,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!H68PtSfwpICGQJDc.zDVrI95LmIMYmSLT"
+    },
+    {
+      "_id": "Y6R2GrxaHsSz8gMd",
+      "type": "document",
+      "name": "Universal Solvent",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.6ah1r38cnIzZGgZf",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!H68PtSfwpICGQJDc.Y6R2GrxaHsSz8gMd"
     }
   ],
   "folder": null,

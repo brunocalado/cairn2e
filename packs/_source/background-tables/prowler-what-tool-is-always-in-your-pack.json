@@ -23,6 +23,21 @@
       "_key": "!tables.results!JeSXIRVztOxQaDYF.iLnENup0T3Yp48Hb"
     },
     {
+      "_id": "sFMj5k3yqxTlvniX",
+      "type": "document",
+      "name": "Fermented Spirits",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.pEHP5K89nA8AiCTl",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.sFMj5k3yqxTlvniX"
+    },
+    {
       "_id": "uUcG7M8NHrqI0DT1",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!JeSXIRVztOxQaDYF.uUcG7M8NHrqI0DT1"
+    },
+    {
+      "_id": "KpdXjqhkLTwE5MR4",
+      "type": "document",
+      "name": "Trail Shaker",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.l5BKyLu47EaA6OHE",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.KpdXjqhkLTwE5MR4"
     },
     {
       "_id": "BvNy7HxsZLJaOMm0",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!JeSXIRVztOxQaDYF.BvNy7HxsZLJaOMm0"
     },
     {
+      "_id": "ZNLWGEDRWIIaDMPb",
+      "type": "document",
+      "name": "Drowse Balm",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.TW5yKKAsks3DHU6g",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.ZNLWGEDRWIIaDMPb"
+    },
+    {
       "_id": "vKFeFMBLdsYcVMtd",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!JeSXIRVztOxQaDYF.vKFeFMBLdsYcVMtd"
+    },
+    {
+      "_id": "SeiJtsIZLsQgxeMC",
+      "type": "document",
+      "name": "Spike and Cord",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.6BpitODBElQgH5nF",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.SeiJtsIZLsQgxeMC"
     },
     {
       "_id": "QQdRnx2vo6E1mPs4",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!JeSXIRVztOxQaDYF.QQdRnx2vo6E1mPs4"
     },
     {
+      "_id": "BanfAmGz1AkJDrQG",
+      "type": "document",
+      "name": "Iron Rattle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Aalhcp0nOrxrjLoV",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.BanfAmGz1AkJDrQG"
+    },
+    {
       "_id": "XOFBe765K3YuKPl7",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!JeSXIRVztOxQaDYF.XOFBe765K3YuKPl7"
+    },
+    {
+      "_id": "w7brrB99yPtyvnrU",
+      "type": "document",
+      "name": "Hardening Glue",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.MSZRzsapAQWoBFB4",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!JeSXIRVztOxQaDYF.w7brrB99yPtyvnrU"
     }
   ],
   "folder": null,

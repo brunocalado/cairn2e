@@ -1,0 +1,31 @@
+{
+  "_id": "qxTG8NpWvL5xhDwq",
+  "name": "Quicksilver",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Quicksilver</strong> A stimulant. Go first in combat, and automatically pass any WIL saves for one hour. <em>Addictive</em>: Save STR or become <em>deprived</em> after 24 hours without it. 4 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qxTG8NpWvL5xhDwq",
+  "folder": "9PouGVcgtvEJrEzy"
+}

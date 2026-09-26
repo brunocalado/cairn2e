@@ -23,6 +23,21 @@
       "_key": "!tables.results!EVTSWa2WXvGCqCjA.X3boGHzzgyWNLU3L"
     },
     {
+      "_id": "InhUfkEr5cwJUK5X",
+      "type": "document",
+      "name": "Rapier",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.q8KGFMVCkf9CevmD",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.InhUfkEr5cwJUK5X"
+    },
+    {
       "_id": "aremZspLRXF9uugo",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!EVTSWa2WXvGCqCjA.aremZspLRXF9uugo"
+    },
+    {
+      "_id": "i7dWoplE2IfwCCYw",
+      "type": "document",
+      "name": "Read Mind",
+      "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
+      "documentUuid": "Compendium.cairn2e.spellbooks.Item.gl9VHtDVrnxq8tWv",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.i7dWoplE2IfwCCYw"
     },
     {
       "_id": "kRuleNtsWSy8pUnH",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!EVTSWa2WXvGCqCjA.kRuleNtsWSy8pUnH"
     },
     {
+      "_id": "RcFqIB9xKFPjXRg6",
+      "type": "document",
+      "name": "Book On Astronomy",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.m3cJazh7JLNaydeO",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.RcFqIB9xKFPjXRg6"
+    },
+    {
       "_id": "T6hToRGPExSZf47v",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!EVTSWa2WXvGCqCjA.T6hToRGPExSZf47v"
+    },
+    {
+      "_id": "yqY2zjBM63Hyfr0y",
+      "type": "document",
+      "name": "Thesaurus",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.3dHpGhYn7v9Wh9Ub",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.yqY2zjBM63Hyfr0y"
     },
     {
       "_id": "6tqm2sgcXkyCp4HT",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!EVTSWa2WXvGCqCjA.6tqm2sgcXkyCp4HT"
     },
     {
+      "_id": "8kGTFrBvluK3wN9F",
+      "type": "document",
+      "name": "Stage Mail",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.nrEnPWY7jEFCReVc",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.8kGTFrBvluK3wN9F"
+    },
+    {
       "_id": "LXlGN8iDUeT2gtit",
       "type": "text",
       "name": "",
@@ -96,6 +171,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!EVTSWa2WXvGCqCjA.LXlGN8iDUeT2gtit"
+    },
+    {
+      "_id": "NVecIZtOlgnbtIZ4",
+      "type": "document",
+      "name": "Uncanny Hand-Puppet",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.SsePOUjOCpkExzqS",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.NVecIZtOlgnbtIZ4"
+    },
+    {
+      "_id": "7jONXaJTWJWdNVVh",
+      "type": "document",
+      "name": "Rabbit Skull",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.mFiy1VnTfwXjjaMY",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!EVTSWa2WXvGCqCjA.7jONXaJTWJWdNVVh"
     }
   ],
   "folder": null,

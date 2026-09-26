@@ -23,6 +23,21 @@
       "_key": "!tables.results!7vestEIKwunmJzeO.KZnKHajSGWOEnYi5"
     },
     {
+      "_id": "gy3ibLCx2aPfDGnO",
+      "type": "document",
+      "name": "Regrowth Salve",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.xBEa5qiAvTbFRivY",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.gy3ibLCx2aPfDGnO"
+    },
+    {
       "_id": "vRJMjHwksLIcmYUf",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!7vestEIKwunmJzeO.vRJMjHwksLIcmYUf"
+    },
+    {
+      "_id": "ZCnQdj9awxLmHpYA",
+      "type": "document",
+      "name": "Graftgrub",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.FYOqVhoY7IgX0jto",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.ZCnQdj9awxLmHpYA"
     },
     {
       "_id": "QR8F4VrQBAzjMOmR",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!7vestEIKwunmJzeO.QR8F4VrQBAzjMOmR"
     },
     {
+      "_id": "QjQHpflKDnc5yTiR",
+      "type": "document",
+      "name": "Woundwax",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.GH02yHndc9PRLj7S",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.QjQHpflKDnc5yTiR"
+    },
+    {
       "_id": "ZNnHfVAfOwmj1MH0",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!7vestEIKwunmJzeO.ZNnHfVAfOwmj1MH0"
+    },
+    {
+      "_id": "LaWUlmvRkssGRXAE",
+      "type": "document",
+      "name": "Quicksilver",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qxTG8NpWvL5xhDwq",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.LaWUlmvRkssGRXAE"
     },
     {
       "_id": "UPXgyy6CwH7lV2gy",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!7vestEIKwunmJzeO.UPXgyy6CwH7lV2gy"
     },
     {
+      "_id": "BgJJekOJ3itModNg",
+      "type": "document",
+      "name": "Pneuma Pump",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.GYr0CGyEZKhHJ2Bc",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.BgJJekOJ3itModNg"
+    },
+    {
       "_id": "u6s9PmVDWjOOE34K",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!7vestEIKwunmJzeO.u6s9PmVDWjOOE34K"
+    },
+    {
+      "_id": "WQHK5AGFjTbdrdTD",
+      "type": "document",
+      "name": "Lodestone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.mekQYoy0t5swY3bS",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!7vestEIKwunmJzeO.WQHK5AGFjTbdrdTD"
     }
   ],
   "folder": null,

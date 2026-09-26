@@ -23,6 +23,36 @@
       "_key": "!tables.results!5M8GOZJszHL8D9qC.ZqC0799qAMzidEcI"
     },
     {
+      "_id": "sZ1gHFenrkPgfrzK",
+      "type": "document",
+      "name": "Master Tinker",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.GuYeGjODWlAIUP5x",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.sZ1gHFenrkPgfrzK"
+    },
+    {
+      "_id": "OWZvxSwC7D8qCe32",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.s4z2uvA45g65mNKC",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.OWZvxSwC7D8qCe32"
+    },
+    {
       "_id": "qahAtnYMGDda1lQI",
       "type": "text",
       "name": "",
@@ -36,6 +66,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5M8GOZJszHL8D9qC.qahAtnYMGDda1lQI"
+    },
+    {
+      "_id": "72KW7k4R2uPZWXAN",
+      "type": "document",
+      "name": "Traveler's Cant",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.rbgBgT9lFrqv2YtN",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.72KW7k4R2uPZWXAN"
+    },
+    {
+      "_id": "88bvIeq00E05GvCA",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.XphAFeGeebG7fgTA",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.88bvIeq00E05GvCA"
     },
     {
       "_id": "6ybWQ6CGmBi8BEyf",
@@ -53,6 +113,36 @@
       "_key": "!tables.results!5M8GOZJszHL8D9qC.6ybWQ6CGmBi8BEyf"
     },
     {
+      "_id": "wSzFE2QTKBtMvaSs",
+      "type": "document",
+      "name": "Smelting Hammer",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.UCGz949Ymr5OqJGz",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.wSzFE2QTKBtMvaSs"
+    },
+    {
+      "_id": "9FCn3vYuY3oUgtXs",
+      "type": "document",
+      "name": "Tin Helm",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.7Aj7hCQVdEFQNGgL",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.9FCn3vYuY3oUgtXs"
+    },
+    {
       "_id": "ZqrlX425Fq6dEGI0",
       "type": "text",
       "name": "",
@@ -66,6 +156,51 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5M8GOZJszHL8D9qC.ZqrlX425Fq6dEGI0"
+    },
+    {
+      "_id": "ifAxwg0XIPVR6oyw",
+      "type": "document",
+      "name": "Spyglass",
+      "img": "icons/tools/navigation/spyglass-telescope-brass-blue.webp",
+      "documentUuid": "Compendium.cairn2e.gear.Item.B5pPWtT8ZvgBm70C",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.ifAxwg0XIPVR6oyw"
+    },
+    {
+      "_id": "PMNjiMAvLbhXRLhb",
+      "type": "document",
+      "name": "Necklace",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.SulX4PIRkGlgxEfF",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.PMNjiMAvLbhXRLhb"
+    },
+    {
+      "_id": "rQg3H2EJeoEfZy3E",
+      "type": "document",
+      "name": "Mirrorwalk",
+      "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+      "documentUuid": "Compendium.cairn2e.scrolls.Item.lnTGAJqfL1pqD1p9",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.rQg3H2EJeoEfZy3E"
     },
     {
       "_id": "YOQB8OdgfMEARvxS",
@@ -83,6 +218,36 @@
       "_key": "!tables.results!5M8GOZJszHL8D9qC.YOQB8OdgfMEARvxS"
     },
     {
+      "_id": "fnq5GHDn4XIsRMVp",
+      "type": "document",
+      "name": "Long Sword",
+      "img": "icons/weapons/swords/greatsword-crossguard-steel.webp",
+      "documentUuid": "Compendium.cairn2e.weapons.Item.WwEEaLMmjSyap9kH",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.fnq5GHDn4XIsRMVp"
+    },
+    {
+      "_id": "qsYlVkbCySgRivLN",
+      "type": "document",
+      "name": "Gambeson",
+      "img": "icons/equipment/chest/vest-cloth-tattered-tan.webp",
+      "documentUuid": "Compendium.cairn2e.armor.Item.wdc9nLqwIN0iNkFj",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.qsYlVkbCySgRivLN"
+    },
+    {
       "_id": "1ipg23iaOm2iQtQK",
       "type": "text",
       "name": "",
@@ -96,6 +261,51 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5M8GOZJszHL8D9qC.1ipg23iaOm2iQtQK"
+    },
+    {
+      "_id": "sJyTD8DQK0OauR7v",
+      "type": "document",
+      "name": "Donkey",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.JPVLxVmbQqezbbNY",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.sJyTD8DQK0OauR7v"
+    },
+    {
+      "_id": "dxnoXs6PJHcTQAqm",
+      "type": "document",
+      "name": "Crossbow",
+      "img": "icons/weapons/crossbows/crossbow-heavy-black.webp",
+      "documentUuid": "Compendium.cairn2e.weapons.Item.qLSAVP83onsMvq0d",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.dxnoXs6PJHcTQAqm"
+    },
+    {
+      "_id": "MpTgdvikbLeo4n0c",
+      "type": "document",
+      "name": "Saw",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.GwK6hO7CYbR10jHy",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.MpTgdvikbLeo4n0c"
     }
   ],
   "folder": null,

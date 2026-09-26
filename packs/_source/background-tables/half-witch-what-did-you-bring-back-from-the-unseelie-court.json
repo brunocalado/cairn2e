@@ -23,6 +23,21 @@
       "_key": "!tables.results!wbxYggWeDHmSki2z.ChC17DKH1xy0DJdn"
     },
     {
+      "_id": "DegR5kiqU6mRYd5N",
+      "type": "document",
+      "name": "Black Rose Fiddle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.yPS8pQF0WkshCSej",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.DegR5kiqU6mRYd5N"
+    },
+    {
       "_id": "yWdHTPFNjIg6R6c1",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!wbxYggWeDHmSki2z.yWdHTPFNjIg6R6c1"
+    },
+    {
+      "_id": "1Z8hdD8JUCz2nMH7",
+      "type": "document",
+      "name": "Paper Legs",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.G1Il2u914D9omMwC",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.1Z8hdD8JUCz2nMH7"
     },
     {
       "_id": "5MM2G3Y3Ts4ZEUVe",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!wbxYggWeDHmSki2z.5MM2G3Y3Ts4ZEUVe"
     },
     {
+      "_id": "u4tRsFp4aHl24fuh",
+      "type": "document",
+      "name": "Living Nightmare",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ssowp07GbBy3zlNG",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.u4tRsFp4aHl24fuh"
+    },
+    {
       "_id": "1RTWOAqMa1Eth25U",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!wbxYggWeDHmSki2z.1RTWOAqMa1Eth25U"
+    },
+    {
+      "_id": "YROmiBvsFQf1l1Rm",
+      "type": "document",
+      "name": "Raven Familiar",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Lxu9rhxsOa6nDmn7",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.YROmiBvsFQf1l1Rm"
     },
     {
       "_id": "1nLzDfQTglYKANPx",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!wbxYggWeDHmSki2z.1nLzDfQTglYKANPx"
     },
     {
+      "_id": "PXecwbiDb2lALTbe",
+      "type": "document",
+      "name": "Briar Thorn",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.MWIa2YsDRT2T2AHj",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.PXecwbiDb2lALTbe"
+    },
+    {
       "_id": "Q0poEebNEssZGFma",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!wbxYggWeDHmSki2z.Q0poEebNEssZGFma"
+    },
+    {
+      "_id": "UM1ztc5PTdwKoqxe",
+      "type": "document",
+      "name": "True Name",
+      "img": "icons/svg/book.svg",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Bdx82zDGng3elLdY",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.UM1ztc5PTdwKoqxe"
     }
   ],
   "folder": null,

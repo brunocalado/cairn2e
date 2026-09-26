@@ -1,0 +1,31 @@
+{
+  "_id": "nAdtHjQXLvIEs8nJ",
+  "name": "Fireseeds",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>A crop spirit, angered by a poor tithing. The fires consumed nearly everything, and afterward you were able to gather a pouch of <strong>Fireseeds</strong> (d8, <em>blast</em>, 4 uses).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "damage": "d8",
+    "blast": true,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!nAdtHjQXLvIEs8nJ",
+  "folder": "VCf486fS9s17em9n"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "7hlnv0EMhKk0KRDa",
+  "name": "Bone Knife",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>An antlered, toothy demon that nearly ended you. Take a blood-stained <strong>Bone Knife</strong> (d6). On <strong>Critical Damage</strong>, its next attack becomes <em>enhanced</em> from contact with blood.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7hlnv0EMhKk0KRDa",
+  "folder": "VCf486fS9s17em9n"
+}

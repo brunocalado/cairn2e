@@ -1,0 +1,31 @@
+{
+  "_id": "kfZH0GahkD9zQ1jG",
+  "name": "Wych Elm",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p><strong>Wych Elm</strong> (d6, <em>bulky</em>). Protects the bearer from poisons and toxins, so long as they are holding it.</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d6",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!kfZH0GahkD9zQ1jG",
+  "folder": "TIZWRdw4LIRhPeRJ"
+}

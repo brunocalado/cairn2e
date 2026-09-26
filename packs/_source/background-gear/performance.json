@@ -1,0 +1,31 @@
+{
+  "_id": "xE2mA1akQNNsKRYC",
+  "name": "Performance",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p><strong>Performance</strong> Performing at taverns always yields both room and board. Sometimes you even get tips! Start with an extra <strong>10gp</strong>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xE2mA1akQNNsKRYC",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

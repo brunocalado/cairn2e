@@ -1,0 +1,31 @@
+{
+  "_id": "iEUZVVPNiglkNYa4",
+  "name": "Weathered Longbow",
+  "type": "gear",
+  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "system": {
+    "description": "<p>An old hunter. You were both quite happy, until it all ended. Take a <strong>Weathered Longbow</strong> (d8, <em>bulky</em>) and a <strong>Leather Jerkin</strong> (1 Armor).</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!iEUZVVPNiglkNYa4",
+  "folder": "MaDv2V4A5uj6cZV3"
+}

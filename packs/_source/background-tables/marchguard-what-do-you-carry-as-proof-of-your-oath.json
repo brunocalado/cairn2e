@@ -23,6 +23,21 @@
       "_key": "!tables.results!NmjiklcayJDLuz6u.3ff4mRPyoDoNpDBt"
     },
     {
+      "_id": "z99jlygQvG7pksbB",
+      "type": "document",
+      "name": "Impressive Pin",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.3qFGVDbeO7FRdPcr",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.z99jlygQvG7pksbB"
+    },
+    {
       "_id": "fEcdLTzGgh2kIbM6",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!NmjiklcayJDLuz6u.fEcdLTzGgh2kIbM6"
+    },
+    {
+      "_id": "L0UhEKilfgBOmUPN",
+      "type": "document",
+      "name": "Oath Compass",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.zoOmfShxfnQcMGPX",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.L0UhEKilfgBOmUPN"
     },
     {
       "_id": "ReO9dEft0eL8hWbq",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!NmjiklcayJDLuz6u.ReO9dEft0eL8hWbq"
     },
     {
+      "_id": "Mt76MCaPli2EXYbd",
+      "type": "document",
+      "name": "Pullstones",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Lpg22lNT9ZSP0aFX",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.Mt76MCaPli2EXYbd"
+    },
+    {
       "_id": "Xmc1todn0vFmo3MK",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!NmjiklcayJDLuz6u.Xmc1todn0vFmo3MK"
+    },
+    {
+      "_id": "wsi6Kys8bahkePLm",
+      "type": "document",
+      "name": "Fireflask",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.r1AGYEqerObkjsed",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.wsi6Kys8bahkePLm"
     },
     {
       "_id": "BXn0xEavUZ36zqdM",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!NmjiklcayJDLuz6u.BXn0xEavUZ36zqdM"
     },
     {
+      "_id": "5jeoZdrKeJVo188G",
+      "type": "document",
+      "name": "Pain Band",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4s16rvYxwC1L2JN0",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.5jeoZdrKeJVo188G"
+    },
+    {
       "_id": "MVcqOKvA9T2ar1yi",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!NmjiklcayJDLuz6u.MVcqOKvA9T2ar1yi"
+    },
+    {
+      "_id": "dhV4CLnhLQp7VYvG",
+      "type": "document",
+      "name": "Poacher's Woe",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.M2OF2XbYRSawBL7i",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!NmjiklcayJDLuz6u.dhV4CLnhLQp7VYvG"
     }
   ],
   "folder": null,

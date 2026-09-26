@@ -23,6 +23,21 @@
       "_key": "!tables.results!tdt9k5kCueOAJOAN.F3DlXMPzH3qLXCiE"
     },
     {
+      "_id": "g3U2vbk6kw1yJfIy",
+      "type": "document",
+      "name": "Rebirth Ash",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.1K20rm8DwnMXDadc",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.g3U2vbk6kw1yJfIy"
+    },
+    {
       "_id": "iP4eqxauvLjDMAhh",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!tdt9k5kCueOAJOAN.iP4eqxauvLjDMAhh"
+    },
+    {
+      "_id": "1y9gbXyu8nbOoHKq",
+      "type": "document",
+      "name": "Glamour Feather",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.xlXXe7jGfxXYlSvE",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.1y9gbXyu8nbOoHKq"
     },
     {
       "_id": "f0cAyTyGQky1YQgd",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!tdt9k5kCueOAJOAN.f0cAyTyGQky1YQgd"
     },
     {
+      "_id": "cf5VLkBuFtw9RSVF",
+      "type": "document",
+      "name": "Hawthorn Seed",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.3A8SdkU2zWFptFGU",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.cf5VLkBuFtw9RSVF"
+    },
+    {
       "_id": "DlfBJXvasXOSuK5s",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!tdt9k5kCueOAJOAN.DlfBJXvasXOSuK5s"
+    },
+    {
+      "_id": "PpkdnY126DPib1jy",
+      "type": "document",
+      "name": "Stonetree Sap",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Yl6gUdD1HxV4T67L",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.PpkdnY126DPib1jy"
     },
     {
       "_id": "rdrVeA1FMC8hgRBB",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!tdt9k5kCueOAJOAN.rdrVeA1FMC8hgRBB"
     },
     {
+      "_id": "1q9fdt1Jnu6kcsXU",
+      "type": "document",
+      "name": "Nightdust Powder",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.cLqOz8QRWgv1rhQ7",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.1q9fdt1Jnu6kcsXU"
+    },
+    {
       "_id": "xAn2SBTSGHnH0KnM",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!tdt9k5kCueOAJOAN.xAn2SBTSGHnH0KnM"
+    },
+    {
+      "_id": "zbTcxxExMcdo6hdO",
+      "type": "document",
+      "name": "Hex Stone",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.vjjcuL8OYN1dPBML",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!tdt9k5kCueOAJOAN.zbTcxxExMcdo6hdO"
     }
   ],
   "folder": null,

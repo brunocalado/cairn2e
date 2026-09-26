@@ -23,6 +23,21 @@
       "_key": "!tables.results!6OKpPmolyINpNtZt.ZLjbILhSvG9plnRF"
     },
     {
+      "_id": "BdV8qBycVCgz9K6J",
+      "type": "document",
+      "name": "Bloodvine Whip",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.CWQaBmhhtLk3hL9p",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.BdV8qBycVCgz9K6J"
+    },
+    {
       "_id": "4HQa0YQx4cqtEDSY",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6OKpPmolyINpNtZt.4HQa0YQx4cqtEDSY"
+    },
+    {
+      "_id": "ehAl95KQ1qm4urUW",
+      "type": "document",
+      "name": "Clatter Keeper",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.eJcHAMbULBwNCTdI",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.ehAl95KQ1qm4urUW"
     },
     {
       "_id": "sgDi66QX8XzG4dh6",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!6OKpPmolyINpNtZt.sgDi66QX8XzG4dh6"
     },
     {
+      "_id": "avJw1Ml4iSeYVNap",
+      "type": "document",
+      "name": "Sun Stick",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.FnjrJ2TfJiE6VLZ1",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.avJw1Ml4iSeYVNap"
+    },
+    {
       "_id": "ywTl1pGCU7aOgeAo",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6OKpPmolyINpNtZt.ywTl1pGCU7aOgeAo"
+    },
+    {
+      "_id": "OUmykA36AJ29uyrC",
+      "type": "document",
+      "name": "Root Tether",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.KAvkfotK32ckA7Y8",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.OUmykA36AJ29uyrC"
     },
     {
       "_id": "qHEEynzKDjh1J2UR",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!6OKpPmolyINpNtZt.qHEEynzKDjh1J2UR"
     },
     {
+      "_id": "u2Lmo1V4G5zGjT66",
+      "type": "document",
+      "name": "Greenwhistle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.rk70ICvLW48pgDTp",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.u2Lmo1V4G5zGjT66"
+    },
+    {
       "_id": "YnYfV47U730tYhCr",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!6OKpPmolyINpNtZt.YnYfV47U730tYhCr"
+    },
+    {
+      "_id": "6gHkfokioB8XG9di",
+      "type": "document",
+      "name": "Everbloom Band",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.2t28CRddYjGOPB3N",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!6OKpPmolyINpNtZt.6gHkfokioB8XG9di"
     }
   ],
   "folder": null,

@@ -1,0 +1,18 @@
+{
+  "_id": "U0Cx718fqe1Sf71L",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p><strong>Performance</strong> Performing at taverns always yields both room and board. Sometimes you even get tips! Start with an extra <strong>10gp</strong>.</p>",
+    "value": 10,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!U0Cx718fqe1Sf71L",
+  "folder": "N8MTOPl4AsVBL5K8"
+}

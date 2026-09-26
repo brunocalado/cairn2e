@@ -23,6 +23,21 @@
       "_key": "!tables.results!5NDBvLrhDDzACBRR.KNTDR1Oyw4cB3vEx"
     },
     {
+      "_id": "I4hSWUAa8xOGH29M",
+      "type": "document",
+      "name": "Catring",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.KTSGhGgqEwwFQtFX",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.I4hSWUAa8xOGH29M"
+    },
+    {
       "_id": "OA9CAxOrVNZJWtKY",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5NDBvLrhDDzACBRR.OA9CAxOrVNZJWtKY"
+    },
+    {
+      "_id": "na80UVRFyPfHUB4H",
+      "type": "document",
+      "name": "Gildfinger",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.cb2LarMjkAtfeGZW",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.na80UVRFyPfHUB4H"
     },
     {
       "_id": "wPmIHXo5i8c9hrFx",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!5NDBvLrhDDzACBRR.wPmIHXo5i8c9hrFx"
     },
     {
+      "_id": "ztXJY2HVASbmdNIC",
+      "type": "document",
+      "name": "Glimpse Glass",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.CArCHDVTo5GYtcmd",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.ztXJY2HVASbmdNIC"
+    },
+    {
       "_id": "oABGMCHmCO9HXdNA",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5NDBvLrhDDzACBRR.oABGMCHmCO9HXdNA"
+    },
+    {
+      "_id": "G4iEQyCXqchkVyqL",
+      "type": "document",
+      "name": "Sweetwhistle",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.nq6RXDLtXMUhkpWB",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.G4iEQyCXqchkVyqL"
     },
     {
       "_id": "59U0r7VKk3tXAJOj",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!5NDBvLrhDDzACBRR.59U0r7VKk3tXAJOj"
     },
     {
+      "_id": "LcQTwYQSUcxjpi5I",
+      "type": "document",
+      "name": "Vagrant's Veil",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.rHVQOrE0J3q9GlcF",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.LcQTwYQSUcxjpi5I"
+    },
+    {
       "_id": "jIUtEnCDCXtoK4Nj",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5NDBvLrhDDzACBRR.jIUtEnCDCXtoK4Nj"
+    },
+    {
+      "_id": "5IDvOkrtUHHP2d31",
+      "type": "document",
+      "name": "Reverse Teetotum",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.Xo6jBlpD8CH588Wx",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5NDBvLrhDDzACBRR.5IDvOkrtUHHP2d31"
     }
   ],
   "folder": null,

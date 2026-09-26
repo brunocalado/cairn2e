@@ -1,0 +1,31 @@
+{
+  "_id": "uxFQSEWA0z3aTyqm",
+  "name": "Beast Pathfinder",
+  "type": "gear",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>That the land is a language unto itself. Your chance of becoming lost in a terrain dominated by the beasts of your <strong>specialty</strong> is reduced by one step (e.g. 4-in-6 becomes 3-in-6).</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!uxFQSEWA0z3aTyqm",
+  "folder": "JutabTvswwdsAoBG"
+}

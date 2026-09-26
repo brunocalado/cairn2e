@@ -1,0 +1,18 @@
+{
+  "_id": "wLUKk5pxYpQLE3Fg",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p><strong>Revere the dead</strong>: Death is a journey we all take, and it deserves respect. Take an extra <strong>30gp</strong>. You always place two gold pieces on the eyelids of a slain foe. Somehow, you always find the coin.</p>",
+    "value": 30,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!wLUKk5pxYpQLE3Fg",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

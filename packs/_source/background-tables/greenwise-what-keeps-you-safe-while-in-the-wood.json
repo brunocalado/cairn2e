@@ -23,6 +23,21 @@
       "_key": "!tables.results!Ody3I6yTN4OcQBqA.mW98HoJGpHafBEZb"
     },
     {
+      "_id": "prlJBFW3JnSslDp4",
+      "type": "document",
+      "name": "Amadou",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.31nDzDagDqWnhCU3",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.prlJBFW3JnSslDp4"
+    },
+    {
       "_id": "k3cCC1IjW5dYS8yR",
       "type": "text",
       "name": "",
@@ -36,6 +51,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!Ody3I6yTN4OcQBqA.k3cCC1IjW5dYS8yR"
+    },
+    {
+      "_id": "qhDKnC5CRieLswst",
+      "type": "document",
+      "name": "Delphinium",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.CoYteO3FpzkSDBFY",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.qhDKnC5CRieLswst"
     },
     {
       "_id": "CvqX6HZ6Dh4aLS0u",
@@ -53,6 +83,21 @@
       "_key": "!tables.results!Ody3I6yTN4OcQBqA.CvqX6HZ6Dh4aLS0u"
     },
     {
+      "_id": "YTv1lx8USssijXxK",
+      "type": "document",
+      "name": "Tacky Stalk",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LCWuvkv7uhPZUde6",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.YTv1lx8USssijXxK"
+    },
+    {
       "_id": "8byUEeCnhv4N62sY",
       "type": "text",
       "name": "",
@@ -66,6 +111,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!Ody3I6yTN4OcQBqA.8byUEeCnhv4N62sY"
+    },
+    {
+      "_id": "5syzkUEDwHKon0rY",
+      "type": "document",
+      "name": "Wisp Lantern",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.wJN05qN2KgW0maLu",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.5syzkUEDwHKon0rY"
     },
     {
       "_id": "4NQzDkQSHAYUEH0h",
@@ -83,6 +143,21 @@
       "_key": "!tables.results!Ody3I6yTN4OcQBqA.4NQzDkQSHAYUEH0h"
     },
     {
+      "_id": "9MAxWeXKBOR73K7w",
+      "type": "document",
+      "name": "Seed Bomb",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.jZycdTszlUUeXNHl",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.9MAxWeXKBOR73K7w"
+    },
+    {
       "_id": "kvEfnJbUbFbMXN5B",
       "type": "text",
       "name": "",
@@ -96,6 +171,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!Ody3I6yTN4OcQBqA.kvEfnJbUbFbMXN5B"
+    },
+    {
+      "_id": "XsjR1XNc3tMF8KbG",
+      "type": "document",
+      "name": "Briarvine",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ZUOBHgR9kStncbuG",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!Ody3I6yTN4OcQBqA.XsjR1XNc3tMF8KbG"
     }
   ],
   "folder": null,

@@ -1,0 +1,31 @@
+{
+  "_id": "kuUxvROCFKHSLxhU",
+  "name": "Milkflower",
+  "type": "gear",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "system": {
+    "description": "<p><strong>Milkflower</strong> A gentle stimulant. Chewing it makes you immune to <em>panic</em> for the next hour. 3 uses.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!kuUxvROCFKHSLxhU",
+  "folder": "WuN39BkGc3MUzAYu"
+}
