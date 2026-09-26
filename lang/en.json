@@ -284,7 +284,8 @@
   "CAIRN.FactionGen": {
     "Button": "Generate Faction",
     "DefaultName": "New Faction",
-    "DraftNamePrefix": "The",
+    "DraftName": "The {trait} {type}",
+    "JournalName": "Factions",
     "NoPermission": "You do not have permission to create journal entries."
   },
   "CAIRN.Fail": "Fail",
@@ -314,6 +315,22 @@
     "None": "Nothing yet. Growth comes from what happens in play.",
     "Title": "Growth",
     "Zone": "Growth"
+  },
+  "CAIRN.Hireling": {
+    "Career": {
+      "Alchemist": "Alchemist",
+      "AnimalHandler": "Animal Handler",
+      "Blacksmith": "Blacksmith",
+      "Bodyguard": "Bodyguard",
+      "LocalGuide": "Local Guide",
+      "Lockpick": "Lockpick",
+      "Navigator": "Navigator",
+      "Sailor": "Sailor",
+      "Scholar": "Scholar",
+      "Tracker": "Tracker",
+      "Trapper": "Trapper",
+      "VeteranBodyguard": "Veteran Bodyguard"
+    }
   },
   "CAIRN.Hit": {
     "Absorbed": "The armour turns it aside.",
@@ -514,13 +531,21 @@
   },
   "CAIRN.MaxUses": "Max uses",
   "CAIRN.MonsterGen": {
+    "Ability": "{ability} {target}",
+    "Appearance": "{article} {physique} {feature} creature",
+    "ArmourDescription": "{name} ({value} Armor)",
+    "ArticleA": "A",
+    "ArticleAn": "An",
     "Hardier": "Hardier (6 HP, d8)",
     "PickTier": "Generate a Monster",
     "PickTierHint": "Choose how tough this creature is. Its stats, attack die and armour follow from the tier.",
+    "Name": "{physique} {feature} Creature",
     "Random": "Random",
     "Reroll": "Re-roll Monster",
     "Serious": "Serious (10 HP, d10)",
-    "Standard": "Standard (3 HP, d6)"
+    "Standard": "Standard (3 HP, d6)",
+    "ToughHide": "Tough Hide",
+    "WeakTo": "Weak to {weakness}"
   },
   "CAIRN.Morale": "Morale",
   "CAIRN.Name": "Name",
@@ -696,6 +721,18 @@
     "Lead": "Damage took this character to exactly 0 HP.",
     "LeadPick": "Choose the row of the Scars table this character takes.",
     "Location": "Location",
+    "Locations": {
+      "Arm": "Arm",
+      "Chest": "Chest",
+      "Ear": "Ear",
+      "Eye": "Eye",
+      "Hands": "Hands",
+      "Leg": "Leg",
+      "Legs": "Legs",
+      "Neck": "Neck",
+      "Rib": "Rib",
+      "Skull": "Skull"
+    },
     "MaxAbility": "Max {key}",
     "MaxHp": "Max Hit Protection",
     "NoChange": "Nothing changed — the roll did not beat what they had.",

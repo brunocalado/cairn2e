@@ -145,9 +145,14 @@ const MONSTER_PORTRAITS = [
 /*  Small helpers                               */
 /* -------------------------------------------- */
 
-/** "a" / "an" for the appearance bullet — Physique words can start with a vowel (Albino, Eyeless). */
+/**
+ * "A" / "An" for the appearance bullet — Physique words can start with a vowel (Albino, Eyeless).
+ * This is the English rule, and it is the one piece of English grammar left in code: its two words
+ * come from `en.json`, and `CAIRN.MonsterGen.Appearance` receives the result as `{article}`. A
+ * language with no use for it leaves the placeholder out of its string.
+ */
 function article(word) {
-  return /^[aeiou]/i.test(String(word).trim()) ? "An" : "A";
+  return game.i18n.localize(/^[aeiou]/i.test(String(word).trim()) ? "CAIRN.MonsterGen.ArticleAn" : "CAIRN.MonsterGen.ArticleA");
 }
 
 /** One ladder rung, chosen by a weight array index-aligned to {@link LADDER}. Never a dice roll. */
@@ -224,13 +229,13 @@ function makeAttackItem(verb, die) {
  * @param {number} value
  */
 function makeArmourItem(feature, isArmour, value) {
-  const name = isArmour ? feature : "Tough Hide";
+  const name = isArmour ? feature : game.i18n.localize("CAIRN.MonsterGen.ToughHide");
   return {
     name,
     type: "gear",
     img: "icons/svg/shield.svg",
     system: {
-      description: `<p>${name} (${value} Armor)</p>`,
+      description: `<p>${game.i18n.localize("CAIRN.MonsterGen.ArmourDescription", { name, value })}</p>`,
       slots: 0,
       equipped: true,
       armor: value
@@ -269,7 +274,9 @@ async function buildMonsterData(tierChoice) {
     items.push(makeArmourItem(feature, featureIsArmour, pick(spec.armorValues)));
   }
 
-  const name = `${physique} ${feature} Creature`.replace(/\s+/g, " ").trim();
+  // Word order is the string's, not the code's: a language that puts the noun first says so in
+  // `en.json`'s counterpart.
+  const name = game.i18n.localize("CAIRN.MonsterGen.Name", { physique, feature }).replace(/\s+/g, " ").trim();
 
   // The SRD's five bullets ("Monster Stat Block Format"), one `feature` Item each, in the order
   // the statblock prints them. A plain bullet is the Item's name with an empty description; the
@@ -278,10 +285,10 @@ async function buildMonsterData(tierChoice) {
   // written one look alike on the Features tab. Flagged `generated` like the attack and armour
   // so a re-roll replaces exactly these.
   const features = [
-    `${article(physique)} ${physique} ${feature} creature`,
+    game.i18n.localize("CAIRN.MonsterGen.Appearance", { article: article(physique), physique, feature }),
     quirk,
-    `Weak to ${weakness}`,
-    `${ability} ${target}`
+    game.i18n.localize("CAIRN.MonsterGen.WeakTo", { weakness }),
+    game.i18n.localize("CAIRN.MonsterGen.Ability", { ability, target })
   ].map((text) => ({ name: text, type: "feature", system: { description: "" } }));
   features.push({
     name: criticalDamage, type: "feature",

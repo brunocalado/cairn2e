@@ -46,15 +46,19 @@
  * ## Naming
  *
  * The page is drafted `The {Trait 1} {Type}` (*The Enigmatic Cultists*), meant to be renamed by
- * the Warden. Rolled content is authored content, not display-translated (`cairn2e` is en-only).
+ * the Warden. The words are the rolled tables' own, and the frame around them is
+ * `CAIRN.FactionGen.DraftName`, so a translation module orders "{trait}" and "{type}" as its
+ * language does. Rolled content arrives already in the table's language: translations are
+ * modules, which translate the tables and `en.json` together.
  */
 
-import { TABLES } from "./constants.js";
+import { SYSTEM_ID, TABLES } from "./constants.js";
 import { rollWardenText } from "./helpers.js";
 
-/** The journal generated factions are filed in. A stable identifier — not localized, so the
- *  "does it already exist?" lookup keeps working whatever the session language. */
-const JOURNAL_NAME = "Factions";
+/** Flag on the journal generated factions are filed in. The journal is found by this, never by
+ *  its name — so the name can be in the table's language, and the Warden can rename it — as the
+ *  Encounters folder is (`encounters.js#FOLDER_FLAG`). */
+const JOURNAL_FLAG = "factionsJournal";
 
 /* -------------------------------------------- */
 /*  Rolling                                     */
@@ -99,9 +103,10 @@ async function buildFaction() {
   const agenda = await rollWardenText(TABLES.FACTION_AGENDA);
   const obstacle = await rollWardenText(TABLES.FACTION_OBSTACLE);
 
-  const label = [trait1, type].filter(Boolean).join(" ");
-  const name = label
-    ? `${game.i18n.localize("CAIRN.FactionGen.DraftNamePrefix")} ${label}`
+  // One of the two may be missing (a Warden's emptied table): the string still frames the other,
+  // and the gap it leaves is closed.
+  const name = (trait1 || type)
+    ? game.i18n.localize("CAIRN.FactionGen.DraftName", { trait: trait1, type }).replace(/\s+/g, " ").trim()
     : game.i18n.localize("CAIRN.FactionGen.DefaultName");
 
   return {
@@ -126,12 +131,15 @@ async function buildFaction() {
 /*  Public entry point                          */
 /* -------------------------------------------- */
 
-/** Find the `Factions` journal, creating it if absent. */
+/** Find the `Factions` journal by its flag, creating it (named in the table's language) if absent. */
 async function ensureFactionsJournal() {
-  const existing = game.journal.getName(JOURNAL_NAME);
+  const existing = game.journal.find((j) => j.getFlag(SYSTEM_ID, JOURNAL_FLAG));
   if (existing) return existing;
   const JournalEntryClass = foundry.utils.getDocumentClass("JournalEntry");
-  return JournalEntryClass.create({ name: JOURNAL_NAME });
+  return JournalEntryClass.create({
+    name: game.i18n.localize("CAIRN.FactionGen.JournalName"),
+    flags: { [SYSTEM_ID]: { [JOURNAL_FLAG]: true } }
+  });
 }
 
 /**

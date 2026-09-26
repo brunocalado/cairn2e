@@ -130,7 +130,9 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
     target.setAttribute("disabled", "disabled");
     const spec = scarEntry(this.entry);
     const total = await rollScarDie("1d6");
-    this.location = spec.location[total - 1];
+    // The die names a key (`scars.js#SCAR_ENTRIES`); what the window prints and the Scar is named
+    // with is that place in the table's language.
+    this.location = game.i18n.localize(`CAIRN.Scar.Locations.${spec.location[total - 1]}`);
     await this.render();
   }
 

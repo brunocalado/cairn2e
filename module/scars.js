@@ -21,8 +21,9 @@ import { gainUpdate, revertUpdate, attrPath, attrResource } from "./gains.js";
  * `deferred` marks a row whose gain waits on the fiction — "once mended", "when you get
  * over it", "after recovery". Nothing fires it; the player asks for it when their table agrees.
  *
- * `location` is the d6 that names where it landed, in face order. `choose` is the same die
- * picking which attribute grows. `save` is a save that gates the gain entirely.
+ * `location` is the d6 that names where it landed, in face order — as keys of the
+ * `CAIRN.Scar.Locations.*` strings, so the place is printed in the table's language. `choose` is
+ * the same die picking which attribute grows. `save` is a save that gates the gain entirely.
  */
 export const SCAR_ENTRIES = [
   { entry: 1, location: ["Neck", "Hands", "Eye", "Chest", "Legs", "Ear"], formula: "1d6", attr: "hp", mode: "higher" },

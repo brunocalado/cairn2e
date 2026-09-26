@@ -53,67 +53,43 @@ export function appearanceTraitRows(system) {
 /** The fields the edit window's dice fill, by key. `career` fills two: the Marketplace fixes the rate to the role. */
 export const NPC_DETAIL_KEYS = ["background", "quirk", "goal", "virtue", "vice", ...APPEARANCE_TRAIT_KEYS, "career"];
 
-/** The 12 hireling careers and their gold/day rates — `players-guide/marketplace.md` → Hirelings.
- *  This object is the source of truth `checks/npc-generator.check.mjs` guards against the SRD. */
-export const HIRELING_CAREERS = {
-  "Alchemist": 30,
-  "Animal Handler": 5,
-  "Blacksmith": 15,
-  "Bodyguard": 10,
-  "Local Guide": 5,
-  "Lockpick": 10,
-  "Navigator": 10,
-  "Sailor": 5,
-  "Scholar": 20,
-  "Tracker": 5,
-  "Trapper": 5,
-  "Veteran Bodyguard": 20
-};
-
-/** Core-icon portrait per hireling Career. */
-const CAREER_PORTRAITS = {
-  "Alchemist": "icons/tools/laboratory/alembic-glass-ball-blue.webp",
-  "Animal Handler": "icons/environment/people/commoner.webp",
-  "Blacksmith": "icons/skills/trades/smithing-anvil-silver-red.webp",
-  "Bodyguard": "icons/environment/people/infantry.webp",
-  "Local Guide": "icons/tools/navigation/map-marked-blue.webp",
-  "Lockpick": "icons/tools/hand/lockpicks-steel-grey.webp",
-  "Navigator": "icons/skills/trades/academics-astronomy-navigation-blue.webp",
-  "Sailor": "icons/environment/people/commoner.webp",
-  "Scholar": "icons/sundries/books/book-embossed-blue.webp",
-  "Tracker": "icons/skills/trades/mining-pickaxe-yellow-blue.webp",
-  "Trapper": "icons/environment/traps/cage-simple-wood.webp",
-  "Veteran Bodyguard": "icons/environment/people/infantry-armored.webp"
+/**
+ * The 12 hireling careers (`players-guide/marketplace.md` → Hirelings), by a stable key: the
+ * gold/day rate, the core-icon portrait, and a tiny kit of Marketplace extras by uuid
+ * ({@link GEAR}) — deliberately short and obvious, the one or two items that make a career read at
+ * a glance (Rations + Torch + a weapon + armor line are added to every NPC already).
+ *
+ * The name a sheet shows is `CAIRN.Hireling.Career.<label>`, in the table's language, and that
+ * name is what `system.career` stores: the Warden edits it as free text in the NPC window, so a
+ * key there would print raw the moment someone typed their own. Never keyed by the English name —
+ * a translation changes it. `checks/npc-generator.check.mjs` guards the rates against the SRD.
+ */
+const CAREERS = {
+  alchemist: { label: "Alchemist", rate: 30, img: "icons/tools/laboratory/alembic-glass-ball-blue.webp", kit: [GEAR.ANTITOXIN] },
+  animalHandler: { label: "AnimalHandler", rate: 5, img: "icons/environment/people/commoner.webp", kit: [GEAR.ANIMAL_FEED] },
+  blacksmith: { label: "Blacksmith", rate: 15, img: "icons/skills/trades/smithing-anvil-silver-red.webp", kit: [] },
+  bodyguard: { label: "Bodyguard", rate: 10, img: "icons/environment/people/infantry.webp", kit: [] },
+  localGuide: { label: "LocalGuide", rate: 5, img: "icons/tools/navigation/map-marked-blue.webp", kit: [GEAR.ROPE] },
+  lockpick: { label: "Lockpick", rate: 10, img: "icons/tools/hand/lockpicks-steel-grey.webp", kit: [GEAR.THIEVING_TOOLS] },
+  navigator: { label: "Navigator", rate: 10, img: "icons/skills/trades/academics-astronomy-navigation-blue.webp", kit: [GEAR.COMPASS] },
+  sailor: { label: "Sailor", rate: 5, img: "icons/environment/people/commoner.webp", kit: [GEAR.ROPE] },
+  scholar: { label: "Scholar", rate: 20, img: "icons/sundries/books/book-embossed-blue.webp", kit: [GEAR.BOOK] },
+  tracker: { label: "Tracker", rate: 5, img: "icons/skills/trades/mining-pickaxe-yellow-blue.webp", kit: [GEAR.REPELLENT] },
+  trapper: { label: "Trapper", rate: 5, img: "icons/environment/traps/cage-simple-wood.webp", kit: [GEAR.TRAP] },
+  veteranBodyguard: { label: "VeteranBodyguard", rate: 20, img: "icons/environment/people/infantry-armored.webp", kit: [] }
 };
 
 const FALLBACK_PORTRAIT = "icons/environment/people/commoner.webp";
-
-/**
- * A tiny career → extra Marketplace item lookup. Deliberately short and obvious: it is not to
- * grow into a content table. By uuid ({@link GEAR}), never by name, so a translated `cairn2e.gear`
- * still kits the hireling. Rations + Torch + a weapon + armor line are added to every NPC
- * already; these are the one or two items that make a career read at a glance.
- */
-const CAREER_KIT = {
-  "Alchemist": [GEAR.ANTITOXIN],
-  "Animal Handler": [GEAR.ANIMAL_FEED],
-  "Local Guide": [GEAR.ROPE],
-  "Lockpick": [GEAR.THIEVING_TOOLS],
-  "Navigator": [GEAR.COMPASS],
-  "Sailor": [GEAR.ROPE],
-  "Scholar": [GEAR.BOOK],
-  "Tracker": [GEAR.REPELLENT],
-  "Trapper": [GEAR.TRAP]
-};
 
 /* -------------------------------------------- */
 /*  Small helpers                               */
 /* -------------------------------------------- */
 
-/** Pick a random hireling career and its rate. */
+/** Pick a random hireling career: its key, its name in the table's language, and its rate. */
 function pickCareer() {
-  const career = pick(Object.keys(HIRELING_CAREERS));
-  return { career, dayRate: HIRELING_CAREERS[career] };
+  const key = pick(Object.keys(CAREERS));
+  const { label, rate } = CAREERS[key];
+  return { key, career: game.i18n.localize(`CAIRN.Hireling.Career.${label}`), dayRate: rate };
 }
 
 /* -------------------------------------------- */
@@ -147,7 +123,7 @@ async function randomMarketItem(packId, opts) {
  * equipped, so `armorTotal` derives), plus a hireling's one-line career kit. Any pack that fails to
  * resolve is simply skipped — a gearless NPC is still a complete NPC.
  */
-async function buildKit(role, career) {
+async function buildKit(role, careerKey) {
   const items = [];
   const push = (it) => { if (it) items.push(it); };
 
@@ -157,7 +133,7 @@ async function buildKit(role, career) {
   push(await randomMarketItem(PACKS.ARMOR, { equipped: true }));
 
   if (role === "hireling") {
-    for (const uuid of CAREER_KIT[career] ?? []) push(await kitItem(uuid));
+    for (const uuid of CAREERS[careerKey]?.kit ?? []) push(await kitItem(uuid));
   }
   return items;
 }
@@ -180,7 +156,7 @@ async function buildNpcData(role) {
   // (`flags.cairn2e.portrait`), because the word itself is what a translation changes.
   const backgroundRoll = isHireling ? null : await rollWardenTable(TABLES.NPC_BACKGROUND);
   const background = stripTags(backgroundRoll?.text);
-  const { career, dayRate } = isHireling ? pickCareer() : { career: "", dayRate: 0 };
+  const { key: careerKey, career, dayRate } = isHireling ? pickCareer() : { key: "", career: "", dayRate: 0 };
 
   const traits = { quirk: "", goal: "", virtue: "", vice: "" };
   for (const key of APPEARANCE_TRAIT_KEYS) traits[key] = await rollTrait(key);
@@ -191,7 +167,7 @@ async function buildNpcData(role) {
 
   const attrs = await rollAttributeSet();
   const hp = await rollHitProtection();
-  const items = await buildKit(role, career);
+  const items = await buildKit(role, careerKey);
 
   const system = {
     role,
@@ -211,7 +187,7 @@ async function buildNpcData(role) {
   };
 
   const img = isHireling
-    ? (CAREER_PORTRAITS[career] ?? FALLBACK_PORTRAIT)
+    ? (CAREERS[careerKey]?.img ?? FALLBACK_PORTRAIT)
     : (backgroundRoll?.results?.[0]?.flags?.[SYSTEM_ID]?.portrait || FALLBACK_PORTRAIT);
 
   return { name, img, system, items };
