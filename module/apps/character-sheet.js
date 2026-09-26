@@ -16,6 +16,7 @@ import { createItemFromPrompt } from "./_item-prompt.js";
 import { CairnScars } from "./scars.js";
 import { CairnCharacterEdit } from "./character-edit.js";
 import { CairnCharacterCreator } from "./character-creator.js";
+import { CairnActionsMenu } from "./actions-menu.js";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -47,6 +48,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
       belongingCreate: CairnCharacterSheet.#onBelongingCreate,
       regenerate: CairnCharacterSheet.#onRegenerate,
       openCreator: CairnCharacterSheet.#onOpenCreator,
+      openActions: CairnCharacterSheet.#onOpenActions,
       resetCreatorRolls: CairnCharacterSheet.#onResetCreatorRolls,
       scarCreate: CairnCharacterSheet.#onScarCreate,
       scarResolve: CairnCharacterSheet.#onScarResolve,
@@ -64,6 +66,9 @@ export class CairnCharacterSheet extends CairnActorSheet {
    * @type {CairnCharacterCreator|null}
    */
   #creator = null;
+
+  /** The Actions menu opened from this sheet's title bar, one per sheet like the creator. */
+  #actions = null;
 
   // One part per region, never one `body`. Parts are appended into `.window-content` in
   // declaration order, and only the parts named in a render are rebuilt. Each tab body is its own
@@ -351,6 +356,31 @@ export class CairnCharacterSheet extends CairnActorSheet {
   /** The Belongings heading's add control: the shared prompt, for a thing not carried. */
   static async #onBelongingCreate() {
     await createItemFromPrompt(this.actor, { carried: false });
+  }
+
+  /**
+   * @override — Actions sits in the title bar, LEFT of the ellipsis, as a labelled button: the
+   * NPC sheet's Promote, built the same way (`npc-sheet.js#_renderFrame`), because a frame button
+   * would land right of the ellipsis with its word hidden in an `aria-label`. It is the owner's —
+   * the player the character belongs to, and the Warden — and never an observer's: every tool in
+   * the menu speaks or acts as the character.
+   */
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+    if (!this.actor.isOwner) return frame;
+    const button = frame.ownerDocument.createElement("button");
+    button.type = "button";
+    button.className = "header-control cairn-frame-label";
+    button.dataset.action = "openActions";
+    button.dataset.tooltip = game.i18n.localize("CAIRN.Actions.Tooltip");
+    button.textContent = game.i18n.localize("CAIRN.Actions.Title");
+    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    return frame;
+  }
+
+  static async #onOpenActions() {
+    this.#actions ??= new CairnActionsMenu({ actor: this.actor });
+    await this.#actions.render({ force: true });
   }
 
   static async #onOpenCreator() {

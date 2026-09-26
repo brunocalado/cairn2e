@@ -46,6 +46,7 @@ export const CSS_SOURCES = [
   "scars.css",
   "journey.css",
   "store.css",
+  "actions.css",
   "dialogs.css",
   "journal-pages.css",
   "table-draw.css",

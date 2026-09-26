@@ -8,6 +8,8 @@
 import { SYSTEM_ID, SETTINGS } from "./constants.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnStore } from "./apps/store.js";
+import { CairnActionsMenu } from "./apps/actions-menu.js";
+import { CairnActionMacros } from "./apps/action-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 
 /**
@@ -109,5 +111,25 @@ export const registerSettings = () => {
     type: Object,
     default: {},
     onChange: () => CairnStore.refresh()
+  });
+
+  // Hidden: the Warden's macros for every character's Actions menu, edited only through the menu
+  // below. `onChange` runs on every client core broadcasts the write to, so a player's open menu
+  // picks up the Warden's edit without being reopened.
+  game.settings.register(SYSTEM_ID, SETTINGS.ACTION_MACROS, {
+    scope: "world",
+    config: false,
+    type: Array,
+    default: [],
+    onChange: () => CairnActionsMenu.refresh()
+  });
+
+  game.settings.registerMenu(SYSTEM_ID, `${SETTINGS.ACTION_MACROS}-menu`, {
+    name: "CAIRN.Settings.ActionMacros.Name",
+    label: "CAIRN.Settings.ActionMacros.Label",
+    hint: "CAIRN.Settings.ActionMacros.Hint",
+    icon: "fa-solid fa-bolt",
+    type: CairnActionMacros,
+    restricted: true
   });
 };

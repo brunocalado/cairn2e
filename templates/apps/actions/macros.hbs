@@ -1,0 +1,19 @@
+{{!-- The Warden's macros, under a group heading, in the Warden's order. Only what this user may
+      run is listed (`actions-menu.js`), and with nothing to list there is no heading either — the
+      part is still one element, because a render part must be. --}}
+<section class="cairn-actions-macros">
+    {{#if macros.length}}
+    <h3 class="cairn-edit-group" data-ink="hline" data-ink-seed="actions-macros" data-ink-w="1.8" data-ink-at="bottom">
+        {{localize "CAIRN.Actions.Macros"}}
+    </h3>
+    <ol class="cairn-plain-list cairn-actions-list">
+        {{#each macros as |m|}}
+        <li class="cairn-slot cairn-actions-row" data-action="runMacro" data-uuid="{{m.uuid}}" role="button"
+            {{#unless @last}}data-ink="hline" data-ink-seed="actions-macro-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <img class="cairn-actions-glyph" src="{{m.img}}" alt="" />
+            <span class="cairn-item-title">{{m.name}}</span>
+        </li>
+        {{/each}}
+    </ol>
+    {{/if}}
+</section>

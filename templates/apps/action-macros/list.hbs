@@ -1,0 +1,23 @@
+{{!-- The Warden's list, in a drawn frame that is also where a Macro is dropped — the frame is what
+      says "this takes something". One list row per macro with its × at the right; a macro that no
+      longer resolves stays, faint and tagged, until it is taken off, because the players' menus
+      drop it without a word and this is the only place anyone learns it is gone. --}}
+<section class="cairn-macros">
+    <ol class="cairn-plain-list cairn-macros-list" data-ink="box" data-ink-seed="macros-drop" data-ink-w="1.6">
+        {{#each rows as |row|}}
+        <li class="cairn-slot{{#if row.missing}} used-up{{/if}}" data-uuid="{{row.uuid}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="macros-row-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <img class="cairn-actions-glyph" src="{{row.img}}" alt="" />
+            <span class="cairn-item-name-and-tags">
+                <span class="cairn-item-title">{{row.name}}</span>
+                {{#if row.missing}}<span class="cairn-item-tag">{{localize "CAIRN.Settings.ActionMacros.Missing"}}</span>{{/if}}
+            </span>
+            <span class="cairn-item-controls">
+                <a data-action="macroRemove" data-tooltip="{{localize 'CAIRN.Settings.ActionMacros.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize "CAIRN.Settings.ActionMacros.Empty"}}</li>
+        {{/each}}
+    </ol>
+</section>

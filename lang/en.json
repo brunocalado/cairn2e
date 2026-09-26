@@ -1,4 +1,10 @@
 {
+  "CAIRN.Actions": {
+    "Title": "Actions",
+    "Tooltip": "Whisper, and the Warden's macros",
+    "Macros": "Macros",
+    "MacroMissing": "That macro is gone."
+  },
   "CAIRN.Add": "Add",
   "CAIRN.AddFatigue": "Add fatigue",
   "CAIRN.AddFeature": "Add Feature",
@@ -684,6 +690,16 @@
   "CAIRN.SetAside": "Set aside \u2014 it stays written down and leaves your hands",
   "CAIRN.SetAsideTag": "Set aside",
   "CAIRN.Settings": {
+    "ActionMacros": {
+      "Name": "Actions menu macros",
+      "Label": "Choose macros",
+      "Hint": "Drop Macros here from the directory or a compendium. Every character's Actions menu lists them, each run with that character as its actor; a player sees only the ones they may run.",
+      "OnlyMacros": "Only a Macro can go here.",
+      "Already": "{name} is already on the list.",
+      "Missing": "Missing",
+      "Remove": "Take off the list",
+      "Empty": "No macros yet. Drop one here."
+    },
     "BestiaryArt": {
       "Name": "Bestiary artwork",
       "Hint": "Lay the images in the artwork folder over the Bestiary compendium \u2014 portraits/ on the portrait, tokens/ on the token \u2014 on every world load and for every player. One file per monster, named after it (Blink-Dog.webp). The compendium itself is never changed; turning this off brings the core icons back."
@@ -780,6 +796,17 @@
   "CAIRN.Uses": "Uses",
   "CAIRN.WardenUserName": "Warden",
   "CAIRN.WelcomePlaylist": "Welcome",
+  "CAIRN.Whisper": {
+    "Title": "Whisper",
+    "To": "To",
+    "Warden": "Warden",
+    "NobodyOnline": "Nobody else is connected.",
+    "Placeholder": "What do you say?",
+    "Hint": "Only the people picked will see it. Ctrl+Enter sends.",
+    "Send": "Send",
+    "Flavor": "Whispered to {names}",
+    "Sent": "Whispered to {names}."
+  },
   "CAIRN.Years": "years",
   "DEX": "DEX",
   "STR": "STR",

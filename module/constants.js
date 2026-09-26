@@ -68,6 +68,12 @@ export const SETTINGS = {
    *  Not a toggle either: it is a pointer, kept honest by `CairnActor`'s create and delete. */
   ACTIVE_PARTY: "active-party",
 
+  /** Hidden (`config: false`) — the Macro uuids the Warden put in every character's Actions
+   *  menu, in the Warden's order. Uuids only: a name or an image stored beside one goes stale the
+   *  moment the macro is renamed, so both are read off the live document every time. Edited only
+   *  through the settings menu (`module/apps/action-macros.js`). */
+  ACTION_MACROS: "action-macros",
+
   /** Shown — whether the Warden's own bestiary art is laid over `cairn2e.bestiary` through core's
    *  Compendium Art map (`module/bestiary-art.js`). Off by default: a fresh install has no folder. */
   BESTIARY_ART: "bestiary-art",
