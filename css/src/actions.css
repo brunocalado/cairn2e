@@ -15,9 +15,10 @@
      * border; every button is Primitive 2; the whisper's text is the drawn   *
      * box every free-text field wears (`.cairn-edit-text`); a group heading  *
      * is `.cairn-edit-group`. What is particular to these windows is only    *
-     * layout, and one mark: a PICKED recipient is said the way a chosen      *
+     * layout, and one mark: a PICKED barter row is said the way a chosen     *
      * Scars row is — the square at the head of the row inverts to paper on   *
-     * ink — never with a hue, a tint or a border.                            *
+     * ink — never with a hue, a tint or a border. A whisper's recipient is a *
+     * button, and picked is the button's own pressed state.                  *
      **************************************************************************/
 
     &:is(.cairn-actions, .cairn-whisper, .cairn-action-macros, .cairn-barter) .window-content {
@@ -30,7 +31,6 @@
        the word alone — the rule under the row is a canvas stroke, and a ground painted on the row
        would sit inside it with a gap on every edge. */
     .cairn-actions-row,
-    .cairn-whisper-user,
     .cairn-barter-row {
         cursor: var(--cursor-pointer);
         padding: 0 2px;
@@ -62,9 +62,14 @@
         margin-top: 4px;
     }
 
-    /* The pick mark, on a whisper's recipient and a barter's thing alike: faint ink off, paper on
-       ink when picked — the inversion Primitive 2 uses for a pressed button, which is what a
-       picked row is. */
+    /* With no macro to offer the part is still rendered — a part must be one element — and as
+       an empty flex child it would add the window's gap under Whisper as dead paper. */
+    .cairn-actions-macros:not(:has(*)) {
+        display: none;
+    }
+
+    /* The pick mark on a barter's thing: faint ink off, paper on ink when picked — the inversion
+       Primitive 2 uses for a pressed button, which is what a picked row is. */
     .cairn-pick-mark {
         align-items: center;
         border-radius: var(--cairn-radius);
@@ -76,7 +81,6 @@
         justify-content: center;
     }
 
-    .cairn-whisper-user.selected,
     .cairn-barter-row.selected {
         .cairn-pick-mark {
             background: var(--cairn-ink);
@@ -86,6 +90,34 @@
         .cairn-item-title {
             color: var(--cairn-ink);
             font-weight: 700;
+        }
+    }
+
+    /* The heading and the recipients share one line and wrap under it, so a table of five does not
+       stack five rows before the text box. The heading's own rule and margins are dropped: the
+       rule is the section's, under the last line of names. */
+    .cairn-whisper-to {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding-bottom: 8px;
+
+        .cairn-edit-group {
+            margin: 0 4px 0 0;
+            padding: 0;
+        }
+
+        .cairn-empty {
+            margin: 0;
+        }
+
+        /* `--button-size` on the control itself: core declares it there, not on an ancestor. */
+        button.cairn-whisper-user {
+            --button-size: 28px;
+            flex: 0 0 auto;
+            padding: 0 10px;
+            width: auto;
         }
     }
 
@@ -154,5 +186,33 @@
         display: flex;
         flex-direction: column;
         gap: 6px;
+    }
+
+    /* The coin: word, number, and what it is out of, on one line inside the drawn box. The number
+       is set at the size a maximum is in the edit window and is five digits wide — room for a
+       four-digit purse without the field running the width of the window. */
+    .cairn-barter-coin {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        padding: 8px 12px;
+
+        label {
+            color: var(--cairn-ink-soft);
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        input {
+            flex: 0 0 auto;
+            font-size: 20px;
+            font-variant-numeric: tabular-nums;
+            height: auto;
+            line-height: normal;
+            padding: 0 2px;
+            text-align: center;
+            width: 5ch;
+        }
     }
 }

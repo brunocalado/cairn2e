@@ -128,9 +128,13 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
     if (partId !== "foot") return;
+    // Digits only, and never more than there is: whatever is typed or pasted is cut back in the
+    // field itself, so the number on screen is always the number that would be handed over.
     htmlElement.querySelector("input[name=coin]").addEventListener("input", (event) => {
-      const n = Math.floor(Number(event.currentTarget.value));
-      this.#coin = Number.isFinite(n) ? Math.min(Math.max(0, n), this.#coinMax()) : 0;
+      const field = event.currentTarget;
+      const digits = field.value.replace(/\D/g, "");
+      this.#coin = digits ? Math.min(Number(digits), this.#coinMax()) : 0;
+      field.value = digits ? String(this.#coin) : "";
       this.#syncSend();
     });
     htmlElement.querySelector("select[name=target]").addEventListener("change", (event) => {

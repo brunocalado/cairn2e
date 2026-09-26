@@ -817,7 +817,6 @@
   "CAIRN.Whisper": {
     "Title": "Whisper",
     "To": "To",
-    "Warden": "Warden",
     "NobodyOnline": "Nobody else is connected.",
     "Placeholder": "What do you say?",
     "Hint": "Only the people picked will see it. Ctrl+Enter sends.",

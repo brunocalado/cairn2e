@@ -21,7 +21,7 @@ const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/whisper-card.hbs`;
  * Plain text: what is typed is escaped before it reaches the card, so pasted markup is shown and
  * never run. Line breaks are the one thing carried over.
  *
- * Picking a user redraws nothing — the row's mark and the Send button are set in place — so the
+ * Picking a user redraws nothing — the user's button and Send are set in place — so the
  * text being written is never thrown away by a click.
  */
 export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
@@ -60,7 +60,7 @@ export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(Appli
     for (const id of this.#picked) if (!users.some((u) => u.id === id)) this.#picked.delete(id);
     context.users = users
       .sort((a, b) => a.name.localeCompare(b.name))
-      .map((u) => ({ id: u.id, name: u.name, isGM: u.isGM, picked: this.#picked.has(u.id) }));
+      .map((u) => ({ id: u.id, name: u.name, picked: this.#picked.has(u.id) }));
     return context;
   }
 
@@ -97,7 +97,6 @@ export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(Appli
     const id = target.dataset.userId;
     if (this.#picked.has(id)) this.#picked.delete(id);
     else this.#picked.add(id);
-    target.classList.toggle("selected", this.#picked.has(id));
     target.setAttribute("aria-pressed", String(this.#picked.has(id)));
     this.#syncSend();
   }
