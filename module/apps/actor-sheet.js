@@ -11,6 +11,8 @@ import { slotsForItem, layoutSlots } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { enrich } from "../helpers.js";
 import { lightSpell } from "../light-sources.js";
+import { bundleItems } from "../transfer-rules.js";
+import { receiveItems } from "../transfer.js";
 import { CairnSheetMixin } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
@@ -575,16 +577,22 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // Every drop is a document. 2e's inventory is a list of items and a second Rope is a second
     // line — there is no count for a match to raise, so nothing is looked up by name here.
     //
-    // No capacity check either: the document refuses a create that would not fit
-    // (`documents/item.js`), and says so. What this has to know is whether it DID land, so a
-    // refused move never deletes the thing it came from.
-    const created = await this.actor.createEmbeddedDocuments("Item", [item.toObject()]);
-    if (!created.length) return;
+    // A container brings what is in it, a stowed thing arrives on the body, a sack joins the sack
+    // already here, and nothing arrives in anybody's hand (`transfer-rules.js`). No capacity check
+    // either: the document refuses a create that would not fit (`documents/item.js`), and says
+    // so. What this has to know is what DID land, so a refused move never deletes the thing it
+    // came from.
+    const source = item.parent;
+    const all = source ? source.items.map((i) => i.toObject()) : [item.toObject()];
+    const { landed } = await receiveItems(this.actor, bundleItems([item.toObject()], all));
+    if (!landed.length) return;
 
     // The source goes, when this user may take it: a copy from a sheet they cannot modify is a
     // copy, as core's own drop is, rather than a delete that rejects after the copy was made.
     // Never mutate its in-memory data directly — upstream did, so a rejected write left the
     // wrong value on screen.
-    if (item.parent && item.parent.uuid !== this.actor.uuid && item.isOwner) await item.delete();
+    if (source && source.uuid !== this.actor.uuid && item.isOwner) {
+      await source.deleteEmbeddedDocuments("Item", landed);
+    }
   }
 }

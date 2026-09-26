@@ -67,6 +67,24 @@ export async function putCoin(actor, amount, place = "") {
 }
 
 /**
+ * Every place `amount` more coin fits whole: the body first when it does, then each container
+ * with room for all of it, in collection order. Empty when there is nowhere.
+ * @param {Actor} actor
+ * @param {number} amount  Positive.
+ * @param {object} [free]  As `chooseGainPlace`.
+ * @returns {string[]}  `""` and container ids.
+ */
+export function gainPlaces(actor, amount, { bodyFree, containerFree } = {}) {
+  const bodySack = sackAt(actor.items, "")?.system.value ?? 0;
+  if (gainFits(bodySack, amount, bodyFree ?? freeAt(actor, ""))) return [""];
+  return actor.items.filter((c) => {
+    if (!c.system.isContainer) return false;
+    const existing = sackAt(actor.items, c.id)?.system.value ?? 0;
+    return gainFits(existing, amount, containerFree?.[c.id] ?? freeAt(actor, c.id));
+  }).map((c) => c.id);
+}
+
+/**
  * Where `amount` more coin goes. The body, when the growth fits its free slots; otherwise the
  * player picks a container, and only a container with room for the WHOLE amount is offered —
  * coin is never split across two places by the system. Null when there is nowhere, or the
@@ -81,19 +99,14 @@ export async function putCoin(actor, amount, place = "") {
  * @param {Record<string, number>} [free.containerFree]  By container id.
  * @returns {Promise<string|null>}
  */
-export async function chooseGainPlace(actor, amount, { bodyFree, containerFree } = {}) {
-  const bodySack = sackAt(actor.items, "")?.system.value ?? 0;
-  if (gainFits(bodySack, amount, bodyFree ?? freeAt(actor, ""))) return "";
-
-  const options = actor.items.filter((c) => {
-    if (!c.system.isContainer) return false;
-    const existing = sackAt(actor.items, c.id)?.system.value ?? 0;
-    return gainFits(existing, amount, containerFree?.[c.id] ?? freeAt(actor, c.id));
-  });
-  if (!options.length) {
+export async function chooseGainPlace(actor, amount, free = {}) {
+  const places = gainPlaces(actor, amount, free);
+  if (places[0] === "") return "";
+  if (!places.length) {
     ui.notifications.warn(game.i18n.localize("CAIRN.Notify.CoinNoRoom", { amount }));
     return null;
   }
+  const options = places.map((id) => actor.items.get(id));
   // One button per container. `wait` resolves to the callback's value, or null on close.
   return DialogV2.wait({
     classes: [SYSTEM_ID],
