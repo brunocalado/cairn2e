@@ -1,27 +1,32 @@
 {{!-- How much coin, to whom, and the one button. The coin is capped at what the character holds
       outside any container being handed over (`barter.js#coinMax`) — the coin in a Backpack goes
-      with the Backpack. Send stays dead until there is a recipient and something to give.
+      with the Backpack.
 
       The coin is the one thing here that is typed, so it is framed: the drawn box the maximums in
       the edit window wear, around the word, the number and what it is out of. A text field and not
-      `type="number"`, which lets `e`, `-` and `.` through; `barter.js` keeps it to digits. --}}
+      `type="number"`, which lets `e`, `-` and `.` through; `barter.js` keeps it to digits.
+
+      Who it goes to is said the way a whisper's recipients are: one ink button per character on
+      the heading's line, the chosen one pressed. Only one can be — a trade has one other side.
+
+      Hand over is never dimmed: clicked before there is someone and something, it says which is
+      missing. --}}
 <footer class="cairn-barter-foot">
     <div class="cairn-barter-coin" data-ink="box" data-ink-seed="barter-coin" data-ink-w="1.6">
         <label for="barter-coin-{{actorId}}">{{localize "CAIRN.Barter.Coin"}}</label>
         <input id="barter-coin-{{actorId}}" type="text" inputmode="numeric" autocomplete="off" name="coin" value="{{coin}}" />
         <span class="cairn-field-unit">{{localize "CAIRN.Barter.CoinOf" max=coinMax}}</span>
     </div>
-    <div class="cairn-field">
-        <label for="barter-to-{{actorId}}">{{localize "CAIRN.Barter.To"}}</label>
-        <select id="barter-to-{{actorId}}" name="target">
-            <option value="">{{localize "CAIRN.Barter.Choose"}}</option>
-            {{#each targets as |t|}}
-            <option value="{{t.uuid}}" {{#if t.selected}}selected{{/if}}>{{t.name}}</option>
-            {{/each}}
-        </select>
-    </div>
-    {{#unless targets.length}}<p class="cairn-whisper-hint">{{localize "CAIRN.Barter.NoTargets"}}</p>{{/unless}}
-    <button type="button" data-action="barterSend" disabled>
+    <section class="cairn-pick-line" data-ink="hline" data-ink-seed="barter-to" data-ink-w="1.8" data-ink-at="bottom">
+        <h3 class="cairn-edit-group">{{localize "CAIRN.Barter.To"}}</h3>
+        {{#each targets as |t|}}
+        <button type="button" class="cairn-pick-button" data-action="barterTarget" data-uuid="{{t.uuid}}"
+            aria-pressed="{{#if t.selected}}true{{else}}false{{/if}}">{{t.name}}</button>
+        {{else}}
+        <p class="cairn-empty">{{localize "CAIRN.Barter.NoTargets"}}</p>
+        {{/each}}
+    </section>
+    <button type="button" data-action="barterSend">
         <i class="fa-solid fa-handshake" inert></i> {{localize "CAIRN.Barter.Send"}}
     </button>
 </footer>

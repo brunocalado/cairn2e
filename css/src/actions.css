@@ -15,10 +15,10 @@
      * border; every button is Primitive 2; the whisper's text is the drawn   *
      * box every free-text field wears (`.cairn-edit-text`); a group heading  *
      * is `.cairn-edit-group`. What is particular to these windows is only    *
-     * layout, and one mark: a PICKED barter row is said the way a chosen     *
-     * Scars row is — the square at the head of the row inverts to paper on   *
-     * ink — never with a hue, a tint or a border. A whisper's recipient is a *
-     * button, and picked is the button's own pressed state.                  *
+     * layout, and one mark: a PICKED barter row is ringed in drawn ink, the  *
+     * way a thing is marked on a paper list — never with a hue, a tint or a  *
+     * CSS border. A recipient, of a whisper or of a barter, is a button, and *
+     * picked is the button's own pressed state.                              *
      **************************************************************************/
 
     &:is(.cairn-actions, .cairn-whisper, .cairn-action-macros, .cairn-barter) .window-content {
@@ -68,35 +68,17 @@
         display: none;
     }
 
-    /* The pick mark on a barter's thing: faint ink off, paper on ink when picked — the inversion
-       Primitive 2 uses for a pressed button, which is what a picked row is. */
-    .cairn-pick-mark {
-        align-items: center;
-        border-radius: var(--cairn-radius);
-        color: var(--cairn-ink-faint);
-        display: flex;
-        flex: 0 0 20px;
-        font-size: 11px;
-        height: 20px;
-        justify-content: center;
+    /* A barter row that goes: its name in full ink and bold. The ring itself is the ink layer's
+       `box`, swapped in for the row's rule by the template. */
+    .cairn-barter-row.selected .cairn-item-title {
+        color: var(--cairn-ink);
+        font-weight: 700;
     }
 
-    .cairn-barter-row.selected {
-        .cairn-pick-mark {
-            background: var(--cairn-ink);
-            color: var(--cairn-paper);
-        }
-
-        .cairn-item-title {
-            color: var(--cairn-ink);
-            font-weight: 700;
-        }
-    }
-
-    /* The heading and the recipients share one line and wrap under it, so a table of five does not
-       stack five rows before the text box. The heading's own rule and margins are dropped: the
-       rule is the section's, under the last line of names. */
-    .cairn-whisper-to {
+    /* Recipients, of a whisper and of a barter: the heading and the names share one line and wrap
+       under it, so a table of five does not stack five rows. The heading's own rule and margins
+       are dropped: the rule is the section's, under the last line of names. */
+    .cairn-pick-line {
         align-items: center;
         display: flex;
         flex-wrap: wrap;
@@ -113,7 +95,7 @@
         }
 
         /* `--button-size` on the control itself: core declares it there, not on an ancestor. */
-        button.cairn-whisper-user {
+        button.cairn-pick-button {
             --button-size: 28px;
             flex: 0 0 auto;
             padding: 0 10px;
@@ -171,6 +153,16 @@
             cursor: default;
         }
 
+        /* Air inside the ring, so its stroke never runs through the thing's image. A ringed
+           thing inside a container keeps its indent on the left, which is air enough. */
+        &.is-ringed {
+            padding-right: 6px;
+        }
+
+        &.is-ringed:not(.is-inside) {
+            padding-left: 6px;
+        }
+
         &.is-locked:not(.selected) .cairn-item-title {
             color: var(--cairn-ink-faint);
         }
@@ -213,6 +205,14 @@
             padding: 0 2px;
             text-align: center;
             width: 5ch;
+
+            /* The ruled field thickens its rule on focus, which makes the field a pixel taller —
+               and the drawn box around it, sized to what it holds, was redrawn to a new outline on
+               every click. The second pixel is a shadow here: seen, and taking no room. */
+            &:focus {
+                border-bottom-width: var(--cairn-hairline);
+                box-shadow: 0 1px 0 var(--cairn-ink);
+            }
         }
     }
 }

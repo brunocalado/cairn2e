@@ -2,10 +2,10 @@
       on the heading's own line and wrapping under it as the names run out of room. Picked is the
       primitive's pressed state — `aria-pressed` inverts the button to paper on ink. A click sets it
       in place and redraws nothing, so what is being written below is never lost to it. --}}
-<section class="cairn-whisper-to" data-ink="hline" data-ink-seed="whisper-to" data-ink-w="1.8" data-ink-at="bottom">
+<section class="cairn-pick-line" data-ink="hline" data-ink-seed="whisper-to" data-ink-w="1.8" data-ink-at="bottom">
     <h3 class="cairn-edit-group">{{localize "CAIRN.Whisper.To"}}</h3>
     {{#each users as |u|}}
-    <button type="button" class="cairn-whisper-user" data-action="whisperPick" data-user-id="{{u.id}}"
+    <button type="button" class="cairn-pick-button" data-action="whisperPick" data-user-id="{{u.id}}"
         aria-pressed="{{#if u.picked}}true{{else}}false{{/if}}">{{u.name}}</button>
     {{else}}
     <p class="cairn-empty">{{localize "CAIRN.Whisper.NobodyOnline"}}</p>

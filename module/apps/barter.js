@@ -44,6 +44,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     window: { icon: "fa-solid fa-handshake", resizable: false },
     actions: {
       barterPick: CairnBarter.#onPick,
+      barterTarget: CairnBarter.#onTarget,
       barterSend: CairnBarter.#onSend
     }
   };
@@ -90,7 +91,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
       const blocked = contents.some((c) => !PORTABLE.has(c.type));
       const whole = this.#picked.has(item.id);
       rows.push({
-        id: item.id, name: item.name, img: item.img, picked: whole, locked: blocked,
+        id: item.id, name: item.name, img: item.img, picked: whole, ringed: whole, locked: blocked,
         reason: blocked ? game.i18n.localize("CAIRN.Barter.HoldsFatigue") : "",
         setAside: item.system.carried === false && !item.system.isContainer
       });
@@ -102,6 +103,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
           // Coin is handed over by amount, below, so a sack is never picked on its own; inside a
           // container that goes, it goes too, and says so.
           picked: whole || this.#picked.has(c.id),
+          ringed: this.#picked.has(c.id),
           locked: whole || coin || !PORTABLE.has(c.type)
         });
       }
@@ -123,8 +125,8 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     return context;
   }
 
-  /** @override — the coin field and the recipient are typed and chosen, not clicked, so they are
-   *  bound on the foot that was just made, never over `this.element`. */
+  /** @override — the coin field is typed, not clicked, so it is bound on the foot that was just
+   *  made, never over `this.element`. */
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
     if (partId !== "foot") return;
@@ -135,11 +137,6 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
       const digits = field.value.replace(/\D/g, "");
       this.#coin = digits ? Math.min(Number(digits), this.#coinMax()) : 0;
       field.value = digits ? String(this.#coin) : "";
-      this.#syncSend();
-    });
-    htmlElement.querySelector("select[name=target]").addEventListener("change", (event) => {
-      this.#target = event.currentTarget.value;
-      this.#syncSend();
     });
   }
 
@@ -149,10 +146,19 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     this.#syncSend();
   }
 
-  /** Send is live with a recipient chosen and something to give, and while no send is out. */
+  /** Send is dead only while a send is out; before there is someone and something, a click says
+   *  which is missing rather than the button fading. */
   #syncSend() {
     const send = this.element.querySelector("[data-action=barterSend]");
-    if (send) send.disabled = this.#busy || !this.#target || (!this.#picked.size && !this.#coin);
+    if (send) send.disabled = this.#busy;
+  }
+
+  /** One recipient: pressing a name releases the other, in place, so the coin being typed stays. */
+  static #onTarget(event, target) {
+    this.#target = target.dataset.uuid;
+    for (const b of this.element.querySelectorAll("[data-action=barterTarget]")) {
+      b.setAttribute("aria-pressed", String(b.dataset.uuid === this.#target));
+    }
   }
 
   static #onPick(event, target) {
@@ -171,7 +177,9 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     const target = await fromUuid(this.#target);
     const coin = Math.min(this.#coin, this.#coinMax());
     const chosen = [...this.#picked].map((id) => this.actor.items.get(id)).filter(Boolean);
-    if (!target || (!chosen.length && !coin)) return;
+    if (!chosen.length && !coin) return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.NeedSomething"));
+    if (!target) return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.NeedTarget"));
+    if (this.#busy) return;
 
     this.#busy = true;
     this.#syncSend();

@@ -21,7 +21,7 @@ const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/whisper-card.hbs`;
  * Plain text: what is typed is escaped before it reaches the card, so pasted markup is shown and
  * never run. Line breaks are the one thing carried over.
  *
- * Picking a user redraws nothing — the user's button and Send are set in place — so the
+ * Picking a user redraws nothing — the user's button is set in place — so the
  * text being written is never thrown away by a click.
  */
 export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
@@ -64,7 +64,7 @@ export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(Appli
     return context;
   }
 
-  /** @override — keys are not clicks, so Ctrl+Enter and the typing that arms Send are bound on
+  /** @override — keys are not clicks, so Ctrl+Enter is bound on
    *  the part that was just made, never over `this.element`, where a surviving textarea would
    *  collect one more listener per render. */
   _attachPartListeners(partId, htmlElement, options) {
@@ -76,21 +76,12 @@ export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(Appli
       event.preventDefault();
       CairnWhisper.#onSend.call(this);
     });
-    box.addEventListener("input", () => this.#syncSend());
   }
 
   /** @override */
   _onRender(context, options) {
     super._onRender(context, options);
-    this.#syncSend();
     this.element.querySelector("textarea[name=message]")?.focus();
-  }
-
-  /** Send is live while someone is picked and something is written. */
-  #syncSend() {
-    const text = this.element.querySelector("textarea[name=message]")?.value.trim();
-    const send = this.element.querySelector("[data-action=whisperSend]");
-    if (send) send.disabled = !this.#picked.size || !text;
   }
 
   static #onPick(event, target) {
@@ -98,13 +89,13 @@ export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(Appli
     if (this.#picked.has(id)) this.#picked.delete(id);
     else this.#picked.add(id);
     target.setAttribute("aria-pressed", String(this.#picked.has(id)));
-    this.#syncSend();
   }
 
   static async #onSend() {
     const text = this.element.querySelector("textarea[name=message]")?.value.trim();
     const to = [...this.#picked];
-    if (!to.length || !text) return;
+    if (!to.length) return ui.notifications.warn(game.i18n.localize("CAIRN.Whisper.NeedWho"));
+    if (!text) return ui.notifications.warn(game.i18n.localize("CAIRN.Whisper.NeedText"));
     const names = to.map((id) => game.users.get(id)?.name).filter(Boolean);
     const content = await foundry.applications.handlebars.renderTemplate(CARD_TPL, {
       text: foundry.utils.escapeHTML(text).replace(/\r?\n/g, "<br>")

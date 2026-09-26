@@ -1,12 +1,12 @@
 {{!-- What is said, in the drawn box every free-text field in the system wears (`.cairn-edit-text`),
-      then the one button. Send stays dead until someone is picked and something is written
-      (`whisper.js#syncSend`); Ctrl+Enter sends too. --}}
+      then the one button. Send is never dimmed: clicked before someone is picked and something is
+      written, it says which is missing (`whisper.js#onSend`). Ctrl+Enter sends too. --}}
 <footer class="cairn-whisper-foot">
     <textarea class="cairn-edit-text cairn-whisper-text" name="message" rows="4"
         placeholder="{{localize 'CAIRN.Whisper.Placeholder'}}"
         data-ink="box" data-ink-seed="whisper-text" data-ink-w="1.6"></textarea>
     <p class="cairn-whisper-hint">{{localize "CAIRN.Whisper.Hint"}}</p>
-    <button type="button" data-action="whisperSend" disabled>
+    <button type="button" data-action="whisperSend">
         <i class="fa-solid fa-comment-dots" inert></i> {{localize "CAIRN.Whisper.Send"}}
     </button>
 </footer>
