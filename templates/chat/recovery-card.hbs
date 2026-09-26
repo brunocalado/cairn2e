@@ -1,0 +1,9 @@
+{{!-- The record of a recovery — a Rest, or Attributes restored — as its body: the message's
+      `flavor` says who recovered and how, and is the caption; the speaker is the character. One
+      line per number that moved, from what it was to what it is. The lines are the store card's,
+      because this is the same kind of record. --}}
+<ul class="cairn-store-card-lines">
+    {{#each lines}}
+    <li><span>{{localize "CAIRN.Recovery.Line" label=this.label from=this.from to=this.to}}</span></li>
+    {{/each}}
+</ul>

@@ -313,7 +313,10 @@ export class CairnActor extends Actor {
     if (this.system.deprived) {
       return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.DeprivedNoRecovery"));
     }
-    return this.update({ "system.hp.value": this.system.hp.max });
+    const lines = [this.#recoveryLine("CAIRN.HitProtection", this.system.hp)].filter(Boolean);
+    const updated = await this.update({ "system.hp.value": this.system.hp.max });
+    await this.#postRecovery("CAIRN.Recovery.RestFlavor", lines);
+    return updated;
   }
 
   /** A week's rest with a healer restores lost Attributes. */
@@ -321,10 +324,37 @@ export class CairnActor extends Actor {
     if (this.system.deprived) {
       return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.DeprivedNoRecovery"));
     }
-    return this.update({
-      "system.abilities.STR.value": this.system.abilities.STR.max,
-      "system.abilities.DEX.value": this.system.abilities.DEX.max,
-      "system.abilities.WIL.value": this.system.abilities.WIL.max,
+    const { STR, DEX, WIL } = this.system.abilities;
+    const lines = [["STR", STR], ["DEX", DEX], ["WIL", WIL]]
+      .map(([key, attr]) => this.#recoveryLine(key, attr)).filter(Boolean);
+    const updated = await this.update({
+      "system.abilities.STR.value": STR.max,
+      "system.abilities.DEX.value": DEX.max,
+      "system.abilities.WIL.value": WIL.max,
+    });
+    await this.#postRecovery("CAIRN.Recovery.RestoreFlavor", lines);
+    return updated;
+  }
+
+  /** One line of a recovery card — a value that is below its max, and so is about to move. */
+  #recoveryLine(labelKey, { value, max }) {
+    return value < max ? { label: game.i18n.localize(labelKey), from: value, to: max } : null;
+  }
+
+  /**
+   * Say in chat what a recovery changed, so the table sees a player's character heal without
+   * anyone watching the sheet. Only for a character a player has as their own — a Warden resting
+   * an NPC or a spare sheet is bookkeeping, not play — and only when something moved.
+   */
+  async #postRecovery(flavorKey, lines) {
+    if (!lines.length) return;
+    if (!game.users.some((u) => !u.isGM && u.character?.id === this.id)) return;
+    const content = await foundry.applications.handlebars.renderTemplate(
+      `systems/${SYSTEM_ID}/templates/chat/recovery-card.hbs`, { lines });
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: game.i18n.localize(flavorKey, { name: this.name }),
+      content
     });
   }
 

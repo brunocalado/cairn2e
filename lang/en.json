@@ -621,6 +621,11 @@
     "Wary": "Wary"
   },
   "CAIRN.Recharge": "Recharge",
+  "CAIRN.Recovery": {
+    "RestFlavor": "{name} rests",
+    "RestoreFlavor": "{name}'s attributes are restored",
+    "Line": "{label}: {from} to {to}"
+  },
   "CAIRN.RegenerateCharacter": "Regenerate",
   "CAIRN.RelicHint": "A Relic causes no Fatigue, has limited uses, and recharges when its condition is met.",
   "CAIRN.Remove": "Remove",
