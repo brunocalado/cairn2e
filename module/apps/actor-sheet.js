@@ -582,9 +582,16 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // either: the document refuses a create that would not fit (`documents/item.js`), and says
     // so. What this has to know is what DID land, so a refused move never deletes the thing it
     // came from.
+    //
+    // A document straight out of a pack is stamped with its own uuid as `_stats.compendiumSource`,
+    // as core's import does: it is how the copy is still recognised (a light source, say) once a
+    // translation module has renamed it. A copy from a sidebar or another actor already carries
+    // whatever source it had.
     const source = item.parent;
-    const all = source ? source.items.map((i) => i.toObject()) : [item.toObject()];
-    const { landed } = await receiveItems(this.actor, bundleItems([item.toObject()], all));
+    const chosen = item.toObject();
+    if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };
+    const all = source ? source.items.map((i) => i.toObject()) : [chosen];
+    const { landed } = await receiveItems(this.actor, bundleItems([chosen], all));
     if (!landed.length) return;
 
     // The source goes, when this user may take it: a copy from a sheet they cannot modify is a

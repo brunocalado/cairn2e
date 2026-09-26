@@ -36,7 +36,7 @@
 import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, PACKS, CONDITION, DEFAULT_ARTWORK } from "./constants.js";
 import { coinItem } from "./coin-rules.js";
-import { stripTags, detachSource } from "./helpers.js";
+import { stripTags, copyOf } from "./helpers.js";
 import { parseGearLine, resolveItem, getBackgrounds, toPlainText } from "./character-generator.js";
 
 const { DialogV2 } = foundry.applications.api;
@@ -178,7 +178,7 @@ async function resolveKettlewrightItem(entry, packDocs) {
     const docs = packDocs[i] ?? [];
     const hit = docs.find((d) => d.name.toLowerCase() === name.toLowerCase());
     if (!hit) continue;
-    const data = detachSource(hit.toObject());
+    const data = copyOf(hit);
     data.system = data.system ?? {};
     // A tag on the entry overrides what the Marketplace document costs; *petty* wins both.
     if (tags.includes("petty")) data.system.slots = 0;
@@ -282,7 +282,7 @@ export async function buildImportData(kw) {
     const backgrounds = await getBackgrounds().catch(() => []);
     const hit = backgrounds.find((b) => b.name.toLowerCase() === rawBackground.toLowerCase());
     if (hit) {
-      backgroundItem = detachSource(hit.toObject());
+      backgroundItem = copyOf(hit);
       backgroundMatched = true;
     } else {
       summary.backgroundUnmatched = rawBackground;

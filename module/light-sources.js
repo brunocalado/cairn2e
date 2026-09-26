@@ -37,20 +37,19 @@ const GLOW = { ...TORCH, color: "#f4f0e0", alpha: 0.05 };
 const uuid = (pack, id) => `Compendium.${SYSTEM_ID}.${pack}.Item.${id}`;
 
 /**
- * Every light source the system ships, keyed by the compendium document it registers. `name` is
- * that document's name, kept beside the uuid so the cast path (`lightSpell`) can find an entry
- * off a carried copy — which has no sourceId flag when the creator made it, because
- * `character-generator.js` copies `toObject()` without `_stats` or flags.
- * `checks/light-sources.check.mjs` holds name and uuid in step with the pack source.
+ * Every light source the system ships, keyed by the compendium document it registers. A carried
+ * copy is matched to its entry by `_stats.compendiumSource`, which every copy the system makes
+ * keeps (`helpers.js#copyOf`) — never by name, because a translation module renames the document
+ * and the copy with it. `checks/light-sources.check.mjs` holds each uuid to the pack source.
  */
 export const LIGHT_SOURCES = [
-  { name: "Torch", uuid: uuid("gear", "38nboO4axGNV5vQC"), consume: true, light: TORCH },
-  { name: "Lantern", uuid: uuid("gear", "lAOJ4KhINKHkQFKY"), consume: true, light: LANTERN },
-  { name: "Candle Helmet", uuid: uuid("background-gear", "eFWBZIBDrdwE0I7x"), consume: true, light: CANDLE },
-  { name: "Lightsucker Candle", uuid: uuid("relics", "CuRKq09QbCykPLcb"), consume: true, light: GLOOM },
+  { uuid: uuid("gear", "38nboO4axGNV5vQC"), consume: true, light: TORCH },
+  { uuid: uuid("gear", "lAOJ4KhINKHkQFKY"), consume: true, light: LANTERN },
+  { uuid: uuid("background-gear", "eFWBZIBDrdwE0I7x"), consume: true, light: CANDLE },
+  { uuid: uuid("relics", "CuRKq09QbCykPLcb"), consume: true, light: GLOOM },
   // Its cost is the Fatigue the cast already charged (core-rules.md § Casting Spells), which is
   // not a quantity: nothing is consumed, and the palette never offers it — only the cast lights it.
-  { name: "Illuminate", uuid: uuid("spellbooks", "LPjbm6vE1WgTsqQi"), consume: false, coverable: true, hudHidden: true, light: GLOW }
+  { uuid: uuid("spellbooks", "LPjbm6vE1WgTsqQi"), consume: false, coverable: true, hudHidden: true, light: GLOW }
 ];
 
 /**
@@ -84,7 +83,7 @@ export const registerLightSources = () => {
     }
     await ls.registerCompatibility({ itemTypes: ["gear"], quantityPath: "system.uses.value" });
     await ls.registerSources(
-      LIGHT_SOURCES.map(({ name, light, ...usage }) => ({ ...usage, durationMinutes: 0, patterns: [{ name: "", light }] })),
+      LIGHT_SOURCES.map(({ light, ...usage }) => ({ ...usage, durationMinutes: 0, patterns: [{ name: "", light }] })),
       { managedBy: SYSTEM_ID }
     );
   });
@@ -93,12 +92,12 @@ export const registerLightSources = () => {
 /**
  * Light the source a just-cast spellbook is registered as, if any. Everything that makes the cast
  * a cast — the two hands, the Deprived save, the card, the Fatigue — has already run in the sheet;
- * this is only the flame. Silent when the module is absent or the book is no light. Found by name
- * because the carried copy's own uuid is `Actor.….Item.…`, never the compendium key the source is
- * registered under.
+ * this is only the flame. Silent when the module is absent or the book is no light. Found by the
+ * copy's `_stats.compendiumSource`: its own uuid is `Actor.….Item.…`, never the compendium key the
+ * source is registered under, and its name is whatever a translation made of it.
  */
 export async function lightSpell(actor, item) {
-  const entry = LIGHT_SOURCES.find((s) => s.name === item.name);
+  const entry = LIGHT_SOURCES.find((s) => s.uuid === item._stats?.compendiumSource);
   if (!entry || !game.modules.get(MODULE)?.active) return;
   const ls = await api();
   if (ls) await ls.activate(actor, entry.uuid);

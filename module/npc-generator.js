@@ -23,8 +23,8 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { SYSTEM_ID, PACKS } from "./constants.js";
-import { loadPack, pick, rollWardenText, detachSource } from "./helpers.js";
+import { SYSTEM_ID, PACKS, GEAR } from "./constants.js";
+import { loadPack, fromPack, pick, rollWardenText, copyOf } from "./helpers.js";
 import { rollAttributeSet, rollHitProtection, rollTrait } from "./character-generator.js";
 
 const { DialogV2 } = foundry.applications.api;
@@ -118,20 +118,20 @@ const FALLBACK_PORTRAIT = "icons/environment/people/commoner.webp";
 
 /**
  * A tiny career → extra Marketplace item lookup. Deliberately short and obvious: it is not to
- * grow into a content table. Names must match a
- * `cairn2e.gear` document exactly. Rations + Torch + a weapon + armor line are added to every NPC
+ * grow into a content table. By uuid ({@link GEAR}), never by name, so a translated `cairn2e.gear`
+ * still kits the hireling. Rations + Torch + a weapon + armor line are added to every NPC
  * already; these are the one or two items that make a career read at a glance.
  */
 const CAREER_KIT = {
-  "Alchemist": ["Antitoxin"],
-  "Animal Handler": ["Animal Feed"],
-  "Local Guide": ["Rope"],
-  "Lockpick": ["Thieving Tools"],
-  "Navigator": ["Compass"],
-  "Sailor": ["Rope"],
-  "Scholar": ["Book"],
-  "Tracker": ["Repellent"],
-  "Trapper": ["Trap"]
+  "Alchemist": [GEAR.ANTITOXIN],
+  "Animal Handler": [GEAR.ANIMAL_FEED],
+  "Local Guide": [GEAR.ROPE],
+  "Lockpick": [GEAR.THIEVING_TOOLS],
+  "Navigator": [GEAR.COMPASS],
+  "Sailor": [GEAR.ROPE],
+  "Scholar": [GEAR.BOOK],
+  "Tracker": [GEAR.REPELLENT],
+  "Trapper": [GEAR.TRAP]
 };
 
 /* -------------------------------------------- */
@@ -148,26 +148,26 @@ function pickCareer() {
 /*  Marketplace gear                            */
 /* -------------------------------------------- */
 
-/** Strip the fields that must not survive being copied out of a compendium onto an actor. */
-function detachItem(obj, { equipped = false } = {}) {
-  detachSource(obj);
+/** A pack document as a generated copy for an actor: {@link copyOf}, flagged `generated` so a
+ *  re-roll replaces exactly these, and worn when asked. */
+function detachItem(doc, { equipped = false } = {}) {
+  const obj = copyOf(doc);
   if (equipped) obj.system = { ...obj.system, equipped: true };
   obj.flags = foundry.utils.mergeObject(obj.flags ?? {}, { [SYSTEM_ID]: { generated: true } });
   return obj;
 }
 
-/** One named Marketplace item by exact name, or `null`. */
-async function marketItem(packId, name, opts) {
-  const pack = await loadPack(packId);
-  const hit = pack?.find((d) => d.name.toLowerCase() === name.toLowerCase());
-  return hit ? detachItem(hit.toObject(), opts) : null;
+/** One Marketplace item by uuid, or `null`. */
+async function kitItem(uuid, opts) {
+  const doc = await fromPack(uuid);
+  return doc ? detachItem(doc, opts) : null;
 }
 
 /** A random document from a Marketplace pack (one of the weapons, one of the six armor lines). */
 async function randomMarketItem(packId, opts) {
   const pack = await loadPack(packId);
   if (!pack?.size) return null;
-  return detachItem(pick(pack.contents).toObject(), opts);
+  return detachItem(pick(pack.contents), opts);
 }
 
 /**
@@ -179,13 +179,13 @@ async function buildKit(role, career) {
   const items = [];
   const push = (it) => { if (it) items.push(it); };
 
-  push(await marketItem(PACKS.GEAR, "Rations"));
-  push(await marketItem(PACKS.GEAR, "Torch"));
+  push(await kitItem(GEAR.RATIONS));
+  push(await kitItem(GEAR.TORCH));
   push(await randomMarketItem(PACKS.WEAPONS, { equipped: true }));
   push(await randomMarketItem(PACKS.ARMOR, { equipped: true }));
 
   if (role === "hireling") {
-    for (const name of CAREER_KIT[career] ?? []) push(await marketItem(PACKS.GEAR, name));
+    for (const uuid of CAREER_KIT[career] ?? []) push(await kitItem(uuid));
   }
   return items;
 }

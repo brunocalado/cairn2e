@@ -31,7 +31,7 @@
 
 import { CairnActor } from "./documents/actor.js";
 import { PACKS, BACKGROUND_SELECTOR_TABLE, GEAR_ARTWORK } from "./constants.js";
-import { drawTable, drawTableText, loadPack, pick, stripTags, detachSource } from "./helpers.js";
+import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf } from "./helpers.js";
 import { CairnRoll } from "./rolls.js";
 import { coinItem } from "./coin-rules.js";
 
@@ -479,7 +479,7 @@ export async function resolveItem(data) {
       (d) => d.type === data.type && d.name.toLowerCase() === data.name.toLowerCase()
     );
     if (hit) {
-      const obj = detachSource(hit.toObject());
+      const obj = copyOf(hit);
       if (data.system.slots !== undefined) obj.system.slots = data.system.slots;
       if (data.system.equipped) obj.system.equipped = true;
       if (data.system.uses) obj.system.uses = data.system.uses;
@@ -574,7 +574,7 @@ export async function assembleActorData(draft) {
   if (draft.backgroundUuid) {
     const background = await fromUuid(draft.backgroundUuid);
     if (background) {
-      const source = detachSource(background.toObject());
+      const source = copyOf(background);
       items.push(source);
     }
   }
@@ -593,7 +593,7 @@ export async function assembleActorData(draft) {
       ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MissingStartingGear", { uuid }));
       continue;
     }
-    const source = detachSource(doc.toObject());
+    const source = copyOf(doc);
     // Armour is worn from the first scene. A pack document ships unequipped, and unequipped
     // armour counts for nothing (`_derived.js#sumEquippedArmor`) — a Fieldwarden created with
     // its Brigandine in the pack would start at 0 Armor.

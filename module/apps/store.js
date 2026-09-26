@@ -11,7 +11,7 @@ import {
   sellableOwn, cartSummary, untitledName
 } from "../store-rules.js";
 import { BELONGINGS } from "../coin-rules.js";
-import { detachSource } from "../helpers.js";
+import { copyOf } from "../helpers.js";
 import { chooseGainPlace, applyGold } from "../coin.js";
 import { scheduleInk } from "../ink.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -593,7 +593,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     // 3. Bought things arrive on the body: a stripped `toObject()` per unit, as the generator embeds.
     const data = [];
     for (const { doc, qty } of buy) {
-      const obj = detachSource(doc.toObject());
+      const obj = copyOf(doc);
       Object.assign(obj.system, { container: "", carried: true, equipped: false });
       for (let n = 0; n < qty; n++) data.push(foundry.utils.deepClone(obj));
     }

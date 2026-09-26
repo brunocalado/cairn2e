@@ -55,8 +55,8 @@
  * weather's own Fatigue-or-watch choice, and the encounter that an Encounter event draws.
  */
 
-import { SYSTEM_ID, SETTINGS, PACKS, CONDITION } from "./constants.js";
-import { rollWardenTable, findCompendiumItem, detachSource } from "./helpers.js";
+import { SYSTEM_ID, SETTINGS, GEAR, CONDITION } from "./constants.js";
+import { rollWardenTable, copyOf } from "./helpers.js";
 import {
   ACTIONS, WATCHES, WEATHER, WEATHER_EFFECTS, PATHS, DISTANCES, TERRAINS, VAST_MAX,
   watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, nextWatch, pendingNeeds, eventsForWatch
@@ -75,10 +75,8 @@ const EVENT_TABLE = "Wilderness Event";
 const ENCOUNTER_CATEGORY = "Encounter";
 /** The category whose card also reminds the Warden to weigh Fatigue against the party. */
 const EXHAUSTION_CATEGORY = "Exhaustion";
-/** The `gear` pack item Supply creates. What Make Camp eats is any gear marked `ration`. */
-const RATIONS = "Rations";
-
-/** Food the procedure spends is marked on the item, not read off its name: a Warden's renamed
+/** Supply creates the `gear` pack's Rations ({@link GEAR}.RATIONS); what Make Camp eats is any
+ *  gear marked `ration`. Food the procedure spends is marked on the item, not read off its name: a Warden's renamed
  *  or homebrew food is still food. */
 const isRation = (i) => i.type === "gear" && i.system.ration;
 
@@ -617,9 +615,9 @@ async function consumeRation(actor) {
  * writes and six renders of every open sheet.
  */
 async function dealRations(actors, count) {
-  const source = await findCompendiumItem(PACKS.GEAR, RATIONS);
+  const source = await fromUuid(GEAR.RATIONS);
   if (!source) return;
-  const data = detachSource(source.toObject());
+  const data = copyOf(source);
   const perActor = new Map();
   for (let i = 0; i < count; i++) {
     const actor = actors[i % actors.length];

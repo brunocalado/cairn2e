@@ -39,6 +39,20 @@ export const loadPack = async (packId) => {
 };
 
 /**
+ * The document a compendium uuid names, read out of its pack's collection through
+ * {@link loadPack} — so a pack is still fetched once per session, not once per lookup, which is
+ * what `fromUuid` would do for a document the collection has not cached yet. `null` when the uuid
+ * names no pack or no document in it.
+ * @param {string} uuid  `Compendium.<system>.<pack>.<Type>.<id>`
+ * @returns {Promise<ClientDocument|null>}
+ */
+export async function fromPack(uuid) {
+  const { collection, id } = foundry.utils.parseUuid(uuid) ?? {};
+  if (!collection?.collection) return null;
+  return (await loadPack(collection.collection))?.get(id) ?? null;
+}
+
+/**
  * A RollTable by name, world copy first, then the packs in order — the standing convention every
  * table draw in the system obeys, because a world table whose name matches exactly is how a
  * Warden's edits survive a system update.
@@ -93,14 +107,21 @@ export const abilityRows = (system) =>
 export const pick = (list) => list[Math.floor(Math.random() * list.length)];
 
 /**
- * Strip what must not survive a copy out of a compendium, a sidebar or another actor onto an
- * actor: the id (core would refuse a clash), the provenance stamp, the folder, the ownership and
- * the sort of the collection it came from. Returns `obj`.
- * @param {object} obj  a `toObject()` copy
+ * A document's data, ready to be created somewhere else — out of a compendium, a sidebar or
+ * another actor onto an actor. The id goes (core would refuse a clash), and so do the folder, the
+ * ownership and the sort of the collection it came from.
+ *
+ * One piece of provenance is kept: `_stats.compendiumSource`. It is how a carried Torch still
+ * knows it is the pack's Torch after a translation module renames it, which a name cannot do. A
+ * document straight out of a pack is its own source; a copy of a copy keeps the original's.
+ * @param {ClientDocument} doc
  * @returns {object}
  */
-export function detachSource(obj) {
+export function copyOf(doc) {
+  const obj = doc.toObject();
+  const source = doc.pack ? doc.uuid : (doc._stats?.compendiumSource ?? null);
   for (const key of ["_id", "_stats", "folder", "ownership", "sort"]) delete obj[key];
+  if (source) obj._stats = { compendiumSource: source };
   return obj;
 }
 

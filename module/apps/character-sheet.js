@@ -9,7 +9,7 @@ import { SYSTEM_ID, FLAGS } from "../constants.js";
 import { regenerateActor, traitRows, toPlainText, toPlainLines } from "../character-generator.js";
 import { rollDieOfFate } from "../rolls.js";
 import { promptGrowthGain } from "../growth.js";
-import { enrich, detachSource, abilityRows } from "../helpers.js";
+import { enrich, copyOf, abilityRows } from "../helpers.js";
 import { outcomeText } from "../scars.js";
 import { CairnActorSheet } from "./actor-sheet.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
@@ -275,7 +275,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
 
     const existing = this.actor.items.filter((i) => i.type === "background").map((i) => i.id);
     if (existing.length) await this.actor.deleteEmbeddedDocuments("Item", existing);
-    const source = detachSource(item.toObject());
+    const source = copyOf(item);
     await this.actor.createEmbeddedDocuments("Item", [source]);
   }
 

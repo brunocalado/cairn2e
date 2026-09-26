@@ -304,3 +304,27 @@ export const PACKS = {
 
 /** The d20 selector RollTable inside {@link PACKS.BACKGROUND_TABLES}. */
 export const BACKGROUND_SELECTOR_TABLE = "Backgrounds";
+
+/**
+ * A compendium document's uuid, from its pack name and its authored `_id`. The ids are written in
+ * `packs/_source/` and survive every rebuild, so a uuid is the one address a translation module —
+ * which renames documents — cannot move.
+ */
+export const packUuid = (pack, type, id) => `Compendium.${SYSTEM_ID}.${pack}.${type}.${id}`;
+
+/**
+ * The Marketplace documents the code hands out on its own: the NPC kit and the journey's Rations.
+ * By uuid, never by name, so a translated pack changes nothing the code does.
+ */
+export const GEAR = {
+  RATIONS: packUuid("gear", "Item", "o6vtsY4SfrFJHnol"),
+  TORCH: packUuid("gear", "Item", "38nboO4axGNV5vQC"),
+  ANTITOXIN: packUuid("gear", "Item", "m9pA9rDapkpMFjYi"),
+  ANIMAL_FEED: packUuid("gear", "Item", "zx6dah3S6hfrFBC3"),
+  ROPE: packUuid("gear", "Item", "yQOui5IqPJ0IHTCf"),
+  THIEVING_TOOLS: packUuid("gear", "Item", "Re9jpaWAjgO528ON"),
+  COMPASS: packUuid("gear", "Item", "jIUcDxlW7tojBgaG"),
+  BOOK: packUuid("gear", "Item", "MiIdPDU4ca9DCT1P"),
+  REPELLENT: packUuid("gear", "Item", "riO6dGPX20svCtL0"),
+  TRAP: packUuid("gear", "Item", "y9WcPO45F4qWK4Rv")
+};
