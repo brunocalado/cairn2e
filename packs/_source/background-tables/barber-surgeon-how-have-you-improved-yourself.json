@@ -53,6 +53,21 @@
       "_key": "!tables.results!vscyyJXkXh5V0Zi8.PzeBEkruoFJBbtix"
     },
     {
+      "_id": "AoYqKnRuGyRCBgxE",
+      "type": "document",
+      "name": "Metal Foot",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.WAIeuHlYdjouZcbm",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!vscyyJXkXh5V0Zi8.AoYqKnRuGyRCBgxE"
+    },
+    {
       "_id": "WvPjVxNXndPPN6JP",
       "type": "document",
       "name": "Oil Can",
@@ -161,7 +176,7 @@
       "_id": "ygkaoqKyGB3byIq3",
       "type": "document",
       "name": "Alchemical Sigils",
-      "img": "icons/svg/book.svg",
+      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.9HcAunD8BHHCKQGZ",
       "weight": 1,
       "range": [
@@ -191,7 +206,7 @@
       "_id": "QOPWjK1Ed3Kif5PT",
       "type": "document",
       "name": "Metal Arm",
-      "img": "icons/svg/book.svg",
+      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.zFiBNnGYRntjd3yv",
       "weight": 1,
       "range": [

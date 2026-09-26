@@ -169,7 +169,11 @@
         6
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "hp": "1d4"
+        }
+      },
       "_key": "!tables.results!AQs8glEIIOGW3H23.UmCeOr81RFwkxwUv"
     },
     {

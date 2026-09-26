@@ -102,6 +102,20 @@
         }
     }
 
+    /* The character's second line is the one that can run out of room: "Fungal Forager – 39
+       years" beside four procedures, or a translation's longer labels. The Background line keeps
+       its whole width and the procedures WRAP beneath it, flush right, rather than the text
+       sliding under them — the line grows only on a sheet that needs it. An NPC's stack keeps
+       shrinking inside its own box, as above: it has no age run beside its chips. */
+    .cairn-header-line:has(> .cairn-background-line) {
+        flex-wrap: wrap;
+        row-gap: 6px;
+
+        > .cairn-background-line {
+            min-width: max-content;
+        }
+    }
+
     /* Under the name: the NPC's stack — the role, and a hireling's career on its own line
        beneath it. A tight one: no gap between the lines, each at a bare line-height, at the top
        of its line so it sits right under the name's box. */

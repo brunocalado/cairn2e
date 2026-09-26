@@ -33,7 +33,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
+import { SYSTEM_ID, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
 import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf } from "./helpers.js";
 import { CairnRoll } from "./rolls.js";
 import { coinItem } from "./coin-rules.js";
@@ -120,7 +120,9 @@ export async function drawBackground() {
  *
  *  A roll lands on one `text` result — the prose, as `html` and as `text`, a sentence that is what
  *  the character keeps and every surface shows (nothing the player sees is markup) — and on the
- *  `document` results that share its range, which are what it grants: their uuids are `grants`. */
+ *  `document` results that share its range, which are what it grants: their uuids are `grants`.
+ *  A face that adds to starting HP ("Start with +d4 HP") says so as `flags.cairn2e.hp`, a formula:
+ *  that is `hp`, rolled when the character is assembled. */
 export async function drawBackgroundTable(uuid) {
   const table = await fromUuid(uuid);
   if (!table) return null;
@@ -128,7 +130,8 @@ export async function drawBackgroundTable(uuid) {
   const prose = draw.results.find((r) => r.type === "text");
   const grants = draw.results.filter((r) => r.type === "document").map((r) => r.documentUuid);
   const html = prose?.description ?? "";
-  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html), grants };
+  const hp = prose?.flags?.[SYSTEM_ID]?.hp ?? "";
+  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html), grants, hp };
 }
 
 /** Draw one d10 trait table; returns the plain trait word. */
@@ -464,14 +467,20 @@ export async function assembleActorData(draft) {
     }
   };
   await embed(draft.startingGear);
-  for (const result of draft.tableResults ?? []) await embed(result?.grants);
+  let hpBonus = 0;
+  for (const result of draft.tableResults ?? []) {
+    await embed(result?.grants);
+    // "Start with +d4 HP" (Fieldwarden, Kettlewright): rolled here, like the starting gold, and
+    // added to both the value and the maximum — it is starting Hit Protection, not a heal.
+    if (result?.hp) hpBonus += await rollTotal(result.hp);
+  }
 
   // Coin is an Item (`data/item-coin.js`): the `3d6 Gold Pieces` every background opens with, and
   // whatever a table result added, are one sack on the body in the same batch as the gear.
   if (gold > 0) items.push(coinItem(gold, game.i18n.localize("CAIRN.Gold")));
 
   const attrs = draft.attrs ?? { STR: 10, DEX: 10, WIL: 10 };
-  const hp = draft.hp ?? 0;
+  const hp = (draft.hp ?? 0) + hpBonus;
 
   return {
     name: draft.name?.trim() || draft.backgroundName || game.i18n.localize("CAIRN.CharacterCreator.DefaultName"),

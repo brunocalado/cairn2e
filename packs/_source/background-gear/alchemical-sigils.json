@@ -2,7 +2,7 @@
   "_id": "9HcAunD8BHHCKQGZ",
   "name": "Alchemical Sigils",
   "type": "gear",
-  "img": "icons/svg/book.svg",
+  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
   "system": {
     "description": "<p>Your <strong>chest</strong> is lined with alchemical sigils, <em>toughening the skin</em> (1 Armor). Wearing other metallic armor nullifies the effect.</p>",
     "slots": 0,
@@ -15,7 +15,7 @@
     },
     "damage": "",
     "blast": false,
-    "armor": 0,
+    "armor": 1,
     "magic": "none",
     "recharge": "",
     "capacity": 0,

@@ -1,10 +1,10 @@
 {
-  "_id": "zFiBNnGYRntjd3yv",
-  "name": "Metal Arm",
+  "_id": "WAIeuHlYdjouZcbm",
+  "name": "Metal Foot",
   "type": "gear",
   "img": "icons/weapons/swords/shortsword-guard-brown.webp",
   "system": {
-    "description": "<p>One <strong>arm</strong> is fully metal and comes off at the shoulder. It can be used as a weapon (d8, <em>bulky</em> when not attached) and can move independently if you are within sight of it.</p>",
+    "description": "<p>One <strong>foot</strong> is mostly metal (kick, d6), and you treat some Tough terrain as <strong>Easy</strong>. Carry a <strong>Oil Can</strong> (6 uses). Without a daily application, you are <em>deprived</em> and noisy.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 0,
@@ -13,7 +13,7 @@
       "value": 0,
       "max": 0
     },
-    "damage": "d8",
+    "damage": "d6",
     "blast": false,
     "armor": 0,
     "magic": "none",
@@ -26,6 +26,6 @@
     "default": 0
   },
   "effects": [],
-  "_key": "!items!zFiBNnGYRntjd3yv",
+  "_key": "!items!WAIeuHlYdjouZcbm",
   "folder": "9PouGVcgtvEJrEzy"
 }

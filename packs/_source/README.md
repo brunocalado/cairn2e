@@ -376,9 +376,14 @@ checked row by row against `srd-2e/backgrounds/`. Where the parser had misread a
 the named spell instead of a bare "Spellbook", a weapon's die it had dropped (Crossbow d8, Saw d6,
 Gnarled Staff d8), things it never saw (Hexenbane's sword and chainmail, Prowler's Iron Bracers,
 Fireseeds, River Twine), and coin — "+20gp" and "extra 10gp" granted, while a thing *worth* 20gp
-(the Thesaurus, the Necklace) is no longer also 20gp. Rows whose mechanics the SRD states but the
-system does not automate (a +d4 HP, a 1 Armor chest, the Fatigue a pet costs) stay prose, as they
-were.
+(the Thesaurus, the Necklace) is no longer also 20gp. Body parts and a bow that
+the SRD gives numbers to carry them (2026-09-26): Barber-Surgeon's sigils are *petty* armour (1),
+its metal foot and arm *petty* weapons (d6, d8) — equipped like any weapon to strike — and
+Fletchwind's White Ash is a d6 bow that also counts as its +1 shield while equipped. A face that
+adds starting HP ("Start with +d4 HP", Fieldwarden and Kettlewright) carries `flags.cairn2e.hp`, a
+formula the generator rolls into both value and maximum. What stays prose is what no field can
+hold: the Fatigue a pet or a power costs each time it is used, and a limit such as "other metal
+armour nullifies it".
 
 Five lines needed a call, settled 2026-09-15 against the SRD:
 

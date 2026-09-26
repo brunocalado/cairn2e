@@ -856,6 +856,8 @@
     "Virtue": "Virtue"
   },
   "CAIRN.Type": "Type",
+  "CAIRN.Unarmed": "Unarmed",
+  "CAIRN.UnarmedHint": "Attack unarmed: d4 (Shift: skip the options)",
   "CAIRN.Uses": "Uses",
   "CAIRN.WardenUserName": "Warden",
   "CAIRN.WelcomePlaylist": "Welcome",

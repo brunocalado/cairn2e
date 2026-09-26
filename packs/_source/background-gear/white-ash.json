@@ -13,7 +13,7 @@
       "value": 0,
       "max": 0
     },
-    "damage": "",
+    "damage": "d6",
     "blast": false,
     "armor": 1,
     "magic": "none",

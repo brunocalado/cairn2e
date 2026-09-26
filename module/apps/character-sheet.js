@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, FLAGS } from "../constants.js";
 import { regenerateActor, traitRows, toPlainText, toPlainLines } from "../character-generator.js";
-import { rollDieOfFate } from "../rolls.js";
+import { rollDamage, rollDieOfFate } from "../rolls.js";
 import { promptGrowthGain } from "../growth.js";
 import { enrich, copyOf, abilityRows } from "../helpers.js";
 import { outcomeText } from "../scars.js";
@@ -41,6 +41,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
       rest: CairnCharacterSheet.#onRest,
       restoreAbilities: CairnCharacterSheet.#onRestoreAbilities,
       dieOfFate: CairnCharacterSheet.#onDieOfFate,
+      rollUnarmed: CairnCharacterSheet.#onRollUnarmed,
       fatigueToggle: CairnCharacterSheet.#onFatigueToggle,
       conditionToggle: CairnCharacterSheet.#onConditionToggle,
       openBackground: CairnCharacterSheet.#onOpenBackground,
@@ -261,6 +262,14 @@ export class CairnCharacterSheet extends CairnActorSheet {
 
   static async #onDieOfFate() {
     await rollDieOfFate(this.actor);
+  }
+
+  /** A fist, a kick, a headbutt: "Unarmed attacks always do d4 damage" (`core-rules.md` →
+   *  Attack Modifiers). The same roll door as a weapon's, with no weapon — Panic, Impaired,
+   *  Enhanced and a second weapon in hand are decided there. Shift skips the options, as it does
+   *  on a weapon's die. */
+  static async #onRollUnarmed(event) {
+    await rollDamage(this.actor, null, { skipDialog: event.shiftKey });
   }
 
   /**
