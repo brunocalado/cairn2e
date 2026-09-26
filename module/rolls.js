@@ -4,8 +4,8 @@
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3.
  */
-import { SYSTEM_ID, CONDITION, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
-import { findTable } from "./helpers.js";
+import { SYSTEM_ID, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
+import { findTable, loadPack } from "./helpers.js";
 import { slotsForItem } from "./data/_derived.js";
 
 /**
@@ -22,9 +22,6 @@ const DAMAGE_CARD_TPL = `${TEMPLATES}/damage-roll-card.hbs`;
 const ROLL_CARD_TPL = `${TEMPLATES}/roll-card.hbs`;
 const JOURNEY_CARD_TPL = `${TEMPLATES}/journey-card.hbs`;
 const DMG_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/damage-dialog.hbs`;
-
-/** The `warden` pack table `module/journey.js` chains an Encounter category into. */
-const WILDERNESS_ENCOUNTER_TABLE = "Wilderness Encounter";
 
 // Impaired forces d4 regardless of the weapon's own die, and unarmed attacks are always d4
 // (core-rules.md → Attack Modifiers) — one literal, used for both. Panic forces Impaired, so this
@@ -506,9 +503,9 @@ export async function postJourneyCard({ flavor, lead = "", lines = [], open = fa
  * @returns {Promise<ChatMessage|null>}
  */
 export async function drawWildernessEncounter({ displayChat = true } = {}) {
-  const table = await findTable(WILDERNESS_ENCOUNTER_TABLE);
+  const table = await findTable(TABLES.WILDERNESS_ENCOUNTER);
   if (!table) {
-    ui.notifications.warn(game.i18n.localize("CAIRN.Journey.NoTable", { name: WILDERNESS_ENCOUNTER_TABLE }));
+    ui.notifications.warn(game.i18n.localize("CAIRN.Journey.NoTable", { uuid: TABLES.WILDERNESS_ENCOUNTER }));
     return null;
   }
   // The journey window draws silently and keeps the rows itself: the Warden is already looking at
@@ -532,7 +529,13 @@ export async function drawWildernessEncounter({ displayChat = true } = {}) {
  * @returns {Promise<RollTableDraw|null>}
  */
 export async function drawNamedTable(name) {
-  const table = await findTable(name, [TABLES_PACK_ID, WARDEN_PACK_ID]);
+  // TODO: a stand-in until the chip also takes a uuid — the name lookup this used to share with
+  // `helpers.js#findTable` now lives here alone.
+  let table = game.tables.getName(name) ?? null;
+  for (const packId of [TABLES_PACK_ID, WARDEN_PACK_ID]) {
+    if (table) break;
+    table = (await loadPack(packId))?.getName(name) ?? null;
+  }
   if (!table) {
     ui.notifications.warn(game.i18n.localize("CAIRN.Enrich.NoTable", { name }));
     return null;

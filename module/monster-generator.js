@@ -60,7 +60,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { SYSTEM_ID } from "./constants.js";
+import { SYSTEM_ID, TABLES } from "./constants.js";
 import { pick, rollWardenText } from "./helpers.js";
 
 const { DialogV2 } = foundry.applications.api;
@@ -245,14 +245,14 @@ async function buildMonsterData(tierChoice) {
   const tier = tierChoice === "random" ? pick(RANDOM_TIER_BAG) : tierChoice;
   const spec = TIERS[tier];
 
-  const physique = await rollWardenText("Monster Physique");
-  const feature = await rollWardenText("Monster Feature");
-  const quirk = await rollWardenText("Monster Quirk");
-  const weakness = await rollWardenText("Monster Weakness");
-  const attackVerb = await rollWardenText("Monster Attack");
-  const criticalDamage = await rollWardenText("Monster Critical Damage");
-  const ability = await rollWardenText("Monster Ability");
-  const target = await rollWardenText("Monster Ability Target");
+  const physique = await rollWardenText(TABLES.MONSTER_PHYSIQUE);
+  const feature = await rollWardenText(TABLES.MONSTER_FEATURE);
+  const quirk = await rollWardenText(TABLES.MONSTER_QUIRK);
+  const weakness = await rollWardenText(TABLES.MONSTER_WEAKNESS);
+  const attackVerb = await rollWardenText(TABLES.MONSTER_ATTACK);
+  const criticalDamage = await rollWardenText(TABLES.MONSTER_CRITICAL_DAMAGE);
+  const ability = await rollWardenText(TABLES.MONSTER_ABILITY);
+  const target = await rollWardenText(TABLES.MONSTER_ABILITY_TARGET);
 
   const STR = weightedLadder(ABILITY_WEIGHTS.STR[tier]);
   const DEX = weightedLadder(ABILITY_WEIGHTS.DEX);

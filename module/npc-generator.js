@@ -23,7 +23,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { SYSTEM_ID, PACKS, GEAR } from "./constants.js";
+import { SYSTEM_ID, PACKS, GEAR, TABLES } from "./constants.js";
 import { loadPack, fromPack, pick, rollWardenText, copyOf } from "./helpers.js";
 import { rollAttributeSet, rollHitProtection, rollTrait } from "./character-generator.js";
 
@@ -203,16 +203,16 @@ async function buildKit(role, career) {
 async function buildNpcData(role) {
   const isHireling = role === "hireling";
 
-  const name = (await rollWardenText("NPC Name")) || game.i18n.localize("CAIRN.Npc.DefaultName");
-  const background = isHireling ? "" : await rollWardenText("NPC Background");
+  const name = (await rollWardenText(TABLES.NPC_NAME)) || game.i18n.localize("CAIRN.Npc.DefaultName");
+  const background = isHireling ? "" : await rollWardenText(TABLES.NPC_BACKGROUND);
   const { career, dayRate } = isHireling ? pickCareer() : { career: "", dayRate: 0 };
 
   const traits = { quirk: "", goal: "", virtue: "", vice: "" };
   for (const key of APPEARANCE_TRAIT_KEYS) traits[key] = await rollTrait(key);
-  traits.quirk = await rollWardenText("NPC Quirk");
-  traits.goal = await rollWardenText("NPC Goal");
-  traits.virtue = await rollWardenText("NPC Virtue");
-  traits.vice = await rollWardenText("NPC Vice");
+  traits.quirk = await rollWardenText(TABLES.NPC_QUIRK);
+  traits.goal = await rollWardenText(TABLES.NPC_GOAL);
+  traits.virtue = await rollWardenText(TABLES.NPC_VIRTUE);
+  traits.vice = await rollWardenText(TABLES.NPC_VICE);
 
   const attrs = await rollAttributeSet();
   const hp = await rollHitProtection();
@@ -330,11 +330,11 @@ export async function regenerateNpc(actor) {
  */
 export async function rollNpcDetail(key) {
   switch (key) {
-    case "background": return { "system.background": await rollWardenText("NPC Background") };
-    case "quirk":      return { "system.traits.quirk": await rollWardenText("NPC Quirk") };
-    case "goal":       return { "system.traits.goal": await rollWardenText("NPC Goal") };
-    case "virtue":     return { "system.traits.virtue": await rollWardenText("NPC Virtue") };
-    case "vice":       return { "system.traits.vice": await rollWardenText("NPC Vice") };
+    case "background": return { "system.background": await rollWardenText(TABLES.NPC_BACKGROUND) };
+    case "quirk":      return { "system.traits.quirk": await rollWardenText(TABLES.NPC_QUIRK) };
+    case "goal":       return { "system.traits.goal": await rollWardenText(TABLES.NPC_GOAL) };
+    case "virtue":     return { "system.traits.virtue": await rollWardenText(TABLES.NPC_VIRTUE) };
+    case "vice":       return { "system.traits.vice": await rollWardenText(TABLES.NPC_VICE) };
     case "career": {
       const { career, dayRate } = pickCareer();
       return { "system.career": career, "system.dayRate": dayRate };

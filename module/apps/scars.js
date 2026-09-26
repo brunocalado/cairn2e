@@ -5,8 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, TABLES_PACK_ID } from "../constants.js";
-import { findCompendiumItem } from "../helpers.js";
+import { SYSTEM_ID, TABLES } from "../constants.js";
+import { fromPack } from "../helpers.js";
 import { SCAR_ENTRIES, scarEntry, applyScarGain, outcomeText } from "../scars.js";
 import { rollScarDie, rollSave } from "../rolls.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -28,7 +28,7 @@ let ROWS = null;
 
 async function tableRows() {
   if (ROWS) return ROWS;
-  const table = await findCompendiumItem(TABLES_PACK_ID, "Scars");
+  const table = await fromPack(TABLES.SCARS);
   if (!table) return null;
   ROWS = [...table.results]
     .sort((a, b) => a.range[0] - b.range[0])

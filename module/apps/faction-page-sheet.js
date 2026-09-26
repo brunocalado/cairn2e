@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "../constants.js";
+import { SYSTEM_ID, TABLES } from "../constants.js";
 import { rollWardenTable, stripTags } from "../helpers.js";
 import { rollFactionAction, rollFactionSave } from "../rolls.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -30,8 +30,8 @@ export const FACTION_TYPE = "faction";
  * *Generate Faction* in the sidebar rolls all eight tables at once, for a faction that does not
  * exist yet. This sheet rolls ONE field, for a faction that does — the Warden who needs a new
  * obstacle in the middle of a session because the d6 came up 1 is not going to open the generator
- * for it. Both go through `helpers.js#rollWardenTable`, so a world table of the same name wins
- * over the compendium copy in both.
+ * for it. Both go through `helpers.js#rollWardenTable`, so the Warden's imported copy of a table
+ * wins over the compendium's in both.
  *
  * ## Drag and drop
  *
@@ -291,13 +291,20 @@ export class CairnFactionPageSheet extends CairnInkMixin(JournalEntryPageHandleb
   }
 
   /**
-   * Roll one Warden table and return its text, or `null` after warning that it is missing.
-   * A missing table is a world whose Warden deleted it, not an error worth a stack trace.
+   * Roll one Warden table and return its text, or `null` when there is none to roll.
+   * @param {string} key  a {@link TABLES} key — the template names tables by key, never by name,
+   *                      so a translated table is still the one the die rolls.
    */
-  static async #rollText(name) {
-    const result = await rollWardenTable(name);
+  static async #rollText(key) {
+    const uuid = TABLES[key];
+    if (!uuid) {
+      // A template naming a key that does not exist is a programming error, not the Warden's.
+      console.error(`${SYSTEM_ID} | faction sheet: no table key "${key}"`);
+      return null;
+    }
+    const result = await rollWardenTable(uuid);
     if (!result) {
-      ui.notifications.warn(game.i18n.localize("CAIRN.Faction.NoTable", { name }));
+      ui.notifications.warn(game.i18n.localize("CAIRN.Faction.NoTable", { uuid }));
       return null;
     }
     return stripTags(result.text);
@@ -331,9 +338,9 @@ export class CairnFactionPageSheet extends CairnInkMixin(JournalEntryPageHandleb
    * table is two columns, and one of them alone is half an answer.
    */
   static async #onTraitRoll() {
-    const first = await CairnFactionPageSheet.#rollText("Faction Trait 1");
+    const first = await CairnFactionPageSheet.#rollText("FACTION_TRAIT_1");
     if (first === null) return;
-    const second = await CairnFactionPageSheet.#rollText("Faction Trait 2");
+    const second = await CairnFactionPageSheet.#rollText("FACTION_TRAIT_2");
     await this.#write("traits", [...this.#list("traits"), first, second].filter(Boolean));
   }
 

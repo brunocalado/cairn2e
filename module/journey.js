@@ -55,7 +55,7 @@
  * weather's own Fatigue-or-watch choice, and the encounter that an Encounter event draws.
  */
 
-import { SYSTEM_ID, SETTINGS, GEAR, CONDITION } from "./constants.js";
+import { SYSTEM_ID, SETTINGS, GEAR, TABLES, CONDITION } from "./constants.js";
 import { rollWardenTable, copyOf } from "./helpers.js";
 import {
   ACTIONS, WATCHES, WEATHER, WEATHER_EFFECTS, PATHS, DISTANCES, TERRAINS, VAST_MAX,
@@ -69,8 +69,6 @@ import { parseEncounterResults } from "./encounters.js";
 /** The query a player's client sends the Warden's; registered in `module/cairn2e.js`. */
 export const JOURNEY_QUERY = `${SYSTEM_ID}.journey`;
 
-/** The `warden` pack table rolled after every watch's action. */
-const EVENT_TABLE = "Wilderness Event";
 /** The `Wilderness Event` category that chains into a `Wilderness Encounter` draw. */
 const ENCOUNTER_CATEGORY = "Encounter";
 /** The category whose card also reminds the Warden to weigh Fatigue against the party. */
@@ -660,9 +658,9 @@ export function watchLabel(journey) {
  * @returns {Promise<{category: string, text: string, party: string|null, encounter: object|null}|null>}
  */
 async function rollEvent(journey) {
-  const event = await rollWardenTable(EVENT_TABLE);
+  const event = await rollWardenTable(TABLES.WILDERNESS_EVENT);
   if (!event) {
-    ui.notifications.warn(game.i18n.localize("CAIRN.Journey.NoTable", { name: EVENT_TABLE }));
+    ui.notifications.warn(game.i18n.localize("CAIRN.Journey.NoTable", { uuid: TABLES.WILDERNESS_EVENT }));
     return null;
   }
   // The row name ("Encounter", "Sign", ...) is what dispatch reads; `event.text` is its prose.

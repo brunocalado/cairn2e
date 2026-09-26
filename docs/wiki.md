@@ -415,8 +415,12 @@ Meeting a creature is not fighting it, so roll a **Reaction** to see how it goes
 ### Using your own tables
 
 Every table the Warden tools roll on (NPC, monster, faction, travel and encounter tables) can be
-replaced with your own. Create a table in your world with **exactly the same name** and the
-generators use yours instead. Your copy also survives system updates.
+replaced with your own. **Import** the table from the **Warden Tables** compendium into your world
+(right-click it and choose Import, or drag it into the Roll Tables sidebar), then edit your copy:
+the generators use yours instead. You can rename your copy, and it survives system updates.
+
+A table you build from scratch is not picked up, even with the same name. Start from ours and
+change it.
 
 ---
 

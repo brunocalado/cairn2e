@@ -5,8 +5,6 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { WARDEN_PACK_ID } from "./constants.js";
-
 /**
  * Enrich authored HTML for display, with secrets shown to whoever owns the document it belongs to.
  * @param {string} html
@@ -53,32 +51,27 @@ export async function fromPack(uuid) {
 }
 
 /**
- * A RollTable by name, world copy first, then the packs in order — the standing convention every
- * table draw in the system obeys, because a world table whose name matches exactly is how a
- * Warden's edits survive a system update.
- * @param {string} name
- * @param {string[]} [packIds]
+ * A Warden table, world copy first: the Warden's own copy is the world RollTable IMPORTED from
+ * ours — core stamps `_stats.compendiumSource` on import — and it wins over the pack's, whatever
+ * it is called, so a Warden's edits survive a system update. Never by name: a name is what a
+ * translation module changes, on our table and on the Warden's copy alike. A Warden who imported
+ * the same table twice gets the first copy, as `getName` used to give the first of two names.
+ * @param {string} uuid  the pack table's uuid, a {@link TABLES} member
  * @returns {Promise<RollTable|null>}
  */
-export async function findTable(name, packIds = [WARDEN_PACK_ID]) {
-  let table = game.tables?.getName?.(name) ?? null;
-  for (const packId of packIds) {
-    if (table) break;
-    table = (await loadPack(packId))?.getName(name) ?? null;
-  }
-  return table;
+export async function findTable(uuid) {
+  return game.tables?.find((t) => t._stats.compendiumSource === uuid) ?? fromPack(uuid);
 }
 
 /**
- * Roll one Warden table by name, **world first**: a world RollTable whose name matches exactly
- * wins over the `cairn2e.warden` compendium copy, so a Warden's edits survive a system update
- * — every generator in the system draws this way. Uses `RollTable#roll()`, never `draw()` —
- * drawing dirties the table's `drawn` state and posts a card; the generators just want a value.
- * @param {string} name
+ * Roll one Warden table, **world copy first** ({@link findTable}) — every generator in the system
+ * draws this way. Uses `RollTable#roll()`, never `draw()` — drawing dirties the table's `drawn`
+ * state and posts a card; the generators just want a value.
+ * @param {string} uuid  a {@link TABLES} member
  * @returns {Promise<{ total: number|null, text: string, results: object[] } | null>}
  */
-export const rollWardenTable = async (name) => {
-  const table = await findTable(name);
+export const rollWardenTable = async (uuid) => {
+  const table = await findTable(uuid);
   if (!table) return null;
   const { roll, results } = await table.roll();
   return {
@@ -89,7 +82,7 @@ export const rollWardenTable = async (name) => {
 };
 
 /** Roll one Warden table and return its plain-text result ("" if the table is missing). */
-export const rollWardenText = async (name) => stripTags((await rollWardenTable(name))?.text);
+export const rollWardenText = async (uuid) => stripTags((await rollWardenTable(uuid))?.text);
 
 /** Authored HTML as one run of plain text, trimmed. */
 export const stripTags = (html) => String(html ?? "").replace(/<[^>]+>/g, "").trim();
@@ -142,36 +135,18 @@ export const getInfoFromDropData = async (dropData) => {
 /* -------------------------------------------- */
 
 /**
- * @param {String} compendiumName
- * @param {String} itemName
- * @returns {Promise.<Item|RollTable|undefined>}
- */
-export const findCompendiumItem = async (compendiumName, itemName) => {
-  const pack = await loadPack(compendiumName);
-  if (!pack) {
-    console.warn(`findCompendiumItem: no compendium "${compendiumName}"`);
-    return undefined;
-  }
-  const item = pack.getName(itemName);
-  if (!item) console.warn(`findCompendiumItem: no "${itemName}" in "${compendiumName}"`);
-  return item;
-};
-
-/**
- * @param {String} compendiumName
- * @param {String} tableName
+ * Draw a pack table silently — the character's own tables, which are read from the pack alone.
+ * @param {string} uuid  a {@link TABLES} or {@link TRAIT_TABLES} member
  * @param {Object} options
  * @returns {Promise.<RollTableDraw>}
  */
-export const drawTable = async (compendiumName, tableName, options = {}) => {
-  const table = await findCompendiumItem(compendiumName, tableName);
+export const drawTable = async (uuid, options = {}) => {
+  const table = await fromPack(uuid);
   return table.draw({ displayChat: false, ...options });
 };
 
 /**
- * @param {String} compendium
- * @param {String} table
+ * @param {string} uuid  a {@link TABLES} or {@link TRAIT_TABLES} member
  * @returns {Promise.<String>}
  */
-export const drawTableText = async (compendium, table) =>
-  (await drawTable(compendium, table)).results[0].description;
+export const drawTableText = async (uuid) => (await drawTable(uuid)).results[0].description;

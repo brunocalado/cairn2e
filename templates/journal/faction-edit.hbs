@@ -8,8 +8,9 @@
       blanking one input (`faction-page-sheet.js#removeAt`).
 
       A die beside a field rolls that field's own SRD table, world copy first — so a Warden who
-      edited "Faction Obstacle" in their world gets their table here, exactly as the one-click
-      generator does. Traits are the one control that rolls a PAIR, because the SRD's trait table
+      imported "Faction Obstacle" and edited the copy gets their table here, exactly as the
+      one-click generator does. `data-table` is a `TABLES` key, never a table's name: a
+      translation renames the table. Traits are the one control that rolls a PAIR, because the SRD's trait table
       is two columns rolled together and a single trait is half an answer.
 
       The description is the real `<prose-mirror>` element, as the item sheets write it: the
@@ -20,7 +21,7 @@
             <label for="faction-type-{{page.id}}">{{localize 'CAIRN.Faction.Type'}}</label>
             <input id="faction-type-{{page.id}}" type="text" name="system.type" value="{{system.type}}"
                 placeholder="{{localize 'CAIRN.Faction.TypePlaceholder'}}" />
-            <button type="button" class="mini" data-action="rollField" data-table="Faction Type"
+            <button type="button" class="mini" data-action="rollField" data-table="FACTION_TYPE"
                 data-target="system.type" data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
         </div>
     </div>
@@ -76,7 +77,7 @@
                 {{#if a.linked}}
                 <a data-action="openLink" data-tooltip-text="{{a.linked.name}}"><i class="fas fa-eye"></i></a>
                 {{/if}}
-                <a data-action="rollRow" data-list="advantages" data-key="name" data-table="Faction Advantage"
+                <a data-action="rollRow" data-list="advantages" data-key="name" data-table="FACTION_ADVANTAGE"
                     data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></a>
                 <a data-action="advantageRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
             </span>
@@ -119,7 +120,7 @@
                 {{#if agent.linked}}
                 <a data-action="openLink" data-tooltip-text="{{agent.linked.name}}"><i class="fas fa-eye"></i></a>
                 {{/if}}
-                <a data-action="rollRow" data-list="agents" data-key="role" data-table="Faction Agent"
+                <a data-action="rollRow" data-list="agents" data-key="role" data-table="FACTION_AGENT"
                     data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></a>
                 <a data-action="agentRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
             </span>
@@ -138,7 +139,7 @@
             <label for="faction-objective-{{page.id}}">{{localize 'CAIRN.Faction.Objective'}}</label>
             <input id="faction-objective-{{page.id}}" type="text" name="system.agenda.objective"
                 value="{{system.agenda.objective}}" placeholder="{{localize 'CAIRN.Faction.ObjectivePlaceholder'}}" />
-            <button type="button" class="mini" data-action="rollField" data-table="Faction Agenda"
+            <button type="button" class="mini" data-action="rollField" data-table="FACTION_AGENDA"
                 data-target="system.agenda.objective" data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></button>
         </div>
     </div>
@@ -197,7 +198,7 @@
                     placeholder="{{localize 'CAIRN.Faction.ObstaclePlaceholder'}}" />
             </span>
             <span class="cairn-item-controls">
-                <a data-action="rollRow" data-list="obstacles" data-key="text" data-table="Faction Obstacle"
+                <a data-action="rollRow" data-list="obstacles" data-key="text" data-table="FACTION_OBSTACLE"
                     data-tooltip="{{localize 'CAIRN.RollField'}}"><i class="fas fa-dice-d20"></i></a>
                 <a data-action="obstacleRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
             </span>

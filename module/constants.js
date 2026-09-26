@@ -302,9 +302,6 @@ export const PACKS = {
   ARMOR: `${SYSTEM_ID}.armor`
 };
 
-/** The d20 selector RollTable inside {@link PACKS.BACKGROUND_TABLES}. */
-export const BACKGROUND_SELECTOR_TABLE = "Backgrounds";
-
 /**
  * A compendium document's uuid, from its pack name and its authored `_id`. The ids are written in
  * `packs/_source/` and survive every rebuild, so a uuid is the one address a translation module —
@@ -327,4 +324,57 @@ export const GEAR = {
   BOOK: packUuid("gear", "Item", "MiIdPDU4ca9DCT1P"),
   REPELLENT: packUuid("gear", "Item", "riO6dGPX20svCtL0"),
   TRAP: packUuid("gear", "Item", "y9WcPO45F4qWK4Rv")
+};
+
+const table = (pack, id) => packUuid(pack, "RollTable", id);
+
+/**
+ * Every RollTable the code rolls, by uuid — never by name, which is what a translation module
+ * changes. The Warden tables (and the wilderness encounter) are read world-copy-first: a world
+ * RollTable IMPORTED from one of these wins over it, whatever the copy is called
+ * (`helpers.js#findTable`). The character tables and Scars are read from the pack alone.
+ */
+export const TABLES = {
+  // The character's own tables, pack-only.
+  BACKGROUNDS: table("background-tables", "75KzYKQj3Ri7S6lh"),
+  BONDS: table("bonds", "bwB2rik5biBasY06"),
+  OMENS: table("omens", "4VccV717afiJihEQ"),
+  SCARS: table("tables", "0whgKNJNa4v6GzVs"),
+  // The Warden tables, world copy first.
+  WILDERNESS_EVENT: table("warden", "xUnuriHoFsBZy78E"),
+  WILDERNESS_ENCOUNTER: table("warden", "DN3kLf5QkUy8WYYB"),
+  MONSTER_PHYSIQUE: table("warden", "aTfLXvuPhaejcE1P"),
+  MONSTER_FEATURE: table("warden", "roUrgHLE6vzbe7we"),
+  MONSTER_QUIRK: table("warden", "9XNtKhlnEb3d3rlM"),
+  MONSTER_WEAKNESS: table("warden", "AYlo7v4W3HiuueL3"),
+  MONSTER_ATTACK: table("warden", "6A0l62GRP4brKPr9"),
+  MONSTER_CRITICAL_DAMAGE: table("warden", "i8NAvwjHjyXRzmjp"),
+  MONSTER_ABILITY: table("warden", "MJVroGZAIBEv3ZFt"),
+  MONSTER_ABILITY_TARGET: table("warden", "DBXfbgkzqeFECHEV"),
+  NPC_NAME: table("warden", "JjL5g8axLbyN8ekw"),
+  NPC_BACKGROUND: table("warden", "umflUlD7IJj4BSsJ"),
+  NPC_QUIRK: table("warden", "5NuRYMoj1M3sgac1"),
+  NPC_GOAL: table("warden", "dtYtko9JNSzI9FGN"),
+  NPC_VIRTUE: table("warden", "vBIffty3kEHrHCy1"),
+  NPC_VICE: table("warden", "BVXEmTD09ZyTr56E"),
+  FACTION_TYPE: table("warden", "pSX8p61spiah0BP2"),
+  FACTION_AGENT: table("warden", "QvXvdEcrXHinZ0xE"),
+  FACTION_TRAIT_1: table("warden", "BDKyGlI0ETujTfn5"),
+  FACTION_TRAIT_2: table("warden", "Vw0TiS8AYT8JAVHu"),
+  FACTION_ADVANTAGE_COUNT: table("warden", "qAOUXqJ2NWBHZy1w"),
+  FACTION_ADVANTAGE: table("warden", "QC5UuI9cI0w2H52N"),
+  FACTION_AGENDA: table("warden", "AD6hmMPT7LxNgObC"),
+  FACTION_OBSTACLE: table("warden", "PsJ5CZ0Xt7y63Rsz")
+};
+
+/** The eight d10 trait tables, by the trait key `CharacterData.traits` uses. Pack-only. */
+export const TRAIT_TABLES = {
+  physique: table("character-traits", "SJxAe0XhGB4BXyGY"),
+  skin: table("character-traits", "MHAu6K93kL0uQ8xn"),
+  hair: table("character-traits", "qHD7gG0y6sLQUQ9t"),
+  face: table("character-traits", "49PEvMHXBYdwiEmB"),
+  speech: table("character-traits", "yebw6mqJ9IlM8G5Y"),
+  clothing: table("character-traits", "dUzV5raQw1S6QEUI"),
+  virtue: table("character-traits", "arGCbKWAooB3yqON"),
+  vice: table("character-traits", "4i5F19vElK6IxjDO")
 };

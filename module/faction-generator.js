@@ -38,9 +38,9 @@
  *
  * ## Table resolution — world first
  *
- * Every roll goes through `helpers.js#rollWardenTable`: a world RollTable whose name matches
- * exactly wins over the `cairn2e.warden` compendium copy, so a Warden's edited tables survive a
- * system update. It uses `RollTable#roll()`, never `draw()`. A missing / empty table leaves that
+ * Every roll goes through `helpers.js#rollWardenTable`: a world RollTable the Warden imported from
+ * the `cairn2e.warden` compendium wins over it, whatever it is called, so a Warden's edited tables
+ * survive a system update. It uses `RollTable#roll()`, never `draw()`. A missing / empty table leaves that
  * one field blank — a partial faction the Warden can finish by hand, never an error.
  *
  * ## Naming
@@ -49,6 +49,7 @@
  * the Warden. Rolled content is authored content, not display-translated (`cairn2e` is en-only).
  */
 
+import { TABLES } from "./constants.js";
 import { rollWardenText } from "./helpers.js";
 
 /** The journal generated factions are filed in. A stable identifier — not localized, so the
@@ -71,7 +72,7 @@ async function rollAdvantages(count) {
   const out = [];
   const maxAttempts = count * 20;
   for (let attempt = 0; out.length < count && attempt < maxAttempts; attempt++) {
-    const value = await rollWardenText("Faction Advantage");
+    const value = await rollWardenText(TABLES.FACTION_ADVANTAGE);
     if (!value) break; // table missing — leave the field short, don't loop
     if (!out.includes(value)) out.push(value);
   }
@@ -84,19 +85,19 @@ async function rollAdvantages(count) {
  * @returns {Promise<{ name: string, system: object }>}
  */
 async function buildFaction() {
-  const type = await rollWardenText("Faction Type");
-  const agent = await rollWardenText("Faction Agent");
-  const trait1 = await rollWardenText("Faction Trait 1");
-  const trait2 = await rollWardenText("Faction Trait 2");
+  const type = await rollWardenText(TABLES.FACTION_TYPE);
+  const agent = await rollWardenText(TABLES.FACTION_AGENT);
+  const trait1 = await rollWardenText(TABLES.FACTION_TRAIT_1);
+  const trait2 = await rollWardenText(TABLES.FACTION_TRAIT_2);
 
   // The SRD "# of Advantages" column yields 1–4; clamp defensively (a hand-edited world table
   // could hold anything) and fall back to 1 if the count table is missing entirely.
-  const countText = await rollWardenText("Faction Advantage Count");
+  const countText = await rollWardenText(TABLES.FACTION_ADVANTAGE_COUNT);
   const count = Math.min(4, Math.max(1, parseInt(countText, 10) || 1));
   const advantages = await rollAdvantages(count);
 
-  const agenda = await rollWardenText("Faction Agenda");
-  const obstacle = await rollWardenText("Faction Obstacle");
+  const agenda = await rollWardenText(TABLES.FACTION_AGENDA);
+  const obstacle = await rollWardenText(TABLES.FACTION_OBSTACLE);
 
   const label = [trait1, type].filter(Boolean).join(" ");
   const name = label

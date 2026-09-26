@@ -30,7 +30,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { PACKS, BACKGROUND_SELECTOR_TABLE, GEAR_ARTWORK } from "./constants.js";
+import { PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
 import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf } from "./helpers.js";
 import { CairnRoll } from "./rolls.js";
 import { coinItem } from "./coin-rules.js";
@@ -107,7 +107,7 @@ export async function getBackgrounds() {
 
 /** Roll the d20 Backgrounds selector table and resolve the Background Item it points at. */
 export async function drawBackground() {
-  const draw = await drawTable(PACKS.BACKGROUND_TABLES, BACKGROUND_SELECTOR_TABLE);
+  const draw = await drawTable(TABLES.BACKGROUNDS);
   const uuid = draw.results[0]?.documentUuid;
   const background = uuid ? await fromUuid(uuid) : null;
   return { background, roll: draw.roll?.total ?? null };
@@ -128,8 +128,7 @@ export async function drawBackgroundTable(uuid) {
 
 /** Draw one d10 trait table; returns the plain trait word. */
 export async function rollTrait(key) {
-  const name = key.charAt(0).toUpperCase() + key.slice(1);
-  const text = await drawTableText(PACKS.TRAITS, name);
+  const text = await drawTableText(TRAIT_TABLES[key]);
   return stripTags(text).trim();
 }
 
@@ -142,12 +141,12 @@ export async function rollAllTraits() {
 
 /** Draw a Bond (d20) — plain text, like every other drawn line a character keeps. */
 export async function drawBond() {
-  return toPlainText(await drawTableText(PACKS.BONDS, "Bonds"));
+  return toPlainText(await drawTableText(TABLES.BONDS));
 }
 
 /** Draw an Omen (d20) — plain text, like the Bond above it. */
 export async function drawOmen() {
-  return toPlainText(await drawTableText(PACKS.OMENS, "Omens"));
+  return toPlainText(await drawTableText(TABLES.OMENS));
 }
 
 /** One name off the draft's Background list; the Background's own name when the list is empty.
