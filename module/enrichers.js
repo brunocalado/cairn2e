@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, TOOLTIP_CLASS } from "./constants.js";
 import { CONDITIONS } from "./conditions.js";
-import { rollSave, drawNamedTable } from "./rolls.js";
+import { rollSave, drawNamedTable, tableUuidOf } from "./rolls.js";
 
 /**
  * What the Warden writes, made live.
@@ -176,11 +176,29 @@ function renderSave(element) {
 
 /* -------------------------------------------- */
 
-/** `[[/table Reactions]]` — draws it, world copy first, through the one roll door. */
-function enrichTable([, name, label]) {
-  const span = chip("table", label ?? name, game.i18n.localize("CAIRN.Enrich.TableHint"));
-  span.dataset.table = name;
+/**
+ * `[[/table Reactions]]` or `[[/table Compendium.cairn2e.tables.RollTable.…]]` — draws it, world
+ * copy first, through the one roll door (`rolls.js#drawNamedTable`).
+ */
+function enrichTable([, ref, label]) {
+  const span = chip("table", label ?? tableLabel(ref), game.i18n.localize("CAIRN.Enrich.TableHint"));
+  span.dataset.table = ref;
   return span;
+}
+
+/**
+ * What a chip written without a `{label}` prints: a name as it was typed, and a uuid as the name
+ * of the table it points at — read synchronously off the pack's index or the world collection,
+ * so a translation module's name is the one shown. A uuid pointing at nothing prints a plain
+ * "Table" rather than forty characters of address.
+ */
+function tableLabel(ref) {
+  const address = tableUuidOf(ref);
+  if (!address) return ref;
+  const entry = address.uuid.startsWith("Compendium.")
+    ? address.collection.index?.get(address.id)
+    : address.collection.get(address.id);
+  return entry?.name ?? game.i18n.localize("CAIRN.Enrich.Table");
 }
 
 function renderTable(element) {

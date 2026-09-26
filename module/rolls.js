@@ -516,28 +516,51 @@ export async function drawWildernessEncounter({ displayChat = true } = {}) {
 /* -------------------------------------------- */
 
 /**
- * Draw a RollTable named in enriched text (`[[/table Reactions]]`), and post the card.
+ * The RollTable uuid a `[[/table …]]` chip was written with, or `null` when what was written is a
+ * name. A uuid is the address that survives a translation module renaming the table; a name is the
+ * Warden's convenience. `foundry.utils.parseUuid` reads any text, so a name comes back with its
+ * first word as the "type" — only a RollTable with an id counts.
+ * @param {string} ref
+ * @returns {{ uuid: string, id: string, collection: object }|null}
+ */
+export function tableUuidOf(ref) {
+  const parsed = foundry.utils.parseUuid(String(ref ?? "").trim());
+  if (parsed?.type !== "RollTable" || !parsed.id || !parsed.collection) return null;
+  return { uuid: parsed.uuid, id: parsed.id, collection: parsed.collection };
+}
+
+/**
+ * Draw a RollTable a `[[/table …]]` chip names, and post the card.
  *
- * The lookup is the system's standing convention, widened by one pack: the WORLD copy wins, then
- * `tables`, then `warden`. World-first is what lets a Warden edit a table and keep the edit
- * across a system update (`module/helpers.js#rollWardenTable`), and a chip in a journal must obey
- * the same rule as a generator or the two would draw from different rows of the same name.
+ * A **uuid** (`[[/table Compendium.cairn2e.tables.RollTable.…]]`) is what shipped or translated
+ * content writes: it draws a compendium table world-copy-first like every Warden table
+ * (`helpers.js#findTable` — the Warden's imported copy wins, whatever it is called), and a world
+ * table directly.
+ *
+ * Anything else is a **name** the Warden typed, matched against the names this world displays:
+ * their own tables first, then `tables`, then `warden`. It is the one lookup by name left outside
+ * the Kettlewright importer, and on purpose — a person typed it, and what they can type is what
+ * they see, which in a translated world is the translated name.
  *
  * `draw()` rather than `roll()`, unlike the generators: the point of a chip the Warden clicked is
  * the card at the table, not a value for code to read.
- * @param {string} name  The table's display name, exactly as it is written in the text.
+ * @param {string} ref  a RollTable uuid, or a table's displayed name
  * @returns {Promise<RollTableDraw|null>}
  */
-export async function drawNamedTable(name) {
-  // TODO: a stand-in until the chip also takes a uuid — the name lookup this used to share with
-  // `helpers.js#findTable` now lives here alone.
-  let table = game.tables.getName(name) ?? null;
-  for (const packId of [TABLES_PACK_ID, WARDEN_PACK_ID]) {
-    if (table) break;
-    table = (await loadPack(packId))?.getName(name) ?? null;
+export async function drawNamedTable(ref) {
+  const address = tableUuidOf(ref);
+  let table = null;
+  if (address) {
+    table = address.uuid.startsWith("Compendium.") ? await findTable(address.uuid) : address.collection.get(address.id);
+  } else {
+    table = game.tables.getName(ref) ?? null;
+    for (const packId of [TABLES_PACK_ID, WARDEN_PACK_ID]) {
+      if (table) break;
+      table = (await loadPack(packId))?.getName(ref) ?? null;
+    }
   }
   if (!table) {
-    ui.notifications.warn(game.i18n.localize("CAIRN.Enrich.NoTable", { name }));
+    ui.notifications.warn(game.i18n.localize("CAIRN.Enrich.NoTable", { name: ref }));
     return null;
   }
   return table.draw();

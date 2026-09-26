@@ -498,7 +498,8 @@ shortcuts:
 |---|---|
 | `[[/save WIL]]` | a button that rolls a WIL save for the selected token (or your character). Also works with `STR` and `DEX`. |
 | `[[/save STR]]{Resist the cold}` | the same, showing your own words on the button |
-| `[[/table Reactions]]` | a button that rolls on the named table |
+| `[[/table Reactions]]` | a button that rolls on the named table: your own tables first, then the system's |
+| `[[/table Compendium.cairn2e.tables.RollTable.…]]` | the same, pointing at the table by its UUID (open the table and choose **Copy Document UUID** in its window menu). The button shows the table's name, and it still works if the table is renamed or translated. |
 | `@Condition[deprived]` | the condition's name. Hover it to read what it means. |
 | `@Rule[panic]` | the rule's name. Hover it to read the rule. |
 
