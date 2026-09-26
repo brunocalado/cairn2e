@@ -44,8 +44,23 @@ const SOURCE_FLAG = "encounterSource";
 /** Folder flag: marks the "Encounters" Actor folder, found by this and not by its (localized) name. */
 const FOLDER_FLAG = "encountersFolder";
 
-/** The magic phrase: generate a person, don't import a creature. */
-const RANDOM_NPC = /\brandom\s+NPC\b/i;
+/**
+ * The magic phrase — generate a person, don't import a creature — in the table's own language: it
+ * is `CAIRN.Encounter.RandomNpc`, the same string a translation module translates alongside the
+ * tables, so a Warden writing "NPC aleatório" in a translated world is understood. Read at parse
+ * time, never at import: the language is not loaded yet when this module is. Any run of spaces
+ * in the text matches a space in the phrase, and case does not matter.
+ *
+ * The word edges are Unicode letters, not `\b`: `\b` knows only ASCII, so a phrase that begins or
+ * ends on an accented letter (a French "PNJ créé") would never sit on a boundary. For an English
+ * phrase the two are the same test.
+ */
+function randomNpcPattern() {
+  const words = game.i18n.localize("CAIRN.Encounter.RandomNpc").trim().split(/\s+/)
+    .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  return new RegExp(`(?<![\\p{L}\\p{N}_])${words.join("\\s+")}(?![\\p{L}\\p{N}_])`, "iu");
+}
+
 /** A leading count at the very start of the row text — dice (`1d6`, `2d4`) or a bare integer. */
 const LEADING_COUNT = /^\s*(\d+d\d+|\d+)\b/i;
 
@@ -61,8 +76,9 @@ const LEADING_COUNT = /^\s*(\d+d\d+|\d+)\b/i;
  */
 export function parseEncounterCard(html) {
   const rows = [];
+  const randomNpc = randomNpcPattern();
   for (const li of html.querySelectorAll(".table-draw .table-results li[data-result-id]")) {
-    const row = parseRow(li);
+    const row = parseRow(li, randomNpc);
     if (row) rows.push(row);
   }
   return rows;
@@ -84,8 +100,9 @@ export function parseEncounterCard(html) {
  */
 export function parseEncounterResults(results) {
   const rows = [];
+  const randomNpc = randomNpcPattern();
   for (const result of results ?? []) {
-    const row = parseResult(result);
+    const row = parseResult(result, randomNpc);
     if (row) rows.push(row);
   }
   return rows;
@@ -96,15 +113,16 @@ const RAW_UUID = /@UUID\[([^\]]+)\](?:\{([^}]*)\})?/;
 
 /**
  * @param {TableResult} result
+ * @param {RegExp} randomNpc  {@link randomNpcPattern}, built once per parse
  * @returns {{ kind: "monster"|"npc", countFormula: string, uuid?: string, label: string } | null}
  */
-function parseResult(result) {
+function parseResult(result, randomNpc) {
   // The description is stored HTML (`<p>1d6 Wolves</p>`), and `LEADING_COUNT` anchors at the very
   // start — so the tags have to go first or every row fails its own count.
   const text = String(result.description ?? "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
   const countFormula = LEADING_COUNT.exec(text)?.[1] ?? null;
 
-  if (RANDOM_NPC.test(text)) {
+  if (randomNpc.test(text)) {
     return { kind: "npc", countFormula: countFormula ?? "1", label: game.i18n.localize("CAIRN.Encounter.RandomNpc") };
   }
 
@@ -123,14 +141,15 @@ function parseResult(result) {
 
 /**
  * @param {HTMLElement} li  one `<li data-result-id>` from the drawn card
+ * @param {RegExp} randomNpc  {@link randomNpcPattern}, built once per parse
  * @returns {{ kind: "monster"|"npc", countFormula: string, uuid?: string, label: string } | null}
  */
-function parseRow(li) {
+function parseRow(li, randomNpc) {
   const descEl = li.querySelector(".description");
   const text = (descEl?.textContent ?? li.textContent ?? "").trim();
   const countFormula = LEADING_COUNT.exec(text)?.[1] ?? null;
 
-  if (RANDOM_NPC.test(text)) {
+  if (randomNpc.test(text)) {
     return { kind: "npc", countFormula: countFormula ?? "1", label: game.i18n.localize("CAIRN.Encounter.RandomNpc") };
   }
 

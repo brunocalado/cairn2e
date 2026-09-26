@@ -25,8 +25,11 @@ import { SYSTEM_ID, SETTINGS } from "./constants.js";
 
 const BESTIARY_PACK_ID = `${SYSTEM_ID}.bestiary`;
 
-/** "Blink Dog", "Blink-Dog", "blink_dog" and "BLINK  DOG" are one name. */
-const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+/** "Blink Dog", "Blink-Dog", "blink_dog" and "BLINK  DOG" are one name — and so are "Cão Piscante"
+ *  and "Cao-Piscante": accents go first, or a translated monster's accented letters would be
+ *  dropped as punctuation and a file named without them would match nothing. */
+const slug = (s) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 /** A browse result is a URL path, so the basename is decoded before it is compared. */
 const fileSlug = (path) => slug(decodeURIComponent(path.split("/").pop()).replace(/\.[^.]*$/, ""));

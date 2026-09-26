@@ -69,13 +69,16 @@ import { parseEncounterResults } from "./encounters.js";
 /** The query a player's client sends the Warden's; registered in `module/cairn2e.js`. */
 export const JOURNEY_QUERY = `${SYSTEM_ID}.journey`;
 
-/** The `Wilderness Event` category that chains into a `Wilderness Encounter` draw. */
-const ENCOUNTER_CATEGORY = "Encounter";
-/** The category whose card also reminds the Warden to weigh Fatigue against the party. */
-const EXHAUSTION_CATEGORY = "Exhaustion";
+/**
+ * The `Wilderness Event` markers dispatch reads, from `flags.cairn2e.event` on each result: an
+ * encounter chains into a `Wilderness Encounter` draw, and exhaustion reminds the Warden to weigh
+ * Fatigue against the party. Never the row's name — that is only what the window prints, and a
+ * translation module renames it.
+ */
+const EVENT = { ENCOUNTER: "encounter", EXHAUSTION: "exhaustion" };
 /** Supply creates the `gear` pack's Rations ({@link GEAR}.RATIONS); what Make Camp eats is any
- *  gear marked `ration`. Food the procedure spends is marked on the item, not read off its name: a Warden's renamed
- *  or homebrew food is still food. */
+ *  gear marked `ration`. Food the procedure spends is marked on the item, not read off its name:
+ *  a Warden's renamed or homebrew food is still food. */
 const isRation = (i) => i.type === "gear" && i.system.ration;
 
 /* -------------------------------------------- */
@@ -663,17 +666,19 @@ async function rollEvent(journey) {
     ui.notifications.warn(game.i18n.localize("CAIRN.Journey.NoTable", { uuid: TABLES.WILDERNESS_EVENT }));
     return null;
   }
-  // The row name ("Encounter", "Sign", ...) is what dispatch reads; `event.text` is its prose.
-  const category = String(event.results?.[0]?.name ?? "").trim();
+  // The row's marker is what dispatch reads; its name ("Encounter", "Sign", ...) is what the
+  // window prints, and `event.text` is its prose.
+  const result = event.results?.[0];
+  const kind = result?.flags?.[SYSTEM_ID]?.event ?? "";
   const entry = {
-    category,
+    category: String(result?.name ?? "").trim(),
     text: event.text,
     // Exhaustion is the one row that names the party: the Warden weighs Fatigue against who is
     // actually out there. No Fatigue is added — only camp and a skipped night write one.
-    party: category === EXHAUSTION_CATEGORY ? partyNames(journey) : null,
+    party: kind === EVENT.EXHAUSTION ? partyNames(journey) : null,
     encounter: null
   };
-  if (category === ENCOUNTER_CATEGORY) entry.encounter = await drawEncounter();
+  if (kind === EVENT.ENCOUNTER) entry.encounter = await drawEncounter();
   return entry;
 }
 

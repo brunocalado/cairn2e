@@ -24,7 +24,7 @@
 
 import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, PACKS, GEAR, TABLES } from "./constants.js";
-import { loadPack, fromPack, pick, rollWardenText, copyOf } from "./helpers.js";
+import { loadPack, fromPack, pick, rollWardenTable, rollWardenText, stripTags, copyOf } from "./helpers.js";
 import { rollAttributeSet, rollHitProtection, rollTrait } from "./character-generator.js";
 
 const { DialogV2 } = foundry.applications.api;
@@ -68,34 +68,6 @@ export const HIRELING_CAREERS = {
   "Tracker": 5,
   "Trapper": 5,
   "Veteran Bodyguard": 20
-};
-
-/**
- * Core-icon portrait per NPC Background word. No portrait-picker gallery — that is a later plan,
- * and air-bladder's galleries are CC art this system does not adopt. Every path is a
- * verified Foundry core `icons/**` file.
- */
-const BACKGROUND_PORTRAITS = {
-  "Academic": "icons/skills/trades/academics-book-study-purple.webp",
-  "Assassin": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
-  "Blacksmith": "icons/skills/trades/smithing-anvil-silver-red.webp",
-  "Farmer": "icons/skills/trades/farming-sickle-harvest-wheat.webp",
-  "General": "icons/environment/people/cavalry.webp",
-  "Gravedigger": "icons/tools/hand/shovel-spade-steel-grey.webp",
-  "Guard": "icons/environment/people/infantry.webp",
-  "Healer": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
-  "Jailer": "icons/tools/hand/lockpicks-steel-grey.webp",
-  "Laborer": "icons/tools/hand/hammer-and-nail.webp",
-  "Lord": "icons/skills/social/diplomacy-handshake.webp",
-  "Merchant": "icons/skills/trades/academics-merchant-scribe.webp",
-  "Monk": "icons/magic/holy/meditation-chi-focus-blue.webp",
-  "Mystic": "icons/skills/trades/academics-astronomy-navigation-blue.webp",
-  "Outlander": "icons/skills/trades/woodcutting-logging-axe-stump.webp",
-  "Peddler": "icons/environment/people/commoner.webp",
-  "Politician": "icons/skills/social/diplomacy-writing-letter.webp",
-  "Spy": "icons/skills/social/intimidation-impressing.webp",
-  "Thief": "icons/tools/hand/lockpicks-steel-grey.webp",
-  "Thug": "icons/skills/melee/hand-grip-sword-red.webp"
 };
 
 /** Core-icon portrait per hireling Career. */
@@ -204,7 +176,10 @@ async function buildNpcData(role) {
   const isHireling = role === "hireling";
 
   const name = (await rollWardenText(TABLES.NPC_NAME)) || game.i18n.localize("CAIRN.Npc.DefaultName");
-  const background = isHireling ? "" : await rollWardenText(TABLES.NPC_BACKGROUND);
+  // The background is rolled whole, not as text: its portrait rides on the result
+  // (`flags.cairn2e.portrait`), because the word itself is what a translation changes.
+  const backgroundRoll = isHireling ? null : await rollWardenTable(TABLES.NPC_BACKGROUND);
+  const background = stripTags(backgroundRoll?.text);
   const { career, dayRate } = isHireling ? pickCareer() : { career: "", dayRate: 0 };
 
   const traits = { quirk: "", goal: "", virtue: "", vice: "" };
@@ -237,7 +212,7 @@ async function buildNpcData(role) {
 
   const img = isHireling
     ? (CAREER_PORTRAITS[career] ?? FALLBACK_PORTRAIT)
-    : (BACKGROUND_PORTRAITS[background] ?? FALLBACK_PORTRAIT);
+    : (backgroundRoll?.results?.[0]?.flags?.[SYSTEM_ID]?.portrait || FALLBACK_PORTRAIT);
 
   return { name, img, system, items };
 }

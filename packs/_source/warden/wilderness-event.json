@@ -19,7 +19,11 @@
         1
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "event": "encounter"
+        }
+      },
       "_key": "!tables.results!xUnuriHoFsBZy78E.EO6MekBV6B8Dz67T"
     },
     {
@@ -34,7 +38,11 @@
         2
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "event": "sign"
+        }
+      },
       "_key": "!tables.results!xUnuriHoFsBZy78E.pcC2mtngYC0o4cYF"
     },
     {
@@ -49,7 +57,11 @@
         3
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "event": "environment"
+        }
+      },
       "_key": "!tables.results!xUnuriHoFsBZy78E.qklAse4DIzHbsale"
     },
     {
@@ -64,7 +76,11 @@
         4
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "event": "loss"
+        }
+      },
       "_key": "!tables.results!xUnuriHoFsBZy78E.NHEhFCytRNQeYk3t"
     },
     {
@@ -79,7 +95,11 @@
         5
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "event": "exhaustion"
+        }
+      },
       "_key": "!tables.results!xUnuriHoFsBZy78E.84kldHLS3Sg6yM6D"
     },
     {
@@ -94,7 +114,11 @@
         6
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "event": "discovery"
+        }
+      },
       "_key": "!tables.results!xUnuriHoFsBZy78E.mI2DDFcevT77XA0B"
     }
   ],

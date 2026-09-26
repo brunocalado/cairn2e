@@ -49,7 +49,11 @@
         3
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "armour": true
+        }
+      },
       "_key": "!tables.results!roUrgHLE6vzbe7we.BBC2isAbFV065CdO"
     },
     {
@@ -169,7 +173,11 @@
         11
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "armour": true
+        }
+      },
       "_key": "!tables.results!roUrgHLE6vzbe7we.Gkimx8HK39NOgoJ0"
     },
     {
@@ -184,7 +192,11 @@
         12
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "armour": true
+        }
+      },
       "_key": "!tables.results!roUrgHLE6vzbe7we.PBOz61sKTDBn7960"
     },
     {

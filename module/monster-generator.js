@@ -61,7 +61,7 @@
 
 import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, TABLES } from "./constants.js";
-import { pick, rollWardenText } from "./helpers.js";
+import { pick, rollWardenTable, rollWardenText, stripTags } from "./helpers.js";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -92,9 +92,6 @@ const ABILITY_WEIGHTS = {
     serious: [0, 1, 5, 6, 4]
   }
 };
-
-/** Monster Feature results that *are* natural armour — the armour Item is named for them. */
-const ARMOUR_FEATURES = new Set(["Carapace", "Scales", "Shell"]);
 
 /**
  * Portrait pool — verified Foundry core `icons/creatures/**` paths. The token wears the same
@@ -219,8 +216,15 @@ function makeAttackItem(verb, die) {
  * own `armor` stays 0). `slots: 0` — natural armour is a hide, not carried gear, so it occupies no
  * slot, exactly like the attack Item; `sumEquippedArmor` keys off `armor`/`equipped`, not the cost.
  */
-function makeArmourItem(feature, value) {
-  const name = ARMOUR_FEATURES.has(feature) ? feature : "Tough Hide";
+/**
+ * @param {string} feature     the rolled Monster Feature, as text
+ * @param {boolean} isArmour   whether that feature's result is marked `flags.cairn2e.armour` —
+ *                             Carapace, Scales and Shell ARE natural armour, and the Item is named
+ *                             for them. A marker, not the word, because a translation renames it.
+ * @param {number} value
+ */
+function makeArmourItem(feature, isArmour, value) {
+  const name = isArmour ? feature : "Tough Hide";
   return {
     name,
     type: "gear",
@@ -246,7 +250,9 @@ async function buildMonsterData(tierChoice) {
   const spec = TIERS[tier];
 
   const physique = await rollWardenText(TABLES.MONSTER_PHYSIQUE);
-  const feature = await rollWardenText(TABLES.MONSTER_FEATURE);
+  const featureRoll = await rollWardenTable(TABLES.MONSTER_FEATURE);
+  const feature = stripTags(featureRoll?.text);
+  const featureIsArmour = !!featureRoll?.results?.[0]?.flags?.[SYSTEM_ID]?.armour;
   const quirk = await rollWardenText(TABLES.MONSTER_QUIRK);
   const weakness = await rollWardenText(TABLES.MONSTER_WEAKNESS);
   const attackVerb = await rollWardenText(TABLES.MONSTER_ATTACK);
@@ -260,7 +266,7 @@ async function buildMonsterData(tierChoice) {
 
   const items = [makeAttackItem(attackVerb, spec.die)];
   if (Math.random() < spec.armorChance) {
-    items.push(makeArmourItem(feature, pick(spec.armorValues)));
+    items.push(makeArmourItem(feature, featureIsArmour, pick(spec.armorValues)));
   }
 
   const name = `${physique} ${feature} Creature`.replace(/\s+/g, " ").trim();

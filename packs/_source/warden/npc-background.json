@@ -19,7 +19,11 @@
         1
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/trades/academics-book-study-purple.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.AJYDse0AmE1CDHEm"
     },
     {
@@ -34,7 +38,11 @@
         2
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/melee/blade-tip-chipped-blood-red.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.H39kYFqovhwV51Nj"
     },
     {
@@ -49,7 +57,11 @@
         3
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/trades/smithing-anvil-silver-red.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.wElteeTr7HIJ3Wgr"
     },
     {
@@ -64,7 +76,11 @@
         4
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/trades/farming-sickle-harvest-wheat.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.sDOhWCACFjRlstMZ"
     },
     {
@@ -79,7 +95,11 @@
         5
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/environment/people/cavalry.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.8TBpfIduSu9CBHJb"
     },
     {
@@ -94,7 +114,11 @@
         6
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/tools/hand/shovel-spade-steel-grey.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.SQ8QGE59ZBJ0fUtt"
     },
     {
@@ -109,7 +133,11 @@
         7
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/environment/people/infantry.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.U9EFbbZA3qkqZaY6"
     },
     {
@@ -124,7 +152,11 @@
         8
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/magic/holy/prayer-hands-glowing-yellow.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.G7tjcYzfsdi6FIEg"
     },
     {
@@ -139,7 +171,11 @@
         9
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/tools/hand/lockpicks-steel-grey.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.8MaVqZhdN0Fnkile"
     },
     {
@@ -154,7 +190,11 @@
         10
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/tools/hand/hammer-and-nail.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.KADYY0sbzlj9PnrY"
     },
     {
@@ -169,7 +209,11 @@
         11
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/social/diplomacy-handshake.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.DGw5v7jK8oGPvkiF"
     },
     {
@@ -184,7 +228,11 @@
         12
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/trades/academics-merchant-scribe.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.iBB5qizwwQMuLyyP"
     },
     {
@@ -199,7 +247,11 @@
         13
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/magic/holy/meditation-chi-focus-blue.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.Kuzxq5ftd1e8nc9Y"
     },
     {
@@ -214,7 +266,11 @@
         14
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/trades/academics-astronomy-navigation-blue.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.O5EYUf4zQVFM40Bo"
     },
     {
@@ -229,7 +285,11 @@
         15
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/trades/woodcutting-logging-axe-stump.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.dNGoL3yzSjHKon61"
     },
     {
@@ -244,7 +304,11 @@
         16
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/environment/people/commoner.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.eSUuBXi9a4B397go"
     },
     {
@@ -259,7 +323,11 @@
         17
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/social/diplomacy-writing-letter.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.y2AMr4mozQfZhMsw"
     },
     {
@@ -274,7 +342,11 @@
         18
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/social/intimidation-impressing.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.PfNSWXEJRzwl4VM6"
     },
     {
@@ -289,7 +361,11 @@
         19
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/tools/hand/lockpicks-steel-grey.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.NmXUG0niN4oOUpWT"
     },
     {
@@ -304,7 +380,11 @@
         20
       ],
       "drawn": false,
-      "flags": {},
+      "flags": {
+        "cairn2e": {
+          "portrait": "icons/skills/melee/hand-grip-sword-red.webp"
+        }
+      },
       "_key": "!tables.results!umflUlD7IJj4BSsJ.vaolTBe2vDcDCSTV"
     }
   ],
