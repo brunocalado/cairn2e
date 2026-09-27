@@ -6,6 +6,23 @@ Every release of Cairn 2e for Foundry VTT. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- **Encumbered** can be set and lifted by hand from any token's conditions, a character's
+  included. The status, not the slot count, is what puts HP at 0, so the Warden's call is a real
+  0 HP. A full inventory still puts it on and freeing a slot still takes it off, and a hand-set
+  one holds until an item comes, goes or changes. An NPC's Encumbered also zeroes its HP, follows
+  its own slots when it has any, and is the Warden's alone on a creature with none.
+- A party Fatigue from the journey (the weather, or a night without camp) posts a chat card
+  naming who took it, who had no free slot and must drop an item to take it, and who is Deprived.
+
+### Fixed
+
+- HP held at 0 by Encumbered or Panic shows as a red **0** on the character and NPC sheets, with
+  the reason and the real HP in its tooltip. The sheet used to show the untouched HP.
+- Casting a spell with no free slot no longer passes for free: the card says no Fatigue was added
+  and that an item must be dropped to cast it.
+
 ## [0.0.3] - 2026-09-27
 
 ### Added

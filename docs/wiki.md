@@ -161,9 +161,12 @@ items that take space, so see [§11](#11-stores-and-coin) for how they are carri
 | **Identity** | Your Background answers, the eight traits, Bond, Omen and description. |
 | **Growth** | Your Scars and your Growth: how the character has changed through play (see [§6](#6-damage-critical-damage-and-scars) and [§9](#9-growth)). |
 
-**Too much to carry.** When all ten slots are full, your HP counts as 0 until you make room. Your
-real HP isn't lost: free a slot and it comes back. You can't pick up an eleventh slot's worth at
-all; drop something first.
+**Too much to carry.** When all ten slots are full you are **Encumbered**, and your HP counts as 0
+until you make room: the sheet shows a red **0**, and hovering it says why and what your real HP
+is. That HP isn't lost: free a slot and it comes back. The Warden can also set or lift Encumbered
+by hand from the token (see [§8](#8-conditions)). You can't pick up an eleventh slot's worth
+at all, and a Fatigue with no free slot isn't added: drop something first. Panic shows the same
+red 0 for as long as it lasts.
 
 ### Items on the sheet
 
@@ -182,6 +185,8 @@ kind: gear, weapon, armor, spellbook, scroll, relic, container or coin.
 
 - **Spellbooks**: the cast button reads the spell aloud and adds a **Fatigue** for you. If you are
   **Deprived**, you are asked first: roll the WIL save, or cast without it if the Warden allows.
+  With no free slot the spell still goes to chat, but no Fatigue is added and the card says an
+  item must be dropped to cast it. What happens next is the Warden's call.
 - **Scrolls**: petty (no slot), and they cause no Fatigue. Reading one uses it up, and you are
   asked to confirm first.
 - **Relics**: cause no Fatigue and have a limited number of uses. Their sheet has a **Recharge**
@@ -481,7 +486,9 @@ with it. The Warden's **Put them on the map** button lets them click where the c
 (Escape cancels).
 
 **A night without camp** costs everyone a Fatigue and makes them Deprived, and the next day's
-terrain is harder. The **±** buttons at the top let the Warden adjust the watches needed or
+terrain is harder. Whenever the party takes a Fatigue, from the weather or from a night without
+camp, a chat card says who took it and who had no free slot for it. Those characters must drop an
+item to take it. The **±** buttons at the top let the Warden adjust the watches needed or
 travelled by hand. **End the journey** closes it for everyone.
 
 Left to the Warden and the table: mounts, guides and maps, and how an encounter plays out.
