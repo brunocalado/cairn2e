@@ -6,6 +6,8 @@ Every release of Cairn 2e for Foundry VTT. The format follows
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-09-27
+
 ### Changed
 
 - **Encumbered** can be set and lifted by hand from any token's conditions, a character's
