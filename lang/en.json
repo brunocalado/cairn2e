@@ -52,6 +52,7 @@
   "CAIRN.CastDeprivedSkip": "Cast without a save",
   "CAIRN.CastDeprivedTitle": "Casting while Deprived",
   "CAIRN.CastFatigue": "Adds a Fatigue to the inventory.",
+  "CAIRN.CastNoFatigue": "No free slot: no Fatigue was added. The rules say to drop an item; the Warden decides.",
   "CAIRN.CastSpell": "Cast — read aloud and add a Fatigue",
   "CAIRN.CharacterCreator": {
     "Age": "Age",

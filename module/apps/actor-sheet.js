@@ -440,10 +440,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   }
 
   /**
-   * Cast: the spell goes to chat, then a Fatigue goes on the ten (core-rules.md → Casting
-   * Spells). The card is posted before the Fatigue and is not withdrawn when the Fatigue is
-   * refused: a full inventory means "drop an item", which `warnNoRoom` already says, not "the
-   * spell did not happen".
+   * Cast: a Fatigue goes on the ten (core-rules.md → Casting Spells), then the spell goes to
+   * chat. With no free slot the Fatigue is refused and the spell still goes out, but the card says
+   * no Fatigue was added — otherwise a full inventory casts for free where nobody can see it. What
+   * happens instead ("drop an item", or something else) is the Warden's call, not this handler's.
    */
   static async #onSpellCast(event, target) {
     const item = this.#rowItem(target);
@@ -467,12 +467,12 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       if (choice === null) return;
       if (choice === "save") await rollSave(this.actor, "WIL");
     }
+    const fatigued = (await this.actor.addFatigue()).length > 0;
     const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
       description: await enrich(item.system.description, this.actor),
-      note: game.i18n.localize("CAIRN.CastFatigue")
+      note: game.i18n.localize(fatigued ? "CAIRN.CastFatigue" : "CAIRN.CastNoFatigue")
     });
     await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content });
-    await this.actor.addFatigue();
     await lightSpell(this.actor, item);
   }
 
