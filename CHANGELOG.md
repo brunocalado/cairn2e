@@ -6,6 +6,8 @@ Every release of Cairn 2e for Foundry VTT. The format follows
 
 ## [Unreleased]
 
+## [0.0.3] - 2026-09-27
+
 ### Added
 
 - An **Actions** menu on the character sheet, for the character's owners: **Whisper** (a private
