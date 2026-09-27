@@ -7,6 +7,9 @@
 # Foundry installs from https://github.com/<owner>/cairn2e/releases/latest/download/system.json,
 # which GitHub always redirects to the newest release's copy — so that one URL never changes.
 #
+# Once the GitHub Release exists, the version is also published to the package's page on
+# foundryvtt.com, with the FOUNDRY_PACKAGE_TOKEN repository secret.
+#
 # The release notes are the tag's own section of CHANGELOG.md. A tag with no section fails here,
 # before anything is published.
 
@@ -83,3 +86,21 @@ jobs:
           files: |
             system.json
             cairn2e.zip
+
+      # Last, because foundryvtt.com fetches the manifest it is handed: this version's own copy,
+      # not the latest/ redirect, and it only exists once the release above has its assets.
+      # The token is the package's release token from its foundryvtt.com admin page, sent bare.
+      - name: Publish to foundryvtt.com
+        if: env.FOUNDRY_TOKEN != ''
+        env:
+          FOUNDRY_TOKEN: ${{ secrets.FOUNDRY_PACKAGE_TOKEN }}
+        run: |
+          REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
+          jq --arg version "${GITHUB_REF_NAME#v}" \
+             --arg manifest "$REPO_URL/releases/download/$GITHUB_REF_NAME/system.json" \
+             --arg notes "$REPO_URL/releases/tag/$GITHUB_REF_NAME" \
+             '{ id, release: { version: $version, manifest: $manifest, notes: $notes, compatibility } }' \
+             system.json > payload.json
+          curl -sS --fail-with-body -X POST https://foundryvtt.com/_api/packages/release_version/ \
+            -H "Content-Type: application/json" -H "Authorization: $FOUNDRY_TOKEN" \
+            --data @payload.json
