@@ -655,6 +655,7 @@
   "CAIRN.RelicHint": "A Relic causes no Fatigue, has limited uses, and recharges when its condition is met.",
   "CAIRN.Remove": "Remove",
   "CAIRN.RemoveFatigue": "Remove fatigue",
+  "CAIRN.ReportIssue": "Report an Issue",
   "CAIRN.RerollNpc": "Re-roll NPC",
   "CAIRN.RerollNpcConfirm": "Re-roll this NPC's stats, traits, background or career, and the gear it was given? Name, portrait, token, description and hand-added items are kept.",
   "CAIRN.Rest": "Rest",

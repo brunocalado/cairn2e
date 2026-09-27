@@ -442,6 +442,28 @@ Hooks.on("renderApplicationV2", (app, element) => {
   if (element.classList.contains(SYSTEM_ID)) element.dataset.tooltipClass = TOOLTIP_CLASS;
 });
 
+// A link to the system's issue tracker, above core's "Settings and Configuration". It is core's
+// own external-link markup (`a.button` in a `section`, as its Help and Documentation links are
+// drawn), so the sidebar styles it and no rule here does. The tab's one part is `root`, so every
+// render rebuilds the element from scratch and the link is added again each time.
+Hooks.on("renderSettings", (app, element) => {
+  const settings = element.querySelector("section.settings");
+  if (!settings || !game.system.bugs) return;
+  const section = document.createElement("section");
+  section.className = "flexcol";
+  const link = document.createElement("a");
+  link.className = "button";
+  link.href = game.system.bugs;
+  link.target = "_blank";
+  link.rel = "nofollow noopener";
+  const icon = document.createElement("i");
+  icon.className = "fa-solid fa-bug";
+  icon.inert = true;
+  link.append(icon, ` ${game.i18n.localize("CAIRN.ReportIssue")}`);
+  section.append(link);
+  settings.before(section);
+});
+
 Hooks.on("renderChatMessageHTML", async (message, html) => {
   // Every message in the log is drawn by this system's template, so the whole log is ours to
   // stamp — the message element already carries the scope class (see `CONFIG.ChatMessage.template`
