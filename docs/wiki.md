@@ -92,7 +92,7 @@ and **Next** to move between them:
 6. **Bond**: roll a Bond and an age. Tick **Youngest character** if that is you, and you roll an
    **Omen** too.
 7. **Review**: check everything, then press **Create Character**. Anything you left blank is rolled
-   for you. Every new character also starts with a **Backpack**.
+   for you.
 
 **Rolled once.** A player's attribute roll, swap and HP roll are kept even if they close the
 window, so closing it doesn't give a re-roll. The Warden can allow a new try from the character
@@ -188,8 +188,8 @@ kind: gear, weapon, armor, spellbook, scroll, relic, container or coin.
 
 ### Containers
 
-A container is an item that holds other items: a backpack, a sack, a mule. Every new character
-has a 6-slot **Backpack**.
+A container is an item that holds other items: a sack, a cart, a mule. A new character has no
+container: their ten slots are everything they carry, and the story says how they carry it.
 
 - To put something inside, drag it onto the container's row on your sheet, or onto the container's
   own window. The container's **Contents** tab lists what's inside and has a button to take things

@@ -26,7 +26,7 @@ export class FatigueData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       description: new fields.HTMLField({ required: true, blank: true }),
-      // "Each PC starts with a Backpack that can hold up to six slots of items or Fatigue"
+      // A Backpack "can hold up to six slots of items or Fatigue"
       // (`srd-2e/players-guide/character-creation.md`) — so a Fatigue can sit in a container,
       // and carries the same pointer every other item does.
       container: containerField()

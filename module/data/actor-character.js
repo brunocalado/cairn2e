@@ -33,10 +33,10 @@ function backgroundTableField() {
  * The upstream `features` array (a homegrown mini-effects system) is **gone**: stat changes are
  * ActiveEffects now, and descriptive text is an item or one of the Identity fields.
  *
- * Backpack: every PC starts with a Backpack holding six slots. The character generator creates it
- * as an embedded Item of type `container`; what it holds are sibling Items pointing back at it
- * through `system.container`, and none of them counts against `slots.max` below, which is the
- * character's own ten body slots only.
+ * Containers: a sack, a cart or a mule is an embedded `gear` Item with a `capacity`; what it holds
+ * are sibling Items pointing back at it through `system.container`, and none of them counts
+ * against `slots.max` below, which is the character's own ten slots only. No container is given
+ * at creation: the starting Backpack is how a PC carries the ten, not more room on top of them.
  *
  * There is no `background` field. 2e creation is background-driven and a background carries a
  * name list, starting gear and two d6 tables — none of which survives being typed into a string.

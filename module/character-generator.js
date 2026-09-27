@@ -544,44 +544,26 @@ async function resolveGrowth(data, system) {
 }
 
 /**
- * The 2e starting **Backpack** — a 6-slot container `gear` embedded in the character ("Each PC
- * starts with a Backpack that can hold up to six slots of items or Fatigue",
- * `srd-2e/players-guide/character-creation.md`). The PC's ten body slots are a flat rule;
- * the Backpack's six are its own — so it takes slots (the character hauls it) and costs none of
- * the ten (`slots: 0`, which is *petty*), which is how `_derived.js#slotsForItem` keeps it off
- * the ledger. Confirmed by the maintainer (2026-09-22) against character-creation.md § Inventory:
- * the six ride on top of the ten. Do not re-read the "total of ten" sentence as including the pack.
- * @returns {object}  `Item.create` data.
- */
-export function backpackData() {
-  return {
-    type: "gear",
-    name: game.i18n.localize("CAIRN.Backpack"),
-    img: "icons/containers/bags/pack-simple-leather-tan.webp",
-    system: { capacity: 6, takesSlots: true, slots: 0 }
-  };
-}
-
-/**
- * Create the PC Actor from a draft, then give it its Backpack.
+ * Create the PC Actor from a draft.
+ *
+ * No Backpack is added. "Each PC starts with a Backpack" (`character-creation.md` § Inventory) is
+ * how the character carries their ten slots, not six more on top of them — Cairn's author,
+ * asked directly (2026-09-27). A container Item for it would either hand out slots the rule
+ * does not give or be a row that means nothing.
  * @param {object} draft
  * @returns {Promise<CairnActor|null>}
  */
 export async function createCharacterFromDraft(draft) {
-  const actor = await CairnActor.create(await assembleActorData(draft));
-  if (!actor) return null;
-  await actor.createEmbeddedDocuments("Item", [backpackData()]);
-  return actor;
+  return (await CairnActor.create(await assembleActorData(draft))) ?? null;
 }
 
 /**
  * Write a draft into an existing Actor: wipe its Items, overwrite name + system, rebuild Items.
  *
  * Containers and what they hold survive: a new character written into the same Actor keeps the
- * Backpack and the mule the old one was carrying, exactly as they did when a container was a
+ * sack and the mule the old one was carrying, exactly as they did when a container was a
  * separate document. Contents are kept by keeping the containers — a contained item whose
- * container went would be stranded in the collection pointing at nothing. A character with no
- * container at all gets the Backpack: a blank actor made from the directory has none.
+ * container went would be stranded in the collection pointing at nothing.
  * @param {CairnActor} actor
  * @param {object} draft
  * @returns {Promise<CairnActor>}
@@ -594,7 +576,6 @@ export async function applyDraftToActor(actor, draft) {
     .map((i) => i.id);
   await actor.deleteEmbeddedDocuments("Item", doomed, { render: false });
   await actor.update({ name: data.name, system: data.system });
-  if (!kept.size) data.items.push(backpackData());
   // The generator is one of the controls that may give a growth (`documents/item.js`): the ones
   // it creates are the Background's, resolved against THIS character a moment ago.
   if (data.items.length) await actor.createEmbeddedDocuments("Item", data.items, { [SYSTEM_ID]: { growth: true } });

@@ -44,7 +44,7 @@ const { DialogV2 } = foundry.applications.api;
 /** Fallback portrait when the export has no portable absolute image URL. */
 
 
-/** Art for a container Item the importer creates. Matches the character creator's Backpack. */
+/** Art for a container Item the importer creates. */
 const CONTAINER_IMG = "icons/containers/bags/pack-simple-leather-tan.webp";
 
 /** The three Marketplace lists an `items[]` line can match, by name. */
@@ -370,9 +370,8 @@ export async function buildImportData(kw) {
         capacity: Math.max(1, num(c?.slots ?? c?.capacity, 1)),
         // Kettlewright's containers are bags the character wears, so the character hauls them —
         // without this they would read as beasts that haul themselves and land among Belongings
-        // as things the character walked away from. *petty* on the same grounds as the starting
-        // Backpack (`character-generator.js#backpackData`): the bag's own slots are its own, and
-        // Kettlewright has already counted what is inside it against them.
+        // as things the character walked away from. *petty* because Kettlewright has already
+        // counted what is inside it against the bag's own slots.
         takesSlots: true,
         slots: 0,
         description: toHtml(c?.description)

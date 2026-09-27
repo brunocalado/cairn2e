@@ -6,7 +6,7 @@
  */
 
 import { SYSTEM_ID, MAX_SLOTS } from "./constants.js";
-import { toPlainText, toPlainLines, backpackData } from "./character-generator.js";
+import { toPlainText, toPlainLines } from "./character-generator.js";
 import { sumUsedSlots } from "./data/_derived.js";
 
 const { DialogV2 } = foundry.applications.api;
@@ -228,9 +228,6 @@ export async function promoteToCharacter(actor) {
   if (features.length) {
     await actor.deleteEmbeddedDocuments("Item", features.map((f) => f.id));
   }
-  // Every PC starts with one ("Each PC starts with a Backpack that can hold up to six slots",
-  // `srd-2e/players-guide/character-creation.md`); an NPC never had one.
-  await actor.createEmbeddedDocuments("Item", [backpackData()]);
 
   ui.notifications.info(game.i18n.localize("CAIRN.Promote.Done", { name: actor.name }));
   return actor;
