@@ -515,10 +515,7 @@ async function resolveWatch(journey) {
   const next = nextWatch(journey);
   const newDay = next.day !== journey.day;
   if (newDay) {
-    if (!journey.camped) {
-      await addFatigueToParty(journey, { deprive: true });
-      await postJourneyCard({ flavor, lead: t("CAIRN.Journey.NoSleep") });
-    }
+    if (!journey.camped) await addFatigueToParty(journey, { deprive: true, flavor });
     journey.sleepDeprived = !journey.camped;
     journey.camped = false;
     journey.previousWeather = journey.weather;
@@ -576,17 +573,29 @@ async function adjust(journey, { field, delta }) {
   await save(journey);
 }
 
-/** A Fatigue on every character on the journey — the weather's toll, or a night without sleep. */
-async function addFatigueToParty(journey, { deprive = false } = {}) {
-  for (const actor of members(journey)) {
-    try {
-      await actor.addFatigue();
-    } catch (err) {
-      // No free slot: the creation is refused with the player's warning (`documents/item.js`).
-      console.warn(`${SYSTEM_ID} | ${actor.name}: Fatigue refused`, err);
-    }
+/**
+ * A Fatigue on every character on the journey — the weather's toll, or a night without sleep — and
+ * one card that says who took it. A character with no free slot is refused the Fatigue
+ * (`documents/item.js`), and the card names them: 2e says they must drop an item to take it
+ * (`core-rules.md`), and which item, or whether something else happens, is the table's call. The
+ * refusal's own warning only ever reaches the Warden's client, where this runs.
+ */
+async function addFatigueToParty(journey, { deprive = false, flavor = watchLabel(journey) } = {}) {
+  const party = members(journey);
+  if (!party.length) return;
+  const fatigued = [];
+  const noRoom = [];
+  for (const actor of party) {
+    const created = await actor.addFatigue();
+    (created.length ? fatigued : noRoom).push(actor.name);
     if (deprive) await actor.toggleStatusEffect(CONDITION.DEPRIVED, { active: true });
   }
+  const names = (list) => game.i18n.getListFormatter().format(list);
+  const lines = [];
+  if (fatigued.length) lines.push(game.i18n.localize("CAIRN.Journey.FatigueAdded", { names: names(fatigued) }));
+  if (noRoom.length) lines.push(game.i18n.localize("CAIRN.Journey.FatigueNoRoom", { names: names(noRoom) }));
+  if (deprive) lines.push(game.i18n.localize("CAIRN.Journey.DeprivedAdded", { names: names(party.map((a) => a.name)) }));
+  await postJourneyCard({ flavor, lead: game.i18n.localize(deprive ? "CAIRN.Journey.NoSleep" : "CAIRN.Journey.FatigueLead"), lines });
 }
 
 /** The journey is over — arrived, abandoned, or replanned. */

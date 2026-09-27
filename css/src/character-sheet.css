@@ -543,6 +543,26 @@
         }
     }
 
+    /* HP held at 0 by a full ten or by Panic. The printed 0 is set in blood, the sheet's one
+       text colour for a state the rules impose (maintainer's call, 2026-09-27): the stored HP
+       still reads 6 in the edit window, and an ink 0 beside the other four numbers looked like
+       ordinary damage rather than a condition that lifts. Bold for the same reason the steppers
+       are — the colour is not the only thing saying it. The steppers' two cells are held empty,
+       18px each, so the number does not shift sideways when they step aside. */
+    .cairn-stat-value .cairn-step-void {
+        flex: 0 0 18px;
+        height: 18px;
+    }
+
+    .cairn-stat-number.is-zeroed {
+        cursor: help;
+
+        > .cairn-stat-current {
+            color: var(--cairn-blood);
+            font-weight: 700;
+        }
+    }
+
     /* The maximum is the number a player checks against on every save, so it has to be legible
        at a glance even though it is not editable here — it opens in the edit window with every
        other number. It was `--cairn-ink-faint` at 10px, which is the weight for a ruled line and

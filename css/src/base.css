@@ -69,8 +69,9 @@
     --cairn-ink-faint: rgba(25, 24, 19, 0.28);
     --cairn-paper: #f8f6f1;
     --cairn-paper-sunk: rgba(25, 24, 19, 0.05);
-    /* `ink.js`'s `blood`, for the one printed word the sheet sets in it: a feature's
-       "Critical Damage:" lead on the NPC's Features tab. */
+    /* `ink.js`'s `blood`, for the two things printed in it: a feature's "Critical Damage:"
+       lead on the NPC's Features tab, and a character's HP while a full ten or Panic holds it
+       at 0. */
     --cairn-blood: rgb(110 20 20);
     /* Which way money moves, in the store's cart and till (maintainer's call, 2026-09-22). The
        monochrome rule yields here because the two directions are the ONE thing a shopper reads

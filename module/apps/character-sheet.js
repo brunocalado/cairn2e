@@ -134,6 +134,14 @@ export class CairnCharacterSheet extends CairnActorSheet {
     };
 
     context.abilities = abilityRows(system);
+    // A full ten or Panic puts the character at 0 HP while it lasts (`character-creation.md`,
+    // `procedures.md`), but the stored HP is kept so it comes back when the cause ends
+    // (`data/actor-character.js`). The header prints the 0 the rules say, and says why.
+    const zeroedBy = system.hp.value > 0 && [system.panicked && "Panicked", system.encumbered && "Full"].filter(Boolean);
+    if (zeroedBy?.length) {
+      const key = zeroedBy.length > 1 ? "Both" : zeroedBy[0];
+      context.hpZero = { tooltip: game.i18n.localize(`CAIRN.HpZero.${key}`, { hp: system.hp.value }) };
+    }
     context.traits = traitRows(system.traits);
 
     // The Bond and the Omen print as plain text, like the table answers below them: they are

@@ -6,7 +6,8 @@
       @param abilities  [{key, value, max}]
       @param system     the actor's system — HP and the summed Armor
       @param seed       ink seed prefix, so each sheet's brush marks keep their own silhouette
-      @param editable   @root.editable — the steppers are drawn only then --}}
+      @param editable   @root.editable — the steppers are drawn only then
+      @param hpZero     {tooltip} while a full ten or Panic holds a character at 0 HP; absent otherwise --}}
 {{!-- Five brush caps, and nothing under them. Each used to sit over a drawn rule; five short
       segments across the top of the sheet marked no boundary the caps were not already
       marking, and read as clutter. The cap says where a column begins and the gap says where
@@ -67,7 +68,21 @@
             <span class="cairn-slab" data-ink="slab" data-ink-seed="{{seed}}-hp"></span>
             <span>{{localize 'CAIRN.HitProtection'}}</span>
         </div>
+        {{!-- Held at 0 by a full ten or by Panic: the 0 the rules say, in blood, with the reason
+              and the stored HP in its tooltip. The steppers step aside (still taking their room,
+              so nothing moves) because they write the STORED value, and a tap that changed a
+              number nobody can see would read as a broken control. The cell loses `data-field`
+              for the same reason: `_steppers.js` reads the printed number as the value to step
+              from, and this one is not it. The edit window still sets the stored HP. --}}
         <div class="cairn-stat-value">
+            {{#if hpZero}}
+            {{#if editable}}<span class="cairn-step-void" aria-hidden="true"></span>{{/if}}
+            <span class="cairn-stat-number is-zeroed" data-tooltip="{{hpZero.tooltip}}">
+                <span class="cairn-stat-current">0</span>
+                <span class="cairn-stat-max">/{{system.hp.max}}</span>
+            </span>
+            {{#if editable}}<span class="cairn-step-void" aria-hidden="true"></span>{{/if}}
+            {{else}}
             {{#if editable}}<a class="cairn-step" data-action="statStep" data-step="-1" data-field="system.hp.value">&minus;</a>{{/if}}
             <span class="cairn-stat-number">
                 <span class="cairn-stat-current"
@@ -76,6 +91,7 @@
                 <span class="cairn-stat-max">/{{system.hp.max}}</span>
             </span>
             {{#if editable}}<a class="cairn-step" data-action="statStep" data-step="1" data-field="system.hp.value">+</a>{{/if}}
+            {{/if}}
         </div>
     </div>
 

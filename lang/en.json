@@ -52,7 +52,7 @@
   "CAIRN.CastDeprivedSkip": "Cast without a save",
   "CAIRN.CastDeprivedTitle": "Casting while Deprived",
   "CAIRN.CastFatigue": "Adds a Fatigue to the inventory.",
-  "CAIRN.CastNoFatigue": "No free slot: no Fatigue was added. The rules say to drop an item; the Warden decides.",
+  "CAIRN.CastNoFatigue": "No free slot, so no Fatigue was added. An item must be dropped to cast this spell.",
   "CAIRN.CastSpell": "Cast — read aloud and add a Fatigue",
   "CAIRN.CharacterCreator": {
     "Age": "Age",
@@ -344,6 +344,11 @@
     "Struck": "Struck for {dmg} damage."
   },
   "CAIRN.HitProtection": "HP",
+  "CAIRN.HpZero": {
+    "Both": "0 HP while Panicked and while all ten slots are full. Stored HP: {hp}, back when both end.",
+    "Full": "0 HP while all ten slots are full. Stored HP: {hp}, back once a slot is free.",
+    "Panicked": "0 HP while Panicked. Stored HP: {hp}, back once the Panic is shaken off."
+  },
   "CAIRN.Identity": "Identity",
   "CAIRN.Impaired": "Impaired",
   "CAIRN.Incapacitated": "Incapacitated — crawling, dying within the hour unless aided.",
@@ -373,6 +378,7 @@
     "CrewUnlinked": "Not added to the journey: {names}. Unlinked tokens are copies, so Rations and Fatigue would land on none of them. Tick Link Actor Data on the prototype token, and on any token already on the map, then drag it in again.",
     "DropCrew": "Drag a character, a hireling, a mount or a whole party here.",
     "Day": "Day {day}",
+    "DeprivedAdded": "Deprived: {names}.",
     "Distance": "Distance",
     "Distances": {
       "long": "Long",
@@ -387,6 +393,9 @@
     "ExhaustionReminder": "Exhaustion \u2014 consider adding Fatigue, or spending an extra Wilderness Action, for:",
     "Explored": "Explored: {names}.",
     "Fatigue": "Fatigue carried",
+    "FatigueAdded": "Fatigue: {names}.",
+    "FatigueLead": "Every character adds a Fatigue.",
+    "FatigueNoRoom": "No free slot, so no Fatigue was added: {names}. An item must be dropped to take it.",
     "FewerNeeded": "One fewer watch needed",
     "FewerTravelled": "One fewer watch travelled",
     "GotLost": "The party is lost. Travel again to find the way.",
