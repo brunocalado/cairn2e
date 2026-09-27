@@ -31,9 +31,13 @@ Ten inventory slots, where heavy (*bulky*) items take two and Fatigue fills them
 DEX or WIL to make a save. Rest, Restore and the **Die of Fate** are one button each. Armor adds
 itself up from what you wear. When a character is overloaded or panicking, the sheet shows it.
 
+The **Actions** menu lets a player **Whisper** in character, **Barter** gear and coin with another
+player's character, and run the macros the Warden has put there. Drag a sack or a cart onto
+someone else's sheet and everything inside goes with it.
+
 ### Combat that does the math for you
 Roll damage and apply it to the targeted token. Armor soaks what it can, HP goes first, the rest
-spills into STR, and the sheet asks for the critical-damage save when it's due. Scars, Panic,
+spills into STR, and the chat card offers the critical-damage save when it's due. Scars, Panic,
 *impaired* and *enhanced* attacks, *blast*, Morale and Reactions are all handled. The combat
 tracker follows Cairn's rules: sides take turns, with no initiative roll.
 
@@ -45,9 +49,9 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 ### A toolbox for the Warden
 - **One-click generators** for NPCs, hirelings, monsters and whole factions, all built from the
   rulebook's own tables.
-- **Journeys**: a shared travel window where the party votes on each watch's action. It rolls
-  weather, getting lost and wilderness events, and an encounter can drop its creatures straight
-  onto the map.
+- **Journeys**: a shared travel window that runs the wilderness watch by watch. It rolls weather,
+  getting lost and wilderness events, spends Rations and Fatigue on everyone's sheet, and an
+  encounter can drop its creatures straight onto the map.
 - **Stores**: stock a market by dragging items onto its shelves and open it on every player's
   screen. Players fill a cart, and the store checks both their gold *and* their free slots before
   anything changes hands.
@@ -89,8 +93,8 @@ Cairn d20.
 
 ## Installation
 
-In Foundry's setup screen, go to **Game Systems → Install System**, paste this into
-**Manifest URL**, and click **Install**:
+In Foundry's setup screen, go to **Game Systems → Install System**, search for **Cairn 2e** and
+click **Install**. Or paste this into **Manifest URL**:
 
 ```
 https://github.com/brunocalado/cairn2e/releases/latest/download/system.json
@@ -108,6 +112,9 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
 
 The [**user guide**](docs/wiki.md) covers everything in detail: the character creator, the
 sheet, rolling in play, every Warden tool, containers, and the API for macro and module authors.
+
+The system is in English. A translation is a separate module: to make one, see
+[Translating Cairn 2e](docs/translating.md).
 
 Found a bug or have an idea? [Open an issue](https://github.com/brunocalado/cairn2e/issues).
 Changes in each version are listed in the [changelog](CHANGELOG.md).
