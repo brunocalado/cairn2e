@@ -111,7 +111,8 @@ the file. A new character is created and its sheet opens, followed by a short su
 
 - It brings over the name, attributes, HP, gold, Background, Bond, Omen, age, traits, the
   Deprived and Panicked states, the portrait (when the export has a web address for it), and the
-  items and containers.
+  items and containers. Kettlewright's *Main* is your ten slots, so it becomes no container;
+  mounts and wagons go to your **Belongings**, and a cart you pull takes its slots.
 - Items with the same name as something in the compendiums become that exact item. Everything
   else is created from the file's own text.
 - **Descriptions, notes and scars are not imported.** Copy those by hand.

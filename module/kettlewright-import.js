@@ -233,6 +233,15 @@ async function resolveKettlewrightItem(entry, packDocs) {
  * in once the container Item exists and has an id, so the contents ride along here as
  * `containers[i].items` and are written in a second pass.
  *
+ * Three things in that list are not containers here (read off Kettlewright's `app/lib/inventory.py`):
+ * - `Main`, id 0, is the character's own ten slots. Its items are the body's; it gets no Item.
+ * - A container with no `carried_by` is a beast or a wagon that hauls itself (Kettlewright gives
+ *   a PC no bag: its starting containers are mounts and carts), so it costs the ten nothing and
+ *   sits among the Belongings. One pulled by `Main` is a Cart in hand and costs its `load`.
+ * - A container pulled by someone is weighed in Kettlewright by `load` placeholder items named
+ *   "Carrying <name>" and marked `carrying`. The container's own `slots` carries that weight
+ *   here, so the placeholders are skipped rather than imported as things.
+ *
  * Exported so a Warden can script a bulk import (`game.cairn2e.kettlewrightImport.buildImportData`)
  * and so the check suite can exercise the mapping without a file picker.
  *
@@ -319,8 +328,10 @@ export async function buildImportData(kw) {
     packDocs.push(pack ? await pack.getDocuments().catch(() => []) : []);
   }
 
-  const rawContainers = firstArray(src, ["containers"]);
-  const rawItems = firstArray(src, ["items"]);
+  // `Main` is named by id 0 on a container and in `carried_by`, and by name in a background's data.
+  const isMain = (ref) => ["0", "main"].includes(String(ref ?? "").trim().toLowerCase());
+  const rawContainers = firstArray(src, ["containers"]).filter((c) => !isMain(c?.id) && !isMain(c?.name));
+  const rawItems = firstArray(src, ["items"]).filter((entry) => entry?.carrying == null);
 
   // Route each flat item to its container (by id or name) or to the character.
   const containerKey = new Map();
@@ -362,18 +373,17 @@ export async function buildImportData(kw) {
   const containers = [];
   for (let i = 0; i < rawContainers.length; i++) {
     const c = rawContainers[i];
+    const pulled = c?.carried_by != null && isMain(c.carried_by);
     containers.push({
       type: "gear",
       name: String(c?.name ?? "").trim() || game.i18n.localize("CAIRN.KWImport.ContainerDefaultName"),
       img: CONTAINER_IMG,
       system: {
         capacity: Math.max(1, num(c?.slots ?? c?.capacity, 1)),
-        // Kettlewright's containers are bags the character wears, so the character hauls them —
-        // without this they would read as beasts that haul themselves and land among Belongings
-        // as things the character walked away from. *petty* because Kettlewright has already
-        // counted what is inside it against the bag's own slots.
-        takesSlots: true,
-        slots: 0,
+        // Pulled by the character (a Cart in both hands) it costs its `load` of the ten; anything
+        // else hauls itself — a Donkey, or a wagon a Donkey pulls, since containers do not nest.
+        takesSlots: pulled,
+        ...(pulled ? { slots: Math.max(1, num(c.load, 1)) } : {}),
         description: toHtml(c?.description)
       },
       // Not part of the container document: the contents are siblings on the character, and the
