@@ -58,5 +58,5 @@
     {{!-- The character's attribute row: the steppers write the CURRENT value; the maxima and the
           intrinsic armour are in the window behind the quill. `armorTotal` is intrinsic armour
           plus what is equipped, capped at 3 (`module/data/actor-npc.js`). --}}
-    {{> "systems/cairn2e/templates/parts/attribute-row.hbs" abilities=abilities system=system seed="npc-cap" editable=editable}}
+    {{> "systems/cairn2e/templates/parts/attribute-row.hbs" abilities=abilities system=system seed="npc-cap" editable=editable hpZero=hpZero}}
 </div>

@@ -27,14 +27,14 @@ import { CONDITION } from "./constants.js";
  * `fly` have always been in. A Warden hides a token with the HUD's own eye button, which sets
  * the token's `hidden` flag.
  *
- * Five entries are derived from numbers the system already tracks, but only TWO of them are
- * withheld from a character token's HUD. `CairnActor#syncDerivedConditions` now reconciles a
- * condition when the number behind it changes rather than on every write, so Dead, Paralyzed and
- * Delirious can be set by hand and will stay — which the SRD needs, because `bestiary.md`'s Mind
- * Blast paralyses a target whose DEX never moves and a PC left untreated after Critical Damage
- * dies with STR above 0. Fatigued and Encumbered keep the gate for a different reason: their
- * truth lives in an Item and in the slot count, so a hand-set marker would contradict the open
- * sheet. See the comment on each.
+ * Five entries are derived from numbers the system already tracks, but only ONE of them is
+ * withheld from a character token's HUD. `CairnActor#syncDerivedConditions` reconciles a
+ * condition when the number behind it changes rather than on every write, so Dead, Paralyzed,
+ * Delirious and Encumbered can be set by hand and will stay — which the SRD needs, because
+ * `bestiary.md`'s Mind Blast paralyses a target whose DEX never moves, a PC left untreated after
+ * Critical Damage dies with STR above 0, and inventory is "adjudicated by the Warden". Fatigued
+ * keeps the gate: its truth is an Item that occupies a slot, so a hand-set marker would
+ * contradict the open sheet. See the comment on each.
  *
  * Every entry is a marker: a name and an image, no ActiveEffect `changes`. Nothing here enforces
  * a rule. Panic still reaches the dice only through the existing branch in `module/rolls.js`.
@@ -74,15 +74,14 @@ export const CONDITIONS = [
     hud: { actorTypes: ["npc"] }
   },
   {
-    // Derived, and the one that MUST stay off a character token's HUD: `system.encumbered` is
-    // computed from the slot count, and `hp.effective` falls to 0 from that value, never from
-    // this status. A marker set by hand would promise the Warden 0 effective HP and change
-    // nothing the damage roll reads.
+    // Derived from the slot count, and offered on every token all the same: the status, not the
+    // count, is what `hp.effective` falls to 0 from (`data/actor-character.js`, `actor-npc.js`),
+    // so a Warden's click is a real 0 HP — inventory is "adjudicated by the Warden"
+    // (`character-creation.md`). The next item change re-derives it from the count.
     id: CONDITION.ENCUMBERED,
     name: "CAIRN.Condition.Encumbered",
     img: "icons/containers/bags/pack-leather-strapped-tan.webp",
-    order: 5,
-    hud: { actorTypes: ["npc"] }
+    order: 5
   },
   {
     // Core's own id, kept literal — CONFIG.specialStatusEffects.DEFEATED reads it, which is how

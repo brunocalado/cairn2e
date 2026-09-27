@@ -543,7 +543,7 @@
         }
     }
 
-    /* HP held at 0 by a full ten or by Panic. The printed 0 is set in blood, the sheet's one
+    /* HP held at 0 by Encumbered or by Panic. The printed 0 is set in blood, the sheet's one
        text colour for a state the rules impose (maintainer's call, 2026-09-27): the stored HP
        still reads 6 in the edit window, and an ink 0 beside the other four numbers looked like
        ordinary damage rather than a condition that lifts. Bold for the same reason the steppers

@@ -391,11 +391,17 @@ export class CairnActor extends Actor {
    * STR above 0 (`core-rules.md`). Passing nothing reconciles all five, which is what a caller that
    * does not know the diff should do.
    *
-   * The trade is that this stops being self-healing for the three markers a Warden can now set:
-   * one put on by hand stays until its attribute moves, and clearing it is the Warden's.
+   * The trade is that this stops being self-healing for the four markers a Warden can set: one put
+   * on (or taken off) by hand stays until the number behind it moves — for Encumbered, until an
+   * item comes, goes or changes — and clearing it is the Warden's.
    *
-   * Characters only: an NPC's statuses are the Warden's to set — `core-rules.md` leaves a monster's
-   * death to their discretion — which is why every condition stays clickable on an NPC token.
+   * An NPC reconciles Encumbered alone, from its slot count, and only when it has slots. Everything else on an NPC is the
+   * Warden's to set — `core-rules.md` leaves a monster's death to their discretion — which is why
+   * every condition stays clickable on an NPC token.
+   *
+   * Encumbered is the one derived condition something READS: `hp.effective` falls to 0 from the
+   * status, not from the slot count (`data/actor-character.js`), so a Warden's hand-set Encumbered
+   * zeroes HP exactly as a full ten does, and lifting it by hand gives the HP back.
    *
    * Nothing here enforces a rule. Dead is a marker on a PC at 0 STR, not a death; the Warden still
    * rules on what follows.
@@ -403,15 +409,18 @@ export class CairnActor extends Actor {
    * @param {Set<string>|string[]|null} [only]  Condition ids to reconcile; all five if omitted.
    */
   async syncDerivedConditions(only = null) {
-    if (this.type !== "character") return;
+    if (this.type !== "character" && this.type !== "npc") return;
     const wanted = only === null ? null : new Set(only);
-    const want = {
+    // A creature with no slots has no count to follow, so its Encumbered is the Warden's alone —
+    // otherwise editing one of its features would clear a hand-set one.
+    const want = {};
+    if (this.type === "character" || this.system.slotsMax > 0) want[CONDITION.ENCUMBERED] = this.system.slotsFull;
+    if (this.type === "character") Object.assign(want, {
       [CONDITION.FATIGUED]: this.items.some((i) => i.type === "fatigue"),
-      [CONDITION.ENCUMBERED]: this.system.encumbered,
       [CONDITION.DEAD]: this.system.abilities.STR.value === 0,
       [CONDITION.PARALYZED]: this.system.abilities.DEX.value === 0,
       [CONDITION.DELIRIOUS]: this.system.abilities.WIL.value === 0
-    };
+    });
     // One delete and one create for the whole reconcile, not a `toggleStatusEffect` each: five
     // writes were five renders of the token, which a Warden sees as a flicker. The effects are
     // found and built exactly as core's toggle does (`Actor#toggleStatusEffect`): by the status's

@@ -345,8 +345,8 @@
   },
   "CAIRN.HitProtection": "HP",
   "CAIRN.HpZero": {
-    "Both": "0 HP while Panicked and while all ten slots are full. Stored HP: {hp}, back when both end.",
-    "Full": "0 HP while all ten slots are full. Stored HP: {hp}, back once a slot is free.",
+    "Both": "0 HP while Panicked and Encumbered. Stored HP: {hp}, back when both end.",
+    "Encumbered": "0 HP while Encumbered. Stored HP: {hp}, back once it is lifted.",
     "Panicked": "0 HP while Panicked. Stored HP: {hp}, back once the Panic is shaken off."
   },
   "CAIRN.Identity": "Identity",

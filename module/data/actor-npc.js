@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "../constants.js";
+import { SYSTEM_ID, CONDITION } from "../constants.js";
 import { abilitiesField, resourceField } from "./_fields.js";
 import { sumUsedSlots, sumEquippedArmor } from "./_derived.js";
 
@@ -97,13 +97,17 @@ export class NpcData extends foundry.abstract.TypeDataModel {
     const items = this.parent.items;
     this.slotsUsed = sumUsedSlots(items);
     this.slotsMax = this.slots.max;
-    this.encumbered = this.slotsMax > 0 && this.slotsUsed >= this.slotsMax;
+    // As on a character: a full load puts Encumbered on (`CairnActor#syncDerivedConditions`), and
+    // the status — which the Warden may also set by hand — is what zeroes HP. A creature with no
+    // slots is never full.
+    this.slotsFull = this.slotsMax > 0 && this.slotsUsed >= this.slotsMax;
+    this.encumbered = this.parent.statuses.has(CONDITION.ENCUMBERED);
 
     // Intrinsic armour (`armor`) plus anything equipped, capped at 3. Stored `armor` is left
     // alone so the sheet input round-trips; `armorTotal` is the value damage rolls use.
     this.armorTotal = Math.min((this.armor ?? 0) + sumEquippedArmor(items), 3);
 
-    this.hp.effective = this.hp.value;
+    this.hp.effective = this.encumbered ? 0 : this.hp.value;
 
     // A creature describes itself on Features and has none of the Details tab's people-fields
     // (`npc-tables.md` is about people). Named rather than tested inline because it is the

@@ -9,7 +9,7 @@ import { SYSTEM_ID, FLAGS } from "../constants.js";
 import { regenerateActor, traitRows, toPlainText, toPlainLines } from "../character-generator.js";
 import { rollDieOfFate } from "../rolls.js";
 import { promptGrowthGain } from "../growth.js";
-import { enrich, copyOf, abilityRows } from "../helpers.js";
+import { enrich, copyOf, abilityRows, hpZero } from "../helpers.js";
 import { outcomeText } from "../scars.js";
 import { CairnActorSheet } from "./actor-sheet.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
@@ -134,14 +134,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
     };
 
     context.abilities = abilityRows(system);
-    // A full ten or Panic puts the character at 0 HP while it lasts (`character-creation.md`,
-    // `procedures.md`), but the stored HP is kept so it comes back when the cause ends
-    // (`data/actor-character.js`). The header prints the 0 the rules say, and says why.
-    const zeroedBy = system.hp.value > 0 && [system.panicked && "Panicked", system.encumbered && "Full"].filter(Boolean);
-    if (zeroedBy?.length) {
-      const key = zeroedBy.length > 1 ? "Both" : zeroedBy[0];
-      context.hpZero = { tooltip: game.i18n.localize(`CAIRN.HpZero.${key}`, { hp: system.hp.value }) };
-    }
+    context.hpZero = hpZero(system);
     context.traits = traitRows(system.traits);
 
     // The Bond and the Omen print as plain text, like the table answers below them: they are

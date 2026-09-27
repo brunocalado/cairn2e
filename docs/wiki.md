@@ -277,8 +277,11 @@ Cairn's ten conditions, each with its name beside the icon:
 **Critical Damage · Dead · Delirious · Deprived · Doomed · Encumbered · Fatigued · Fleeing ·
 Panicked · Paralyzed**
 
-- **Fatigued** and **Encumbered** are set by the system for characters, from their Fatigue items
-  and full slots. They can't be switched on by hand for a character.
+- **Fatigued** is set by the system for characters, from their Fatigue items. It can't be
+  switched on by hand for a character.
+- **Encumbered** is set by the system when all the slots are full, and taken off when one frees
+  up. The Warden can also switch it on or off by hand, for a load the slots don't show. While it
+  is on, the character (or NPC) has 0 HP; their real HP comes back when it is lifted.
 - **Panicked** makes the character count as having 0 HP and makes all their attacks Impaired.
 - **Doomed** comes from one row of the Scars table. **Fleeing** marks an enemy that failed its
   Morale.

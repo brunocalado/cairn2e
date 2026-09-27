@@ -96,6 +96,21 @@ export const stripTags = (html) => String(html ?? "").replace(/<[^>]+>/g, "").tr
 export const abilityRows = (system) =>
   Object.entries(system.abilities).map(([key, { value, max }]) => ({ key, value, max }));
 
+/**
+ * Why the HP an attribute row prints is 0 when the stored HP is not: Encumbered or Panic holds an
+ * actor at 0 while it lasts (`character-creation.md`, `procedures.md`), and the stored value is
+ * kept for when it ends (`data/actor-character.js`). An NPC is never Panicked here, so only
+ * Encumbered reaches one.
+ * @param {object} system  an actor's system
+ * @returns {{ tooltip: string }|null}  null while the row prints the stored HP
+ */
+export function hpZero(system) {
+  if (system.hp.value === 0) return null;
+  const by = [system.panicked && "Panicked", system.encumbered && "Encumbered"].filter(Boolean);
+  if (!by.length) return null;
+  return { tooltip: game.i18n.localize(`CAIRN.HpZero.${by.length > 1 ? "Both" : by[0]}`, { hp: system.hp.value }) };
+}
+
 /** One element of a list, at random. */
 export const pick = (list) => list[Math.floor(Math.random() * list.length)];
 

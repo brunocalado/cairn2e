@@ -122,21 +122,26 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     this.slotsMax = MAX_SLOTS;
     this.slotsFree = Math.max(0, this.slotsMax - this.slotsUsed);
 
-    // Filling all slots (or Panic) reduces the PC to 0 HP for as long as the condition holds.
-    this.encumbered = this.slotsUsed >= this.slotsMax;
+    // All ten filled. This is not what zeroes HP — the Encumbered status below is — but what puts
+    // that status on and takes it off (`CairnActor#syncDerivedConditions`), so the Warden can also
+    // set it by hand: inventory is "dependent only on the fiction as adjudicated by the Warden"
+    // (`character-creation.md`), and a friend carried out on someone's back fills no slot.
+    this.slotsFull = this.slotsUsed >= this.slotsMax;
 
     this.armor = sumEquippedArmor(items);
     this.armorTotal = this.armor;
 
-    // Deprived and Panicked are not stored on this model: the ActiveEffect is the only place a
-    // condition lives, so the sheet chip and the token HUD are two views of one object and cannot
-    // drift. They stay readable at `system.deprived` / `system.panicked` for every existing reader.
+    // Deprived, Panicked and Encumbered are not stored on this model: the ActiveEffect is the only
+    // place a condition lives, so the sheet chip and the token HUD are two views of one object and
+    // cannot drift. They are readable at `system.deprived` / `.panicked` / `.encumbered`.
     // Reading `statuses` here is safe because `prepareEmbeddedDocuments` fills it via
     // `applyActiveEffects("initial")` before this method runs (client-document.mjs).
     const statuses = this.parent.statuses;
     this.deprived = statuses.has(CONDITION.DEPRIVED);
     this.panicked = statuses.has(CONDITION.PANICKED);
+    this.encumbered = statuses.has(CONDITION.ENCUMBERED);
 
+    // Encumbered or Panicked, the PC has 0 HP for as long as it holds.
     this.hp.effective = (this.encumbered || this.panicked) ? 0 : this.hp.value;
   }
 }

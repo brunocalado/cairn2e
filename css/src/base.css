@@ -70,7 +70,7 @@
     --cairn-paper: #f8f6f1;
     --cairn-paper-sunk: rgba(25, 24, 19, 0.05);
     /* `ink.js`'s `blood`, for the two things printed in it: a feature's "Critical Damage:"
-       lead on the NPC's Features tab, and a character's HP while a full ten or Panic holds it
+       lead on the NPC's Features tab, and an actor's HP while Encumbered or Panic holds it
        at 0. */
     --cairn-blood: rgb(110 20 20);
     /* Which way money moves, in the store's cart and till (maintainer's call, 2026-09-22). The

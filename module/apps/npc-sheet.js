@@ -10,7 +10,7 @@ import { appearanceTraitRows, regenerateNpc } from "../npc-generator.js";
 import { regenerateMonster } from "../monster-generator.js";
 import { promoteToCharacter } from "../promotion.js";
 import { rollMorale, rollReaction } from "../rolls.js";
-import { enrich, abilityRows } from "../helpers.js";
+import { enrich, abilityRows, hpZero } from "../helpers.js";
 import { CairnActorSheet } from "./actor-sheet.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { CairnNpcEdit } from "./npc-edit.js";
@@ -98,6 +98,7 @@ export class CairnNpcSheet extends CairnActorSheet {
 
     context.roleLabel = game.i18n.localize(`CAIRN.Role.${role.charAt(0).toUpperCase()}${role.slice(1)}`);
     context.abilities = abilityRows(system);
+    context.hpZero = hpZero(system);
     context.appearanceTraits = appearanceTraitRows(system);
     // In collection order — for a bestiary creature, the SRD's own bullet order. A name that is
     // a label ("Magic", "Critical Damage") rather than a sentence takes the SRD's colon before
