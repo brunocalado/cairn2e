@@ -1,26 +1,20 @@
 {
   "_id": "ja7mkKNhdydnTeJL",
   "name": "Valor",
-  "type": "gear",
-  "img": "icons/svg/book.svg",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
   "system": {
     "description": "<p><strong>Valor</strong>. The first time you inflict <strong>Critical Damage</strong>, you receive +d4 HP, returning to the previous limit at the end of combat. If your vow is broken, you die.</p>",
-    "slots": 0,
-    "equipped": false,
-    "cost": 0,
-    "container": "",
-    "uses": {
-      "value": 0,
-      "max": 0
+    "gained": "",
+    "outcome": {
+      "attr": "",
+      "from": 0,
+      "to": 0,
+      "formula": ""
     },
-    "damage": "",
-    "blast": false,
-    "armor": 0,
-    "magic": "none",
-    "recharge": "",
-    "capacity": 0,
-    "takesSlots": false,
-    "carried": true
+    "table": "",
+    "resolved": false,
+    "milestones": []
   },
   "ownership": {
     "default": 0

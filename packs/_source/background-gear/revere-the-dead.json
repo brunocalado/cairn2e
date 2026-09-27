@@ -1,26 +1,20 @@
 {
   "_id": "uxCVpb71dwaeErg8",
   "name": "Revere the Dead",
-  "type": "gear",
-  "img": "icons/svg/book.svg",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
   "system": {
     "description": "<p><strong>Revere the dead</strong>: Death is a journey we all take, and it deserves respect. Take an extra <strong>30gp</strong>. You always place two gold pieces on the eyelids of a slain foe. Somehow, you always find the coin.</p>",
-    "slots": 0,
-    "equipped": false,
-    "cost": 0,
-    "container": "",
-    "uses": {
-      "value": 0,
-      "max": 0
+    "gained": "",
+    "outcome": {
+      "attr": "",
+      "from": 0,
+      "to": 0,
+      "formula": ""
     },
-    "damage": "",
-    "blast": false,
-    "armor": 0,
-    "magic": "none",
-    "recharge": "",
-    "capacity": 0,
-    "takesSlots": false,
-    "carried": true
+    "table": "",
+    "resolved": false,
+    "milestones": []
   },
   "ownership": {
     "default": 0

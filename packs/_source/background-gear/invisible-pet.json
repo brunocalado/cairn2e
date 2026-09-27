@@ -1,26 +1,20 @@
 {
   "_id": "e8ikGgxT7ZLy7wwf",
   "name": "Invisible Pet",
-  "type": "gear",
-  "img": "icons/svg/book.svg",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
   "system": {
     "description": "<p>You dematerialized a beloved pet. Now it follows you around, invisible but always present. Although it cannot interact with the physical realm, you are able to share its senses. (Add a <strong>Fatigue</strong> each time.) It follows basic commands.</p>",
-    "slots": 0,
-    "equipped": false,
-    "cost": 0,
-    "container": "",
-    "uses": {
-      "value": 0,
-      "max": 0
+    "gained": "",
+    "outcome": {
+      "attr": "",
+      "from": 0,
+      "to": 0,
+      "formula": ""
     },
-    "damage": "",
-    "blast": false,
-    "armor": 0,
-    "magic": "none",
-    "recharge": "",
-    "capacity": 0,
-    "takesSlots": false,
-    "carried": true
+    "table": "",
+    "resolved": false,
+    "milestones": []
   },
   "ownership": {
     "default": 0

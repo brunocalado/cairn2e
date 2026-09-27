@@ -1,0 +1,25 @@
+{
+  "_id": "4ApI20jfBuGwqKvK",
+  "name": "Outnumbered",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "system": {
+    "description": "<p>Crop thieves. Not all of them survived, but you were outnumbered. Start with +d4 HP and a <strong>Cusped Falchion</strong> (d8).</p>",
+    "gained": "",
+    "outcome": {
+      "attr": "hp",
+      "from": 0,
+      "to": 0,
+      "formula": "1d4"
+    },
+    "table": "",
+    "resolved": false,
+    "milestones": []
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4ApI20jfBuGwqKvK",
+  "folder": "VCf486fS9s17em9n"
+}

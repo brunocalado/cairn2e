@@ -101,7 +101,7 @@
       "_id": "Qp3dg9kTK2mLYO2b",
       "type": "document",
       "name": "Tooth",
-      "img": "icons/svg/book.svg",
+      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.LGSop6UijQMtrW23",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "jhlULpISVJ0a4U2q",
       "type": "document",
       "name": "Hollow Wolf",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4DGbOldlkgKCSM0r",
       "weight": 1,
       "range": [

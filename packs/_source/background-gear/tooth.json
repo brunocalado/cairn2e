@@ -2,7 +2,7 @@
   "_id": "LGSop6UijQMtrW23",
   "name": "Tooth",
   "type": "gear",
-  "img": "icons/svg/book.svg",
+  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
     "description": "<p>A <em>silver marsh crawler</em> that killed someone close to you. You now carry its <strong>Tooth</strong> (<em>petty</em>) on a chain around your neck as a warning to others of its kind. <em>The tooth hums softly when something is stalking you</em>.</p>",
     "slots": 0,

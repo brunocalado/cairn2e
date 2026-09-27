@@ -46,8 +46,19 @@ export class GrowthData extends foundry.abstract.TypeDataModel {
           choices: ["", "hp", "STR", "DEX", "WIL"]
         }),
         from: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
-        to: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 })
+        to: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0 }),
+        // A die the growth ROLLS and adds to `attr`'s maximum, for the growth a Background table
+        // hands out ("Start with +d4 HP", `character-generator.js#resolveGrowth`). Blank for the
+        // Warden's own growths, which are an assignment the Warden decides, not a roll.
+        formula: new fields.StringField({ required: true, blank: true, initial: "" })
       }),
+      // A table whose drawn line IS what the growth gave, kept in `gained` — "roll a second time
+      // on the Bonds table" (Outrider), "roll on the Omens table, but keep the result to yourself"
+      // (Mountebank). Drawn once, when the character is made. Blank for every other growth.
+      // A plain string, not `DocumentUUIDField`, for the reason `item-background.js` gives: that
+      // field resolves a compendium uuid through `game.packs` while validating, and the pack
+      // build validates with no `game` at all. `checks/background-grants.check.mjs` asserts it.
+      table: new fields.StringField({ required: true, blank: true, initial: "" }),
       // The gain has been applied to the actor. A growth that is pure fiction stays false forever,
       // and that is not a pending state — it is a growth with no number in it.
       resolved: new fields.BooleanField({ initial: false }),

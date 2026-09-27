@@ -116,7 +116,7 @@
       "_id": "C05YMPvYvX9IeRiY",
       "type": "document",
       "name": "Revere the Dead",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.uxCVpb71dwaeErg8",
       "weight": 1,
       "range": [
@@ -201,6 +201,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!fjPAmZ9t77KBgZtT.IX5QphkKpWW6LPli"
+    },
+    {
+      "_id": "trv6FfG4ykFafeCC",
+      "type": "document",
+      "name": "Always Pay Your Debts",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.lX7f1ht79ApDzR1S",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!fjPAmZ9t77KBgZtT.trv6FfG4ykFafeCC"
     }
   ],
   "folder": null,

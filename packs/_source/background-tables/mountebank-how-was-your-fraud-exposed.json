@@ -98,6 +98,21 @@
       "_key": "!tables.results!g0GFLlXj9krBzBjd.wHFabVYURHVMR7Tp"
     },
     {
+      "_id": "nYJFiY7xW8qRYTtA",
+      "type": "document",
+      "name": "False Prophet",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.HCVTwKUC14njSeA4",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!g0GFLlXj9krBzBjd.nYJFiY7xW8qRYTtA"
+    },
+    {
       "_id": "c6KV7S8uU1qvfsCd",
       "type": "text",
       "name": "",
@@ -176,7 +191,7 @@
       "_id": "825eLugLYvkoXkqb",
       "type": "document",
       "name": "Hedgewitch's Curse",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.KHxnNL96nXL02SsP",
       "weight": 1,
       "range": [

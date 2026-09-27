@@ -56,7 +56,7 @@
       "_id": "4IfBRFqpuejRSUgx",
       "type": "document",
       "name": "Invisible Pet",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.e8ikGgxT7ZLy7wwf",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "I1ujtWLhoZpamhtH",
       "type": "document",
       "name": "Truth Serum",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.B0ZefbK4fv915fBd",
       "weight": 1,
       "range": [

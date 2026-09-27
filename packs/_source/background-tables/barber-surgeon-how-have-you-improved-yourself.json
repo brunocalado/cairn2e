@@ -26,7 +26,7 @@
       "_id": "qx1snWpDAzZeRBtY",
       "type": "document",
       "name": "Replacement Eye",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.JSz8fKRzwFpIxWrf",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "GZgYTCWIuMBibmd5",
       "type": "document",
       "name": "Enhanced Ears",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Wobfnh3pMxfDcLNI",
       "weight": 1,
       "range": [

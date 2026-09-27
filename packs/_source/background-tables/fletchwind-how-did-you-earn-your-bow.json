@@ -26,7 +26,7 @@
       "_id": "oQBoCwXsFY6ZFaZS",
       "type": "document",
       "name": "War",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.QAADGn2utwPRdVRl",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "7hHE5oLnl5cwvHBW",
       "type": "document",
       "name": "Falconry",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.mgKHET3LbU874Lc2",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "FrBI0nrVwksaalzj",
       "type": "document",
       "name": "Hunting",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.XekEgVaDHdGfbso3",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "jrWHb8kFFQtq1koi",
       "type": "document",
       "name": "Tournaments",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.RAksE6ZdSITDKKrq",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "CkBux3DVN886cqSH",
       "type": "document",
       "name": "Training",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.TOjjEYUsFiroYa2M",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "5UxYiBpbtEfkYuAE",
       "type": "document",
       "name": "Scouting",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.6m0dfLNHrj3jl359",
       "weight": 1,
       "range": [

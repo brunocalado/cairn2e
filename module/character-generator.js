@@ -24,9 +24,9 @@
  * Starting gear is a list of compendium uuids on the Background and is embedded as-is. What a d6
  * table result grants is authored the same way: `document` results sharing the prose result's
  * range, one per granted Item — a Marketplace line, a `background-gear` document, a sack of coin,
- * or an ability written as a *petty* gear. Nothing is read out of the prose, because the prose is
- * what a translation module translates: a grammar parsed in English would grant nothing in any
- * other language, and it was not reliable in English either.
+ * or a growth (an ability, a vow, a change to the sheet; {@link resolveGrowth}). Nothing is read
+ * out of the prose, because the prose is what a translation module translates: a grammar parsed
+ * in English would grant nothing in any other language, and it was not reliable in English either.
  *
  * The one text grammar left is {@link parseGearLine}, and it serves the Kettlewright importer alone
  * (`module/kettlewright-import.js`), whose exports are English by decision.
@@ -36,6 +36,7 @@ import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
 import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf } from "./helpers.js";
 import { CairnRoll } from "./rolls.js";
+import { gainUpdate } from "./gains.js";
 import { coinItem } from "./coin-rules.js";
 
 /* -------------------------------------------- */
@@ -120,9 +121,7 @@ export async function drawBackground() {
  *
  *  A roll lands on one `text` result — the prose, as `html` and as `text`, a sentence that is what
  *  the character keeps and every surface shows (nothing the player sees is markup) — and on the
- *  `document` results that share its range, which are what it grants: their uuids are `grants`.
- *  A face that adds to starting HP ("Start with +d4 HP") says so as `flags.cairn2e.hp`, a formula:
- *  that is `hp`, rolled when the character is assembled. */
+ *  `document` results that share its range, which are what it grants: their uuids are `grants`. */
 export async function drawBackgroundTable(uuid) {
   const table = await fromUuid(uuid);
   if (!table) return null;
@@ -130,8 +129,7 @@ export async function drawBackgroundTable(uuid) {
   const prose = draw.results.find((r) => r.type === "text");
   const grants = draw.results.filter((r) => r.type === "document").map((r) => r.documentUuid);
   const html = prose?.description ?? "";
-  const hp = prose?.flags?.[SYSTEM_ID]?.hp ?? "";
-  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html), grants, hp };
+  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html), grants };
 }
 
 /** Draw one d10 trait table; returns the plain trait word. */
@@ -366,14 +364,14 @@ export function parseGearLine(line) {
 export async function resolveItem(data) {
   if (data._link) {
     const hit = (await loadPack(data._link))?.find(
-      (d) => d.type === data.type && d.name.toLowerCase() === data.name.toLowerCase()
+    (d) => d.type === data.type && d.name.toLowerCase() === data.name.toLowerCase()
     );
     if (hit) {
-      const obj = copyOf(hit);
-      if (data.system.slots !== undefined) obj.system.slots = data.system.slots;
-      if (data.system.equipped) obj.system.equipped = true;
-      if (data.system.uses) obj.system.uses = data.system.uses;
-      return obj;
+    const obj = copyOf(hit);
+    if (data.system.slots !== undefined) obj.system.slots = data.system.slots;
+    if (data.system.equipped) obj.system.equipped = true;
+    if (data.system.uses) obj.system.uses = data.system.uses;
+    return obj;
     }
   }
   const clean = foundry.utils.deepClone(data);
@@ -433,8 +431,8 @@ export async function assembleActorData(draft) {
   if (draft.backgroundUuid) {
     const background = await fromUuid(draft.backgroundUuid);
     if (background) {
-      const source = copyOf(background);
-      items.push(source);
+    const source = copyOf(background);
+    items.push(source);
     }
   }
 
@@ -443,68 +441,106 @@ export async function assembleActorData(draft) {
   // Starting gear, and what each d6 table result grants, are lists of compendium uuids authored
   // on the Background and on the table. Each one is embedded as a detached copy, the same way the
   // Background itself is above, so the character never reads the pack again once made.
+  const growths = [];
   const embed = async (uuids) => {
     for (const uuid of uuids ?? []) {
-      const doc = await fromUuid(uuid).catch(() => null);
-      if (!doc) {
-        // A background pointing at a document that was deleted or moved. Said out loud rather
-        // than skipped in silence — a character short one item is otherwise indistinguishable
-        // from a background that never listed it.
-        ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MissingStartingGear", { uuid }));
-        continue;
-      }
-      // A granted sack of coin joins the one sack below rather than arriving as a second.
-      if (doc.type === "coin") {
-        gold += doc.system.value;
-        continue;
-      }
-      const source = copyOf(doc);
-      // Armour is worn from the first scene. A pack document ships unequipped, and unequipped
-      // armour counts for nothing (`_derived.js#sumEquippedArmor`) — a Fieldwarden created with
-      // its Brigandine in the pack would start at 0 Armor.
-      if (source.system.armor > 0) source.system.equipped = true;
-      items.push(source);
+    const doc = await fromUuid(uuid).catch(() => null);
+    if (!doc) {
+      // A background pointing at a document that was deleted or moved. Said out loud rather
+      // than skipped in silence — a character short one item is otherwise indistinguishable
+      // from a background that never listed it.
+      ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MissingStartingGear", { uuid }));
+      continue;
+    }
+    // A granted sack of coin joins the one sack below rather than arriving as a second.
+    if (doc.type === "coin") {
+      gold += doc.system.value;
+      continue;
+    }
+    // A granted growth is made true on the character once its numbers exist (below).
+    if (doc.type === "growth") {
+      growths.push(copyOf(doc));
+      continue;
+    }
+    const source = copyOf(doc);
+    // Armour is worn from the first scene. A pack document ships unequipped, and unequipped
+    // armour counts for nothing (`_derived.js#sumEquippedArmor`) — a Fieldwarden created with
+    // its Brigandine in the pack would start at 0 Armor.
+    if (source.system.armor > 0) source.system.equipped = true;
+    items.push(source);
     }
   };
   await embed(draft.startingGear);
-  let hpBonus = 0;
-  for (const result of draft.tableResults ?? []) {
-    await embed(result?.grants);
-    // "Start with +d4 HP" (Fieldwarden, Kettlewright): rolled here, like the starting gold, and
-    // added to both the value and the maximum — it is starting Hit Protection, not a heal.
-    if (result?.hp) hpBonus += await rollTotal(result.hp);
-  }
+  for (const result of draft.tableResults ?? []) await embed(result?.grants);
 
   // Coin is an Item (`data/item-coin.js`): the `3d6 Gold Pieces` every background opens with, and
   // whatever a table result added, are one sack on the body in the same batch as the gear.
   if (gold > 0) items.push(coinItem(gold, game.i18n.localize("CAIRN.Gold")));
 
   const attrs = draft.attrs ?? { STR: 10, DEX: 10, WIL: 10 };
-  const hp = (draft.hp ?? 0) + hpBonus;
+  const hp = draft.hp ?? 0;
+
+  const system = {
+    abilities: {
+      STR: { value: attrs.STR, max: attrs.STR },
+      DEX: { value: attrs.DEX, max: attrs.DEX },
+      WIL: { value: attrs.WIL, max: attrs.WIL }
+    },
+    hp: { value: hp, max: hp },
+    bond: draft.bond ?? "",
+    // Only the youngest character draws one, so the flag follows `youngest` rather than the
+    // text: a youngest character with a blank Omen still has an Omen section to fill in.
+    omen: { enabled: !!draft.youngest, text: draft.youngest ? (draft.omen ?? "") : "" },
+    age: draft.age ?? 0,
+    traits: { ...BLANK_TRAITS, ...draft.traits },
+    backgroundTables: {
+      first: tableSlot(draft.tableResults?.[0]),
+      second: tableSlot(draft.tableResults?.[1])
+    }
+  };
+  // Last, because a growth moves a number the lines above have just set.
+  for (const growth of growths) items.push(await resolveGrowth(growth, system));
 
   return {
     name: draft.name?.trim() || draft.backgroundName || game.i18n.localize("CAIRN.CharacterCreator.DefaultName"),
     type: "character",
-    system: {
-      abilities: {
-        STR: { value: attrs.STR, max: attrs.STR },
-        DEX: { value: attrs.DEX, max: attrs.DEX },
-        WIL: { value: attrs.WIL, max: attrs.WIL }
-      },
-      hp: { value: hp, max: hp },
-      bond: draft.bond ?? "",
-      // Only the youngest character draws one, so the flag follows `youngest` rather than the
-      // text: a youngest character with a blank Omen still has an Omen section to fill in.
-      omen: { enabled: !!draft.youngest, text: draft.youngest ? (draft.omen ?? "") : "" },
-      age: draft.age ?? 0,
-      traits: { ...BLANK_TRAITS, ...draft.traits },
-      backgroundTables: {
-        first: tableSlot(draft.tableResults?.[0]),
-        second: tableSlot(draft.tableResults?.[1])
-      }
-    },
+    system,
     items
   };
+}
+
+/**
+ * Make a growth a Background table grants true on the character being built, and record it.
+ *
+ * A growth is what the character underwent; a Background's d6 is what they underwent before play
+ * (`srd-2e/wardens-guide/growth.md` files the table-driven kind, Scars, under Growth too). So a
+ * face that changes the sheet itself grants a `growth` document, and this is where it lands:
+ *
+ * - `outcome.formula` rolls and adds to `outcome.attr`'s maximum — "Start with +d4 HP". The
+ *   value rises with it: this is the Hit Protection the character starts play with, not a
+ *   maximum waiting to be healed up to. `from` / `to` are written, so deleting the growth puts
+ *   the number back (`growth.js#revertGrowthGain`).
+ * - `table` draws that table once and keeps the line as `gained` — "roll a second time on the
+ *   Bonds table".
+ * - Neither: the gain is the growth's own prose — an ability, a vow, a companion.
+ *
+ * Every one of them is `resolved`: nothing about it is still owed.
+ * @param {object} data    the growth's creation data (`copyOf`)
+ * @param {object} system  the character's `system` as assembled so far; mutated
+ * @returns {Promise<object>}  `data`, resolved
+ */
+async function resolveGrowth(data, system) {
+  const { attr, formula } = data.system.outcome ?? {};
+  if (attr && formula) {
+    const res = attr === "hp" ? system.hp : system.abilities[attr];
+    const { from, to } = gainUpdate({ mode: "add", total: await rollTotal(formula), max: res.max, value: res.value });
+    res.value += to - from;
+    res.max = to;
+    Object.assign(data.system.outcome, { from, to });
+  }
+  if (data.system.table) data.system.gained = toPlainText(await drawTableText(data.system.table));
+  data.system.resolved = true;
+  return data;
 }
 
 /**
@@ -559,7 +595,9 @@ export async function applyDraftToActor(actor, draft) {
   await actor.deleteEmbeddedDocuments("Item", doomed, { render: false });
   await actor.update({ name: data.name, system: data.system });
   if (!kept.size) data.items.push(backpackData());
-  if (data.items.length) await actor.createEmbeddedDocuments("Item", data.items);
+  // The generator is one of the controls that may give a growth (`documents/item.js`): the ones
+  // it creates are the Background's, resolved against THIS character a moment ago.
+  if (data.items.length) await actor.createEmbeddedDocuments("Item", data.items, { [SYSTEM_ID]: { growth: true } });
   // One write per scene, not one per token.
   const byScene = new Map();
   for (const token of actor.getActiveTokens()) {

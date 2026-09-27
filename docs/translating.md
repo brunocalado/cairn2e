@@ -52,8 +52,12 @@ A translation module needs two things in its `module.json`:
 ## 3. What never to translate
 
 - **Ids, uuids and `documentUuid`.** The system finds every document through them.
-- **Flags** — `flags.cairn2e.*` on table results (`event`, `portrait`, `armour`, `hp`). They are
-  what the journey, the NPC generator, the monster generator and the character creator read.
+- **Flags** — `flags.cairn2e.*` on table results (`event`, `portrait`, `armour`). They are what
+  the journey, the NPC generator and the monster generator read.
+- **A Background growth's mechanics** — in `background-gear`, a `growth` document's
+  `system.outcome` (`attr`, `formula`) and `system.table`. They are what the character creator
+  rolls. Translate the growth's `name` and `description`; its `gained` is filled when a character
+  is made, from the translated Bonds or Omens table.
 - **Formulas and ranges** — a table's `formula`, a result's `range`, a weapon's damage die.
 - **The `{placeholders}` in `en.json` strings.** Keep every one, spelled exactly. You may
   **reorder** them: `"{physique} {feature} Creature"` can become

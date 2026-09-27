@@ -2,10 +2,10 @@
   "_id": "yyYNshn5WnGiDI0Q",
   "name": "The Silent Symphony",
   "type": "gear",
-  "img": "icons/svg/book.svg",
+  "img": "icons/sundries/books/book-backed-blue-gold.webp",
   "system": {
     "description": "<p><strong>The Silent Symphony</strong>. Bound in fluorescent wrap. Very rare, it chronicles the subtle signs used by those employing invisibility magic.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 0,
     "container": "",

@@ -26,7 +26,7 @@
       "_id": "zlUDQ27NTggkxt36",
       "type": "document",
       "name": "Performance",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.xE2mA1akQNNsKRYC",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "DeQ2dbpPCxKBols5",
       "type": "document",
       "name": "Wares",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.zUxkALwCjUUy7jfa",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "UGVUZFfP0Zle7tIY",
       "type": "document",
       "name": "Transport",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ptNfu4uSEvAILuBw",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "oPU079zqk9TtQmbh",
       "type": "document",
       "name": "Sailor's Friend",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.SFXQPKPVX4KfxioO",
       "weight": 1,
       "range": [
@@ -206,7 +206,7 @@
       "_id": "b3C77ikbNNLL82RV",
       "type": "document",
       "name": "Guide",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.n5wlwslyuHpGYPPz",
       "weight": 1,
       "range": [

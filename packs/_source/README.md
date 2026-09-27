@@ -365,7 +365,7 @@ because the prose is what a translation module translates (`module/character-gen
 | a spell by name (the _Detect Magic_ Spellbook, a Scroll of _Arcane Eye_) | → the `spellbooks/` or `scrolls/` document |
 | a thing of its own, or a Marketplace thing with different uses (Antitoxin, 2 uses) | a document here, named for what differs when a Marketplace name would clash — `Repellent (3 uses)`, `Antitoxin (2 uses)`, `Spiked Boots (d8)` |
 | coin ("Take an extra 30gp") | a `coin` document here, `name: "Gold"`, the amount as `system.value` — folded into the character's one sack |
-| an ability, no thing at all | a *petty* `gear` here (`slots: 0`, `icons/svg/book.svg`) named for what it does, as the sheet lists it on the Petty tab |
+| no thing at all — an ability, a vow, a companion, a change to the sheet | a **`growth`** here, named for what it does, which lands on the character's Growth tab resolved (`character-generator.js#resolveGrowth`). Its description is the row's prose. `outcome.attr` + `outcome.formula` roll a gain into a maximum ("Start with +d4 HP": Outnumbered, Hired Protection), `from` / `to` recorded so deleting the growth puts it back; `table` draws that table once and keeps the line as `gained` (a second Bond: Always Pay Your Debts; an Omen: False Prophet). In the pack every growth is `resolved: false` — it is resolved against the character it lands on, never before |
 
 A granted document's `description` is the row's whole prose, deliberately the same text the
 `text` result carries: it is what the item said on the sheet when the generator parsed it, and a
@@ -379,11 +379,13 @@ Fireseeds, River Twine), and coin — "+20gp" and "extra 10gp" granted, while a 
 (the Thesaurus, the Necklace) is no longer also 20gp. Body parts and a bow that
 the SRD gives numbers to carry them (2026-09-26): Barber-Surgeon's sigils are *petty* armour (1),
 its metal foot and arm *petty* weapons (d6, d8) — equipped like any weapon to strike — and
-Fletchwind's White Ash is a d6 bow that also counts as its +1 shield while equipped. A face that
-adds starting HP ("Start with +d4 HP", Fieldwarden and Kettlewright) carries `flags.cairn2e.hp`, a
-formula the generator rolls into both value and maximum. What stays prose is what no field can
-hold: the Fatigue a pet or a power costs each time it is used, and a limit such as "other metal
-armour nullifies it".
+Fletchwind's White Ash is a d6 bow that also counts as its +1 shield while equipped. What a face
+makes of the character rather than hands them is a growth (the table above): the abilities, vows
+and companions that used to be *petty* gear — something a character could drop, stow or sell — and
+the four faces that change the sheet. Two of the old "abilities" were things after all and stay
+gear: Prowler's Tooth (*petty*, worn on a chain) and Scrivener's six works, books at a Book's one
+slot. What stays prose is what no field can hold: the Fatigue a pet or a power costs each time it
+is used, and a limit such as "other metal armour nullifies it".
 
 Five lines needed a call, settled 2026-09-15 against the SRD:
 

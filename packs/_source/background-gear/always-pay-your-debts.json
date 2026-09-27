@@ -1,0 +1,25 @@
+{
+  "_id": "lX7f1ht79ApDzR1S",
+  "name": "Always Pay Your Debts",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "system": {
+    "description": "<p><strong>Always pay your debts</strong>: You always repay what you owe, whether in coin or in kind. You expect nothing less from all others. Take a <strong>Blacked-Out Ledger</strong>, then roll a second time on the <strong>Bonds</strong> table.</p>",
+    "gained": "",
+    "outcome": {
+      "attr": "",
+      "from": 0,
+      "to": 0,
+      "formula": ""
+    },
+    "table": "Compendium.cairn2e.bonds.RollTable.bwB2rik5biBasY06",
+    "resolved": false,
+    "milestones": []
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lX7f1ht79ApDzR1S",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

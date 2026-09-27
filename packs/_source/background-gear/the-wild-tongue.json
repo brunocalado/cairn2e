@@ -2,10 +2,10 @@
   "_id": "LUF53H7UnfnwBB0c",
   "name": "The Wild Tongue",
   "type": "gear",
-  "img": "icons/svg/book.svg",
+  "img": "icons/sundries/books/book-backed-blue-gold.webp",
   "system": {
     "description": "<p><strong>The Wild Tongue</strong>. A bundle of leather-bound scrolls. A seminal work, cataloging the hidden languages of beasts and how to understand them.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 0,
     "container": "",

@@ -2,10 +2,10 @@
   "_id": "vUpVnz1JTXhk8nB2",
   "name": "The Cathedral and the Canopy",
   "type": "gear",
-  "img": "icons/svg/book.svg",
+  "img": "icons/sundries/books/book-backed-blue-gold.webp",
   "system": {
     "description": "<p><strong>The Cathedral and the Canopy</strong>. Large-leaf binding over vellum. Nominally a children's storybook, the margins detail information about traveling, eating, and sleeping in the cloud forests.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 0,
     "container": "",

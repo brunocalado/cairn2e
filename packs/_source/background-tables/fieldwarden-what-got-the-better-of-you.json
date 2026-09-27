@@ -146,7 +146,7 @@
       "_id": "iYAyvP1emjJ5tdN3",
       "type": "document",
       "name": "Werewolf",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.WcYfLqIcafEIQbGB",
       "weight": 1,
       "range": [
@@ -169,11 +169,7 @@
         6
       ],
       "drawn": false,
-      "flags": {
-        "cairn2e": {
-          "hp": "1d4"
-        }
-      },
+      "flags": {},
       "_key": "!tables.results!AQs8glEIIOGW3H23.UmCeOr81RFwkxwUv"
     },
     {
@@ -190,6 +186,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!AQs8glEIIOGW3H23.ROan4OtNb1ksDw2I"
+    },
+    {
+      "_id": "zR1b694GY6Ejfhme",
+      "type": "document",
+      "name": "Outnumbered",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.4ApI20jfBuGwqKvK",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.zR1b694GY6Ejfhme"
     }
   ],
   "folder": null,

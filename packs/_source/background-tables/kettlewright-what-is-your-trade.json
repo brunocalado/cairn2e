@@ -26,7 +26,7 @@
       "_id": "sZ1gHFenrkPgfrzK",
       "type": "document",
       "name": "Master Tinker",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.GuYeGjODWlAIUP5x",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "72KW7k4R2uPZWXAN",
       "type": "document",
       "name": "Traveler's Cant",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.rbgBgT9lFrqv2YtN",
       "weight": 1,
       "range": [
@@ -214,11 +214,7 @@
         5
       ],
       "drawn": false,
-      "flags": {
-        "cairn2e": {
-          "hp": "1d4"
-        }
-      },
+      "flags": {},
       "_key": "!tables.results!5M8GOZJszHL8D9qC.YOQB8OdgfMEARvxS"
     },
     {
@@ -250,6 +246,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!5M8GOZJszHL8D9qC.qsYlVkbCySgRivLN"
+    },
+    {
+      "_id": "eDtc8NF0LkTmXUOu",
+      "type": "document",
+      "name": "Hired Protection",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.WfCRYaU9MC2wTrzx",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!5M8GOZJszHL8D9qC.eDtc8NF0LkTmXUOu"
     },
     {
       "_id": "1ipg23iaOm2iQtQK",

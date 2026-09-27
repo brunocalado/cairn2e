@@ -2,10 +2,10 @@
   "_id": "aoQ6TvRgoSCAvv4L",
   "name": "A Treatise on the Abyss",
   "type": "gear",
-  "img": "icons/svg/book.svg",
+  "img": "icons/sundries/books/book-backed-blue-gold.webp",
   "system": {
     "description": "<p><strong>A Treatise on the Abyss</strong>. A nondescript black book. An in-depth, largely theoretical text describing the <strong>Roots</strong>, as well as information about the location of a nearby <strong>Gate</strong>.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 0,
     "container": "",

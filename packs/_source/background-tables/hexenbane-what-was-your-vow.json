@@ -26,7 +26,7 @@
       "_id": "1saSuvB50N6uzpz6",
       "type": "document",
       "name": "Honesty",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.3Pslrpap9QWEel6X",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "wxIxEyRsk8mOjjXO",
       "type": "document",
       "name": "Selflessness",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.n1gN18fmq8E1AEQH",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "weoyUd8MowWSdySE",
       "type": "document",
       "name": "Mercy",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.sK1Q5G2se5JQllDO",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "mc887KCmLaCjUhcr",
       "type": "document",
       "name": "Charity",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.gFl05CwktQUBghyk",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "J11Plfa0UWF65bUu",
       "type": "document",
       "name": "Valor",
-      "img": "icons/svg/book.svg",
+      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ja7mkKNhdydnTeJL",
       "weight": 1,
       "range": [
