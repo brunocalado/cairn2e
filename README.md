@@ -52,6 +52,9 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 - **Journeys**: a shared travel window that runs the wilderness watch by watch. It rolls weather,
   getting lost and wilderness events, spends Rations and Fatigue on everyone's sheet, and an
   encounter can drop its creatures straight onto the map.
+- **Dungeons**: the combat tracker runs exploration turn by turn. It shows what each character
+  is doing, how far their token moved, and when the rules call for a Dungeon Event. If a fight
+  breaks out, the dungeon picks up again on the same turn once it ends.
 - **Stores**: stock a market by dragging items onto its shelves and open it on every player's
   screen. Players fill a cart, and the store checks both their gold *and* their free slots before
   anything changes hands.
@@ -60,7 +63,8 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 - **A party sheet** that shows everyone's HP, attributes and load at a glance, plus the followers
   travelling with them.
 - **Live rules in your notes**: write `[[/save WIL]]` in a journal and it becomes a clickable
-  save. When a character dies, you can promote a hireling to a player character.
+  save. A trap written as `[[/damage d6 STR]]` rolls its damage against STR instead of HP. When a
+  character dies, you can promote a hireling to a player character.
 
 <p align="center">
   <img src="docs/images/journey.png" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="49%">
@@ -79,7 +83,7 @@ All the game content you need is already inside:
 | **Equipment** | the full Marketplace (gear, weapons, armor), plus carts, horses, mules and wagons |
 | **Magic** | 100 spellbooks, 100 scrolls and 46 relics |
 | **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings |
-| **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate and the Warden's generator tables |
+| **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, and the Warden's generator tables |
 | **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, and STR / DEX / WIL saves |
 | **Homebrew** | *More Gear*, *More Spellbooks* and *More Scrolls*: extra content by the maintainer, kept in its own folder |
 

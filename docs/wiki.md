@@ -20,9 +20,10 @@ not teach the rules: they are in the Cairn 2e books and free online at
 11. [Stores and coin](#11-stores-and-coin)
 12. [Warden tools](#12-warden-tools)
 13. [Journeys through the wilderness](#13-journeys-through-the-wilderness)
-14. [Handy shortcuts in text](#14-handy-shortcuts-in-text)
-15. [Macros](#15-macros)
-16. [Compendiums](#16-compendiums)
+14. [Exploring a dungeon](#14-exploring-a-dungeon)
+15. [Handy shortcuts in text](#15-handy-shortcuts-in-text)
+16. [Macros](#16-macros)
+17. [Compendiums](#17-compendiums)
 
 ---
 
@@ -55,7 +56,7 @@ A player who cannot create actors does not see the tab at all, and doesn't need 
 
 Most of Cairn's rules have no on/off switch: they just apply. **Configure Settings** has only
 two options for this system, **Bestiary artwork** and **Bestiary artwork folder**: use your own
-pictures for the monsters in the Bestiary compendium (see [§16](#16-compendiums)). What a store
+pictures for the monsters in the Bestiary compendium (see [§17](#17-compendiums)). What a store
 charges and pays is set on each store (see [§11](#11-stores-and-coin)).
 
 ### Recommended modules
@@ -244,6 +245,19 @@ button on the card for Critical Damage. At STR 0 the target is dead.
 **Undoing a hit.** Applied it to the wrong token? The Warden can right-click the result card in the
 chat and pick **Reverse the hit**. The HP and STR it took are given back.
 
+### Traps
+
+Damage from a trap comes off an attribute, usually STR or DEX, and not off HP. Write it into your
+dungeon notes as a shortcut ([§15](#15-handy-shortcuts-in-text)), for example `[[/damage d6 STR]]`.
+Target the characters it hits and click it. The card offers two buttons:
+
+- **Apply to STR**: armor reduces the damage, as usual.
+- **Apply to STR, armour does not help**: for a trap armor can't stop, like poison gas.
+
+Armor only helps a trap when it makes sense, so the Warden picks the button. HP never moves. At DEX
+0 the character is paralyzed, at WIL 0 delirious, and at STR 0 dead. **Reverse the hit** gives the
+attribute back.
+
 ### Scars
 
 When a hit takes a player's character to **exactly 0 HP** without touching STR, that player gets
@@ -271,6 +285,8 @@ is built around that:
   for. Anyone who fails loses that turn.
 - The Warden gets a reminder when the opponents owe a **Morale** save: on their first casualty,
   and when half of them are down. Players don't see it.
+
+The same tracker also runs a dungeon, turn by turn: see [§14](#14-exploring-a-dungeon).
 
 ---
 
@@ -505,7 +521,53 @@ button.
 
 ---
 
-## 14. Handy shortcuts in text
+## 14. Exploring a dungeon
+
+A dungeon runs in the **combat tracker**, one turn at a time. Any dangerous place counts: a ruin, a
+manor house, a cave. The tracker keeps count and reminds you of the rules. It never stops anyone
+from doing anything, and the Warden decides what happens.
+
+### Starting
+
+Press the **dungeon** button beside the **+** at the top of the combat tracker. Add the party's
+tokens the usual way (right-click a token and **Toggle Combat State**), then press **Begin
+Exploring**. The tracker counts **turns**, and **Next Turn** starts a new one.
+
+### Each turn
+
+- Each row has a line for what that character **does this turn**. Players fill in their own
+  character's line. The actions from the rules (search, listen, force a door…) are offered as
+  suggestions, but anything goes.
+- Beside it is **how far the token has moved** this turn. Past torchlight's 40 ft the number turns
+  bold, with a running figure. Moving further is allowed; it means the party is moving quickly.
+- The **✓** marks the character as having acted, as in a fight.
+- A new turn clears the lines, the marks and the distances.
+
+### Dungeon Events
+
+Under the party, the Warden sees when the rules call for a roll on the **Dungeon Events** table:
+when the party stays too long in one place, moves quickly, enters a new area, or makes noise.
+"Moves quickly" lights up by itself when a token has gone past 40 ft. The other three are the
+Warden's call.
+
+**Roll a Dungeon Event** rolls the table. The card goes to the Warden only, and the result stays in
+the tracker until the next turn. On **Exhaustion**, the party chooses:
+
+- **Each adds a Fatigue** gives every character a Fatigue.
+- **Each eats a ration** spends one Ration use from each character.
+- To rest instead, use the **Rest** button on each sheet.
+
+The card says who had no free slot or no ration left.
+
+### When a fight breaks out
+
+**A Fight Breaks Out** starts an ordinary fight with the party already in it. Add the monsters and
+fight as usual. When the fight ends, the tracker goes back to the dungeon on the same turn, with
+everything as it was.
+
+---
+
+## 15. Handy shortcuts in text
 
 Anything you write in a journal, an item or NPC description, or a chat message can contain these
 shortcuts:
@@ -516,6 +578,8 @@ shortcuts:
 | `[[/save STR]]{Resist the cold}` | the same, showing your own words on the button |
 | `[[/table Reactions]]` | a button that rolls on the named table: your own tables first, then the system's |
 | `[[/table Compendium.cairn2e.tables.RollTable.…]]` | the same, pointing at the table by its UUID (open the table and choose **Copy Document UUID** in its window menu). The button shows the table's name, and it still works if the table is renamed or translated. |
+| `[[/damage d6 STR]]` | a button that rolls a trap's damage against the targeted tokens' STR instead of their HP ([Traps](#traps)). Also works with `DEX` and `WIL`, and with any dice, such as `2d6`. |
+| `[[/damage 2d6 DEX]]{Falling stones}` | the same, showing your own words on the button |
 | `@Condition[deprived]` | the condition's name. Hover it to read what it means. |
 | `@Rule[panic]` | the rule's name. Hover it to read the rule. |
 
@@ -524,7 +588,7 @@ Rules you can name with `@Rule[...]`: `panic`, `impaired`, `enhanced`, `deprived
 
 ---
 
-## 15. Macros
+## 16. Macros
 
 The **Macros** compendium is open to everyone. Drag a macro onto your hotbar and click it to use
 it:
@@ -557,7 +621,7 @@ cairn2e.dieOfFate();        // 1d6
 
 ---
 
-## 16. Compendiums
+## 17. Compendiums
 
 The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** folder:
 
