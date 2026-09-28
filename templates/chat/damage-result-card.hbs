@@ -4,7 +4,10 @@
       third: a hit is an event, and three bold labels with a subtraction in parentheses read as a
       receipt of one. `dmg` is 0 exactly when the armor stopped the blow outright, which is why
       that branch tests the amount rather than a flag of its own — and it is a branch the card
-      needs, because "0 (2−3)" reads as a bug rather than as an attack that failed. --}}
+      needs, because "0 (2−3)" reads as a bug rather than as an attack that failed.
+
+      A trap's hit (`procedures.md` → Traps) moves one attribute and never HP, so it draws the
+      `attribute*` line alone and never the Critical Damage prompt. --}}
 {{#if dead}}
 <p class="cairn-card-outcome failure cairn-damage-dead">{{localize 'CAIRN.Dead'}}</p>
 <p class="cairn-damage-source">{{localize 'CAIRN.Hit.DeadNote'}}</p>
@@ -22,6 +25,12 @@
     <li>
         <span class="cairn-damage-label">{{localize 'CAIRN.Hit.StrLabel'}}</span>
         <span class="cairn-damage-value"><s>{{str}}</s> &rarr; {{newStr}}</span>
+    </li>
+    {{/if}}
+    {{#if attributeChanged}}
+    <li>
+        <span class="cairn-damage-label">{{attributeLabel}}</span>
+        <span class="cairn-damage-value"><s>{{attributeFrom}}</s> &rarr; {{attributeTo}}</span>
     </li>
     {{/if}}
 </ul>

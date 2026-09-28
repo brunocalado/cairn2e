@@ -229,17 +229,36 @@ async function promptDamageOptions(defaultBlast, weapons) {
  * created — a flag written afterwards was a second broadcast, and another client could draw the card
  * before its Apply had anything to apply to.
  */
-async function postDamageRoll(actor, roll, label, targetIds) {
+async function postDamageRoll(actor, roll, label, targetIds, { attribute = null } = {}) {
   const content = await foundry.applications.handlebars.renderTemplate(DAMAGE_CARD_TPL, {
     rollHTML: await roll.render(),
-    hasTargets: targetIds.length > 0
+    hasTargets: targetIds.length > 0,
+    attribute
   });
+  const flags = targetIds.length ? { targets: targetIds } : {};
+  if (attribute) flags.attribute = attribute;
   return roll.toMessage({
-    speaker: ChatMessage.getSpeaker({ actor }),
+    speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
     flavor: label,
     content,
-    flags: targetIds.length ? { [SYSTEM_ID]: { targets: targetIds } } : {}
+    flags: Object.keys(flags).length ? { [SYSTEM_ID]: flags } : {}
   });
+}
+
+/**
+ * A trap's damage, from a `[[/damage d6 STR]]` chip in the Warden's notes: rolled against the
+ * user's targets and applied to that attribute, not HP (`procedures.md` → Traps). The card offers
+ * Apply and Apply-without-armour, because whether armour helps — "only if applicable (e.g. a
+ * shield would not reduce damage from noxious gas)" — is the Warden's judgement.
+ * @param {string} formula
+ * @param {"STR"|"DEX"|"WIL"} attribute
+ * @param {string} label
+ * @returns {Promise<ChatMessage>}
+ */
+export async function rollAttributeDamage(formula, attribute, label) {
+  const targets = Array.from(game.user.targets);
+  const roll = await evaluateFormula(formula);
+  return postDamageRoll(null, roll, label, targets.map((t) => t.id), { attribute });
 }
 
 /**

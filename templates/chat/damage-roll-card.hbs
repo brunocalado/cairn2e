@@ -5,10 +5,22 @@
       The roll is rendered here rather than left to core. Core rebuilds a roll message's block from
       `message.rolls` only while the stored content has no element children (ChatMessage
       #renderRollContent); a card body has children, so the card renders the roll itself. The label
-      is the message's flavor, so it is the caption. --}}
+      is the message's flavor, so it is the caption.
+
+      A trap's damage (`[[/damage d6 STR]]`) carries an `attribute`: it comes off that attribute
+      and not HP, and its second button applies it with armour not helping. --}}
 {{{rollHTML}}}
 {{#if hasTargets}}
+{{#if attribute}}
+<button type="button" class="cairn-card-action apply-dmg">
+    <i class="fas fa-user-minus" inert></i>{{localize 'CAIRN.ApplyAttributeDamage' key=attribute}}
+</button>
+<button type="button" class="cairn-card-action apply-dmg apply-dmg-no-armor">
+    <i class="fas fa-user-minus" inert></i>{{localize 'CAIRN.ApplyAttributeDamageNoArmor' key=attribute}}
+</button>
+{{else}}
 <button type="button" class="cairn-card-action apply-dmg">
     <i class="fas fa-user-minus" inert></i>{{localize 'CAIRN.ApplyDamage'}}
 </button>
+{{/if}}
 {{/if}}

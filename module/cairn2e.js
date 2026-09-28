@@ -521,9 +521,9 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
   const journeyBtn = html.querySelector(".open-journey");
   if (journeyBtn) journeyBtn.addEventListener("click", () => CairnJourneyTracker.open());
 
-  // "Apply damage" button on a damage-roll card (module/rolls.js posts it). GM-only.
-  const applyBtn = html.querySelector(".apply-dmg");
-  if (applyBtn) {
+  // "Apply damage" on a damage-roll card (module/rolls.js posts it) — two of them on a trap's card,
+  // with and without armour. GM-only.
+  for (const applyBtn of html.querySelectorAll(".apply-dmg")) {
     if (game.user.isGM) {
       applyBtn.addEventListener("click", (event) => Damage.onClickChatMessageApplyButton(event, html, message));
     } else {

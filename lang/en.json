@@ -12,6 +12,8 @@
   "CAIRN.AddName": "Add name",
   "CAIRN.AddProperty": "Add",
   "CAIRN.Age": "Age",
+  "CAIRN.ApplyAttributeDamage": "Apply to {key}",
+  "CAIRN.ApplyAttributeDamageNoArmor": "Apply to {key}, armour does not help",
   "CAIRN.ApplyDamage": "Apply damage",
   "CAIRN.Armor": "Armor",
 
@@ -253,6 +255,8 @@
   },
   "CAIRN.Enhanced": "Enhanced",
   "CAIRN.Enrich": {
+    "Damage": "{formula} {key} damage",
+    "DamageHint": "Roll this damage against the targeted tokens' {key}, not their HP.",
     "NoActor": "Select a token, or assign yourself a character.",
     "NoTable": "No table \u201c{name}\u201d in this world or in the system's tables.",
     "SaveHint": "Roll this save for the selected token.",
@@ -380,11 +384,14 @@
     "Carried": "The blow carried through",
     "CriticalPrompt": "A STR save, or Critical Damage.",
     "DeadNote": "Strength reduced to nothing.",
+    "DexLabel": "Dexterity",
     "HpLabel": "Hit Protection",
     "Source": "{damage} rolled, {armor} turned by armour",
+    "SourceArmorIgnored": "{damage} rolled, armour does not help",
     "SourceNoArmor": "{damage} rolled, no armour",
     "StrLabel": "Strength",
-    "Struck": "Struck for {dmg} damage."
+    "Struck": "Struck for {dmg} damage.",
+    "WilLabel": "Willpower"
   },
   "CAIRN.HitProtection": "HP",
   "CAIRN.HpZero": {

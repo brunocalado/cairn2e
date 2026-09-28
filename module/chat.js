@@ -73,10 +73,14 @@ export async function reverseHit(message) {
     return;
   }
 
-  await actor.update({
-    "system.hp.value": actor.system.hp.value + hit.hp,
-    "system.abilities.STR.value": actor.system.abilities.STR.value + hit.str
-  });
+  // A hit took HP and STR, or — a trap's — one attribute alone; each delta it carries is given back.
+  const update = {};
+  if (hit.hp) update["system.hp.value"] = actor.system.hp.value + hit.hp;
+  for (const key of ["STR", "DEX", "WIL"]) {
+    const delta = hit[key.toLowerCase()];
+    if (delta) update[`system.abilities.${key}.value`] = actor.system.abilities[key].value + delta;
+  }
+  await actor.update(update);
 
   // The card's markup is frozen into the message at posting time (core only rebuilds a roll
   // message's block while the stored content has no element children, and every card here stores

@@ -7,17 +7,17 @@
 
 import { SYSTEM_ID, TOOLTIP_CLASS } from "./constants.js";
 import { CONDITIONS } from "./conditions.js";
-import { rollSave, drawNamedTable, tableUuidOf } from "./rolls.js";
+import { rollSave, drawNamedTable, tableUuidOf, rollAttributeDamage } from "./rolls.js";
 
 /**
  * What the Warden writes, made live.
  *
- * Four patterns, resolved wherever Foundry enriches text: a journal page, an item or NPC
- * description, a chat card. Two of them are commands that do something when clicked
- * (`[[/save WIL]]`, `[[/table Reactions]]`) and two are references that carry their meaning on
- * hover (`@Condition[deprived]`, `@Rule[panic]`). That split follows core's own spelling — `[[/…]]`
- * is an inline command, `@X[…]` is a reference — so the syntax is guessable from `[[/r]]` and
- * `@UUID[…]` rather than being this system's invention.
+ * Five patterns, resolved wherever Foundry enriches text: a journal page, an item or NPC
+ * description, a chat card. Three of them are commands that do something when clicked
+ * (`[[/save WIL]]`, `[[/table Reactions]]`, `[[/damage d6 STR]]`) and two are references that
+ * carry their meaning on hover (`@Condition[deprived]`, `@Rule[panic]`). That split follows core's
+ * own spelling — `[[/…]]` is an inline command, `@X[…]` is a reference — so the syntax is
+ * guessable from `[[/r]]` and `@UUID[…]` rather than being this system's invention.
  *
  * Two things about the v14 contract are worth knowing before editing a pattern here:
  *
@@ -138,7 +138,7 @@ function chip(kind, label, tooltip) {
   span.className = `${SYSTEM_ID} cairn-enriched cairn-enriched-${kind}`;
   span.textContent = label;
   // The two that act are controls, and a reader who does not use a pointer has to reach them.
-  if (kind === "save" || kind === "table") {
+  if (kind === "save" || kind === "table" || kind === "damage") {
     span.tabIndex = 0;
     span.setAttribute("role", "button");
   }
@@ -207,6 +207,28 @@ function renderTable(element) {
   onActivate(element, () => drawNamedTable(chipEl.dataset.table));
 }
 
+/**
+ * `[[/damage d6 STR]]`, `[[/damage 2d6 DEX]]{Falling stones}` — a trap's damage, taken from that
+ * attribute rather than HP (`procedures.md` → Traps). The SRD's own dungeon key writes a trap
+ * exactly this way: "slicing the bident in an arc for d6 STR damage" (`dungeon-exploration.md`).
+ * A formula Foundry cannot roll is refused like an unknown id: the source text stays, so a typo
+ * looks like a typo.
+ */
+function enrichDamage([match, formula, key, label]) {
+  if (!Roll.validate(formula)) return new Text(match);
+  const text = label ?? game.i18n.localize("CAIRN.Enrich.Damage", { formula, key: game.i18n.localize(key) });
+  const span = chip("damage", text, game.i18n.localize("CAIRN.Enrich.DamageHint", { key: game.i18n.localize(key) }));
+  span.dataset.formula = formula;
+  span.dataset.key = key;
+  return span;
+}
+
+function renderDamage(element) {
+  const chipEl = chipOf(element);
+  if (!chipEl) return;
+  onActivate(element, () => rollAttributeDamage(chipEl.dataset.formula, chipEl.dataset.key, chipEl.textContent));
+}
+
 /* -------------------------------------------- */
 /*  References                                  */
 /* -------------------------------------------- */
@@ -233,9 +255,9 @@ function enrichRule([match, id, label]) {
 /* -------------------------------------------- */
 
 /**
- * Register the four patterns. Called once from `init` (`module/cairn2e.js`).
+ * Register the five patterns. Called once from `init` (`module/cairn2e.js`).
  *
- * `onRender` is given only to the two that are clickable; core requires an `id` alongside it,
+ * `onRender` is given only to the three that are clickable; core requires an `id` alongside it,
  * and uses the pair to wrap and re-find the element after the enriched HTML reaches the DOM.
  */
 export function registerEnrichers() {
@@ -251,6 +273,12 @@ export function registerEnrichers() {
       pattern: /\[\[\/table ([^\]{}]+)\]\](?:\{([^}]+)\})?/g,
       enricher: enrichTable,
       onRender: renderTable
+    },
+    {
+      id: "cairnDamage",
+      pattern: /\[\[\/damage (\S+) (STR|DEX|WIL)\]\](?:\{([^}]+)\})?/g,
+      enricher: enrichDamage,
+      onRender: renderDamage
     },
     {
       id: "cairnCondition",

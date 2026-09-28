@@ -37,6 +37,22 @@ export function computeDamage({ damage, armor, rawHp, effHp, str }) {
 }
 
 /**
+ * Damage taken from an attribute instead of HP (`procedures.md` → Traps: "Damage from traps is
+ * taken from Attributes (usually STR or DEX) and _not_ from HP. Armor can reduce damage, but only
+ * if applicable"). Whether armour applies is the caller's to say, so `armor` is 0 when it does not.
+ * No overflow and no Critical Damage save: that save belongs to damage that went PAST HP.
+ * @param {{ damage: number, armor: number, value: number }} p
+ * @returns {{ dmg: number, newValue: number }}
+ */
+export function computeAttributeDamage({ damage, armor, value }) {
+  const dmg = Math.max(damage - armor, 0);
+  return { dmg, newValue: Math.max(value - dmg, 0) };
+}
+
+/** The label each attribute's line on the result card carries. */
+const ATTRIBUTE_LABELS = { STR: "CAIRN.Hit.StrLabel", DEX: "CAIRN.Hit.DexLabel", WIL: "CAIRN.Hit.WilLabel" };
+
+/**
  * Applies a rolled damage total to targeted tokens: armor, then HP, then STR overflow, then the
  * Critical Damage prompt. Pure arithmetic and chat-card posting — the STR save the card offers is
  * rolled in `module/rolls.js`, the system's one place for that.
@@ -49,11 +65,16 @@ export class Damage {
   /**
    * @param {string[]} targetIds  Token ids, from the chat message's `targets` flag.
    * @param {number} damage  The rolled damage total, before armor.
+   * @param {object} [options]
+   * @param {"STR"|"DEX"|"WIL"|null} [options.attribute]  Take it from this attribute, not HP.
+   * @param {boolean} [options.armor=true]  Whether armour reduces an attribute hit.
    */
-  static async applyToTargets(targetIds, damage) {
+  static async applyToTargets(targetIds, damage, { attribute = null, armor = true } = {}) {
     let landed = 0;
     for (const id of targetIds) {
-      const data = await this.applyToTarget(id, damage);
+      const data = attribute
+        ? await this.applyToAttribute(id, damage, attribute, armor)
+        : await this.applyToTarget(id, damage);
       if (!data) continue;
       landed++;
       await this.#postDamageMessage(data);
@@ -91,6 +112,27 @@ export class Damage {
   }
 
   /**
+   * An attribute hit: the damage comes off `attribute`, never HP. Zero DEX or WIL raises Paralyzed
+   * or Delirious by itself (`CairnActor`'s derived conditions), and zero STR is the dead card.
+   * @param {string} tokenId
+   * @param {number} damage
+   * @param {"STR"|"DEX"|"WIL"} attribute
+   * @param {boolean} useArmor
+   * @returns {Promise<object|null>}
+   */
+  static async applyToAttribute(tokenId, damage, attribute, useArmor) {
+    const token = canvas.scene?.tokens?.get(tokenId);
+    const actor = token?.actor;
+    if (!actor?.system.abilities?.[attribute]) return null;
+
+    const armor = useArmor ? (actor.system.armorTotal ?? 0) : 0;
+    const value = actor.system.abilities[attribute].value;
+    const { dmg, newValue } = computeAttributeDamage({ damage, armor, value });
+    await actor.update({ [`system.abilities.${attribute}.value`]: newValue });
+    return { actor, token, dmg, damage, armor, useArmor, attribute, value, newValue };
+  }
+
+  /**
    * The "Apply damage" button on a damage-roll chat card.
    * @param {PointerEvent} event
    * @param {HTMLElement} html  The chat message's rendered root.
@@ -113,8 +155,12 @@ export class Damage {
 
     // The roll line this system draws (`templates/chat/roll.hbs`), not core's `.dice-total` — that
     // class carries core's grey-bar styling, so the roll line does not wear it.
+    // A trap's card names the attribute it strikes, and its second button is the one that says
+    // armour does not help.
+    const attribute = message.getFlag(SYSTEM_ID, "attribute") ?? null;
+    const armor = !event.currentTarget?.classList.contains("apply-dmg-no-armor");
     const dmg = parseInt(html.querySelector(".cairn-card-total")?.textContent, 10);
-    if (Number.isFinite(dmg)) return this.applyToTargets(targetIds, dmg);
+    if (Number.isFinite(dmg)) return this.applyToTargets(targetIds, dmg, { attribute, armor });
   }
 
   /**
@@ -122,6 +168,7 @@ export class Damage {
    * @param {object} data  From `applyToTarget`.
    */
   static async #postDamageMessage(data) {
+    if (data.attribute) return this.#postAttributeMessage(data);
     const { actor, token, dmg, damage, armor, hp, str, newHp, newStr } = data;
 
     // What this hit took, so `module/chat.js#reverseHit` can give it back. Deltas rather than the
@@ -174,5 +221,42 @@ export class Damage {
       content,
       ...hitFlag
     });
+  }
+
+  /**
+   * Post an attribute hit. The same card as an HP hit — the sentence, the arithmetic, the one
+   * number that moved — without the Critical Damage prompt, which only damage past HP owes. Its
+   * flag carries the attribute's own delta (`str`, `dex` or `wil`), which is what
+   * `module/chat.js#reverseHit` gives back.
+   * @param {object} data  From `applyToAttribute`.
+   */
+  static async #postAttributeMessage(data) {
+    const { actor, token, dmg, damage, armor, useArmor, attribute, value, newValue } = data;
+    const hitFlag = {
+      [`flags.${SYSTEM_ID}.${FLAGS.HIT}`]: { actorUuid: actor.uuid, hp: 0, [attribute.toLowerCase()]: value - newValue }
+    };
+    const speaker = ChatMessage.getSpeaker({ token });
+    const flavor = game.i18n.localize("CAIRN.Damage");
+
+    if ((attribute === "STR") && (newValue === 0)) {
+      const content = await foundry.applications.handlebars.renderTemplate(DAMAGE_CARD_TPL, { dead: true });
+      await ChatMessage.create({ speaker, flavor, content, ...hitFlag });
+      return;
+    }
+
+    let source;
+    if (!useArmor) source = game.i18n.localize("CAIRN.Hit.SourceArmorIgnored", { damage });
+    else source = game.i18n.localize(armor ? "CAIRN.Hit.Source" : "CAIRN.Hit.SourceNoArmor", { damage, armor });
+
+    const content = await foundry.applications.handlebars.renderTemplate(DAMAGE_CARD_TPL, {
+      dmg,
+      lead: game.i18n.localize("CAIRN.Hit.Struck", { dmg: `<span class="cairn-damage-amount">${dmg}</span>` }),
+      source,
+      attributeChanged: newValue !== value,
+      attributeLabel: game.i18n.localize(ATTRIBUTE_LABELS[attribute]),
+      attributeFrom: value,
+      attributeTo: newValue
+    });
+    await ChatMessage.create({ speaker, flavor, content, ...hitFlag });
   }
 }

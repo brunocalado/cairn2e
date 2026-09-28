@@ -89,9 +89,9 @@
         text-underline-offset: 3px;
     }
 
-    /* The two that act. Solid says "this is a control", the thickening says which one the
+    /* The three that act. Solid says "this is a control", the thickening says which one the
        pointer is on — the same 1px → 2px move a ruled field makes on focus. */
-    &:is(.cairn-enriched-save, .cairn-enriched-table) {
+    &:is(.cairn-enriched-save, .cairn-enriched-table, .cairn-enriched-damage) {
         cursor: pointer;
         text-decoration-style: solid;
 
