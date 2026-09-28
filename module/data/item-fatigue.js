@@ -5,8 +5,6 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { containerField } from "./_fields.js";
-
 const fields = foundry.data.fields;
 
 /**
@@ -17,19 +15,20 @@ const fields = foundry.data.fields;
  *
  * Rules (`srd-2e/players-guide/core-rules.md`): each Fatigue occupies exactly one slot, never
  * *petty*, never *bulky*, cannot be equipped. It lasts until the PC recuperates.
- * The shape carries a description and the container pointer every carried item has; everything
- * else is fixed by the rules and enforced by the slot maths in the document.
+ * The shape is a description and nothing else; everything else is fixed by the rules and enforced
+ * by the slot maths in the document.
+ *
+ * It has no `container` pointer: a Fatigue is always one of the ten slots, never in a mule or a
+ * sack. "A Backpack that can hold up to six slots of items or Fatigue"
+ * (`character-creation.md` § Inventory) is how a PC carries the ten, not a container — Cairn's
+ * author, asked directly (2026-09-27). `data/_derived.js#nestingRefusal` refuses the move too.
  */
 export class FatigueData extends foundry.abstract.TypeDataModel {
   static LOCALIZATION_PREFIXES = ["CAIRN.Fatigue"];
 
   static defineSchema() {
     return {
-      description: new fields.HTMLField({ required: true, blank: true }),
-      // A Backpack "can hold up to six slots of items or Fatigue"
-      // (`srd-2e/players-guide/character-creation.md`) — so a Fatigue can sit in a container,
-      // and carries the same pointer every other item does.
-      container: containerField()
+      description: new fields.HTMLField({ required: true, blank: true })
     };
   }
 }

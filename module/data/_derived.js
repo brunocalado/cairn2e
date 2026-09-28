@@ -59,14 +59,16 @@ export function slotsForItem(item) {
 /**
  * One level of nesting, and no more: a thing that holds things may go into a container only if
  * that container is itself on the body. Bag in mule: yes. Bag in bag in mule: no. Ordinary items
- * go anywhere. Here rather than on the document so the rule can be run from Node.
+ * go anywhere, and a Fatigue nowhere: it is always one of the ten (`item-fatigue.js`). Here rather
+ * than on the document so the rule can be run from Node.
  * @param {Actor} parent  The actor whose collection both documents are in.
- * @param {{id?: string, system?: object}} doc  The item being put somewhere.
+ * @param {{id?: string, type?: string, system?: object}} doc  The item being put somewhere.
  * @param {string} containerId  `system.container` as it will stand after the write.
  * @returns {string|null}  The refusal's i18n key, or null when the move is allowed.
  */
 export function nestingRefusal(parent, doc, containerId) {
   if (!containerId) return null;
+  if (doc.type === "fatigue") return "CAIRN.Notify.FatigueNotStowed";
   if (containerId === doc.id) return "CAIRN.Notify.ContainerInItself";
   const target = parent.items.get(containerId);
   if (!target?.system.isContainer) return "CAIRN.Notify.NotAContainer";

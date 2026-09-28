@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID } from "../constants.js";
 import { rollDamage, rollSave } from "../rolls.js";
-import { slotsForItem, layoutSlots } from "../data/_derived.js";
+import { slotsForItem, layoutSlots, nestingRefusal } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { enrich } from "../helpers.js";
 import { lightSpell } from "../light-sources.js";
@@ -565,7 +565,13 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
         if (amount) await moveCoin(item, amount, row.id);
         return;
       }
-      if (row?.system.isContainer && row.id !== item.id) return item.update({ "system.container": row.id });
+      if (row?.system.isContainer && row.id !== item.id) {
+        // Asked here as well as by the document: a Fatigue has no pointer to write, so core strips
+        // the change before `_preUpdate` sees it and the drop would do nothing, silently.
+        const refusal = nestingRefusal(this.actor, item, row.id);
+        if (refusal) return ui.notifications.warn(game.i18n.localize(refusal, { name: item.name }));
+        return item.update({ "system.container": row.id });
+      }
       // Dragged out of a container and onto the body, where the ten apply again. Any drop that is
       // not onto a container row says "carry this yourself"; without it the drop read as a sort
       // and the thing stayed stowed, with nothing on screen to say why.

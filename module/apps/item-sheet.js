@@ -7,6 +7,7 @@
 
 import { SYSTEM_ID } from "../constants.js";
 import { moveCoin, promptCoinAmount } from "../coin.js";
+import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
 import { CairnSheetMixin } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -485,6 +486,13 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // Nothing goes inside itself; one level of nesting is the document's rule to refuse
     // (`documents/item.js#nestingRefusal`), and it warns.
     if (document.id === this.document.id) return null;
+    // A Fatigue has no pointer to write, so core would strip it before the document could refuse:
+    // the move would do nothing and the copy would land on the body. Asked here instead.
+    const refusal = nestingRefusal(actor, document, this.document.id);
+    if (refusal) {
+      ui.notifications.warn(game.i18n.localize(refusal, { name: document.name }));
+      return null;
+    }
 
     // Already this actor's: move it. From anywhere else: copy it in, and let the document's
     // capacity check refuse it if the container is full.

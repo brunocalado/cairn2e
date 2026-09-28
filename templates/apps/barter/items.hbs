@@ -3,8 +3,7 @@
       ringed in ink, the way a thing is marked on a paper list — a drawn box in place of the
       row's rule, and its name in full ink; never a hue, never a checkbox. What goes with a
       picked container is in full ink too, unringed: it is not a choice of its own. A sack of coin
-      is never picked on its own, because coin goes by the amount below. A row that cannot go is
-      faint and says why in its tooltip. --}}
+      is never picked on its own, because coin goes by the amount below, and it is drawn faint. --}}
 <section class="cairn-barter-items">
     <h3 class="cairn-edit-group" data-ink="hline" data-ink-seed="barter-give" data-ink-w="1.8" data-ink-at="bottom">
         {{localize "CAIRN.Barter.Give"}}
@@ -14,7 +13,6 @@
         <li class="cairn-slot cairn-barter-row{{#if row.picked}} selected{{/if}}{{#if row.inside}} is-inside{{/if}}{{#if row.locked}} is-locked{{/if}}{{#if row.ringed}} is-ringed{{/if}}"
             {{#unless row.locked}}data-action="barterPick" role="button"{{/unless}} data-id="{{row.id}}"
             aria-pressed="{{#if row.picked}}true{{else}}false{{/if}}"
-            {{#if row.reason}}data-tooltip-text="{{row.reason}}"{{/if}}
             {{#if row.ringed}}data-ink="box" data-ink-seed="barter-pick-{{row.id}}" data-ink-w="1.6"
             {{else if row.rule}}data-ink="hline" data-ink-seed="barter-row-{{row.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/if}}>
             <img class="cairn-actions-glyph" src="{{row.img}}" alt="" />

@@ -17,10 +17,6 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/barter`;
 const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/barter-card.hbs`;
 
-/** What may sit inside a container that is handed over. A Fatigue can be stowed
- *  (`data/item-fatigue.js`), and a Fatigue is not a thing anyone can be given. */
-const PORTABLE = new Set(["gear", "coin"]);
-
 /**
  * Barter — a player hands things from their character to another player's: gear, picked row by
  * row, and an amount of coin. One way, with nothing to accept: the trade itself is talked out at
@@ -88,11 +84,9 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     const byName = (a, b) => a.name.localeCompare(b.name);
     for (const item of items.filter((i) => i.type === "gear" && !i.system.container).sort(byName)) {
       const contents = items.filter((i) => i.system.container === item.id).sort(byName);
-      const blocked = contents.some((c) => !PORTABLE.has(c.type));
       const whole = this.#picked.has(item.id);
       rows.push({
-        id: item.id, name: item.name, img: item.img, picked: whole, ringed: whole, locked: blocked,
-        reason: blocked ? game.i18n.localize("CAIRN.Barter.HoldsFatigue") : "",
+        id: item.id, name: item.name, img: item.img, picked: whole, ringed: whole,
         setAside: item.system.carried === false && !item.system.isContainer
       });
       for (const c of contents) {
@@ -104,7 +98,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
           // container that goes, it goes too, and says so.
           picked: whole || this.#picked.has(c.id),
           ringed: this.#picked.has(c.id),
-          locked: whole || coin || !PORTABLE.has(c.type)
+          locked: whole || coin
         });
       }
     }
