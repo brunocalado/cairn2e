@@ -178,6 +178,16 @@ weapon has a die button that rolls its damage.
 To add something, drag it from a compendium onto the sheet, or press **+** on a tab and pick a
 kind: gear, weapon, armor, spellbook, scroll, relic, container or coin.
 
+### Giving things to another character
+
+- **Barter**, in the sheet's **Actions** menu, hands gear and coin to another player's character.
+  Tick what goes, type an amount of coin, pick who gets it and press **Hand over**.
+- **Drag an item onto their token** on the map to give it straight away. This works for gear only
+  (coin goes through Barter) and only between player characters.
+
+Either way, a container goes with everything inside it, whatever doesn't fit on the other
+character stays with you, and a card in the chat says what changed hands.
+
 ---
 
 ## 4. Items, magic and containers
@@ -204,6 +214,7 @@ container: their ten slots are everything they carry, and the story says how the
 - Drag an item anywhere else on the sheet to take it out again.
 - A container can only hold things while someone carries it. It refuses anything that doesn't
   fit.
+- A **Fatigue** never goes in a container: it always takes one of your ten slots.
 - Deleting a container deletes what's inside too, and you are asked to confirm.
 - **Takes Slots** decides whether the container uses your own slots. A backpack or a hand-pulled
   cart does. A horse, a mule or a wagon hauls itself, so it takes none and sits among your

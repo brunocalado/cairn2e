@@ -32,8 +32,9 @@ DEX or WIL to make a save. Rest, Restore and the **Die of Fate** are one button 
 itself up from what you wear. When a character is overloaded or panicking, the sheet shows it.
 
 The **Actions** menu lets a player **Whisper** in character, **Barter** gear and coin with another
-player's character, and run the macros the Warden has put there. Drag a sack or a cart onto
-someone else's sheet and everything inside goes with it.
+player's character, and run the macros the Warden has put there. To give an item quickly, drag it
+onto the other character's token. Drag a sack or a cart onto someone else's sheet and everything
+inside goes with it.
 
 ### Combat that does the math for you
 Roll damage and apply it to the targeted token. Armor soaks what it can, HP goes first, the rest

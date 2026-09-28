@@ -6,6 +6,19 @@ Every release of Cairn 2e for Foundry VTT. The format follows
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-09-28
+
+### Added
+
+- Drag a gear from your sheet onto another player character's token to hand it over straight
+  away, as Barter does: a container goes with what is inside it, what doesn't fit stays with you,
+  and a card in the chat says what changed hands. Gear only, as coin goes through Barter.
+
+### Changed
+
+- A Fatigue always takes one of the ten slots and can no longer be put into a container. The
+  Backpack in the rules is how a character carries their ten slots, not a container.
+
 ## [0.0.4] - 2026-09-27
 
 ### Changed
