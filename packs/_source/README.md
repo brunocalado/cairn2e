@@ -106,7 +106,8 @@ Every id in these packs is **derived, not invented**: `id16(seed)` = the first 1
 `"cairn2e:npc:<slug>:item:<n>"` (1-based, stat-line order), `"cairn2e:hireling:<slug>"` and
 `"cairn2e:hireling:<slug>:item:<n>"` (same rule), `"cairn2e:scroll:<slug>"`, `"cairn2e:homebrew:<slug>"`,
 `"cairn2e:homebrew:folder:<slug>"`, the five magic packs' price folders (see *Prices on magic*), `"cairn2e:bgtable:<slug>:<n>"`,
-`"cairn2e:bggear:<slug>"` and `"cairn2e:bggear:folder:<slug>"`.
+`"cairn2e:bggear:<slug>"`, `"cairn2e:bggear:folder:<slug>"`, `"cairn2e:warden:<slug>"` and
+`"cairn2e:warden:<slug>:<n>"` (a table's results, 1-based, in range order).
 `<slug>` is `kebabCase(name)`, the same rule `tools/pack-common.mjs` applies to filenames. Compute
 a reference rather than looking it up, and a new document lands with the id everything else
 already expects.

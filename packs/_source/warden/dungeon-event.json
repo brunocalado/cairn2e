@@ -1,0 +1,132 @@
+{
+  "_id": "PXKhyBtj0CAsAJ2c",
+  "name": "Dungeon Event",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>The Warden rolls on this table when the party spends more than one dungeon cycle in a single room or location, moves quickly or haphazardly through a room, moves into a new area, level, or zone, or creates a loud disturbance.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "2crPxw5yDIvS3Hmy",
+      "type": "text",
+      "name": "Encounter",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Roll on an encounter table. Possibly <strong>hostile</strong>. (See Reactions.)</p>",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "event": "encounter"
+        }
+      },
+      "_key": "!tables.results!PXKhyBtj0CAsAJ2c.2crPxw5yDIvS3Hmy"
+    },
+    {
+      "_id": "lcjzMQpKa79t1Cdg",
+      "type": "text",
+      "name": "Sign",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>A clue, spoor, track, abandoned lair, scent, victim, etc is discovered.</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "event": "sign"
+        }
+      },
+      "_key": "!tables.results!PXKhyBtj0CAsAJ2c.lcjzMQpKa79t1Cdg"
+    },
+    {
+      "_id": "QU0GRhV842wrSo7Q",
+      "type": "text",
+      "name": "Environment",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Surroundings shift or escalate. Water rises, ceilings collapse, a ritual nears completion, etc.</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "event": "environment"
+        }
+      },
+      "_key": "!tables.results!PXKhyBtj0CAsAJ2c.QU0GRhV842wrSo7Q"
+    },
+    {
+      "_id": "fE40zDnCh0oEayQZ",
+      "type": "text",
+      "name": "Loss",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Torches are blown out, an ongoing spell fizzles, etc. The party must resolve the effect before moving on.</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "event": "loss"
+        }
+      },
+      "_key": "!tables.results!PXKhyBtj0CAsAJ2c.fE40zDnCh0oEayQZ"
+    },
+    {
+      "_id": "AAkDqc6d9PUrSt04",
+      "type": "text",
+      "name": "Exhaustion",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The party must rest (triggering another roll on this table), add a <strong>Fatigue</strong>, or consume a ration.</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "event": "exhaustion"
+        }
+      },
+      "_key": "!tables.results!PXKhyBtj0CAsAJ2c.AAkDqc6d9PUrSt04"
+    },
+    {
+      "_id": "guQUu2Or1DuGLKGX",
+      "type": "text",
+      "name": "Quiet",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>The party is left alone (and safe) for the time being.</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "event": "quiet"
+        }
+      },
+      "_key": "!tables.results!PXKhyBtj0CAsAJ2c.guQUu2Or1DuGLKGX"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!PXKhyBtj0CAsAJ2c"
+}

@@ -343,6 +343,7 @@ export const TABLES = {
   // The Warden tables, world copy first.
   WILDERNESS_EVENT: table("warden", "xUnuriHoFsBZy78E"),
   WILDERNESS_ENCOUNTER: table("warden", "DN3kLf5QkUy8WYYB"),
+  DUNGEON_EVENT: table("warden", "PXKhyBtj0CAsAJ2c"),
   MONSTER_PHYSIQUE: table("warden", "aTfLXvuPhaejcE1P"),
   MONSTER_FEATURE: table("warden", "roUrgHLE6vzbe7we"),
   MONSTER_QUIRK: table("warden", "9XNtKhlnEb3d3rlM"),
