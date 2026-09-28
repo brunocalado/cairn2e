@@ -8,6 +8,30 @@
 import { COMBAT_FLAGS, CONDITION, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
 import { rollMorale, rollSave } from "../rolls.js";
 
+/** "move a distance equal to their torchlight's perimeter (about 40ft)" (`procedures.md`). */
+const TORCHLIGHT_FT = 40;
+
+/** The actions `procedures.md` → Actions names, offered as suggestions for a declaration. */
+const DUNGEON_ACTIONS = ["search", "listen", "force", "disarm", "rest", "cast", "hurry"];
+
+/** When the party risks a Dungeon Event (`procedures.md` → Dungeon Events), in the SRD's order. */
+const DUNGEON_TRIGGERS = ["linger", "hurry", "enter", "loud"];
+
+/**
+ * How far a token has moved this turn, from core's movement history, which the combat clears at
+ * every turn start. Measured through the token's own path measurement rather than by adding the
+ * waypoints' `cost`: a move made by a document update carries a cost of 0 (observed on 14.368),
+ * while the measured distance is the one the ruler shows.
+ * @param {TokenDocument|null} token
+ * @returns {{moved: number, units: string}}
+ */
+function movedThisTurn(token) {
+  const units = token?.parent?.grid?.units ?? "";
+  const history = token?.movementHistory ?? [];
+  if (history.length < 2) return { moved: 0, units };
+  return { moved: Math.round(token.measureMovementPath(history).distance), units };
+}
+
 /**
  * The combat tracker, grouped by side.
  *
@@ -24,6 +48,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   static DEFAULT_OPTIONS = {
     classes: [SYSTEM_ID],
     actions: {
+      createDungeon: CairnCombatTracker.#onCreateDungeon,
       toggleResolved: CairnCombatTracker.#onToggleResolved,
       rollDexSave: CairnCombatTracker.#onRollDexSave,
       rollMorale: CairnCombatTracker.#onRollMorale
@@ -52,10 +77,32 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    * rather than rebuilding them, then sort each side by name — with no initiative, the name is
    * the only ordering 2e offers, and it is at least the one the players can predict.
    */
+  /**
+   * What a dungeon exploration's player has typed into their row and not yet committed, by
+   * combatant id. Core restores the focused input after a re-render but draws it with the value
+   * the flag held, so a keystroke that races another row's update would otherwise be thrown away.
+   * @type {Map<string, string>}
+   */
+  #drafts = new Map();
+
+  /**
+   * @inheritDoc
+   *
+   * The header and footer say "turn" instead of "round" for a dungeon exploration.
+   */
+  async _prepareCombatContext(context, options) {
+    await super._prepareCombatContext(context, options);
+    context.isDungeon = !!this.viewed?.isDungeon;
+  }
+
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
     const combat = this.viewed;
     if (!combat) return;
+    if (combat.isDungeon) {
+      context.dungeon = this.#dungeonContext(combat, context.turns ?? []);
+      return;
+    }
 
     const sides = { adventurers: [], opponents: [] };
     for (const turn of context.turns ?? []) {
@@ -81,6 +128,45 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   }
 
   /**
+   * The rows and the Warden's reminders of a dungeon exploration (`procedures.md` → Dungeon
+   * Exploration). Built on core's per-combatant entries, like the fight's sides.
+   * @param {CairnCombat} combat
+   * @param {object[]} turns  core's entries, one per visible combatant
+   */
+  #dungeonContext(combat, turns) {
+    const rows = [];
+    for (const turn of turns) {
+      const combatant = combat.combatants.get(turn.id);
+      if (!combatant) continue;
+      const { moved, units } = movedThisTurn(combatant.token);
+      rows.push({
+        ...turn,
+        css: turn.css.replace("active", "").trim(),
+        resolved: combatant.resolved,
+        declared: this.#drafts.get(turn.id) ?? combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "",
+        moved,
+        units,
+        // "move a distance equal to their torchlight's perimeter (about 40ft)" — past it, the
+        // party is moving quickly, which is one of the four Dungeon Event triggers. Only a scene
+        // measured in feet can be compared with a distance the SRD gives in feet.
+        beyondTorch: (units === "ft") && (moved > TORCHLIGHT_FT)
+      });
+    }
+    rows.sort((a, b) => a.name.localeCompare(b.name));
+
+    const hurried = rows.some((r) => r.beyondTorch);
+    return {
+      rows,
+      suggestions: DUNGEON_ACTIONS.map((key) => game.i18n.localize(`CAIRN.Dungeon.Action.${key}`)),
+      warden: game.user.isGM,
+      triggers: DUNGEON_TRIGGERS.map((key) => ({
+        label: game.i18n.localize(`CAIRN.Dungeon.Trigger.${key}`),
+        lit: (key === "hurry") && hurried
+      }))
+    };
+  }
+
+  /**
    * @inheritDoc
    *
    * FIXME: works around a core defect at 14.368 — remove when core guards it itself.
@@ -100,6 +186,39 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       options = { ...options, renderData: undefined };
     }
     await super._onRender(context, options);
+    this.#bindDeclarations();
+  }
+
+  /**
+   * A dungeon row's declaration. It is written when the player commits it (`change`: Enter, or
+   * leaving the field) — one flag write per declaration rather than one per keystroke, each of
+   * which would re-render every client's tracker. The owner may write their combatant's flags,
+   * the permission the acted mark already relies on.
+   */
+  #bindDeclarations() {
+    for (const input of this.element.querySelectorAll("input.cairn-declared")) {
+      const { combatantId } = input.closest("[data-combatant-id]")?.dataset ?? {};
+      if (!combatantId) continue;
+      if (this.#drafts.has(combatantId) && (document.activeElement === input)) {
+        input.setSelectionRange(input.value.length, input.value.length);
+      }
+      input.addEventListener("input", () => this.#drafts.set(combatantId, input.value));
+      input.addEventListener("change", async () => {
+        this.#drafts.delete(combatantId);
+        const combatant = this.viewed?.combatants.get(combatantId);
+        if (combatant?.isOwner) await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED, input.value.trim());
+      });
+    }
+  }
+
+  /**
+   * Begin a dungeon exploration: a `dungeon` Combat on the viewed scene, made the active one —
+   * the two calls core's own "+" makes (`CombatTracker#_onCombatCreate`). Active matters: a token
+   * records its movement only as a combatant of `game.combat`.
+   */
+  static async #onCreateDungeon() {
+    const combat = await Combat.implementation.create({ type: "dungeon", scene: canvas.scene?.id ?? null });
+    await combat.activate({ render: false });
   }
 
   /**

@@ -1,0 +1,61 @@
+{{!-- A dungeon exploration's rows, drawn inside the tracker's one `<ol>` (the part may produce a
+      single top-level element, so everything here is an `<li>`).
+
+      `procedures.md` → Dungeon Exploration Cycle: the Warden describes, the players declare their
+      intended movements and actions, the Warden resolves them. So each row carries what its
+      player declared — free text, the SRD's actions offered as suggestions and never required —
+      how far the token moved this turn, and the same acted mark a fight's row has. Nothing here
+      stops anyone doing anything. --}}
+<li class="cairn-combat-side is-active">{{localize "CAIRN.Dungeon.Party"}}</li>
+
+{{#each dungeon.rows}}
+    <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}}"
+        data-combatant-id="{{id}}" data-action="activateCombatant">
+
+        <img class="token-image" src="{{img}}" alt="{{name}}" loading="lazy">
+
+        <div class="token-name">
+            <strong class="name">{{name}}</strong>
+            <input type="text" class="cairn-declared" name="declared.{{id}}" value="{{declared}}"
+                   list="cairn-dungeon-actions" autocomplete="off"
+                   placeholder="{{localize "CAIRN.Dungeon.DeclarePlaceholder"}}"
+                   aria-label="{{localize "CAIRN.Dungeon.DeclareLabel" name=name}}"
+                   {{#unless isOwner}}disabled{{/unless}}>
+        </div>
+
+        {{!-- Beyond torchlight is said with weight and a glyph, never a hue. --}}
+        <span class="cairn-dungeon-moved {{#if beyondTorch}}is-beyond{{/if}}" data-tooltip
+              aria-label="{{localize (ifThen beyondTorch "CAIRN.Dungeon.BeyondTorch" "CAIRN.Dungeon.Moved")}}">
+            {{#if beyondTorch}}<i class="fa-solid fa-person-running" inert></i>{{/if}}{{moved}}&nbsp;{{units}}
+        </span>
+
+        <div class="cairn-combat-acted">
+            {{#if isOwner}}
+                <button type="button" class="inline-control combatant-control icon fa-solid fa-check {{#if resolved}}active{{/if}}"
+                        data-action="toggleResolved" data-tooltip
+                        aria-label="{{localize (ifThen resolved "CAIRN.Dungeon.ActedUndo" "CAIRN.Dungeon.Acted")}}"></button>
+            {{/if}}
+        </div>
+    </li>
+{{/each}}
+
+<li class="cairn-dungeon-suggestions" hidden>
+    <datalist id="cairn-dungeon-actions">
+        {{#each dungeon.suggestions}}<option value="{{this}}"></option>{{/each}}
+    </datalist>
+</li>
+
+{{!-- The Warden's side: when the SRD says to roll, and the roll. The four triggers are
+      reminders, never a gate — "If appropriate, the Warden should roll … Keep common sense in
+      mind". The one the client can see for itself, a token past torchlight, is drawn in full
+      ink; the other three need a judgement no document holds. --}}
+{{#if dungeon.warden}}
+    <li class="cairn-dungeon-warden">
+        <p class="cairn-dungeon-when">{{localize "CAIRN.Dungeon.When"}}</p>
+        <ul class="cairn-dungeon-triggers plain">
+            {{#each dungeon.triggers}}
+                <li class="{{#if lit}}is-lit{{/if}}">{{label}}</li>
+            {{/each}}
+        </ul>
+    </li>
+{{/if}}

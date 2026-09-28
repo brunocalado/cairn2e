@@ -12,8 +12,16 @@
 
       The element classes are core's own (`combatant`, `token-image`, `token-name`,
       `combatant-controls`, `token-resource`) so the sidebar's layout still applies; only the last
-      column and the grouping are this system's. --}}
+      column and the grouping are this system's.
+
+      A dungeon exploration draws its own rows instead (`combat-tracker-dungeon.hbs`), picked
+      here rather than by swapping the part's template: core decides which combat the tracker
+      views only AFTER the parts are configured (`CombatTracker#_configureRenderOptions`), so a
+      swap made there would draw the combat that was on screen before. --}}
 <ol class="combat-tracker plain">
+    {{#if dungeon}}
+    {{> "systems/cairn2e/templates/apps/combat-tracker-dungeon.hbs"}}
+    {{else}}
     {{#each sides as |rows side|}}
         <li class="cairn-combat-side {{#if (eq @root.activeSide side)}}is-active{{/if}}">
             {{localize (concat "CAIRN.Combat.Side." side)}}
@@ -118,4 +126,5 @@
             </li>
         {{/each}}
     {{/each}}
+    {{/if}}
 </ol>

@@ -184,6 +184,12 @@ Hooks.once("init", async function () {
   CONFIG.Combat.documentClass = CairnCombat;
   CONFIG.Combatant.documentClass = CairnCombatant;
   CONFIG.ui.combat = CairnCombatTracker;
+  // A dungeon exploration's row prints how far its token moved this turn. Core re-renders the
+  // tracker for a Combatant's own update, never for its token's movement.
+  Hooks.on("moveToken", (token) => {
+    const viewed = ui.combat?.viewed;
+    if (viewed?.isDungeon && (token.combatant?.parent === viewed)) ui.combat.render();
+  });
 
   // The canvas turn ring. Core lights it for the one token at `combat.combatant`, which this
   // system has no answer for; CairnToken lights every token of the side that is acting instead.
@@ -544,6 +550,7 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/parts/plain-list.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/party-row.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/route-pick.hbs`,
+    `systems/${SYSTEM_ID}/templates/apps/combat-tracker-dungeon.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/encounter-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/journey-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/roll-card.hbs`,

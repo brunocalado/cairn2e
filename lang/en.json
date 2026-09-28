@@ -175,6 +175,38 @@
   },
   "CAIRN.DieOfFate": "Die Of Fate",
   "CAIRN.DropBackground": "Drag a Background here",
+  "CAIRN.Dungeon": {
+    "Acted": "Mark as acted this turn",
+    "ActedUndo": "Has acted this turn \u2014 click to undo",
+    "Action": {
+      "cast": "Cast a spell",
+      "disarm": "Disarm a trap",
+      "force": "Force a door",
+      "hurry": "Move quickly",
+      "listen": "Listen for danger",
+      "rest": "Rest",
+      "search": "Search"
+    },
+    "Begin": "Begin Exploring",
+    "BeyondTorch": "Moved past torchlight's 40 ft this turn \u2014 moving quickly",
+    "Create": "Begin a Dungeon Exploration",
+    "DeclareLabel": "What {name} does this turn",
+    "DeclarePlaceholder": "What do you do?",
+    "End": "End Exploration",
+    "Moved": "Moved this turn",
+    "NextTurn": "Next Turn",
+    "NotStarted": "Exploration Not Begun",
+    "Party": "The Party",
+    "PreviousTurn": "Previous Turn",
+    "Trigger": {
+      "enter": "moves into a new area, level, or zone",
+      "hurry": "moves quickly or haphazardly through a room",
+      "linger": "spends more than one turn in a single room or location",
+      "loud": "creates a loud disturbance"
+    },
+    "Turn": "Turn {turn}",
+    "When": "Roll a Dungeon Event when the party\u2026"
+  },
   "CAIRN.Edit": {
     "Attributes": "Attributes",
     "BondPlaceholder": "Type the bond here…",

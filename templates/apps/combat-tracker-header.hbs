@@ -5,7 +5,10 @@
       is fixed by side (`core-rules.md` → Combat → Rounds), and the only opening roll — each PC's
       first-round DEX save — lives on the row itself. The two spacers keep the label centred
       against the menu on the right, as core's non-GM branch already does. Everything else is
-      core's markup, so its layout and its actions still apply. --}}
+      core's markup, so its layout and its actions still apply.
+
+      Beside core's "+" sits the Warden's way into a dungeon exploration, and an exploration
+      counts turns rather than rounds (`procedures.md` → Dungeon Exploration). --}}
 <header class="combat-tracker-header">
 
     {{#if user.isGM}}
@@ -14,6 +17,8 @@
         {{#if displayCycle}}
         <button type="button" class="inline-control icon fa-solid fa-plus" data-action="createCombat"
                 data-tooltip aria-label="{{ localize "COMBAT.Create" }}"></button>
+        <button type="button" class="inline-control icon fa-solid fa-dungeon" data-action="createDungeon"
+                data-tooltip aria-label="{{ localize "CAIRN.Dungeon.Create" }}"></button>
 
         <div class="cycle-combats">
             <button type="button" class="inline-control icon fa-solid fa-caret-left" data-action="cycleCombat"
@@ -35,6 +40,8 @@
         {{else if combats.length}}
         <button type="button" class="inline-control icon fa-solid fa-plus" data-action="createCombat"
                 data-tooltip aria-label="{{ localize "COMBAT.Create" }}"></button>
+        <button type="button" class="inline-control icon fa-solid fa-dungeon" data-action="createDungeon"
+                data-tooltip aria-label="{{ localize "CAIRN.Dungeon.Create" }}"></button>
         {{#each combats}}
         <button type="button" class="inline-control {{#if active}}active{{/if}}" data-action="cycleCombat"
                 data-combat-id="{{ id }}" {{#if name}}data-tooltip aria-label="{{name}}"{{/if}}>
@@ -48,6 +55,10 @@
         <button type="button" class="combat-control-lg" data-action="createCombat">
             <i class="fa-solid fa-plus" inert></i>
             <span>{{ localize "COMBAT.Create" }}</span>
+        </button>
+        <button type="button" class="combat-control-lg" data-action="createDungeon">
+            <i class="fa-solid fa-dungeon" inert></i>
+            <span>{{ localize "CAIRN.Dungeon.Create" }}</span>
         </button>
         {{/if}}
     </nav>
@@ -65,7 +76,13 @@
 
         <strong class="encounter-title">
             {{#if combats.length}}
+            {{#if isDungeon}}
             {{#if combat.round}}
+            {{ localize "CAIRN.Dungeon.Turn" turn=combat.round }}
+            {{else}}
+            {{ localize "CAIRN.Dungeon.NotStarted" }}
+            {{/if}}
+            {{else if combat.round}}
             {{ localize "COMBAT.Round" round=combat.round }}
             {{else}}
             {{ localize "COMBAT.NotStarted" }}

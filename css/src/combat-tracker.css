@@ -201,4 +201,106 @@
         flex: 0 0 var(--combatant-initiative-width, 44px);
         justify-content: center;
     }
+
+    /**************************************************************************
+     * Dungeon exploration — the party, one turn at a time.                  *
+     *                                                                       *
+     * `procedures.md` → Dungeon Exploration Cycle: each player declares,    *
+     * the Warden resolves. A row adds what its player declared (a ruled     *
+     * field under the name) and how far the token moved this turn; the      *
+     * Warden gets the four Dungeon Event triggers underneath. Same swapping *
+     * `--cairn-surface-*` pair as the fight, for the same reason: this is   *
+     * core's chrome, and it follows the user's theme.                       *
+     **************************************************************************/
+
+    /* The name and the declaration stacked, so the row keeps core's one-line height for the
+       thumbnail and the controls either side of it. */
+    .cairn-dungeon-row .token-name {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        min-width: 0;
+    }
+
+    /* Primitive 3 on the sidebar: the rule and the text take the surface ink, not the sheet's
+       fixed ink, which is near-black on the dark sidebar. Core's input tokens live on the input
+       itself (trap 2), so they are named here, on the element. */
+    .cairn-dungeon-row input.cairn-declared {
+        --input-text-color: var(--cairn-surface-fg);
+        --input-placeholder-color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+        border-bottom-color: color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
+        font-size: 12px;
+        font-style: italic;
+        height: 20px;
+        width: 100%;
+
+        &:focus {
+            border-bottom-color: var(--cairn-surface-fg);
+        }
+
+        /* Somebody else's row: read, not written. It stays legible, and loses its rule. */
+        &:disabled {
+            border-bottom-color: transparent;
+            opacity: 1;
+        }
+    }
+
+    /* How far the token moved this turn: tabular figures in soft ink, and past torchlight the
+       same figure in full ink and bold with a running glyph — state by weight, never by hue. */
+    .cairn-dungeon-moved {
+        color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+        flex: 0 0 auto;
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        font-variant-numeric: tabular-nums;
+        padding: 0 4px;
+        white-space: nowrap;
+
+        &.is-beyond {
+            color: var(--cairn-surface-fg);
+            font-weight: 700;
+        }
+
+        i {
+            margin-right: 3px;
+        }
+    }
+
+    /* The Warden's reminders, under the party: a caption and four clauses completing it. The one
+       the client has seen happen is full ink and bold; the rest are reminders, in soft ink. */
+    .cairn-dungeon-warden {
+        border-top: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
+        color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        list-style: none;
+        margin: 8px 0 0;
+        padding: 6px 8px 4px;
+    }
+
+    .cairn-dungeon-when {
+        letter-spacing: var(--cairn-label-track);
+        margin: 0 0 3px;
+        text-transform: uppercase;
+    }
+
+    .cairn-dungeon-triggers {
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+            padding-left: 10px;
+            text-indent: -10px;
+
+            &::before {
+                content: "\2013\00a0";
+            }
+
+            &.is-lit {
+                color: var(--cairn-surface-fg);
+                font-weight: 700;
+            }
+        }
+    }
 }
