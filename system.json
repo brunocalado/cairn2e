@@ -41,6 +41,9 @@
     "JournalEntryPage": {
       "route": { "htmlFields": ["description"] },
       "faction": { "htmlFields": ["description"] }
+    },
+    "Combat": {
+      "dungeon": {}
     }
   },
   "packs": [

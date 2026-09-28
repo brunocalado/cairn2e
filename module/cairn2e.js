@@ -144,6 +144,9 @@ Hooks.once("init", async function () {
   // them (`module/pointcrawl.js`). `JournalEntryPage` has `hasTypeData`, so the subtype is
   // declared in `system.json#documentTypes` like an Actor's or an Item's.
   CONFIG.JournalEntryPage.dataModels = models.PAGE_MODELS;
+  // A dungeon exploration is a Combat subtype; a fight is core's base type, which `Combat`
+  // allows beside its subtypes (`baseTypeAllowed`).
+  CONFIG.Combat.dataModels = models.COMBAT_MODELS;
 
   // Replace core's forty-odd generic statuses with the 2e roster. Mutated in place rather than
   // assigned: `CONFIG.statusEffects` is a Proxy over an array that also keys every entry by its id

@@ -182,7 +182,15 @@ export const COMBAT_FLAGS = {
    * 2e asks for it once, in the first round of the combat, and only of the adventurers
    * (`core-rules.md`). Cleared alongside RESOLVED, so it cannot outlive the round it belongs to.
    */
-  DEX_SAVE: "dexSave"
+  DEX_SAVE: "dexSave",
+
+  /**
+   * In a dungeon exploration, what the player said their character does this turn — free text,
+   * shown on the row and never read by any behaviour (`procedures.md` → Dungeon Exploration Cycle:
+   * "The players then declare their character's intended movements and actions"). Cleared
+   * alongside RESOLVED.
+   */
+  DECLARED: "declared"
 };
 
 /**

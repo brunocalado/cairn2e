@@ -26,6 +26,15 @@ import { moraleDue } from "../combat/morale.js";
  * machinery working exactly as shipped.
  */
 export class CairnCombat extends Combat {
+  /**
+   * A dungeon exploration rather than a fight (`module/data/combat-dungeon.js`). Its rounds are
+   * dungeon turns and its combatants are the party; everything that belongs to a fight — the
+   * Morale baseline and triggers, the first-round DEX save — stays off.
+   */
+  get isDungeon() {
+    return this.type === "dungeon";
+  }
+
   /** @override — 2e rolls nothing for turn order. There is no turn order to roll for. */
   async rollInitiative(_ids) {
     return this;
@@ -68,6 +77,7 @@ export class CairnCombat extends Combat {
    * (`module/combat/morale.js`).
    */
   async startCombat() {
+    if (this.isDungeon) return super.startCombat();
     const opponents = this.combatants.filter((c) => !c.isAdventurer).length;
     await this.setFlag(SYSTEM_ID, MORALE_FLAGS.BASELINE, opponents);
     return super.startCombat();
@@ -82,6 +92,8 @@ export class CairnCombat extends Combat {
    * @returns {"firstCasualty"|"half"|null}
    */
   get moraleDue() {
+    // An exploration has no opponents to break.
+    if (this.isDungeon) return null;
     const baseline = this.getFlag(SYSTEM_ID, MORALE_FLAGS.BASELINE) ?? 0;
     // "Lone foes must save when they're reduced to 0 HP" (core-rules.md → Morale): a single
     // opponent is down at 0 HP even while it still stands on STR. A group's casualties are the
@@ -152,6 +164,19 @@ export class CairnCombat extends Combat {
     for (const token of tokens) token.renderFlags.set({ refreshTurnMarker: true });
   }
 
+  /**
+   * @inheritDoc
+   *
+   * A dungeon's event belongs to the turn it was drawn in, so any change of turn — forward, back,
+   * or the exploration beginning — empties it in the same write that moves the round.
+   */
+  _preUpdate(changes, options, user) {
+    if (this.isDungeon && ("round" in changes) && (changes.round !== this.round)) {
+      foundry.utils.setProperty(changes, "system.event", null);
+    }
+    return super._preUpdate(changes, options, user);
+  }
+
   /** @override — a new round gives every combatant its action back. */
   async nextRound() {
     await this.clearResolved();
@@ -159,8 +184,8 @@ export class CairnCombat extends Combat {
   }
 
   /**
-   * Hand every combatant its action back, and clear the first-round DEX save with it, in one
-   * write.
+   * Hand every combatant its action back, and clear the first-round DEX save and a dungeon turn's
+   * declaration with it, in one write.
    *
    * The flags are set rather than deleted: one `updateEmbeddedDocuments` call means one database
    * round trip and one tracker re-render, where an unset per combatant would mean N of each. The
@@ -174,7 +199,8 @@ export class CairnCombat extends Combat {
       this.combatants.map((c) => ({
         _id: c.id,
         [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.RESOLVED}`]: false,
-        [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.DEX_SAVE}`]: null
+        [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.DEX_SAVE}`]: null,
+        [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.DECLARED}`]: ""
       }))
     );
   }

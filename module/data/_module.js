@@ -17,8 +17,9 @@ import { GrowthData } from "./item-growth.js";
 import { CoinData } from "./item-coin.js";
 import { RouteData } from "./page-route.js";
 import { FactionData } from "./page-faction.js";
+import { DungeonCombatData } from "./combat-dungeon.js";
 
-export { CharacterData, NpcData, PartyData, GearData, FatigueData, BackgroundData, FeatureData, ScarData, GrowthData, CoinData, RouteData, FactionData };
+export { CharacterData, NpcData, PartyData, GearData, FatigueData, BackgroundData, FeatureData, ScarData, GrowthData, CoinData, RouteData, FactionData, DungeonCombatData };
 
 /** Map for `CONFIG.Actor.dataModels`, keyed by the subtype id in `system.json` `documentTypes`. */
 export const ACTOR_MODELS = {
@@ -48,4 +49,10 @@ export const ITEM_MODELS = {
 export const PAGE_MODELS = {
   route: RouteData,
   faction: FactionData
+};
+
+/** Map for `CONFIG.Combat.dataModels`. A dungeon exploration is a Combat so its tokens record
+ *  their movement (`combat-dungeon.js`); an ordinary fight stays core's base type. */
+export const COMBAT_MODELS = {
+  dungeon: DungeonCombatData
 };
