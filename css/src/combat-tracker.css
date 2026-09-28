@@ -29,8 +29,10 @@
        the 2px corner, a soft-ink hover — in whichever ink the theme gives it. */
     &.combat-sidebar {
         /* `:is(button, a.button)` for the same reason the Warden tab spells it out: the generic
-           rule weighs (0,2,1) and a bare `button` here would lose to it. */
-        & :is(button, a.button) {
+           rule weighs (0,2,1) and a bare `button` here would lose to it. The window header is
+           excluded as it is there: popped out, the tracker is a framed window, and its close
+           and menu controls are core's. */
+        & :is(button, a.button):where(:not(.window-header *)) {
             --button-background-color: transparent;
             --button-border-color: var(--cairn-surface-fg);
             --button-text-color: var(--cairn-surface-fg);
@@ -78,6 +80,14 @@
         .encounter-count {
             color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
             font-variant-numeric: tabular-nums;
+        }
+
+        /* Popped out, the rows sit on paper, and core colours them itself
+           (`.combat-sidebar .combat-tracker .combatant`) with `--color-text-primary`, the dark
+           theme's cream: the names were paper on paper. Ahead of the rows' own block so the
+           hidden and defeated rows still take the soft ink. */
+        &.sidebar-popout .combatant {
+            color: var(--cairn-surface-fg);
         }
 
         /* Rows. The same hover fill the sheet's list rows use — ink at a twentieth — rather than

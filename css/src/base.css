@@ -187,6 +187,17 @@
         --cairn-surface-bg: var(--cairn-paper);
     }
 
+    /* A sidebar tab popped out (a right-click on its rail button) is a framed window, so its
+       content sits on the system's paper (`window.css`) — but core stamps the popout
+       `.themed.theme-<interface>` like the panel it came from, and in a dark interface the rule
+       above swapped everything built from this pair to paper on paper: the combat tracker's
+       rows and controls vanished. Inside the content the ground is always paper, so the pair
+       is the fixed one again. */
+    &.sidebar-popout.themed :is(.window-content, .window-content *) {
+        --cairn-surface-fg: var(--cairn-ink);
+        --cairn-surface-bg: var(--cairn-paper);
+    }
+
     /* Contents — the banners in file order. Fonts and the Tokens banner sit above this block at
        column 0, and the `@keyframes` below its closing brace.
 
