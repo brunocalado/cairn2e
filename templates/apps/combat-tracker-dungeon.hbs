@@ -51,6 +51,11 @@
       ink; the other three need a judgement no document holds. --}}
 {{#if dungeon.warden}}
     <li class="cairn-dungeon-warden">
+        {{!-- A fight breaks out: a second combat with the party already in it. This exploration
+              stays as it is and becomes the active one again when that fight is deleted. --}}
+        <button type="button" class="cairn-dungeon-fight" data-action="startFight">
+            <i class="fa-solid fa-swords" inert></i>{{localize "CAIRN.Dungeon.Fight"}}
+        </button>
         <p class="cairn-dungeon-when">{{localize "CAIRN.Dungeon.When"}}</p>
         <ul class="cairn-dungeon-triggers plain">
             {{#each dungeon.triggers}}

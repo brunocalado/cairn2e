@@ -195,7 +195,20 @@ export const COMBAT_FLAGS = {
 
 /**
  * Combat flags. Unlike {@link COMBAT_FLAGS} these belong to the encounter as a whole, and only
- * the Warden writes them — which is fine, because only the Warden is shown what they drive.
+ * the Warden writes them.
+ */
+export const FIGHT_FLAGS = {
+  /**
+   * The id of the dungeon exploration a fight broke out of. When the fight is deleted, that
+   * exploration becomes the active combat again, on the turn it had reached
+   * (`CairnCombat#_onDelete`).
+   */
+  ORIGIN: "origin"
+};
+
+/**
+ * Combat flags for Morale. Like {@link FIGHT_FLAGS} these belong to the encounter as a whole, and
+ * only the Warden writes them — which is fine, because only the Warden is shown what they drive.
  */
 export const MORALE_FLAGS = {
   /** How many opponents the fight started with — the baseline "half their number" is half of. */

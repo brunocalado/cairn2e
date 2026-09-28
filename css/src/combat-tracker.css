@@ -304,8 +304,9 @@
         }
     }
 
-    /* The roll and the Exhaustion choices are the panel's ink buttons (the rule at the top of this
-       block), full width in the narrow sidebar, with the same capital label a card action has. */
+    /* The fight, the roll and the Exhaustion choices are the panel's ink buttons (the rule at the
+       top of this block), full width in the narrow sidebar, with a card action's capital label. */
+    .cairn-dungeon-fight,
     .cairn-dungeon-roll,
     .cairn-dungeon-exhaustion button {
         font-family: var(--cairn-serif);
@@ -315,12 +316,17 @@
         width: 100%;
     }
 
+    .cairn-dungeon-fight {
+        margin-bottom: 8px;
+    }
+
+    .cairn-dungeon-fight i,
+    .cairn-dungeon-roll i {
+        margin-right: 6px;
+    }
+
     .cairn-dungeon-roll {
         margin-top: 6px;
-
-        i {
-            margin-right: 6px;
-        }
     }
 
     /* The drawn row: its name in full ink and bold, its words after it in the panel's soft ink. */

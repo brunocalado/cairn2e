@@ -198,6 +198,7 @@
     "FatigueAdded": "Fatigue: {names}.",
     "FatigueLead": "Every character adds a Fatigue.",
     "FatigueNoRoom": "No free slot, so no Fatigue was added: {names}. An item must be dropped to take it.",
+    "Fight": "A Fight Breaks Out",
     "Moved": "Moved this turn",
     "NextTurn": "Next Turn",
     "NoTable": "The system's table {uuid} is missing from its compendium.",

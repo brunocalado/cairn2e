@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { COMBAT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
+import { COMBAT_FLAGS, FIGHT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
 import { moraleDue } from "../combat/morale.js";
 
 /**
@@ -175,6 +175,22 @@ export class CairnCombat extends Combat {
       foundry.utils.setProperty(changes, "system.event", null);
     }
     return super._preUpdate(changes, options, user);
+  }
+
+  /**
+   * @inheritDoc
+   *
+   * A fight that broke out of a dungeon exploration hands the table back to it when it ends —
+   * End Combat or a delete from the context menu alike — so the exploration is the active combat
+   * again, on the turn it had reached, and its tokens record their movement against it once more.
+   * One client acts: the one that deleted the fight. Core has just activated whatever the
+   * tracker was left viewing; this runs after it.
+   */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    if (userId !== game.user.id) return;
+    const origin = game.combats.get(this.getFlag(SYSTEM_ID, FIGHT_FLAGS.ORIGIN) ?? "");
+    if (origin?.isDungeon) origin.activate().then(() => ui.combat.render({ combat: origin }));
   }
 
   /** @override — a new round gives every combatant its action back. */

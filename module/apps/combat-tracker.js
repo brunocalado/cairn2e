@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { COMBAT_FLAGS, CONDITION, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
+import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
 import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { consumeRation } from "../journey.js";
 
@@ -51,6 +51,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     actions: {
       createDungeon: CairnCombatTracker.#onCreateDungeon,
       rollDungeonEvent: CairnCombatTracker.#onRollDungeonEvent,
+      startFight: CairnCombatTracker.#onStartFight,
       exhaustionFatigue: CairnCombatTracker.#onExhaustionFatigue,
       exhaustionRation: CairnCombatTracker.#onExhaustionRation,
       toggleResolved: CairnCombatTracker.#onToggleResolved,
@@ -263,6 +264,27 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     if (paid.length) lines.push(game.i18n.localize(paidKey, { names: names(paid) }));
     if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: names(unpaid) }));
     await postJourneyCard({ flavor: combat.system.event.name, lead: game.i18n.localize(leadKey), lines });
+  }
+
+  /**
+   * A fight breaks out. It is an ordinary side-based combat — sides, the first-round DEX save,
+   * Morale — already holding the exploration's combatants, made the active one so its tokens
+   * record their movement against it. The Warden adds the monsters. The exploration is left as it
+   * is, and comes back when the fight is deleted (`CairnCombat#_onDelete`), which is why this is
+   * a second combat and not the exploration converted in place: a fight starts at round one, and
+   * the exploration would lose its turn count, its declarations and its pending event.
+   */
+  static async #onStartFight() {
+    const dungeon = this.viewed;
+    if (!dungeon?.isDungeon) return;
+    const fight = await Combat.implementation.create({
+      scene: dungeon.scene?.id ?? null,
+      flags: { [SYSTEM_ID]: { [FIGHT_FLAGS.ORIGIN]: dungeon.id } },
+      combatants: dungeon.combatants.map((c) => ({
+        tokenId: c.tokenId, sceneId: c.sceneId, actorId: c.actorId, hidden: c.hidden
+      }))
+    });
+    await fight.activate({ render: false });
   }
 
   /**
