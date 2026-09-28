@@ -6,7 +6,8 @@
  */
 
 import { COMBAT_FLAGS, CONDITION, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
-import { rollMorale, rollSave } from "../rolls.js";
+import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
+import { consumeRation } from "../journey.js";
 
 /** "move a distance equal to their torchlight's perimeter (about 40ft)" (`procedures.md`). */
 const TORCHLIGHT_FT = 40;
@@ -49,6 +50,9 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     classes: [SYSTEM_ID],
     actions: {
       createDungeon: CairnCombatTracker.#onCreateDungeon,
+      rollDungeonEvent: CairnCombatTracker.#onRollDungeonEvent,
+      exhaustionFatigue: CairnCombatTracker.#onExhaustionFatigue,
+      exhaustionRation: CairnCombatTracker.#onExhaustionRation,
       toggleResolved: CairnCombatTracker.#onToggleResolved,
       rollDexSave: CairnCombatTracker.#onRollDexSave,
       rollMorale: CairnCombatTracker.#onRollMorale
@@ -155,8 +159,10 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     rows.sort((a, b) => a.name.localeCompare(b.name));
 
     const hurried = rows.some((r) => r.beyondTorch);
+    const event = combat.system.event;
     return {
       rows,
+      event: event ? { ...event, exhaustion: event.kind === "exhaustion" } : null,
       suggestions: DUNGEON_ACTIONS.map((key) => game.i18n.localize(`CAIRN.Dungeon.Action.${key}`)),
       warden: game.user.isGM,
       triggers: DUNGEON_TRIGGERS.map((key) => ({
@@ -209,6 +215,54 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         if (combatant?.isOwner) await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED, input.value.trim());
       });
     }
+  }
+
+  /**
+   * Draw a Dungeon Event and keep it on the exploration until the turn changes. The Warden
+   * decides when — the SRD's four triggers are only reminders — so this is only ever a click.
+   */
+  static async #onRollDungeonEvent() {
+    const combat = this.viewed;
+    if (!combat?.isDungeon) return;
+    const event = await drawDungeonEvent();
+    if (event) await combat.update({ "system.event": event });
+  }
+
+  /**
+   * Exhaustion: "The party must rest (triggering another roll on this table), add a **Fatigue**,
+   * or consume a ration." The party chooses; these are the two that write to a sheet — resting is
+   * the sheet's own Rest. Either one spends the event: its marker is emptied and its words stay on
+   * screen, so the buttons go and a second click cannot charge the party twice.
+   */
+  static async #onExhaustionFatigue() {
+    await CairnCombatTracker.#spendExhaustion(this.viewed, async (actor) => (await actor.addFatigue()).length > 0,
+      "CAIRN.Dungeon.FatigueLead", "CAIRN.Dungeon.FatigueAdded", "CAIRN.Dungeon.FatigueNoRoom");
+  }
+
+  static async #onExhaustionRation() {
+    await CairnCombatTracker.#spendExhaustion(this.viewed, consumeRation,
+      "CAIRN.Dungeon.RationLead", "CAIRN.Dungeon.RationEaten", "CAIRN.Dungeon.RationNone");
+  }
+
+  /**
+   * Charge every adventurer once and post one card that says who paid and who could not — a body
+   * with no free slot refuses a Fatigue (`documents/item.js`), a pack with no Rations has none to
+   * eat, and what happens then is the table's call.
+   * @param {CairnCombat} combat
+   * @param {(actor: Actor) => Promise<boolean>} charge  resolves whether the actor paid
+   */
+  static async #spendExhaustion(combat, charge, leadKey, paidKey, unpaidKey) {
+    if (!combat?.isDungeon || (combat.system.event?.kind !== "exhaustion")) return;
+    await combat.update({ "system.event.kind": "" });
+    const actors = new Set(combat.combatants.filter((c) => c.isAdventurer && c.actor).map((c) => c.actor));
+    const paid = [];
+    const unpaid = [];
+    for (const actor of actors) ((await charge(actor)) ? paid : unpaid).push(actor.name);
+    const names = (list) => game.i18n.getListFormatter().format(list);
+    const lines = [];
+    if (paid.length) lines.push(game.i18n.localize(paidKey, { names: names(paid) }));
+    if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: names(unpaid) }));
+    await postJourneyCard({ flavor: combat.system.event.name, lead: game.i18n.localize(leadKey), lines });
   }
 
   /**

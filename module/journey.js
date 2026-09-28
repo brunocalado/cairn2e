@@ -611,8 +611,9 @@ async function end() {
 /*  The sheets                                  */
 /* -------------------------------------------- */
 
-/** Spend one use of the character's Rations. `false` when there is none left to spend. */
-async function consumeRation(actor) {
+/** Spend one use of the character's Rations. `false` when there is none left to spend. Also what
+ *  a dungeon's Exhaustion spends (`module/apps/combat-tracker.js`). */
+export async function consumeRation(actor) {
   const rations = actor.items.find((i) => isRation(i) && i.system.uses.value > 0);
   if (!rations) return false;
   await rations.update({ "system.uses.value": rations.system.uses.value - 1 });

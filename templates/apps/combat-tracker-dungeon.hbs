@@ -57,5 +57,22 @@
                 <li class="{{#if lit}}is-lit{{/if}}">{{label}}</li>
             {{/each}}
         </ul>
+        <button type="button" class="cairn-dungeon-roll" data-action="rollDungeonEvent">
+            <i class="fa-solid fa-dice-d6" inert></i>{{localize "CAIRN.Dungeon.RollEvent"}}
+        </button>
+
+        {{!-- The event drawn this turn, until the turn changes. Exhaustion is the one row that
+              writes to the sheets, and only when the Warden presses the party's choice. --}}
+        {{#if dungeon.event}}
+            <div class="cairn-dungeon-event">
+                <strong>{{dungeon.event.name}}</strong> {{dungeon.event.text}}
+            </div>
+            {{#if dungeon.event.exhaustion}}
+                <div class="cairn-dungeon-exhaustion">
+                    <button type="button" data-action="exhaustionFatigue">{{localize "CAIRN.Dungeon.AddFatigue"}}</button>
+                    <button type="button" data-action="exhaustionRation">{{localize "CAIRN.Dungeon.EatRation"}}</button>
+                </div>
+            {{/if}}
+        {{/if}}
     </li>
 {{/if}}

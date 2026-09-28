@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 import { SYSTEM_ID, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
-import { findTable, loadPack } from "./helpers.js";
+import { findTable, loadPack, stripTags } from "./helpers.js";
 import { slotsForItem } from "./data/_derived.js";
 
 /**
@@ -491,6 +491,29 @@ export async function postRollCard(roll, { flavor, lead, text = "", resultCls = 
 export async function postJourneyCard({ flavor, lead = "", lines = [], open = false }) {
   const content = await foundry.applications.handlebars.renderTemplate(JOURNEY_CARD_TPL, { lead, lines, open });
   return ChatMessage.create({ speaker: ChatMessage.getSpeaker(), flavor, content });
+}
+
+/**
+ * Draw `Dungeon Event` (`procedures.md` → Dungeon Events) for the dungeon tracker. The card is
+ * whispered to the Wardens: the row is their material to narrate, and the party meets the result
+ * rather than reading it. What comes back is the row as the tracker keeps it — its marker, which
+ * is what the tracker acts on, and its words, which are only printed. Missing table → a warning.
+ * @returns {Promise<{kind: string, name: string, text: string}|null>}
+ */
+export async function drawDungeonEvent() {
+  const table = await findTable(TABLES.DUNGEON_EVENT);
+  if (!table) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Dungeon.NoTable", { uuid: TABLES.DUNGEON_EVENT }));
+    return null;
+  }
+  const { results } = await table.draw({ messageMode: "gm" });
+  const row = results?.[0];
+  if (!row) return null;
+  return {
+    kind: row.flags?.[SYSTEM_ID]?.event ?? "",
+    name: String(row.name ?? "").trim(),
+    text: stripTags(row.description)
+  };
 }
 
 /**

@@ -303,4 +303,39 @@
             }
         }
     }
+
+    /* The roll and the Exhaustion choices are the panel's ink buttons (the rule at the top of this
+       block), full width in the narrow sidebar, with the same capital label a card action has. */
+    .cairn-dungeon-roll,
+    .cairn-dungeon-exhaustion button {
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        letter-spacing: var(--cairn-label-track);
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    .cairn-dungeon-roll {
+        margin-top: 6px;
+
+        i {
+            margin-right: 6px;
+        }
+    }
+
+    /* The drawn row: its name in full ink and bold, its words after it in the panel's soft ink. */
+    .cairn-dungeon-event {
+        margin-top: 6px;
+
+        strong {
+            color: var(--cairn-surface-fg);
+        }
+    }
+
+    .cairn-dungeon-exhaustion {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 6px;
+    }
 }
