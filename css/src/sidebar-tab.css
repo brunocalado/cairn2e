@@ -67,7 +67,13 @@
         }
     }
 
-    &.cairn2e-sidebar {
+    /* The panel as it sits in the rail. Right-clicking the rail button pops the tab out
+       (`AbstractSidebarTab#renderPopout`), and core builds that window from this instance's own
+       options — so the popout carries `.cairn2e-sidebar`, and `.active` too if the tab was open,
+       on a framed window. Every rule here is for the rail alone: on the popout the swapping pair
+       read paper-on-paper in a dark theme, the button rule reached core's header controls, and
+       the panel padding landed on the window root. The popout is its own block below. */
+    &.cairn2e-sidebar:where(:not(.sidebar-popout)) {
         flex-direction: column;
         overflow-y: auto;
         color: var(--color-text-secondary);
@@ -102,6 +108,35 @@
             --button-hover-text-color: var(--cairn-surface-bg);
             justify-content: flex-start;
             font-family: var(--cairn-serif);
+        }
+    }
+
+    /* The same panel popped out into a window. A floating window is a system window, so it takes
+       the paper, the double rule and the ink button that every other one does (`window.css`,
+       `controls.css`) rather than the rail's theme-following pair — and since those exclude
+       `.window-header`, core's header controls stay core's. What is left to say here is the
+       layout, and the divider: core rules it in `--color-warm-1` fading out through a gradient
+       mask, which on paper is the one orange line in the window. */
+    &.sidebar-popout .window-content {
+        gap: 1.5rem;
+        padding: 1rem;
+
+        .cairn-tool-group {
+            gap: 0.5rem;
+        }
+
+        h4.divider {
+            margin: 0;
+
+            &::before,
+            &::after {
+                border-top: var(--cairn-rule) solid var(--cairn-ink);
+                mask-image: none;
+            }
+        }
+
+        button {
+            justify-content: flex-start;
         }
     }
 
