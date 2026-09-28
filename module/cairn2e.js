@@ -34,6 +34,7 @@ import { CairnCombat } from "./documents/combat.js";
 import { CairnCombatant } from "./documents/combatant.js";
 import { CairnCombatTracker } from "./apps/combat-tracker.js";
 import { CairnToken } from "./canvas/token.js";
+import { onDropCanvasData } from "./canvas/hand-over.js";
 import { CONDITIONS } from "./conditions.js";
 import { createCairnMacro, rollItemMacro, macroApi } from "./macros.js";
 import { Damage } from "./combat/damage.js";
@@ -364,6 +365,8 @@ Hooks.once("ready", () => {
     createCairnMacro(data, slot);
     return false;
   });
+  // A gear dropped on another character's token is handed over to them, as a Barter.
+  Hooks.on("dropCanvasData", onDropCanvasData);
 
   // Keep the five derived conditions on a PC's token in step with its slots and attributes.
   //

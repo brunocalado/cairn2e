@@ -6,16 +6,13 @@
  */
 
 import { SYSTEM_ID } from "../constants.js";
-import { applyGold } from "../coin.js";
 import { goldTotal } from "../coin-rules.js";
-import { bundleItems } from "../transfer-rules.js";
-import { deliverBarter } from "../transfer.js";
+import { sendBarter } from "../transfer.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/barter`;
-const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/barter-card.hbs`;
 
 /**
  * Barter — a player hands things from their character to another player's: gear, picked row by
@@ -23,7 +20,7 @@ const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/barter-card.hbs`;
  * the table, and this is the moment the goods change hands.
  *
  * Only characters a player has as their own are offered, the sender's excepted. The write runs
- * where it is allowed (`transfer.js#deliverBarter`): whatever fits arrives, whatever does not
+ * where it is allowed (`transfer.js#sendBarter`): whatever fits arrives, whatever does not
  * stays, and the sender is told which. A card in chat says what went from whom to whom.
  *
  * A container goes with what is in it, so ticking one ticks its contents with it; a thing in a
@@ -178,31 +175,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     this.#busy = true;
     this.#syncSend();
     try {
-      const bundles = bundleItems(chosen.map((i) => i.toObject()), this.actor.items.map((i) => i.toObject()));
-      const result = await deliverBarter(target, { targetUuid: target.uuid, bundles, coin });
-      if (!result) return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.NobodyToReceive", { name: target.name }));
-      if (result.refused) return ui.notifications.error(game.i18n.localize("CAIRN.Barter.Refused"));
-
-      const landed = new Set(result.landed);
-      const moved = bundles.filter((b) => landed.has(b.id)).map((b) => b.data.name);
-      const left = bundles.filter((b) => !landed.has(b.id)).map((b) => b.data.name);
-      if (landed.size) await this.actor.deleteEmbeddedDocuments("Item", [...landed]);
-      if (result.coin) await applyGold(this.actor, -result.coin);
-
-      if (left.length) {
-        ui.notifications.warn(game.i18n.localize("CAIRN.Barter.LeftBehind", { names: left.join(", "), name: target.name }));
-      }
-      if (coin && !result.coin) {
-        ui.notifications.warn(game.i18n.localize("CAIRN.Barter.CoinLeftBehind", { amount: coin, name: target.name }));
-      }
-      if (!moved.length && !result.coin) return;
-
-      const content = await foundry.applications.handlebars.renderTemplate(CARD_TPL, { items: moved, coin: result.coin });
-      await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: game.i18n.localize("CAIRN.Barter.Flavor", { from: this.actor.name, to: target.name }),
-        content
-      });
+      if (!(await sendBarter(this.actor, target, chosen, coin))) return;
       this.#picked.clear();
       this.#coin = 0;
       await this.close();

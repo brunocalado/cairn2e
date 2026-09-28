@@ -6,11 +6,14 @@
  */
 
 import { SYSTEM_ID } from "./constants.js";
-import { gainPlaces, putCoin } from "./coin.js";
+import { applyGold, gainPlaces, putCoin } from "./coin.js";
+import { bundleItems } from "./transfer-rules.js";
 
 /** The query that hands a barter to a client allowed to write the recipient. Registered in
  *  `module/cairn2e.js`; the name is built from `SYSTEM_ID`, never written out. */
 export const BARTER_QUERY = `${SYSTEM_ID}.barter`;
+
+const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/barter-card.hbs`;
 
 /** What a barter may carry: gear, and — inside a container that travels — the coin in it. */
 const BARTER_TYPES = new Set(["gear"]);
@@ -129,4 +132,51 @@ export async function deliverBarter(target, payload) {
     }
   }
   return null;
+}
+
+/**
+ * The sending half of a barter, on the sender's client: the Barter window's Send, and a gear
+ * dropped on another character's token (`canvas/hand-over.js`).
+ *
+ * The receiver writes what lands (`deliverBarter`); the sender then loses exactly that and no
+ * more, and is told what stayed. A card in chat says what went from whom to whom.
+ * @param {Actor} actor    The character handing things over.
+ * @param {Actor} target   The character receiving them.
+ * @param {Item[]} items   Gear of `actor`'s.
+ * @param {number} [coin]  Coin, by amount.
+ * @returns {Promise<boolean>}  Whether anything changed hands.
+ */
+export async function sendBarter(actor, target, items, coin = 0) {
+  const bundles = bundleItems(items.map((i) => i.toObject()), actor.items.map((i) => i.toObject()));
+  const result = await deliverBarter(target, { targetUuid: target.uuid, bundles, coin });
+  if (!result) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Barter.NobodyToReceive", { name: target.name }));
+    return false;
+  }
+  if (result.refused) {
+    ui.notifications.error(game.i18n.localize("CAIRN.Barter.Refused"));
+    return false;
+  }
+
+  const landed = new Set(result.landed);
+  const moved = bundles.filter((b) => landed.has(b.id)).map((b) => b.data.name);
+  const left = bundles.filter((b) => !landed.has(b.id)).map((b) => b.data.name);
+  if (landed.size) await actor.deleteEmbeddedDocuments("Item", [...landed]);
+  if (result.coin) await applyGold(actor, -result.coin);
+
+  if (left.length) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Barter.LeftBehind", { names: left.join(", "), name: target.name }));
+  }
+  if (coin && !result.coin) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Barter.CoinLeftBehind", { amount: coin, name: target.name }));
+  }
+  if (!moved.length && !result.coin) return false;
+
+  const content = await foundry.applications.handlebars.renderTemplate(CARD_TPL, { items: moved, coin: result.coin });
+  await ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: game.i18n.localize("CAIRN.Barter.Flavor", { from: actor.name, to: target.name }),
+    content
+  });
+  return true;
 }

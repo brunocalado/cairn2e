@@ -40,7 +40,9 @@
     "Refused": "The trade was refused — nothing changed hands.",
     "LeftBehind": "No room on {name} for: {names}. It stays with you.",
     "CoinLeftBehind": "No room on {name} for {amount} gp. It stays with you.",
-    "Flavor": "{from} hands to {to}"
+    "Flavor": "{from} hands to {to}",
+    "GearOnly": "Only gear can be handed over on a token — coin goes by amount, in the Barter window.",
+    "CharactersOnly": "{name} is not a player character — things are handed over between characters."
   },
   "CAIRN.Belongings": "Belongings",
   "CAIRN.Blast": "Blast",
