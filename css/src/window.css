@@ -10,7 +10,14 @@
      * Window shell.                                                         *
      **************************************************************************/
 
-    &.sheet.actor {
+    /* Every floor below is held off while the window is minimised, and while it animates either
+       way. Core minimises by writing `max-height` / `max-width` on the element and lifts the floors
+       itself (`.application.minimized { min-height: unset }`, foundry2.css) — but this stylesheet
+       is the later layer, so a floor here outranked that and won over the max: a double click on
+       the title bar hid the content and left a 480px dark block where the window used to be. The
+       exclusion is core's own spelling (`#controls-config:not(.minimizing, .minimized,
+       .maximizing)`), inside `:where()` so it adds no weight. */
+    &.sheet.actor:where(:not(.minimizing, .minimized, .maximizing)) {
         min-height: 480px;
         min-width: 480px;
     }
@@ -18,7 +25,7 @@
     /* An item sheet is as tall as its own content and no taller — a converted subtype's window is
        sized to its ruled column (`item-sheet.js`, SHEET_HEIGHT), which is well under the actor's
        floor. The width still holds: the header's portrait and name need it. */
-    &.sheet.item {
+    &.sheet.item:where(:not(.minimizing, .minimized, .maximizing)) {
         min-height: 300px;
         min-width: 480px;
     }
@@ -26,7 +33,7 @@
     /* Except the character sheet, which has no fixed height to be floored against: it is sized
        to its own content (`position.height: "auto"`, `actor-sheet.js`), and a floor is one more
        number that has to be kept in step with a layout nobody is measuring. */
-    &.sheet.actor.character {
+    &.sheet.actor.character:where(:not(.minimizing, .minimized, .maximizing)) {
         min-height: 0;
     }
 
