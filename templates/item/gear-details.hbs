@@ -52,20 +52,26 @@
         {{/if}}
 
         {{#if system.damage}}
-        {{!-- Blast is a property of a weapon; without a die it means nothing, so it is drawn only
-              under one. --}}
-        <div class="cairn-field cairn-prop-row"
-            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-blast">
-            <label for="gear-blast-{{item.id}}">{{localize 'CAIRN.Blast'}}</label>
+        {{!-- The two riders on a die, on one line, because two switches do not fill a row each.
+              Without a die neither means anything, so the row is drawn only under one. Blast hits
+              everything in the area; Paired is the SRD's `d8+d8`, one weapon rolling its die twice
+              and keeping the higher — a toggle rather than five more buttons in the die's run,
+              because it doubles whichever die is chosen. Each word carries a help mark: neither
+              says what it does. --}}
+        <div class="cairn-field cairn-prop-row cairn-prop-pair"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-riders">
+            <span class="cairn-prop-label">
+                <label for="gear-blast-{{item.id}}">{{localize 'CAIRN.Blast'}}</label>
+                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.BlastHint"
+                    label=(localize 'CAIRN.BlastHint') seed="blast"}}
+            </span>
             {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.blast" value=system.blast
                 id=(concat "gear-blast-" item.id)}}
-        </div>
-        {{!-- Paired is the other rider on a die: the SRD's `d8+d8`, one weapon rolling its die twice
-              and keeping the higher. A toggle beside the die rather than five more buttons in its
-              run, because it doubles whichever die is chosen. --}}
-        <div class="cairn-field cairn-prop-row"
-            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-paired">
-            <label for="gear-paired-{{item.id}}" data-tooltip="{{localize 'CAIRN.PairedHint'}}">{{localize 'CAIRN.Paired'}}</label>
+            <span class="cairn-prop-label">
+                <label for="gear-paired-{{item.id}}">{{localize 'CAIRN.Paired'}}</label>
+                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.PairedHint"
+                    label=(localize 'CAIRN.PairedHint') seed="paired"}}
+            </span>
             {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.paired" value=system.paired
                 id=(concat "gear-paired-" item.id)}}
         </div>
@@ -97,7 +103,11 @@
               thing with an armour value. --}}
         <div class="cairn-field cairn-prop-row"
             data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-natural">
-            <label for="gear-natural-{{item.id}}" data-tooltip="{{localize 'CAIRN.NaturalHint'}}">{{localize 'CAIRN.Natural'}}</label>
+            <span class="cairn-prop-label">
+                <label for="gear-natural-{{item.id}}">{{localize 'CAIRN.Natural'}}</label>
+                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.NaturalHint"
+                    label=(localize 'CAIRN.NaturalHint') seed="natural"}}
+            </span>
             {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.natural" value=system.natural
                 id=(concat "gear-natural-" item.id)}}
         </div>

@@ -47,6 +47,7 @@
   },
   "CAIRN.Belongings": "Belongings",
   "CAIRN.Blast": "Blast",
+  "CAIRN.BlastHint": "Hits every target in the area, damage rolled separately for each. With no count given, the damage die says how many.",
   "CAIRN.Bond": "Bond",
   "CAIRN.Bulky": "Bulky",
   "CAIRN.Capacity": "Capacity",

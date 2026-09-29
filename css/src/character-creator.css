@@ -309,38 +309,17 @@
             }
         }
 
-        /* The cell holds a box and its help mark, which sits in the box's top-right corner.
-           The mark is a drawn ring round an ink `?` on its own paper ground, not Font Awesome's
-           solid circle-question: at this size that glyph's knocked-out `?` closed up into a grey
-           blob against the box's frame. The ground is clipped round, since a border would be a
-           machined line, and the ring is inked on the upper layer because under an opaque ground
-           it would lose its inner half. The ground keeps the mark legible over a picked box's
-           flood too. Hover inverts it, the way an ink button does. */
+        /* The cell holds a box and its help mark (`.cairn-help`), which sits in the box's
+           top-right corner. The mark is a sibling of the box, not its child: a disabled button
+           swallows the pointer for everything inside it. */
         .attr-cell {
             position: relative;
             display: flex;
-        }
 
-        .attr-help {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            clip-path: circle(50%);
-            background: var(--cairn-paper);
-            color: var(--cairn-ink);
-            font-size: 11px;
-            font-weight: bold;
-            line-height: 1;
-            cursor: help;
-
-            &:hover {
-                background: var(--cairn-ink);
-                color: var(--cairn-paper);
+            .cairn-help {
+                position: absolute;
+                top: 5px;
+                right: 5px;
             }
         }
 

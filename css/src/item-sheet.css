@@ -89,10 +89,19 @@
            radiogroup is not one control, so nothing valid can be `for`-ed at it and the row's
            word cannot be a `<label>`. It is set identically, because it says the same thing. */
         > label,
-        > .cairn-field-label {
+        > .cairn-field-label,
+        > .cairn-prop-label > label {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: var(--cairn-label-track);
+        }
+
+        /* A gutter word with a help mark after it (`parts/help-mark.hbs`). The mark is the
+           label's sibling, never its child — a label forwards clicks to its switch. */
+        > .cairn-prop-label {
+            align-items: center;
+            display: flex;
+            gap: 6px;
         }
 
         ul {

@@ -549,6 +549,7 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/parts/item-controls.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/attribute-row.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/toggle.hbs`,
+    `systems/${SYSTEM_ID}/templates/parts/help-mark.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/slot-row.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/plain-list.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/party-row.hbs`,

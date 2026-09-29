@@ -322,6 +322,31 @@
         }
     }
 
+    /* The help mark (`parts/help-mark.hbs`): an ink `?` in a drawn ring, on its own paper ground,
+       clipped round because a border would be a machined line. Not Font Awesome's solid
+       circle-question: at this size its knocked-out `?` closed up into a grey blob. The ring is
+       inked by `module/ink.js`; hover inverts the mark, the way an ink button does. */
+    .cairn-help {
+        align-items: center;
+        background: var(--cairn-paper);
+        clip-path: circle(50%);
+        color: var(--cairn-ink);
+        cursor: help;
+        display: inline-flex;
+        flex: none;
+        font-size: 11px;
+        font-weight: bold;
+        height: 16px;
+        justify-content: center;
+        line-height: 1;
+        width: 16px;
+
+        &:hover {
+            background: var(--cairn-ink);
+            color: var(--cairn-paper);
+        }
+    }
+
     /**************************************************************************
      * Tabs.                                                                 *
      **************************************************************************/
