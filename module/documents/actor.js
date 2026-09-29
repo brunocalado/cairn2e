@@ -8,6 +8,7 @@
 import { SYSTEM_ID, SETTINGS, FLAGS, CONDITION, DEFAULT_ARTWORK } from "../constants.js";
 import { attrResource, revertUpdate } from "../gains.js";
 import { scarHpLost, outcomeLabel } from "../scars.js";
+import { tokenDefaults } from "../token-defaults.js";
 
 /**
  * The creation data of a character's fists (`FLAGS.UNARMED`). Named in the table's language when
@@ -71,72 +72,60 @@ export class CairnActor extends Actor {
   }
 
   /**
-   * @override — the prototype token a new PC, or a new party, is born with.
+   * @override — a party belongs to the party. Gathered into one token the members have no tokens
+   * of their own, so the party's is the only thing the table can see the map through — a party
+   * only the Warden owned would leave the players in the dark while travelling. Editing the
+   * roster is the price, and a table with one Warden can pay it.
    *
-   * Only what core's Prototype Token Overrides cannot express lives here: `actorLink` is not one
-   * of the fields that setting covers. What a token *shows* — name, bars, artwork rotation — is
-   * seeded into that setting instead (`module/token-defaults.js`), because core applies it in
-   * `PrototypeToken._initializeSource` and overwrites the source, so anything decided here would
-   * lose to it without saying so.
-   *
-   * Sight is `sight.enabled`. There is no `vision` field on a v14 PrototypeToken — a key by that
-   * name is dropped in silence and the PC ends up unable to see, which looks like a Foundry
-   * setting gone wrong rather than like a typo here.
-   *
-   * `{ override: false }` keeps this a default — an import or a generator that already decided
-   * these keeps what it arrived with.
+   * `{ overwrite: false }` keeps it a default: a party created with ownership of its own keeps it.
    */
   static async create(data, options = {}) {
-    if (data.type === "character") {
-      foundry.utils.mergeObject(
-        data,
-        {
-          prototypeToken: {
-            disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-            actorLink: true,
-            sight: { enabled: true },
-          },
-        },
-        { override: false }
-      );
-    }
-
     if (data.type === "party") {
       foundry.utils.mergeObject(
         data,
-        {
-          // The group's document belongs to the group. Gathered into one token the members have
-          // no tokens of their own, so the party's is the only thing the table can see the map
-          // through — a party only the Warden owned would leave the players in the dark while
-          // travelling. Editing the roster is the price, and a table with one Warden can pay it.
-          ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
-          prototypeToken: {
-            disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-            actorLink: true,
-            sight: { enabled: true },
-          },
-        },
-        { override: false }
+        { ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER } },
+        { overwrite: false }
       );
     }
     return super.create(data, options);
   }
 
   /**
-   * @override — every character is born with fists: a bodily `gear` rolling d4, "Unarmed attacks
-   * always do d4 damage" (`core-rules.md`). A real item rather than a line the sheet draws, so it
-   * can be renamed, given another die or deleted like anything else a character has.
+   * @override — the prototype token's defaults (`module/token-defaults.js`), and every
+   * character's fists: a bodily `gear` rolling d4, "Unarmed attacks always do d4 damage"
+   * (`core-rules.md`). The fists are a real item rather than a line the sheet draws, so they can
+   * be renamed, given another die or deleted like anything else a character has.
    *
    * Here rather than in `create`, because `_preCreate` runs for every path that makes an Actor —
-   * the sidebar, the creator, the generator, an import, a duplicate. One that already carries a
-   * marked item (a duplicate, a compendium copy) is not given a second.
+   * the sidebar, the creator, the generators (`createDocuments` never passes through `create`),
+   * an import, a duplicate. One that already carries a marked item (a duplicate, a compendium
+   * copy) is not given a second.
    */
   async _preCreate(data, options, user) {
     if ((await super._preCreate(data, options, user)) === false) return false;
+    this.#applyTokenDefaults(data);
     if (this.type !== "character") return;
     const items = this._source.items ?? [];
     if (items.some((i) => i.flags?.[SYSTEM_ID]?.[FLAGS.UNARMED])) return;
     this.updateSource({ items: [...items, unarmedItemData()] });
+  }
+
+  /**
+   * Write the subtype's token defaults over whatever the creation data left undecided. A value
+   * the caller chose is kept — a generator's neutral disposition, a duplicate's own range — and
+   * "undecided" includes core's initial value, not only a missing key: an Actor imported from a
+   * compendium arrives through `toObject()`, which spells out every field at its initial.
+   * @param {object} data  the creation data `_preCreate` was handed
+   */
+  #applyTokenDefaults(data) {
+    const schema = foundry.data.PrototypeToken.schema;
+    const update = {};
+    for (const [path, value] of Object.entries(tokenDefaults(this.type))) {
+      const given = foundry.utils.getProperty(data, `prototypeToken.${path}`);
+      if (given !== undefined && given !== schema.getField(path).getInitialValue({})) continue;
+      update[path] = value;
+    }
+    if (!foundry.utils.isEmpty(update)) this.updateSource({ prototypeToken: foundry.utils.expandObject(update) });
   }
 
   /**

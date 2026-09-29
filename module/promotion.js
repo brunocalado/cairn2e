@@ -8,6 +8,7 @@
 import { SYSTEM_ID, MAX_SLOTS } from "./constants.js";
 import { toPlainText, toPlainLines } from "./character-generator.js";
 import { sumUsedSlots } from "./data/_derived.js";
+import { tokenDefaults } from "./token-defaults.js";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -209,12 +210,8 @@ export async function promoteToCharacter(actor) {
     // Required: core refuses a subtype change whose `system` is an ordinary partial update.
     system: foundry.data.operators.ForcedReplacement.create(promotedSystem(src, description)),
     ...(owner ? { ownership: { [owner.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER } } : {}),
-    // What `CairnActor.create` gives a character it makes; an update never passes through it.
-    prototypeToken: {
-      actorLink: true,
-      disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-      sight: { enabled: true }
-    }
+    // What `CairnActor#_preCreate` gives a character it makes; an update never passes through it.
+    prototypeToken: foundry.utils.expandObject(tokenDefaults("character"))
   });
 
   // The refusal above is thrown inside `_updateDiff` and swallowed by the database backend, which
