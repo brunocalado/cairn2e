@@ -946,6 +946,10 @@
     "BestiaryArtPath": {
       "Name": "Bestiary artwork folder",
       "Hint": "A folder under Data/ holding portraits/ and tokens/. Default: cairn2e-assets."
+    },
+    "Animations": {
+      "Name": "Cairn animations for Automated Animations",
+      "Hint": "Add Cairn's weapons, monster attacks and spells to the Automatic Recognition menu, with JB2A Patreon animations and PSFX sounds. Each entry is added once: an entry you edit or delete stays that way. Turning this off stops any further additions; what was already added stays in the menu."
     }
   },
   "CAIRN.Sidebar": {

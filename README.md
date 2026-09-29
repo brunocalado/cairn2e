@@ -112,6 +112,10 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls the 3D Cairn d20.
 - [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
   candles from the token HUD and spends their uses.
+- [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
+  [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
+  sounds Cairn's weapons, monster attacks and spells. The system adds its entries to AA's menu
+  once, and your edits to them are kept. A world setting turns this off.
 
 ## Learn more
 

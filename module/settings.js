@@ -11,6 +11,7 @@ import { CairnStore } from "./apps/store.js";
 import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
+import { deliverAnimations } from "./automated-animations.js";
 
 /**
  * Register world settings.
@@ -108,6 +109,27 @@ export const registerSettings = () => {
     type: Object,
     default: null,
     onChange: (map) => injectBestiaryArt(map)
+  });
+
+  // Shown only where it does something: without Automated Animations it would be a switch wired
+  // to nothing. `game.modules` knows which modules are active by `init`. Turned on mid-session,
+  // the entries arrive at once instead of on the next launch.
+  game.settings.register(SYSTEM_ID, SETTINGS.ANIMATIONS, {
+    name: "CAIRN.Settings.Animations.Name",
+    hint: "CAIRN.Settings.Animations.Hint",
+    scope: "world",
+    config: !!game.modules.get("autoanimations")?.active,
+    type: Boolean,
+    default: true,
+    onChange: (on) => on && deliverAnimations()
+  });
+
+  // Hidden: the record behind the switch above (module/automated-animations.js).
+  game.settings.register(SYSTEM_ID, SETTINGS.ANIMATIONS_DELIVERED, {
+    scope: "world",
+    config: false,
+    type: Array,
+    default: []
   });
 
   // Hidden: the Warden's saved stores (module/apps/store.js), not a rule toggle. Written on every

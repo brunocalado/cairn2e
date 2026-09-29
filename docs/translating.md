@@ -79,7 +79,7 @@ A few table texts carry meaning in their shape. Keep the shape:
 
 ## 5. What works by name, and in which language
 
-Three features match a name, and each does so on purpose, against the name the user sees:
+Four features match a name, and each does so on purpose, against the name the user sees:
 
 - **The `[[/table …]]` chip**, written with a table's name, matches the names this world shows.
   In a translated world those are the translated names: Babele translates the compendium index
@@ -89,6 +89,24 @@ Three features match a name, and each does so on purpose, against the name the u
   `Cao-Piscante.webp` and `Cão Piscante.webp` both reach "Cão Piscante".
 - **Light Sources** (the optional module) matches carried items to its light sources partly by
   name. It works when the world was created with the translation already active.
+- **Automated Animations** (the optional module) picks an animation by the name of the item
+  used: its entry plays when its label is part of the item's name. The system adds its entries
+  under English labels, so a translation adds its own names beside them, through the system's
+  hook. It is called once, when the system hands its entries to AA:
+
+  ```js
+  Hooks.on("cairn2e.animationLabels", (labels) => {
+    labels["Axe"] = ["Machado"];
+    labels["Sleep"] = ["Sono"];
+  });
+  ```
+
+  Each key is one of the system's English labels, listed in `module/automated-animations-menu.js`,
+  and each value is the list of names to add for it. A label only needs to be part of the name:
+  `Hammer` plays for *War Hammer* too. *Unarmed* needs nothing, because its label is
+  `CAIRN.Unarmed`, the same string that names the item. AA's own default entries (Sword, Dagger,
+  Bite, Claw…) are AA's to translate, not yours. Each name is added once per world, and the
+  Warden can edit or delete it afterwards.
 
 ## 6. What stays English
 

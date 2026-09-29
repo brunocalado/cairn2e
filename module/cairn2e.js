@@ -43,6 +43,7 @@ import { registerSettings } from "./settings.js";
 import { registerEnrichers } from "./enrichers.js";
 import { addChatMessageContextOptions } from "./chat.js";
 import { registerDiceSoNice } from "./dice-so-nice.js";
+import { registerAutomatedAnimations } from "./automated-animations.js";
 import { registerLightSources } from "./light-sources.js";
 import { installWelcomeWorld } from "./welcome.js";
 import { installTokenDefaults } from "./token-defaults.js";
@@ -243,6 +244,7 @@ Hooks.once("init", async function () {
   Hooks.on("getChatMessageContextOptions", addChatMessageContextOptions);
   registerKeybindings();
   registerDiceSoNice();
+  registerAutomatedAnimations();
   registerLightSources();
   configureHandleBar();
 });
