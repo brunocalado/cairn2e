@@ -444,7 +444,13 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
       description: await enrich(written, this.actor)
     });
-    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content });
+    // `itemUuid` is for Automated Animations and anything else that looks for the message's item
+    // (`rolls.js#postDamageRoll`). The item is deleted below, but that module reads the flag
+    // synchronously on `createChatMessage`, before this await returns.
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content,
+      flags: { [SYSTEM_ID]: { itemUuid: item.uuid } }
+    });
     await item.delete();
   }
 
@@ -481,7 +487,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       description: await enrich(item.system.description, this.actor),
       note: game.i18n.localize(fatigued ? "CAIRN.CastFatigue" : "CAIRN.CastNoFatigue")
     });
-    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content });
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content,
+      flags: { [SYSTEM_ID]: { itemUuid: item.uuid } }
+    });
     await lightSpell(this.actor, item);
   }
 

@@ -228,8 +228,12 @@ async function promptDamageOptions(defaultBlast, weapons) {
  * Render the damage card and post the roll, the target token ids flagged on the message as it is
  * created — a flag written afterwards was a second broadcast, and another client could draw the card
  * before its Apply had anything to apply to.
+ *
+ * `itemUuid` names the weapon for modules that look for "the item this message is about" — chiefly
+ * Automated Animations, whose generic handler reads exactly `flags[game.system.id].itemUuid`. The
+ * system itself never reads it.
  */
-async function postDamageRoll(actor, roll, label, targetIds, { attribute = null } = {}) {
+async function postDamageRoll(actor, roll, label, targetIds, { attribute = null, item = null } = {}) {
   const content = await foundry.applications.handlebars.renderTemplate(DAMAGE_CARD_TPL, {
     rollHTML: await roll.render(),
     hasTargets: targetIds.length > 0,
@@ -237,6 +241,7 @@ async function postDamageRoll(actor, roll, label, targetIds, { attribute = null 
   });
   const flags = targetIds.length ? { targets: targetIds } : {};
   if (attribute) flags.attribute = attribute;
+  if (item) flags.itemUuid = item.uuid;
   return roll.toMessage({
     speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
     flavor: label,
@@ -384,16 +389,19 @@ export async function rollDamage(actor, item = null, { skipDialog = false } = {}
   const label = tags.length ? `${base} (${tags.join(", ")})` : base;
 
   // Blast rolls separately for each affected target (core-rules.md → Attack Modifiers).
+  // Only the first card names the weapon: a module keyed on it (Automated Animations) plays once
+  // per message at every one of the user's targets, so naming it on each card would repeat the
+  // swing once per target.
   if (blast && targets.length) {
-    for (const token of targets) {
+    for (const [i, token] of targets.entries()) {
       const roll = await evaluateFormula(formula, actor.getRollData());
-      await postDamageRoll(actor, roll, label, [token.id]);
+      await postDamageRoll(actor, roll, label, [token.id], { item: i === 0 ? item : null });
     }
     return true;
   }
 
   const roll = await evaluateFormula(formula, actor.getRollData());
-  return postDamageRoll(actor, roll, label, targets.map((t) => t.id));
+  return postDamageRoll(actor, roll, label, targets.map((t) => t.id), { item });
 }
 
 /* -------------------------------------------- */
