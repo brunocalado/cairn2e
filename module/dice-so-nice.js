@@ -24,9 +24,27 @@ export const D20_MODEL = `systems/${SYSTEM_ID}/assets/dice/cairn-d20.glb`;
  * else under *Dice Presets* their choice wins (DsN checks the `dice-so-nice.appearance` user flag
  * before falling back to the preferred system). Only the d20 is overridden; every other die type
  * falls through to the standard Dice So Nice models.
+ *
+ * The colour theme those other dice wear is registered the same way. It is Dice So Nice's own
+ * Blood Moon in glass rather than plastic, and it has to be a theme of its own because a
+ * preferred appearance carries only a system and a colorset — material has nowhere else to go.
+ * The d20 model ignores it.
  */
 export const registerDiceSoNice = () => {
   Hooks.once("diceSoNiceReady", (dice3d) => {
+    dice3d.addColorset(
+      {
+        name: SYSTEM_ID,
+        description: game.i18n.localize("CAIRN.Dice.Theme"),
+        category: game.i18n.localize("CAIRN.Dice.Group"),
+        foreground: "#CDB800",
+        background: "#6F0000",
+        outline: "black",
+        texture: "marble",
+        material: "glass"
+      },
+      "preferred"
+    );
     dice3d.addSystem(
       {
         id: SYSTEM_ID,

@@ -184,7 +184,8 @@
   "CAIRN.Details": "Details",
   "CAIRN.Dice": {
     "Group": "Cairn 2e",
-    "Preset": "Cairn Dice"
+    "Preset": "Cairn Dice",
+    "Theme": "Cairn Blood Moon"
   },
   "CAIRN.DieOfFate": "Die Of Fate",
   "CAIRN.DropBackground": "Drag a Background here",
