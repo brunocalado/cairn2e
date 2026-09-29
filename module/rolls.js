@@ -23,10 +23,10 @@ const ROLL_CARD_TPL = `${TEMPLATES}/roll-card.hbs`;
 const JOURNEY_CARD_TPL = `${TEMPLATES}/journey-card.hbs`;
 const DMG_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/damage-dialog.hbs`;
 
-// Impaired forces d4 regardless of the weapon's own die, and unarmed attacks are always d4
-// (core-rules.md → Attack Modifiers) — one literal, used for both. Panic forces Impaired, so this
-// is also the formula Panic substitutes — the single place that happens.
-const IMPAIRED_OR_UNARMED_FORMULA = "1d4";
+// Impaired forces d4 regardless of the weapon's own die (core-rules.md → Attack Modifiers). Panic
+// forces Impaired, so this is also the formula Panic substitutes — the single place that happens.
+// Unarmed's d4 is not this: fists are an item carrying their own die (`unarmedItemData`).
+const IMPAIRED_FORMULA = "1d4";
 // Enhanced forces d12 regardless of the weapon's own die (core-rules.md → Attack Modifiers).
 const ENHANCED_FORMULA = "1d12";
 
@@ -282,29 +282,28 @@ export function damageFormula(...dice) {
 /**
  * The die one weapon rolls under the attack modifiers. Impaired forces d4 "regardless of the
  * attacks damage die" and Enhanced d12 "instead of their normal die" (core-rules.md → Attack
- * Modifiers), so with two weapons each is substituted on its own: `{1d4,1d4}kh`. No weapon is
- * the unarmed d4.
- * @param {Item|null} weapon
+ * Modifiers), so with two weapons each is substituted on its own: `{1d4,1d4}kh`.
+ * @param {Item} weapon
  * @param {{impaired?: boolean, enhanced?: boolean}} [mods]
  * @returns {string}
  */
 export function dieForWeapon(weapon, { impaired = false, enhanced = false } = {}) {
-  if (impaired) return IMPAIRED_OR_UNARMED_FORMULA;
+  if (impaired) return IMPAIRED_FORMULA;
   if (enhanced) return ENHANCED_FORMULA;
-  return weapon?.system?.damage ?? IMPAIRED_OR_UNARMED_FORMULA;
+  return weapon.system.damage;
 }
 
 /**
  * Every die one weapon puts into the pool: its own die, twice when it is paired (`d8+d8`). Impaired
  * and Enhanced replace each die on its own, as they do for two weapons, so paired claws Impaired
  * are `{1d4,1d4}kh`.
- * @param {Item|null} weapon
+ * @param {Item} weapon
  * @param {{impaired?: boolean, enhanced?: boolean}} [mods]
  * @returns {string[]}
  */
 export function diceForWeapon(weapon, mods = {}) {
   const die = dieForWeapon(weapon, mods);
-  return weapon?.system?.paired ? [die, die] : [die];
+  return weapon.system.paired ? [die, die] : [die];
 }
 
 /**
@@ -316,34 +315,33 @@ export function diceForWeapon(weapon, mods = {}) {
  * same thing for both dice, so a dagger still sheathed is not offered as the second one. Part of
  * the body costs no slot and is always to hand, so a claw is offered beside a sword.
  * @param {Iterable<Item>} items  the attacker's items
- * @param {Item|null} clicked  the weapon whose Roll Damage was clicked, or `null` for unarmed
+ * @param {Item} clicked  the weapon whose Roll Damage was clicked
  * @returns {Item[]}
  */
 export function secondWeaponCandidates(items, clicked) {
   return Array.from(items).filter(
-    (i) => !!i.system.damage && !!i.system.equipped && i.id !== clicked?.id && !i.system.container
+    (i) => !!i.system.damage && !!i.system.equipped && i.id !== clicked.id && !i.system.container
       && (slotsForItem(i) > 0 || !!i.system.bodily)
   );
 }
 
 /**
- * Roll weapon (or unarmed) damage and post it to chat. The only place Panic, Impaired, Enhanced,
- * Blast and Detachments meet — collapses what used to be three separate copies of this logic
- * (`actor-sheet.js` `_onRoll`, `macros.js` `rollItemMacro`, and the panic check duplicated in
- * both).
+ * Roll a weapon's damage and post it to chat. The only place Panic, Impaired, Enhanced, Blast and
+ * Detachments meet; the sheet's Roll Damage and the item macro (`macros.js#rollItemMacro`) both
+ * come here.
  * @param {Actor} actor  The attacker.
- * @param {Item|null} item  The weapon rolled, or `null` for an unarmed attack.
+ * @param {Item} item  The weapon rolled — fighting unarmed is the character's Unarmed item.
  * @param {object} [options]
  * @param {boolean} [options.skipDialog=false]  Roll the weapon's own die with no modifier and
  *   no second weapon — the sheet passes this for a Shift-click. Panic and Detachments still
  *   decide first; they never asked.
  * @returns {Promise<ChatMessage|null>} `null` if the free-choice dialog was cancelled.
  */
-export async function rollDamage(actor, item = null, { skipDialog = false } = {}) {
+export async function rollDamage(actor, item, { skipDialog = false } = {}) {
   const targets = Array.from(game.user.targets);
   const attackerIsDetachment = actor.system.isDetachment === true;
   const anyTargetIsDetachment = targets.some((t) => t.actor?.system?.isDetachment === true);
-  const weaponBlast = !!item?.system?.blast;
+  const weaponBlast = !!item.system.blast;
 
   let impaired = false;
   let enhanced = false;
@@ -351,7 +349,7 @@ export async function rollDamage(actor, item = null, { skipDialog = false } = {}
   let second = null;
 
   if (actor.system.panicked) {
-    // Panic ⇒ Impaired. The only substitution in the system; see IMPAIRED_OR_UNARMED_FORMULA.
+    // Panic ⇒ Impaired. The only substitution in the system; see IMPAIRED_FORMULA.
     impaired = true;
   } else if (attackerIsDetachment) {
     // detachments.md: a detachment's own attacks are always Enhanced and deal Blast.
@@ -383,9 +381,7 @@ export async function rollDamage(actor, item = null, { skipDialog = false } = {}
   if (!impaired && enhanced) tags.push(game.i18n.localize("CAIRN.Enhanced"));
   if (blast) tags.push(game.i18n.localize("CAIRN.Blast"));
   const weapons = [item, second].filter(Boolean);
-  const base = weapons.length
-    ? `${game.i18n.localize("CAIRN.RollingDmgWith")} ${weapons.map((w) => w.name).join(" & ")}`
-    : game.i18n.localize("CAIRN.RollDamage");
+  const base = `${game.i18n.localize("CAIRN.RollingDmgWith")} ${weapons.map((w) => w.name).join(" & ")}`;
   const label = tags.length ? `${base} (${tags.join(", ")})` : base;
 
   // Blast rolls separately for each affected target (core-rules.md → Attack Modifiers).
