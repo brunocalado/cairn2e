@@ -144,7 +144,7 @@ export const FLAGS = {
   /**
    * On a character's `gear`: this is their fists — "Unarmed attacks always do d4 damage"
    * (`core-rules.md`). Every character is born with one (`documents/actor.js#_preCreate`) and a
-   * regenerate keeps it (`character-generator.js#applyDraftToActor`); it is an ordinary natural
+   * regenerate keeps it (`character-generator.js#applyDraftToActor`); it is an ordinary bodily
    * gear the player may rename, re-die or delete. Found by this mark, never by its name, which is
    * whatever the language made it.
    */

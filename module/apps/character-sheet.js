@@ -45,7 +45,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
       conditionToggle: CairnCharacterSheet.#onConditionToggle,
       openBackground: CairnCharacterSheet.#onOpenBackground,
       pettyCreate: CairnCharacterSheet.#onPettyCreate,
-      naturalCreate: CairnCharacterSheet.#onNaturalCreate,
+      bodyCreate: CairnCharacterSheet.#onBodyCreate,
       belongingCreate: CairnCharacterSheet.#onBelongingCreate,
       regenerate: CairnCharacterSheet.#onRegenerate,
       openCreator: CairnCharacterSheet.#onOpenCreator,
@@ -80,7 +80,6 @@ export class CairnCharacterSheet extends CairnActorSheet {
     header: { template: `${TEMPLATES}/parts/character-header.hbs` },
     nav: { template: `${TEMPLATES}/parts/actor-tabs.hbs` },
     items: { template: `${TEMPLATES}/actor/character-items.hbs`, scrollable: [""] },
-    natural: { template: `${TEMPLATES}/actor/character-natural.hbs`, scrollable: [""] },
     petty: { template: `${TEMPLATES}/actor/character-petty.hbs`, scrollable: [""] },
     belongings: { template: `${TEMPLATES}/actor/character-belongings.hbs`, scrollable: [""] },
     identity: { template: `${TEMPLATES}/actor/character-identity.hbs`, scrollable: [""] },
@@ -109,12 +108,12 @@ export class CairnCharacterSheet extends CairnActorSheet {
         // holds. Every tab here is one page tall (`--cairn-tab-max-h`), so splitting costs no
         // height: a zone added under the ten would have scrolled the ledger instead.
         { id: "items", label: "CAIRN.Inventory" },
-        // What the character attacks with that is not carried at all — fists, claws, a metal arm
-        // on its shoulder (`system.natural`). Beside the Inventory, because it is read in the same
-        // breath as the weapons in hand.
-        { id: "natural", label: "CAIRN.Natural" },
+        // Petty holds what costs no slot: the Body zone first — fists, claws, a metal arm on its
+        // shoulder (`system.bodily`), read in the same breath as the weapons in hand — then the
+        // things in a pocket. "*Petty* items do not take up any slots" is 2e's own definition,
+        // and a claw weighs exactly that.
         { id: "petty", label: "CAIRN.Petty" },
-        { id: "belongings", label: "CAIRN.Belongings" },
+        { id: "belongings", label: "CAIRN.Aside" },
         { id: "identity", label: "CAIRN.Identity" },
         // What the character became, beside where they came from. Scars and Growth share it
         // because 2e files the first under the second — "with some notable exceptions (such as
@@ -325,9 +324,9 @@ export class CairnCharacterSheet extends CairnActorSheet {
     await createItemFromPrompt(this.actor, { petty: true });
   }
 
-  /** The Natural heading's add control: the item prompt, everything it makes part of the body. */
-  static async #onNaturalCreate() {
-    await createItemFromPrompt(this.actor, { natural: true });
+  /** The Body heading's add control: the item prompt, everything it makes part of the body. */
+  static async #onBodyCreate() {
+    await createItemFromPrompt(this.actor, { bodily: true });
   }
 
   /** The Scars tab's add control: the Scars window with no hit behind it, for a Warden handing

@@ -10,9 +10,9 @@
       sits where the slot words sit, and a sack is never called bulky. --}}
 {{#if system.isCoin}}<span class="cairn-item-tag">{{system.value}} {{localize 'CAIRN.GoldAbbrev'}}</span>{{/if}}
 {{!-- Part of the body weighs nothing and is never put down, so the slot words and Equipped say
-      nothing true of it; the one word that does is Natural — except on the Natural tab
-      (`inNatural`), where the place already says it. --}}
-{{#if system.natural}}{{#unless inNatural}}<span class="cairn-item-tag">{{localize 'CAIRN.Natural'}}</span>{{/unless}}{{else}}
+      nothing true of it; the one word that does is Body — except in the Body zone
+      (`inBody`), where the place already says it. --}}
+{{#if system.bodily}}{{#unless inBody}}<span class="cairn-item-tag">{{localize 'CAIRN.Body'}}</span>{{/unless}}{{else}}
 {{#unless noSlotTags}}
 {{#if system.bulky}}<span class="cairn-item-tag">{{localize 'CAIRN.Bulky'}}</span>{{/if}}
 {{#if system.petty}}<span class="cairn-item-tag">{{localize 'CAIRN.Petty'}}</span>{{/if}}

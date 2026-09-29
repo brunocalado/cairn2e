@@ -311,7 +311,7 @@ export class CairnItem extends Item {
     // ...and set aside is not to hand either: a sword on the dungeon floor is in nobody's grip.
     // ...and part of the body is always to hand, so there is nothing to toggle.
     sys.isEquipable = this.type === "gear" && holdable && !sys.isContainer && !stowed && sys.carried
-      && !sys.natural;
+      && !sys.bodily;
     // Whether "is this under your direct possession?" is a question this thing can be asked at
     // all. A Fatigue is not a possession and can never be put down — that is the whole of the
     // deprivation rule. A stowed thing is answered for by its container. And a container that
@@ -319,7 +319,7 @@ export class CairnItem extends Item {
     // has a claw: part of the body cannot be put down.
     // A sack of coin can be set aside too — the treasure left at camp is the oldest Belonging
     // there is — and, being gear-shaped in no other way, is never in anyone's grip.
-    sys.isStashable = (this.type === "gear" && !stowed && !(sys.isContainer && !sys.takesSlots) && !sys.natural)
+    sys.isStashable = (this.type === "gear" && !stowed && !(sys.isContainer && !sys.takesSlots) && !sys.bodily)
       || (this.type === "coin" && !stowed);
     sys.hasUses = (sys.uses?.max ?? 0) > 0;
   }

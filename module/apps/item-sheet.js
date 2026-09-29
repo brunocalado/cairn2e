@@ -85,7 +85,7 @@ const TALLER = { gear: 480, background: 480, growth: 480 };
  * fields come up holding a number somebody would keep — a row that merely LOOKED filled would be
  * claiming a value the document does not hold, and closing the sheet would lose the claim.
  *
- * `offer` is the second question, and the container / natural pair asks it: a container holds
+ * `offer` is the second question, and the container / bodily pair asks it: a container holds
  * things, so it is not a weapon, not armour and not part of anybody's body
  * (`data/item-gear.js#prepareBaseData` clears all three), and part of a body holds nothing.
  * Without this the Add row would keep offering rows whose value the next save wipes.
@@ -100,11 +100,11 @@ const AXES = [
   { id: "uses", label: "CAIRN.Uses", set: (sys) => sys.uses.max > 0,
     open: { "system.uses.value": 1, "system.uses.max": 1 } },
   { id: "capacity", label: "CAIRN.Capacity", set: (sys) => sys.capacity > 0,
-    open: { "system.capacity": 1 }, offer: (sys) => !sys.natural },
+    open: { "system.capacity": 1 }, offer: (sys) => !sys.bodily },
   // Not on a container (a bag is not a limb) and not on a thing stowed in one: the document
   // would refuse the pointer it already has, and the row would claim a state it cannot hold.
-  { id: "natural", label: "CAIRN.Natural", set: (sys) => sys.natural,
-    open: { "system.natural": true }, offer: (sys) => !sys.isContainer && !sys.container }
+  { id: "bodily", label: "CAIRN.Body", set: (sys) => sys.bodily,
+    open: { "system.bodily": true }, offer: (sys) => !sys.isContainer && !sys.container }
 ];
 
 /**

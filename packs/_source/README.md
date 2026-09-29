@@ -55,10 +55,10 @@ haul themselves, cost none of the ten, and are never under direct possession.
 Two riders sit on a die. `paired` is the SRD's `d8+d8` — "roll both damage dice and keep the single
 highest" (`core-rules.md` → Attack Modifiers) — for one weapon that is two: a troll's claws, the
 Cutpurse's Twin Daggers. The die field holds one die and `paired` the second, and the prose keeps
-`(d8+d8)`; every `(dX+dX)` in a description has `paired` under it and nothing else does. `natural`
+`(d8+d8)`; every `(dX+dX)` in a description has `paired` under it and nothing else does. `bodily`
 says the thing is part of whoever has it — claws, a bite, a tail spike, the Barber-Surgeon's metal
 arm while it is on the shoulder — so it costs no slot, is always to hand, and cannot be set aside,
-stowed, handed over or sold. In `bestiary/` the natural attacks are natural and the made ones
+stowed, handed over or sold. In `bestiary/` the natural attacks are bodily and the made ones
 (swords, bows, spears, the Lich's soul dagger) are not, which is what a looted monster gives up.
 **A document is written out in full** — every field of the
 schema, defaults included — so a diff reads the same on every file and validation has nothing to
@@ -414,7 +414,7 @@ Five Background d6 faces give the character a creature with a whole stat line, a
 own: the Bonekeeper's Blood Pail servant, the Half-Witch's Raven Familiar, the Prowler's hollow
 wolf, the Aurifex's Homunculus and the Fletchwind's falcon. Each is an `npc` Actor here,
 `role: "monster"` like every beast the party runs, a friendly linked token, stats exactly as the
-row prints them, its attacks `natural` (and `paired` where the row says `d8+d8`), and the row's
+row prints them, its attacks `bodily` (and `paired` where the row says `d8+d8`), and the row's
 other clauses as `feature` Items named by the clause. The item or growth the face grants stays where it is in
 `background-gear/`, prose unchanged; the word that names the creature is an `@UUID` link to its
 Actor, so the rendered text reads the same and the Warden drags the creature onto the map from it.
@@ -423,7 +423,7 @@ What stays out: a creature the row gives no attributes to (the Outrider's mounts
 the Aurifex's invisible pet, the Mountebank's Alchemical Tattoo) — inventing a stat line would be
 2e content that is not in 2e. And two faces that give an attack rather than a second body: the
 Fieldwarden's Werewolf is the character, turned, and the Half-Witch's Living Nightmare shares the
-character's Attributes and HP. Each is a growth, with its attacks granted beside it as `natural`
+character's Attributes and HP. Each is a growth, with its attacks granted beside it as `bodily`
 gear in `background-gear/` (Werewolf Claws and Bite, Nightmare Claws), so they are rolled from the
 character's own sheet. The Heavy Destrier's hooves are granted the same way: the Destrier itself is
 a mount like the Marketplace Horse — a container that hauls itself, `+2 slots` as its capacity —

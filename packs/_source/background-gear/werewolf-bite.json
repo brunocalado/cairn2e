@@ -16,7 +16,7 @@
     "damage": "d8",
     "blast": false,
     "paired": false,
-    "natural": true,
+    "bodily": true,
     "armor": 0,
     "magic": "none",
     "recharge": "",

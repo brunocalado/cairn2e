@@ -317,7 +317,7 @@ export function diceForWeapon(weapon, mods = {}) {
 export function secondWeaponCandidates(items, clicked) {
   return Array.from(items).filter(
     (i) => !!i.system.damage && !!i.system.equipped && i.id !== clicked?.id && !i.system.container
-      && (slotsForItem(i) > 0 || !!i.system.natural)
+      && (slotsForItem(i) > 0 || !!i.system.bodily)
   );
 }
 

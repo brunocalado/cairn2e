@@ -1,4 +1,4 @@
-{{!-- One list, drawn by the Natural, the Petty and the Belongings tab: they hold the
+{{!-- One list, drawn by the Body and Petty zones and the Aside tab: they hold the
       same kind of row and differ only in which question put it there — zero slots, or not under
       direct possession — so they are one template and the eye finds every control in the same
       place on both.
@@ -24,7 +24,7 @@
       @param rows   The item views to draw.
       @param seed   Ink seed prefix, so each zone's strokes keep their own silhouette.
       @param empty  What the zone says when it has nothing in it.
-      @param inNatural  The Natural tab's list, whose rows need no Natural tag. --}}
+      @param inBody  The Body zone's list, whose rows need no Body tag. --}}
 <ol class="cairn-plain-list">
     {{#each rows as |row|}}
     <li class="cairn-slot draggable{{#if row.isUsedUp}} used-up{{/if}}" data-item-id="{{row.id}}"
@@ -35,7 +35,7 @@
                   carries its capacity chip here, as it does on the ten. --}}
             <span class="cairn-item-name-and-tags" data-action="itemEdit">
                 <span class="cairn-item-title">{{#if row.system.equipped}}<strong>{{row.name}}</strong>{{else}}{{row.name}}{{/if}}</span>
-                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system inNatural=../inNatural}}
+                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system inBody=../inBody}}
                 {{#if row.system.isContainer}}<span class="cairn-item-tag">{{row.system.contentsSlots}}/{{row.system.capacity}}</span>{{/if}}
                 {{#if row.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=row.usesDisplay editable=@root.editable}}{{/if}}
             </span>

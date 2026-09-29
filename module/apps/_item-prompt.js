@@ -30,7 +30,7 @@ const ITEM_PRESETS = {
 };
 
 /**
- * The "Create Item" prompt, shared by the inventory's add control, the Natural one, the Petty
+ * The "Create Item" prompt, shared by the inventory's add control, the Body one, the Petty
  * Items one, the Belongings one and the NPC's.
  *
  * The choice is a PRESET, not a subtype: every carried thing is `gear`, and "Weapon" or "Relic"
@@ -49,12 +49,12 @@ const ITEM_PRESETS = {
  *   Belongings heading makes things that are NOT: a sword left in a dungeon three days ago is
  *   written down after the fact, and a character with ten full slots has no room to create it
  *   first and set it aside afterwards.
- * @param {boolean} [options.natural]  Whether the new thing is part of the body — the Natural
- *   tab's control. Only the presets a limb can be are offered, a weapon first: a claw is a die,
+ * @param {boolean} [options.bodily]  Whether the new thing is part of the body — the Body
+ *   zone's control. Only the presets a limb can be are offered, a weapon first: a claw is a die,
  *   a hide an armour value, and a body holds no coin, no book and nothing inside it.
  */
-export async function createItemFromPrompt(actor, { petty = null, askPetty = false, carried = true, natural = false } = {}) {
-  const presets = natural ? ["weapon", "armor", "gear"] : Object.keys(ITEM_PRESETS);
+export async function createItemFromPrompt(actor, { petty = null, askPetty = false, carried = true, bodily = false } = {}) {
+  const presets = bodily ? ["weapon", "armor", "gear"] : Object.keys(ITEM_PRESETS);
   const options = presets
     .map((t) => `<option value="${t}">${game.i18n.localize(`CAIRN.Preset.${t}`)}</option>`)
     .join("");
@@ -104,7 +104,7 @@ export async function createItemFromPrompt(actor, { petty = null, askPetty = fal
       // *petty* is a reading of `slots` on a gear; a sack's weight is read off its value.
       ...(isPetty && type === "gear" ? { slots: 0 } : {}),
       ...(carried ? {} : { carried: false }),
-      ...(natural ? { natural: true, slots: 0 } : {})
+      ...(bodily ? { bodily: true, slots: 0 } : {})
     }
   });
 }

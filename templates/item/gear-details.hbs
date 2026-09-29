@@ -97,19 +97,19 @@
         </div>
         {{/if}}
 
-        {{#if axes.natural}}
+        {{#if axes.bodily}}
         {{!-- Part of the body. An axis like the others, added from the row at the foot and taken
-              away by switching it off: a claw is a Natural thing with a die, a hide a Natural
+              away by switching it off: a claw is a Body thing with a die, a hide a Body
               thing with an armour value. --}}
         <div class="cairn-field cairn-prop-row"
-            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-natural">
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-bodily">
             <span class="cairn-prop-label">
-                <label for="gear-natural-{{item.id}}">{{localize 'CAIRN.Natural'}}</label>
-                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.NaturalHint"
-                    label=(localize 'CAIRN.NaturalHint') seed="natural"}}
+                <label for="gear-bodily-{{item.id}}">{{localize 'CAIRN.Body'}}</label>
+                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.BodyHint"
+                    label=(localize 'CAIRN.BodyHint') seed="bodily"}}
             </span>
-            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.natural" value=system.natural
-                id=(concat "gear-natural-" item.id)}}
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.bodily" value=system.bodily
+                id=(concat "gear-bodily-" item.id)}}
         </div>
         {{/if}}
 

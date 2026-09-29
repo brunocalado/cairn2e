@@ -222,7 +222,7 @@
         justify-content: center;
         letter-spacing: var(--cairn-label-track);
         line-height: 1;
-        padding: 0 8px;
+        padding: 0 10px;
         position: relative;
         text-transform: uppercase;
         user-select: none;
@@ -631,18 +631,15 @@
        `flex: 1` and spreads them across the strip, which put ORIGIN a hand's width from the
        tab before it and made the strip read as three headings rather than one control. */
     /* The 9px on the left is the first tab's brush mark. The slab is painted 16px past the label
-       on each side, the tab pads the label by 8, and the bristles overshoot the box again — so
+       on each side, the tab pads the label by 10, and the bristles overshoot the box again — so
        the ink of ITEMS reached 8px to the left of the tab rule underneath, measured off the
        canvas, and the strip read as spilling past the page. The rule stays where it was; the
        ink now lands on its left edge and never past it (the ninth pixel is one stray bristle). */
-    /* Six tabs and Gold share the 574px strip, so the air between labels is 26px (8 + 10 + 8):
-       at 14px of gap and 10 of padding the strip was 32px too long and pushed Gold past the
-       frame. 26 still clears the active tab's brush mark, which reaches 16px past its word. */
     .cairn-tab-strip {
         align-items: center;
         border: none;
         display: flex;
-        gap: 10px;
+        gap: 14px;
         padding-left: 9px;
     }
 
@@ -660,7 +657,7 @@
         justify-content: center;
         letter-spacing: var(--cairn-label-track);
         line-height: 1;
-        padding: 0 8px;
+        padding: 0 10px;
         position: relative;
         text-transform: uppercase;
 

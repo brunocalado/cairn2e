@@ -150,7 +150,7 @@ export function sellableOwn(items) {
   const groups = new Map();
   for (const item of all) {
     // Part of the body is not for sale, whatever a Warden once priced it at.
-    if (item.type === "coin" || !(item.system?.cost > 0) || item.system?.natural) continue;
+    if (item.type === "coin" || !(item.system?.cost > 0) || item.system?.bodily) continue;
     if (holdsSomething(item, all)) continue;
     const place = placeOf(item);
     if (!groups.has(place)) groups.set(place, []);

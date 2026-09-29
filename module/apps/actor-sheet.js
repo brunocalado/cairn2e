@@ -260,11 +260,11 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * a container someone dropped on a hireling is one more row, not a hidden one. An NPC is bound
    * by no slot rule, so nothing it owns is ever set aside out of that list.
    *
-   * `natural` is what the character IS rather than carries — fists, claws, a metal arm on its
-   * shoulder (`system.natural`). It weighs nothing and so would otherwise fall into *petty*, a
-   * thing in a pocket; it has a tab of its own.
+   * `body` is what the character IS rather than carries — fists, claws, a metal arm on its
+   * shoulder (`system.bodily`). It weighs nothing, as *petty* does, and is drawn on the Petty tab,
+   * but in a zone of its own: a claw is not a thing in a pocket.
    *
-   * @returns {Promise<{rows: object[], natural: object[], petty: object[], carried: object[], belongings: object[]}>}
+   * @returns {Promise<{rows: object[], body: object[], petty: object[], carried: object[], belongings: object[]}>}
    */
   async prepareItems() {
     const items = this.actor.items.contents.slice().sort((a, b) => {
@@ -276,7 +276,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     });
 
     const units = [];
-    const natural = [];
+    const body = [];
     const petty = [];
     // A sheet with no ten-slot ledger draws this instead: every carried item in one list, zero-slot
     // ones included. An NPC is bound by no slot rule — `CairnItem._preCreateOperation` refuses
@@ -302,8 +302,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
         belongings.push(view);
         continue;
       }
-      if (item.system.natural) {
-        natural.push(view);
+      if (item.system.bodily) {
+        body.push(view);
         continue;
       }
       const count = slotsForItem(item);
@@ -314,7 +314,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       units.push({ payload: { item: view }, slots: count });
     }
 
-    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), natural, petty, carried, belongings };
+    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), body, petty, carried, belongings };
   }
 
   /** The per-item display model one slot row renders. */
@@ -605,8 +605,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const source = item.parent;
     // Off another actor, part of the body stays where it is. From a pack or the sidebar it is a
     // new thing — the Werewolf's claws land on the character exactly that way.
-    if (source && item.system.natural) {
-      return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Natural", { name: item.name }));
+    if (source && item.system.bodily) {
+      return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Bodily", { name: item.name }));
     }
     const chosen = item.toObject();
     if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };

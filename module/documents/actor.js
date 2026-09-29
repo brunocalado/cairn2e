@@ -18,7 +18,7 @@ export function unarmedItemData() {
   return {
     name: game.i18n.localize("CAIRN.Unarmed"),
     type: "gear",
-    system: { damage: "d4", natural: true, slots: 0 },
+    system: { damage: "d4", bodily: true, slots: 0 },
     flags: { [SYSTEM_ID]: { [FLAGS.UNARMED]: true } }
   };
 }
@@ -123,7 +123,7 @@ export class CairnActor extends Actor {
   }
 
   /**
-   * @override — every character is born with fists: a natural `gear` rolling d4, "Unarmed attacks
+   * @override — every character is born with fists: a bodily `gear` rolling d4, "Unarmed attacks
    * always do d4 damage" (`core-rules.md`). A real item rather than a line the sheet draws, so it
    * can be renamed, given another die or deleted like anything else a character has.
    *

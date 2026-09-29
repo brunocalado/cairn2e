@@ -58,7 +58,7 @@
         "capacity": 0,
         "takesSlots": false,
         "carried": true,
-        "natural": true
+        "bodily": true
       },
       "ownership": {
         "default": 0
@@ -89,7 +89,7 @@
         "capacity": 0,
         "takesSlots": false,
         "carried": true,
-        "natural": true
+        "bodily": true
       },
       "ownership": {
         "default": 0

@@ -59,7 +59,7 @@
         "takesSlots": false,
         "carried": true,
         "paired": true,
-        "natural": true
+        "bodily": true
       },
       "ownership": {
         "default": 0

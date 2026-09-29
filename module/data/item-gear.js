@@ -18,7 +18,7 @@ const fields = foundry.data.fields;
  * - **Physical** — `damage` (+ `blast`, + `paired`) makes it a weapon, `armor` makes it armour,
  *   and `slots` / `equipped` say what it costs to carry and whether it is in hand
  *   (`srd-2e/players-guide/marketplace.md`). *petty* and *bulky* are readings of `slots`, not
- *   fields: see `prepareBaseData`. `natural` says it is part of the one who has it — claws, a
+ *   fields: see `prepareBaseData`. `bodily` says it is part of the one who has it — claws, a
  *   bite, a metal arm on its shoulder — and so is never carried at all.
  * - **Magical** — `magic` says what using it costs: a Spellbook adds a Fatigue, a Scroll is used
  *   up, a Relic spends a charge and has a `recharge` condition (`core-rules.md` → Magic). Three
@@ -68,7 +68,7 @@ export class GearData extends foundry.abstract.TypeDataModel {
       // Part of the body, not a thing carried: it costs no slot, is always to hand, and can be
       // neither set aside, stowed, handed over nor sold. It is still a `gear`, so a claw is a die
       // like a sword's and a hide can be armour — the axes are the same; only where it lives differs.
-      natural: new fields.BooleanField({ initial: false }),
+      bodily: new fields.BooleanField({ initial: false }),
       // Uncapped per item (a single Plate is 3); the actor's total is summed over equipped items
       // and capped at 3 by `_derived.js#sumEquippedArmor`.
       armor: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 3 }),
@@ -106,11 +106,11 @@ export class GearData extends foundry.abstract.TypeDataModel {
       this.paired = false;
       this.armor = 0;
       // A bag is not a limb: it holds things, and a thing that is part of you holds nothing.
-      this.natural = false;
+      this.bodily = false;
     }
     if (!this.damage) this.paired = false;
     // Part of you is always to hand and always with you — there is no second state to be in.
-    if (this.natural) {
+    if (this.bodily) {
       this.equipped = true;
       this.carried = true;
     }

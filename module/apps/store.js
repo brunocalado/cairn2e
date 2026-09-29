@@ -240,7 +240,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     context.character = { name: actor.name, gold: actor.system.gold };
     context.yours = sellableOwn(actor.items.contents).map((group) => ({
       label: group.place === "" ? game.i18n.localize("CAIRN.Store.OnYou")
-        : group.place === BELONGINGS ? game.i18n.localize("CAIRN.Belongings")
+        : group.place === BELONGINGS ? game.i18n.localize("CAIRN.Aside")
           : actor.items.get(group.place)?.name ?? "",
       rows: group.items.map((item) => ({
         id: item.id,
