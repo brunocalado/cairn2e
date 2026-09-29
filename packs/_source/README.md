@@ -104,7 +104,7 @@ Every id in these packs is **derived, not invented**: `id16(seed)` = the first 1
 `md5(seed)`, each `byte % 62` into `[A-Za-z0-9]`, with seeds shaped like
 `"cairn2e:background:<slug>"`, `"cairn2e:spellbook:<slug>"`, `"cairn2e:npc:<slug>"`,
 `"cairn2e:npc:<slug>:item:<n>"` (1-based, stat-line order), `"cairn2e:hireling:<slug>"` and
-`"cairn2e:hireling:<slug>:item:<n>"` (same rule), `"cairn2e:scroll:<slug>"`, `"cairn2e:homebrew:<slug>"`,
+`"cairn2e:hireling:<slug>:item:<n>"` (same rule), `"cairn2e:companion:<slug>"` and `"cairn2e:companion:<slug>:item:<n>"` (same rule), `"cairn2e:scroll:<slug>"`, `"cairn2e:homebrew:<slug>"`,
 `"cairn2e:homebrew:folder:<slug>"`, the five magic packs' price folders (see *Prices on magic*), `"cairn2e:bgtable:<slug>:<n>"`,
 `"cairn2e:bggear:<slug>"`, `"cairn2e:bggear:folder:<slug>"`, `"cairn2e:warden:<slug>"` and
 `"cairn2e:warden:<slug>:<n>"` (a table's results, 1-based, in range order).
@@ -397,6 +397,22 @@ Five lines needed a call, settled 2026-09-15 against the SRD:
 | Cutpurse — `Lockpicks` | Its own document. The Marketplace's `Thieving Tools (Lockpick, Metal File, etc.)` is the 25gp kit; the SRD's `Lockpick` at 10 is a hireling. |
 | Fieldwarden — `Repellent (pick the type, 3 uses)` | Its own document, `uses 3/3`. The Marketplace `Repellent` ships with no use count and stays that way. |
 | Fletchwind — `Bow (see table)` | The Marketplace `Bow`. "See table" points at the background's own *How did you earn your bow?* d6, which describes the bow rather than replacing it. |
+
+## `companions` — the creatures a background hands the party
+
+Four Background d6 faces give the character a creature with a whole stat line, and it acts on its
+own: the Bonekeeper's Blood Pail servant, the Half-Witch's Raven Familiar, the Prowler's hollow
+wolf and the Aurifex's Homunculus. Each is an `npc` Actor here, `role: "monster"` like every beast
+the party runs, a friendly linked token, stats and die exactly as the row prints them (`d8+d8`
+stored as `d8`, the text keeping both, as in `bestiary/`), and the row's other clauses as
+`feature` Items named by the clause. The item or growth the face grants stays where it is in
+`background-gear/`, prose unchanged; the word that names the creature is an `@UUID` link to its
+Actor, so the rendered text reads the same and the Warden drags the creature onto the map from it.
+
+What stays out: a creature the row gives no attributes to (the Outrider's mounts, the Carrion Cat,
+the Aurifex's invisible pet, the Mountebank's Alchemical Tattoo) — inventing a stat line would be
+2e content that is not in 2e — and the Fieldwarden's Werewolf, which is the character, not a
+second body.
 
 ## Workflow
 

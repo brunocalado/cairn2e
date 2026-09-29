@@ -1,0 +1,103 @@
+{
+  "_id": "llllfH3hScHAP0pz",
+  "name": "Hollow Wolf",
+  "type": "npc",
+  "img": "icons/creatures/mammals/wolf-howl-moon-black.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 11,
+        "max": 11
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 8,
+        "max": 8
+      }
+    },
+    "hp": {
+      "value": 5,
+      "max": 5
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "Teeth",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>teeth (d6)</p>",
+        "slots": 0,
+        "equipped": true,
+        "cost": 0,
+        "container": "",
+        "uses": {
+          "value": 0,
+          "max": 0
+        },
+        "damage": "d6",
+        "blast": false,
+        "armor": 0,
+        "magic": "none",
+        "recharge": "",
+        "capacity": 0,
+        "takesSlots": false,
+        "carried": true
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "RaITjh9ulLMMxb00",
+      "_key": "!actors.items!llllfH3hScHAP0pz.RaITjh9ulLMMxb00"
+    },
+    {
+      "name": "Loyal to you unto death.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "odAvkTSjqRoCrbfs",
+      "_key": "!actors.items!llllfH3hScHAP0pz.odAvkTSjqRoCrbfs"
+    },
+    {
+      "name": "A great tunneler.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nXlYWntlSCC7lRXx",
+      "_key": "!actors.items!llllfH3hScHAP0pz.nXlYWntlSCC7lRXx"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!llllfH3hScHAP0pz"
+}

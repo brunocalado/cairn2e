@@ -9,6 +9,7 @@ import { SYSTEM_ID } from "../constants.js";
 import { moveCoin, promptCoinAmount } from "../coin.js";
 import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
+import { enrich } from "../helpers.js";
 import { CairnSheetMixin } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
@@ -285,6 +286,10 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // The feature's one property sits in the header's caption row (`parts/item-header.hbs`):
     // the feature has no Details tab, and a tab for a single toggle would put it a click away.
     context.isFeature = item.type === "feature";
+    // What a toggled `<prose-mirror>` shows until its pencil is pressed: the description as it
+    // reads, links live. An always-open editor printed `@UUID[…]{Raven Familiar}` as raw text.
+    context.descriptionHTML = await enrich(item.system.description, item);
+    if (item.system.magic === "relic") context.rechargeHTML = await enrich(item.system.recharge, item);
 
     // A scar's Details is a printout of `system.outcome`. The label of the row it changed is
     // built here rather than in the template: "hp" is the character's Hit Protection maximum and

@@ -1,0 +1,87 @@
+{
+  "_id": "ofpQ1iJndgnQK3bz",
+  "name": "Homunculus",
+  "type": "npc",
+  "img": "icons/commodities/treasure/doll-voodoo.webp",
+  "system": {
+    "abilities": {
+      "STR": {
+        "value": 4,
+        "max": 4
+      },
+      "DEX": {
+        "value": 13,
+        "max": 13
+      },
+      "WIL": {
+        "value": 5,
+        "max": 5
+      }
+    },
+    "hp": {
+      "value": 3,
+      "max": 3
+    },
+    "role": "monster",
+    "armor": 0,
+    "description": "",
+    "isDetachment": false,
+    "morale": null,
+    "slots": {
+      "max": 0
+    }
+  },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "items": [
+    {
+      "name": "A miniature clay replica of you that follows your every command.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "nyPyTRr0uafwP9rO",
+      "_key": "!actors.items!ofpQ1iJndgnQK3bz.nyPyTRr0uafwP9rO"
+    },
+    {
+      "name": "It hates being enthralled to you and complains bitterly whenever possible.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "0scWF3JAHcQ8k7zL",
+      "_key": "!actors.items!ofpQ1iJndgnQK3bz.0scWF3JAHcQ8k7zL"
+    },
+    {
+      "name": "Any damage done to the homunculus is also done to you.",
+      "type": "feature",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "system": {
+        "description": ""
+      },
+      "ownership": {
+        "default": 0
+      },
+      "effects": [],
+      "_id": "4zPJdVNsFVMA4CBs",
+      "_key": "!actors.items!ofpQ1iJndgnQK3bz.4zPJdVNsFVMA4CBs"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!ofpQ1iJndgnQK3bz"
+}

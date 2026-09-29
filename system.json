@@ -90,6 +90,13 @@
       "type": "Item"
     },
     {
+      "name": "companions",
+      "label": "Companions",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/companions",
+      "type": "Actor"
+    },
+    {
       "name": "gear",
       "label": "Gear",
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
@@ -200,7 +207,7 @@
           "name": "Character Creation",
           "sorting": "m",
           "color": "#6e5a3c",
-          "packs": ["backgrounds", "background-tables", "background-gear", "character-traits", "bonds", "omens"]
+          "packs": ["backgrounds", "background-tables", "background-gear", "companions", "character-traits", "bonds", "omens"]
         },
         {
           "name": "Equipment",

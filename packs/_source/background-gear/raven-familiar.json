@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p>A <strong>Raven Familiar</strong> [8 HP, 3 STR, 11 DEX, 13 WIL, beak, (d6)]. It speaks as an intelligent being and is entirely devoted to you.</p>",
+    "description": "<p>A <strong>@UUID[Compendium.cairn2e.companions.Actor.7Wjuh7KH6HQtxzE4]{Raven Familiar}</strong> [8 HP, 3 STR, 11 DEX, 13 WIL, beak, (d6)]. It speaks as an intelligent being and is entirely devoted to you.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,

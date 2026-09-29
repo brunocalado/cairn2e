@@ -100,6 +100,8 @@ export class CairnNpcSheet extends CairnActorSheet {
     context.abilities = abilityRows(system);
     context.hpZero = hpZero(system);
     context.appearanceTraits = appearanceTraitRows(system);
+    // Read by the toggled editor until its pencil is pressed (`templates/actor/npc-description.hbs`).
+    context.descriptionHTML = await enrich(system.description, this.actor);
     // In collection order — for a bestiary creature, the SRD's own bullet order. A name that is
     // a label ("Magic", "Critical Damage") rather than a sentence takes the SRD's colon before
     // its description; a lead sentence already ends in its own stop.

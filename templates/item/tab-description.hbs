@@ -1,4 +1,4 @@
-{{!-- The description, typed straight into the page.
+{{!-- The description, read as text until its pencil is pressed — the journal's pattern.
 
       This is `<prose-mirror>`, the real v14 element, and NOT the `{{editor}}` helper. The helper
       emits `<div class="editor"><div class="editor-content" data-edit="…">` and then leaves it
@@ -7,11 +7,11 @@
       `createEditorInput` reaches the element itself only when `CONFIG.TextEditor.engines` carries
       a renderer, which in 14.367 is empty. The pencil it drew opened nothing at all.
 
-      With no `toggled` attribute the editor is always active, so there is no button to press and
-      the box is simply a field: the same way the character edit window's Bond and Omen boxes
-      behave. It wears that window's drawn box too, and its toolbar is hidden
-      (`css/src/item-sheet.css`) — `item-sheet.js#_onRender` saves it on focusout, so nothing depends on
-      a control that is not on screen.
+      `toggled`, with the enriched HTML as its content: until the element's own pencil opens it,
+      the box shows the description as it reads, so an `@UUID` link is a link a player can click
+      or a Warden can drag onto the map. An always-open editor printed the raw `@UUID[…]` source.
+      The toolbar stays hidden (`css/src/item-sheet.css`); leaving the field saves and closes it
+      (`_ink-mixin.js`), so nothing depends on a control that is not on screen.
 
       The field stays rich: every description in the compendium is HTML, `<em>bulky</em>`
       included, and the formatting keyboard shortcuts still work. --}}
@@ -21,8 +21,8 @@
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-description" data-ink-w="1" data-ink-a="0.34"></div>
     {{/if}}
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-description" data-ink-w="1.6">
-        <prose-mirror name="system.description" value="{{system.description}}"
-            data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}></prose-mirror>
+        <prose-mirror name="system.description" value="{{system.description}}" toggled
+            data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{descriptionHTML}}}</prose-mirror>
     </div>
     {{#if growth}}
     {{!-- A growth's tab is two parts under two headings. The first box is the story; the second is
