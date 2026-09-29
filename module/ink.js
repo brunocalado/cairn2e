@@ -179,16 +179,46 @@ function boxPoints(x, y, w, h, rnd) {
   return pts;
 }
 
-/** A ring that is never quite a circle. */
+/**
+ * A ring that is never quite a circle. The wobble scales with the radius, so a small ring (the
+ * creator's 16px help mark) is not bent out of round by a wobble sized for a large one.
+ */
 function circlePoints(cx, cy, r, rnd) {
   const pts = [];
   const steps = 26;
+  const wobble = Math.min(1.4, r * 0.06);
   for (let i = 0; i < steps; i++) {
     const a = (i / steps) * Math.PI * 2;
-    const rr = r + rnd(-1.4, 1.4);
+    const rr = r + rnd(-wobble, wobble);
     pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
   }
   return pts;
+}
+
+/**
+ * A ring's stroke. Not `strokePath`: its belly and jitter are sized for an edge tens of pixels
+ * long, and a ring's edges are a couple of pixels, so every one of them turned into a spike.
+ * Here the pen runs a smooth curve through the midpoints, and the wobble lives in the points and
+ * in the two passes landing a little apart.
+ */
+function strokeRing(ctx, cx, cy, r, weight, alpha, rnd, color) {
+  for (let pass = 0; pass < 2; pass++) {
+    const pts = circlePoints(cx + rnd(-0.3, 0.3), cy + rnd(-0.3, 0.3), r, rnd);
+    const mid = (i) => {
+      const a = pts[i % pts.length];
+      const b = pts[(i + 1) % pts.length];
+      return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    };
+    ctx.strokeStyle = `rgba(${color}, ${rnd(alpha * 0.72, alpha)})`;
+    ctx.lineWidth = rnd(weight * 0.7, weight * 1.15);
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(...mid(0));
+    for (let i = 1; i <= pts.length; i++) ctx.quadraticCurveTo(...pts[i % pts.length], ...mid(i));
+    ctx.closePath();
+    ctx.stroke();
+  }
 }
 
 /**
@@ -673,7 +703,7 @@ export function paintInk(host) {
       }
       case "circle": {
         const r = Math.min(rect.width, rect.height) / 2 - 1;
-        strokePath(ctx, circlePoints(x + rect.width / 2, y + rect.height / 2, r, rnd), true, weight, alpha, rnd, 0, color);
+        strokeRing(ctx, x + rect.width / 2, y + rect.height / 2, r, weight, alpha, rnd, color);
         break;
       }
 

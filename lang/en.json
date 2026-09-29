@@ -61,6 +61,12 @@
     "Age": "Age",
     "Apply": "Apply",
     "ApplyWarning": "Replaces {name}'s name, attributes, identity and items. Containers and what they hold are kept.",
+    "AttrHelp": {
+      "DEX": "<strong>Dexterity</strong> — saves that need poise, speed or reflexes: dodging, climbing, sneaking, balancing. Acting in the first round of combat and running from danger both take a DEX save. At 0 DEX you are paralyzed.",
+      "Label": "What {attr} is for",
+      "STR": "<strong>Strength</strong> — saves that need physical power: lifting gates, bending bars, resisting poison. Damage past 0 HP comes off STR, followed by a STR save to avoid critical damage. At 0 STR you die.",
+      "WIL": "<strong>Willpower</strong> — saves to persuade, deceive, interrogate, intimidate, charm, provoke, or manipulate spells. A spell cast while deprived or in danger may call for a WIL save. At 0 WIL you are delirious."
+    },
     "Attributes": "Attributes",
     "Back": "Back",
     "Background": "Roll or choose a Background",
