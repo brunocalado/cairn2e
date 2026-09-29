@@ -593,6 +593,7 @@
     "SummaryResolved": "{count} item(s) matched a compendium entry",
     "SummaryTitle": "Kettlewright import — {name}"
   },
+  "CAIRN.MacroFolder": "Cairn 2e",
   "CAIRN.Magic": "Magic",
   "CAIRN.MagicKind": {
     "none": "None",

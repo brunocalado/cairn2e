@@ -55,6 +55,14 @@ export const registerSettings = () => {
     default: false
   });
 
+  // Hidden: the record of the third one-time world install (module/world-macros.js).
+  game.settings.register(SYSTEM_ID, SETTINGS.MACROS_INSTALLED, {
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: false
+  });
+
   // Hidden: which party the P key opens, in a world that may hold more than one. World scope,
   // because a group is the table's and not one client's — two players pressing P look at the
   // same sheet, which is the point of having the key at all.

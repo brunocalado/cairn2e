@@ -45,6 +45,7 @@ import { registerDiceSoNice } from "./dice-so-nice.js";
 import { registerLightSources } from "./light-sources.js";
 import { installWelcomeWorld } from "./welcome.js";
 import { installTokenDefaults } from "./token-defaults.js";
+import { installWorldMacros, seedPlayerHotbar } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
 import * as models from "./data/_module.js";
@@ -338,6 +339,11 @@ Hooks.once("ready", () => {
   // into core's own settings so the Warden can edit it there rather than discover it hardcoded
   // (module/token-defaults.js).
   installTokenDefaults();
+
+  // The system's macros, as a world folder the players can run from, and a hotbar for every
+  // player seat the Warden adds afterwards (module/world-macros.js). Not awaited, like the above.
+  installWorldMacros();
+  Hooks.on("createUser", seedPlayerHotbar);
 
   // The Warden's bestiary art (module/bestiary-art.js): every client lays the last published scan
   // over the pack at once, so a player does not wait on the Warden; then the active GM rescans the

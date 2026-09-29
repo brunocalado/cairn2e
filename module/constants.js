@@ -63,6 +63,11 @@ export const SETTINGS = {
    *  who changed them is not asking for ours back on the next launch. */
   TOKEN_DEFAULTS_INSTALLED: "token-defaults-installed",
 
+  /** Hidden (`config: false`) — whether this world's "Cairn 2e" Macro folder has been imported
+   *  from `cairn2e.macros` (`module/world-macros.js`). The record of a one-time install, like the
+   *  two above: a Warden who deletes the folder is not asking for it back on the next launch. */
+  MACROS_INSTALLED: "macros-installed",
+
   /** Hidden (`config: false`) — the id of the world's active `party` Actor, or "". It is what
    *  the P keybinding opens, and the only answer to "which party" in a world that has two.
    *  Not a toggle either: it is a pointer, kept honest by `CairnActor`'s create and delete. */
@@ -354,6 +359,19 @@ export const GEAR = {
   BOOK: packUuid("gear", "Item", "MiIdPDU4ca9DCT1P"),
   REPELLENT: packUuid("gear", "Item", "riO6dGPX20svCtL0"),
   TRAP: packUuid("gear", "Item", "y9WcPO45F4qWK4Rv")
+};
+
+/**
+ * The `cairn2e.macros` pack, by uuid. A world copy is found by its `_stats.compendiumSource`, so
+ * a translated or renamed copy still lands in the right hotbar slot.
+ */
+export const MACROS = {
+  STR: packUuid("macros", "Macro", "lJdO2GZveYPtztZ1"),
+  DEX: packUuid("macros", "Macro", "K1N14Q8WrUBJEqwN"),
+  WIL: packUuid("macros", "Macro", "RRGbIskYd1RlZNNb"),
+  DIE_OF_FATE: packUuid("macros", "Macro", "CvQ9vA7upRgv5VDk"),
+  REST: packUuid("macros", "Macro", "ucFx97BSC93VpXbj"),
+  RESTORE_ABILITIES: packUuid("macros", "Macro", "8UaYzxdyp4z2sC64")
 };
 
 const table = (pack, id) => packUuid(pack, "RollTable", id);
