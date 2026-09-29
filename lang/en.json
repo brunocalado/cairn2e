@@ -1,7 +1,7 @@
 {
   "CAIRN.Actions": {
     "Title": "Actions",
-    "Tooltip": "Barter, Whisper, and the Warden's macros",
+    "Tooltip": "Barter, the rules summary, Whisper, and the Warden's macros",
     "Macros": "Macros",
     "MacroMissing": "That macro is gone."
   },
@@ -790,6 +790,101 @@
     "Panic": {
       "Label": "Panic",
       "Text": "A panicked character has 0 HP, does not act in the first round of combat, and all of their attacks are impaired. A WIL save as an action shakes it off."
+    }
+  },
+  "CAIRN.RulesRef": {
+    "Button": "Rules Summary",
+    "Shared": "The rules summary is open on every player's screen.",
+    "Title": "Rules Summary",
+    "Attributes": {
+      "Title": "Attributes",
+      "Str": "<strong>Strength (STR)</strong> — physical power: lifting gates, bending bars, resisting poison.",
+      "Dex": "<strong>Dexterity (DEX)</strong> — poise, speed and reflexes: dodging, climbing, sneaking, balancing.",
+      "Wil": "<strong>Willpower (WIL)</strong> — persuading, deceiving, interrogating, intimidating, charming, provoking, manipulating spells.",
+      "Outside": "Damage taken outside of combat goes to an Attribute instead, usually STR.",
+      "Zero": "At 0 STR a PC dies, at 0 DEX they are paralyzed, and at 0 WIL they are delirious."
+    },
+    "Saves": {
+      "Title": "Saves",
+      "Roll": "Roll a d20 against the Attribute: equal to or under succeeds, above fails. A 1 always succeeds and a 20 always fails.",
+      "When": "A save avoids the bad outcome of a risky choice.",
+      "Contest": "When two opponents each try to overcome the other, whoever is most at risk saves.",
+      "Together": "When characters act together, whoever is most at risk saves — usually the lowest relevant Attribute."
+    },
+    "Hp": {
+      "Title": "Hit Protection",
+      "What": "HP is the ability to avoid damage in combat, not health or fortitude, and it is never lost for long.",
+      "Scars": "An attack that takes a PC to exactly 0 HP is looked up on the Scars table, by the HP lost in that attack."
+    },
+    "Healing": {
+      "Title": "Healing & Recovery",
+      "Hp": "A few moments' rest and a drink of water restore lost HP, but may leave the party exposed.",
+      "Bandages": "Bandages stabilize a character who has taken critical damage.",
+      "Attributes": "Attribute loss is usually restored with a week's rest, helped by a healer or other expert."
+    },
+    "Inventory": {
+      "Title": "Inventory",
+      "Slots": "Ten slots, but only four or five items carried comfortably without bags, mounts or carts. A Backpack holds up to six slots of items or Fatigue.",
+      "Size": "Most items take one slot. <em>Petty</em> items take none, <em>bulky</em> items take two. Coin under 100gp is petty.",
+      "Full": "A full inventory — all ten slots — reduces a PC to 0 HP. No one can fill more than ten."
+    },
+    "Fatigue": {
+      "Title": "Deprivation & Fatigue",
+      "Deprived": "A PC lacking a crucial need, such as food or rest, is <strong>Deprived</strong> and cannot recover HP, Attributes or Fatigue.",
+      "Days": "Deprived for more than a day: add a <strong>Fatigue</strong> for each day.",
+      "Fatigue": "Casting spells and events in the fiction also add Fatigue. Each takes one slot until the PC can recuperate, such as with a full night's rest in a safe spot.",
+      "NoRoom": "No free slot for a Fatigue: drop an item."
+    },
+    "Panic": {
+      "Title": "Panic",
+      "When": "Surrounded by enemies, enveloped by darkness or facing their greatest fears, a character saves WIL or becomes <em>panicked</em>. Having no light source can do it too.",
+      "Effect": "A panicked character has 0 HP, does not act in the first round of combat, and all their attacks are <em>impaired</em>. A WIL save as their action overcomes it."
+    },
+    "Combat": {
+      "Title": "Combat",
+      "Round": "A round is about ten seconds. PCs act first, then their opponents; each side's actions happen simultaneously.",
+      "First": "In the first round, each PC must pass a DEX save to act, or loses their turn.",
+      "Turn": "On their turn a character moves up to 40ft and takes one action. Actions are declared before dice are rolled; something risky calls for a save.",
+      "Hit": "Attacks always hit: roll the weapon die, subtract the target's Armor, and deal the rest to HP.",
+      "Many": "Several attackers on one foe roll every die and keep the single highest. Two weapons at once: roll both, keep the highest.",
+      "Modifiers": "<em>Impaired</em> attacks (weakness, cover, bound hands, very distant targets) and unarmed attacks roll d4. <em>Enhanced</em> attacks (advantage, a helpless foe) roll d12.",
+      "Blast": "<em>Blast</em> attacks hit every target in the area, rolled separately for each.",
+      "Critical": "Damage past 0 HP comes off STR, then a STR save at the new score to avoid <strong>Critical Damage</strong>. A PC who fails can only crawl, and dies within the hour unless stabilized.",
+      "Retreat": "Retreat always takes a DEX save and a safe place to run to."
+    },
+    "Armor": {
+      "Title": "Armor",
+      "Subtract": "Subtract Armor from every damage roll before it reaches HP.",
+      "Cap": "Shields and similar give their bonus (+1 Armor) only while held or worn. Nothing can have more than 3 Armor."
+    },
+    "Magic": {
+      "Title": "Magic",
+      "Spellbook": "A <strong>Spellbook</strong> holds one spell and takes one slot.",
+      "Cast": "Anyone can cast by holding a Spellbook in both hands and reading it aloud, then adding a Fatigue.",
+      "Enhance": "Given time and safety, a spell can be enhanced — more targets, more power — at no extra cost.",
+      "Danger": "Deprived or in danger, the caster may have to save WIL. Failure costs on par with the intended effect: Fatigue, the book, injury, even death.",
+      "Scrolls": "<strong>Scrolls</strong> are petty, cause no Fatigue, and vanish after one use.",
+      "Relics": "<strong>Relics</strong> cause no Fatigue, have limited uses, and a <em>recharge</em> condition."
+    },
+    "Dungeon": {
+      "Title": "Dungeon Exploration",
+      "Turn": "On their turn a character moves about 40ft and takes one action, or spends the action to move up to three times as far — which risks a Dungeon Events roll.",
+      "Actions": "Actions are any non-passive activity: searching, forcing doors, listening, disarming traps, fighting, casting, resting. Loud ones may draw an encounter, and some take several turns.",
+      "Search": "An exhaustive search of one object or location takes a turn and reveals hidden treasure, traps or secret doors.",
+      "Rest": "Resting a turn restores all HP, but needs light and a safe location, and does not remove Fatigue."
+    },
+    "Reactions": {
+      "Title": "Reactions",
+      "Lead": "When an NPC's reaction is not obvious, roll 2d6:"
+    },
+    "Morale": {
+      "Title": "Morale",
+      "Save": "Enemies save WIL to avoid fleeing at their first casualty and again at half their number. Groups may use their leader's WIL; lone foes save at 0 HP.",
+      "Pcs": "Morale does not affect PCs."
+    },
+    "Fate": {
+      "Title": "Die of Fate",
+      "Roll": "Roll 1d6 when an outcome is uncertain: 4 or more generally favours the PCs, 3 or under usually means bad luck."
     }
   },
   "CAIRN.Save": "{key} save",

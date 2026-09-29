@@ -1,0 +1,136 @@
+{{!-- The rules a player reaches for at the table, from `srd-2e/` and nothing else: the
+      Warden's procedures, tables and NPCs stay out. Three columns in reading order, the way the
+      published summary lays them out; the grid folds to fewer as the window narrows. The strings
+      carry their own <strong>/<em>, so they are drawn with triple braces — they are this
+      system's own en.json, never anyone's input. --}}
+<div class="cairn-rules-body">
+    <div class="cairn-rules-col">
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-attributes" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Attributes.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Attributes.Str"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Attributes.Dex"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Attributes.Wil"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Attributes.Outside"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Attributes.Zero"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-saves" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Saves.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Saves.Roll"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Saves.When"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Saves.Contest"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Saves.Together"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-hp" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Hp.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Hp.What"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Hp.Scars"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-healing" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Healing.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Healing.Hp"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Healing.Bandages"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Healing.Attributes"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-inventory" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Inventory.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Inventory.Slots"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Inventory.Size"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Inventory.Full"}}}</li>
+            </ul>
+        </section>
+    </div>
+    <div class="cairn-rules-col">
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-fatigue" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Fatigue.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Fatigue.Deprived"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Fatigue.Days"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Fatigue.Fatigue"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Fatigue.NoRoom"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-panic" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Panic.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Panic.When"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Panic.Effect"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-combat" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Combat.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Combat.Round"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.First"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Turn"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Hit"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Many"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Modifiers"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Blast"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Critical"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Combat.Retreat"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-armor" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Armor.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Armor.Subtract"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Armor.Cap"}}}</li>
+            </ul>
+        </section>
+    </div>
+    <div class="cairn-rules-col">
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-magic" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Magic.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Magic.Spellbook"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Magic.Cast"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Magic.Enhance"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Magic.Danger"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Magic.Scrolls"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Magic.Relics"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-dungeon" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Dungeon.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Dungeon.Turn"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Dungeon.Actions"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Dungeon.Search"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Dungeon.Rest"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-reactions" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Reactions.Title"}}</h3>
+            <p class="cairn-rules-lead">{{localize "CAIRN.RulesRef.Reactions.Lead"}}</p>
+            <ol class="cairn-rules-reactions" data-ink="box" data-ink-seed="rules-reactions-table" data-ink-w="1.6">
+                <li><span class="cairn-rules-roll">2</span><span>{{localize "CAIRN.Reactions.Hostile"}}</span></li>
+                <li><span class="cairn-rules-roll">3–5</span><span>{{localize "CAIRN.Reactions.Wary"}}</span></li>
+                <li><span class="cairn-rules-roll">6–8</span><span>{{localize "CAIRN.Reactions.Curious"}}</span></li>
+                <li><span class="cairn-rules-roll">9–11</span><span>{{localize "CAIRN.Reactions.Kind"}}</span></li>
+                <li><span class="cairn-rules-roll">12</span><span>{{localize "CAIRN.Reactions.Helpful"}}</span></li>
+            </ol>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-morale" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Morale.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Morale.Save"}}}</li>
+                <li>{{{localize "CAIRN.RulesRef.Morale.Pcs"}}}</li>
+            </ul>
+        </section>
+        <section class="cairn-rules-section">
+            <h3 class="cairn-rules-head" data-ink="hline" data-ink-seed="rules-fate" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.RulesRef.Fate.Title"}}</h3>
+            <ul class="cairn-rules-list">
+                <li>{{{localize "CAIRN.RulesRef.Fate.Roll"}}}</li>
+            </ul>
+        </section>
+    </div>
+</div>

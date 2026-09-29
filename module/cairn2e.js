@@ -21,6 +21,7 @@ import { renderEncounterButton } from "./encounters.js";
 import * as journey from "./journey.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnStore } from "./apps/store.js";
+import { CairnRulesSummary } from "./apps/rules-summary.js";
 import * as kettlewrightImport from "./kettlewright-import.js";
 import { CairnCharacterCreator } from "./apps/character-creator.js";
 import { CairnGamePause } from "./apps/game-pause.js";
@@ -111,6 +112,8 @@ Hooks.once("init", async function () {
     // Warden-only: every player's hotbar gets the supplied player macros back in their slots
     // (module/world-macros.js). The "Reset Player Hotbars" macro calls it.
     resetPlayerHotbars,
+    // The rules summary window, for anyone — the supplied "Rules Summary" macro calls it.
+    rulesSummary: () => CairnRulesSummary.open(),
   };
   // The same object as a bare global, so a macro is one line: `cairn2e.rest()`.
   globalThis[SYSTEM_ID] = game.cairn2e;
@@ -360,6 +363,7 @@ Hooks.once("ready", () => {
   game.socket.on(`system.${SYSTEM_ID}`, (data) => {
     if (data?.type === "openJourney") CairnJourneyTracker.open();
     if (data?.type === "openStore") CairnStore.open(data.storeId);
+    if (data?.type === "openRules") CairnRulesSummary.open();
   });
 
   // The journey window reads each character's Rations, Fatigue and Deprived off the Actor, so it

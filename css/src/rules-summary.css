@@ -1,0 +1,107 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The rules summary (module/apps/rules-summary.js) — the player's rules  *
+     * on one landscape page, and the Warden's button that shows it to all.   *
+     *                                                                       *
+     * A printed reference card, so it is set as one: three columns of       *
+     * ruled headings over Lora bullets, the heading being the same capitals *
+     * over a drawn rule `.cairn-edit-group` wears. The one table, Reactions, *
+     * is five cells inside the drawn box a field wears. The foot is          *
+     * Primitive 2, full width, as the journey's Warden foot is. Nothing      *
+     * carries a hue: a term is picked out with weight, a quality with italic.*
+     **************************************************************************/
+
+    &.cairn-rules {
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* The page is the one part that gives. Three columns while the window is wide enough for
+           three readable lines, fewer as it narrows; `min-height: 0` because a flex item's
+           automatic minimum is its content, which is the whole page. Both axes are named: beside
+           a scrolling axis a `visible` one is promoted to `auto`, and a sub-pixel overhang then
+           draws a sideways bar. */
+        .cairn-rules-body {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            align-items: start;
+            column-gap: 28px;
+            padding: 0 4px;
+        }
+
+        .cairn-rules-section {
+            margin-bottom: 8px;
+        }
+
+        .cairn-rules-head {
+            margin: 0 0 5px;
+            padding-bottom: 5px;
+            font-family: var(--cairn-serif);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        .cairn-rules-list {
+            margin: 0;
+            padding-left: 14px;
+
+            li {
+                margin: 0 0 2px;
+                font-family: var(--cairn-serif);
+                font-size: 12px;
+                line-height: 1.3;
+            }
+        }
+
+        .cairn-rules-lead {
+            margin: 0 0 6px;
+            font-family: var(--cairn-serif);
+            font-size: 12px;
+        }
+
+        .cairn-rules-reactions {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            margin: 0;
+            padding: 6px 4px;
+            list-style: none;
+            text-align: center;
+
+            li {
+                display: flex;
+                flex-direction: column;
+                font-family: var(--cairn-serif);
+                font-size: 11.5px;
+            }
+        }
+
+        .cairn-rules-roll {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cairn-rules-foot {
+            flex: 0 0 auto;
+            display: flex;
+
+            button {
+                flex: 1 1 0;
+            }
+        }
+    }
+}

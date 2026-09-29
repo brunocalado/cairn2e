@@ -1,0 +1,15 @@
+{
+  "_id": "QV2vvMfPeGT0TswP",
+  "name": "Rules Summary",
+  "type": "script",
+  "img": "icons/sundries/books/book-open-brown-black.webp",
+  "scope": "global",
+  "command": "cairn2e.rulesSummary();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!QV2vvMfPeGT0TswP"
+}

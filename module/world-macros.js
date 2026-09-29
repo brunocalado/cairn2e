@@ -8,8 +8,9 @@
 import { SYSTEM_ID, SETTINGS, FLAGS, MACROS } from "./constants.js";
 
 /**
- * A new player's first hotbar page: the three saves up front, the Die of Fate beside them, and the
- * two rest macros at the far end, where they are not pressed by accident. Slot 10 is the one the
+ * A new player's first hotbar page: the three saves up front, the Die of Fate and the rules
+ * summary beside them, and the two rest macros at the far end, where they are not pressed by
+ * accident. Slot 10 is the one the
  * hotbar labels "0". These are also the macros a player may see and run; the rest of the pack
  * (Morale, Reactions) is the Warden's.
  */
@@ -18,6 +19,7 @@ const PLAYER_HOTBAR = {
   2: MACROS.DEX,
   3: MACROS.WIL,
   4: MACROS.DIE_OF_FATE,
+  5: MACROS.RULES_SUMMARY,
   9: MACROS.REST,
   10: MACROS.RESTORE_ABILITIES
 };

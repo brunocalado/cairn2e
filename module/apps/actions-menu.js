@@ -9,6 +9,7 @@ import { SYSTEM_ID, SETTINGS } from "../constants.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { CairnWhisper } from "./whisper.js";
 import { CairnBarter } from "./barter.js";
+import { CairnRulesSummary } from "./rules-summary.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -38,7 +39,7 @@ export async function actionMacros() {
 
 /**
  * Actions — the character's table tools, opened from the button left of the sheet's ellipsis:
- * Barter and Whisper.
+ * Barter, the rules summary and Whisper.
  *
  * Table tooling, not a 2e rule: nothing in the SRD asks for it. It lists the system's own tools
  * first and then whatever macros the Warden curated (`SETTINGS.ACTION_MACROS`), each run with this
@@ -55,6 +56,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
     window: { icon: "fa-solid fa-bolt", resizable: false },
     actions: {
       openBarter: CairnActionsMenu.#onOpenBarter,
+      openRules: CairnActionsMenu.#onOpenRules,
       openWhisper: CairnActionsMenu.#onOpenWhisper,
       runMacro: CairnActionsMenu.#onRunMacro
     }
@@ -113,6 +115,11 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   static async #onOpenBarter() {
     this.#barter ??= new CairnBarter({ actor: this.actor });
     await this.#barter.render({ force: true });
+  }
+
+  /** The rules summary is one window per client, not one per menu, so it is not held here. */
+  static async #onOpenRules() {
+    await CairnRulesSummary.open();
   }
 
   static async #onOpenWhisper() {

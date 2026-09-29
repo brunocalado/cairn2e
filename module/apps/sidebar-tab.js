@@ -12,6 +12,7 @@ import { generateMonster } from "../monster-generator.js";
 import { generateFaction } from "../faction-generator.js";
 import { CairnJourneyTracker } from "./journey-tracker.js";
 import { CairnStore } from "./store.js";
+import { CairnRulesSummary } from "./rules-summary.js";
 import { importKettlewrightCharacter } from "../kettlewright-import.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -41,7 +42,8 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
       generateMonster: CairnSidebarTab.#onGenerateMonster,
       generateFaction: CairnSidebarTab.#onGenerateFaction,
       openJourney: CairnSidebarTab.#onOpenJourney,
-      openStore: CairnSidebarTab.#onOpenStore
+      openStore: CairnSidebarTab.#onOpenStore,
+      openRules: CairnSidebarTab.#onOpenRules
     }
   };
 
@@ -119,5 +121,10 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
   /** @this {CairnSidebarTab} */
   static #onOpenStore() {
     CairnStore.open();
+  }
+
+  /** @this {CairnSidebarTab} */
+  static #onOpenRules() {
+    CairnRulesSummary.open();
   }
 }

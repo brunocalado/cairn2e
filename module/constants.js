@@ -377,6 +377,7 @@ export const MACROS = {
   DEX: packUuid("macros", "Macro", "K1N14Q8WrUBJEqwN"),
   WIL: packUuid("macros", "Macro", "RRGbIskYd1RlZNNb"),
   DIE_OF_FATE: packUuid("macros", "Macro", "CvQ9vA7upRgv5VDk"),
+  RULES_SUMMARY: packUuid("macros", "Macro", "QV2vvMfPeGT0TswP"),
   REST: packUuid("macros", "Macro", "ucFx97BSC93VpXbj"),
   RESTORE_ABILITIES: packUuid("macros", "Macro", "8UaYzxdyp4z2sC64")
 };
