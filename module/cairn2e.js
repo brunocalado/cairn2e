@@ -45,7 +45,7 @@ import { registerDiceSoNice } from "./dice-so-nice.js";
 import { registerLightSources } from "./light-sources.js";
 import { installWelcomeWorld } from "./welcome.js";
 import { installTokenDefaults } from "./token-defaults.js";
-import { installWorldMacros, seedPlayerHotbar } from "./world-macros.js";
+import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
 import * as models from "./data/_module.js";
@@ -108,6 +108,9 @@ Hooks.once("init", async function () {
     // The supplied macros' one-liners — `rest`, `restoreAbilities`, `save(key)`, `morale`,
     // `reaction`, `dieOfFate` — each acting on the selected token or the user's character.
     ...macroApi,
+    // Warden-only: every player's hotbar gets the supplied player macros back in their slots
+    // (module/world-macros.js). The "Reset Player Hotbars" macro calls it.
+    resetPlayerHotbars,
   };
   // The same object as a bare global, so a macro is one line: `cairn2e.rest()`.
   globalThis[SYSTEM_ID] = game.cairn2e;

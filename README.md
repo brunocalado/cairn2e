@@ -85,7 +85,7 @@ All the game content you need is already inside:
 | **Magic** | 100 spellbooks, 100 scrolls and 46 relics |
 | **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings |
 | **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, and the Warden's generator tables |
-| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, and STR / DEX / WIL saves |
+| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, and the Warden's Reset Player Hotbars |
 | **Homebrew** | *More Gear*, *More Spellbooks* and *More Scrolls*: extra content by the maintainer, kept in its own folder |
 
 ### It looks like the books

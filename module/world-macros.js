@@ -60,6 +60,21 @@ export async function installWorldMacros() {
 }
 
 /**
+ * The world copies of the player macros, as `{ slot: macroId }`. A copy is found by
+ * `_stats.compendiumSource`, so a renamed or translated one still counts; a slot whose macro the
+ * Warden deleted is left out.
+ * @returns {Record<string, string>}
+ */
+function playerHotbar() {
+  const hotbar = {};
+  for (const [slot, uuid] of Object.entries(PLAYER_HOTBAR)) {
+    const macro = game.macros.find(m => m._stats.compendiumSource === uuid);
+    if (macro) hotbar[slot] = macro.id;
+  }
+  return hotbar;
+}
+
+/**
  * Put the player macros on this player's hotbar, the first time they log in.
  *
  * The player's own client writes it, not a GM listening for `createUser`: a user made in User
@@ -72,12 +87,31 @@ export async function installWorldMacros() {
 export async function seedPlayerHotbar() {
   const user = game.user;
   if (user.isGM || user.getFlag(SYSTEM_ID, FLAGS.HOTBAR_SEEDED)) return;
-  const hotbar = {};
-  for (const [slot, uuid] of Object.entries(PLAYER_HOTBAR)) {
-    if (user.hotbar[slot]) continue;
-    const macro = game.macros.find(m => m._stats.compendiumSource === uuid);
-    if (macro) hotbar[slot] = macro.id;
-  }
+  const hotbar = Object.fromEntries(
+    Object.entries(playerHotbar()).filter(([slot]) => !user.hotbar[slot])
+  );
   if (foundry.utils.isEmpty(hotbar)) return;
   await user.update({ hotbar, [`flags.${SYSTEM_ID}.${FLAGS.HOTBAR_SEEDED}`]: true });
+}
+
+/**
+ * The Warden's reset: every non-GM user gets the player macros back in their slots, over whatever
+ * was there. The other slots are the player's own and are left alone. Also marks each user as
+ * seeded, so a player who has not logged in yet is not seeded again on top of it.
+ */
+export async function resetPlayerHotbars() {
+  if (!game.user.isGM) {
+    return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.HotbarsWardenOnly"));
+  }
+  const hotbar = playerHotbar();
+  if (foundry.utils.isEmpty(hotbar)) {
+    return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.HotbarsNoMacros"));
+  }
+  const updates = game.users.filter(u => !u.isGM).map(u => ({
+    _id: u.id,
+    hotbar,
+    [`flags.${SYSTEM_ID}.${FLAGS.HOTBAR_SEEDED}`]: true
+  }));
+  await User.updateDocuments(updates);
+  ui.notifications.info(game.i18n.localize("CAIRN.Notify.HotbarsReset", { count: updates.length }));
 }

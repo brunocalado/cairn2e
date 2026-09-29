@@ -1,0 +1,15 @@
+{
+  "_id": "yJ5rffNR1jpPVxCk",
+  "name": "Reset Player Hotbars",
+  "type": "script",
+  "img": "icons/sundries/gaming/gaming-set-cards.webp",
+  "scope": "global",
+  "command": "cairn2e.resetPlayerHotbars();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!yJ5rffNR1jpPVxCk"
+}
