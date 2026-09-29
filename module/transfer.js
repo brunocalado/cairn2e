@@ -135,8 +135,7 @@ export async function deliverBarter(target, payload) {
 }
 
 /**
- * The sending half of a barter, on the sender's client: the Barter window's Send, and a gear
- * dropped on another character's token (`canvas/hand-over.js`).
+ * The sending half of a barter, on the sender's client: the Barter window's Send.
  *
  * The receiver writes what lands (`deliverBarter`); the sender then loses exactly that and no
  * more, and is told what stayed. A card in chat says what went from whom to whom.
