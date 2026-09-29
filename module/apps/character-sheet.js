@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, FLAGS } from "../constants.js";
 import { regenerateActor, traitRows, toPlainText, toPlainLines } from "../character-generator.js";
-import { rollDieOfFate, rollDamage } from "../rolls.js";
+import { rollDieOfFate } from "../rolls.js";
 import { promptGrowthGain } from "../growth.js";
 import { enrich, copyOf, abilityRows, hpZero } from "../helpers.js";
 import { outcomeText } from "../scars.js";
@@ -41,11 +41,11 @@ export class CairnCharacterSheet extends CairnActorSheet {
       rest: CairnCharacterSheet.#onRest,
       restoreAbilities: CairnCharacterSheet.#onRestoreAbilities,
       dieOfFate: CairnCharacterSheet.#onDieOfFate,
-      rollUnarmed: CairnCharacterSheet.#onRollUnarmed,
       fatigueToggle: CairnCharacterSheet.#onFatigueToggle,
       conditionToggle: CairnCharacterSheet.#onConditionToggle,
       openBackground: CairnCharacterSheet.#onOpenBackground,
       pettyCreate: CairnCharacterSheet.#onPettyCreate,
+      naturalCreate: CairnCharacterSheet.#onNaturalCreate,
       belongingCreate: CairnCharacterSheet.#onBelongingCreate,
       regenerate: CairnCharacterSheet.#onRegenerate,
       openCreator: CairnCharacterSheet.#onOpenCreator,
@@ -80,6 +80,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
     header: { template: `${TEMPLATES}/parts/character-header.hbs` },
     nav: { template: `${TEMPLATES}/parts/actor-tabs.hbs` },
     items: { template: `${TEMPLATES}/actor/character-items.hbs`, scrollable: [""] },
+    natural: { template: `${TEMPLATES}/actor/character-natural.hbs`, scrollable: [""] },
     petty: { template: `${TEMPLATES}/actor/character-petty.hbs`, scrollable: [""] },
     belongings: { template: `${TEMPLATES}/actor/character-belongings.hbs`, scrollable: [""] },
     identity: { template: `${TEMPLATES}/actor/character-identity.hbs`, scrollable: [""] },
@@ -108,6 +109,10 @@ export class CairnCharacterSheet extends CairnActorSheet {
         // holds. Every tab here is one page tall (`--cairn-tab-max-h`), so splitting costs no
         // height: a zone added under the ten would have scrolled the ledger instead.
         { id: "items", label: "CAIRN.Inventory" },
+        // What the character attacks with that is not carried at all — fists, claws, a metal arm
+        // on its shoulder (`system.natural`). Beside the Inventory, because it is read in the same
+        // breath as the weapons in hand.
+        { id: "natural", label: "CAIRN.Natural" },
         { id: "petty", label: "CAIRN.Petty" },
         { id: "belongings", label: "CAIRN.Belongings" },
         { id: "identity", label: "CAIRN.Identity" },
@@ -216,17 +221,6 @@ export class CairnCharacterSheet extends CairnActorSheet {
     return context;
   }
 
-  /**
-   * @override — the page is as tall as the ledger (`css/src/window.css`), and the ledger is the
-   * ten slots plus the body lines over them: Unarmed and every natural attack. How many there are
-   * is data, so it is handed to the stylesheet as a number and the arithmetic stays in CSS. Every
-   * tab reads it, so it sits on the window rather than on the Inventory part.
-   */
-  async _onRender(context, options) {
-    await super._onRender(context, options);
-    this.element.style.setProperty("--cairn-body-rows", String(1 + context.inventory.body.length));
-  }
-
   /** @override — the creator for anyone who owns the character, then "Regenerate" for the
    *  Warden. */
   _getHeaderControls() {
@@ -276,12 +270,6 @@ export class CairnCharacterSheet extends CairnActorSheet {
     await rollDieOfFate(this.actor);
   }
 
-  /** The ledger's first body line: fists, which every character has and no item stands for —
-   *  "Unarmed attacks always do d4 damage" (`core-rules.md`). Shift skips the options, as on a
-   *  weapon's own line. */
-  static async #onRollUnarmed(event) {
-    await rollDamage(this.actor, null, { skipDialog: event.shiftKey });
-  }
 
   /**
    * @override — a dropped Background replaces the one the character has.
@@ -335,6 +323,11 @@ export class CairnCharacterSheet extends CairnActorSheet {
   /** The Petty Items heading's add control: the item prompt, everything it makes *petty*. */
   static async #onPettyCreate() {
     await createItemFromPrompt(this.actor, { petty: true });
+  }
+
+  /** The Natural heading's add control: the item prompt, everything it makes part of the body. */
+  static async #onNaturalCreate() {
+    await createItemFromPrompt(this.actor, { natural: true });
   }
 
   /** The Scars tab's add control: the Scars window with no hit behind it, for a Warden handing

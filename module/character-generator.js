@@ -33,7 +33,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { SYSTEM_ID, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
+import { SYSTEM_ID, FLAGS, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
 import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf } from "./helpers.js";
 import { CairnRoll } from "./rolls.js";
 import { gainUpdate } from "./gains.js";
@@ -563,14 +563,18 @@ export async function createCharacterFromDraft(draft) {
  * Containers and what they hold survive: a new character written into the same Actor keeps the
  * sack and the mule the old one was carrying, exactly as they did when a container was a
  * separate document. Contents are kept by keeping the containers — a contained item whose
- * container went would be stranded in the collection pointing at nothing.
+ * container went would be stranded in the collection pointing at nothing. So do the character's
+ * fists (`FLAGS.UNARMED`): a new character in the same body has the same hands, and whatever the
+ * player made of them is theirs.
  * @param {CairnActor} actor
  * @param {object} draft
  * @returns {Promise<CairnActor>}
  */
 export async function applyDraftToActor(actor, draft) {
   const data = await assembleActorData(draft);
-  const kept = new Set(actor.items.filter((i) => i.system.isContainer).map((i) => i.id));
+  const kept = new Set(actor.items
+    .filter((i) => i.system.isContainer || i.getFlag(SYSTEM_ID, FLAGS.UNARMED))
+    .map((i) => i.id));
   const doomed = actor.items
     .filter((i) => !kept.has(i.id) && !kept.has(i.system.container))
     .map((i) => i.id);

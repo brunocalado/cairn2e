@@ -169,8 +169,7 @@
     }
 
     /* Every tab on the character sheet is exactly one page tall, and the page is the inventory
-       ledger (`--cairn-page-h` below: the ten slots of `--cairn-tab-max-h`, measured from the
-       slot metrics at the top of this file, and the body lines over them).
+       ledger (`--cairn-tab-max-h`, measured from the slot metrics at the top of this file).
 
        Both bounds, not just the maximum. A maximum alone caps Petty and Belongings, the two
        that grow without limit — but it does nothing for the same tab holding two
@@ -189,18 +188,8 @@
        what each sheet takes and why. */
     &.character .tab.active {
         flex: 0 0 auto;
-        height: var(--cairn-page-h);
-        max-height: var(--cairn-page-h);
-    }
-
-    /* The ledger over which the page is measured is the ten plus the body lines above them:
-       Unarmed and every natural attack, counted by the sheet into `--cairn-body-rows`
-       (`character-sheet.js#_onRender`). Each is a line and its gap, less the gap the last one
-       does not have, plus the 10px box the double rule's second stroke is drawn through. The NPC
-       sheet has no body lines and keeps the bare ten below. */
-    &.character {
-        --cairn-page-h: calc(var(--cairn-tab-max-h)
-            + var(--cairn-body-rows, 1) * (var(--cairn-slot-h) + var(--cairn-slot-gap)) + 6px);
+        height: var(--cairn-tab-max-h);
+        max-height: var(--cairn-tab-max-h);
     }
 
     /* The NPC sheet takes the same ceiling and only the ceiling: it is a fixed-width,

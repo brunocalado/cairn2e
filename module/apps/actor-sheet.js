@@ -260,11 +260,11 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * a container someone dropped on a hireling is one more row, not a hidden one. An NPC is bound
    * by no slot rule, so nothing it owns is ever set aside out of that list.
    *
-   * `body` is what the character IS rather than carries — claws, a bite, a metal arm on its
+   * `natural` is what the character IS rather than carries — fists, claws, a metal arm on its
    * shoulder (`system.natural`). It weighs nothing and so would otherwise fall into *petty*, a
-   * thing in a pocket; the ledger draws it on its own unnumbered lines above slot 1.
+   * thing in a pocket; it has a tab of its own.
    *
-   * @returns {Promise<{rows: object[], body: object[], petty: object[], carried: object[], belongings: object[]}>}
+   * @returns {Promise<{rows: object[], natural: object[], petty: object[], carried: object[], belongings: object[]}>}
    */
   async prepareItems() {
     const items = this.actor.items.contents.slice().sort((a, b) => {
@@ -276,7 +276,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     });
 
     const units = [];
-    const body = [];
+    const natural = [];
     const petty = [];
     // A sheet with no ten-slot ledger draws this instead: every carried item in one list, zero-slot
     // ones included. An NPC is bound by no slot rule — `CairnItem._preCreateOperation` refuses
@@ -303,7 +303,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
         continue;
       }
       if (item.system.natural) {
-        body.push(view);
+        natural.push(view);
         continue;
       }
       const count = slotsForItem(item);
@@ -314,7 +314,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       units.push({ payload: { item: view }, slots: count });
     }
 
-    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), body, petty, carried, belongings };
+    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), natural, petty, carried, belongings };
   }
 
   /** The per-item display model one slot row renders. */

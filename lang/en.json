@@ -626,6 +626,7 @@
   "CAIRN.NoFeatures": "No features.",
   "CAIRN.NoItemToDelete": "Cannot find Item to delete.",
   "CAIRN.NoItems": "Nothing carried.",
+  "CAIRN.NoNatural": "No natural attacks.",
   "CAIRN.NoPettyItems": "No petty items.",
   "CAIRN.None": "None",
   "CAIRN.Notify": {

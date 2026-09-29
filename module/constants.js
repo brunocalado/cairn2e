@@ -139,7 +139,16 @@ export const FLAGS = {
    * On the same message, once the hit has been given back. It is what stops the context-menu
    * entry offering itself a second time — a second reversal would hand the actor the HP twice.
    */
-  REVERSED: "reversed"
+  REVERSED: "reversed",
+
+  /**
+   * On a character's `gear`: this is their fists — "Unarmed attacks always do d4 damage"
+   * (`core-rules.md`). Every character is born with one (`documents/actor.js#_preCreate`) and a
+   * regenerate keeps it (`character-generator.js#applyDraftToActor`); it is an ordinary natural
+   * gear the player may rename, re-die or delete. Found by this mark, never by its name, which is
+   * whatever the language made it.
+   */
+  UNARMED: "unarmed"
 };
 
 /**

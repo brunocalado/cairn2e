@@ -1,0 +1,21 @@
+{{!-- What the character attacks with that is not carried: fists, claws, a bite, a metal arm on
+      its shoulder (`system.natural`). None of it takes a slot and none of it is ever put down, so
+      it is on none of the other three lists — not the ten, not a pocket, not a Belonging. Every
+      character is born with Unarmed here (`documents/actor.js#_preCreate`), an ordinary gear the
+      player may rename or re-die.
+
+      The same zone as Petty's, heading and add control included: the add control makes the new
+      thing natural (`_item-prompt.js`). --}}
+<section class="tab {{tabs.natural.cssClass}}" data-group="primary" data-tab="natural">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Natural'}}</h4>
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="naturalCreate">
+            <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Add'}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-natural" data-ink-w="1" data-ink-a="0.34"></div>
+    {{> "systems/cairn2e/templates/parts/plain-list.hbs" rows=inventory.natural seed="natural"
+        empty=(localize 'CAIRN.NoNatural') inNatural=true}}
+</section>

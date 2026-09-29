@@ -631,15 +631,18 @@
        `flex: 1` and spreads them across the strip, which put ORIGIN a hand's width from the
        tab before it and made the strip read as three headings rather than one control. */
     /* The 9px on the left is the first tab's brush mark. The slab is painted 16px past the label
-       on each side, the tab pads the label by 10, and the bristles overshoot the box again — so
+       on each side, the tab pads the label by 8, and the bristles overshoot the box again — so
        the ink of ITEMS reached 8px to the left of the tab rule underneath, measured off the
        canvas, and the strip read as spilling past the page. The rule stays where it was; the
        ink now lands on its left edge and never past it (the ninth pixel is one stray bristle). */
+    /* Six tabs and Gold share the 574px strip, so the air between labels is 26px (8 + 10 + 8):
+       at 14px of gap and 10 of padding the strip was 32px too long and pushed Gold past the
+       frame. 26 still clears the active tab's brush mark, which reaches 16px past its word. */
     .cairn-tab-strip {
         align-items: center;
         border: none;
         display: flex;
-        gap: 14px;
+        gap: 10px;
         padding-left: 9px;
     }
 
@@ -657,7 +660,7 @@
         justify-content: center;
         letter-spacing: var(--cairn-label-track);
         line-height: 1;
-        padding: 0 10px;
+        padding: 0 8px;
         position: relative;
         text-transform: uppercase;
 
@@ -791,24 +794,6 @@
         padding: 0 15px 0 4px;
     }
 
-    /* The body lines carry no Fatigue circle, so their right inset is the circle's too — the
-       row's 8px gap, the circle's 8px margin and the 12px circle — which puts their controls on
-       the same column as the ten's. */
-    .cairn-slot-block .cairn-body-list {
-        padding-right: 43px;
-    }
-
-    /* The box the double rule's second stroke is drawn through: 5px under the last body line's
-       own rule. At 3px the two drawn strokes' wobble met and they read as one thick line. */
-    .cairn-body-rule {
-        height: 10px;
-    }
-
-    /* What the Fatigue upright and its word are placed against: the ten, not the whole frame. */
-    .cairn-ledger {
-        position: relative;
-    }
-
     /* The upright between the ledger and the Fatigue circles. The circles sit at the end of each
        row rather than in a column of their own, so there is no element to hang this off: it is
        placed from the right edge over the label column (15px) + the dot (12) + the dot's own
@@ -817,10 +802,10 @@
        6px further right "to clear the circles", which spent the whole gutter on the circle side
        and left the trash glyph touching the line. */
     .cairn-fatigue-rule {
-        bottom: 0;
+        bottom: 3px;
         position: absolute;
         right: 35px;
-        top: 0;
+        top: 3px;
         width: 1px;
     }
 
@@ -829,7 +814,7 @@
        width under it. `pointer-events: none` so it never sits between the pointer and a row. */
     .cairn-fatigue-label {
         align-items: center;
-        bottom: 0;
+        bottom: 3px;
         color: var(--cairn-ink-soft);
         display: flex;
         font-size: 9px;
@@ -841,7 +826,7 @@
         right: 0;
         text-orientation: mixed;
         text-transform: uppercase;
-        top: 0;
+        top: 3px;
         width: 15px;
         writing-mode: vertical-rl;
     }

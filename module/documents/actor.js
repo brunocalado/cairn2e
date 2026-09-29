@@ -5,9 +5,23 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SETTINGS, CONDITION, DEFAULT_ARTWORK } from "../constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS, CONDITION, DEFAULT_ARTWORK } from "../constants.js";
 import { attrResource, revertUpdate } from "../gains.js";
 import { scarHpLost, outcomeLabel } from "../scars.js";
+
+/**
+ * The creation data of a character's fists (`FLAGS.UNARMED`). Named in the table's language when
+ * it is made; the mark, not the name, is what finds it again.
+ * @returns {object}
+ */
+export function unarmedItemData() {
+  return {
+    name: game.i18n.localize("CAIRN.Unarmed"),
+    type: "gear",
+    system: { damage: "d4", natural: true, slots: 0 },
+    flags: { [SYSTEM_ID]: { [FLAGS.UNARMED]: true } }
+  };
+}
 
 /**
  * The Cairn 2e Actor.
@@ -106,6 +120,23 @@ export class CairnActor extends Actor {
       );
     }
     return super.create(data, options);
+  }
+
+  /**
+   * @override — every character is born with fists: a natural `gear` rolling d4, "Unarmed attacks
+   * always do d4 damage" (`core-rules.md`). A real item rather than a line the sheet draws, so it
+   * can be renamed, given another die or deleted like anything else a character has.
+   *
+   * Here rather than in `create`, because `_preCreate` runs for every path that makes an Actor —
+   * the sidebar, the creator, the generator, an import, a duplicate. One that already carries a
+   * marked item (a duplicate, a compendium copy) is not given a second.
+   */
+  async _preCreate(data, options, user) {
+    if ((await super._preCreate(data, options, user)) === false) return false;
+    if (this.type !== "character") return;
+    const items = this._source.items ?? [];
+    if (items.some((i) => i.flags?.[SYSTEM_ID]?.[FLAGS.UNARMED])) return;
+    this.updateSource({ items: [...items, unarmedItemData()] });
   }
 
   /**
