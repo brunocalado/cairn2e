@@ -340,10 +340,10 @@ Hooks.once("ready", () => {
   // (module/token-defaults.js).
   installTokenDefaults();
 
-  // The system's macros, as a world folder the players can run from, and a hotbar for every
-  // player seat the Warden adds afterwards (module/world-macros.js). Not awaited, like the above.
+  // The system's macros, as a world folder the players can run from, and on a player's first
+  // login their hotbar (module/world-macros.js). Not awaited, like the above.
   installWorldMacros();
-  Hooks.on("createUser", seedPlayerHotbar);
+  seedPlayerHotbar();
 
   // The Warden's bestiary art (module/bestiary-art.js): every client lays the last published scan
   // over the pack at once, so a player does not wait on the Warden; then the active GM rescans the

@@ -130,6 +130,13 @@ export const FLAGS = {
   GATHERED_TOKENS: "gathered-tokens",
 
   /**
+   * On a player's User: `true` once the player macros were put on their hotbar
+   * (`module/world-macros.js`). The record of a one-time seed, so a player who clears a slot is
+   * not handed the macro back on the next login.
+   */
+  HOTBAR_SEEDED: "hotbar-seeded",
+
+  /**
    * On a damage-result ChatMessage: what that hit took, as `{ actorUuid, hp, str }` — **deltas**,
    * not the before-values the card prints. `module/chat.js#reverseHit` adds them back, which
    * composes with anything that touched the actor in between; writing the absolutes back would

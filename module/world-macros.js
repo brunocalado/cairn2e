@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SETTINGS, MACROS } from "./constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS, MACROS } from "./constants.js";
 
 /**
  * A new player's first hotbar page: the three saves up front, the Die of Fate beside them, and the
@@ -60,19 +60,24 @@ export async function installWorldMacros() {
 }
 
 /**
- * Fill a newly created player's hotbar with the world copies of the player macros.
+ * Put the player macros on this player's hotbar, the first time they log in.
  *
- * Every client sees `createUser`; only the active GM writes, and a GM seat keeps an empty bar —
- * the Warden rolls Morale and Reactions, not saves. A macro the Warden deleted leaves its slot
- * empty rather than failing the rest.
- * @param {User} user
+ * The player's own client writes it, not a GM listening for `createUser`: a user made in User
+ * Management (`/players`) is created where no system code runs, and the GM who made it is not
+ * in the world to hear it. A player may update their own User, so this covers every way a seat
+ * is added. Only empty slots are filled, and only once (`FLAGS.HOTBAR_SEEDED`). If the Warden has
+ * not launched the world yet there is nothing to place, so the flag waits for a login that finds
+ * the macros.
  */
-export async function seedPlayerHotbar(user) {
-  if (!game.user.isActiveGM || user.isGM) return;
+export async function seedPlayerHotbar() {
+  const user = game.user;
+  if (user.isGM || user.getFlag(SYSTEM_ID, FLAGS.HOTBAR_SEEDED)) return;
   const hotbar = {};
   for (const [slot, uuid] of Object.entries(PLAYER_HOTBAR)) {
+    if (user.hotbar[slot]) continue;
     const macro = game.macros.find(m => m._stats.compendiumSource === uuid);
     if (macro) hotbar[slot] = macro.id;
   }
-  if (!foundry.utils.isEmpty(hotbar)) await user.update({ hotbar });
+  if (foundry.utils.isEmpty(hotbar)) return;
+  await user.update({ hotbar, [`flags.${SYSTEM_ID}.${FLAGS.HOTBAR_SEEDED}`]: true });
 }
