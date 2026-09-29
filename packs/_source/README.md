@@ -57,7 +57,7 @@ highest" (`core-rules.md` → Attack Modifiers) — for one weapon that is two: 
 Cutpurse's Twin Daggers. The die field holds one die and `paired` the second, and the prose keeps
 `(d8+d8)`; every `(dX+dX)` in a description has `paired` under it and nothing else does. `bodily`
 says the thing is part of whoever has it — claws, a bite, a tail spike, the Barber-Surgeon's metal
-arm while it is on the shoulder — so it costs no slot, is always to hand, and cannot be set aside,
+arm while it is on the shoulder or the sigils toughening their skin — so it costs no slot, is always to hand, and cannot be set aside,
 stowed, handed over or sold. In `bestiary/` the natural attacks are bodily and the made ones
 (swords, bows, spears, the Lich's soul dagger) are not, which is what a looted monster gives up.
 **A document is written out in full** — every field of the
