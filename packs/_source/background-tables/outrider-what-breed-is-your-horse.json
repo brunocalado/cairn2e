@@ -38,6 +38,21 @@
       "_key": "!tables.results!iwnWLLNfRcYLE5z6.vnwWpPSQUqkFo5fT"
     },
     {
+      "_id": "KaMIBzP6XLDAp4UA",
+      "type": "document",
+      "name": "Destrier Hooves",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.7Ojq6LzdXJWTGrr6",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!iwnWLLNfRcYLE5z6.KaMIBzP6XLDAp4UA"
+    },
+    {
       "_id": "VTQsGfnudKUnWBZs",
       "type": "text",
       "name": "",

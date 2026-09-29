@@ -1,0 +1,32 @@
+{
+  "_id": "7Ojq6LzdXJWTGrr6",
+  "name": "Destrier Hooves",
+  "type": "gear",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "system": {
+    "description": "<p>The Heavy Destrier's hooves (d10+d10), while you ride it.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d10",
+    "blast": false,
+    "paired": true,
+    "natural": true,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!7Ojq6LzdXJWTGrr6",
+  "folder": "yKDUGm8Lrh9R3AoW"
+}

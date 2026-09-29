@@ -79,7 +79,8 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     const items = this.actor.items;
     const rows = [];
     const byName = (a, b) => a.name.localeCompare(b.name);
-    for (const item of items.filter((i) => i.type === "gear" && !i.system.container).sort(byName)) {
+    // Part of the body is never offered: claws do not change hands.
+    for (const item of items.filter((i) => i.type === "gear" && !i.system.container && !i.system.natural).sort(byName)) {
       const contents = items.filter((i) => i.system.container === item.id).sort(byName);
       const whole = this.#picked.has(item.id);
       rows.push({

@@ -13,14 +13,15 @@
       "value": 0,
       "max": 0
     },
-    "damage": "",
+    "damage": "d6",
     "blast": false,
     "armor": 1,
     "magic": "relic",
     "recharge": "",
     "capacity": 0,
     "takesSlots": false,
-    "carried": true
+    "carried": true,
+    "paired": true
   },
   "ownership": {
     "default": 0

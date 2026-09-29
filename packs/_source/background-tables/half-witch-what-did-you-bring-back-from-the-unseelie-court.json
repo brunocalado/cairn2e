@@ -98,6 +98,21 @@
       "_key": "!tables.results!wbxYggWeDHmSki2z.u4tRsFp4aHl24fuh"
     },
     {
+      "_id": "TGD73Wp5qroy0eGI",
+      "type": "document",
+      "name": "Nightmare Claws",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.RfpXCY11B68u8JW0",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!wbxYggWeDHmSki2z.TGD73Wp5qroy0eGI"
+    },
+    {
       "_id": "1RTWOAqMa1Eth25U",
       "type": "text",
       "name": "",

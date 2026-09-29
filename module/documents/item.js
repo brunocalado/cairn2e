@@ -309,14 +309,17 @@ export class CairnItem extends Item {
     // behaviours equipping switches on; and a mule would otherwise wear an equip hand.
     const holdable = !!sys.damage || (sys.armor ?? 0) > 0 || sys.magic === "spellbook";
     // ...and set aside is not to hand either: a sword on the dungeon floor is in nobody's grip.
-    sys.isEquipable = this.type === "gear" && holdable && !sys.isContainer && !stowed && sys.carried;
+    // ...and part of the body is always to hand, so there is nothing to toggle.
+    sys.isEquipable = this.type === "gear" && holdable && !sys.isContainer && !stowed && sys.carried
+      && !sys.natural;
     // Whether "is this under your direct possession?" is a question this thing can be asked at
     // all. A Fatigue is not a possession and can never be put down — that is the whole of the
     // deprivation rule. A stowed thing is answered for by its container. And a container that
-    // hauls itself was never in anyone's hands, so it has no second state to toggle into.
+    // hauls itself was never in anyone's hands, so it has no second state to toggle into. Nor
+    // has a claw: part of the body cannot be put down.
     // A sack of coin can be set aside too — the treasure left at camp is the oldest Belonging
     // there is — and, being gear-shaped in no other way, is never in anyone's grip.
-    sys.isStashable = (this.type === "gear" && !stowed && !(sys.isContainer && !sys.takesSlots))
+    sys.isStashable = (this.type === "gear" && !stowed && !(sys.isContainer && !sys.takesSlots) && !sys.natural)
       || (this.type === "coin" && !stowed);
     sys.hasUses = (sys.uses?.max ?? 0) > 0;
   }

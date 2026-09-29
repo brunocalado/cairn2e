@@ -27,7 +27,7 @@
       the embedded Items rather than restated, so a monster edited on its sheet stays right here. --}}
 {{#if weapons.length}}
 <div class="cairn-embed-statline">
-    {{#each weapons}}<span>{{this.name}} {{#if this.system.damage}}({{this.system.damage}}){{/if}}</span>{{/each}}
+    {{#each weapons}}<span>{{this.name}} {{#if this.system.damage}}({{this.system.damageLabel}}){{/if}}</span>{{/each}}
 </div>
 {{/if}}
 

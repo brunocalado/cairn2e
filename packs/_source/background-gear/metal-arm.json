@@ -5,7 +5,7 @@
   "img": "icons/weapons/swords/shortsword-guard-brown.webp",
   "system": {
     "description": "<p>One <strong>arm</strong> is fully metal and comes off at the shoulder. It can be used as a weapon (d8, <em>bulky</em> when not attached) and can move independently if you are within sight of it.</p>",
-    "slots": 0,
+    "slots": 2,
     "equipped": false,
     "cost": 0,
     "container": "",
@@ -20,7 +20,8 @@
     "recharge": "",
     "capacity": 0,
     "takesSlots": false,
-    "carried": true
+    "carried": true,
+    "natural": true
   },
   "ownership": {
     "default": 0

@@ -57,7 +57,8 @@
         "recharge": "",
         "capacity": 0,
         "takesSlots": false,
-        "carried": true
+        "carried": true,
+        "natural": true
       },
       "ownership": {
         "default": 0
@@ -94,7 +95,7 @@
       "_key": "!actors.items!ZGjnojfqo6CFq12v.jkwSGE2CjhqVyCOz"
     },
     {
-      "name": "Will exchange rare minerals for a “fresh corpse” of any kind.",
+      "name": "Will exchange rare minerals for a \u201cfresh corpse\u201d of any kind.",
       "type": "feature",
       "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
       "system": {

@@ -15,10 +15,11 @@ const fields = foundry.data.fields;
  * The one carried thing. A sword, a mule, a relic ring and a spellbook are all `gear`, told
  * apart by their fields along three independent axes:
  *
- * - **Physical** — `damage` (+ `blast`) makes it a weapon, `armor` makes it armour, and `slots` /
- *   `equipped` say what it costs to carry and whether it is in hand
+ * - **Physical** — `damage` (+ `blast`, + `paired`) makes it a weapon, `armor` makes it armour,
+ *   and `slots` / `equipped` say what it costs to carry and whether it is in hand
  *   (`srd-2e/players-guide/marketplace.md`). *petty* and *bulky* are readings of `slots`, not
- *   fields: see `prepareBaseData`.
+ *   fields: see `prepareBaseData`. `natural` says it is part of the one who has it — claws, a
+ *   bite, a metal arm on its shoulder — and so is never carried at all.
  * - **Magical** — `magic` says what using it costs: a Spellbook adds a Fatigue, a Scroll is used
  *   up, a Relic spends a charge and has a `recharge` condition (`core-rules.md` → Magic). Three
  *   answers to one question, so one enum rather than three subtypes — and the Reliquary proves the
@@ -60,6 +61,14 @@ export class GearData extends foundry.abstract.TypeDataModel {
         choices: { d4: "d4", d6: "d6", d8: "d8", d10: "d10", d12: "d12" }
       }),
       blast: new fields.BooleanField({ initial: false }),
+      // The die rolled twice, the higher kept: the SRD's `d8+d8` (`core-rules.md` → Attack
+      // Modifiers, "roll both damage dice and keep the single highest"). One weapon that is two —
+      // a troll's claws, Twin Daggers — where the rule's own case is two weapons at once.
+      paired: new fields.BooleanField({ initial: false }),
+      // Part of the body, not a thing carried: it costs no slot, is always to hand, and can be
+      // neither set aside, stowed, handed over nor sold. It is still a `gear`, so a claw is a die
+      // like a sword's and a hide can be armour — the axes are the same; only where it lives differs.
+      natural: new fields.BooleanField({ initial: false }),
       // Uncapped per item (a single Plate is 3); the actor's total is summed over equipped items
       // and capped at 3 by `_derived.js#sumEquippedArmor`.
       armor: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 3 }),
@@ -94,8 +103,19 @@ export class GearData extends foundry.abstract.TypeDataModel {
     if (this.capacity > 0) {
       this.damage = "";
       this.blast = false;
+      this.paired = false;
       this.armor = 0;
+      // A bag is not a limb: it holds things, and a thing that is part of you holds nothing.
+      this.natural = false;
     }
+    if (!this.damage) this.paired = false;
+    // Part of you is always to hand and always with you — there is no second state to be in.
+    if (this.natural) {
+      this.equipped = true;
+      this.carried = true;
+    }
+    // How the die is written wherever it is printed: the SRD's own `d8+d8` for a paired one.
+    this.damageLabel = this.paired ? `${this.damage}+${this.damage}` : this.damage;
     // A container that hauls itself is never under direct possession. You can lead a mule by the
     // rein, but if you run, whether it comes is the Warden's to say — so it is always set aside,
     // and the toggle is not offered on it (`documents/item.js#isStashable`).

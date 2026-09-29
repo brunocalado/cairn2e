@@ -196,7 +196,7 @@ export async function rollCriticalDamageSave(actor, token) {
 async function promptDamageOptions(defaultBlast, weapons) {
   const content = await foundry.applications.handlebars.renderTemplate(DMG_DIALOG_TPL, {
     blast: defaultBlast,
-    weapons: weapons.map((w) => ({ id: w.id, name: w.name, damage: w.system.damage }))
+    weapons: weapons.map((w) => ({ id: w.id, name: w.name, damage: w.system.damageLabel }))
   });
   return foundry.applications.api.DialogV2.prompt({
     classes: [SYSTEM_ID],
@@ -264,13 +264,14 @@ export async function rollAttributeDamage(formula, attribute, label) {
 /**
  * The dice expression one damage roll evaluates. Two weapons at the same time roll both damage
  * dice and keep the single highest (core-rules.md → Attack Modifiers). The rules write that as
- * `d8+d8`; Foundry would sum it, so it becomes a `{d8,d8}kh` pool here.
- * @param {string} base  the weapon's (or the Impaired/Enhanced) die
- * @param {string} [extraDie]  the second weapon's die, or `""` for none
+ * `d8+d8`; Foundry would sum it, so it becomes a `{d8,d8}kh` pool here. A paired weapon brings two
+ * dice of its own, so a pool can be three: claws and a sword, `{d8,d8,d10}kh`.
+ * @param {...string} dice  every die in the attack; blanks are ignored
  * @returns {string}
  */
-export function damageFormula(base, extraDie = "") {
-  return extraDie ? `{${base},${extraDie}}kh` : base;
+export function damageFormula(...dice) {
+  const pool = dice.filter(Boolean);
+  return pool.length > 1 ? `{${pool.join(",")}}kh` : pool[0];
 }
 
 /**
@@ -289,19 +290,34 @@ export function dieForWeapon(weapon, { impaired = false, enhanced = false } = {}
 }
 
 /**
+ * Every die one weapon puts into the pool: its own die, twice when it is paired (`d8+d8`). Impaired
+ * and Enhanced replace each die on its own, as they do for two weapons, so paired claws Impaired
+ * are `{1d4,1d4}kh`.
+ * @param {Item|null} weapon
+ * @param {{impaired?: boolean, enhanced?: boolean}} [mods]
+ * @returns {string[]}
+ */
+export function diceForWeapon(weapon, mods = {}) {
+  const die = dieForWeapon(weapon, mods);
+  return weapon?.system?.paired ? [die, die] : [die];
+}
+
+/**
  * The weapons an attacker could swing "at the same time" as the clicked one: every other weapon
  * that sits in the ten slots — the same test the character sheet's ledger runs. No container
  * pointer (a sword in a backpack is not in hand), and it occupies a slot (`slotsForItem`, so a
  * *petty* weapon — a thing in a pocket — is out by the one definition the sheet keys on) — and it
  * is equipped, the same guard Roll Damage itself sits behind on every row: "in hand" means the
- * same thing for both dice, so a dagger still sheathed is not offered as the second one.
+ * same thing for both dice, so a dagger still sheathed is not offered as the second one. Part of
+ * the body costs no slot and is always to hand, so a claw is offered beside a sword.
  * @param {Iterable<Item>} items  the attacker's items
  * @param {Item|null} clicked  the weapon whose Roll Damage was clicked, or `null` for unarmed
  * @returns {Item[]}
  */
 export function secondWeaponCandidates(items, clicked) {
   return Array.from(items).filter(
-    (i) => !!i.system.damage && !!i.system.equipped && i.id !== clicked?.id && !i.system.container && slotsForItem(i) > 0
+    (i) => !!i.system.damage && !!i.system.equipped && i.id !== clicked?.id && !i.system.container
+      && (slotsForItem(i) > 0 || !!i.system.natural)
   );
 }
 
@@ -354,7 +370,7 @@ export async function rollDamage(actor, item = null, { skipDialog = false } = {}
   }
 
   const mods = { impaired, enhanced };
-  const formula = damageFormula(dieForWeapon(item, mods), second ? dieForWeapon(second, mods) : "");
+  const formula = damageFormula(...diceForWeapon(item, mods), ...(second ? diceForWeapon(second, mods) : []));
 
   const tags = [];
   if (actor.system.panicked) tags.push(game.i18n.localize("CAIRN.RollingWithPanic"));

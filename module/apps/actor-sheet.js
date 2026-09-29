@@ -260,7 +260,11 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * a container someone dropped on a hireling is one more row, not a hidden one. An NPC is bound
    * by no slot rule, so nothing it owns is ever set aside out of that list.
    *
-   * @returns {Promise<{rows: object[], petty: object[], carried: object[], belongings: object[]}>}
+   * `body` is what the character IS rather than carries — claws, a bite, a metal arm on its
+   * shoulder (`system.natural`). It weighs nothing and so would otherwise fall into *petty*, a
+   * thing in a pocket; the ledger draws it on its own unnumbered lines above slot 1.
+   *
+   * @returns {Promise<{rows: object[], body: object[], petty: object[], carried: object[], belongings: object[]}>}
    */
   async prepareItems() {
     const items = this.actor.items.contents.slice().sort((a, b) => {
@@ -272,6 +276,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     });
 
     const units = [];
+    const body = [];
     const petty = [];
     // A sheet with no ten-slot ledger draws this instead: every carried item in one list, zero-slot
     // ones included. An NPC is bound by no slot rule — `CairnItem._preCreateOperation` refuses
@@ -297,6 +302,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
         belongings.push(view);
         continue;
       }
+      if (item.system.natural) {
+        body.push(view);
+        continue;
+      }
       const count = slotsForItem(item);
       if (count === 0) {
         petty.push(view);
@@ -305,7 +314,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       units.push({ payload: { item: view }, slots: count });
     }
 
-    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), petty, carried, belongings };
+    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), body, petty, carried, belongings };
   }
 
   /** The per-item display model one slot row renders. */
@@ -594,6 +603,11 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // translation module has renamed it. A copy from a sidebar or another actor already carries
     // whatever source it had.
     const source = item.parent;
+    // Off another actor, part of the body stays where it is. From a pack or the sidebar it is a
+    // new thing — the Werewolf's claws land on the character exactly that way.
+    if (source && item.system.natural) {
+      return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Natural", { name: item.name }));
+    }
     const chosen = item.toObject();
     if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };
     const all = source ? source.items.map((i) => i.toObject()) : [chosen];

@@ -42,6 +42,7 @@
     "CoinLeftBehind": "No room on {name} for {amount} gp. It stays with you.",
     "Flavor": "{from} hands to {to}",
     "GearOnly": "Only gear can be handed over on a token — coin goes by amount, in the Barter window.",
+    "Natural": "{name} is part of whoever has it \u2014 it cannot change hands.",
     "CharactersOnly": "{name} is not a player character — things are handed over between characters."
   },
   "CAIRN.Belongings": "Belongings",
@@ -616,6 +617,8 @@
   "CAIRN.Morale": "Morale",
   "CAIRN.Name": "Name",
   "CAIRN.Names": "Names",
+  "CAIRN.Natural": "Natural",
+  "CAIRN.NaturalHint": "Part of the body \u2014 claws, a bite, a metal arm on its shoulder. It costs no slot, is always to hand, and cannot be set aside, stowed, handed over or sold.",
   "CAIRN.NewFeature": "New Feature",
   "CAIRN.NewItem": "New {type}",
   "CAIRN.NoBelongings": "Nothing set aside.",
@@ -643,6 +646,7 @@
     "MacroWeaponsOnly": "Macros are only supported for weapons.",
     "MissingStartingGear": "A starting-gear item could not be found and was skipped: {uuid}",
     "FatigueNotStowed": "A Fatigue is always one of the ten slots — it cannot go into a container.",
+    "NaturalNotStowed": "{name} is part of the body \u2014 it cannot go into a container.",
     "NestingTooDeep": "{name} holds things, so it can only go into a container that is on the body — not into one that is itself stowed.",
     "NoRoom": "Not enough room: {name} needs {need} slot(s) and {free} remain.",
     "NotAContainer": "{name} can only be put into a container.",
@@ -652,6 +656,8 @@
     "DefaultName": "Unnamed NPC"
   },
   "CAIRN.Omen": "Omen",
+  "CAIRN.Paired": "Paired",
+  "CAIRN.PairedHint": "The die is rolled twice and the higher kept \u2014 the rules write it d8+d8.",
   "CAIRN.Party": {
     "AlreadyAMember": "{name} is already on this party.",
     "DeployedOff": "Held back: the party's token leaves them where they are. Press to have them travel with the party.",
@@ -924,6 +930,7 @@
     "Virtue": "Virtue"
   },
   "CAIRN.Type": "Type",
+  "CAIRN.Unarmed": "Unarmed",
   "CAIRN.Uses": "Uses",
   "CAIRN.WardenUserName": "Warden",
   "CAIRN.WelcomePlaylist": "Welcome",

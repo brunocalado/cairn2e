@@ -37,6 +37,9 @@ export function slotsForItem(item) {
   // floor, a crest left at the inn. It is asked first, because a thing that does not move when
   // the character moves cannot cost them a slot, whatever else is true of it.
   if (!sys.carried) return 0;
+  // Part of the body: a claw is not carried, so it weighs nothing on the ten. Read off the raw
+  // field, as everything here is, because `_preUpdate` weighs an unprepared candidate.
+  if (sys.natural) return 0;
   // A sack of coin weighs by what is in it — "A bag of coins worth less than 100gp is *petty* and
   // does not occupy a slot" (`character-creation.md`), one slot per hundred above that. Computed
   // from `value` rather than read from the `slots` its model derives, because `CairnItem#_preUpdate`
@@ -69,6 +72,7 @@ export function slotsForItem(item) {
 export function nestingRefusal(parent, doc, containerId) {
   if (!containerId) return null;
   if (doc.type === "fatigue") return "CAIRN.Notify.FatigueNotStowed";
+  if (doc.system?.natural) return "CAIRN.Notify.NaturalNotStowed";
   if (containerId === doc.id) return "CAIRN.Notify.ContainerInItself";
   const target = parent.items.get(containerId);
   if (!target?.system.isContainer) return "CAIRN.Notify.NotAContainer";

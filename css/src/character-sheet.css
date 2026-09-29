@@ -791,6 +791,24 @@
         padding: 0 15px 0 4px;
     }
 
+    /* The body lines carry no Fatigue circle, so their right inset is the circle's too — the
+       row's 8px gap, the circle's 8px margin and the 12px circle — which puts their controls on
+       the same column as the ten's. */
+    .cairn-slot-block .cairn-body-list {
+        padding-right: 43px;
+    }
+
+    /* The box the double rule's second stroke is drawn through: 5px under the last body line's
+       own rule. At 3px the two drawn strokes' wobble met and they read as one thick line. */
+    .cairn-body-rule {
+        height: 10px;
+    }
+
+    /* What the Fatigue upright and its word are placed against: the ten, not the whole frame. */
+    .cairn-ledger {
+        position: relative;
+    }
+
     /* The upright between the ledger and the Fatigue circles. The circles sit at the end of each
        row rather than in a column of their own, so there is no element to hang this off: it is
        placed from the right edge over the label column (15px) + the dot (12) + the dot's own
@@ -799,10 +817,10 @@
        6px further right "to clear the circles", which spent the whole gutter on the circle side
        and left the trash glyph touching the line. */
     .cairn-fatigue-rule {
-        bottom: 3px;
+        bottom: 0;
         position: absolute;
         right: 35px;
-        top: 3px;
+        top: 0;
         width: 1px;
     }
 
@@ -811,7 +829,7 @@
        width under it. `pointer-events: none` so it never sits between the pointer and a row. */
     .cairn-fatigue-label {
         align-items: center;
-        bottom: 3px;
+        bottom: 0;
         color: var(--cairn-ink-soft);
         display: flex;
         font-size: 9px;
@@ -823,7 +841,7 @@
         right: 0;
         text-orientation: mixed;
         text-transform: uppercase;
-        top: 3px;
+        top: 0;
         width: 15px;
         writing-mode: vertical-rl;
     }

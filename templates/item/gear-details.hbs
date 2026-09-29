@@ -60,6 +60,15 @@
             {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.blast" value=system.blast
                 id=(concat "gear-blast-" item.id)}}
         </div>
+        {{!-- Paired is the other rider on a die: the SRD's `d8+d8`, one weapon rolling its die twice
+              and keeping the higher. A toggle beside the die rather than five more buttons in its
+              run, because it doubles whichever die is chosen. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-paired">
+            <label for="gear-paired-{{item.id}}" data-tooltip="{{localize 'CAIRN.PairedHint'}}">{{localize 'CAIRN.Paired'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.paired" value=system.paired
+                id=(concat "gear-paired-" item.id)}}
+        </div>
         {{/if}}
 
         {{#if axes.armor}}
@@ -79,6 +88,18 @@
                 </label>
                 {{/each}}
             </div>
+        </div>
+        {{/if}}
+
+        {{#if axes.natural}}
+        {{!-- Part of the body. An axis like the others, added from the row at the foot and taken
+              away by switching it off: a claw is a Natural thing with a die, a hide a Natural
+              thing with an armour value. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-natural">
+            <label for="gear-natural-{{item.id}}" data-tooltip="{{localize 'CAIRN.NaturalHint'}}">{{localize 'CAIRN.Natural'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.natural" value=system.natural
+                id=(concat "gear-natural-" item.id)}}
         </div>
         {{/if}}
 

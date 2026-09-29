@@ -1,11 +1,11 @@
 {
-  "_id": "DtXSWNyYvXnNW4b9",
-  "name": "Twin Daggers",
+  "_id": "jepUqm9CX55Ifi71",
+  "name": "Werewolf Claws",
   "type": "gear",
-  "img": "icons/weapons/daggers/dagger-double-black.webp",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
   "system": {
-    "description": "<p>Twin Daggers (d6+d6, <em>bulky</em>)</p>",
-    "slots": 2,
+    "description": "<p>claws (d6+d6), turned</p>",
+    "slots": 0,
     "equipped": false,
     "cost": 0,
     "container": "",
@@ -15,18 +15,18 @@
     },
     "damage": "d6",
     "blast": false,
+    "paired": true,
+    "natural": true,
     "armor": 0,
     "magic": "none",
     "recharge": "",
     "capacity": 0,
     "takesSlots": false,
-    "carried": true,
-    "paired": true
+    "carried": true
   },
   "ownership": {
     "default": 0
   },
-  "effects": [],
-  "_key": "!items!DtXSWNyYvXnNW4b9",
-  "folder": "2zMlRQXjmfTFAB7Z"
+  "_key": "!items!jepUqm9CX55Ifi71",
+  "folder": "VCf486fS9s17em9n"
 }

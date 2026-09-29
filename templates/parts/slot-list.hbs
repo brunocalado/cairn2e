@@ -15,15 +15,59 @@
       "If a character is forced to add Fatigue to their inventory but they have no free slots,
       they must drop an item" (`srd-2e/players-guide/core-rules.md`). --}}
 <div class="cairn-slot-block" data-ink="box" data-ink-seed="ledger" data-ink-w="1.4" data-ink-a="0.5">
-    {{!-- The upright that separates the ledger from the Fatigue track. It is absolutely placed
-          rather than a column of its own, because the circles live inside the rows — see
-          `.cairn-fatigue-rule` in the stylesheet for the arithmetic. --}}
-    <span class="cairn-fatigue-rule" data-ink="vline" data-ink-seed="fatigue-rule" data-ink-w="1" data-ink-a="0.3"></span>
-    <ol class="cairn-slot-list">
-        {{#each inventory.rows as |row|}}
-        {{> "systems/cairn2e/templates/parts/slot-row.hbs" row=row}}
+    {{!-- The body lines: what the character attacks with that is not carried. Inside the same
+          frame, because they are read with the ten, but with no number, because they are not
+          slots — and no Fatigue circle, because a Fatigue is never marked over a claw. Unarmed
+          is always the first: every character has fists and no item stands for them. A natural
+          thing's line is the slot line's own anatomy, name opening the item and the shared
+          control cluster at its end; it is always to hand, so its name is always bold. --}}
+    <ol class="cairn-slot-list cairn-body-list">
+        <li class="cairn-slot cairn-body-row"
+            data-ink="hline" data-ink-seed="body-unarmed" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">
+            <span class="cairn-slot-number"></span>
+            <span class="cairn-slot-body">
+                <span class="cairn-item-name-and-tags">
+                    <span class="cairn-item-title"><strong>{{localize 'CAIRN.Unarmed'}}</strong></span>
+                    <span class="cairn-item-tag">d4 {{localize 'CAIRN.Damage'}}</span>
+                </span>
+                <span class="cairn-item-controls">
+                    <a data-action="rollUnarmed" data-tooltip="{{localize 'CAIRN.RollDamageHint'}}"><i class="fas fa-dice-d20"></i></a>
+                </span>
+            </span>
+        </li>
+        {{#each inventory.body as |item|}}
+        <li class="cairn-slot cairn-body-row draggable" data-item-id="{{item.id}}"
+            data-ink="hline" data-ink-seed="body-{{item.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom">
+            <span class="cairn-slot-number"></span>
+            <span class="cairn-slot-body">
+                <span class="cairn-item-name-and-tags" data-action="itemEdit">
+                    <span class="cairn-item-title"><strong>{{item.name}}</strong></span>
+                    {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=item.system inBody=true}}
+                    {{#if item.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=item.usesDisplay editable=@root.editable}}{{/if}}
+                </span>
+                {{> "systems/cairn2e/templates/parts/item-controls.hbs" item=item editable=@root.editable}}
+            </span>
+        </li>
         {{/each}}
     </ol>
-    <span class="cairn-fatigue-label">{{localize 'CAIRN.Fatigue'}}</span>
+    {{!-- The second stroke of a double rule, under the last body line's own: the printed sheet's
+          way of closing one section before the next begins, so slot 1 visibly starts here. --}}
+    <div class="cairn-body-rule" data-ink="hline" data-ink-seed="body-rule" data-ink-w="0.9" data-ink-a="0.42"></div>
+
+    {{!-- The ten, with the Fatigue track beside them. The upright and the word are placed against
+          this box rather than the whole frame, so neither runs up past slot 1 into the body
+          lines. --}}
+    <div class="cairn-ledger">
+        {{!-- The upright that separates the ledger from the Fatigue track. It is absolutely placed
+              rather than a column of its own, because the circles live inside the rows — see
+              `.cairn-fatigue-rule` in the stylesheet for the arithmetic. --}}
+        <span class="cairn-fatigue-rule" data-ink="vline" data-ink-seed="fatigue-rule" data-ink-w="1" data-ink-a="0.3"></span>
+        <ol class="cairn-slot-list">
+            {{#each inventory.rows as |row|}}
+            {{> "systems/cairn2e/templates/parts/slot-row.hbs" row=row}}
+            {{/each}}
+        </ol>
+        <span class="cairn-fatigue-label">{{localize 'CAIRN.Fatigue'}}</span>
+    </div>
 </div>
 

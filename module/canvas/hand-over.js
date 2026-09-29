@@ -39,5 +39,6 @@ async function handOver(sender, target, item) {
     return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.CharactersOnly", { name: target.name }));
   }
   if (item.type !== "gear") return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.GearOnly"));
+  if (item.system.natural) return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Natural", { name: item.name }));
   await sendBarter(sender, target, [item]);
 }

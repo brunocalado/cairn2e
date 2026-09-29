@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, FLAGS } from "../constants.js";
 import { regenerateActor, traitRows, toPlainText, toPlainLines } from "../character-generator.js";
-import { rollDieOfFate } from "../rolls.js";
+import { rollDieOfFate, rollDamage } from "../rolls.js";
 import { promptGrowthGain } from "../growth.js";
 import { enrich, copyOf, abilityRows, hpZero } from "../helpers.js";
 import { outcomeText } from "../scars.js";
@@ -41,6 +41,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
       rest: CairnCharacterSheet.#onRest,
       restoreAbilities: CairnCharacterSheet.#onRestoreAbilities,
       dieOfFate: CairnCharacterSheet.#onDieOfFate,
+      rollUnarmed: CairnCharacterSheet.#onRollUnarmed,
       fatigueToggle: CairnCharacterSheet.#onFatigueToggle,
       conditionToggle: CairnCharacterSheet.#onConditionToggle,
       openBackground: CairnCharacterSheet.#onOpenBackground,
@@ -215,6 +216,17 @@ export class CairnCharacterSheet extends CairnActorSheet {
     return context;
   }
 
+  /**
+   * @override — the page is as tall as the ledger (`css/src/window.css`), and the ledger is the
+   * ten slots plus the body lines over them: Unarmed and every natural attack. How many there are
+   * is data, so it is handed to the stylesheet as a number and the arithmetic stays in CSS. Every
+   * tab reads it, so it sits on the window rather than on the Inventory part.
+   */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    this.element.style.setProperty("--cairn-body-rows", String(1 + context.inventory.body.length));
+  }
+
   /** @override — the creator for anyone who owns the character, then "Regenerate" for the
    *  Warden. */
   _getHeaderControls() {
@@ -262,6 +274,13 @@ export class CairnCharacterSheet extends CairnActorSheet {
 
   static async #onDieOfFate() {
     await rollDieOfFate(this.actor);
+  }
+
+  /** The ledger's first body line: fists, which every character has and no item stands for —
+   *  "Unarmed attacks always do d4 damage" (`core-rules.md`). Shift skips the options, as on a
+   *  weapon's own line. */
+  static async #onRollUnarmed(event) {
+    await rollDamage(this.actor, null, { skipDialog: event.shiftKey });
   }
 
   /**

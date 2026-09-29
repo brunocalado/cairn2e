@@ -20,7 +20,8 @@
     "recharge": "",
     "capacity": 0,
     "takesSlots": false,
-    "carried": true
+    "carried": true,
+    "natural": true
   },
   "ownership": {
     "default": 0

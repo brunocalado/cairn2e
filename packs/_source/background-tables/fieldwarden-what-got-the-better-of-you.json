@@ -158,6 +158,36 @@
       "_key": "!tables.results!AQs8glEIIOGW3H23.iYAyvP1emjJ5tdN3"
     },
     {
+      "_id": "HeOLMd2EgEMND7Ox",
+      "type": "document",
+      "name": "Werewolf Claws",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.jepUqm9CX55Ifi71",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.HeOLMd2EgEMND7Ox"
+    },
+    {
+      "_id": "HGCqyPUUatugW8cy",
+      "type": "document",
+      "name": "Werewolf Bite",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.UkWcH9vQhdd6IB6l",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!AQs8glEIIOGW3H23.HGCqyPUUatugW8cy"
+    },
+    {
       "_id": "UmCeOr81RFwkxwUv",
       "type": "text",
       "name": "",

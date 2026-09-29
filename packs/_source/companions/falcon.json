@@ -1,26 +1,26 @@
 {
-  "_id": "Vhhzj9gBgLWJqqYX",
-  "name": "Owlbear",
+  "_id": "TGFd4pKtqEMenEDM",
+  "name": "Falcon",
   "type": "npc",
-  "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp",
+  "img": "icons/creatures/birds/raptor-hawk-flying.webp",
   "system": {
     "abilities": {
       "STR": {
+        "value": 5,
+        "max": 5
+      },
+      "DEX": {
         "value": 16,
         "max": 16
       },
-      "DEX": {
-        "value": 12,
-        "max": 12
-      },
       "WIL": {
-        "value": 5,
-        "max": 5
+        "value": 4,
+        "max": 4
       }
     },
     "hp": {
-      "value": 9,
-      "max": 9
+      "value": 3,
+      "max": 3
     },
     "role": "monster",
     "armor": 0,
@@ -31,17 +31,20 @@
       "max": 0
     }
   },
+  "prototypeToken": {
+    "disposition": 1,
+    "actorLink": true
+  },
   "ownership": {
     "default": 0
   },
   "items": [
     {
-      "_id": "zLIpuzcBXpX5ENrH",
-      "name": "Beak",
+      "name": "Claws",
       "type": "gear",
       "img": "icons/svg/sword.svg",
       "system": {
-        "description": "<p>beak (d10)</p>",
+        "description": "<p>claws (d6+d6)</p>",
         "slots": 0,
         "equipped": true,
         "cost": 0,
@@ -50,29 +53,30 @@
           "value": 0,
           "max": 0
         },
-        "damage": "d10",
+        "damage": "d6",
         "blast": false,
+        "paired": true,
+        "natural": true,
         "armor": 0,
         "magic": "none",
         "recharge": "",
         "capacity": 0,
         "takesSlots": false,
-        "carried": true,
-        "natural": true
+        "carried": true
       },
       "ownership": {
         "default": 0
       },
       "effects": [],
-      "_key": "!actors.items!Vhhzj9gBgLWJqqYX.zLIpuzcBXpX5ENrH"
+      "_id": "7CLq5LGwvwjRNbSo",
+      "_key": "!actors.items!TGFd4pKtqEMenEDM.7CLq5LGwvwjRNbSo"
     },
     {
-      "_id": "uknXAqNkWfnBs3Gn",
-      "name": "Claws",
+      "name": "Bite",
       "type": "gear",
       "img": "icons/svg/sword.svg",
       "system": {
-        "description": "<p>claws (d8+d8)</p>",
+        "description": "<p>bite (d8)</p>",
         "slots": 0,
         "equipped": true,
         "cost": 0,
@@ -83,51 +87,37 @@
         },
         "damage": "d8",
         "blast": false,
+        "paired": false,
+        "natural": true,
         "armor": 0,
         "magic": "none",
         "recharge": "",
         "capacity": 0,
         "takesSlots": false,
-        "carried": true,
-        "paired": true,
-        "natural": true
+        "carried": true
       },
       "ownership": {
         "default": 0
       },
       "effects": [],
-      "_key": "!actors.items!Vhhzj9gBgLWJqqYX.uknXAqNkWfnBs3Gn"
+      "_id": "yJKZAlKfvTCTI1Sx",
+      "_key": "!actors.items!TGFd4pKtqEMenEDM.yJKZAlKfvTCTI1Sx"
     },
     {
-      "name": "Bear-like carnivores with the face of an owl.",
+      "name": "It only eats live game.",
       "type": "feature",
       "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
       "system": {
-        "description": "<p>Found in dense forests. Rumored spawn of a magical mishap.</p>"
+        "description": ""
       },
       "ownership": {
         "default": 0
       },
       "effects": [],
-      "_id": "3fJrnspZPhjcu8xi",
-      "_key": "!actors.items!Vhhzj9gBgLWJqqYX.3fJrnspZPhjcu8xi"
-    },
-    {
-      "name": "A piece of armor is rent and destroyed.",
-      "type": "feature",
-      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
-      "system": {
-        "description": "",
-        "critical": true
-      },
-      "ownership": {
-        "default": 0
-      },
-      "effects": [],
-      "_id": "Bw7uz7uZ6piRCjer",
-      "_key": "!actors.items!Vhhzj9gBgLWJqqYX.Bw7uz7uZ6piRCjer"
+      "_id": "trhIZ3mBphg4OJlZ",
+      "_key": "!actors.items!TGFd4pKtqEMenEDM.trhIZ3mBphg4OJlZ"
     }
   ],
   "effects": [],
-  "_key": "!actors!Vhhzj9gBgLWJqqYX"
+  "_key": "!actors!TGFd4pKtqEMenEDM"
 }

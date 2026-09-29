@@ -57,7 +57,8 @@
         "recharge": "",
         "capacity": 0,
         "takesSlots": false,
-        "carried": true
+        "carried": true,
+        "natural": true
       },
       "ownership": {
         "default": 0
@@ -87,7 +88,9 @@
         "recharge": "",
         "capacity": 0,
         "takesSlots": false,
-        "carried": true
+        "carried": true,
+        "paired": true,
+        "natural": true
       },
       "ownership": {
         "default": 0

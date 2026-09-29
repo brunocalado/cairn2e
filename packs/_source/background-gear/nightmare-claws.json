@@ -1,0 +1,32 @@
+{
+  "_id": "RfpXCY11B68u8JW0",
+  "name": "Nightmare Claws",
+  "type": "gear",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "system": {
+    "description": "<p>The Living Nightmare's claws (d8+d8), while it is manifest.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d8",
+    "blast": false,
+    "paired": true,
+    "natural": true,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!RfpXCY11B68u8JW0",
+  "folder": "txYF1azSElMlB2lI"
+}
