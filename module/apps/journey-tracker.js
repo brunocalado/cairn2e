@@ -120,7 +120,7 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     const redraw = foundry.utils.debounce(() => CairnJourneyTracker.refresh(), 100);
     const onRoster = (actor) => {
       if (!actor?.uuid || !CairnJourneyTracker.#instance?.rendered) return false;
-      return (journey.current()?.crew ?? []).includes(actor.uuid);
+      return !!journey.current()?.crew.includes(actor.uuid);
     };
     Hooks.on("updateActor", (actor) => { if (onRoster(actor)) redraw(); });
     // Rations are gear uses and Fatigue is an item, so all three item hooks matter.
@@ -193,8 +193,8 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     // The watch that just ended, and what it turned up. `canEdit` and `index` are folded in here
     // rather than reached for with `../` in the template: the encounter block is two `{{#each}}`
     // frames deep, and a path that has to count them is one refactor from being silently wrong.
-    context.events = (state.events ?? []).map((e, index) => ({ ...e, index, canEdit: isGM }));
-    context.eventsWatch = state.eventsWatch ?? "";
+    context.events = state.events.map((e, index) => ({ ...e, index, canEdit: isGM }));
+    context.eventsWatch = state.eventsWatch;
     context.need = need;
     context.canResolve = isGM && need.ready;
     // Why the button is dead, when it is. `pending` already knows which of the three is owed, and
@@ -407,7 +407,7 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
   static async #onPlaceEncounter(event, target) {
     if (!game.user.isGM) return;
     const index = Number(target.dataset.index);
-    const rows = journey.current()?.events?.[index]?.encounter?.rows ?? [];
+    const rows = journey.current()?.events[index]?.encounter?.rows ?? [];
     if (!rows.length) return;
     // Refuse before the pointer is taken over, not after the Warden has clicked at nothing.
     if (!canvas?.scene) {

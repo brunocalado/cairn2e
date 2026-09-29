@@ -523,8 +523,8 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
   // not from the speaker's token: a Scar can be rolled a session later, when that token is gone.
   const scarBtn = html.querySelector(".open-scars");
   if (scarBtn) {
-    const scarActor = fromUuidSync(message.getFlag(SYSTEM_ID, "scarActor") ?? "");
-    const hpLost = message.getFlag(SYSTEM_ID, "scarHpLost") ?? 1;
+    const scarActor = fromUuidSync(message.getFlag(SYSTEM_ID, "scarActor"));
+    const hpLost = message.getFlag(SYSTEM_ID, "scarHpLost");
     if (scarActor && (scarActor.testUserPermission(game.user, "OWNER") || game.user.isGM)) {
       scarBtn.addEventListener("click", () => CairnScars.open(scarActor, { hpLost }));
     } else {

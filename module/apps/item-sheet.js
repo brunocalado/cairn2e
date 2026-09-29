@@ -360,7 +360,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       // moment the item stopped being a Scroll.
       const pettyByRule = item.system.magic === "scroll";
       const SLOT_WORDS = { 0: "CAIRN.Petty", 2: "CAIRN.Bulky" };
-      const slots = item.system.slots ?? 1;
+      const slots = item.system.slots;
       context.pettyByRule = pettyByRule;
       context.slotChoices = Array.fromRange(SLOT_BUTTONS + 1)
         .concat(slots > SLOT_BUTTONS ? [slots] : [])
@@ -403,7 +403,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
 
     // A container's contents are siblings in the actor's collection, resolved by the DataModel.
     if (item.system.isContainer) {
-      context.contents = (item.system.contents ?? []).map((held) => ({
+      context.contents = item.system.contents.map((held) => ({
         id: held.id,
         name: held.name,
         system: held.system
@@ -559,7 +559,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
 
   /** Append an empty name row. It is blank on purpose — the row IS the prompt to type one. */
   static async #onNameAdd() {
-    await this.document.update({ "system.names": [...(this.document.system.names ?? []), ""] });
+    await this.document.update({ "system.names": [...this.document.system.names, ""] });
   }
 
   /** The index of the row a list control was clicked on. */
@@ -598,7 +598,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
 
   /** Append an empty, unticked milestone. Blank on purpose — the row IS the prompt to type one. */
   static async #onMilestoneAdd() {
-    const list = [...(this.document.system.milestones ?? []), { text: "", done: false }];
+    const list = [...this.document.system.milestones, { text: "", done: false }];
     await this.document.update({ "system.milestones": list });
   }
 

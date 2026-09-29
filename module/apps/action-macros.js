@@ -76,7 +76,7 @@ export class CairnActionMacros extends CairnInkMixin(HandlebarsApplicationMixin(
     }
     const macro = await foundry.documents.Macro.implementation.fromDropData(data);
     if (!macro) return;
-    const list = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS) ?? [];
+    const list = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS);
     if (list.includes(macro.uuid)) {
       ui.notifications.info(game.i18n.localize("CAIRN.Settings.ActionMacros.Already", { name: macro.name }));
       return;
@@ -87,7 +87,7 @@ export class CairnActionMacros extends CairnInkMixin(HandlebarsApplicationMixin(
 
   static async #onRemove(event, target) {
     const uuid = target.closest("[data-uuid]").dataset.uuid;
-    const list = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS) ?? [];
+    const list = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS);
     await game.settings.set(SYSTEM_ID, SETTINGS.ACTION_MACROS, list.filter((u) => u !== uuid));
     this.render({ parts: ["list"] });
   }

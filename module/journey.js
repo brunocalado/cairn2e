@@ -117,7 +117,7 @@ export function rationsCarried(actor) {
  * @returns {Actor[]}
  */
 export function members(journey) {
-  return (journey.crew ?? []).map((uuid) => fromUuidSync(uuid)).filter((actor) => actor instanceof Actor);
+  return journey.crew.map((uuid) => fromUuidSync(uuid)).filter((actor) => actor instanceof Actor);
 }
 
 /** The terrain Difficulty the party travels under today: the route's, raised by weather and sleep. */
@@ -296,7 +296,7 @@ async function start(_journey, { path, distance, terrain, season, vast }) {
  * same crew.
  */
 async function addCrew(journey, { uuids }) {
-  const crew = new Set(journey.crew ?? []);
+  const crew = new Set(journey.crew);
   const before = crew.size;
   for (const uuid of Array.isArray(uuids) ? uuids : []) if (typeof uuid === "string") crew.add(uuid);
   if (crew.size === before) return;
@@ -306,8 +306,8 @@ async function addCrew(journey, { uuids }) {
 
 /** Take one off the journey. The row is gone, not marked — the list is the whole answer. */
 async function removeCrew(journey, { uuid }) {
-  const crew = (journey.crew ?? []).filter((u) => u !== uuid);
-  if (crew.length === (journey.crew ?? []).length) return;
+  const crew = journey.crew.filter((u) => u !== uuid);
+  if (crew.length === journey.crew.length) return;
   journey.crew = crew;
   await save(journey);
 }
@@ -535,7 +535,7 @@ async function resolveWatch(journey) {
 /** Throw one of this watch's events back and roll it again, in place. The Warden's. */
 async function rerollEvent(journey, { index }) {
   const i = Number(index);
-  if (!Array.isArray(journey.events) || !journey.events[i]) return;
+  if (!journey.events[i]) return;
   const entry = await rollEvent(journey);
   if (!entry) return;
   journey.events[i] = entry;

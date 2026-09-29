@@ -314,7 +314,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       units.push({ payload: { item: view }, slots: count });
     }
 
-    return { rows: layoutSlots(units, this.actor.system.slotsMax ?? 0), body, petty, carried, belongings };
+    return { rows: layoutSlots(units, this.actor.system.slotsMax), body, petty, carried, belongings };
   }
 
   /** The per-item display model one slot row renders. */

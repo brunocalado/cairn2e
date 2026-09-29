@@ -22,7 +22,7 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/actions`;
  * @returns {Promise<{ uuid: string, macro: Macro|null }[]>}
  */
 export async function actionMacros() {
-  const uuids = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS) ?? [];
+  const uuids = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS);
   const rows = [];
   for (const uuid of uuids) {
     let macro = null;

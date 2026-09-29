@@ -149,7 +149,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
 
   /** Every saved store, by id. */
   get #stores() {
-    return game.settings.get(SYSTEM_ID, SETTINGS.STORES) ?? {};
+    return game.settings.get(SYSTEM_ID, SETTINGS.STORES);
   }
 
   /** The store on screen, or null when there is none — the Warden's first open, or a store deleted
