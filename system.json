@@ -255,8 +255,8 @@
         "id": "light-sources",
         "type": "module",
         "manifest": "https://raw.githubusercontent.com/brunocalado/light-sources/refs/heads/main/module.json",
-        "compatibility": { "minimum": "0.0.9", "verified": "0.0.9" },
-        "reason": "Lights a Torch, Lantern, Candle Helmet or Lightsucker Candle from the Token HUD and spends its uses; lights Illuminate when it is cast."
+        "compatibility": { "minimum": "0.3.0", "verified": "0.3.0" },
+        "reason": "Lights a Torch, Lantern, Candle Helmet or Lightsucker Candle from the Token HUD, spends one of its uses and keeps the flame on it; lights Illuminate when it is cast."
       }
     ]
   },

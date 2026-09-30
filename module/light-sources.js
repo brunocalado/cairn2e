@@ -41,15 +41,20 @@ const uuid = (pack, id) => `Compendium.${SYSTEM_ID}.${pack}.Item.${id}`;
  * copy is matched to its entry by `_stats.compendiumSource`, which every copy the system makes
  * keeps (`helpers.js#copyOf`) — never by name, because a translation module renames the document
  * and the copy with it. `checks/light-sources.check.mjs` holds each uuid to the pack source.
+ *
+ * A use in Cairn is one lighting of one object — "A torch can be lit 3 times before permanently
+ * degrading" (procedures.md § Light) — never one torch out of a stack. So the four that spend are
+ * "charge": the lit item is the flame, it goes where the item goes, and it goes out when the item
+ * leaves any other way.
  */
 export const LIGHT_SOURCES = [
-  { uuid: uuid("gear", "38nboO4axGNV5vQC"), consume: true, light: TORCH },
-  { uuid: uuid("gear", "lAOJ4KhINKHkQFKY"), consume: true, light: LANTERN },
-  { uuid: uuid("background-gear", "eFWBZIBDrdwE0I7x"), consume: true, light: CANDLE },
-  { uuid: uuid("relics", "CuRKq09QbCykPLcb"), consume: true, light: GLOOM },
+  { uuid: uuid("gear", "38nboO4axGNV5vQC"), consume: "charge", light: TORCH },
+  { uuid: uuid("gear", "lAOJ4KhINKHkQFKY"), consume: "charge", light: LANTERN },
+  { uuid: uuid("background-gear", "eFWBZIBDrdwE0I7x"), consume: "charge", light: CANDLE },
+  { uuid: uuid("relics", "CuRKq09QbCykPLcb"), consume: "charge", light: GLOOM },
   // Its cost is the Fatigue the cast already charged (core-rules.md § Casting Spells), which is
-  // not a quantity: nothing is consumed, and the palette never offers it — only the cast lights it.
-  { uuid: uuid("spellbooks", "LPjbm6vE1WgTsqQi"), consume: false, coverable: true, hudHidden: true, light: GLOW }
+  // not a charge: nothing is spent, and the palette never offers it — only the cast lights it.
+  { uuid: uuid("spellbooks", "LPjbm6vE1WgTsqQi"), consume: "none", coverable: true, hudHidden: true, light: GLOW }
 ];
 
 /**
@@ -81,7 +86,7 @@ export const registerLightSources = () => {
       console.warn(`${SYSTEM_ID} | ${MODULE} is active but its API never became available`);
       return;
     }
-    await ls.registerCompatibility({ itemTypes: ["gear"], quantityPath: "system.uses.value" });
+    await ls.registerCompatibility({ itemTypes: ["gear"], chargesPath: "system.uses.value" });
     await ls.registerSources(
       LIGHT_SOURCES.map(({ light, ...usage }) => ({ ...usage, durationMinutes: 0, patterns: [{ name: "", light }] })),
       { managedBy: SYSTEM_ID }

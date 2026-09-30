@@ -80,7 +80,9 @@ All three are optional:
   custom Cairn d20. The other dice wear the **Cairn Blood Moon** theme until a player picks
   another one in Dice So Nice's own settings.
 - [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
-  candles from the token's right-click menu and spends their uses as they burn.
+  candles from the token's right-click menu and spends their uses as they burn. A lit torch is
+  the torch itself: remove it from the sheet and it goes out, and a module that carries items onto
+  the map, such as Canvas Loot, takes the flame with it.
 - [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
   [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
   sounds Cairn's weapons, monster attacks and spells. The system adds its entries to the module's
