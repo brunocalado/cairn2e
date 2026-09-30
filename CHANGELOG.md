@@ -6,6 +6,16 @@ Every release of Cairn 2e for Foundry VTT. The format follows
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-09-30
+
+### Changed
+
+- With **Light Sources** 0.3.0, a lit Torch, Lantern, Candle Helmet or Lightsucker Candle is the
+  item that burns: lighting it spends one of its own uses and the flame stays on it. Remove it
+  from the sheet and it goes out, hand it to another character (through Barter or a drag between
+  sheets) and it arrives lit, and a module that carries items onto the map, such as Canvas Loot,
+  takes the flame with it.
+
 ## [0.0.6] - 2026-09-29
 
 ### Added
