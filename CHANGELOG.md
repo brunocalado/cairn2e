@@ -6,6 +6,43 @@ Every release of Cairn 2e for Foundry VTT. The format follows
 
 ## [Unreleased]
 
+## [0.0.6] - 2026-09-29
+
+### Added
+
+- A **Rules Summary** window puts the player's rules on one landscape page, worded from the 2e
+  SRD. The Warden opens it from the system tab and can show it to everyone; a character opens it
+  from Actions, under Barter.
+- A new world imports the system macros into a Cairn 2e folder, and every player gets the saves,
+  the Die of Fate, the two rests and the Rules Summary on their hotbar at their first login,
+  including seats made in User Management. Morale and Reactions stay the Warden's. The Warden's
+  **Reset Player Hotbars** macro puts the player macros back without touching other slots.
+- **Unarmed** is a real d4 gear every character is born with, so it can be renamed, re-died or
+  deleted.
+- A gear can be **bodily** (part of the body: no slot, always to hand, never set aside, stowed,
+  traded or sold) or **paired** (the SRD's d8+d8, rolled keep-highest). The bestiary's natural
+  attacks are bodily and its dX+dX attacks paired; the Barber-Surgeon's alchemical sigils are
+  bodily armour.
+- A **Companions** pack holds the creatures backgrounds grant (the Blood Pail's servant, the
+  Raven Familiar, the hollow wolf, the Homunculus, the Falcon) at their SRD stats, linked from
+  what grants them. Item and NPC descriptions and a relic's recharge read as enriched text until
+  their pencil is pressed, so links work.
+- With **Automated Animations** active, Cairn's weapons, monster attacks and spells animate and
+  sound (JB2A Patreon and PSFX). Each entry is added once per world, and a world setting stops
+  further additions.
+- With **Dice So Nice**, every die but the d20 wears the Cairn Blood Moon theme by default;
+  players can pick another.
+- The character creator explains STR, DEX and WIL behind a help mark on each box; Blast and
+  Paired carry one too.
+
+### Changed
+
+- The Petty tab holds a **Body** zone over Petty Items, and the Belongings tab is now **Aside**.
+- An item dropped on a token no longer changes hands: the Barter window is the one way to trade.
+- A new token's defaults are written once at creation instead of through Prototype Token
+  Overrides, so the Warden can change Display Name, Display Bars and Lock Rotation freely. A PC
+  starts seeing 5 grid units.
+
 ## [0.0.5] - 2026-09-28
 
 ### Added
