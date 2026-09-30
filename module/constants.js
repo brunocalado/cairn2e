@@ -57,10 +57,10 @@ export const SETTINGS = {
    *  it stays true even after the Warden deletes what it made. */
   WELCOME_INSTALLED: "welcome-installed",
 
-  /** Hidden (`config: false`) — whether this world's core Prototype Token Overrides and combat
-   *  turn marker have been seeded (`module/token-defaults.js`). The record of a one-time install,
-   *  like the one above: the values it writes are the Warden's to change afterwards, and a Warden
-   *  who changed them is not asking for ours back on the next launch. */
+  /** Hidden (`config: false`) — whether this world's combat turn marker has been seeded
+   *  (`module/token-defaults.js`). The record of a one-time install, like the one above: the
+   *  value it writes is the Warden's to change afterwards, and a Warden who changed it is not
+   *  asking for ours back on the next launch. */
   TOKEN_DEFAULTS_INSTALLED: "token-defaults-installed",
 
   /** Hidden (`config: false`) — whether this world's "Cairn 2e" Macro folder has been imported
