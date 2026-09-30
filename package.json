@@ -8,8 +8,7 @@
     "css": "node tools/build-css.mjs",
     "css:watch": "node tools/build-css.mjs --watch",
     "packs": "node tools/build-packs.mjs",
-    "packs:extract": "node tools/extract-packs.mjs",
-    "release": "node tools/release.mjs"
+    "packs:extract": "node tools/extract-packs.mjs"
   },
   "author": "brunocalado",
   "license": "GPL-3.0-only",
