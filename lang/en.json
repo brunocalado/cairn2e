@@ -41,6 +41,7 @@
     "Refused": "The trade was refused — nothing changed hands.",
     "LeftBehind": "No room on {name} for: {names}. It stays with you.",
     "CoinLeftBehind": "No room on {name} for {amount} gp. It stays with you.",
+    "LightOut": "{item} reaches {name} unlit.",
     "Flavor": "{from} hands to {to}",
     "Bodily": "{name} is part of whoever has it \u2014 it cannot change hands."
   },

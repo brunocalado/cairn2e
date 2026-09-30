@@ -7,6 +7,7 @@
 
 import { SYSTEM_ID } from "./constants.js";
 import { applyGold, gainPlaces, putCoin } from "./coin.js";
+import { carryLight } from "./light-sources.js";
 import { bundleItems } from "./transfer-rules.js";
 
 /** The query that hands a barter to a client allowed to write the recipient. Registered in
@@ -40,12 +41,19 @@ const BARTER_CONTENT_TYPES = new Set(["gear", "coin"]);
  *
  * A sack of coin lands through `putCoin` — grown into the sack already there, or made — at the
  * first place the whole amount fits. No question is asked: this may run on another user's client.
+ *
+ * `arrived` names the copy made of each landed source, so the sender can move what belongs to the
+ * thing rather than to the actor — a light burning on it — before deleting the original. Contents
+ * are matched by position, which holds only once every one of them has landed; a partial batch is
+ * rolled back above. A sack of coin is merged into whatever sack is there, so it maps to nothing.
  * @param {Actor} actor
  * @param {{ id: string, data: object, contents: { id: string, data: object }[] }[]} bundles
- * @returns {Promise<{ landed: string[] }>}  Source ids that now exist on `actor`.
+ * @returns {Promise<{ landed: string[], arrived: Record<string, string> }>}  Source ids that now
+ *   exist on `actor`, and each non-coin one's copy's uuid.
  */
 export async function receiveItems(actor, bundles) {
   const landed = [];
+  const arrived = {};
   for (const { id, data, contents } of bundles) {
     if (data.type === "coin") {
       if (await landCoin(actor, data.system?.value ?? 0)) landed.push(id);
@@ -54,17 +62,20 @@ export async function receiveItems(actor, bundles) {
 
     const [made] = await actor.createEmbeddedDocuments("Item", [data]);
     if (!made) continue;
+    let stowed = [];
     if (contents.length) {
       const inside = contents.map((c) => ({ ...c.data, system: { ...c.data.system, container: made.id } }));
-      const stowed = await actor.createEmbeddedDocuments("Item", inside);
+      stowed = await actor.createEmbeddedDocuments("Item", inside);
       if (stowed.length < inside.length) {
         await made.delete();
         continue;
       }
     }
     landed.push(id, ...contents.map((c) => c.id));
+    arrived[id] = made.uuid;
+    contents.forEach((c, i) => { arrived[c.id] = stowed[i].uuid; });
   }
-  return { landed };
+  return { landed, arrived };
 }
 
 /**
@@ -90,7 +101,7 @@ export async function landCoin(actor, amount) {
  * checked before anything is written: a character, gear only (and coin inside a container that
  * travels), a whole non-negative amount of coin. A refusal writes nothing.
  * @param {{ targetUuid: string, bundles: object[], coin: number }} payload
- * @returns {Promise<{ landed: string[], coin: number }|{ refused: string }>}
+ * @returns {Promise<{ landed: string[], arrived: Record<string, string>, coin: number }|{ refused: string }>}
  */
 export async function receiveBarter({ targetUuid, bundles, coin } = {}) {
   const actor = await fromUuid(targetUuid);
@@ -104,9 +115,9 @@ export async function receiveBarter({ targetUuid, bundles, coin } = {}) {
   }
   if (!Number.isInteger(coin) || coin < 0) return { refused: "coin" };
 
-  const { landed } = await receiveItems(actor, bundles);
+  const { landed, arrived } = await receiveItems(actor, bundles);
   const coinLanded = (await landCoin(actor, coin)) ? coin : 0;
-  return { landed, coin: coinLanded };
+  return { landed, arrived, coin: coinLanded };
 }
 
 /**
@@ -160,6 +171,7 @@ export async function sendBarter(actor, target, items, coin = 0) {
   const landed = new Set(result.landed);
   const moved = bundles.filter((b) => landed.has(b.id)).map((b) => b.data.name);
   const left = bundles.filter((b) => !landed.has(b.id)).map((b) => b.data.name);
+  await carryLight(actor, result.arrived);
   if (landed.size) await actor.deleteEmbeddedDocuments("Item", [...landed]);
   if (result.coin) await applyGold(actor, -result.coin);
 

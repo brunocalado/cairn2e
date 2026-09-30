@@ -107,3 +107,28 @@ export async function lightSpell(actor, item) {
   const ls = await api();
   if (ls) await ls.activate(actor, entry.uuid);
 }
+
+/**
+ * Move the light burning on something that just changed hands onto its copy, so a lit torch given
+ * to another character arrives lit and the giver goes dark. Called after the copies exist and
+ * before the originals are deleted: deleting a burning original first puts its light out, and
+ * there would be nothing left to move. Called by the giver, because the module's GM side moves a
+ * light only off an actor the requester owns.
+ *
+ * Only the four lights that are objects travel. Illuminate is "a floating light [that] moves as
+ * you command" — the caster's, not the book's — so its book leaves without it, and the removal
+ * puts it out as any removal does.
+ * @param {Actor} giver
+ * @param {Record<string, string>} arrived  Each landed source id → the uuid of the copy made of it.
+ */
+export async function carryLight(giver, arrived) {
+  if (!game.modules.get(MODULE)?.active) return;
+  const ls = await api();
+  const burning = ls?.getActive(giver)?.itemId;
+  const from = burning && arrived[burning] ? giver.items.get(burning) : null;
+  const entry = LIGHT_SOURCES.find((s) => s.uuid === from?._stats?.compendiumSource);
+  if (entry?.consume !== "charge") return;
+  const to = await foundry.utils.fromUuid(arrived[burning]);
+  const { lit } = await ls.handOverLight(from, to);
+  if (!lit) ui.notifications.warn(game.i18n.localize("CAIRN.Barter.LightOut", { item: from.name, name: to.parent.name }));
+}

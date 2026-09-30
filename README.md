@@ -115,8 +115,8 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
   other dice in a Cairn Blood Moon theme that each player can change.
 - [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
   candles from the token HUD and spends their uses. A lit torch is the torch itself: remove it
-  from the sheet and it goes out, and a module that carries items onto the map, such as Canvas
-  Loot, takes the flame with it.
+  from the sheet and it goes out, hand it to another character and it arrives lit, and a module
+  that carries items onto the map, such as Canvas Loot, takes the flame with it.
 - [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
   [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
   sounds Cairn's weapons, monster attacks and spells. The system adds its entries to AA's menu

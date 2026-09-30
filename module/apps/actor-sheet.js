@@ -10,7 +10,7 @@ import { rollDamage, rollSave } from "../rolls.js";
 import { slotsForItem, layoutSlots, nestingRefusal } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { enrich } from "../helpers.js";
-import { lightSpell } from "../light-sources.js";
+import { carryLight, lightSpell } from "../light-sources.js";
 import { bundleItems } from "../transfer-rules.js";
 import { receiveItems } from "../transfer.js";
 import { CairnSheetMixin } from "./_sheet-mixin.js";
@@ -620,7 +620,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const chosen = item.toObject();
     if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };
     const all = source ? source.items.map((i) => i.toObject()) : [chosen];
-    const { landed } = await receiveItems(this.actor, bundleItems([chosen], all));
+    const { landed, arrived } = await receiveItems(this.actor, bundleItems([chosen], all));
     if (!landed.length) return;
 
     // The source goes, when this user may take it: a copy from a sheet they cannot modify is a
@@ -628,6 +628,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // Never mutate its in-memory data directly — upstream did, so a rejected write left the
     // wrong value on screen.
     if (source && source.uuid !== this.actor.uuid && item.isOwner) {
+      await carryLight(source, arrived);
       await source.deleteEmbeddedDocuments("Item", landed);
     }
   }
