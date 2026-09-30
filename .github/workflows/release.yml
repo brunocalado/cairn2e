@@ -10,8 +10,8 @@
 # Once the GitHub Release exists, the version is also published to the package's page on
 # foundryvtt.com, with the FOUNDRY_PACKAGE_TOKEN repository secret.
 #
-# The release notes are the tag's own section of CHANGELOG.md. A tag with no section fails here,
-# before anything is published.
+# The release notes are the tag's own `# X.Y.Z` section of CHANGELOG.md, everything up to the next
+# `# ` heading. A tag with no section, or an empty one, fails here, before anything is published.
 
 name: Release
 
@@ -36,13 +36,10 @@ jobs:
       - name: Take the release notes from CHANGELOG.md
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          awk -v head="## [$VERSION]" '
-            index($0, head) == 1 { found = 1; next }
-            found && /^## \[/    { exit }
-            found                { print }
-          ' CHANGELOG.md > release-notes.md
-          if ! grep -q '[^[:space:]]' release-notes.md; then
-            echo "::error::CHANGELOG.md has no '## [$VERSION]' section. Write it, commit, and tag again."
+          awk -v v="$VERSION" '{ sub(/\r$/, "") } $0 == "# " v { f = 1; next } /^# / && f { exit } f' \
+            CHANGELOG.md > release-notes.md
+          if [ -z "$(tr -d '[:space:]' < release-notes.md)" ]; then
+            echo "::error::CHANGELOG.md has no \"# $VERSION\" section. Write it, commit, and tag again."
             exit 1
           fi
 
