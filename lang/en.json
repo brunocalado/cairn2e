@@ -970,7 +970,7 @@
     "Buying": "Buying",
     "Cart": "Cart",
     "CartEmpty": "Drag things here, or press + on a row.",
-    "CoinSetAside": "No room for the coin where it was going \u2014 {amount} gold pieces were set aside among your Belongings.",
+    "CoinSetAside": "No room for the coin where it was going \u2014 {amount} gold pieces were set aside, on your Aside tab.",
     "Confirm": "Confirm",
     "Delete": "Delete this store",
     "DeleteConfirm": "Delete {name}? Its shelves are forgotten; the items themselves are untouched.",
@@ -1022,7 +1022,7 @@
   "CAIRN.TakeBack": "Take back \u2014 it returns to your inventory",
   "CAIRN.TakeOut": "Take out",
   "CAIRN.TakesSlots": "Takes Slots",
-  "CAIRN.TakesSlotsHint": "You haul it \u2014 a bag on your back, a cart pulled with both hands \u2014 so it costs slots like anything else. Off, it hauls itself, costs none, and is always among your Belongings.",
+  "CAIRN.TakesSlotsHint": "You haul it \u2014 a bag on your back, a cart pulled with both hands \u2014 so it costs slots like anything else. Off, it hauls itself, costs none, and is always on your Aside tab.",
   "CAIRN.Trait": {
     "Clothing": "Clothing",
     "Face": "Face",
