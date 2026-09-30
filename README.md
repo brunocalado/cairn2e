@@ -27,13 +27,14 @@ is rolled for you. Already built your character on [Kettlewright](https://kettle
 Import it with one click.
 
 ### A sheet that plays like the book
-Ten inventory slots, where heavy (*bulky*) items take two and Fatigue fills them up. Click STR,
-DEX or WIL to make a save. Rest, Restore and the **Die of Fate** are one button each. Armor adds
+Ten inventory slots, where heavy (*bulky*) items take two and Fatigue fills them up. Fists, claws
+and anything else that is part of the body cost no slot, and every character starts with their
+fists. Click STR, DEX or WIL to make a save. Rest, Restore and the **Die of Fate** are one button each. Armor adds
 itself up from what you wear. When a character is overloaded or panicking, the sheet shows it.
 
 The **Actions** menu lets a player **Whisper** in character, **Barter** gear and coin with another
-player's character, and run the macros the Warden has put there. To give an item quickly, drag it
-onto the other character's token. Drag a sack or a cart onto someone else's sheet and everything
+player's character, open the one-page **Rules Summary**, and run the macros the Warden has put
+there. Drag a sack or a cart onto another sheet you own, such as your mule's, and everything
 inside goes with it.
 
 ### Combat that does the math for you
@@ -83,14 +84,15 @@ All the game content you need is already inside:
 | **Backgrounds** | all 20, with their name lists, starting gear and tables |
 | **Equipment** | the full Marketplace (gear, weapons, armor), plus carts, horses, mules and wagons |
 | **Magic** | 100 spellbooks, 100 scrolls and 46 relics |
-| **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings |
+| **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings and the 5 companions some backgrounds start with |
 | **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, and the Warden's generator tables |
 | **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, and the Warden's Reset Player Hotbars |
 | **Homebrew** | *More Gear*, *More Spellbooks* and *More Scrolls*: extra content by the maintainer, kept in its own folder |
 
 ### It looks like the books
 The ink-on-paper design uses **Lora**, the typeface the Cairn books are set in. A new world opens
-on a welcome scene with its own music. With
+on a welcome scene with its own music, and every player finds the saves, the Die of Fate, Rest and the
+Rules Summary already on their hotbar. With
 [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) installed, you roll a custom 3D
 Cairn d20.
 
@@ -109,7 +111,8 @@ Then create a world with the **Cairn 2e** system. If you want players to build t
 characters, open **Configure Settings → Permissions** and allow **Create Actor** for players.
 
 **Recommended modules** (optional):
-- [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls the 3D Cairn d20.
+- [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls the 3D Cairn d20, and the
+  other dice in a Cairn Blood Moon theme that each player can change.
 - [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
   candles from the token HUD and spends their uses.
 - [Automated Animations](https://foundryvtt.com/packages/autoanimations), with

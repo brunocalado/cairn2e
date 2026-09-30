@@ -34,7 +34,12 @@ not teach the rules: they are in the Cairn 2e books and free online at
 Create a world on the **Cairn 2e** system and launch it. The first time it opens you get:
 
 - a **Welcome** scene, with its own music;
-- the game master seat renamed to **Warden**, which is what Cairn calls it.
+- the game master seat renamed to **Warden**, which is what Cairn calls it;
+- the system's macros in a **Cairn 2e** folder of the Macros directory (see [§16](#16-macros)).
+
+Each player finds their macros on the hotbar the first time they log in: the three saves, the
+Die of Fate and the Rules Summary on the left, Rest and Restore Abilities at the far end. Only
+empty slots are filled, and only once.
 
 If players should build their own characters, open **Configure Settings → Permissions** and allow
 **Create Actor** for the Player role.
@@ -47,26 +52,40 @@ depend on who you are:
 | Section | Who sees it | Buttons |
 |---|---|---|
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
-| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Store |
+| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Store · Rules Summary |
 | **Wilderness** | the Warden only | Journey |
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
 
 ### Settings
 
-Most of Cairn's rules have no on/off switch: they just apply. **Configure Settings** has only
-two options for this system, **Bestiary artwork** and **Bestiary artwork folder**: use your own
-pictures for the monsters in the Bestiary compendium (see [§17](#17-compendiums)). What a store
-charges and pays is set on each store (see [§11](#11-stores-and-coin)).
+Most of Cairn's rules have no on/off switch: they just apply. **Configure Settings** has only a
+few options for this system:
+
+- **Bestiary artwork** and **Bestiary artwork folder**: use your own pictures for the monsters in
+  the Bestiary compendium (see [§17](#17-compendiums)).
+- **Actions menu macros → Choose macros**: drop macros here, and they appear in every character's
+  **Actions** menu, run as that character (see [§3](#3-the-character-sheet)). A player sees only
+  the ones they may run.
+- **Cairn animations for Automated Animations**, shown only while that module is active (see
+  below).
+
+What a store charges and pays is set on each store (see [§11](#11-stores-and-coin)).
 
 ### Recommended modules
 
-Both are optional:
+All three are optional:
 
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls your dice in 3D, including a
-  custom Cairn d20.
+  custom Cairn d20. The other dice wear the **Cairn Blood Moon** theme until a player picks
+  another one in Dice So Nice's own settings.
 - [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
   candles from the token's right-click menu and spends their uses as they burn.
+- [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
+  [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
+  sounds Cairn's weapons, monster attacks and spells. The system adds its entries to the module's
+  Automatic Recognition menu once: an entry you edit or delete stays that way. Turning the
+  system's setting off stops any further additions.
 
 ### Other languages
 
@@ -113,7 +132,7 @@ the file. A new character is created and its sheet opens, followed by a short su
 - It brings over the name, attributes, HP, gold, Background, Bond, Omen, age, traits, the
   Deprived and Panicked states, the portrait (when the export has a web address for it), and the
   items and containers. Kettlewright's *Main* is your ten slots, so it becomes no container;
-  mounts and wagons go to your **Belongings**, and a cart you pull takes its slots.
+  mounts and wagons go to your **Aside** tab, and a cart you pull takes its slots.
 - Items with the same name as something in the compendiums become that exact item. Everything
   else is created from the file's own text.
 - **Descriptions, notes and scars are not imported.** Copy those by hand.
@@ -132,6 +151,10 @@ the file. A new character is created and its sheet opens, followed by a short su
 - **Rest** restores lost HP. **Restore Abilities** restores STR, DEX and WIL to their maximum. Both
   are crossed out and refuse while you are **Deprived**, as the rules say.
 - **Die of Fate** rolls a d6 in the open.
+- **Actions**, in the sheet's title bar, opens a small menu for the character's owner:
+  **Barter** (see below), the **Rules Summary**, **Whisper** (a private word, spoken as the
+  character, to the players you pick) and any macros the Warden has added (see
+  [§1](#settings)).
 
 ### Attributes and HP
 
@@ -157,8 +180,8 @@ items that take space, so see [§11](#11-stores-and-coin) for how they are carri
 | Tab | What it holds |
 |---|---|
 | **Inventory** | Your ten numbered slots. A *bulky* item takes two slots. Next to the slots is the **Fatigue** track: click an empty circle to take a Fatigue, which fills a slot, and click a marked one to clear it. |
-| **Petty** | Small things that take no slot. |
-| **Belongings** | Things you own but aren't carrying, such as gear left at camp or on a mule. |
+| **Petty** | Two lists of things that take no slot. **Body** holds what is part of you: your fists (**Unarmed**, a d4 every character starts with), claws, a bite, armour grown into the skin. **Petty Items** holds small things you carry. |
+| **Aside** | Things you own but aren't carrying, such as gear left at camp or on a mule. |
 | **Identity** | Your Background answers, the eight traits, Bond, Omen and description. |
 | **Growth** | Your Scars and your Growth: how the character has changed through play (see [§6](#6-damage-critical-damage-and-scars) and [§9](#9-growth)). |
 
@@ -172,21 +195,29 @@ red 0 for as long as it lasts.
 ### Items on the sheet
 
 Each item row has small buttons: **equip / unequip**, **use / restore a use**, **set aside** (it
-moves to Belongings, and the same button brings it back), **post to chat** and **delete**. A
+moves to Aside, and the same button brings it back), **post to chat** and **delete**. A
 weapon has a die button that rolls its damage.
 
 To add something, drag it from a compendium onto the sheet, or press **+** on a tab and pick a
-kind: gear, weapon, armor, spellbook, scroll, relic, container or coin.
+kind: gear, weapon, armor, spellbook, scroll, relic, container or coin. The **+** on **Body**
+offers only weapon, armor and gear, and what it makes is part of the body.
+
+**Part of the body.** A thing with **Body** switched on costs no slot, is always to hand, and can never be
+set aside, put in a container, handed over or sold. Unarmed is an ordinary item: rename it, give
+it another die, or delete it. A weapon with **Paired** switched on rolls its die twice and keeps the higher,
+which the rules write as *d8+d8*.
 
 ### Giving things to another character
 
 - **Barter**, in the sheet's **Actions** menu, hands gear and coin to another player's character.
-  Tick what goes, type an amount of coin, pick who gets it and press **Hand over**.
-- **Drag an item onto their token** on the map to give it straight away. This works for gear only
-  (coin goes through Barter) and only between player characters.
+  Tick what goes, type an amount of coin, pick who gets it and press **Hand over**. Whatever
+  doesn't fit on the other character stays with you, and a card in the chat says what changed
+  hands.
+- **Drag an item onto another sheet you own**, such as your hireling's or your mule's, to move it
+  there. The Warden can do this between any two sheets.
 
-Either way, a container goes with everything inside it, whatever doesn't fit on the other
-character stays with you, and a card in the chat says what changed hands.
+Either way, a container goes with everything inside it. What is part of the body never changes
+hands.
 
 ---
 
@@ -217,8 +248,8 @@ container: their ten slots are everything they carry, and the story says how the
 - A **Fatigue** never goes in a container: it always takes one of your ten slots.
 - Deleting a container deletes what's inside too, and you are asked to confirm.
 - **Takes Slots** decides whether the container uses your own slots. A backpack or a hand-pulled
-  cart does. A horse, a mule or a wagon hauls itself, so it takes none and sits among your
-  Belongings.
+  cart does. A horse, a mule or a wagon hauls itself, so it takes none and sits on your
+  Aside tab.
 
 The Gear compendium has a **Transport** folder with a **Cart** (4 slots), **Horse** (4), **Mule**
 (6) and **Wagon** (8).
@@ -230,7 +261,7 @@ The Gear compendium has a **Transport** folder with a **Cart** (4 slots), **Hors
 | What | How |
 |---|---|
 | **Save** | Click **STR**, **DEX** or **WIL** on the sheet. You roll a d20 and need to roll equal to or under the attribute. A 1 always succeeds and a 20 always fails. |
-| **Weapon damage** | Click the die on the weapon's row. A small window offers **Impaired** (a d4), **Enhanced** (a d12), **Blast**, and **Second weapon** (roll both weapons' dice and keep the highest). **Shift-click** skips the window. A Panicked attacker is always Impaired. |
+| **Weapon damage** | Click the die on the weapon's row. A small window offers **Impaired** (a d4), **Enhanced** (a d12), **Blast**, and **Second weapon** (roll both weapons' dice and keep the highest). **Shift-click** skips the window. A Panicked attacker is always Impaired. Fighting unarmed is the **Unarmed** row on the Petty tab. |
 | **Die of Fate** | The button at the top of a character sheet, or the macro. |
 | **Reaction** | The button at the top of an NPC sheet, or the macro. It rolls 2d6 on the Reaction table. |
 | **Morale** | The button at the top of an NPC sheet, or the macro. It rolls a WIL save for the enemy. Player characters never roll Morale. |
@@ -360,8 +391,8 @@ directory like any other actor and choose **Party** as its type.
 
 ### Coin
 
-Coins are items. There is one sack per place: one on your body, one in each container, one among
-your Belongings.
+Coins are items. There is one sack per place: one on your body, one in each container, one on
+your Aside tab.
 
 - **Spending** takes coins from your body first, then from containers you carry, then from what's
   further away (the mule, the sack left at camp).
@@ -601,20 +632,26 @@ Rules you can name with `@Rule[...]`: `panic`, `impaired`, `enhanced`, `deprived
 
 ## 16. Macros
 
-The **Macros** compendium is open to everyone. Drag a macro onto your hotbar and click it to use
-it:
+A new world imports the **Macros** compendium into a **Cairn 2e** folder of the Macros
+directory, and fills each player's hotbar on their first login (see [§1](#a-new-world)). The
+players can run the macros marked below; the rest are the Warden's. The compendium stays open to
+everyone, so a macro can also be dragged from it onto the hotbar.
 
-| Macro | What it does |
-|---|---|
-| **Die of Fate** | rolls a d6 |
-| **Rest** | restores lost HP |
-| **Restore Abilities** | restores STR, DEX and WIL to their maximum |
-| **Roll Morale** | rolls a Morale save for the selected enemy |
-| **Roll Reaction** | rolls 2d6 on the Reaction table |
-| **STR**, **DEX**, **WIL** | roll that save |
+| Macro | What it does | Players |
+|---|---|---|
+| **Die of Fate** | rolls a d6 | ✓ |
+| **Rest** | restores lost HP | ✓ |
+| **Restore Abilities** | restores STR, DEX and WIL to their maximum | ✓ |
+| **Rules Summary** | opens the one-page rules summary | ✓ |
+| **STR**, **DEX**, **WIL** | roll that save | ✓ |
+| **Roll Morale** | rolls a Morale save for the selected enemy | |
+| **Roll Reaction** | rolls 2d6 on the Reaction table | |
+| **Reset Player Hotbars** | puts the player macros back in their slots on every player's hotbar, leaving the other slots alone | |
 
 Each macro works on the **selected token**. With nothing selected, it works on **your own
 character**. Die of Fate and Reaction roll even with neither.
+
+Importing happens once per world: a folder the Warden deletes does not come back.
 
 ### Writing your own
 
@@ -628,6 +665,8 @@ cairn2e.save("DEX");        // a save: "STR", "DEX" or "WIL"
 cairn2e.morale();           // a Morale save for the selected NPC
 cairn2e.reaction();         // 2d6 on the Reaction table
 cairn2e.dieOfFate();        // 1d6
+cairn2e.rulesSummary();     // open the rules summary
+cairn2e.resetPlayerHotbars(); // Warden only: refill every player's hotbar
 ```
 
 ---
@@ -638,7 +677,7 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 
 | Folder | Packs |
 |---|---|
-| **Character Creation** | Backgrounds, Background Tables, Background Gear, Character Traits, Bonds, Omens |
+| **Character Creation** | Backgrounds, Background Tables, Background Gear, Companions, Character Traits, Bonds, Omens |
 | **Equipment** | Gear, Weapons, Armor |
 | **Magic** | Spellbooks, Scrolls, Relics |
 | **Reference** | Game Tables, Bestiary, Hirelings |
@@ -650,6 +689,9 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 - Compendiums are **read-only**. To use something, drag it onto a sheet, onto the map, or into your
   world.
 - Only the Warden sees the **Bestiary**, so players can't read the monster stats.
+- **Companions** holds the creatures some backgrounds start with (the Blood Pail's servant, the
+  Falcon, the Hollow Wolf, the Homunculus, the Raven Familiar). The item or Growth that grants
+  one links to it.
 
 **Monster pictures.** The Bestiary comes with Foundry's standard icons. To use your own art:
 
