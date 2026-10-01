@@ -68,6 +68,11 @@ export const SETTINGS = {
    *  two above: a Warden who deletes the folder is not asking for it back on the next launch. */
   MACROS_INSTALLED: "macros-installed",
 
+  /** Hidden (`config: false`) — whether this world's clock has been set to the Vald calendar's
+   *  start, 1 Mourning 7728 (`module/calendar.js`). The record of a one-time install, like the
+   *  three above: once the Warden has moved time on, the next launch must not move it back. */
+  CALENDAR_INSTALLED: "calendar-installed",
+
   /** Hidden (`config: false`) — the id of the world's active `party` Actor, or "". It is what
    *  the P keybinding opens, and the only answer to "which party" in a world that has two.
    *  Not a toggle either: it is a pointer, kept honest by `CairnActor`'s create and delete. */

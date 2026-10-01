@@ -51,6 +51,46 @@
   "CAIRN.BodyHint": "Part of the body \u2014 claws, a bite, a metal arm on its shoulder. It costs no slot, is always to hand, and cannot be set aside, stowed, handed over or sold.",
   "CAIRN.Bond": "Bond",
   "CAIRN.Bulky": "Bulky",
+  "CAIRN.Calendar": {
+    "Name": "The Vald Calendar",
+    "Month": {
+      "Mourning": "Mourning",
+      "Silence": "Silence",
+      "Veil": "Veil",
+      "Sunrise": "Sunrise",
+      "Bright": "Bright",
+      "Ashfall": "Ashfall",
+      "Flood": "Flood",
+      "Highwater": "Highwater",
+      "Rise": "Rise",
+      "Quell": "Quell",
+      "Bane": "Bane",
+      "Sunset": "Sunset",
+      "Reclamation": "Reclamation"
+    },
+    "Weekday": {
+      "Market": "Market Day",
+      "Garden": "Garden Day",
+      "Song": "Song Day",
+      "Tithe": "Tithe Day",
+      "Bathing": "Bathing Day",
+      "Resting": "Resting Day"
+    },
+    "ReclamationDay": {
+      "Recognize": "Recognize",
+      "Remember": "Remember",
+      "Reward": "Reward",
+      "Rejoice": "Rejoice",
+      "Relinquish": "Relinquish",
+      "Renew": "Renew"
+    },
+    "Season": {
+      "Dead": "Dead",
+      "Dry": "Dry",
+      "Wet": "Wet",
+      "Harvest": "Harvest"
+    }
+  },
   "CAIRN.Capacity": "Capacity",
   "CAIRN.Career": "Career",
   "CAIRN.CastDeprivedHint": "A Deprived caster may be asked for a WIL save to avoid ill effects. Roll it, or cast without one if the Warden waives it.",

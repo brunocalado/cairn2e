@@ -69,6 +69,14 @@ export const registerSettings = () => {
     default: false
   });
 
+  // Hidden: whether the world clock has been set to 1 Mourning 7728 (module/calendar.js).
+  game.settings.register(SYSTEM_ID, SETTINGS.CALENDAR_INSTALLED, {
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: false
+  });
+
   // Hidden: which party the P key opens, in a world that may hold more than one. World scope,
   // because a group is the table's and not one client's — two players pressing P look at the
   // same sheet, which is the point of having the key at all.

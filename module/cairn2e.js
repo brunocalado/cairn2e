@@ -50,6 +50,7 @@ import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./worl
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
 import { installWatchClock } from "./apps/watch-clock.js";
+import { registerCalendar, installCalendar } from "./calendar.js";
 import * as models from "./data/_module.js";
 import * as rolls from "./rolls.js";
 
@@ -156,6 +157,9 @@ Hooks.once("init", async function () {
   // A dungeon exploration is a Combat subtype; a fight is core's base type, which `Combat`
   // allows beside its subtypes (`baseTypeAllowed`).
   CONFIG.Combat.dataModels = models.COMBAT_MODELS;
+
+  // The world clock speaks Vald (module/calendar.js).
+  registerCalendar();
 
   // Replace core's forty-odd generic statuses with the 2e roster. Mutated in place rather than
   // assigned: `CONFIG.statusEffects` is a Proxy over an array that also keys every entry by its id
@@ -354,6 +358,10 @@ Hooks.once("ready", () => {
   // login their hotbar (module/world-macros.js). Not awaited, like the above.
   installWorldMacros();
   seedPlayerHotbar();
+
+  // A world's first launch under the Vald calendar sets its clock to 1 Mourning 7728, 06:00
+  // (module/calendar.js). Not awaited, like the above.
+  installCalendar();
 
   // The Warden's bestiary art (module/bestiary-art.js): every client lays the last published scan
   // over the pack at once, so a player does not wait on the Warden; then the active GM rescans the
