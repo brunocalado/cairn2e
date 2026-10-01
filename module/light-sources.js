@@ -71,16 +71,21 @@ async function api(retries = 20, delayMs = 250) {
 }
 
 /**
- * Hand the module the five sources, every session. Both calls write world settings, which only a
- * GM may — the module guards neither — so one client does it and the module dedupes by uuid. A
- * source the Warden has edited is frozen on the module's side and this never overwrites it.
+ * Hand the module the five sources, on every client, every session. The module keeps registered
+ * sources in memory on each client and writes nothing to the world, so a client that never
+ * registers them never shows them in its Token HUD. `registerCompatibility` seeds world settings,
+ * but only on a GM's client and only where nobody has set them yet; on a player's it does nothing.
  *
- * A source with one pattern never shows the pattern's name, so it is left empty rather than
- * given an English literal.
+ * A source is keyed by its item uuid, and registering it again replaces it on this client. What
+ * the Warden edits in the module's window is stored as the Warden's own copy and wins over these
+ * defaults; a source the Warden removes stays removed until restored.
+ *
+ * Each source has one pattern, keyed by an id that is never shown and never translated. A
+ * single-pattern source shows no label, so the pattern has no name rather than an English literal.
  */
 export const registerLightSources = () => {
   Hooks.once("ready", async () => {
-    if (!game.modules.get(MODULE)?.active || !game.user.isActiveGM) return;
+    if (!game.modules.get(MODULE)?.active) return;
     const ls = await api();
     if (!ls) {
       console.warn(`${SYSTEM_ID} | ${MODULE} is active but its API never became available`);
@@ -88,7 +93,7 @@ export const registerLightSources = () => {
     }
     await ls.registerCompatibility({ itemTypes: ["gear"], chargesPath: "system.uses.value" });
     await ls.registerSources(
-      LIGHT_SOURCES.map(({ light, ...usage }) => ({ ...usage, durationMinutes: 0, patterns: [{ name: "", light }] })),
+      LIGHT_SOURCES.map(({ light, ...usage }) => ({ ...usage, durationMinutes: 0, patterns: [{ id: "lit", light }] })),
       { managedBy: SYSTEM_ID }
     );
   });
