@@ -74,7 +74,10 @@ any month of any year and change nothing; **Go to today** comes back.
 
 The **Warden** also:
 
-- types the time, or moves it with −1 h, −30 m, −15 m, +15 m, +30 m, +1 h;
+- drags the needle by its head along the dial, in steps of the **Snap** chosen under it (15 m,
+  30 m or 1 h, remembered in that browser); the time is set when the needle is let go, Escape
+  puts it back, and the far end is 06:00 the next day;
+- types the time into the clock at the top right;
 - clicks a watch on the dial to move on to its next start, or the filled one to go back to its
   start;
 - right-clicks a day for **Make this today** (same time of day);

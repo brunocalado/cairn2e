@@ -85,6 +85,15 @@ export const registerSettings = () => {
     default: false
   });
 
+  // Hidden: the step the calendar's needle snaps to (module/apps/calendar.js). Client scope —
+  // one Warden's hand, kept in this browser.
+  game.settings.register(SYSTEM_ID, SETTINGS.CALENDAR_SNAP, {
+    scope: "client",
+    config: false,
+    type: Number,
+    default: 15
+  });
+
   // Hidden: which party the P key opens, in a world that may hold more than one. World scope,
   // because a group is the table's and not one client's — two players pressing P look at the
   // same sheet, which is the point of having the key at all.

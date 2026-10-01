@@ -1,17 +1,25 @@
 {{!-- Today, the watch and the Warden's clock (module/apps/calendar.js).
 
-      The date line never wraps. Beside it a player has the time, since a player has no clock row
-      to read it from; the Warden's Show to players is on the title bar. The dial is a picture of
-      the day: three watches, the lit one filled, a needle at the exact time (`--at`, the share of
-      the day since 06:00). Its segments are the Warden's watch control; a player's are disabled.
-      They carry no tooltip: the word and the glyph already say which watch it is. --}}
+      The date line never wraps. Beside it is the time: a player reads it, the Warden types it. The
+      Warden's Show to players is on the title bar. The dial is a picture of the day: three watches,
+      the lit one filled, a needle at the exact time (`--at`, the share of the day since 06:00).
+      Its segments are the Warden's watch control; a player's are disabled. They carry no tooltip:
+      the word and the glyph already say which watch it is.
+
+      The Warden moves time by dragging the needle by its head, in steps of the snap chosen under
+      the dial. During a journey the needle stays put, the snap is off and the hint says why. --}}
 <section class="cairn-calendar-head" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-head" data-ink-w="2">
     <div class="cairn-calendar-today">
         <div class="cairn-calendar-today-text">
             <h2 class="cairn-calendar-date">{{today.date}}</h2>
             <p class="cairn-calendar-sub">{{today.sub}}</p>
         </div>
-        {{#unless isGM}}<span class="cairn-calendar-time">{{time}}</span>{{/unless}}
+        {{#if isGM}}
+        <input type="text" name="time" class="cairn-calendar-time" value="{{time}}" aria-label="{{localize 'CAIRN.Calendar.TimeOfDay'}}"
+               {{#if journeying}}disabled{{/if}}>
+        {{else}}
+        <span class="cairn-calendar-time">{{time}}</span>
+        {{/if}}
     </div>
 
     <div class="cairn-calendar-dial" style="--at: {{needle}}%">
@@ -23,7 +31,11 @@
                 <span class="cairn-calendar-watch-name">{{watch}}</span>
             </button>
             {{/each}}
+            {{#if canDrag}}
+            <span class="cairn-calendar-needle grab" aria-label="{{localize 'CAIRN.Calendar.DragTime'}}"></span>
+            {{else}}
             <span class="cairn-calendar-needle" aria-hidden="true"></span>
+            {{/if}}
         </div>
         <div class="cairn-calendar-ticks" aria-hidden="true">
             {{#each ticks}}<span>{{label}}</span>{{/each}}
@@ -31,22 +43,15 @@
     </div>
 
     {{#if isGM}}
-    <div class="cairn-calendar-clockrow">
-        <div class="cairn-calendar-shifts">
-            {{#each shiftsBack}}
-            <button type="button" data-action="shiftTime" data-minutes="{{minutes}}" data-tooltip-text="{{hint}}" aria-label="{{hint}}"
-                    {{#if ../journeying}}disabled{{/if}}>{{label}}</button>
-            {{/each}}
-        </div>
-        <input type="text" name="time" class="cairn-calendar-time" value="{{time}}" aria-label="{{localize 'CAIRN.Calendar.TimeOfDay'}}"
-               {{#if journeying}}disabled{{/if}}>
-        <div class="cairn-calendar-shifts">
-            {{#each shiftsOn}}
-            <button type="button" data-action="shiftTime" data-minutes="{{minutes}}" data-tooltip-text="{{hint}}" aria-label="{{hint}}"
-                    {{#if ../journeying}}disabled{{/if}}>{{label}}</button>
+    <div class="cairn-calendar-snaprow">
+        {{#if journeying}}<p class="cairn-calendar-hint">{{journeyHint}}</p>{{/if}}
+        <span class="cairn-calendar-snaplabel">{{localize "CAIRN.Calendar.Snap"}}</span>
+        <div class="cairn-calendar-snaps" role="group" aria-label="{{localize 'CAIRN.Calendar.Snap'}}">
+            {{#each snaps}}
+            <button type="button" class="{{#if active}}active{{/if}}" data-action="pickSnap" data-minutes="{{minutes}}"
+                    aria-pressed="{{#if active}}true{{else}}false{{/if}}" {{#if ../journeying}}disabled{{/if}}>{{label}}</button>
             {{/each}}
         </div>
     </div>
-    {{#if journeying}}<p class="cairn-calendar-hint">{{journeyHint}}</p>{{/if}}
     {{/if}}
 </section>

@@ -78,6 +78,11 @@ export const SETTINGS = {
    *  record of a one-time install: a Warden who deletes the folder is not asking for it back. */
   CALENDAR_EVENTS_INSTALLED: "calendar-events-installed",
 
+  /** Hidden (`config: false`) — the step, in minutes, the calendar's needle snaps to when the
+   *  Warden drags it (`module/apps/calendar.js`). Client scope: it is how one hand likes to drag,
+   *  not a rule of the table. */
+  CALENDAR_SNAP: "calendar-snap",
+
   /** Hidden (`config: false`) — the id of the world's active `party` Actor, or "". It is what
    *  the P keybinding opens, and the only answer to "which party" in a world that has two.
    *  Not a toggle either: it is a pointer, kept honest by `CairnActor`'s create and delete. */

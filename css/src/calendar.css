@@ -73,6 +73,8 @@
             text-overflow: ellipsis;
         }
 
+        /* The time, at the right of the date: a player's printed, the Warden's a ruled field
+           they type into, the same size either way. */
         & span.cairn-calendar-time {
             flex: none;
             font-size: 30px;
@@ -81,14 +83,26 @@
             font-variant-numeric: tabular-nums;
         }
 
+        & input.cairn-calendar-time {
+            flex: none;
+            width: 96px;
+            height: auto;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+            text-align: center;
+        }
+
         /* The dial: three segments inside one frame, the needle inside the lit one (it always is —
-           the needle is the time, and the lit watch is the one the time is in), so it is drawn in
-           paper there, with an ink head above the frame. */
+           the needle is the time, and the lit watch is the one the time is in, and a drag moves
+           the lit watch with it), so it is drawn in paper there, with an ink head above the
+           frame. The Warden's head is bigger, a handle, because it is the thing they drag. */
         .cairn-calendar-dial {
             display: flex;
             flex-direction: column;
             gap: 3px;
-            padding-top: 6px;
+            padding-top: 10px;
         }
 
         .cairn-calendar-watches {
@@ -154,6 +168,43 @@
                 border-right: 5px solid transparent;
                 border-top: 6px solid var(--cairn-ink);
             }
+
+            /* The Warden's handle: a larger head, and a hit area 16px wide from the head to the
+               foot of the frame, so the needle is caught without aiming at its 2px. No
+               `touch-action`, or a drag on a touch screen scrolls the window instead. */
+            &.grab {
+                pointer-events: auto;
+                cursor: grab;
+                touch-action: none;
+            }
+
+            &.grab::before {
+                top: -15px;
+                left: -6px;
+                border-left-width: 7px;
+                border-right-width: 7px;
+                border-top-width: 10px;
+            }
+
+            &.grab::after {
+                content: "";
+                position: absolute;
+                top: -16px;
+                bottom: 0;
+                left: -7px;
+                right: -7px;
+            }
+
+            /* Held or hovered, the needle thickens: what is under the hand is what will move. */
+            &.grab:hover,
+            &.grab.dragging {
+                left: calc(var(--at) - 2px);
+                width: 4px;
+            }
+
+            &.grab.dragging {
+                cursor: grabbing;
+            }
         }
 
         .cairn-calendar-ticks {
@@ -187,22 +238,30 @@
             }
         }
 
-        /* The Warden's clock: the time typed between the quick shifts, each shift group a
-           segmented run inside one frame. */
-        .cairn-calendar-clockrow {
+        /* The Warden's snap, at the right under the dial: the steps as one segmented run in a
+           frame, the chosen one inked. During a journey its hint takes the room to its left. */
+        .cairn-calendar-snaprow {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            gap: 18px;
+            gap: 8px;
         }
 
-        .cairn-calendar-shifts {
+        .cairn-calendar-snaplabel {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-calendar-snaps {
             display: flex;
             border: var(--cairn-rule) solid var(--cairn-ink);
             border-radius: var(--cairn-radius);
 
             button {
-                --button-size: 26px;
+                --button-size: 24px;
                 padding: 0 9px;
                 border: none;
                 border-radius: 0;
@@ -215,23 +274,19 @@
             button + button {
                 border-left: var(--cairn-rule) solid var(--cairn-ink);
             }
-        }
 
-        & input.cairn-calendar-time {
-            width: 96px;
-            height: auto;
-            font-size: 30px;
-            font-weight: 600;
-            line-height: 1.1;
-            text-align: center;
+            button.active {
+                --button-background-color: var(--cairn-ink);
+                --button-text-color: var(--cairn-paper);
+            }
         }
 
         .cairn-calendar-hint {
+            flex: 1;
             margin: 0;
             font-size: 12px;
             font-style: italic;
             color: var(--cairn-ink-soft);
-            text-align: center;
         }
 
         /* The year strip. One grid column a day: a banner spans its season's 72, a month its 24. */
