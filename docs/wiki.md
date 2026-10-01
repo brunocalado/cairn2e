@@ -38,7 +38,7 @@ Create a world on the **Cairn 2e** system and launch it. The first time it opens
 - the system's macros in a **Cairn 2e** folder of the Macros directory (see [§16](#16-macros)).
 
 Each player finds their macros on the hotbar the first time they log in: the three saves, the
-Die of Fate and the Rules Summary on the left, Rest and Restore Abilities at the far end. Only
+Die of Fate, the Rules Summary and the Calendar on the left, Rest and Restore Abilities at the far end. Only
 empty slots are filled, and only once.
 
 If players should build their own characters, open **Configure Settings → Permissions** and allow
@@ -52,22 +52,37 @@ depend on who you are:
 | Section | Who sees it | Buttons |
 |---|---|---|
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
-| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Store · Rules Summary |
+| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Store · Rules Summary · Calendar |
 | **Wilderness** | the Warden only | Journey |
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
 
-### The watch
+### The calendar and the watch
 
-A small bar above the player list, at the bottom left, shows the **watch**: a day in Cairn is three
-watches, morning, afternoon and night. Three squares, the current one filled, then its name.
-Everyone sees it.
+Foundry's world clock speaks the **Vald calendar** of the Warden's Guide: twelve months of 24 days,
+a six-day week from Market Day to Resting Day, four seasons of 72 days, and the six-day
+**Reclamation** after Sunset in every year ending in 0. A new world starts on **1 Mourning 7728**,
+at 06:00. Each season begins on the 1st of its first month (Mourning, Sunrise, Flood, Quell), a
+table decision: the SRD's own dates for them cannot all give the 72 days it states.
 
-- The **Warden** clicks it to move to the next watch, and right-clicks it to go back one.
-- It shows Foundry's own world time, so a calendar module shows the same moment. Morning starts at
-  06:00, afternoon at 14:00 and night at 22:00.
-- During a **journey**, the journey moves the watch when one is spent. Clicking the bar then opens
-  the journey instead of skipping a watch.
+The **Calendar** window shows today, the **watch**, the year and the month. A day in Cairn is three
+watches, morning (from 06:00), afternoon (from 14:00) and night (from 22:00), drawn as a dial with
+the current one filled and a needle at the exact time. Everyone can open it, from the
+**Calendar** button in the Notes controls (left of the map, while a scene is shown), the
+**Calendar** macro on the hotbar, or **Actions → Calendar** on the character sheet. Players browse
+any month of any year and change nothing; **Go to today** comes back.
+
+The **Warden** also:
+
+- types the time, or moves it with −1 h, −30 m, −15 m, +15 m, +30 m, +1 h;
+- clicks a watch on the dial to move on to its next start, or the filled one to go back to its
+  start;
+- right-clicks a day for **Make this today** (same time of day);
+- presses **Show to players** to open everyone's calendar on the day the Warden is looking at.
+
+During a **journey** the journey spends the time, so these controls are switched off and clicking
+the dial opens the journey. The calendar is Foundry's own world time, so a time-of-day lighting
+module follows it.
 
 ### Settings
 
@@ -191,7 +206,7 @@ the list.
   are crossed out and refuse while you are **Deprived**, as the rules say.
 - **Die of Fate** rolls a d6 in the open.
 - **Actions**, in the sheet's title bar, opens a small menu for the character's owner:
-  **Barter** (see below), the **Rules Summary**, **Whisper** (a private word, spoken as the
+  **Barter** (see below), the **Rules Summary**, the **Calendar**, **Whisper** (a private word, spoken as the
   character, to the players you pick) and any macros the Warden has added (see
   [§1](#settings)).
 
@@ -572,7 +587,7 @@ members and names the ones it left behind.
 ### Each watch
 
 A day has three watches: morning, afternoon and night. The journey starts on the watch it is now
-(the bar above the player list, see [The watch](#the-watch)) and moves it on each time a watch is
+(see [The calendar and the watch](#the-calendar-and-the-watch)) and moves it on each time a watch is
 spent. The **Day** it shows counts the days of the journey.
 
 1. **Weather** is rolled automatically each morning. The Warden can pick it by hand instead, or
@@ -696,6 +711,7 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **Rest** | restores lost HP | ✓ |
 | **Restore Abilities** | restores STR, DEX and WIL to their maximum | ✓ |
 | **Rules Summary** | opens the one-page rules summary | ✓ |
+| **Calendar** | opens the Vald calendar | ✓ |
 | **STR**, **DEX**, **WIL** | roll that save | ✓ |
 | **Roll Morale** | rolls a Morale save for the selected enemy | |
 | **Roll Reaction** | rolls 2d6 on the Reaction table | |
@@ -719,6 +735,7 @@ cairn2e.morale();           // a Morale save for the selected NPC
 cairn2e.reaction();         // 2d6 on the Reaction table
 cairn2e.dieOfFate();        // 1d6
 cairn2e.rulesSummary();     // open the rules summary
+cairn2e.calendar();         // open the calendar
 cairn2e.resetPlayerHotbars(); // Warden only: refill every player's hotbar
 ```
 

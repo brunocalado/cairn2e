@@ -31,6 +31,11 @@
     <button type="button" data-action="openRules">
         <i class="fas fa-book-open" inert></i> {{localize "CAIRN.RulesRef.Button"}}
     </button>
+    {{#if hasCalendar}}
+    <button type="button" data-action="openCalendar">
+        <i class="fa-solid fa-calendar-days" inert></i> {{localize "CAIRN.Calendar.Button"}}
+    </button>
+    {{/if}}
 </section>
 
 <section class="cairn-tool-group flexcol">

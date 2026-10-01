@@ -1,0 +1,25 @@
+{{!-- The year: its number to browse by, and the strip — the four seasons as banners over the
+      twelve months, one grid column a day, so each banner spans its 72 days exactly. A year ending
+      in 0 has a dashed Reclamation block of a month's width after Sunset (`columns` is then 312).
+      The viewed month is filled; a dot marks the month today is in. --}}
+<section class="cairn-calendar-year">
+    <div class="cairn-calendar-yearbar">
+        <div class="cairn-calendar-stepper">
+            <button type="button" class="cairn-calendar-arrow" data-action="viewYear" data-delta="-1" aria-label="{{localize 'CAIRN.Calendar.PreviousYear'}}"><i class="fa-solid fa-chevron-left" inert></i></button>
+            <input type="number" name="year" min="0" step="1" value="{{view.year}}" aria-label="{{localize 'CAIRN.Calendar.Year'}}">
+            <button type="button" class="cairn-calendar-arrow" data-action="viewYear" data-delta="1" aria-label="{{localize 'CAIRN.Calendar.NextYear'}}"><i class="fa-solid fa-chevron-right" inert></i></button>
+        </div>
+        <button type="button" class="cairn-calendar-goto" data-action="viewToday">{{localize "CAIRN.Calendar.GoToToday"}}</button>
+    </div>
+    <div class="cairn-calendar-strip" style="--columns: {{columns}}">
+        {{#each seasons}}
+        <span class="cairn-calendar-season" style="--from: {{from}}; --span: {{span}}">{{name}}</span>
+        {{/each}}
+        {{#each months}}
+        <button type="button" class="cairn-calendar-month{{#if viewed}} viewed{{/if}}{{#if reclamation}} reclamation{{/if}}"
+                style="--from: {{from}}" data-action="viewMonth" data-month="{{index}}" data-tooltip-text="{{name}}" aria-label="{{name}}">
+            {{abbr}}{{#if today}}<span class="cairn-calendar-today-mark" aria-hidden="true"></span>{{/if}}
+        </button>
+        {{/each}}
+    </div>
+</section>

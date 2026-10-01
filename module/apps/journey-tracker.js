@@ -9,7 +9,7 @@ import { SYSTEM_ID } from "../constants.js";
 import * as journey from "../journey.js";
 import { ACTIONS, WATCHES, WEATHER, PATHS, WEATHER_EFFECTS, pendingNeeds } from "../journey-rules.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
-import { currentWatch } from "./watch-clock.js";
+import { currentWatch } from "../calendar.js";
 import { addEncounterToScene, pickScenePoint } from "../encounters.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;

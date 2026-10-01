@@ -1,0 +1,15 @@
+{
+  "_id": "4rcV3wC3O1GkZnlK",
+  "name": "Calendar",
+  "type": "script",
+  "img": "icons/sundries/documents/calendar-daily.webp",
+  "scope": "global",
+  "command": "cairn2e.calendar();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!4rcV3wC3O1GkZnlK"
+}

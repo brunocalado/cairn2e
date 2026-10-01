@@ -12,7 +12,18 @@
  *
  * Days are counted from year 0, which is itself a Reclamation year: a decade is one 294-day year
  * and then nine of 288.
+ *
+ * The watch is read off the same clock — "A day is divided into three watches, called _morning_,
+ * _afternoon_, and _night_", "three eight-hour segments per day" (`srd-2e/players-guide/
+ * procedures.md` → Wilderness Exploration). World time is the one clock, because core keeps it
+ * and every calendar module reads and writes it, so a calendar and the watch can never disagree.
+ * A watch is a third of the calendar's day, whatever length that day has, and the first one starts
+ * a quarter of the way in (06:00 on a 24-hour day). The SRD names no hour; starting at midnight
+ * would set the clock to 00:00 each time the Warden moved to Morning, and every time-of-day
+ * lighting module with it.
  */
+
+import { WATCHES } from "./journey-rules.js";
 
 /** "There are 24 hours in a day and 6 days in a week. Each month has 24 days (4 weeks), with
  *  12 months in a year." */
@@ -74,4 +85,51 @@ export function seasonOf(month, dayOfMonth) {
   if (month === RECLAMATION) return null;
   const dayOfYear = month * MONTH_DAYS + dayOfMonth + 1;
   return SEASON_STARTS.findLastIndex((start) => start <= dayOfYear);
+}
+
+/**
+ * Seconds in a day and in one watch, and where the first watch begins, for a calendar's day.
+ * @param {{hoursPerDay: number, minutesPerHour: number, secondsPerMinute: number}} days
+ * @returns {{day: number, watch: number, offset: number}}
+ */
+export function watchGeometry({ hoursPerDay, minutesPerHour, secondsPerMinute }) {
+  const day = hoursPerDay * minutesPerHour * secondsPerMinute;
+  return { day, watch: day / WATCHES.length, offset: day / 4 };
+}
+
+/**
+ * The watch a moment falls in: an index of {@link WATCHES}. Night runs past midnight into the next
+ * calendar day.
+ * @param {number} worldTime  seconds
+ * @param {{day: number, watch: number, offset: number}} g
+ * @returns {number}
+ */
+export function watchAt(worldTime, g) {
+  return Math.floor(mod(worldTime - g.offset, g.day) / g.watch);
+}
+
+/**
+ * The moment the next watch begins. Not "eight hours on": world time is rarely on a boundary —
+ * a combat round or a calendar module moves it by any amount — and 10:30 plus eight hours is
+ * still the afternoon.
+ * @param {number} worldTime
+ * @param {{day: number, watch: number, offset: number}} g
+ * @returns {number}
+ */
+export function nextWatchStart(worldTime, g) {
+  return worldTime - mod(worldTime - g.offset, g.watch) + g.watch;
+}
+
+/**
+ * Where a click on watch `index` goes: back to the start of the watch it is now, or on to the
+ * next time another watch begins. Forward is what a session mostly does; anything further back
+ * than the lit watch's start is the clock's −1 h.
+ * @param {number} worldTime
+ * @param {number} index  an index of {@link WATCHES}
+ * @param {{day: number, watch: number, offset: number}} g
+ * @returns {number}
+ */
+export function watchStartFor(worldTime, index, g) {
+  const start = worldTime - mod(worldTime - g.offset, g.watch);
+  return start + mod(index - watchAt(worldTime, g), WATCHES.length) * g.watch;
 }

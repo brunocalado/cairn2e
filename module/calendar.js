@@ -6,11 +6,19 @@
  */
 
 import { SYSTEM_ID, SETTINGS } from "./constants.js";
-import { isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, START_YEAR } from "./calendar-rules.js";
+import {
+  isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, START_YEAR,
+  watchGeometry, watchAt, nextWatchStart
+} from "./calendar-rules.js";
 
 const month = (key, ordinal, days = 24, leapDays) => ({
-  name: `CAIRN.Calendar.Month.${key}`, ordinal, days, ...(leapDays ? { leapDays } : {})
+  name: `CAIRN.Calendar.Month.${key}`, abbreviation: `CAIRN.Calendar.MonthAbbr.${key}`,
+  ordinal, days, ...(leapDays ? { leapDays } : {})
 });
+
+/** The Reclamation's six days, by name — drawn in place of the weekdays during the leap week. */
+export const RECLAMATION_DAY_NAMES = ["Recognize", "Remember", "Reward", "Rejoice", "Relinquish", "Renew"]
+  .map((key) => `CAIRN.Calendar.ReclamationDay.${key}`);
 
 /**
  * The Vald calendar as core's `CalendarData` config. The Reclamation is a thirteenth month with no
@@ -110,4 +118,20 @@ export async function installCalendar() {
   } catch (err) {
     console.error(`${SYSTEM_ID} | could not set the Vald calendar's start date`, err);
   }
+}
+
+/** The watch geometry of the world's calendar — its day need not be 24 hours, so a calendar
+ *  module's config works here too. */
+export function geometry() {
+  return watchGeometry(game.time.calendar.days);
+}
+
+/** The watch it is now: an index of `WATCHES` (`journey-rules.js`). */
+export function currentWatch() {
+  return watchAt(game.time.worldTime, geometry());
+}
+
+/** Move the world to the start of the next watch. Writes `core.time`, so the Warden's. */
+export function advanceWatch() {
+  return game.time.set(nextWatchStart(game.time.worldTime, geometry()));
 }

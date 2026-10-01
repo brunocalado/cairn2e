@@ -10,6 +10,8 @@ import { CairnInkMixin } from "./_ink-mixin.js";
 import { CairnWhisper } from "./whisper.js";
 import { CairnBarter } from "./barter.js";
 import { CairnRulesSummary } from "./rules-summary.js";
+import { CairnCalendarApp } from "./calendar.js";
+import { CairnCalendar } from "../calendar.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -39,7 +41,7 @@ export async function actionMacros() {
 
 /**
  * Actions — the character's table tools, opened from the button left of the sheet's ellipsis:
- * Barter, the rules summary and Whisper.
+ * Barter, the rules summary, the calendar and Whisper.
  *
  * Table tooling, not a 2e rule: nothing in the SRD asks for it. It lists the system's own tools
  * first and then whatever macros the Warden curated (`SETTINGS.ACTION_MACROS`), each run with this
@@ -57,6 +59,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
     actions: {
       openBarter: CairnActionsMenu.#onOpenBarter,
       openRules: CairnActionsMenu.#onOpenRules,
+      openCalendar: CairnActionsMenu.#onOpenCalendar,
       openWhisper: CairnActionsMenu.#onOpenWhisper,
       runMacro: CairnActionsMenu.#onRunMacro
     }
@@ -97,6 +100,8 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
     context.macros = (await actionMacros())
       .filter(({ macro }) => macro?.canExecute)
       .map(({ uuid, macro }) => ({ uuid, name: macro.name, img: macro.img }));
+    // A calendar module that replaces the world calendar brings its own window.
+    context.hasCalendar = game.time.calendar instanceof CairnCalendar;
     return context;
   }
 
@@ -120,6 +125,11 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   /** The rules summary is one window per client, not one per menu, so it is not held here. */
   static async #onOpenRules() {
     await CairnRulesSummary.open();
+  }
+
+  /** One window per client, like the rules summary. */
+  static async #onOpenCalendar() {
+    await CairnCalendarApp.open();
   }
 
   static async #onOpenWhisper() {

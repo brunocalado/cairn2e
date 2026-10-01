@@ -1,0 +1,9 @@
+{{!-- The glyph for one watch on the calendar's dial: a sun, a sun on the horizon, a moon. Inline
+      stroke in `currentColor`, so it inverts with the lit segment; Font Awesome has no afternoon.
+
+      @param key  "morning" | "afternoon" | "night" (`WATCHES`, journey-rules.js) --}}
+<svg class="cairn-calendar-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{{#if (eq key "morning")}}<circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/>{{/if}}
+{{#if (eq key "afternoon")}}<path d="M7 17a5 5 0 0 1 10 0M2 17h20M12 6v3M4.9 10.9l1.8 1.8M19.1 10.9l-1.8 1.8M5 21h14"/>{{/if}}
+{{#if (eq key "night")}}<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>{{/if}}
+</svg>

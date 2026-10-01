@@ -48,13 +48,13 @@ export const CSS_SOURCES = [
   "store.css",
   "actions.css",
   "rules-summary.css",
+  "calendar.css",
   "dialogs.css",
   "journal-pages.css",
   "table-draw.css",
   "combat-tracker.css",
   "sidebar-tab.css",
-  "token-hud.css",
-  "watch-clock.css"
+  "token-hud.css"
 ];
 
 /** The sources joined in build order, as text — what the checks read instead of the built file. */

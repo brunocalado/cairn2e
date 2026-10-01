@@ -61,7 +61,7 @@ import {
   ACTIONS, WATCHES, WEATHER, WEATHER_EFFECTS, PATHS, DISTANCES, TERRAINS, VAST_MAX,
   watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, pendingNeeds, eventsForWatch
 } from "./journey-rules.js";
-import { currentWatch, advanceWatch } from "./apps/watch-clock.js";
+import { currentWatch, advanceWatch } from "./calendar.js";
 import {
   rollJourneyDie, postRollCard, postJourneyCard, drawWildernessEncounter, rollReaction
 } from "./rolls.js";
@@ -254,7 +254,7 @@ async function start(_journey, { path, distance, terrain, season, vast }) {
     watchesNeeded: watchesNeeded(route),
     progress: 0,
     // The day OF THE JOURNEY, which is what its cards print ("Day 2, night"). The watch is not
-    // the journey's: it is the world's (`apps/watch-clock.js`), so a party can set out in the
+    // the journey's: it is the world's (`calendar.js`), so a party can set out in the
     // afternoon, and a calendar module shows the same moment.
     day: 1,
     weather: null,

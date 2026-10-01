@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, SETTINGS } from "./constants.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
-import { refreshWatchClock } from "./apps/watch-clock.js";
+import { CairnCalendarApp } from "./apps/calendar.js";
 import { CairnStore } from "./apps/store.js";
 import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
@@ -37,8 +37,8 @@ export const registerSettings = () => {
     default: null,
     onChange: () => {
       CairnJourneyTracker.refresh();
-      // A journey underway changes what the watch clock's click does.
-      refreshWatchClock();
+      // A journey underway changes what the calendar's time controls do.
+      CairnCalendarApp.refresh();
     }
   });
 

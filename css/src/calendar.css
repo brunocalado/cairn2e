@@ -1,0 +1,495 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The calendar window (module/apps/calendar.js) — today, the watch, the  *
+     * year and the month of the Vald calendar.                              *
+     *                                                                       *
+     * Monochrome like everything else: a season is a named ink banner, the  *
+     * lit watch and today are the only ink-filled cells, the day a season   *
+     * begins carries a 4px left rule and the Reclamation is dashed. No hue  *
+     * says any of it. The window is as tall as its content; only the day's  *
+     * notes scroll. Every position — the needle, a banner, a month on the   *
+     * strip — arrives as a custom property from the context, because it is *
+     * data; every design value is here.                                     *
+     **************************************************************************/
+
+    &.cairn-calendar {
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 14px 16px;
+        }
+
+        /* The header: the date never wraps, it is cut with an ellipsis. */
+        .cairn-calendar-head {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-bottom: 14px;
+        }
+
+        .cairn-calendar-today {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cairn-calendar-today-text {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cairn-calendar-date {
+            margin: 0;
+            border: none;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            line-height: 1.15;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cairn-calendar-sub {
+            margin: 0;
+            min-width: 0;
+            font-size: 13px;
+            color: var(--cairn-ink-soft);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        & button.cairn-calendar-show {
+            --button-size: 30px;
+            flex: none;
+            gap: 7px;
+            padding: 0 12px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        & span.cairn-calendar-time {
+            flex: none;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* The dial: three segments inside one frame, the needle inside the lit one (it always is —
+           the needle is the time, and the lit watch is the one the time is in), so it is drawn in
+           paper there, with an ink head above the frame. */
+        .cairn-calendar-dial {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding-top: 6px;
+        }
+
+        .cairn-calendar-watches {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            height: 36px;
+            border: var(--cairn-rule) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+        }
+
+        & button.cairn-calendar-watch {
+            gap: 7px;
+            height: 100%;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+
+            & + .cairn-calendar-watch {
+                border-left: var(--cairn-rule) solid var(--cairn-ink);
+            }
+        }
+
+        & button.cairn-calendar-watch.lit {
+            --button-background-color: var(--cairn-ink);
+            --button-text-color: var(--cairn-paper);
+        }
+
+        /* A player's dial only reads: full ink, no dimming, no hover. */
+        & button.cairn-calendar-watch:disabled {
+            --button-hover-background-color: var(--button-background-color);
+            --button-hover-text-color: var(--button-text-color);
+            opacity: 1;
+            cursor: default;
+        }
+
+        .cairn-calendar-glyph {
+            width: 16px;
+            height: 16px;
+            flex: none;
+        }
+
+        .cairn-calendar-needle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: calc(var(--at) - 1px);
+            width: 2px;
+            background: var(--cairn-paper);
+            pointer-events: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -11px;
+                left: -4px;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 6px solid var(--cairn-ink);
+            }
+        }
+
+        .cairn-calendar-ticks {
+            position: relative;
+            height: 13px;
+            font-size: 10px;
+            color: var(--cairn-ink-soft);
+            font-variant-numeric: tabular-nums;
+
+            span {
+                position: absolute;
+                transform: translateX(-50%);
+            }
+
+            span:nth-child(1) {
+                left: 0;
+                transform: none;
+            }
+
+            span:nth-child(2) {
+                left: 33.333%;
+            }
+
+            span:nth-child(3) {
+                left: 66.667%;
+            }
+
+            span:nth-child(4) {
+                right: 0;
+                transform: none;
+            }
+        }
+
+        /* The Warden's clock: the time typed between the quick shifts, each shift group a
+           segmented run inside one frame. */
+        .cairn-calendar-clockrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .cairn-calendar-shifts {
+            display: flex;
+            border: var(--cairn-rule) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+
+            button {
+                --button-size: 26px;
+                padding: 0 9px;
+                border: none;
+                border-radius: 0;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 0;
+                text-transform: none;
+            }
+
+            button + button {
+                border-left: var(--cairn-rule) solid var(--cairn-ink);
+            }
+        }
+
+        & input.cairn-calendar-time {
+            width: 96px;
+            height: auto;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .cairn-calendar-hint {
+            margin: 0;
+            font-size: 12px;
+            font-style: italic;
+            color: var(--cairn-ink-soft);
+            text-align: center;
+        }
+
+        /* The year strip. One grid column a day: a banner spans its season's 72, a month its 24. */
+        .cairn-calendar-year {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .cairn-calendar-yearbar,
+        .cairn-calendar-monthbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .cairn-calendar-stepper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex: none;
+
+            input[name="year"] {
+                width: 62px;
+                height: auto;
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: var(--cairn-label-track);
+                text-align: center;
+                appearance: textfield;
+            }
+
+            input[name="year"]::-webkit-inner-spin-button {
+                appearance: none;
+            }
+        }
+
+        & button.cairn-calendar-arrow {
+            --button-size: 26px;
+            width: 26px;
+            padding: 0;
+            border: none;
+        }
+
+        & button.cairn-calendar-goto {
+            --button-size: 28px;
+            flex: none;
+            padding: 0 12px;
+            font-size: 11px;
+        }
+
+        .cairn-calendar-strip {
+            display: grid;
+            grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+            grid-template-rows: 18px 28px;
+            row-gap: 3px;
+        }
+
+        .cairn-calendar-season {
+            grid-row: 1;
+            grid-column: var(--from) / span var(--span);
+            display: flex;
+            align-items: center;
+            padding-left: 6px;
+            border: var(--cairn-rule) solid var(--cairn-ink);
+            border-right-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+
+            &:nth-of-type(4) {
+                border-right-width: var(--cairn-rule);
+            }
+        }
+
+        & button.cairn-calendar-month {
+            --button-size: 28px;
+            grid-row: 2;
+            grid-column: var(--from) / span 24;
+            position: relative;
+            padding: 0;
+            border: var(--cairn-hairline) solid var(--cairn-ink-faint);
+            border-left-width: 0;
+            border-radius: 0;
+            font-size: 9.5px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+
+            &:first-of-type {
+                border-left-width: var(--cairn-hairline);
+            }
+
+            &.reclamation {
+                margin-left: 5px;
+                border: var(--cairn-hairline) dashed var(--cairn-ink);
+                border-radius: var(--cairn-radius);
+            }
+        }
+
+        & button.cairn-calendar-month.viewed {
+            --button-background-color: var(--cairn-ink);
+            --button-text-color: var(--cairn-paper);
+            border-color: var(--cairn-ink);
+        }
+
+        .cairn-calendar-today-mark {
+            position: absolute;
+            bottom: 3px;
+            left: calc(50% - 2px);
+            width: 4px;
+            height: 4px;
+            background: currentColor;
+        }
+
+        /* The month grid. */
+        /* The rule that closes the grid is drawn on its lower edge, so the day detail under it
+           starts clear of it. */
+        .cairn-calendar-monthview {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            padding-bottom: 14px;
+        }
+
+        .cairn-calendar-monthbar {
+            padding-bottom: 6px;
+        }
+
+        .cairn-calendar-monthtitle {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            min-width: 0;
+            white-space: nowrap;
+        }
+
+        .cairn-calendar-monthname {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .cairn-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 6px;
+        }
+
+        .cairn-calendar-head-cell {
+            padding: 2px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--cairn-ink-soft);
+        }
+
+        & button.cairn-calendar-day {
+            --button-size: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 5px 7px;
+            border: var(--cairn-hairline) solid var(--cairn-ink-faint);
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0;
+            text-transform: none;
+            text-align: left;
+
+            /* Not `.selected`: Primitive 2 inverts a button carrying that class, and the picked
+               day is framed, not filled — today is the one filled cell. */
+            &.picked {
+                outline: var(--cairn-rule) solid var(--cairn-ink);
+                outline-offset: 2px;
+            }
+
+            &.season-start {
+                border-left: 4px solid var(--cairn-ink);
+            }
+        }
+
+        & button.cairn-calendar-day.today {
+            --button-background-color: var(--cairn-ink);
+            --button-text-color: var(--cairn-paper);
+            border-color: var(--cairn-ink);
+        }
+
+        .cairn-calendar-monthview.reclamation button.cairn-calendar-day {
+            --button-size: 58px;
+            border-style: dashed;
+            border-color: var(--cairn-ink);
+        }
+
+        .cairn-calendar-day-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .cairn-calendar-day-season {
+            font-size: 8.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .cairn-calendar-day-marks {
+            display: flex;
+            gap: 4px;
+            height: 7px;
+        }
+
+        /* The selected day. Its notes are the one part of the window that scrolls; both axes are
+           named, because beside a scrolling axis a `visible` one is promoted to `auto`. */
+        .cairn-calendar-detail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cairn-calendar-detail-title {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .cairn-calendar-detail-date {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .cairn-calendar-notes {
+            display: flex;
+            flex-direction: column;
+            max-height: 240px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+}

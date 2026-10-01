@@ -11,6 +11,8 @@ import { generateNpc, generateHireling } from "../npc-generator.js";
 import { generateMonster } from "../monster-generator.js";
 import { generateFaction } from "../faction-generator.js";
 import { CairnJourneyTracker } from "./journey-tracker.js";
+import { CairnCalendarApp } from "./calendar.js";
+import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { importKettlewrightCharacter } from "../kettlewright-import.js";
@@ -43,7 +45,8 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
       generateFaction: CairnSidebarTab.#onGenerateFaction,
       openJourney: CairnSidebarTab.#onOpenJourney,
       openStore: CairnSidebarTab.#onOpenStore,
-      openRules: CairnSidebarTab.#onOpenRules
+      openRules: CairnSidebarTab.#onOpenRules,
+      openCalendar: CairnSidebarTab.#onOpenCalendar
     }
   };
 
@@ -72,6 +75,8 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
     // Warden tools are the Warden's.
     context.canCreateActor = game.user.can("ACTOR_CREATE");
     context.isGM = game.user.isGM;
+    // A calendar module that replaces the world calendar brings its own window.
+    context.hasCalendar = game.time.calendar instanceof CairnCalendar;
     return context;
   }
 
@@ -126,5 +131,10 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
   /** @this {CairnSidebarTab} */
   static #onOpenRules() {
     CairnRulesSummary.open();
+  }
+
+  /** @this {CairnSidebarTab} */
+  static #onOpenCalendar() {
+    CairnCalendarApp.open();
   }
 }

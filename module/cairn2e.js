@@ -49,8 +49,8 @@ import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
-import { installWatchClock } from "./apps/watch-clock.js";
-import { registerCalendar, installCalendar } from "./calendar.js";
+import { registerCalendar, installCalendar, CairnCalendar } from "./calendar.js";
+import { CairnCalendarApp } from "./apps/calendar.js";
 import * as models from "./data/_module.js";
 import * as rolls from "./rolls.js";
 
@@ -116,6 +116,8 @@ Hooks.once("init", async function () {
     resetPlayerHotbars,
     // The rules summary window, for anyone — the supplied "Rules Summary" macro calls it.
     rulesSummary: () => CairnRulesSummary.open(),
+    // The calendar window, for anyone — the supplied "Calendar" macro calls it.
+    calendar: () => CairnCalendarApp.open(),
   };
   // The same object as a bare global, so a macro is one line: `cairn2e.rest()`.
   globalThis[SYSTEM_ID] = game.cairn2e;
@@ -241,8 +243,22 @@ Hooks.once("init", async function () {
   registerEnrichers();
   // A Warden's double-click on a map pin linked to a route opens the journey form, not the page.
   registerPointcrawlHooks();
-  // The watch, above the player list on every client (module/apps/watch-clock.js).
-  installWatchClock();
+  // The calendar window, from a button in the Notes controls on every client
+  // (module/apps/calendar.js). Offered only while the world calendar is ours: a calendar module
+  // that replaces it brings its own window.
+  Hooks.on("getSceneControlButtons", (controls) => {
+    if (!controls.notes || !(game.time.calendar instanceof CairnCalendar)) return;
+    controls.notes.tools[`${SYSTEM_ID}-calendar`] = {
+      name: `${SYSTEM_ID}-calendar`,
+      order: 6,
+      title: "CAIRN.Calendar.Title",
+      icon: "fa-solid fa-calendar-days",
+      button: true,
+      onChange: () => CairnCalendarApp.open()
+    };
+  });
+  // Every open calendar redraws when the clock moves, whoever moved it.
+  Hooks.on("updateWorldTime", () => CairnCalendarApp.refresh());
 
   // Right-clicking a message in the log offers this system's own entries. Registered in `init`
   // beside the rest; the hook itself fires every time a context menu is built, and the entry
@@ -376,6 +392,7 @@ Hooks.once("ready", () => {
     if (data?.type === "openJourney") CairnJourneyTracker.open();
     if (data?.type === "openStore") CairnStore.open(data.storeId);
     if (data?.type === "openRules") CairnRulesSummary.open();
+    if (data?.type === "openCalendar") CairnCalendarApp.open(data.view);
   });
 
   // The journey window reads each character's Rations, Fatigue and Deprived off the Actor, so it
@@ -583,6 +600,7 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/parts/plain-list.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/party-row.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/route-pick.hbs`,
+    `systems/${SYSTEM_ID}/templates/parts/watch-glyph.hbs`,
     `systems/${SYSTEM_ID}/templates/apps/combat-tracker-dungeon.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/encounter-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/journey-card.hbs`,
