@@ -48,6 +48,12 @@ A translation module needs two things in its `module.json`:
   result is keyed by its range (`"1-1"`), and a result that points at a document is keyed by its
   `_id`. That second kind takes its name from the document it points at.
 - **The Backgrounds' name lists** (`system.names`).
+- **The naming tables** in `cairn2e.warden` — Name Adjective, Name Noun, Terrain Synonym, Group
+  Type, Ruler Type, Forest Adjective, Forest Noun — word by word. The three *Name Formula* tables'
+  rows ("(The) [Noun] [POI]") are only what a person reads when rolling by hand: the generator
+  never reads them. It finds a row by its `formula` flag and puts the words in order with
+  `CAIRN.NameGen.Formula.<n>` and `<n>Bare` (the same order without the optional articles), so
+  those twelve strings are where your language's word order and articles go.
 - **The Vald calendar's events** (`cairn2e.vald-calendar`): each JournalEntry's `name`, and its one
   text page's `name` and `text.content`. The content is plain paragraphs (`<p>`), the event's time
   first; keep it free of other markup, because the calendar reads a note back as plain text. A
@@ -57,9 +63,9 @@ A translation module needs two things in its `module.json`:
 ## 3. What never to translate
 
 - **Ids, uuids and `documentUuid`.** The system finds every document through them.
-- **Flags** — `flags.cairn2e.*` on table results (`event`, `portrait`, `armour`). They are what
-  the journey, the NPC generator and the monster generator read. On a Vald calendar event,
-  `flags.cairn2e.calendarNote` is its date.
+- **Flags** — `flags.cairn2e.*` on table results (`event`, `portrait`, `armour`, `formula`,
+  `terrain`). They are what the journey, the NPC generator, the monster generator and the name
+  generator read. On a Vald calendar event, `flags.cairn2e.calendarNote` is its date.
 - **A Background growth's mechanics** — in `background-gear`, a `growth` document's
   `system.outcome` (`attr`, `formula`) and `system.table`. They are what the character creator
   rolls. Translate the growth's `name` and `description`; its `gained` is filled when a character

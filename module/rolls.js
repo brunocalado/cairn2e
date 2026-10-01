@@ -25,6 +25,7 @@ const DAMAGE_CARD_TPL = `${TEMPLATES}/damage-roll-card.hbs`;
 const ROLL_CARD_TPL = `${TEMPLATES}/roll-card.hbs`;
 const JOURNEY_CARD_TPL = `${TEMPLATES}/journey-card.hbs`;
 const CALENDAR_NOTE_TPL = `${TEMPLATES}/calendar-note-card.hbs`;
+const NAME_CARD_TPL = `${TEMPLATES}/name-card.hbs`;
 const DMG_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/damage-dialog.hbs`;
 const APPLY_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/apply-damage-dialog.hbs`;
 
@@ -599,6 +600,22 @@ export async function postCalendarNoteCard(entry, { date }) {
   });
   return ChatMessage.create({ speaker: ChatMessage.getSpeaker(), flavor: date, content },
     { messageMode: isPublic(entry) ? "public" : WARDEN_ONLY });
+}
+
+/**
+ * A generated name, whispered to the Wardens (`apps/name-generator.js`): the name is the caption,
+ * the formula row it came from the body. A name is the Warden's prep, so a public card would spoil
+ * the reveal at the table.
+ * @param {{name: string, formula: string}} data
+ */
+export async function postNameCard({ name, formula }) {
+  const content = await foundry.applications.handlebars.renderTemplate(NAME_CARD_TPL, { formula });
+  return ChatMessage.create({
+    speaker: ChatMessage.getSpeaker(),
+    flavor: foundry.utils.escapeHTML(name),
+    content,
+    whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id)
+  });
 }
 
 /**

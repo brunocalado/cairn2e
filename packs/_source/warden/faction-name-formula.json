@@ -1,0 +1,132 @@
+{
+  "_id": "8nvZ2UVvL0LvCAdV",
+  "name": "Faction Name Formula",
+  "img": "icons/sundries/flags/banner-flag-blue.webp",
+  "description": "<p>Roll the Faction Names Formula table of the Naming Procedures; [Group] is a roll on Group Type.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "f7FiGbaJsYfSUHWl",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Noun] [Group]",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 1
+        }
+      },
+      "_key": "!tables.results!8nvZ2UVvL0LvCAdV.f7FiGbaJsYfSUHWl"
+    },
+    {
+      "_id": "O9CmjDBb2fYYlsE5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Adjective] [Group]",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 2
+        }
+      },
+      "_key": "!tables.results!8nvZ2UVvL0LvCAdV.O9CmjDBb2fYYlsE5"
+    },
+    {
+      "_id": "CZDXFSRrz2QliFIE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Group] of (the) [Noun]",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 3
+        }
+      },
+      "_key": "!tables.results!8nvZ2UVvL0LvCAdV.CZDXFSRrz2QliFIE"
+    },
+    {
+      "_id": "WertWlhVGoms2Hp9",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Adjective] [Group] of (the) [Noun]",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 4
+        }
+      },
+      "_key": "!tables.results!8nvZ2UVvL0LvCAdV.WertWlhVGoms2Hp9"
+    },
+    {
+      "_id": "l2XTdikd79Vlo7ZQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Noun] [Adjective] [Group]",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 5
+        }
+      },
+      "_key": "!tables.results!8nvZ2UVvL0LvCAdV.l2XTdikd79Vlo7ZQ"
+    },
+    {
+      "_id": "b5kAGBoBBvo537Ji",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Group] of (the) [Adjective] [Noun]",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 6
+        }
+      },
+      "_key": "!tables.results!8nvZ2UVvL0LvCAdV.b5kAGBoBBvo537Ji"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!8nvZ2UVvL0LvCAdV"
+}

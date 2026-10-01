@@ -453,8 +453,28 @@ export const TABLES = {
   FACTION_ADVANTAGE_COUNT: table("warden", "qAOUXqJ2NWBHZy1w"),
   FACTION_ADVANTAGE: table("warden", "QC5UuI9cI0w2H52N"),
   FACTION_AGENDA: table("warden", "AD6hmMPT7LxNgObC"),
-  FACTION_OBSTACLE: table("warden", "PsJ5CZ0Xt7y63Rsz")
+  FACTION_OBSTACLE: table("warden", "PsJ5CZ0Xt7y63Rsz"),
+  // The Naming Procedures (`srd-2e/wardens-guide/naming-procedures.md`), read by
+  // `module/name-generator.js`. A formula row is found by `flags.cairn2e.formula`, a synonym by
+  // `flags.cairn2e.terrain`: never by the words, which a translation changes.
+  NAME_FORMULA: table("warden", "aUtLmBCxHC8ZTrYB"),
+  FACTION_NAME_FORMULA: table("warden", "8nvZ2UVvL0LvCAdV"),
+  RULER_NAME_FORMULA: table("warden", "Uqcfx0ff2TqCEnmq"),
+  NAME_ADJECTIVE: table("warden", "9GqAnQrRREDVBiEC"),
+  NAME_NOUN: table("warden", "n1pj4zzszgytchci"),
+  TERRAIN_SYNONYM: table("warden", "cPd6YF0WN3ur8xiq"),
+  GROUP_TYPE: table("warden", "yZ9pH9tl7IPTZN0n"),
+  RULER_TYPE: table("warden", "IGuzT0YefNApQ0jC"),
+  FOREST_ADJECTIVE: table("warden", "0Ah2qN1D6oZKT04A"),
+  FOREST_NOUN: table("warden", "T7coF6JAtVPUBhGq")
 };
+
+/**
+ * The Terrain Synonyms rows that are a pointer and not a list — "Jungle: See forest", "Sea: See
+ * beaches", "Wasteland: See desert". The name generator offers them as terrains and rolls the
+ * synonyms of the one they point at.
+ */
+export const NAME_TERRAIN_SEE = { jungle: "forest", sea: "beaches", wasteland: "desert" };
 
 /** The eight d10 trait tables, by the trait key `CharacterData.traits` uses. Pack-only. */
 export const TRAIT_TABLES = {

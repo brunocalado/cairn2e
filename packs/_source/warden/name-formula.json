@@ -1,0 +1,132 @@
+{
+  "_id": "aUtLmBCxHC8ZTrYB",
+  "name": "Name Formula",
+  "img": "icons/skills/trades/academics-scribe-quill-gray.webp",
+  "description": "<p>Roll the Names Formula table of the Naming Procedures for a point of interest; [POI] is the kind of place.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "fo4QJHnwjC6JFFD5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Noun] [POI]",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 1
+        }
+      },
+      "_key": "!tables.results!aUtLmBCxHC8ZTrYB.fo4QJHnwjC6JFFD5"
+    },
+    {
+      "_id": "CqHUXEN6jlUmjUID",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Adjective] [POI]",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 2
+        }
+      },
+      "_key": "!tables.results!aUtLmBCxHC8ZTrYB.CqHUXEN6jlUmjUID"
+    },
+    {
+      "_id": "vpRYcku8MFBjSgpJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[POI] of (the) [Noun]",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 3
+        }
+      },
+      "_key": "!tables.results!aUtLmBCxHC8ZTrYB.vpRYcku8MFBjSgpJ"
+    },
+    {
+      "_id": "gsdxGZ4eZxUdsERV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Adjective] [POI] of (the) [Noun]",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 4
+        }
+      },
+      "_key": "!tables.results!aUtLmBCxHC8ZTrYB.gsdxGZ4eZxUdsERV"
+    },
+    {
+      "_id": "iVHRBl8AEoBFHYLu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Noun] [Adjective] [POI]",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 5
+        }
+      },
+      "_key": "!tables.results!aUtLmBCxHC8ZTrYB.iVHRBl8AEoBFHYLu"
+    },
+    {
+      "_id": "gZCeCTYpwDAOCpZA",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[POI] of (the) [Adjective] [Noun]",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 6
+        }
+      },
+      "_key": "!tables.results!aUtLmBCxHC8ZTrYB.gZCeCTYpwDAOCpZA"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!aUtLmBCxHC8ZTrYB"
+}

@@ -612,6 +612,7 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/chat/encounter-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/journey-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/calendar-note-card.hbs`,
+    `systems/${SYSTEM_ID}/templates/chat/name-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/roll-card.hbs`,
   ]);
 

@@ -1,0 +1,17 @@
+{{!-- The last eight names, newest first. A row brings its name back onto its tab. Scratch paper:
+      it closes with the window. --}}
+<section class="cairn-name-recent">
+    <h4 class="cairn-zone">{{localize "CAIRN.NameGen.History"}}</h4>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-name-history" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list cairn-name-history">
+        {{#each history}}
+        <li class="cairn-slot cairn-name-history-row" data-index="{{index}}" data-action="pickHistory"
+            {{#unless @last}}data-ink="hline" data-ink-seed="name-history-{{index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-name-history-kind">{{kind}}</span>
+            <span class="cairn-name-history-text">{{text}}</span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize "CAIRN.NameGen.Empty"}}</li>
+        {{/each}}
+    </ol>
+</section>

@@ -1,0 +1,158 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The name generator (module/apps/name-generator.js) — the SRD's Naming  *
+     * Procedures, one tab each.                                             *
+     *                                                                       *
+     * The tab rail is Primitive 6, the setup fields Primitive 3, the name a *
+     * banner (Primitive 1) drawn in ink, and each part and each Recent name *
+     * a list row (Primitive 7): what it is, the die, the word, the controls.*
+     * The window is as tall as its content; only Recent scrolls.            *
+     **************************************************************************/
+
+    &.cairn-name-gen {
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px 16px 14px;
+        }
+
+        .cairn-name-main {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cairn-name-setup {
+            --cairn-label-gutter: 9rem;
+
+            > label {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: var(--cairn-label-track);
+            }
+        }
+
+        /* The name, in a drawn box: the capital label over the words, the words at reading size. */
+        .cairn-name-banner {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 8px 12px;
+        }
+
+        .cairn-name-cap {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-name-text {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            min-height: 1.2em;
+        }
+
+        .cairn-name-hint {
+            margin: 0;
+            font-size: 12px;
+            font-style: italic;
+            color: var(--cairn-ink-soft);
+        }
+
+        /* A part: its label, the die in a fixed column, the word taking the rest. */
+        .cairn-name-part {
+            gap: 10px;
+        }
+
+        .cairn-name-part-label {
+            flex: 0 0 6.5rem;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+        }
+
+        .cairn-name-part-die {
+            flex: 0 0 3.5rem;
+            font-size: 12px;
+            color: var(--cairn-ink-soft);
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+        }
+
+        .cairn-name-part-text {
+            flex: 1;
+            min-width: 0;
+            font-size: 14px;
+        }
+
+        .cairn-name-recent {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Both axes named: beside a scrolling axis a `visible` one is promoted to `auto`. */
+        .cairn-name-history {
+            max-height: 200px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .cairn-name-history-row {
+            gap: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--cairn-paper-sunk);
+            }
+        }
+
+        .cairn-name-history-kind {
+            flex: 0 0 6.5rem;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-name-history-text {
+            flex: 1;
+            min-width: 0;
+            font-size: 14px;
+        }
+
+        .cairn-name-foot {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cairn-name-article {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+        }
+
+        .cairn-name-buttons {
+            display: flex;
+            gap: 8px;
+
+            button {
+                flex: 1;
+            }
+        }
+    }
+}

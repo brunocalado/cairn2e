@@ -1,0 +1,318 @@
+{
+  "_id": "yZ9pH9tl7IPTZN0n",
+  "name": "Group Type",
+  "img": "icons/sundries/flags/banner-flag-blue.webp",
+  "description": "<p>Roll the Group Types table of the Naming Procedures.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "eWKaRBgInma6DE2p",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Assembly",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.eWKaRBgInma6DE2p"
+    },
+    {
+      "_id": "bAntooAlUhp1F9gC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Brotherhood",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.bAntooAlUhp1F9gC"
+    },
+    {
+      "_id": "pkoDexHyGDMQfbVM",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Circle",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.pkoDexHyGDMQfbVM"
+    },
+    {
+      "_id": "PbEbzoE9An36ocFF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Clan",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.PbEbzoE9An36ocFF"
+    },
+    {
+      "_id": "SsbB1J2CRbLUMPFy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Coalition",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.SsbB1J2CRbLUMPFy"
+    },
+    {
+      "_id": "DR59gv0jRAEjTG7q",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Collective",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.DR59gv0jRAEjTG7q"
+    },
+    {
+      "_id": "UrADsoy4uyuNm59W",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Covenant",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.UrADsoy4uyuNm59W"
+    },
+    {
+      "_id": "2GfJNy1yB9M4nLVT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Enclave",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.2GfJNy1yB9M4nLVT"
+    },
+    {
+      "_id": "KJi41UzUHEwA7MVI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fellowship",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.KJi41UzUHEwA7MVI"
+    },
+    {
+      "_id": "oICEJq0JH32AZyFW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Guild",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.oICEJq0JH32AZyFW"
+    },
+    {
+      "_id": "JOHRERT8HOAcV4pk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Horde",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.JOHRERT8HOAcV4pk"
+    },
+    {
+      "_id": "vuHXKH9fzavBlOwX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "League",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.vuHXKH9fzavBlOwX"
+    },
+    {
+      "_id": "kXEzuiVX6Ufzrldb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Legion",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.kXEzuiVX6Ufzrldb"
+    },
+    {
+      "_id": "nZE2z0c1ZnT0z3XZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Market",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.nZE2z0c1ZnT0z3XZ"
+    },
+    {
+      "_id": "WXkBA3EaRGCZonAN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ministry",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.WXkBA3EaRGCZonAN"
+    },
+    {
+      "_id": "CQaSVytz4E0TKxAV",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Movement",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.CQaSVytz4E0TKxAV"
+    },
+    {
+      "_id": "q3H1tkXsBPZaKOPP",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Network",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.q3H1tkXsBPZaKOPP"
+    },
+    {
+      "_id": "LKdKIhMyUs2pPHLQ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Order",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.LKdKIhMyUs2pPHLQ"
+    },
+    {
+      "_id": "1KxsvrUtd1oUH5Sb",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Pact",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.1KxsvrUtd1oUH5Sb"
+    },
+    {
+      "_id": "1cnp4rDA6faqr9iF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Syndicate",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!yZ9pH9tl7IPTZN0n.1cnp4rDA6faqr9iF"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!yZ9pH9tl7IPTZN0n"
+}

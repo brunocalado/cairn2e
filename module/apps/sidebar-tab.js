@@ -12,6 +12,7 @@ import { generateMonster } from "../monster-generator.js";
 import { generateFaction } from "../faction-generator.js";
 import { CairnJourneyTracker } from "./journey-tracker.js";
 import { CairnCalendarApp } from "./calendar.js";
+import { CairnNameGenerator } from "./name-generator.js";
 import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
 import { CairnRulesSummary } from "./rules-summary.js";
@@ -43,6 +44,7 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
       generateHireling: CairnSidebarTab.#onGenerateHireling,
       generateMonster: CairnSidebarTab.#onGenerateMonster,
       generateFaction: CairnSidebarTab.#onGenerateFaction,
+      generateName: CairnSidebarTab.#onGenerateName,
       openJourney: CairnSidebarTab.#onOpenJourney,
       openStore: CairnSidebarTab.#onOpenStore,
       openRules: CairnSidebarTab.#onOpenRules,
@@ -116,6 +118,11 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
   /** @this {CairnSidebarTab} */
   static #onGenerateFaction() {
     generateFaction();
+  }
+
+  /** @this {CairnSidebarTab} */
+  static #onGenerateName() {
+    CairnNameGenerator.open();
   }
 
   /** @this {CairnSidebarTab} */

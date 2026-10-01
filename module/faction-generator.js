@@ -45,15 +45,15 @@
  *
  * ## Naming
  *
- * The page is drafted `The {Trait 1} {Type}` (*The Enigmatic Cultists*), meant to be renamed by
- * the Warden. The words are the rolled tables' own, and the frame around them is
- * `CAIRN.FactionGen.DraftName`, so a translation module orders "{trait}" and "{type}" as its
- * language does. Rolled content arrives already in the table's language: translations are
- * modules, which translate the tables and `en.json` together.
+ * The page is named by the SRD's own procedure for it, the Faction Names Formula with a Group Type
+ * (`naming-procedures.md` → Faction Names; `module/name-generator.js`): *The Crimson Covenant*,
+ * *Guild of the Withered Thorn*. The words are the rolled tables' own and the word order is
+ * `CAIRN.NameGen.Formula.*`, so a translation module orders them as its language does.
  */
 
 import { SYSTEM_ID, TABLES } from "./constants.js";
 import { rollWardenText } from "./helpers.js";
+import { rollName, composeName } from "./name-generator.js";
 
 /** Flag on the journal generated factions are filed in. The journal is found by this, never by
  *  its name — so the name can be in the table's language, and the Warden can rename it — as the
@@ -103,11 +103,8 @@ async function buildFaction() {
   const agenda = await rollWardenText(TABLES.FACTION_AGENDA);
   const obstacle = await rollWardenText(TABLES.FACTION_OBSTACLE);
 
-  // One of the two may be missing (a Warden's emptied table): the string still frames the other,
-  // and the gap it leaves is closed.
-  const name = (trait1 || type)
-    ? game.i18n.localize("CAIRN.FactionGen.DraftName", { trait: trait1, type }).replace(/\s+/g, " ").trim()
-    : game.i18n.localize("CAIRN.FactionGen.DefaultName");
+  // A naming table the Warden emptied leaves a word out; with nothing at all, the default name.
+  const name = composeName(await rollName("faction")) || game.i18n.localize("CAIRN.FactionGen.DefaultName");
 
   return {
     name,

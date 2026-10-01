@@ -52,7 +52,7 @@ depend on who you are:
 | Section | Who sees it | Buttons |
 |---|---|---|
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
-| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Store · Rules Summary · Calendar |
+| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Generate Name · Store · Rules Summary · Calendar |
 | **Wilderness** | the Warden only | Journey |
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
@@ -535,7 +535,8 @@ and sometimes armor. **Re-roll Monster** in the sheet's menu makes a new one.
 
 ### Generate Faction
 
-Rolls the Faction tables and writes the result as a page in a journal called **Factions**. Every
+Rolls the Faction tables and writes the result as a page in a journal called **Factions**, named
+by the book's Faction Names Formula (*The Crimson Covenant*, *Guild of the Withered Thorn*). Every
 new faction is another page there, and each page can be shown to the players on its own.
 
 A faction page is a form you keep up to date as the campaign goes:
@@ -551,6 +552,25 @@ A faction page is a form you keep up to date as the campaign goes:
   something. You then edit the page to match.
 - **Opposed save**: when two factions clash, the one most at risk rolls WIL with its top agent. On
   a fail, it doesn't act this time.
+
+### Generate Name
+
+Opens the **Name Generator**, the Warden's Guide's Naming Procedures with one tab each: **Place**
+(type the kind of place: Gulch, Fort, Lake…), **Terrain** (pick a terrain; its synonyms stand in
+for the place), **Faction**, **Realm** and **Forest**.
+
+- The window shows the name, then how it was built: the formula and each word, with the die it
+  came from. The die beside a part rolls that part again and nothing else.
+- On **Realm**, choose a dominant terrain and each adjective and noun can be swapped for one of its
+  synonyms (*The Misty Bluffs*).
+- **Add "the"** switches the formulas' optional "(The)" and "of (the)" on and off without rolling
+  again.
+- **Copy** puts the name on the clipboard; **Whisper** sends it to the Wardens only, so the table
+  hears it when you say it. **Recent** keeps the last eight names; click one to bring it back.
+- Every word comes from the **Warden Tables** compendium (Name Formula, Name Adjective, Name Noun,
+  Terrain Synonym, Group Type, Ruler Type, Faction and Ruler Name Formula, Forest Adjective and
+  Forest Noun), so you can roll any of them with `[[/table …]]`, and an imported copy you edit is
+  the one the generator uses.
 
 ### Unknown relics
 

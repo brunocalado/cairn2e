@@ -1,0 +1,11 @@
+{{!-- The five Naming Procedures as a tab rail (Primitive 6). A tab here is a kind of name, not a
+      panel: a click changes what the name part rolls, so each is an action and not core's tab. --}}
+<div class="cairn-nav-block">
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="name-gen-rule-over" data-ink-w="1.8"></div>
+    <nav class="tabs cairn-tab-rail">
+        {{#each tabs}}
+        <a class="cairn-tab{{#if active}} active{{/if}}" data-action="pickKind" data-kind="{{kind}}">{{label}}</a>
+        {{/each}}
+    </nav>
+    <div class="cairn-tab-rule" data-ink="hline" data-ink-seed="name-gen-rule-under" data-ink-w="1.8"></div>
+</div>

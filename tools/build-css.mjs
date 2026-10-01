@@ -49,6 +49,7 @@ export const CSS_SOURCES = [
   "actions.css",
   "rules-summary.css",
   "calendar.css",
+  "name-generator.css",
   "dialogs.css",
   "journal-pages.css",
   "table-draw.css",

@@ -1,0 +1,318 @@
+{
+  "_id": "IGuzT0YefNApQ0jC",
+  "name": "Ruler Type",
+  "img": "icons/commodities/currency/coin-embossed-crown-gold.webp",
+  "description": "<p>Roll the Ruler Types table of the Naming Procedures.</p>",
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "BxQ9R5pK0xWtzgYW",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Alliance",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.BxQ9R5pK0xWtzgYW"
+    },
+    {
+      "_id": "m9pMp6DpRTTyg63U",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Barony",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.m9pMp6DpRTTyg63U"
+    },
+    {
+      "_id": "uHdnIdiZgoDMIkZg",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Commonwealth",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.uHdnIdiZgoDMIkZg"
+    },
+    {
+      "_id": "Ig6LAsT9XGNuzHCX",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Confederation",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.Ig6LAsT9XGNuzHCX"
+    },
+    {
+      "_id": "GQvDVan7uLgGyHSN",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Dominion",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.GQvDVan7uLgGyHSN"
+    },
+    {
+      "_id": "8fO2XzFqMEcTKSV3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Ecclesiarchy",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.8fO2XzFqMEcTKSV3"
+    },
+    {
+      "_id": "RBUr5uawoZc7VljJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Empire",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.RBUr5uawoZc7VljJ"
+    },
+    {
+      "_id": "wfcvTkfdlzYAprQL",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Federacy",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.wfcvTkfdlzYAprQL"
+    },
+    {
+      "_id": "td2ryFMA6p9EUSqG",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Fiefdom",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.td2ryFMA6p9EUSqG"
+    },
+    {
+      "_id": "bA8prwxpdGzI6m3e",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Grand Duchy",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.bA8prwxpdGzI6m3e"
+    },
+    {
+      "_id": "aQKEC0mXdrJgozSZ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hegemony",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.aQKEC0mXdrJgozSZ"
+    },
+    {
+      "_id": "JeAhNxp8916RvPck",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Kingdom",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.JeAhNxp8916RvPck"
+    },
+    {
+      "_id": "qFEtHke3UEyzbHBR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Monarchy",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.qFEtHke3UEyzbHBR"
+    },
+    {
+      "_id": "78s3o7Jy5AMe4NMJ",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Principality",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.78s3o7Jy5AMe4NMJ"
+    },
+    {
+      "_id": "eDdsiQFrq0BFGxY1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Protectorate",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.eDdsiQFrq0BFGxY1"
+    },
+    {
+      "_id": "TEtmnfrl7zFFXhVf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Realm",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.TEtmnfrl7zFFXhVf"
+    },
+    {
+      "_id": "F5o3zeU1Zt5DgU2G",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Regency",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.F5o3zeU1Zt5DgU2G"
+    },
+    {
+      "_id": "RjzFwukMxsceGjx3",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Republic",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.RjzFwukMxsceGjx3"
+    },
+    {
+      "_id": "HG4mh4wMgGLcamOF",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "State",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.HG4mh4wMgGLcamOF"
+    },
+    {
+      "_id": "5wFcSKiAkBj116iT",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Union",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!IGuzT0YefNApQ0jC.5wFcSKiAkBj116iT"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!IGuzT0YefNApQ0jC"
+}

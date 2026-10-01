@@ -4,6 +4,10 @@
   appearance the Warden wrote, on the sheet, in Barter, in the Store and in every chat card, and
   cannot use it: no equip, no charge, no damage, no post. They can still carry it, set it aside,
   stow it and hand it over. **Reveal** in the relic's title-bar menu tells the table what it was.
+- [Added] A **Name Generator** in the Warden's tools builds names by the Warden's Guide's Naming
+  Procedures: places, terrains, factions, realms and forests, one tab each, showing every part and
+  its die and rerolling any one of them. The words are new tables in the Warden Tables compendium,
+  and Generate Faction now names its page by the Faction Names Formula.
 
 # 0.0.7
 

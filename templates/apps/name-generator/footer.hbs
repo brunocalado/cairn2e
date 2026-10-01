@@ -1,0 +1,15 @@
+{{!-- Roll, Copy and Whisper, and the switch for the formulas' optional "(The)" and "of (the)" —
+      which recomposes the name without rolling it again. A Forest name has no article. --}}
+<footer class="cairn-name-foot">
+    {{#if hasArticle}}
+    <div class="cairn-name-article">
+        <span>{{localize "CAIRN.NameGen.Article"}}</span>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" action="toggleArticle" value=article tooltip=(localize "CAIRN.NameGen.Article")}}
+    </div>
+    {{/if}}
+    <div class="cairn-name-buttons">
+        <button type="button" data-action="roll"><i class="fa-solid fa-dice" inert></i> {{localize "CAIRN.NameGen.Roll"}}</button>
+        <button type="button" data-action="copy"><i class="fa-solid fa-copy" inert></i> {{localize "CAIRN.NameGen.Copy"}}</button>
+        <button type="button" data-action="whisper"><i class="fa-solid fa-user-secret" inert></i> {{localize "CAIRN.NameGen.Whisper"}}</button>
+    </div>
+</footer>

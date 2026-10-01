@@ -1,0 +1,132 @@
+{
+  "_id": "Uqcfx0ff2TqCEnmq",
+  "name": "Ruler Name Formula",
+  "img": "icons/commodities/currency/coin-embossed-crown-gold.webp",
+  "description": "<p>Roll the Ruler Names Formula table of the Naming Procedures; [Rulers] is a roll on Ruler Type.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "klokB9OsH72qnlFy",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Noun] [Rulers]",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 1
+        }
+      },
+      "_key": "!tables.results!Uqcfx0ff2TqCEnmq.klokB9OsH72qnlFy"
+    },
+    {
+      "_id": "IVGZve9ZvLlniXYI",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Adjective] [Rulers]",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 2
+        }
+      },
+      "_key": "!tables.results!Uqcfx0ff2TqCEnmq.IVGZve9ZvLlniXYI"
+    },
+    {
+      "_id": "j4BG49NB2jULP28k",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Rulers] of (the) [Noun]",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 3
+        }
+      },
+      "_key": "!tables.results!Uqcfx0ff2TqCEnmq.j4BG49NB2jULP28k"
+    },
+    {
+      "_id": "jsmXpaDQonFyGhgf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Adjective] [Rulers] of (the) [Noun]",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 4
+        }
+      },
+      "_key": "!tables.results!Uqcfx0ff2TqCEnmq.jsmXpaDQonFyGhgf"
+    },
+    {
+      "_id": "Uf82wcISM0ZDFSb5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "(The) [Noun] [Adjective] [Rulers]",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 5
+        }
+      },
+      "_key": "!tables.results!Uqcfx0ff2TqCEnmq.Uf82wcISM0ZDFSb5"
+    },
+    {
+      "_id": "hSDGxBKpgL9qkgB5",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "[Rulers] of (the) [Adjective] [Noun]",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {
+        "cairn2e": {
+          "formula": 6
+        }
+      },
+      "_key": "!tables.results!Uqcfx0ff2TqCEnmq.hSDGxBKpgL9qkgB5"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!Uqcfx0ff2TqCEnmq"
+}

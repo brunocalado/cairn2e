@@ -1,0 +1,51 @@
+{{!-- The name and how it was built. Above it, what this kind asks for: the kind of place a Place
+      name is (typed, not rolled), the terrain a Terrain name is of, and a Realm's optional dominant
+      terrain. Under it, one list row (Primitive 7) per part: what it is, the die it came from, the
+      word, and the controls — roll this part again, or on a Realm with a dominant terrain swap it
+      for one of that terrain's synonyms. --}}
+<section class="cairn-name-main">
+    {{#if setup.place}}
+    <div class="cairn-field cairn-name-setup">
+        <label for="name-gen-poi">{{localize "CAIRN.NameGen.Poi"}}</label>
+        <input type="text" id="name-gen-poi" name="poi" value="{{poi}}" placeholder="{{localize 'CAIRN.NameGen.PoiPlaceholder'}}">
+    </div>
+    {{/if}}
+    {{#if setup.terrain}}
+    <div class="cairn-field cairn-name-setup">
+        <label for="name-gen-terrain">{{localize "CAIRN.NameGen.TerrainLabel"}}</label>
+        <select id="name-gen-terrain" name="terrain">
+            {{#each terrains}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+    </div>
+    {{/if}}
+    {{#if setup.realm}}
+    <div class="cairn-field cairn-name-setup">
+        <label for="name-gen-dominant">{{localize "CAIRN.NameGen.Dominant"}}</label>
+        <select id="name-gen-dominant" name="dominant">
+            <option value="">{{localize "CAIRN.NameGen.DominantNone"}}</option>
+            {{#each dominants}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+        </select>
+    </div>
+    {{/if}}
+
+    <div class="cairn-name-banner" data-ink="box" data-ink-seed="name-gen-banner" data-ink-w="1.6">
+        <span class="cairn-name-cap">{{localize "CAIRN.NameGen.Name"}}</span>
+        <span class="cairn-name-text">{{text}}</span>
+    </div>
+    <p class="cairn-name-hint">{{hint}}</p>
+
+    <ol class="cairn-plain-list cairn-name-parts">
+        {{#each parts}}
+        <li class="cairn-slot cairn-name-part" data-part="{{key}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="name-part-{{key}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-name-part-label">{{label}}</span>
+            <span class="cairn-name-part-die">{{die}}</span>
+            <span class="cairn-name-part-text">{{text}}</span>
+            <span class="cairn-item-controls">
+                {{#if canSwap}}<a data-action="swapTerrain" data-tooltip="{{localize 'CAIRN.NameGen.Swap'}}"><i class="fas fa-mountain"></i></a>{{/if}}
+                {{#if canReroll}}<a data-action="rerollPart" data-tooltip="{{localize 'CAIRN.NameGen.Reroll'}}"><i class="fas fa-dice-d6"></i></a>{{/if}}
+            </span>
+        </li>
+        {{/each}}
+    </ol>
+</section>
