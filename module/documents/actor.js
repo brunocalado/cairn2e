@@ -491,7 +491,7 @@ export class CairnActor extends Actor {
     // A container takes its contents with it (`CairnItem#_preDeleteOperation`), so the question
     // says how many go too — a Backpack is up to six things behind a one-word question otherwise.
     const inside = item.system.isContainer ? item.system.contents.length : 0;
-    const name = foundry.utils.escapeHTML(item.name);
+    const name = foundry.utils.escapeHTML(item.shownName);
     const proceed = await foundry.applications.api.DialogV2.confirm({
       classes: [SYSTEM_ID],
       // Deleting a Scar puts back what it did, so the question says which number moves and where

@@ -552,6 +552,26 @@ A faction page is a form you keep up to date as the campaign goes:
 - **Opposed save**: when two factions clash, the one most at risk rolls WIL with its top agent. On
   a fail, it doesn't act this time.
 
+### Unknown relics
+
+A relic a character finds is not always one they understand ("When a character first acquires a
+Relic they are not familiar with…", Warden's Guide, Knowledge). On a relic's **Details** tab the
+Warden has a **Warden** zone: switch on **Unknown to its holder**, then write what they call it
+(**Known as**) and what they can see of it.
+
+- Until it is revealed, every player sees that name and that appearance: on the sheet, in Barter,
+  in the Store, and in any chat card about it. Its picture is the real one, because what it looks
+  like is never the mystery.
+- It **cannot be used**: no equip, no charges, no damage, no post, no hotbar macro, and its sheet is
+  read-only with no Recharge tab. The holder can still carry it, set it aside, stow it, hand it
+  over or drop it. It is not offered for sale in a Store.
+- Experimenting with it is a conversation: the player says what they try, and you rule — a WIL save
+  if the fiction wants one.
+- You see the real name everywhere, with an **Unknown to them** tag. **Reveal the relic**, in the
+  relic's title-bar menu, switches it off and posts a card saying what it turned out to be.
+- The real data never leaves the client, so a player who opens the console can read it. This is a
+  table tool, not a lock.
+
 ### Encounters from tables
 
 When the Warden rolls an encounter table and a result names creatures ("1d4 Wolves"), the chat

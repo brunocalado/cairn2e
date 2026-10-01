@@ -842,6 +842,18 @@
     "Line": "{label}: {from} to {to}"
   },
   "CAIRN.RegenerateCharacter": "Regenerate",
+  "CAIRN.Relic": {
+    "GuiseName": "Known as",
+    "Reveal": "Reveal the relic",
+    "Revealed": "{guise} is {name}",
+    "Unknown": "Unknown relic",
+    "UnknownHint": "On, the holder does not know what this relic is. They see the name and the appearance written here, never its effect, charges or Recharge, and they cannot use it: they can only carry it, set it aside, stow it or hand it over. Reveal it from the title bar's menu.",
+    "UnknownLabel": "Unknown to its holder",
+    "UnknownRefused": "{name} is a mystery to you. Tell the Warden what you try with it.",
+    "UnknownToHolder": "Unknown to them",
+    "UnknownToHolderHint": "Its holder sees only the name and appearance you wrote for it.",
+    "Zone": "Warden"
+  },
   "CAIRN.RelicHint": "A Relic causes no Fatigue, has limited uses, and recharges when its condition is met.",
   "CAIRN.Remove": "Remove",
   "CAIRN.RemoveFatigue": "Remove fatigue",

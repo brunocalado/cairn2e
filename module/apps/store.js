@@ -221,7 +221,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     context.rows = items.map((item) => ({
       uuid: item.uuid,
       img: item.img,
-      name: item.name,
+      name: item.shownName ?? item.name,
       system: item.system,
       cost: buyPrice(item.system.cost, buyRatio),
       inCart: this.#cart.buy.get(item.uuid) ?? 0
@@ -241,11 +241,11 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     context.yours = sellableOwn(actor.items.contents).map((group) => ({
       label: group.place === "" ? game.i18n.localize("CAIRN.Store.OnYou")
         : group.place === BELONGINGS ? game.i18n.localize("CAIRN.Aside")
-          : actor.items.get(group.place)?.name ?? "",
+          : actor.items.get(group.place)?.shownName ?? "",
       rows: group.items.map((item) => ({
         id: item.id,
         img: item.img,
-        name: item.name,
+        name: item.shownName,
         system: item.system,
         price: sellPrice(item.system.cost, ratio),
         inCart: this.#cart.sell.has(item.id)
@@ -258,9 +258,9 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const buyLines = [];
     for (const { doc, qty } of buy) {
       const price = buyPrice(doc.system.cost, buyRatio);
-      for (let n = 0; n < qty; n++) buyLines.push({ uuid: doc.uuid, name: doc.name, price });
+      for (let n = 0; n < qty; n++) buyLines.push({ uuid: doc.uuid, name: doc.shownName ?? doc.name, price });
     }
-    const sellLines = sell.map((item) => ({ id: item.id, name: item.name, price: sellPrice(item.system.cost, ratio) }));
+    const sellLines = sell.map((item) => ({ id: item.id, name: item.shownName, price: sellPrice(item.system.cost, ratio) }));
     // `rule` is whether a drawn line follows the row — the buy lines and the sell lines are one
     // list to the eye, and a rule never sits under the last of it.
     const lines = buyLines.length + sellLines.length;
@@ -585,7 +585,8 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       if (place === null) return;
     }
     const goldBefore = actor.system.gold;
-    const sold = sell.map((item) => ({ name: item.name, price: sellPrice(item.system.cost, ratio) }));
+    // The card is read by everyone: a relic's guise, never its name (`documents/item.js#tableName`).
+    const sold = sell.map((item) => ({ name: item.tableName, price: sellPrice(item.system.cost, ratio) }));
 
     // 2. Sold things go.
     if (sell.length) await actor.deleteEmbeddedDocuments("Item", sell.map((item) => item.id));
@@ -629,10 +630,10 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
 async function postStoreCard({ actor, storeName, bought, buyRatio, sold, goldBefore, goldAfter }) {
   const lines = new Map();
   for (const item of bought) {
-    const line = lines.get(item.name) ?? { name: item.name, qty: 0, total: 0 };
+    const line = lines.get(item.tableName) ?? { name: item.tableName, qty: 0, total: 0 };
     line.qty += 1;
     line.total += buyPrice(item.system.cost, buyRatio);
-    lines.set(item.name, line);
+    lines.set(item.tableName, line);
   }
   const content = await foundry.applications.handlebars.renderTemplate(CARD_TPL, {
     bought: [...lines.values()],

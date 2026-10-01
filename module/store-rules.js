@@ -149,8 +149,10 @@ export function sellableOwn(items) {
   const all = Array.from(items);
   const groups = new Map();
   for (const item of all) {
-    // Part of the body is not for sale, whatever a Warden once priced it at.
-    if (item.type === "coin" || !(item.system?.cost > 0) || item.system?.bodily) continue;
+    // Part of the body is not for sale, whatever a Warden once priced it at. Nor is a relic its
+    // holder does not know: its price is part of what is hidden, and selling something you cannot
+    // name is a scene for the Warden to play, not a till.
+    if (item.type === "coin" || !(item.system?.cost > 0) || item.system?.bodily || item.system?.unknown) continue;
     if (holdsSomething(item, all)) continue;
     const place = placeOf(item);
     if (!groups.has(place)) groups.set(place, []);

@@ -9,24 +9,32 @@
       sheet. Core disables every `<button>` on a sheet the user cannot write, but an `<a data-action>`
       is not a form element and stays live — it would reach an update and a permission toast.
 
+      A relic unknown to this user (`item.hidden`) is cargo: every control that USES it — roll,
+      cast, equip, post — is left out, because each would answer part of what its guise hides.
+      Moving it (set aside, take back), opening its read-only sheet and dropping it stay.
+
       @param item      the row's item view (`actor-sheet.js#itemView`)
       @param editable  @root.editable — whether the write controls are drawn at all --}}
 <span class="cairn-item-controls">
+    {{#unless item.hidden}}
     {{#if item.system.equipped}}{{#if item.system.damage}}
     <a data-action="rollDamage" data-tooltip="{{localize 'CAIRN.RollDamageHint'}}"><i class="fas fa-dice-d20"></i></a>
     {{/if}}{{/if}}
+    {{/unless}}
 
     {{#if editable}}
     {{!-- Cast only shows on an EQUIPPED Spellbook: a spell is cast by holding the book in both
           hands and reading it aloud, so a book not in hand cannot be read. Consume stands beside
           it — "They disappear after one use" (`core-rules.md` → Scrolls). A scroll is petty by
           rule, so it is never on the ten and this control is never drawn there. --}}
+    {{#unless item.hidden}}
     {{#if item.canCast}}
     <a data-action="spellCast" data-tooltip="{{localize 'CAIRN.CastSpell'}}"><i class="fas fa-wand-sparkles"></i></a>
     {{/if}}
     {{#if item.canConsume}}
     <a data-action="itemConsume" data-tooltip="{{localize 'CAIRN.ConsumeScroll'}}"><i class="fas fa-wand-sparkles"></i></a>
     {{/if}}
+    {{/unless}}
 
     {{!-- Equipped is a CLOSED FIST at full ink; unequipped is an OPEN HAND, outlined and soft. It
           was one glyph in two shades before, and at 18px the difference between them was not a
@@ -34,12 +42,14 @@
           nothing else in the row. A zero-slot thing can still be a weapon or a spellbook — the
           model says so (`documents/item.js#isEquipable`) — and a thing not under direct
           possession is not equipable, which is the model's answer already. --}}
+    {{#unless item.hidden}}
     {{#if item.system.isEquipable}}
     <a data-action="itemEquipToggle" class="cairn-equip{{#if item.system.equipped}} equipped{{/if}}"
         data-tooltip="{{#if item.system.equipped}}{{localize 'CAIRN.ItemUnequip'}}{{else}}{{localize 'CAIRN.ItemEquip'}}{{/if}}">
         <i class="{{#if item.system.equipped}}fas fa-hand-fist{{else}}far fa-hand{{/if}}"></i>
     </a>
     {{/if}}
+    {{/unless}}
 
     {{!-- Set aside, or taken back: a figure that walks with you, or the camp you left it at — two
           outlines, not two shades. On the ten the thing is always carried, so only the walking
@@ -61,11 +71,13 @@
     {{!-- The description, read out loud, between the pencil and the cross. An item with nothing
           written keeps the glyph and loses the action, so the row is the same shape on every line
           and the answer to "why can I not click this" is visible rather than absent. --}}
+    {{#unless item.hidden}}
     {{#if item.hasDescription}}
     <a data-action="itemPost" data-tooltip="{{localize 'CAIRN.PostToChat'}}"><i class="fas fa-scroll"></i></a>
     {{else}}
     <a class="is-disabled" aria-disabled="true" data-tooltip="{{localize 'CAIRN.PostToChat'}}"><i class="fas fa-scroll"></i></a>
     {{/if}}
+    {{/unless}}
     {{#if editable}}
     <a data-action="itemDelete" data-tooltip="{{localize 'CAIRN.DeleteItem'}}"><i class="fas fa-xmark"></i></a>
     {{/if}}

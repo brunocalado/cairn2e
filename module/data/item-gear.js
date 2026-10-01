@@ -81,6 +81,12 @@ export class GearData extends foundry.abstract.TypeDataModel {
         choices: { none: "none", spellbook: "spellbook", scroll: "scroll", relic: "relic" }
       }),
       recharge: new fields.HTMLField({ required: true, blank: true }),
+      // A relic whose holder does not yet know what it is (`knowledge-and-perception.md` → Relics).
+      // The guise is what they call it and what they can see. The real name, description and
+      // Recharge are never overwritten, so revealing it is clearing one boolean.
+      unknown: new fields.BooleanField({ initial: false }),
+      guiseName: new fields.StringField({ required: true, blank: true, initial: "" }),
+      guiseDescription: new fields.HTMLField({ required: true, blank: true }),
       // Storage axis. Zero holds nothing; a Mule is 6, a bag of holding whatever the Warden says.
       capacity: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
       // Only read when capacity > 0 (see the class comment): a thing that holds nothing has no
@@ -95,6 +101,8 @@ export class GearData extends foundry.abstract.TypeDataModel {
     if (this.uses.value > this.uses.max) this.uses.value = this.uses.max;
     // "Scrolls … are petty" (core-rules.md → Scrolls): by rule, not by choice.
     if (this.magic === "scroll") this.slots = 0;
+    // The SRD's Knowledge section names Relics alone: only a relic has a "what does it do" phase.
+    if (this.magic !== "relic") this.unknown = false;
     // A container is not a weapon and not armour. Both only ever apply while a thing is EQUIPPED
     // (`_derived.js#sumEquippedArmor`, and the equipped guard on every Roll Damage control), and a
     // container is never equipable (`documents/item.js#isEquipable`) — so a die or an armour value

@@ -12,8 +12,8 @@
       moment a solid block lands at the top of it. The box is the same mark the Gold chip wears,
       at the same weight. --}}
 <header class="item-header">
-    <img class="portrait" src="{{item.img}}" data-action="editImage" data-edit="img" data-tooltip="{{item.name}}" />
-    <input class="name-input" type="text" name="name" value="{{item.name}}" placeholder="{{localize 'CAIRN.Name'}}"
+    <img class="portrait" src="{{item.img}}" data-action="editImage" data-edit="img" data-tooltip="{{displayName}}" />
+    <input class="name-input" type="text" name="name" value="{{displayName}}" placeholder="{{localize 'CAIRN.Name'}}"
         data-ink="box" data-ink-seed="item-name" data-ink-w="1.6" />
     {{#if isFeature}}
     {{!-- The feature's one property, where a caption would go: whether it is a Critical Damage

@@ -25,6 +25,9 @@
       kind of fact and lives on the same line. --}}
 <section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
     <div class="cairn-prop-list">
+        {{!-- A relic unknown to this user (`hidden`) shows what holding it teaches and nothing a use
+              would: its slots, and no die, armour, magic, charges, capacity or cost. --}}
+        {{#unless hidden}}
         {{#if axes.damage}}
         {{!-- The die, or none. Buttons, not a dropdown: the whole range is six short words, so a
               list that has to be opened to be read hides nothing but itself — and the one in use
@@ -190,6 +193,8 @@
         </div>
         {{/if}}
 
+        {{/unless}}
+
         {{!-- What carrying it costs of the ten, as one contiguous scale — the Armour row above is
               the same control for the same reason. Two of the buttons wear 2e's word instead of a
               digit, because *petty* IS zero and *bulky* IS two: the word teaches the rule where the
@@ -207,7 +212,7 @@
               label beside a group cannot be a `<label for>`: a group is not one control, so the
               group carries its own `aria-label`. --}}
         <div class="cairn-field cairn-prop-row"
-            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-slots">
+            {{#unless hidden}}data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-slots"{{/unless}}>
             <span class="cairn-field-label"
                 {{#if pettyByRule}}data-tooltip="{{localize 'CAIRN.SlotCostLocked'}}"{{/if}}>{{localize 'CAIRN.SlotCost'}}</span>
             <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.SlotCost'}}">
@@ -221,6 +226,7 @@
             </div>
         </div>
 
+        {{#unless hidden}}
         {{!-- Last of the fields, and the last row only when every axis is on show: the rule under
               it is the Add row's, drawn only when there is an Add row for it to sit over. --}}
         <div class="cairn-field cairn-prop-row"
@@ -243,5 +249,8 @@
             </div>
         </div>
         {{/if}}
+        {{/unless}}
     </div>
+
+    {{#if wardenRelic}}{{> "systems/cairn2e/templates/item/relic-warden.hbs"}}{{/if}}
 </section>

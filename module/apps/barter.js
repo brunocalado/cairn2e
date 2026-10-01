@@ -84,14 +84,14 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
       const contents = items.filter((i) => i.system.container === item.id).sort(byName);
       const whole = this.#picked.has(item.id);
       rows.push({
-        id: item.id, name: item.name, img: item.img, picked: whole, ringed: whole,
+        id: item.id, name: item.shownName, img: item.img, picked: whole, ringed: whole,
         setAside: item.system.carried === false && !item.system.isContainer
       });
       for (const c of contents) {
         const coin = c.type === "coin";
         rows.push({
           id: c.id, img: c.img, inside: true,
-          name: coin ? `${c.name} (${c.system.value} ${game.i18n.localize("CAIRN.GoldAbbrev")})` : c.name,
+          name: coin ? `${c.name} (${c.system.value} ${game.i18n.localize("CAIRN.GoldAbbrev")})` : c.shownName,
           // Coin is handed over by amount, below, so a sack is never picked on its own; inside a
           // container that goes, it goes too, and says so.
           picked: whole || this.#picked.has(c.id),

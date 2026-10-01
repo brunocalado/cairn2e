@@ -28,7 +28,7 @@
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-description" data-ink-w="1" data-ink-a="0.34"></div>
     {{/if}}
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-description" data-ink-w="1.6">
-        <prose-mirror name="system.description" value="{{system.description}}" toggled
+        <prose-mirror name="system.description" value="{{descriptionValue}}" toggled
             data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{descriptionHTML}}}</prose-mirror>
     </div>
     {{#if growth}}

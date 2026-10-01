@@ -148,6 +148,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       nameRemove: CairnItemSheet.#onNameRemove,
       tableRemove: CairnItemSheet.#onTableRemove,
       gearRemove: CairnItemSheet.#onGearRemove,
+      revealRelic: CairnItemSheet.#onRevealRelic,
       milestoneAdd: CairnItemSheet.#onMilestoneAdd,
       milestoneRemove: CairnItemSheet.#onMilestoneRemove
     }
@@ -166,7 +167,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   };
 
   /** Item fields whose only display is inside an editor (see `CairnActorSheet.EDITOR_FIELDS`). */
-  static EDITOR_FIELDS = ["system.description", "system.recharge"];
+  static EDITOR_FIELDS = ["system.description", "system.recharge", "system.guiseDescription"];
 
   // The group must be declared so `changeTab` accepts it; `_getTabsConfig` narrows the list to the
   // subtype's own tabs at render time.
@@ -204,6 +205,32 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     return options;
   }
 
+  /**
+   * @override — a relic unknown to this user is read, never written: its sheet holds the guise,
+   * and a field left editable would be a field that writes the real data behind it. The
+   * document's own guard refuses the write as well (`documents/item.js#_preUpdate`).
+   */
+  get isEditable() {
+    return super.isEditable && !this.item.isHiddenFromMe;
+  }
+
+  /** @override — the title bar names the guise to a user the relic is hidden from. */
+  get title() {
+    return this.item.isHiddenFromMe ? this.item.shownName : super.title;
+  }
+
+  /**
+   * @override — the Warden's Reveal, while the relic is unknown. It clears the one boolean and
+   * tells the table what the thing turned out to be.
+   */
+  _getHeaderControls() {
+    const controls = super._getHeaderControls();
+    if (game.user.isGM && this.item.type === "gear" && this.item.system.unknown) {
+      controls.push({ action: "revealRelic", icon: "fa-solid fa-eye", label: "CAIRN.Relic.Reveal" });
+    }
+    return controls;
+  }
+
   /** Tab ids this document actually shows, in rail order. */
   get #tabIds() {
     const type = this.document.type;
@@ -212,7 +239,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     return [
       "details",
       "description",
-      ...(sys.magic === "relic" ? ["recharge"] : []),
+      // A hidden relic's Recharge is part of what it hides.
+      ...(sys.magic === "relic" && !this.item.isHiddenFromMe ? ["recharge"] : []),
       ...(sys.isContainer ? ["contents"] : [])
     ];
   }
@@ -293,8 +321,16 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     context.isFeature = item.type === "feature";
     // What a toggled `<prose-mirror>` shows until its pencil is pressed: the description as it
     // reads, links live. An always-open editor printed `@UUID[…]{Raven Familiar}` as raw text.
-    context.descriptionHTML = await enrich(item.system.description, item);
-    if (item.system.magic === "relic") context.rechargeHTML = await enrich(item.system.recharge, item);
+    // The guise to a user the relic is hidden from — and the editor's `value` carries it too, or the
+    // real description would sit in the DOM of a disabled editor.
+    context.hidden = item.isHiddenFromMe;
+    context.displayName = item.shownName;
+    context.descriptionValue = item.shownDescription;
+    context.descriptionHTML = await enrich(item.shownDescription, item);
+    if (item.system.magic === "relic" && !context.hidden) context.rechargeHTML = await enrich(item.system.recharge, item);
+    // The Warden's zone on a relic's Details: whether its holder knows it, and the guise if not.
+    context.wardenRelic = game.user.isGM && item.type === "gear" && item.system.magic === "relic";
+    if (context.wardenRelic && item.system.unknown) context.guiseHTML = await enrich(item.system.guiseDescription, item);
 
     // A scar's Details is a printout of `system.outcome`. The label of the row it changed is
     // built here rather than in the template: "hp" is the character's Hit Protection maximum and
@@ -405,12 +441,32 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     if (item.system.isContainer) {
       context.contents = item.system.contents.map((held) => ({
         id: held.id,
-        name: held.name,
+        name: held.shownName,
+        hidden: held.isHiddenFromMe,
         system: held.system
       }));
     }
 
     return context;
+  }
+
+  /**
+   * The Warden reveals an unknown relic: the boolean goes, and a card tells the table what the
+   * guise turned out to be, with the real description as its body. The card is posted before the
+   * update so its caption can still name the guise the table knew it by.
+   * @this {CairnItemSheet}
+   */
+  static async #onRevealRelic() {
+    const item = this.item;
+    if (!game.user.isGM || !item.system.unknown) return;
+    const content = await foundry.applications.handlebars.renderTemplate(`systems/${SYSTEM_ID}/templates/chat/item-card.hbs`, {
+      description: await enrich(item.system.description, item)
+    });
+    const flavor = game.i18n.localize("CAIRN.Relic.Revealed", {
+      guise: foundry.utils.escapeHTML(item.tableName), name: foundry.utils.escapeHTML(item.name)
+    });
+    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: item.parent }), flavor, content });
+    await item.update({ "system.unknown": false });
   }
 
   /* -------------------------------------------- */

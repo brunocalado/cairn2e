@@ -28,7 +28,7 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
  * core's own does — and a player names their own items, so it is escaped here.
  */
 function postedName(item) {
-  return foundry.utils.escapeHTML(item.name);
+  return foundry.utils.escapeHTML(item.tableName);
 }
 
 /**
@@ -322,7 +322,12 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const uses = item.system.uses ?? { value: 0, max: 0 };
     return {
       id: item.id,
-      name: item.name,
+      // The guise while the relic is unknown to this user (`documents/item.js#shownName`).
+      name: item.shownName,
+      // Unknown to this user: the row offers no use, and prints no die, armour or charges.
+      hidden: item.isHiddenFromMe,
+      // The Warden's reminder that the holder does not know what this is.
+      unknownToHolder: item.type === "gear" && !!item.system.unknown && game.user.isGM,
       type: item.type,
       img: item.img,
       system: item.system,
@@ -341,7 +346,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       // Whether the scroll control has anything to post. Tags are stripped before the test
       // because an item whose description was written and then cleared in ProseMirror stores
       // `<p></p>`, which is truthy and would leave an enabled control that posts a blank card.
-      hasDescription: !!String(item.system.description ?? "").replace(/<[^>]*>/g, "").trim()
+      hasDescription: !!String(item.tableDescription ?? "").replace(/<[^>]*>/g, "").trim()
     };
   }
 
@@ -416,8 +421,9 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   static async #onItemPost(event, target) {
     const item = this.#rowItem(target);
     if (!item) return;
+    // A relic unknown to the table posts its guise, whoever posts it: chat is read by everyone.
     const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
-      description: await enrich(item.system.description, this.actor)
+      description: await enrich(item.tableDescription, this.actor)
     });
     await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content });
   }
@@ -435,7 +441,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const proceed = await foundry.applications.api.DialogV2.confirm({
       classes: [SYSTEM_ID],
       // A name is the player's own text and DialogV2 parses `content` as HTML.
-      content: `${game.i18n.localize("CAIRN.Notify.ConfirmConsume")} ${foundry.utils.escapeHTML(item.name)}?`,
+      content: `${game.i18n.localize("CAIRN.Notify.ConfirmConsume")} ${foundry.utils.escapeHTML(item.tableName)}?`,
       rejectClose: false,
       modal: true
     });
@@ -587,7 +593,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
         // Asked here as well as by the document: a Fatigue has no pointer to write, so core strips
         // the change before `_preUpdate` sees it and the drop would do nothing, silently.
         const refusal = nestingRefusal(this.actor, item, row.id);
-        if (refusal) return ui.notifications.warn(game.i18n.localize(refusal, { name: item.name }));
+        if (refusal) return ui.notifications.warn(game.i18n.localize(refusal, { name: item.shownName }));
         return item.update({ "system.container": row.id });
       }
       // Dragged out of a container and onto the body, where the ten apply again. Any drop that is
@@ -615,7 +621,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // Off another actor, part of the body stays where it is. From a pack or the sidebar it is a
     // new thing — the Werewolf's claws land on the character exactly that way.
     if (source && item.system.bodily) {
-      return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Bodily", { name: item.name }));
+      return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Bodily", { name: item.shownName }));
     }
     const chosen = item.toObject();
     if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };

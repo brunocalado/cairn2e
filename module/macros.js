@@ -22,12 +22,17 @@ export const createCairnMacro = async (data, slot) => {
   if (!item.system.damage) {
     return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MacroWeaponsOnly"));
   }
+  // A relic its holder does not know is not rolled: the die is part of what it hides.
+  if (item.isHiddenFromMe) {
+    return ui.notifications.warn(game.i18n.localize("CAIRN.Relic.UnknownRefused", { name: item.shownName }));
+  }
 
+  // The macro's name is on the hotbar, which other users can see: the relic's guise while unknown.
   const command = `game.cairn2e.rollItemMacro("${actor.id}", "${item.id}");`;
-  let macro = game.macros.find((m) => m.name === item.name && m.command === command);
+  let macro = game.macros.find((m) => m.name === item.tableName && m.command === command);
   if (!macro) {
     macro = await Macro.create({
-      name: item.name,
+      name: item.tableName,
       type: "script",
       img: item.img,
       command,
@@ -53,6 +58,10 @@ export const rollItemMacro = async (actorId, itemId) => {
     );
   }
 
+  // A macro made before the Warden hid the relic still may not roll it.
+  if (item.isHiddenFromMe) {
+    return ui.notifications.warn(game.i18n.localize("CAIRN.Relic.UnknownRefused", { name: item.shownName }));
+  }
   // All roll-building (formula, Panic/Impaired/Enhanced/Blast, the chat card, target flagging)
   // lives in module/rolls.js — see its header comment.
   return rollDamage(actor, item);

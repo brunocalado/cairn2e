@@ -9,6 +9,7 @@ import { SYSTEM_ID } from "./constants.js";
 import { applyGold, gainPlaces, putCoin } from "./coin.js";
 import { carryLight } from "./light-sources.js";
 import { bundleItems } from "./transfer-rules.js";
+import { tableNameOf } from "./data/_derived.js";
 
 /** The query that hands a barter to a client allowed to write the recipient. Registered in
  *  `module/cairn2e.js`; the name is built from `SYSTEM_ID`, never written out. */
@@ -169,8 +170,10 @@ export async function sendBarter(actor, target, items, coin = 0) {
   }
 
   const landed = new Set(result.landed);
-  const moved = bundles.filter((b) => landed.has(b.id)).map((b) => b.data.name);
-  const left = bundles.filter((b) => !landed.has(b.id)).map((b) => b.data.name);
+  // Named from the bundle's data, because the source item may already be gone — and by the name
+  // the table reads, so a relic unknown to its holder goes by its guise (`documents/item.js`).
+  const moved = bundles.filter((b) => landed.has(b.id)).map((b) => tableNameOf(b.data));
+  const left = bundles.filter((b) => !landed.has(b.id)).map((b) => tableNameOf(b.data));
   await carryLight(actor, result.arrived);
   if (landed.size) await actor.deleteEmbeddedDocuments("Item", [...landed]);
   if (result.coin) await applyGold(actor, -result.coin);

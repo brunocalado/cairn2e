@@ -1,3 +1,10 @@
+# Unreleased
+
+- [Added] The Warden can mark a relic **unknown**. Until it is revealed, its holder sees a name and an
+  appearance the Warden wrote, on the sheet, in Barter, in the Store and in every chat card, and
+  cannot use it: no equip, no charge, no damage, no post. They can still carry it, set it aside,
+  stow it and hand it over. **Reveal** in the relic's title-bar menu tells the table what it was.
+
 # 0.0.7
 
 - [Changed] With **Light Sources** 0.3.0, a lit Torch, Lantern, Candle Helmet or Lightsucker Candle is the

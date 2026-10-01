@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { slotsForItem, nestingRefusal } from "../data/_derived.js";
+import { slotsForItem, nestingRefusal, tableNameOf } from "../data/_derived.js";
 import { placeOf, sackAt } from "../coin-rules.js";
 import { SYSTEM_ID, DEFAULT_ARTWORK, GEAR_ARTWORK } from "../constants.js";
 import { revertScarGain } from "../scars.js";
@@ -49,6 +49,9 @@ const GRANTED_ONLY = {
   scar: "CAIRN.Notify.ScarNotGiven",
   growth: "CAIRN.Notify.GrowthNotGiven"
 };
+
+/** What a holder may still change on a relic unknown to them: where it is, and nothing else. */
+const UNKNOWN_RELIC_MOVES = new Set(["system.carried", "system.container"]);
 
 export class CairnItem extends Item {
   /**
@@ -209,6 +212,20 @@ export class CairnItem extends Item {
    */
   async _preUpdate(changes, options, user) {
     if ((await super._preUpdate(changes, options, user)) === false) return false;
+    // An unknown relic is cargo to its holder: they may move it — set it aside, take it back,
+    // stow it — and nothing else. Every use would answer part of what the guise hides (its
+    // charges, its die, its armour), so equipping, spending a charge and editing are refused for
+    // a non-GM. An allow-list, so a field added to the model later is closed by default; a trade
+    // or a drag is a create on the receiver, not an update, and passes. Checked before anything
+    // below adds a key of its own.
+    if (this.type === "gear" && this.system.unknown && !user.isGM) {
+      // Core's own bookkeeping (`_id`, `_stats`) is not the user's change.
+      const touched = Object.keys(foundry.utils.flattenObject(changes)).filter((k) => !k.startsWith("_"));
+      if (touched.some((k) => !UNKNOWN_RELIC_MOVES.has(k))) {
+        ui.notifications.warn(game.i18n.localize("CAIRN.Relic.UnknownRefused", { name: this.tableName }));
+        return false;
+      }
+    }
     // Setting a thing aside takes it out of your hands. A shield left on the floor that stayed
     // `equipped` would keep giving its Armor to the character who walked away from it
     // (`data/_derived.js#sumEquippedArmor`), and a spellbook on a shelf would still be readable.
@@ -295,6 +312,38 @@ export class CairnItem extends Item {
     if ((await super._preDelete(options, user)) === false) return false;
     if (this.type === "scar") await revertScarGain(this);
     if (this.type === "growth") await revertGrowthGain(this);
+  }
+
+  /* -------------------------------------------- */
+  /*  Unknown relics                              */
+  /* -------------------------------------------- */
+
+  /** Unknown to this user: a relic the Warden has not revealed, seen by anyone but a GM. */
+  get isHiddenFromMe() {
+    return this.type === "gear" && !!this.system.unknown && !game.user.isGM;
+  }
+
+  /** The name this user should see: the guise while the relic is hidden from them. Every sheet
+   *  and window reads this. */
+  get shownName() {
+    return this.isHiddenFromMe ? tableNameOf(this) : this.name;
+  }
+
+  /** The description this user should see: the appearance the Warden wrote, while hidden. */
+  get shownDescription() {
+    return this.isHiddenFromMe ? this.system.guiseDescription : this.system.description;
+  }
+
+  /** The name everyone reads — chat, a notification another user sees, a hotbar macro: the guise
+   *  while the relic is unknown, WHOEVER writes it. A Warden posting from a player's sheet would
+   *  otherwise put the real name into the public log. */
+  get tableName() {
+    return tableNameOf(this);
+  }
+
+  /** The description everyone reads: the guise's while the relic is unknown, whoever posts. */
+  get tableDescription() {
+    return this.type === "gear" && this.system.unknown ? this.system.guiseDescription : this.system.description;
   }
 
   /** @override */
