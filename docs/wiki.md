@@ -57,6 +57,18 @@ depend on who you are:
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
 
+### The watch
+
+A small bar above the player list, at the bottom left, shows the **watch**: a day in Cairn is three
+watches, morning, afternoon and night. Three squares, the current one filled, then its name.
+Everyone sees it.
+
+- The **Warden** clicks it to move to the next watch, and right-clicks it to go back one.
+- It shows Foundry's own world time, so a calendar module shows the same moment. Morning starts at
+  06:00, afternoon at 14:00 and night at 22:00.
+- During a **journey**, the journey moves the watch when one is spent. Clicking the bar then opens
+  the journey instead of skipping a watch.
+
 ### Settings
 
 Most of Cairn's rules have no on/off switch: they just apply. **Configure Settings** has only a
@@ -547,7 +559,9 @@ members and names the ones it left behind.
 
 ### Each watch
 
-A day has three watches: morning, afternoon and night.
+A day has three watches: morning, afternoon and night. The journey starts on the watch it is now
+(the bar above the player list, see [The watch](#the-watch)) and moves it on each time a watch is
+spent. The **Day** it shows counts the days of the journey.
 
 1. **Weather** is rolled automatically each morning. The Warden can pick it by hand instead, or
    press **Auto** to roll again. When the weather costs something, buttons offer to add a Fatigue

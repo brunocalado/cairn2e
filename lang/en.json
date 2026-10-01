@@ -127,6 +127,11 @@
     "ReverseNoActor": "The actor this hit landed on no longer exists.",
     "Reversed": "Reversed \u2014 the HP and STR this hit took have been given back."
   },
+  "CAIRN.Clock": {
+    "Hint": "The {watch} watch. Click for the next watch, right-click to go back one.",
+    "HintJourney": "The {watch} watch. A journey is underway, and the watch moves when the journey resolves it: click to open the journey.",
+    "Name": "The {watch} watch"
+  },
   "CAIRN.CoinAmount": {
     "Title": "How much coin?",
     "Label": "Gold pieces to move (up to {max})",
@@ -540,11 +545,6 @@
     "VastHint": "Up to +2 watches for especially vast terrain.",
     "Waiting": "No journey is underway. The Warden begins one from the Cairn sidebar tab.",
     "WatchFlavor": "Day {day}, {watch}",
-    "Watches": {
-      "afternoon": "afternoon",
-      "morning": "morning",
-      "night": "night"
-    },
     "WayFound": "The party finds its way again.",
     "Weather": "Weather",
     "WeatherAuto": "Auto",
@@ -1038,6 +1038,11 @@
   "CAIRN.Unarmed": "Unarmed",
   "CAIRN.Uses": "Uses",
   "CAIRN.WardenUserName": "Warden",
+  "CAIRN.Watches": {
+    "afternoon": "afternoon",
+    "morning": "morning",
+    "night": "night"
+  },
   "CAIRN.WelcomePlaylist": "Welcome",
   "CAIRN.Whisper": {
     "Title": "Whisper",

@@ -53,7 +53,8 @@ export const CSS_SOURCES = [
   "table-draw.css",
   "combat-tracker.css",
   "sidebar-tab.css",
-  "token-hud.css"
+  "token-hud.css",
+  "watch-clock.css"
 ];
 
 /** The sources joined in build order, as text — what the checks read instead of the built file. */

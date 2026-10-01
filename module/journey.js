@@ -59,8 +59,9 @@ import { SYSTEM_ID, SETTINGS, GEAR, TABLES, CONDITION } from "./constants.js";
 import { rollWardenTable, copyOf } from "./helpers.js";
 import {
   ACTIONS, WATCHES, WEATHER, WEATHER_EFFECTS, PATHS, DISTANCES, TERRAINS, VAST_MAX,
-  watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, nextWatch, pendingNeeds, eventsForWatch
+  watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, pendingNeeds, eventsForWatch
 } from "./journey-rules.js";
+import { currentWatch, advanceWatch } from "./apps/watch-clock.js";
 import {
   rollJourneyDie, postRollCard, postJourneyCard, drawWildernessEncounter, rollReaction
 } from "./rolls.js";
@@ -252,8 +253,10 @@ async function start(_journey, { path, distance, terrain, season, vast }) {
     route,
     watchesNeeded: watchesNeeded(route),
     progress: 0,
+    // The day OF THE JOURNEY, which is what its cards print ("Day 2, night"). The watch is not
+    // the journey's: it is the world's (`apps/watch-clock.js`), so a party can set out in the
+    // afternoon, and a calendar module shows the same moment.
     day: 1,
-    watch: 0,
     weather: null,
     previousWeather: "",
     lost: false,
@@ -496,7 +499,7 @@ async function resolveWatch(journey) {
   // The event: once per watch, twice through a night the party travels (`eventsForWatch`). It is
   // written onto the journey rather than whispered to chat — the Warden is already looking at the
   // window, and the window's copy is the one that can be rerolled and placed.
-  const count = eventsForWatch(journey.watch === WATCHES.length - 1, action);
+  const count = eventsForWatch(currentWatch() === WATCHES.length - 1, action);
   journey.events = [];
   journey.eventsWatch = flavor;
   for (let i = 0; i < count; i++) {
@@ -512,17 +515,18 @@ async function resolveWatch(journey) {
   // The clock. A night nobody camped through costs everyone a Fatigue and Deprived, and the next
   // day's terrain is a step harder.
   if (action === "camp") journey.camped = true;
-  const next = nextWatch(journey);
-  const newDay = next.day !== journey.day;
+  // The world's clock moves, and the journey's day turns over when it passes from night into
+  // morning — whoever else is reading world time sees the same step.
+  const newDay = currentWatch() === WATCHES.length - 1;
+  await advanceWatch();
   if (newDay) {
     if (!journey.camped) await addFatigueToParty(journey, { deprive: true, flavor });
     journey.sleepDeprived = !journey.camped;
     journey.camped = false;
     journey.previousWeather = journey.weather;
     journey.weather = null;
+    journey.day += 1;
   }
-  journey.day = next.day;
-  journey.watch = next.watch;
   journey.action = "";
   journey.lostRoll = null;
   journey.supplyRoll = null;
@@ -653,7 +657,7 @@ async function dealRations(actors, count) {
 export function watchLabel(journey) {
   return game.i18n.localize("CAIRN.Journey.WatchFlavor", {
     day: journey.day,
-    watch: game.i18n.localize(`CAIRN.Journey.Watches.${WATCHES[journey.watch]}`)
+    watch: game.i18n.localize(`CAIRN.Watches.${WATCHES[currentWatch()]}`)
   });
 }
 

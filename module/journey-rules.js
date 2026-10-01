@@ -116,15 +116,6 @@ export function raiseTerrain(terrain, steps) {
 }
 
 /**
- * The watch after this one. A day is three watches; the third rolls into the next day's morning.
- * @param {{day: number, watch: number}} clock
- * @returns {{day: number, watch: number}}
- */
-export function nextWatch({ day, watch }) {
-  return watch >= WATCHES.length - 1 ? { day: day + 1, watch: 0 } : { day, watch: watch + 1 };
-}
-
-/**
  * The action the Warden set, and what the watch still needs before it can be resolved: the day's
  * weather, the lost roll a Travel owes, the supply roll a Supply owes. `ready` is all of it met —
  * the one predicate the Resolve button and `journey.js#resolveWatch` both read.

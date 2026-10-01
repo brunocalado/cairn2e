@@ -49,6 +49,7 @@ import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
+import { installWatchClock } from "./apps/watch-clock.js";
 import * as models from "./data/_module.js";
 import * as rolls from "./rolls.js";
 
@@ -236,6 +237,8 @@ Hooks.once("init", async function () {
   registerEnrichers();
   // A Warden's double-click on a map pin linked to a route opens the journey form, not the page.
   registerPointcrawlHooks();
+  // The watch, above the player list on every client (module/apps/watch-clock.js).
+  installWatchClock();
 
   // Right-clicking a message in the log offers this system's own entries. Registered in `init`
   // beside the rest; the hook itself fires every time a context menu is built, and the entry

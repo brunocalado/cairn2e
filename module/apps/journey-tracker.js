@@ -9,6 +9,7 @@ import { SYSTEM_ID } from "../constants.js";
 import * as journey from "../journey.js";
 import { ACTIONS, WATCHES, WEATHER, PATHS, WEATHER_EFFECTS, pendingNeeds } from "../journey-rules.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
+import { currentWatch } from "./watch-clock.js";
 import { addEncounterToScene, pickScenePoint } from "../encounters.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -132,6 +133,9 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     for (const hook of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"]) {
       Hooks.on(hook, (effect) => { if (onRoster(effect.parent)) redraw(); });
     }
+    // The watch band reads the world's clock, which a calendar module, the watch clock or a
+    // combat round moves without the journey changing.
+    Hooks.on("updateWorldTime", redraw);
   }
 
   /** @override */
@@ -163,7 +167,8 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
       lostOdds: PATHS[state.route.path].lost
     };
     context.ticks = Array.from({ length: state.watchesNeeded }, (_, i) => ({ done: i < state.progress }));
-    context.watches = WATCHES.map((w, i) => ({ label: t(`CAIRN.Journey.Watches.${w}`), current: i === state.watch }));
+    const now = currentWatch();
+    context.watches = WATCHES.map((w, i) => ({ label: t(`CAIRN.Watches.${w}`), current: i === now }));
     context.weather = state.weather && {
       label: t(`CAIRN.Journey.Weathers.${state.weather}`),
       effect: t(`CAIRN.Journey.WeatherEffects.${state.weather}`),

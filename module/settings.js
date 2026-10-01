@@ -7,6 +7,7 @@
 
 import { SYSTEM_ID, SETTINGS } from "./constants.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
+import { refreshWatchClock } from "./apps/watch-clock.js";
 import { CairnStore } from "./apps/store.js";
 import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
@@ -34,7 +35,11 @@ export const registerSettings = () => {
     config: false,
     type: Object,
     default: null,
-    onChange: () => CairnJourneyTracker.refresh()
+    onChange: () => {
+      CairnJourneyTracker.refresh();
+      // A journey underway changes what the watch clock's click does.
+      refreshWatchClock();
+    }
   });
 
   // Hidden: the record of the one-time world install (module/welcome.js), not a rule toggle.

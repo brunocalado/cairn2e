@@ -1,0 +1,9 @@
+{{!-- The watch clock (module/apps/watch-clock.js). One button: a Warden's steps the watch, a
+      player's is disabled and only reads. Three marks, the current one filled, then the name. --}}
+<button type="button" class="cairn-watch-face" data-action="step" data-tooltip="{{hint}}"
+        aria-label="{{label}}" {{#unless canStep}}disabled{{/unless}}>
+    <span class="cairn-watch-marks">
+        {{#each marks}}<span class="cairn-watch-mark{{#if current}} current{{/if}}"></span>{{/each}}
+    </span>
+    <span class="cairn-watch-name">{{watch}}</span>
+</button>
