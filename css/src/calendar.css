@@ -10,13 +10,14 @@
      * The calendar window (module/apps/calendar.js) — today, the watch, the  *
      * year and the month of the Vald calendar.                              *
      *                                                                       *
-     * Monochrome like everything else: a season is a named ink banner, the  *
-     * lit watch and today are the only ink-filled cells, the day a season   *
-     * begins carries a 4px left rule and the Reclamation is dashed. No hue  *
-     * says any of it. The window is as tall as its content; only the day's  *
-     * notes scroll. Every position — the needle, a banner, a month on the   *
-     * strip — arrives as a custom property from the context, because it is *
-     * data; every design value is here.                                     *
+     * Monochrome but for the seasons: each has a colour (maintainer's call, *
+     * 2026-10-01), ground down toward ink like the store's gain and loss,   *
+     * on its banner and on the day it begins, which carries a 4px left rule *
+     * and the season's glyph. The lit watch and today are the only ink-     *
+     * filled cells, and the Reclamation is dashed. The window is as tall as *
+     * its content; only the day's notes scroll. Every position — the        *
+     * needle, a banner, a month on the strip — arrives as a custom property *
+     * from the context, because it is data; every design value is here.    *
      **************************************************************************/
 
     &.cairn-calendar {
@@ -72,15 +73,6 @@
             text-overflow: ellipsis;
         }
 
-        & button.cairn-calendar-show {
-            --button-size: 30px;
-            flex: none;
-            gap: 7px;
-            padding: 0 12px;
-            font-size: 11px;
-            white-space: nowrap;
-        }
-
         & span.cairn-calendar-time {
             flex: none;
             font-size: 30px;
@@ -108,7 +100,10 @@
             border-radius: var(--cairn-radius);
         }
 
+        /* 32px: the frame's 36 less its two 2px rules. Left at the inherited 36, a segment hung
+           4px out of the bottom of the frame, and the words sat 2px below its middle. */
         & button.cairn-calendar-watch {
+            --button-size: 32px;
             gap: 7px;
             height: 100%;
             padding: 0;
@@ -296,14 +291,33 @@
             row-gap: 3px;
         }
 
+        /* A season's colour, read by its banner and by the day it begins. */
+        [data-season="dead"] {
+            --cairn-season: rgb(74 96 122);
+        }
+
+        [data-season="dry"] {
+            --cairn-season: rgb(160 116 36);
+        }
+
+        [data-season="wet"] {
+            --cairn-season: rgb(46 104 90);
+        }
+
+        [data-season="harvest"] {
+            --cairn-season: rgb(148 66 32);
+        }
+
+        /* A banner: the season's colour as a wash under ink text, its rule in the full colour. */
         .cairn-calendar-season {
             grid-row: 1;
             grid-column: var(--from) / span var(--span);
             display: flex;
             align-items: center;
-            padding-left: 6px;
-            border: var(--cairn-rule) solid var(--cairn-ink);
-            border-right-width: 0;
+            justify-content: center;
+            gap: 6px;
+            border: var(--cairn-rule) solid var(--cairn-season);
+            background: color-mix(in srgb, var(--cairn-season) 16%, transparent);
             overflow: hidden;
             white-space: nowrap;
             font-size: 9px;
@@ -311,8 +325,9 @@
             letter-spacing: 0.14em;
             text-transform: uppercase;
 
-            &:nth-of-type(4) {
-                border-right-width: var(--cairn-rule);
+            i {
+                color: var(--cairn-season);
+                font-size: 10px;
             }
         }
 
@@ -365,22 +380,34 @@
             padding-bottom: 14px;
         }
 
+        /* The month's name, and at the right the selected day: its date, then where it falls. */
         .cairn-calendar-monthbar {
+            align-items: baseline;
             padding-bottom: 6px;
         }
 
-        .cairn-calendar-monthtitle {
+        .cairn-calendar-monthname {
+            flex: none;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .cairn-calendar-detail-title {
             display: flex;
             align-items: baseline;
             gap: 10px;
             min-width: 0;
             white-space: nowrap;
+            overflow: hidden;
         }
 
-        .cairn-calendar-monthname {
-            font-size: 15px;
+        .cairn-calendar-detail-date {
+            flex: none;
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
         }
 
@@ -425,7 +452,7 @@
             }
 
             &.season-start {
-                border-left: 4px solid var(--cairn-ink);
+                border-left: 4px solid var(--cairn-season);
             }
         }
 
@@ -449,10 +476,23 @@
         }
 
         .cairn-calendar-day-season {
+            display: flex;
+            align-items: center;
+            gap: 4px;
             font-size: 8.5px;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
+
+            i {
+                color: var(--cairn-season);
+                font-size: 10px;
+            }
+        }
+
+        /* On today's ink cell the glyph keeps the cell's paper: a season's colour on ink is lost. */
+        & button.cairn-calendar-day.today .cairn-calendar-day-season i {
+            color: currentColor;
         }
 
         .cairn-calendar-day-marks {
@@ -461,40 +501,33 @@
             height: 7px;
         }
 
-        /* The selected day. Its notes are the one part of the window that scrolls; both axes are
-           named, because beside a scrolling axis a `visible` one is promoted to `auto`. */
+        /* The selected day's notes, the one part of the window that scrolls; both axes are
+           named, because beside a scrolling axis a `visible` one is promoted to `auto`. Core
+           caps an `auto`-height window at the viewport, and the content past that is clipped,
+           so the notes give up height before anything else does: `min-height: 0` lets the
+           section and the list shrink below their content, and the list scrolls the rest. */
         .cairn-calendar-detail {
             display: flex;
             flex-direction: column;
-        }
-
-        .cairn-calendar-detail-title {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            padding-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .cairn-calendar-detail-date {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            flex: 1 1 auto;
+            min-height: 0;
         }
 
         .cairn-calendar-notes {
             display: flex;
             flex-direction: column;
+            min-height: 0;
             max-height: 240px;
             overflow-x: hidden;
             overflow-y: auto;
         }
 
         /* A note: title and tags over its text, the controls at the top right. The text is plain
-           and keeps the lines it was typed with. */
+           and keeps the lines it was typed with. `flex: none`, or a list taller than its box
+           squeezes every row down to the slot's 28px minimum and they print over each other
+           instead of scrolling. */
         .cairn-slot.cairn-calendar-note {
+            flex: none;
             align-items: flex-start;
             padding: 8px 0;
             margin-bottom: 0;

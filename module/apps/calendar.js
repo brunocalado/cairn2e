@@ -27,6 +27,15 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/calendar`;
 const SHIFTS_BACK = [-60, -30, -15];
 const SHIFTS_ON = [15, 30, 60];
 
+/** Each season's glyph, and the key its colour is set by in the stylesheet, in the calendar's
+ *  season order: the shortest day falls in Dead, the longest in Wet (`wardens-guide/vald.md`). */
+const SEASON_LOOKS = [
+  { key: "dead", icon: "fa-snowflake" },
+  { key: "dry", icon: "fa-sun" },
+  { key: "wet", icon: "fa-cloud-rain" },
+  { key: "harvest", icon: "fa-wheat-awn" }
+];
+
 const pad = (n) => String(n).padStart(2, "0");
 
 /**
@@ -195,7 +204,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     const leap = isReclamationYear(view.year);
     context.view = view;
     context.columns = YEAR_DAYS + (leap ? MONTH_DAYS : 0);
-    context.seasons = cal.seasons.values.map((s, i) => ({ name: t(s.name), from: SEASON_STARTS[i], span: SEASON_DAYS }));
+    context.seasons = cal.seasons.values.map((s, i) => ({ ...SEASON_LOOKS[i], name: t(s.name), from: SEASON_STARTS[i], span: SEASON_DAYS }));
     context.months = cal.months.values.slice(0, leap ? RECLAMATION + 1 : RECLAMATION).map((m, index) => ({
       index,
       abbr: t(m.abbreviation),
@@ -212,8 +221,6 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     const month = cal.months.values[view.month];
     context.reclamation = reclamation;
     context.monthName = t(month.name);
-    context.monthSub = reclamation ? t("CAIRN.Calendar.ReclamationCaption")
-      : t("CAIRN.Calendar.MonthOf", { n: view.month + 1, of: RECLAMATION });
     context.heads = reclamation ? RECLAMATION_DAY_NAMES.map((k) => t(k)) : cal.days.values.map((d) => t(d.name));
     const length = reclamation ? RECLAMATION_DAYS : MONTH_DAYS;
     context.days = Array.from({ length }, (_, day) => {
@@ -229,7 +236,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
         wardenNote: notes.some(({ entry }) => !isPublic(entry)),
         today: view.year === now.year && view.month === now.month && day === now.dayOfMonth,
         selected: day === view.day,
-        seasonStart: season >= 0 ? t(cal.seasons.values[season].name) : ""
+        seasonStart: season >= 0 ? { ...SEASON_LOOKS[season], name: t(cal.seasons.values[season].name) } : null
       };
     });
 
@@ -258,6 +265,23 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       day: month * MONTH_DAYS + day + 2 - SEASON_STARTS[season],
       days: SEASON_DAYS
     });
+  }
+
+  /**
+   * @override — Show to players sits in the title bar, LEFT of the ellipsis, as a labelled button,
+   * built the way the NPC sheet's Promote is (`npc-sheet.js#_renderFrame`): a frame button would
+   * land right of the ellipsis with its word hidden in an `aria-label`. The Warden's alone.
+   */
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+    if (!game.user.isGM) return frame;
+    const button = frame.ownerDocument.createElement("button");
+    button.type = "button";
+    button.className = "header-control cairn-frame-label";
+    button.dataset.action = "showToPlayers";
+    button.textContent = game.i18n.localize("CAIRN.Calendar.ShowToPlayers");
+    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    return frame;
   }
 
   /** @override — the two fields answer a change, not a click. */
@@ -332,18 +356,9 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     this.render();
   }
 
-  /** A month on the strip, or one step either way from the grid's arrows — through the
-   *  Reclamation in a year that has one, and over New Year. @this {CairnCalendarApp} */
+  /** A month on the strip. @this {CairnCalendarApp} */
   static #onViewMonth(event, target) {
-    let { year, month, day } = this.#view;
-    if (target.dataset.month !== undefined) month = Number(target.dataset.month);
-    else {
-      const last = () => (isReclamationYear(year) ? RECLAMATION : RECLAMATION - 1);
-      month += Number(target.dataset.delta);
-      if (month > last()) { year += 1; month = 0; }
-      else if (month < 0) { year -= 1; month = last(); }
-    }
-    this.#view = CairnCalendarApp.#clamp({ year, month, day });
+    this.#view = CairnCalendarApp.#clamp({ ...this.#view, month: Number(target.dataset.month) });
     this.render();
   }
 

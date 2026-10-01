@@ -78,7 +78,8 @@ The **Warden** also:
 - clicks a watch on the dial to move on to its next start, or the filled one to go back to its
   start;
 - right-clicks a day for **Make this today** (same time of day);
-- presses **Show to players** to open everyone's calendar on the day the Warden is looking at.
+- presses **Show to players**, on the window's title bar, to open everyone's calendar on the day
+  the Warden is looking at.
 
 **Notes.** The day under the month grid lists the notes on it: a filled mark on a day means a note
 everyone sees, a hollow one a note only the Warden sees. Anyone who can read a note can post it to

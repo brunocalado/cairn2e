@@ -1,29 +1,24 @@
 {{!-- Today, the watch and the Warden's clock (module/apps/calendar.js).
 
-      The date line never wraps. Beside it the Warden has Show to players, a player the time, since
-      a player has no clock row to read it from. The dial is a picture of the day: three watches,
-      the lit one filled, a needle at the exact time (`--at`, the share of the day since 06:00).
-      Its segments are the Warden's watch control; a player's are disabled. --}}
+      The date line never wraps. Beside it a player has the time, since a player has no clock row
+      to read it from; the Warden's Show to players is on the title bar. The dial is a picture of
+      the day: three watches, the lit one filled, a needle at the exact time (`--at`, the share of
+      the day since 06:00). Its segments are the Warden's watch control; a player's are disabled.
+      They carry no tooltip: the word and the glyph already say which watch it is. --}}
 <section class="cairn-calendar-head" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-head" data-ink-w="2">
     <div class="cairn-calendar-today">
         <div class="cairn-calendar-today-text">
             <h2 class="cairn-calendar-date">{{today.date}}</h2>
             <p class="cairn-calendar-sub">{{today.sub}}</p>
         </div>
-        {{#if isGM}}
-        <button type="button" class="cairn-calendar-show" data-action="showToPlayers">
-            <i class="fa-solid fa-eye" inert></i> {{localize "CAIRN.Calendar.ShowToPlayers"}}
-        </button>
-        {{else}}
-        <span class="cairn-calendar-time">{{time}}</span>
-        {{/if}}
+        {{#unless isGM}}<span class="cairn-calendar-time">{{time}}</span>{{/unless}}
     </div>
 
     <div class="cairn-calendar-dial" style="--at: {{needle}}%">
         <div class="cairn-calendar-watches">
             {{#each watches}}
             <button type="button" class="cairn-calendar-watch{{#if lit}} lit{{/if}}" data-action="pickWatch" data-watch="{{index}}"
-                    data-tooltip-text="{{hint}}" aria-label="{{hint}}" {{#unless ../isGM}}disabled{{/unless}}>
+                    aria-label="{{hint}}" {{#unless ../isGM}}disabled{{/unless}}>
                 {{> "systems/cairn2e/templates/parts/watch-glyph.hbs" key=key}}
                 <span class="cairn-calendar-watch-name">{{watch}}</span>
             </button>

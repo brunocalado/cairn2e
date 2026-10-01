@@ -1,26 +1,26 @@
-{{!-- The viewed month as a 6 × 4 grid, or the Reclamation's six named days. Today is the one
-      ink-filled cell, the selected day is framed, and the day a season begins carries a heavy left
-      rule and the season's name. A filled mark says a note everyone reads covers the day, a hollow
+{{!-- The viewed month as a 6 × 4 grid, or the Reclamation's six named days, under the month's
+      name and the selected day's date and place in its season. The strip above is how a month is
+      chosen, so the bar has no arrows of its own. Today is the one ink-filled cell, the selected
+      day is framed, and the day a season begins carries a heavy left rule in the season's colour
+      with its glyph and name. A filled mark says a note everyone reads covers the day, a hollow
       one a Warden-only note. The Warden right-clicks a day for its menu. --}}
 <section class="cairn-calendar-monthview{{#if reclamation}} reclamation{{/if}}" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-grid" data-ink-w="2">
     <div class="cairn-calendar-monthbar" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-month" data-ink-w="2">
-        <div class="cairn-calendar-monthtitle">
-            <span class="cairn-calendar-monthname">{{monthName}}</span>
-            <span class="cairn-calendar-sub">{{monthSub}}</span>
-        </div>
-        <div class="cairn-calendar-stepper">
-            <button type="button" class="cairn-calendar-arrow" data-action="viewMonth" data-delta="-1" aria-label="{{localize 'CAIRN.Calendar.PreviousMonth'}}"><i class="fa-solid fa-chevron-left" inert></i></button>
-            <button type="button" class="cairn-calendar-arrow" data-action="viewMonth" data-delta="1" aria-label="{{localize 'CAIRN.Calendar.NextMonth'}}"><i class="fa-solid fa-chevron-right" inert></i></button>
+        <span class="cairn-calendar-monthname">{{monthName}}</span>
+        <div class="cairn-calendar-detail-title">
+            <span class="cairn-calendar-detail-date">{{detail.date}}</span>
+            <span class="cairn-calendar-sub">{{detail.sub}}</span>
         </div>
     </div>
     <div class="cairn-calendar-grid">
         {{#each heads}}<span class="cairn-calendar-head-cell">{{this}}</span>{{/each}}
         {{#each days}}
         <button type="button" class="cairn-calendar-day{{#if today}} today{{/if}}{{#if selected}} picked{{/if}}{{#if seasonStart}} season-start{{/if}}"
-                data-action="pickDay" data-day="{{day}}" aria-label="{{label}}" {{#if selected}}aria-current="date"{{/if}}>
+                data-action="pickDay" data-day="{{day}}" aria-label="{{label}}" {{#if selected}}aria-current="date"{{/if}}
+                {{#if seasonStart}}data-season="{{seasonStart.key}}"{{/if}}>
             <span class="cairn-calendar-day-top">
                 <span>{{number}}</span>
-                {{#if seasonStart}}<span class="cairn-calendar-day-season">{{seasonStart}}</span>{{/if}}
+                {{#if seasonStart}}<span class="cairn-calendar-day-season"><i class="fa-solid {{seasonStart.icon}}" inert></i>{{seasonStart.name}}</span>{{/if}}
             </span>
             <span class="cairn-calendar-day-marks">
                 {{#if publicNote}}<span class="cairn-calendar-mark" aria-hidden="true"></span>{{/if}}

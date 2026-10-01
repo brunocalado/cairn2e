@@ -1,13 +1,9 @@
-{{!-- The selected day: its date and where it falls, then the notes on it this user may read, in
-      the window's one scroller. Each note is a list row (Primitive 7): the title and its tags, the
+{{!-- The notes on the selected day this user may read (its date is on the month's bar), in the
+      window's one scroller. Each note is a list row (Primitive 7): the title and its tags, the
       plain text under them, and the controls at the right — post to chat for anyone (the
       character sheet's own control), edit and delete for the Warden. The rule between two rows is
       drawn ink, emitted only when a row follows. --}}
 <section class="cairn-calendar-detail">
-    <div class="cairn-calendar-detail-title">
-        <span class="cairn-calendar-detail-date">{{detail.date}}</span>
-        <span class="cairn-calendar-sub">{{detail.sub}}</span>
-    </div>
     <ol class="cairn-plain-list cairn-calendar-notes">
         {{#each notes}}
         <li class="cairn-slot cairn-calendar-note" data-note-id="{{id}}"
