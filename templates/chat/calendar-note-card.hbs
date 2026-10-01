@@ -1,0 +1,7 @@
+{{!-- A calendar note posted to chat (`rolls.js#postCalendarNoteCard`): a body, no frame — the
+      message element is the card, and its caption is the note's date. A paragraph keeps the
+      lines it was typed with. --}}
+<p class="cairn-card-lead">{{title}}</p>
+{{#each paragraphs}}
+<p class="cairn-calendar-card-text">{{this}}</p>
+{{/each}}

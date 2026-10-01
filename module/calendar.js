@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, SETTINGS } from "./constants.js";
 import {
-  isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, START_YEAR,
+  isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, START_YEAR, RECLAMATION,
   watchGeometry, watchAt, nextWatchStart
 } from "./calendar-rules.js";
 
@@ -118,6 +118,21 @@ export async function installCalendar() {
   } catch (err) {
     console.error(`${SYSTEM_ID} | could not set the Vald calendar's start date`, err);
   }
+}
+
+/**
+ * A day's name: "7 Silence 7728", or "Rejoice 7730" on a Reclamation day, which belongs to no
+ * month. `month` is an index of the calendar's months (12 the Reclamation), `day` 0-based. A
+ * `null` year names the day of every year — "19 Rise" — as an annual note's is.
+ */
+export function formatDate(year, month, day) {
+  const annual = year === null;
+  if (month === RECLAMATION) {
+    const name = game.i18n.localize(RECLAMATION_DAY_NAMES[day]);
+    return annual ? name : game.i18n.localize("CAIRN.Calendar.ReclamationDate", { day: name, year });
+  }
+  const name = game.i18n.localize(game.time.calendar.months.values[month].name);
+  return game.i18n.localize(annual ? "CAIRN.Calendar.AnnualDate" : "CAIRN.Calendar.Date", { day: day + 1, month: name, year });
 }
 
 /** The watch geometry of the world's calendar — its day need not be 24 hours, so a calendar

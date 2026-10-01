@@ -1,0 +1,7 @@
+{{!-- The note's two commands: Delete (not on a note not yet saved) and Save. --}}
+<footer class="cairn-calendar-note-foot">
+    {{#if canDelete}}
+    <button type="button" data-action="deleteNote"><i class="fa-solid fa-xmark" inert></i> {{localize "CAIRN.Calendar.DeleteNote"}}</button>
+    {{else}}<span></span>{{/if}}
+    <button type="submit"><i class="fa-solid fa-check" inert></i> {{localize "CAIRN.Calendar.SaveNote"}}</button>
+</footer>

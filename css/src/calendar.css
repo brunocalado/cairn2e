@@ -491,5 +491,132 @@
             overflow-x: hidden;
             overflow-y: auto;
         }
+
+        /* A note: title and tags over its text, the controls at the top right. The text is plain
+           and keeps the lines it was typed with. */
+        .cairn-slot.cairn-calendar-note {
+            align-items: flex-start;
+            padding: 8px 0;
+            margin-bottom: 0;
+        }
+
+        .cairn-calendar-note-body {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .cairn-calendar-note-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cairn-calendar-note-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        p.cairn-calendar-note-text {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.45;
+            white-space: pre-line;
+        }
+
+        /* The grid's marks: a filled square for a note everyone reads, a hollow one for the
+           Warden's own. `currentColor`, so both invert on today's filled cell. */
+        .cairn-calendar-mark {
+            width: 7px;
+            height: 7px;
+            background: currentColor;
+
+            &.hollow {
+                box-sizing: border-box;
+                background: none;
+                border: 1.5px solid currentColor;
+            }
+        }
+    }
+
+    /* The note form: the ruled list, then the text in a drawn box, then Delete and Save. */
+    &.cairn-calendar-note-form {
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 12px 16px 14px;
+        }
+
+        .cairn-calendar-note-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        & input.cairn-calendar-note-name {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .cairn-calendar-note-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .cairn-prop-number {
+                width: 3.5rem;
+                text-align: center;
+            }
+        }
+
+        .cairn-calendar-note-year {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            &[hidden] {
+                display: none;
+            }
+        }
+
+        .cairn-calendar-note-textlabel {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: var(--cairn-label-track);
+        }
+
+        & textarea.cairn-calendar-note-text {
+            min-height: 140px;
+            resize: vertical;
+            padding: 8px 10px;
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .cairn-calendar-note-foot {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+
+            button {
+                --button-size: 30px;
+                flex: none;
+                padding: 0 16px;
+                font-size: 11px;
+            }
+        }
+    }
+
+    /* A note's chat card (templates/chat/calendar-note-card.hbs). At the wrapper, because the
+       card is drawn in the chat log, not in the calendar's window. */
+    .cairn-calendar-card-text {
+        margin: 0 0 4px;
+        white-space: pre-line;
     }
 }

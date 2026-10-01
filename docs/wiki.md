@@ -80,6 +80,17 @@ The **Warden** also:
 - right-clicks a day for **Make this today** (same time of day);
 - presses **Show to players** to open everyone's calendar on the day the Warden is looking at.
 
+**Notes.** The day under the month grid lists the notes on it: a filled mark on a day means a note
+everyone sees, a hollow one a note only the Warden sees. Anyone who can read a note can post it to
+chat with the scroll; a Warden-only note posts to the Wardens alone. The Warden right-clicks a day
+for **Add a note**: a title, the day it starts, **Every year** or one year only, how many days it
+lasts, whether **everyone** sees it, and plain text. Each note is a journal entry in the
+**Calendar notes** folder, so it can also be opened from the Journal tab. A new world starts with
+the 24 holidays, festivals, solstices and equinoxes of the Vald calendar as notes everyone sees;
+the Warden can edit, hide or delete them like any other. A deleted one is back with one drag from
+the **Vald Calendar** compendium. A note hidden from players is kept out of their windows, not off
+their computers: a player who opens the console can read it.
+
 During a **journey** the journey spends the time, so these controls are switched off and clicking
 the dial opens the journey. The calendar is Foundry's own world time, so a time-of-day lighting
 module follows it.
@@ -750,7 +761,7 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 | **Character Creation** | Backgrounds, Background Tables, Background Gear, Companions, Character Traits, Bonds, Omens |
 | **Equipment** | Gear, Weapons, Armor |
 | **Magic** | Spellbooks, Scrolls, Relics |
-| **Reference** | Game Tables, Bestiary, Hirelings |
+| **Reference** | Game Tables, Bestiary, Hirelings, Vald Calendar |
 | **Warden** | Warden Tables |
 | **Homebrew** | More Gear, More Spellbooks, More Scrolls: extra content by the system's author, not from the Cairn book |
 

@@ -146,6 +146,13 @@
       "type": "RollTable"
     },
     {
+      "name": "vald-calendar",
+      "label": "Vald Calendar",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/vald-calendar",
+      "type": "JournalEntry"
+    },
+    {
       "name": "bestiary",
       "label": "Bestiary",
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
@@ -225,7 +232,7 @@
           "name": "Reference",
           "sorting": "m",
           "color": "#3f5670",
-          "packs": ["tables", "bestiary", "hirelings"]
+          "packs": ["tables", "bestiary", "hirelings", "vald-calendar"]
         },
         {
           "name": "Warden",

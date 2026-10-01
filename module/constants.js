@@ -73,6 +73,11 @@ export const SETTINGS = {
    *  three above: once the Warden has moved time on, the next launch must not move it back. */
   CALENDAR_INSTALLED: "calendar-installed",
 
+  /** Hidden (`config: false`) — whether the SRD's dated events have been imported from
+   *  `cairn2e.vald-calendar` as this world's calendar notes (`module/calendar-notes.js`). The
+   *  record of a one-time install: a Warden who deletes the folder is not asking for it back. */
+  CALENDAR_EVENTS_INSTALLED: "calendar-events-installed",
+
   /** Hidden (`config: false`) — the id of the world's active `party` Actor, or "". It is what
    *  the P keybinding opens, and the only answer to "which party" in a world that has two.
    *  Not a toggle either: it is a pointer, kept honest by `CairnActor`'s create and delete. */
@@ -175,7 +180,18 @@ export const FLAGS = {
    * gear the player may rename, re-die or delete. Found by this mark, never by its name, which is
    * whatever the language made it.
    */
-  UNARMED: "unarmed"
+  UNARMED: "unarmed",
+
+  /**
+   * On a JournalEntry: this entry is a calendar note, and this is its date —
+   * `{ year, month, day, days }`, month and day as the SRD prints them (month 13 the
+   * Reclamation), `year` null for a note that comes back every year (`module/calendar-notes.js`).
+   * A note is found by this flag, never by its name or its folder.
+   */
+  CALENDAR_NOTE: "calendarNote",
+
+  /** On a JournalEntry Folder: the one the calendar puts new notes in. */
+  CALENDAR_FOLDER: "calendarFolder"
 };
 
 /**

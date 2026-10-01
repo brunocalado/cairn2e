@@ -1,0 +1,41 @@
+{
+  "_id": "sHajNcGOkYySXNsi",
+  "name": "Waterwish",
+  "folder": null,
+  "sort": 1600,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 9,
+        "day": 14,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "8Klbm5Iax45dMdLm",
+      "name": "Waterwish",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Lunchtime on the 14th (Garden Day). Participants write wishes on scrolls, place them into holes in a boulder, and roll it downhill. When it stops, any remaining wishes are thought to come true.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!sHajNcGOkYySXNsi.8Klbm5Iax45dMdLm"
+    }
+  ],
+  "_key": "!journal!sHajNcGOkYySXNsi"
+}

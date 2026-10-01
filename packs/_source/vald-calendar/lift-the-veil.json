@@ -1,0 +1,41 @@
+{
+  "_id": "bV94hM86F4twPqgP",
+  "name": "Lift the Veil",
+  "folder": null,
+  "sort": 400,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 3,
+        "day": 9,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "YpvTtlHjv6Eu3Dec",
+      "name": "Lift the Veil",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Midnight on the 9th (Song Day). The end of the Dead season is celebrated through solemn vows and humble gestures.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!bV94hM86F4twPqgP.YpvTtlHjv6Eu3Dec"
+    }
+  ],
+  "_key": "!journal!bV94hM86F4twPqgP"
+}

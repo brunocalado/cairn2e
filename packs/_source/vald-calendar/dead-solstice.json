@@ -1,0 +1,41 @@
+{
+  "_id": "agJEjfsUdRPhUZ4C",
+  "name": "Dead Solstice",
+  "folder": null,
+  "sort": 200,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 2,
+        "day": 10,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "genn7bTND35UH98B",
+      "name": "Dead Solstice",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Midnight on the 10th (Tithe Day). Marks the shortest day of the year, and the midpoint of the Dead season.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!agJEjfsUdRPhUZ4C.genn7bTND35UH98B"
+    }
+  ],
+  "_key": "!journal!agJEjfsUdRPhUZ4C"
+}

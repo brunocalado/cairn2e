@@ -1,0 +1,41 @@
+{
+  "_id": "NDGXnqHe5EwHjNsp",
+  "name": "First Plant",
+  "folder": null,
+  "sort": 1500,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 8,
+        "day": 18,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "WYempABVcggBrNG9",
+      "name": "First Plant",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Afternoon of the 18th (Resting Day). A festival marking the beginning of planting season. Communities gather to plant the first seeds of the year together.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!NDGXnqHe5EwHjNsp.WYempABVcggBrNG9"
+    }
+  ],
+  "_key": "!journal!NDGXnqHe5EwHjNsp"
+}

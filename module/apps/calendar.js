@@ -11,7 +11,11 @@ import {
   MONTH_DAYS, RECLAMATION, RECLAMATION_DAYS, SEASON_STARTS, SEASON_DAYS, YEAR_DAYS,
   isReclamationYear, seasonOf, watchStartFor
 } from "../calendar-rules.js";
-import { RECLAMATION_DAY_NAMES, geometry, currentWatch } from "../calendar.js";
+import { RECLAMATION_DAY_NAMES, geometry, currentWatch, formatDate } from "../calendar.js";
+import { noteOf, notesOn, isPublic } from "../calendar-notes.js";
+import { noteText, noteOccurrence, absoluteDay } from "../calendar-rules.js";
+import { postCalendarNoteCard } from "../rolls.js";
+import { CairnCalendarNote } from "./calendar-note.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { CairnJourneyTracker } from "./journey-tracker.js";
 
@@ -56,7 +60,10 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       viewToday: CairnCalendarApp.#onViewToday,
       pickWatch: CairnCalendarApp.#onPickWatch,
       shiftTime: CairnCalendarApp.#onShiftTime,
-      showToPlayers: CairnCalendarApp.#onShowToPlayers
+      showToPlayers: CairnCalendarApp.#onShowToPlayers,
+      postNote: CairnCalendarApp.#onPostNote,
+      editNote: CairnCalendarApp.#onEditNote,
+      deleteNote: CairnCalendarApp.#onDeleteNote
     }
   };
 
@@ -87,10 +94,26 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     return app.render({ force: true });
   }
 
-  /** Redraw the open window: the time moved, or a journey began or ended. */
+  /** Redraw the open window: the time moved, a journey began or ended, or a note changed. */
   static refresh() {
     const app = CairnCalendarApp.#instance;
     if (app?.rendered) app.render();
+  }
+
+  /**
+   * Redraw every open calendar when a note changes on any client — the Warden's edit, a note
+   * switched to Everyone, a page rewritten in core's journal sheet. Registered once, at `ready`.
+   * Debounced: saving a note writes its entry and its page, two hooks for one change.
+   */
+  static watchNotes() {
+    const redraw = foundry.utils.debounce(() => CairnCalendarApp.refresh(), 50);
+    const isNote = (entry, changes) => !!noteOf(entry) || !!changes?.flags?.[SYSTEM_ID];
+    for (const hook of ["createJournalEntry", "updateJournalEntry", "deleteJournalEntry"]) {
+      Hooks.on(hook, (entry, changes) => { if (isNote(entry, changes)) redraw(); });
+    }
+    for (const hook of ["createJournalEntryPage", "updateJournalEntryPage", "deleteJournalEntryPage"]) {
+      Hooks.on(hook, (page) => { if (noteOf(page.parent)) redraw(); });
+    }
   }
 
   /** Today, as a view. */
@@ -139,7 +162,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       return `${pad(h % cal.days.hoursPerDay)}:${pad(Math.floor((seconds - h * secondsPerHour) / cal.days.secondsPerMinute))}`;
     };
     const into = ((game.time.worldTime - g.offset) % g.day + g.day) % g.day;
-    context.today = { date: this.#dateOf(now.year, now.month, now.dayOfMonth), sub: this.#subOf(now.year, now.month, now.dayOfMonth) };
+    context.today = { date: formatDate(now.year, now.month, now.dayOfMonth), sub: this.#subOf(now.year, now.month, now.dayOfMonth) };
     context.time = `${pad(now.hour)}:${pad(now.minute)}`;
     context.isGM = isGM;
     context.journeying = journeying;
@@ -196,28 +219,30 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     context.days = Array.from({ length }, (_, day) => {
       const dayOfYear = view.month * MONTH_DAYS + day + 1;
       const season = reclamation ? -1 : SEASON_STARTS.indexOf(dayOfYear);
+      // A filled mark for a note everyone reads, a hollow one for the Warden's own.
+      const notes = notesOn(view.year, view.month, day);
       return {
         day,
         number: day + 1,
-        label: this.#dateOf(view.year, view.month, day),
+        label: formatDate(view.year, view.month, day),
+        publicNote: notes.some(({ entry }) => isPublic(entry)),
+        wardenNote: notes.some(({ entry }) => !isPublic(entry)),
         today: view.year === now.year && view.month === now.month && day === now.dayOfMonth,
         selected: day === view.day,
         seasonStart: season >= 0 ? t(cal.seasons.values[season].name) : ""
       };
     });
 
-    // The selected day.
-    context.detail = { date: this.#dateOf(view.year, view.month, view.day), sub: this.#subOf(view.year, view.month, view.day) };
+    // The selected day, and the notes on it this user may read.
+    context.detail = { date: formatDate(view.year, view.month, view.day), sub: this.#subOf(view.year, view.month, view.day) };
+    context.notes = notesOn(view.year, view.month, view.day).map(({ entry, note }) => ({
+      id: entry.id,
+      title: entry.name,
+      text: noteText(entry.pages.find((p) => p.type === "text")?.text.content),
+      annual: note.year === null,
+      wardenOnly: !isPublic(entry)
+    }));
     return context;
-  }
-
-  /** "7 Silence 7728", or "Rejoice 7730" on a Reclamation day, which belongs to no month. */
-  #dateOf(year, month, day) {
-    if (month === RECLAMATION) {
-      return game.i18n.localize("CAIRN.Calendar.ReclamationDate", { day: game.i18n.localize(RECLAMATION_DAY_NAMES[day]), year });
-    }
-    const name = game.i18n.localize(game.time.calendar.months.values[month].name);
-    return game.i18n.localize("CAIRN.Calendar.Date", { day: day + 1, month: name, year });
   }
 
   /** "Market Day · Dead season, day 31 of 72", or "Reclamation, day 4 of 6". */
@@ -251,6 +276,14 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     await super._onFirstRender(context, options);
     if (!game.user.isGM) return;
     new foundry.applications.ux.ContextMenu.implementation(this.element, "[data-day]", [
+      {
+        label: "CAIRN.Calendar.AddNote",
+        icon: '<i class="fa-solid fa-plus"></i>',
+        onClick: (event, target) => {
+          const { year, month } = this.#view;
+          CairnCalendarNote.open({ date: { year, month, day: Number(target.dataset.day) } });
+        }
+      },
       {
         label: "CAIRN.Calendar.MakeToday",
         icon: '<i class="fa-solid fa-calendar-check"></i>',
@@ -337,6 +370,35 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
   static #onShiftTime(event, target) {
     if (!game.user.isGM || CairnCalendarApp.#journeying) return;
     return game.time.advance(Number(target.dataset.minutes) * game.time.calendar.days.secondsPerMinute);
+  }
+
+  /** The note a row stands for, or null if it is gone. */
+  static #noteEntry(target) {
+    const entry = game.journal.get(target.closest("[data-note-id]")?.dataset.noteId);
+    return noteOf(entry) ? entry : null;
+  }
+
+  /** Anyone who can read a note can post it; the card's caption is the day this occurrence of it
+   *  began. @this {CairnCalendarApp} */
+  static #onPostNote(event, target) {
+    const entry = CairnCalendarApp.#noteEntry(target);
+    if (!entry) return;
+    const note = noteOf(entry);
+    const { year, month, day } = this.#view;
+    const start = noteOccurrence(note, absoluteDay(year, month, day)) ?? year;
+    return postCalendarNoteCard(entry, { date: formatDate(start, note.month - 1, note.day - 1) });
+  }
+
+  static #onEditNote(event, target) {
+    if (!game.user.isGM) return;
+    const entry = CairnCalendarApp.#noteEntry(target);
+    if (entry) CairnCalendarNote.open({ entry });
+  }
+
+  static #onDeleteNote(event, target) {
+    if (!game.user.isGM) return;
+    const entry = CairnCalendarApp.#noteEntry(target);
+    if (entry) return CairnCalendarNote.confirmDelete(entry);
   }
 
   /** Every other connected client opens its window on the day the Warden is looking at.

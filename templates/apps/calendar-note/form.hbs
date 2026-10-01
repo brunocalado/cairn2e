@@ -1,0 +1,42 @@
+{{!-- A calendar note (module/apps/calendar-note.js): the ruled property list (Primitive 7b) — title,
+      start, every year, length, who reads it — then the plain text. No toolbar and no formatting:
+      a note takes plain text, as every other text in the system's windows does. Year is hidden
+      while Every year is on, because an annual note has none. --}}
+<section class="cairn-calendar-note-fields">
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-prop-row" data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="note-title">
+            <label for="{{appId}}-title">{{localize "CAIRN.Calendar.NoteTitle"}}</label>
+            <input type="text" id="{{appId}}-title" name="title" value="{{title}}" class="cairn-calendar-note-name">
+        </div>
+        <div class="cairn-field cairn-prop-row" data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="note-starts">
+            <span class="cairn-field-label">{{localize "CAIRN.Calendar.Starts"}}</span>
+            <div class="cairn-calendar-note-date">
+                <input type="number" name="day" min="1" max="24" step="1" value="{{note.day}}" class="cairn-prop-number" aria-label="{{localize 'CAIRN.Calendar.Day'}}">
+                <select name="month" aria-label="{{localize 'CAIRN.Calendar.MonthLabel'}}">
+                    {{#each months}}<option value="{{ordinal}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}
+                </select>
+                <span class="cairn-calendar-note-year" {{#if annual}}hidden{{/if}}>
+                    <span class="cairn-field-label">{{localize "CAIRN.Calendar.Year"}}</span>
+                    <input type="number" name="year" min="0" step="1" value="{{year}}" class="cairn-prop-number" aria-label="{{localize 'CAIRN.Calendar.Year'}}">
+                </span>
+            </div>
+        </div>
+        <div class="cairn-field cairn-prop-row" data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="note-annual">
+            <label for="{{appId}}-annual">{{localize "CAIRN.Calendar.EveryYear"}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" id=(concat appId "-annual") field="annual" value=annual}}
+        </div>
+        <div class="cairn-field cairn-prop-row" data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="note-lasts">
+            <label for="{{appId}}-days">{{localize "CAIRN.Calendar.Lasts"}}</label>
+            <div class="cairn-calendar-note-date">
+                <input type="number" id="{{appId}}-days" name="days" min="1" step="1" value="{{note.days}}" class="cairn-prop-number">
+                <span>{{localize "CAIRN.Calendar.Days"}}</span>
+            </div>
+        </div>
+        <div class="cairn-field cairn-prop-row">
+            <label for="{{appId}}-everyone">{{localize "CAIRN.Calendar.Everyone"}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" id=(concat appId "-everyone") field="everyone" value=everyone}}
+        </div>
+    </div>
+    <label class="cairn-calendar-note-textlabel" for="{{appId}}-text">{{localize "CAIRN.Calendar.Text"}}</label>
+    <textarea id="{{appId}}-text" name="text" class="cairn-calendar-note-text" rows="7">{{text}}</textarea>
+</section>

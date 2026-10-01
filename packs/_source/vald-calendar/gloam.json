@@ -1,0 +1,41 @@
+{
+  "_id": "SkRw1snJYJnA4qJT",
+  "name": "Gloam",
+  "folder": null,
+  "sort": 2400,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 12,
+        "day": 24,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "FqoIWnQoHMOJrZqJ",
+      "name": "Gloam",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Evening of the 24th (Resting Day). The final grand feast of the year, celebrating gratitude for the harvest, with the sun as centerpiece. Pregnancies are common.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!SkRw1snJYJnA4qJT.FqoIWnQoHMOJrZqJ"
+    }
+  ],
+  "_key": "!journal!SkRw1snJYJnA4qJT"
+}

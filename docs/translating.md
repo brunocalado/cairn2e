@@ -48,12 +48,18 @@ A translation module needs two things in its `module.json`:
   result is keyed by its range (`"1-1"`), and a result that points at a document is keyed by its
   `_id`. That second kind takes its name from the document it points at.
 - **The Backgrounds' name lists** (`system.names`).
+- **The Vald calendar's events** (`cairn2e.vald-calendar`): each JournalEntry's `name`, and its one
+  text page's `name` and `text.content`. The content is plain paragraphs (`<p>`), the event's time
+  first; keep it free of other markup, because the calendar reads a note back as plain text. A
+  world imports the events once, as its own notes, so a translation reaches a world only if it
+  is active the first time the Warden launches it.
 
 ## 3. What never to translate
 
 - **Ids, uuids and `documentUuid`.** The system finds every document through them.
 - **Flags** — `flags.cairn2e.*` on table results (`event`, `portrait`, `armour`). They are what
-  the journey, the NPC generator and the monster generator read.
+  the journey, the NPC generator and the monster generator read. On a Vald calendar event,
+  `flags.cairn2e.calendarNote` is its date.
 - **A Background growth's mechanics** — in `background-gear`, a `growth` document's
   `system.outcome` (`attr`, `formula`) and `system.table`. They are what the character creator
   rolls. Translate the growth's `name` and `description`; its `gained` is filled when a character

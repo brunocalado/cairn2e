@@ -1,0 +1,41 @@
+{
+  "_id": "YiVZaEjDFvQs70xm",
+  "name": "Boughmeal",
+  "folder": null,
+  "sort": 900,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 6,
+        "day": 16,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "K6ImT8MG5SkvucD5",
+      "name": "Boughmeal",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Dawn until the afternoon on the 16th (Tithe Day). A market day held exclusively within the Wood, where artisans and merchants from all over the realm meet to trade their wares.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!YiVZaEjDFvQs70xm.K6ImT8MG5SkvucD5"
+    }
+  ],
+  "_key": "!journal!YiVZaEjDFvQs70xm"
+}

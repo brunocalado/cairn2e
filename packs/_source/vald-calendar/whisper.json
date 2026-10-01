@@ -1,0 +1,41 @@
+{
+  "_id": "UJA5CPmSVotmjEaE",
+  "name": "Whisper",
+  "folder": null,
+  "sort": 300,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 2,
+        "day": 11,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "2Qnw5f7dLwAzqFSd",
+      "name": "Whisper",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Dawn to dusk on the 11th (Bathing Day). Speaking above a whisper is taboo. Silent auctions are common.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!UJA5CPmSVotmjEaE.2Qnw5f7dLwAzqFSd"
+    }
+  ],
+  "_key": "!journal!UJA5CPmSVotmjEaE"
+}

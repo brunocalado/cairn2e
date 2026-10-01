@@ -1,0 +1,41 @@
+{
+  "_id": "vJO3D5GJkdt3Xtsa",
+  "name": "Bartermoot",
+  "folder": null,
+  "sort": 600,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 4,
+        "day": 14,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "ZbmqloVVu7HIWHDI",
+      "name": "Bartermoot",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Morning on the 14th (Garden Day). Representatives from the smaller towns and villages trade steel for lumber in ritual arrangement with the denizens of the Wood.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!vJO3D5GJkdt3Xtsa.ZbmqloVVu7HIWHDI"
+    }
+  ],
+  "_key": "!journal!vJO3D5GJkdt3Xtsa"
+}

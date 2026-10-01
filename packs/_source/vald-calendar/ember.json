@@ -1,0 +1,41 @@
+{
+  "_id": "ovkbzqhCS1CmM0DN",
+  "name": "Ember",
+  "folder": null,
+  "sort": 2300,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 12,
+        "day": 11,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "bOOBbEtSUEXpUV2Q",
+      "name": "Ember",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Evening on the 11th (Bathing Day). Pays homage to the setting sun and the hard work ahead preparing for the Dead season. Lantern release ceremonies are a common practice.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!ovkbzqhCS1CmM0DN.bOOBbEtSUEXpUV2Q"
+    }
+  ],
+  "_key": "!journal!ovkbzqhCS1CmM0DN"
+}

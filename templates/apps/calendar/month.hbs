@@ -1,6 +1,7 @@
 {{!-- The viewed month as a 6 × 4 grid, or the Reclamation's six named days. Today is the one
       ink-filled cell, the selected day is framed, and the day a season begins carries a heavy left
-      rule and the season's name. The Warden right-clicks a day for its menu. --}}
+      rule and the season's name. A filled mark says a note everyone reads covers the day, a hollow
+      one a Warden-only note. The Warden right-clicks a day for its menu. --}}
 <section class="cairn-calendar-monthview{{#if reclamation}} reclamation{{/if}}" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-grid" data-ink-w="2">
     <div class="cairn-calendar-monthbar" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-month" data-ink-w="2">
         <div class="cairn-calendar-monthtitle">
@@ -21,7 +22,10 @@
                 <span>{{number}}</span>
                 {{#if seasonStart}}<span class="cairn-calendar-day-season">{{seasonStart}}</span>{{/if}}
             </span>
-            <span class="cairn-calendar-day-marks"></span>
+            <span class="cairn-calendar-day-marks">
+                {{#if publicNote}}<span class="cairn-calendar-mark" aria-hidden="true"></span>{{/if}}
+                {{#if wardenNote}}<span class="cairn-calendar-mark hollow" aria-hidden="true"></span>{{/if}}
+            </span>
         </button>
         {{/each}}
     </div>

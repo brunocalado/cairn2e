@@ -1,0 +1,41 @@
+{
+  "_id": "S3ih5C5YysVNCX31",
+  "name": "Highwater Fair",
+  "folder": null,
+  "sort": 1300,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 8,
+        "day": 1,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "x5fIupcRAzHzVDNN",
+      "name": "Highwater Fair",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Dawn until midnight on the 1st (Market Day). A major trade event taking place when the waters are highest. Every major town and city celebrates with fairs and markets.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!S3ih5C5YysVNCX31.x5fIupcRAzHzVDNN"
+    }
+  ],
+  "_key": "!journal!S3ih5C5YysVNCX31"
+}

@@ -1,0 +1,41 @@
+{
+  "_id": "MINttHZGI3TagpS7",
+  "name": "Parade of Ash",
+  "folder": null,
+  "sort": 1000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 6,
+        "day": 24,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "Nde9La0uvSSpezsK",
+      "name": "Parade of Ash",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Afternoon on the 24th (Resting Day). In celebration of the final day of the Dry season, participants mark their faces with ash and play music. Most kinds of labor are frowned upon.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!MINttHZGI3TagpS7.Nde9La0uvSSpezsK"
+    }
+  ],
+  "_key": "!journal!MINttHZGI3TagpS7"
+}

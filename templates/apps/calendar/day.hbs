@@ -1,9 +1,35 @@
-{{!-- The selected day: its date and where it falls. The scroller under it is the window's one
-      place that can outgrow its content. --}}
+{{!-- The selected day: its date and where it falls, then the notes on it this user may read, in
+      the window's one scroller. Each note is a list row (Primitive 7): the title and its tags, the
+      plain text under them, and the controls at the right — post to chat for anyone (the
+      character sheet's own control), edit and delete for the Warden. The rule between two rows is
+      drawn ink, emitted only when a row follows. --}}
 <section class="cairn-calendar-detail">
     <div class="cairn-calendar-detail-title">
         <span class="cairn-calendar-detail-date">{{detail.date}}</span>
         <span class="cairn-calendar-sub">{{detail.sub}}</span>
     </div>
-    <div class="cairn-calendar-notes"></div>
+    <ol class="cairn-plain-list cairn-calendar-notes">
+        {{#each notes}}
+        <li class="cairn-slot cairn-calendar-note" data-note-id="{{id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="calendar-note-{{id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <div class="cairn-calendar-note-body">
+                <div class="cairn-calendar-note-head">
+                    <span class="cairn-calendar-note-title">{{title}}</span>
+                    <span class="cairn-item-tag">{{#if annual}}{{localize "CAIRN.Calendar.EveryYear"}}{{else}}{{localize "CAIRN.Calendar.Once"}}{{/if}}</span>
+                    {{#if wardenOnly}}<span class="cairn-item-tag">{{localize "CAIRN.Calendar.WardenOnly"}}</span>{{/if}}
+                </div>
+                {{#if text}}<p class="cairn-calendar-note-text">{{text}}</p>{{/if}}
+            </div>
+            <div class="cairn-item-controls">
+                <a data-action="postNote" data-tooltip="{{localize 'CAIRN.PostToChat'}}"><i class="fas fa-scroll"></i></a>
+                {{#if ../isGM}}
+                <a data-action="editNote" data-tooltip="{{localize 'CAIRN.Calendar.EditNote'}}"><i class="fas fa-pencil"></i></a>
+                <a data-action="deleteNote" data-tooltip="{{localize 'CAIRN.Calendar.DeleteNote'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
+            </div>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize "CAIRN.Calendar.NoNotes"}}</li>
+        {{/each}}
+    </ol>
 </section>

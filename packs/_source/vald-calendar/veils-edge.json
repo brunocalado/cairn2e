@@ -1,0 +1,41 @@
+{
+  "_id": "d5FuAbhJT8LvL4Lz",
+  "name": "Veil’s Edge",
+  "folder": null,
+  "sort": 500,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 3,
+        "day": 17,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "FTTHZNQ8qMM7PCID",
+      "name": "Veil’s Edge",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Afternoon to twilight on the 17th (Bathing Day). A day for honoring ancestors with offerings and prayers at family altars.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!d5FuAbhJT8LvL4Lz.FTTHZNQ8qMM7PCID"
+    }
+  ],
+  "_key": "!journal!d5FuAbhJT8LvL4Lz"
+}

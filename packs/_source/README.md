@@ -429,6 +429,31 @@ character's own sheet. The Heavy Destrier's hooves are granted the same way: the
 a mount like the Marketplace Horse — a container that hauls itself, `+2 slots` as its capacity —
 and a container is never a weapon.
 
+## `vald-calendar` — the SRD's dated events, as notes
+
+The 24 holidays, festivals, solstices and equinoxes of `srd-2e/wardens-guide/vald.md` → "Holidays,
+Festivals, & Events Sorted by Date", one **JournalEntry** each with one `text` page. They are what a
+new world's calendar notes start from: the first launch imports them into a flagged folder, visible
+to everyone (`module/calendar-notes.js`), and from then on they are the Warden's to edit, hide or
+delete like any other note.
+
+- **Ids** are derived: `id16("cairn2e:vald:<slug>")` for the entry and
+  `id16("cairn2e:vald:<slug>:text")` for its page; keys `!journal!<id>` and
+  `!journal.pages!<entry>.<page>`.
+- **The date** is the entry's `flags.cairn2e.calendarNote`: `{ year: null, month, day, days }`,
+  month and day as the SRD prints them (ordinals; 13 would be the Reclamation), `year: null`
+  because every one comes back each year, and `days` the length — 3 for Splash Festival, 5 for
+  Storm Dance, 1 for the rest.
+- **The text** is the SRD row verbatim, its time phrase first as a sentence of its own, inside one
+  `<p>` and with no other markup: the calendar reads a note back as plain text.
+- **The "… season begins" rows are not here.** Seasons are the calendar's structure — every one
+  begins on the 1st of Mourning, Sunrise, Flood and Quell, a table decision recorded in
+  `module/calendar-rules.js` — so a note saying so would only repeat it, and on the SRD's own
+  dates it would contradict it.
+
+JournalEntries are not validated by the build (it validates Actor and Item `system` payloads only);
+`checks/compendium.check.mjs` holds the 24, their keys, flags and SRD weekdays instead.
+
 ## Workflow
 
 1. Edit a file under `packs/_source/<name>/`.

@@ -1,0 +1,41 @@
+{
+  "_id": "wnr0G2hRVrLolB7z",
+  "name": "First Light",
+  "folder": null,
+  "sort": 100,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 1,
+        "day": 24,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "Byk8bWz5JKkMJxDZ",
+      "name": "First Light",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Dusk on the 24th (Resting Day). Commemorating the end of the first month of the new year. Torches and fire are lit all night, turning night to day.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!wnr0G2hRVrLolB7z.Byk8bWz5JKkMJxDZ"
+    }
+  ],
+  "_key": "!journal!wnr0G2hRVrLolB7z"
+}

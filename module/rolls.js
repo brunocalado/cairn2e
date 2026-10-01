@@ -8,6 +8,8 @@ import { SYSTEM_ID, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./
 import { findTable, loadPack, stripTags } from "./helpers.js";
 import { slotsForItem } from "./data/_derived.js";
 import { scheduleInk } from "./ink.js";
+import { isPublic } from "./calendar-notes.js";
+import { noteText } from "./calendar-rules.js";
 
 /**
  * The single place that knows how a Cairn 2e roll works. Every save, damage roll, Critical
@@ -22,6 +24,7 @@ const SAVE_CARD_TPL = `${TEMPLATES}/save-card.hbs`;
 const DAMAGE_CARD_TPL = `${TEMPLATES}/damage-roll-card.hbs`;
 const ROLL_CARD_TPL = `${TEMPLATES}/roll-card.hbs`;
 const JOURNEY_CARD_TPL = `${TEMPLATES}/journey-card.hbs`;
+const CALENDAR_NOTE_TPL = `${TEMPLATES}/calendar-note-card.hbs`;
 const DMG_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/damage-dialog.hbs`;
 const APPLY_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/apply-damage-dialog.hbs`;
 
@@ -576,6 +579,25 @@ export async function postRollCard(roll, { flavor, lead, text = "", resultCls = 
 export async function postJourneyCard({ flavor, lead = "", lines = [], open = false }) {
   const content = await foundry.applications.handlebars.renderTemplate(JOURNEY_CARD_TPL, { lead, lines, open });
   return ChatMessage.create({ speaker: ChatMessage.getSpeaker(), flavor, content });
+}
+
+/**
+ * A calendar note as a card with no die: its date as the caption, its title and its plain text as
+ * the body. Who reads the card is who reads the note — a note everyone sees posts publicly, a
+ * Warden-only note to the Wardens alone, so the button can never reveal what the note's switch
+ * hides; to reveal one, the Warden flips the switch first. The mode is passed whichever way it
+ * goes: a message created with no mode would take the poster's own chat setting instead.
+ * @param {JournalEntry} entry
+ * @param {{date: string}} options  the day this occurrence of the note began, already named
+ */
+export async function postCalendarNoteCard(entry, { date }) {
+  const text = noteText(entry.pages.find((p) => p.type === "text")?.text.content);
+  const content = await foundry.applications.handlebars.renderTemplate(CALENDAR_NOTE_TPL, {
+    title: entry.name,
+    paragraphs: text ? text.split(/\n\s*\n/) : []
+  });
+  return ChatMessage.create({ speaker: ChatMessage.getSpeaker(), flavor: date, content },
+    { messageMode: isPublic(entry) ? "public" : WARDEN_ONLY });
 }
 
 /**

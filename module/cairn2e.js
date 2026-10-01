@@ -51,6 +51,7 @@ import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
 import { registerCalendar, installCalendar, CairnCalendar } from "./calendar.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
+import { installCalendarEvents } from "./calendar-notes.js";
 import * as models from "./data/_module.js";
 import * as rolls from "./rolls.js";
 
@@ -376,8 +377,12 @@ Hooks.once("ready", () => {
   seedPlayerHotbar();
 
   // A world's first launch under the Vald calendar sets its clock to 1 Mourning 7728, 06:00
-  // (module/calendar.js). Not awaited, like the above.
+  // (module/calendar.js), and imports the SRD's dated events as its first notes
+  // (module/calendar-notes.js). Not awaited, like the above.
   installCalendar();
+  installCalendarEvents();
+  // Every open calendar redraws when a note changes, on whichever client changed it.
+  CairnCalendarApp.watchNotes();
 
   // The Warden's bestiary art (module/bestiary-art.js): every client lays the last published scan
   // over the pack at once, so a player does not wait on the Warden; then the active GM rescans the
@@ -604,6 +609,7 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/apps/combat-tracker-dungeon.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/encounter-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/journey-card.hbs`,
+    `systems/${SYSTEM_ID}/templates/chat/calendar-note-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/roll-card.hbs`,
   ]);
 

@@ -1,0 +1,41 @@
+{
+  "_id": "1GUuUOaHWWuRFFLM",
+  "name": "Dry Equinox",
+  "folder": null,
+  "sort": 800,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 5,
+        "day": 10,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "Z4fPdEbRWVjA2kNF",
+      "name": "Dry Equinox",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Midnight on the 10th (Tithe Day). Marks the midpoint of the Dry season.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!1GUuUOaHWWuRFFLM.Z4fPdEbRWVjA2kNF"
+    }
+  ],
+  "_key": "!journal!1GUuUOaHWWuRFFLM"
+}

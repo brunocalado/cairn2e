@@ -1,0 +1,41 @@
+{
+  "_id": "hS5WfggFUnXldxNp",
+  "name": "Splash Festival",
+  "folder": null,
+  "sort": 1100,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 7,
+        "day": 5,
+        "days": 3
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "dRTgJvFcgm9sC16D",
+      "name": "Splash Festival",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>3 days starting on the 5th (Bathing Day to Market Day). Celebrates the abundance of water, with boat races, contests, gifts, and water blessings.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!hS5WfggFUnXldxNp.dRTgJvFcgm9sC16D"
+    }
+  ],
+  "_key": "!journal!hS5WfggFUnXldxNp"
+}

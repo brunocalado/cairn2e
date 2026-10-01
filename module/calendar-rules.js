@@ -133,3 +133,76 @@ export function watchStartFor(worldTime, index, g) {
   const start = worldTime - mod(worldTime - g.offset, g.watch);
   return start + mod(index - watchAt(worldTime, g), WATCHES.length) * g.watch;
 }
+
+/** Days from the epoch to a day: `month` an index of the calendar's months (12 the Reclamation),
+ *  `day` 0-based. */
+export const absoluteDay = (year, month, day) => daysBeforeYear(year) + month * MONTH_DAYS + day;
+
+/**
+ * Does a calendar note cover a day? The note's date is written as the SRD prints one — month and
+ * day ordinals, month 13 for the Reclamation — and `year` is `null` for a note that comes back
+ * every year. A note runs on through the days after it, past 24 Sunset into the next year, so an
+ * annual note is tried in the day's year and in the year before: one that started last year and
+ * runs past New Year still shows. Month 13 exists only in a Reclamation year.
+ * @param {{year: number|null, month: number, day: number, days: number}} note
+ * @param {number} absolute  days since the epoch
+ * @returns {boolean}
+ */
+export function noteCovers(note, absolute) {
+  return noteOccurrence(note, absolute) !== null;
+}
+
+/**
+ * The year the occurrence of a note that covers a day begins in, or `null` when none covers it —
+ * what a note's chat card is captioned with: Storm Dance read on 21 Rise is "19 Rise".
+ * @param {{year: number|null, month: number, day: number, days: number}} note
+ * @param {number} absolute  days since the epoch
+ * @returns {number|null}
+ */
+export function noteOccurrence({ year, month, day, days }, absolute) {
+  const here = yearOfDay(absolute).year;
+  const years = year === null ? [here, here - 1] : [year];
+  return years.find((y) => {
+    if (month === RECLAMATION + 1 && !isReclamationYear(y)) return false;
+    const start = absoluteDay(y, month - 1, day - 1);
+    return absolute >= start && absolute < start + days;
+  }) ?? null;
+}
+
+const ESCAPES = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', "#39": "'", apos: "'", nbsp: " " };
+
+/**
+ * A note's page from the text typed in the calendar's form: escaped, one `<p>` per paragraph (a
+ * blank line between two), a `<br>` per line inside one. A note takes no formatting, as no other
+ * text in the system's windows does; the page is still HTML so core's journal sheet shows it.
+ * @param {string} text
+ * @returns {string}
+ */
+export function noteHTML(text) {
+  return String(text ?? "").replace(/\r\n?/g, "\n").split(/\n[ \t]*\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => `<p>${p.replace(/[&<>"']/g, (c) => ESCAPES[c]).replace(/\n/g, "<br>")}</p>`)
+    .join("");
+}
+
+/**
+ * The form's text from a page: paragraphs to blank lines, line breaks to newlines, every other tag
+ * dropped. Formatting added through core's journal sheet does not survive the next save from the
+ * calendar; that is the rule.
+ * @param {string} html
+ * @returns {string}
+ */
+export function noteText(html) {
+  return String(html ?? "")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>\s*<p[^>]*>/gi, "\n\n")
+    .replace(/<[^>]*>/g, "")
+    .replace(/&(#\d+|#x[\da-f]+|[a-z]+);/gi, (m, e) => {
+      if (e in ENTITIES) return ENTITIES[e];
+      if (e[0] === "#") return String.fromCodePoint(e[1] === "x" || e[1] === "X" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10));
+      return m;
+    })
+    .trim();
+}

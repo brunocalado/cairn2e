@@ -1,0 +1,41 @@
+{
+  "_id": "L7l7t7bVONvxumqK",
+  "name": "Dustset",
+  "folder": null,
+  "sort": 700,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "cairn2e": {
+      "calendarNote": {
+        "year": null,
+        "month": 5,
+        "day": 9,
+        "days": 1
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "NU4ZbLj9E8ADhhN9",
+      "name": "Dustset",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<p>Afternoon until midnight on the 9th (Song Day). A carnival marked by parades and masquerades, where participants wear masks to protect from dust and wind.</p>"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_key": "!journal.pages!L7l7t7bVONvxumqK.NU4ZbLj9E8ADhhN9"
+    }
+  ],
+  "_key": "!journal!L7l7t7bVONvxumqK"
+}
