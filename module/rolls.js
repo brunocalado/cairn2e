@@ -7,6 +7,7 @@
 import { SYSTEM_ID, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
 import { findTable, loadPack, stripTags } from "./helpers.js";
 import { slotsForItem } from "./data/_derived.js";
+import { scheduleInk } from "./ink.js";
 
 /**
  * The single place that knows how a Cairn 2e roll works. Every save, damage roll, Critical
@@ -244,12 +245,22 @@ export async function promptApplyRollAsDamage(total) {
     classes: [SYSTEM_ID],
     window: { title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }) },
     content,
+    // Against HP armour is the rule, not a choice, so the switch is held on and disabled there.
+    // What the Warden set for an attribute is remembered across a detour through HP.
     render: (_event, dialog) => {
       const radios = [...dialog.element.querySelectorAll('input[name="target"]')];
-      const armor = dialog.element.querySelector(".cairn-apply-damage-armor");
-      const sync = () => { armor.hidden = radios.find((r) => r.checked)?.value === "hp"; };
+      const armor = dialog.element.querySelector('input[name="armor"]');
+      let chosen = armor.checked;
+      const sync = () => {
+        const hp = radios.find((r) => r.checked)?.value === "hp";
+        armor.disabled = hp;
+        armor.checked = hp || chosen;
+      };
       sync();
+      armor.addEventListener("change", () => { chosen = armor.checked; });
       for (const r of radios) r.addEventListener("change", sync);
+      // The help mark's ring is drawn, and a dialog has no ink pass of its own.
+      scheduleInk(dialog.element.querySelector(".window-content"));
     },
     ok: {
       label: game.i18n.localize("CAIRN.ApplyDamage"),

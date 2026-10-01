@@ -40,7 +40,7 @@ import { createCairnMacro, rollItemMacro, macroApi } from "./macros.js";
 import { Damage } from "./combat/damage.js";
 import { registerSettings } from "./settings.js";
 import { registerEnrichers } from "./enrichers.js";
-import { addChatMessageContextOptions } from "./chat.js";
+import { addChatMessageContextOptions, renderApplyRollButton } from "./chat.js";
 import { registerDiceSoNice } from "./dice-so-nice.js";
 import { registerAutomatedAnimations } from "./automated-animations.js";
 import { registerLightSources } from "./light-sources.js";
@@ -548,6 +548,9 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
       applyBtn.hidden = true;
     }
   }
+
+  // "Apply as damage" under a bare roll — the context-menu entry, where it can be seen. GM-only.
+  renderApplyRollButton(message, html);
 
   // "Add to scene" button on an encounter-style RollTable draw card. GM-only; grows the
   // control only when the drawn rows parse as an encounter.

@@ -49,6 +49,45 @@
         }
     }
 
+    /* Apply a roll as damage: where it lands, then whether armour helps. The four places share
+       the width equally, so the run reads as one choice and not as four buttons left over. The
+       armour row stands apart from them by more than the run's own gap — it answers a second
+       question — and starts at the left edge with its help mark beside the word. */
+    .cairn-apply-damage-dialog {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        > .cairn-field-label {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        .cairn-choice-option {
+            flex: 1 1 0;
+        }
+    }
+
+    .cairn-apply-damage-armor {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+
+        > label {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
+        /* Held on while HP is chosen: still the on position, dimmed because it cannot move. */
+        .cairn-switch:has(input:disabled) {
+            cursor: default;
+            opacity: 0.5;
+        }
+    }
+
     /**************************************************************************
      * Kettlewright importer — file-picker dialog and post-import summary.   *
      **************************************************************************/

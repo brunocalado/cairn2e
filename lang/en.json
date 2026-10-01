@@ -129,6 +129,7 @@
     "ApplyNoTotal": "This roll has no total to apply.",
     "ApplyTo": "Take it from",
     "ArmorHelps": "Armour helps",
+    "ArmorHelpsHint": "Armour is always taken off damage to HP. Against STR, DEX or WIL it helps only when it would: a shield does not stop noxious gas.",
     "ReverseHit": "Reverse the hit",
     "ReverseNoActor": "The actor this hit landed on no longer exists.",
     "Reversed": "Reversed \u2014 the HP and STR this hit took have been given back."

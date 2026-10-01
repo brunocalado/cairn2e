@@ -342,10 +342,12 @@ attribute back.
 ### Any roll as damage
 
 A fall, a cave-in or a d6 the Warden rolls on the spot has no weapon behind it. Roll it in chat
-(`/r 2d6`), target the tokens it hits, then right-click the roll and choose **Apply as damage**. A
-small window asks where it lands: **HP**, like an ordinary hit, or **STR**, **DEX** or **WIL**, like a
-trap. For an attribute it also asks whether armor helps. The damage card, the Scars and **Reverse
-the hit** work exactly as for a weapon. Only the Warden sees the entry.
+(`/r 2d6`), target the tokens it hits, then press **Apply as damage** under the roll (right-clicking
+the roll offers the same entry, on any roll). A small window asks where it lands: **HP**, like an
+ordinary hit, or **STR**, **DEX** or **WIL**, like a trap. Armor always counts against HP, so the
+**Armour helps** switch is locked on there; for an attribute you choose, because a shield does not
+stop noxious gas. The damage card, the Scars and **Reverse the hit** work exactly as for a weapon.
+Only the Warden sees the button and the entry.
 
 ### Scars
 

@@ -85,6 +85,33 @@ export async function applyRollAsDamage(message) {
   return Damage.applyToTargets(targetIds, total, { attribute, armor: !!result.armor });
 }
 
+/**
+ * The same action as a button under a bare roll — a `/r`, a dice-tray roll, anything core draws
+ * from `message.rolls` alone — because a context-menu entry is found only by those who already
+ * know it is there. A card this system posts is left alone: its body is its own, and a save or a
+ * table draw is not damage. "Bare" is core's own test (ChatMessage#renderRollContent): content
+ * with no element in it. Parsed in a `<template>`, so nothing in the content runs.
+ * @param {ChatMessage} message
+ * @param {HTMLElement} html
+ */
+export function renderApplyRollButton(message, html) {
+  if (!game.user.isGM || !message.isRoll) return;
+  const parsed = document.createElement("template");
+  parsed.innerHTML = message.content;
+  if (parsed.content.childElementCount) return;
+  const body = html.querySelector(".cairn-card-body");
+  if (!body) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "cairn-card-action apply-roll-dmg";
+  const icon = document.createElement("i");
+  icon.className = "fa-solid fa-burst";
+  icon.inert = true;
+  button.append(icon, game.i18n.localize("CAIRN.Chat.ApplyAsDamage"));
+  button.addEventListener("click", () => applyRollAsDamage(message));
+  body.append(button);
+}
+
 /* -------------------------------------------- */
 
 /**
