@@ -112,6 +112,33 @@ export function renderApplyRollButton(message, html) {
   body.append(button);
 }
 
+/**
+ * Reverse the hit as a button on the hit's own card, for the same reason as the Apply button: one
+ * roll applied to several targets posts one card per target, and the one that went wrong has to
+ * be undoable where it is seen. Gone once reversed — the message update re-renders the card, and
+ * the flag that hides the context entry hides this too. Disabled on click, so a double click
+ * cannot give the hit back twice before that update lands.
+ * @param {ChatMessage} message
+ * @param {HTMLElement} html
+ */
+export function renderReverseButton(message, html) {
+  if (!game.user.isGM || !message.getFlag(SYSTEM_ID, FLAGS.HIT) || message.getFlag(SYSTEM_ID, FLAGS.REVERSED)) return;
+  const body = html.querySelector(".cairn-card-body");
+  if (!body) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "cairn-card-action reverse-hit";
+  const icon = document.createElement("i");
+  icon.className = "fa-solid fa-rotate-left";
+  icon.inert = true;
+  button.append(icon, game.i18n.localize("CAIRN.Chat.ReverseHit"));
+  button.addEventListener("click", () => {
+    button.disabled = true;
+    reverseHit(message);
+  });
+  body.append(button);
+}
+
 /* -------------------------------------------- */
 
 /**

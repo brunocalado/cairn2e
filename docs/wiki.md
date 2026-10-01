@@ -346,8 +346,10 @@ A fall, a cave-in or a d6 the Warden rolls on the spot has no weapon behind it. 
 the roll offers the same entry, on any roll). A small window asks where it lands: **HP**, like an
 ordinary hit, or **STR**, **DEX** or **WIL**, like a trap. Armor always counts against HP, so the
 **Armour helps** switch is locked on there; for an attribute you choose, because a shield does not
-stop noxious gas. The damage card, the Scars and **Reverse the hit** work exactly as for a weapon.
-Only the Warden sees the button and the entry.
+stop noxious gas. With several tokens targeted, each takes the whole roll, minus its own armor,
+and gets its own **Damage** card in the log. Each of those cards has a **Reverse the hit** button
+(also on its right-click menu), so the one target that should not have been hit is undone alone.
+The Scars work exactly as for a weapon. Only the Warden sees these buttons and entries.
 
 ### Scars
 
