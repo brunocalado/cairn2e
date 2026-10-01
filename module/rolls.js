@@ -22,6 +22,7 @@ const DAMAGE_CARD_TPL = `${TEMPLATES}/damage-roll-card.hbs`;
 const ROLL_CARD_TPL = `${TEMPLATES}/roll-card.hbs`;
 const JOURNEY_CARD_TPL = `${TEMPLATES}/journey-card.hbs`;
 const DMG_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/damage-dialog.hbs`;
+const APPLY_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/apply-damage-dialog.hbs`;
 
 // Impaired forces d4 regardless of the weapon's own die (core-rules.md → Attack Modifiers). Panic
 // forces Impaired, so this is also the formula Panic substitutes — the single place that happens.
@@ -219,6 +220,40 @@ async function promptDamageOptions(defaultBlast, weapons) {
     ok: {
       label: game.i18n.localize("CAIRN.RollDamage"),
       callback: (event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
+    },
+    rejectClose: false
+  });
+}
+
+/**
+ * Where a roll from the log lands when the Warden applies it as damage (`chat.js#applyRollAsDamage`):
+ * HP, or one attribute with armour helping or not, drawn from
+ * `templates/apps/apply-damage-dialog.hbs`. Armour always counts against HP, so its switch shows
+ * only once an attribute is chosen.
+ * @param {number} total
+ * @returns {Promise<{target: string, armor: boolean}|null>}
+ */
+export async function promptApplyRollAsDamage(total) {
+  const choices = ["hp", "STR", "DEX", "WIL"].map((value) => ({
+    value,
+    label: game.i18n.localize(value === "hp" ? "CAIRN.HitProtection" : value),
+    selected: value === "hp"
+  }));
+  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices });
+  return foundry.applications.api.DialogV2.prompt({
+    classes: [SYSTEM_ID],
+    window: { title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }) },
+    content,
+    render: (_event, dialog) => {
+      const radios = [...dialog.element.querySelectorAll('input[name="target"]')];
+      const armor = dialog.element.querySelector(".cairn-apply-damage-armor");
+      const sync = () => { armor.hidden = radios.find((r) => r.checked)?.value === "hp"; };
+      sync();
+      for (const r of radios) r.addEventListener("change", sync);
+    },
+    ok: {
+      label: game.i18n.localize("CAIRN.ApplyDamage"),
+      callback: (_event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
     },
     rejectClose: false
   });

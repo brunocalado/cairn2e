@@ -339,6 +339,14 @@ Armor only helps a trap when it makes sense, so the Warden picks the button. HP 
 0 the character is paralyzed, at WIL 0 delirious, and at STR 0 dead. **Reverse the hit** gives the
 attribute back.
 
+### Any roll as damage
+
+A fall, a cave-in or a d6 the Warden rolls on the spot has no weapon behind it. Roll it in chat
+(`/r 2d6`), target the tokens it hits, then right-click the roll and choose **Apply as damage**. A
+small window asks where it lands: **HP**, like an ordinary hit, or **STR**, **DEX** or **WIL**, like a
+trap. For an attribute it also asks whether armor helps. The damage card, the Scars and **Reverse
+the hit** work exactly as for a weapon. Only the Warden sees the entry.
+
 ### Scars
 
 When a hit takes a player's character to **exactly 0 HP** without touching STR, that player gets

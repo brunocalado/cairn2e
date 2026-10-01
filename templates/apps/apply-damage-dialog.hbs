@@ -1,0 +1,19 @@
+{{!-- Any roll in the log, applied as damage to the targeted tokens (module/chat.js). Where it
+      lands is one closed choice: HP, the ordinary hit, or one attribute, a trap's
+      (procedures.md → Traps). Armour always counts against HP; against an attribute it helps
+      "only if applicable", so that switch shows only when an attribute is chosen. --}}
+<div class="cairn-apply-damage-dialog">
+    <div class="cairn-field-label">{{localize 'CAIRN.Chat.ApplyTo'}}</div>
+    <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Chat.ApplyTo'}}">
+        {{#each choices as |c|}}
+        <label class="cairn-choice-option">
+            <input type="radio" name="target" value="{{c.value}}" {{checked c.selected}} />
+            <span>{{c.label}}</span>
+        </label>
+        {{/each}}
+    </div>
+    <div class="cairn-field cairn-apply-damage-armor" hidden>
+        <label for="apply-armor">{{localize 'CAIRN.Chat.ArmorHelps'}}</label>
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="armor" value=true id="apply-armor"}}
+    </div>
+</div>

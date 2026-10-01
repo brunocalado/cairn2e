@@ -6,14 +6,21 @@
  */
 
 import { SYSTEM_ID, FLAGS } from "./constants.js";
+import { Damage } from "./combat/damage.js";
+import { promptApplyRollAsDamage } from "./rolls.js";
 
 /**
  * What the chat log offers on a right-click.
  *
- * One entry today: taking back an applied hit. It matters more here than it would in most
- * systems because of what a hit sets off — damage past 0 HP comes off STR
+ * Two entries. Taking back an applied hit matters more here than it would in most systems
+ * because of what a hit sets off — damage past 0 HP comes off STR
  * (`srd-2e/players-guide/core-rules.md` § Attribute Loss) and a character walked to 0 opens the
  * Scars window — so applying one to the wrong token is three corrections by hand, not one.
+ *
+ * And any roll in the log can be applied as damage. A pit, a fall, a poison or a d6 the Warden
+ * rolled on the spot has no weapon behind it, and in Cairn damage is nothing but a die's total
+ * less armour — so the total of a `/r 2d6` is as good a hit as a sword's, and goes through the
+ * same `Damage.applyToTargets`: the same breakdown card, Scars and the same Reverse.
  *
  * A context menu rather than a button on the card: the card is read by everyone at the table and
  * the control is the Warden's, so a button would be `hidden` for most readers. A menu costs the
@@ -41,7 +48,41 @@ export function addChatMessageContextOptions(_html, options) {
     },
     onClick: (_event, li) => reverseHit(game.messages.get(li.dataset.messageId))
   });
+  options.push({
+    label: "CAIRN.Chat.ApplyAsDamage",
+    icon: '<i class="fa-solid fa-burst"></i>',
+    visible: (li) => game.user.isGM && !!game.messages.get(li.dataset.messageId)?.isRoll,
+    onClick: (_event, li) => applyRollAsDamage(game.messages.get(li.dataset.messageId))
+  });
   return options;
+}
+
+/* -------------------------------------------- */
+
+/**
+ * Apply a message's roll total to the tokens the Warden has targeted, asking where it lands: HP,
+ * or one attribute with armour helping or not (`procedures.md` → Traps: "Damage from traps is
+ * taken from Attributes … Armor can reduce damage, but only if applicable").
+ *
+ * The targets are read when the entry is chosen, not when the roll was made: the roll may be
+ * anyone's, and the Warden is deciding now who it hits.
+ * @param {ChatMessage} message
+ */
+export async function applyRollAsDamage(message) {
+  const total = message?.rolls[0]?.total;
+  if (!Number.isFinite(total)) {
+    ui.notifications.warn("CAIRN.Chat.ApplyNoTotal", { localize: true });
+    return;
+  }
+  const targetIds = Array.from(game.user.targets).map((t) => t.id);
+  if (!targetIds.length) {
+    ui.notifications.warn("CAIRN.Chat.ApplyNeedsTargets", { localize: true });
+    return;
+  }
+  const result = await promptApplyRollAsDamage(total);
+  if (!result) return;
+  const attribute = result.target === "hp" ? null : result.target;
+  return Damage.applyToTargets(targetIds, total, { attribute, armor: !!result.armor });
 }
 
 /* -------------------------------------------- */

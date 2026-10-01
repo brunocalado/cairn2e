@@ -123,6 +123,12 @@
   "CAIRN.CharacterRegeneratorConfirm": "Are you sure you want to delete and regenerate this character?",
   "CAIRN.CharacterRegeneratorTitle": "Delete this character and regenerate?",
   "CAIRN.Chat": {
+    "ApplyAsDamage": "Apply as damage",
+    "ApplyAsDamageTitle": "Apply {total} as damage",
+    "ApplyNeedsTargets": "Target the tokens that take the damage first.",
+    "ApplyNoTotal": "This roll has no total to apply.",
+    "ApplyTo": "Take it from",
+    "ArmorHelps": "Armour helps",
     "ReverseHit": "Reverse the hit",
     "ReverseNoActor": "The actor this hit landed on no longer exists.",
     "Reversed": "Reversed \u2014 the HP and STR this hit took have been given back."
