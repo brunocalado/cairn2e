@@ -142,6 +142,30 @@ the file. A new character is created and its sheet opens, followed by a short su
 - The import works **one way only** and does its best. Read the summary, then compare the sheet
   with the original.
 
+### Your own Backgrounds
+
+The Warden's Guide has a chapter on writing new Backgrounds (*Creating Backgrounds*). A Background
+you write in the world is offered by the character creator next to the twenty in the book.
+
+1. In the **Items** directory, create an Item of type **Background**. Fill in its blurb, its
+   names, and its starting gold (every Background in the book uses `3d6`).
+2. Drag its **starting gear** onto the sheet: items from a compendium or from your Items
+   directory.
+3. Make its **two tables** (d6 each) in the **Rollable Tables** directory and drag them onto the
+   sheet. Lay out each row the way the book's do: a **text** result with the answer, and, when
+   the answer is an item, a **document** result for that item on the same range. Open any table in
+   the *Background Tables* compendium to see one.
+4. **Share it.** Players are offered the Background once it has **Observer** for them (right-click
+   it → *Configure Ownership*). Until then it is yours alone, a draft only you see. Its tables and
+   gear need no sharing.
+
+**To change one of the twenty**, right-click it in the *Backgrounds* compendium, **Import**, and
+edit the copy. The creator then offers your copy instead of the book's, in the list and on the d20
+roll, and a Kettlewright import uses it too. Share it the same way.
+
+The d20 roll only ever lands on the twenty in the book. A Background of your own is picked from
+the list.
+
 ---
 
 ## 3. The character sheet

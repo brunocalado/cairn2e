@@ -34,7 +34,7 @@
 
 import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, FLAGS, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
-import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf } from "./helpers.js";
+import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf, withWorldCopies } from "./helpers.js";
 import { CairnRoll } from "./rolls.js";
 import { gainUpdate } from "./gains.js";
 import { coinItem } from "./coin-rules.js";
@@ -102,18 +102,31 @@ export async function rollAge() {
 /*  Compendium draws                            */
 /* -------------------------------------------- */
 
-/** Every Background Item, sorted by name (the `character-creation.md` d20 list is alphabetical). */
-export async function getBackgrounds() {
-  const pack = await loadPack(PACKS.BACKGROUNDS);
-  if (!pack) return [];
-  return pack.contents.filter((d) => d.type === "background").sort((a, b) => a.name.localeCompare(b.name));
+/**
+ * The world's Backgrounds this user may be offered. A world Item is owned by its maker alone until
+ * it is shared, so a Background the Warden is still writing is not offered to a player.
+ * @returns {Item[]}
+ */
+function worldBackgrounds() {
+  return game.items.filter((i) => i.type === "background" && i.testUserPermission(game.user, "OBSERVER"));
 }
 
-/** Roll the d20 Backgrounds selector table and resolve the Background Item it points at. */
+/** Every Background a creator offers, sorted by name: the pack's twenty, with a Warden's imported
+ *  copy standing in for its original, and every Background made in the world. */
+export async function getBackgrounds() {
+  const pack = await loadPack(PACKS.BACKGROUNDS);
+  const shipped = pack?.contents.filter((d) => d.type === "background") ?? [];
+  return withWorldCopies(shipped, worldBackgrounds()).sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/** Roll the d20 Backgrounds selector table and resolve the Background Item it points at — the
+ *  Warden's imported copy of it when this user may see one. The d20 is the SRD's twenty; a
+ *  Background made in the world is picked, not rolled. */
 export async function drawBackground() {
   const draw = await drawTable(TABLES.BACKGROUNDS);
   const uuid = draw.results[0]?.documentUuid;
-  const background = uuid ? await fromUuid(uuid) : null;
+  const copy = uuid && worldBackgrounds().find((i) => i._stats.compendiumSource === uuid);
+  const background = copy || (uuid ? await fromUuid(uuid) : null);
   return { background, roll: draw.roll?.total ?? null };
 }
 

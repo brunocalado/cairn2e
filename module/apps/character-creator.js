@@ -351,7 +351,7 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     this.#setBackground(background);
   }
 
-  /** Return to the list of twenty. Everything a Background determined is discarded with it;
+  /** Return to the list of Backgrounds. Everything a Background determined is discarded with it;
    *  `#kept` survives, as it does when picking a different Background outright. */
   static #onChangeBackground() {
     this.#draft = Object.assign(draftFromBackground(null), this.#kept());

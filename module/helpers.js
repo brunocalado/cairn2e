@@ -64,6 +64,19 @@ export async function findTable(uuid) {
 }
 
 /**
+ * A pack's documents with the world's laid over them, by the rule {@link findTable} follows: a
+ * world document imported from one of them is the Warden's edit of it and stands in its place;
+ * every other world document is added. By provenance, never by name.
+ * @param {{uuid: string}[]} shipped
+ * @param {{_stats?: {compendiumSource?: string|null}}[]} world
+ * @returns {object[]}  unsorted
+ */
+export function withWorldCopies(shipped, world) {
+  const replaced = new Set(world.map((d) => d._stats?.compendiumSource).filter(Boolean));
+  return [...shipped.filter((d) => !replaced.has(d.uuid)), ...world];
+}
+
+/**
  * Roll one Warden table, **world copy first** ({@link findTable}) — every generator in the system
  * draws this way. Uses `RollTable#roll()`, never `draw()` — drawing dirties the table's `drawn`
  * state and posts a card; the generators just want a value.
