@@ -17,7 +17,14 @@
       included, and the formatting keyboard shortcuts still work. --}}
 <section class="tab {{tabs.description.cssClass}}" data-group="primary" data-tab="description">
     {{#if growth}}
-    <h4 class="cairn-zone">{{localize 'CAIRN.Description'}}</h4>
+    {{!-- The help mark is where a Downtime Cost is explained, because the description is where it
+          is written: a Cost is the Warden's words ("a finger, a soul, a Relic"), so a field per
+          kind would only hold a sentence the prose box already holds. --}}
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Description'}}</h4>
+        {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.Growth.DescriptionHelp"
+            label=(localize "CAIRN.Growth.DescriptionHelpLabel") seed="growth-description"}}
+    </div>
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-description" data-ink-w="1" data-ink-a="0.34"></div>
     {{/if}}
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-description" data-ink-w="1.6">

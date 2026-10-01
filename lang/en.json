@@ -376,6 +376,8 @@
     "ApplyAttr": "Which maximum",
     "ApplyTitle": "What this growth changed",
     "ApplyTo": "It becomes",
+    "DescriptionHelp": "Earned through Downtime, a growth is a list of Milestones. A character takes one Downtime Action at a time, never in unsafe conditions or while recovering, and each Milestone is completed by taking one and paying its Cost: gold, resources, reputation, or a loss (a finger, a soul, a Relic). Write the Costs here. Skills or connections can lower one; otherwise the Warden states the risk and the character makes a WIL save, which on a success reduces the Cost or avoids it.",
+    "DescriptionHelpLabel": "How Downtime Milestones and Costs work",
     "Gained": "What was gained",
     "GainedPlaceholder": "What this growth gave \u2014 an ability, a freedom, a cost\u2026",
     "MilestonePlaceholder": "Type the milestone here\u2026",
