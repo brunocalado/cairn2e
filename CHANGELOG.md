@@ -1,3 +1,11 @@
+# 0.0.9
+
+- [Changed] An unknown relic's appearance, a relic's recharge and an NPC's description are always
+  open for whoever may edit them, as an item's description is: click and type, and the text is
+  saved on leaving the box. The pencil is gone; a reader sees the text with its links working.
+- [Changed] The README and the user guide cover 0.0.8, and the user guide carries screenshots of
+  every surface it describes, all taken on the current look.
+
 # 0.0.8
 
 - [Added] The Warden can mark a relic **unknown**. Until it is revealed, its holder sees a name and an
