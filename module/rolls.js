@@ -37,14 +37,17 @@ const IMPAIRED_FORMULA = "1d4";
 const ENHANCED_FORMULA = "1d12";
 
 /**
- * The mode of a roll whispered to the Wardens: Reaction, Morale and both faction rolls. Each is
- * the other side's state of mind or plans — the table meets it in how the creatures act, not by
- * reading a number.
+ * The mode of a roll whispered to the Wardens: Reaction, Morale, both faction rolls and the
+ * Dungeon Event. Each is the other side's state of mind or plans — the table meets it in how the
+ * creatures act, not by reading a number.
  *
  * `gm` and not `blind`: blind hides the result from the Warden too, which is the one person who
- * needs it. v14 takes this as an OPTION on `Roll#toMessage`, which applies it to the message
+ * needs it. v14 takes this as an OPTION on message creation, which applies it to the message
  * itself — the older roll-mode helper on `ChatMessage` is deprecated in this version, and naming
  * it here would be a shipped file naming a deprecated API (`checks/deprecated-api.check.mjs`).
+ *
+ * A message in this mode is posted without its Roll ({@link postRollMessage}): core shows every
+ * player a whispered message that holds one.
  */
 const WARDEN_ONLY = "gm";
 
@@ -80,6 +83,24 @@ export class CairnRoll extends foundry.dice.Roll {
  * @returns {Promise<CairnRoll>}
  */
 export const evaluateFormula = async (formula, data) => new CairnRoll(formula, data).evaluate();
+
+/**
+ * Post a roll's card, whose `content` already draws the roll line.
+ *
+ * Whispered to the Wardens, the card goes out WITHOUT the Roll. Core shows every player a
+ * whispered message that holds a Roll, its content hidden (`ChatMessage#visible`), so the party's
+ * log announced each Morale, Reaction and faction roll the Warden made. The card loses nothing
+ * the Warden reads — the line and its folded faces are in `content` — and keeps the dice sound,
+ * which plays only where the message is shown. Every other mode posts the Roll as core does.
+ * @param {CairnRoll} roll
+ * @param {{content: string}} data  the message data
+ * @param {{messageMode?: string}} [options]
+ * @returns {Promise<ChatMessage>}
+ */
+function postRollMessage(roll, { content, ...data }, { messageMode } = {}) {
+  if (messageMode !== WARDEN_ONLY) return roll.toMessage({ ...data, content }, { messageMode });
+  return ChatMessage.implementation.create({ ...data, content, sound: CONFIG.sounds.dice }, { messageMode });
+}
 
 /* -------------------------------------------- */
 /*  Saves                                       */
@@ -129,7 +150,7 @@ async function postSaveRoll(roll, { actor, token, flavor, passed, outcomeText, m
   });
   // The flavor IS the card's caption — the message template draws it over the body's rule — so it
   // is passed here and never drawn by the card itself.
-  return roll.toMessage({
+  return postRollMessage(roll, {
     speaker: token ? ChatMessage.getSpeaker({ token }) : ChatMessage.getSpeaker({ actor }),
     flavor,
     content
@@ -513,10 +534,10 @@ export async function rollReaction(actor) {
   const roll = await evaluateFormula("2d6");
   const band = REACTION_BANDS.find((b) => roll.total <= b.max);
   const label = game.i18n.localize(`CAIRN.Reactions.${band.key}`);
-  const message = await roll.toMessage({
+  const message = await postRollMessage(roll, {
     speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
     flavor: `${game.i18n.localize("CAIRN.Reaction")}: ${label}`,
-    flags: SYSTEM_ROLL_FLAGS
+    content: await roll.render()
   }, { messageMode: WARDEN_ONLY });
   return { message, total: roll.total, key: band.key, label };
 }
@@ -590,7 +611,7 @@ export async function postRollCard(roll, { flavor, lead, text = "", resultCls = 
     text,
     resultCls
   });
-  return roll.toMessage({ speaker: ChatMessage.getSpeaker(), flavor, content }, { messageMode });
+  return postRollMessage(roll, { speaker: ChatMessage.getSpeaker(), flavor, content }, { messageMode });
 }
 
 /**
