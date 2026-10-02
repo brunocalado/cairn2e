@@ -478,11 +478,16 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
   }
 
   /** A day back or on, at the same time of day: the Reclamation's days are days like any other.
+   *  The window follows today there, so a step across a month's end turns the page with it; the
+   *  `updateWorldTime` redraw shows it.
    *  @this {CairnCalendarApp} */
   static #onShiftDay(event, target) {
     const days = Number(target.dataset.days);
     if (!game.user.isGM || CairnCalendarApp.#journeying || Math.abs(days) !== 1) return;
-    return game.time.advance(days * geometry().day);
+    const time = game.time.worldTime + days * geometry().day;
+    const then = game.time.calendar.timeToComponents(time);
+    this.#view = { year: then.year, month: then.month, day: then.dayOfMonth };
+    return game.time.set(time);
   }
 
   /** The selected day becomes today. @this {CairnCalendarApp} */
