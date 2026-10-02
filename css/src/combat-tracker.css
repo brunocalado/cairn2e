@@ -267,8 +267,13 @@
         }
     }
 
-    /* How far the token moved this turn: tabular figures in soft ink, and past torchlight the
-       same figure in full ink and bold with a running glyph — state by weight, never by hue. */
+    /* How far the token moved this turn, in tabular figures, coloured by pace (maintainer's
+       call, 2026-10-02): within torchlight's 40 ft, past it, past the 120 ft an action covers.
+       The monochrome rule yields because the pace is the one thing the Warden reads off the
+       party column at a glance. Core's level tokens, as a roll outcome in chat uses them: one
+       value each, legible on the dark sidebar and on a popped-out paper tracker alike. Past
+       torchlight the figure is also bold with a running glyph, so it never rests on hue alone.
+       A scene not measured in feet carries no pace and stays soft ink. */
     .cairn-dungeon-moved {
         color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
         flex: 0 0 auto;
@@ -278,9 +283,20 @@
         padding: 0 4px;
         white-space: nowrap;
 
-        &.is-beyond {
-            color: var(--cairn-surface-fg);
+        &.is-torch {
+            color: var(--color-level-success);
+        }
+
+        &:is(.is-hurry, .is-over) {
             font-weight: 700;
+        }
+
+        &.is-hurry {
+            color: var(--color-level-warning);
+        }
+
+        &.is-over {
+            color: var(--color-level-error);
         }
 
         i {

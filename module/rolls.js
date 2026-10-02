@@ -644,6 +644,11 @@ export async function postNameCard({ name, formula }) {
  * whispered to the Wardens: the row is their material to narrate, and the party meets the result
  * rather than reading it. What comes back is the row as the tracker keeps it — its marker, which
  * is what the tracker acts on, and its words, which are only printed. Missing table → a warning.
+ *
+ * The card carries the drawn row and no Roll. Core shows every player a whispered message that
+ * holds a Roll, with its content hidden (`ChatMessage#visible`), so a "gm" draw still put a
+ * private-roll card in the party's log each time the Warden rolled — telling them the dungeon had
+ * just been asked about them. Without the Roll the message reaches the Wardens alone.
  * @returns {Promise<{kind: string, name: string, text: string}|null>}
  */
 export async function drawDungeonEvent() {
@@ -652,9 +657,10 @@ export async function drawDungeonEvent() {
     ui.notifications.warn(game.i18n.localize("CAIRN.Dungeon.NoTable", { uuid: TABLES.DUNGEON_EVENT }));
     return null;
   }
-  const { results } = await table.draw({ messageMode: "gm" });
+  const { results } = await table.draw({ displayChat: false });
   const row = results?.[0];
   if (!row) return null;
+  await table.toMessage(results, { messageOptions: { messageMode: WARDEN_ONLY } });
   return {
     kind: row.flags?.[SYSTEM_ID]?.event ?? "",
     name: String(row.name ?? "").trim(),

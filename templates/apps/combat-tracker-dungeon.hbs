@@ -23,9 +23,11 @@
                    {{#unless isOwner}}disabled{{/unless}}>
         </div>
 
-        {{!-- Beyond torchlight is said with weight and a glyph, never a hue. --}}
-        <span class="cairn-dungeon-moved {{#if beyondTorch}}is-beyond{{/if}}" data-tooltip
-              aria-label="{{localize (ifThen beyondTorch "CAIRN.Dungeon.BeyondTorch" "CAIRN.Dungeon.Moved")}}">
+        {{!-- The pace is a hue — within torchlight, past it, past the three torchlights an
+              action covers — and past torchlight a glyph as well, so it never rests on colour
+              alone. --}}
+        <span class="cairn-dungeon-moved {{#if pace}}is-{{pace}}{{/if}}" data-tooltip
+              aria-label="{{localize paceLabel}}">
             {{#if beyondTorch}}<i class="fa-solid fa-person-running" inert></i>{{/if}}{{moved}}&nbsp;{{units}}
         </span>
 

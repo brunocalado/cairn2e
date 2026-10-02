@@ -12,6 +12,9 @@ import { consumeRation } from "../journey.js";
 /** "move a distance equal to their torchlight's perimeter (about 40ft)" (`procedures.md`). */
 const TORCHLIGHT_FT = 40;
 
+/** "Players can use their action to move up to three times that distance" (`procedures.md`). */
+const HURRY_FT = 3 * TORCHLIGHT_FT;
+
 /** The actions `procedures.md` → Actions names, offered as suggestions for a declaration. */
 const DUNGEON_ACTIONS = ["search", "listen", "force", "disarm", "rest", "cast", "hurry"];
 
@@ -34,6 +37,20 @@ function movedThisTurn(token) {
 }
 
 /**
+ * Where a turn's movement sits against `procedures.md` → The Basics: within torchlight, past it
+ * (the action spent moving quickly, one of the four Dungeon Event triggers), or past the three
+ * torchlights an action can cover at all. `""` on a scene not measured in feet, which cannot be
+ * compared with a distance the SRD gives in feet.
+ * @param {{moved: number, units: string}} movement
+ * @returns {""|"torch"|"hurry"|"over"}
+ */
+function paceOf({ moved, units }) {
+  if (units !== "ft") return "";
+  if (moved > HURRY_FT) return "over";
+  return (moved > TORCHLIGHT_FT) ? "hurry" : "torch";
+}
+
+/**
  * The combat tracker, grouped by side.
  *
  * 2e's round is side-based (`core-rules.md` → Combat) and has no initiative, so the tracker shows
@@ -50,6 +67,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     classes: [SYSTEM_ID],
     actions: {
       createDungeon: CairnCombatTracker.#onCreateDungeon,
+      nextDungeonTurn: CairnCombatTracker.#onNextDungeonTurn,
       rollDungeonEvent: CairnCombatTracker.#onRollDungeonEvent,
       startFight: CairnCombatTracker.#onStartFight,
       exhaustionFatigue: CairnCombatTracker.#onExhaustionFatigue,
@@ -143,18 +161,18 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     for (const turn of turns) {
       const combatant = combat.combatants.get(turn.id);
       if (!combatant) continue;
-      const { moved, units } = movedThisTurn(combatant.token);
+      const movement = movedThisTurn(combatant.token);
+      const pace = paceOf(movement);
       rows.push({
         ...turn,
         css: turn.css.replace("active", "").trim(),
         resolved: combatant.resolved,
         declared: this.#drafts.get(turn.id) ?? combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "",
-        moved,
-        units,
-        // "move a distance equal to their torchlight's perimeter (about 40ft)" — past it, the
-        // party is moving quickly, which is one of the four Dungeon Event triggers. Only a scene
-        // measured in feet can be compared with a distance the SRD gives in feet.
-        beyondTorch: (units === "ft") && (moved > TORCHLIGHT_FT)
+        ...movement,
+        pace,
+        beyondTorch: (pace === "hurry") || (pace === "over"),
+        paceLabel: { hurry: "CAIRN.Dungeon.BeyondTorch", over: "CAIRN.Dungeon.BeyondHurry" }[pace]
+          ?? "CAIRN.Dungeon.Moved"
       });
     }
     rows.sort((a, b) => a.name.localeCompare(b.name));
@@ -216,6 +234,28 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         if (combatant?.isOwner) await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED, input.value.trim());
       });
     }
+  }
+
+  /**
+   * End the dungeon turn. When a token moved past torchlight — the one Dungeon Event trigger the
+   * client can see — and no event was drawn this turn, the Warden is asked first, because the
+   * turn change empties the event slot and the moment to roll for this turn goes with it. A
+   * question, never a gate: "If appropriate, the Warden should roll" (`procedures.md`).
+   */
+  static async #onNextDungeonTurn() {
+    const combat = this.viewed;
+    if (!combat?.isDungeon) return;
+    const hurried = combat.combatants.some((c) => ["hurry", "over"].includes(paceOf(movedThisTurn(c.token))));
+    if (hurried && !combat.system.event) {
+      const proceed = await foundry.applications.api.DialogV2.confirm({
+        classes: [SYSTEM_ID],
+        window: { title: "CAIRN.Dungeon.NextTurn" },
+        content: `<p>${game.i18n.localize("CAIRN.Dungeon.NextTurnUnrolled")}</p>`,
+        rejectClose: false
+      });
+      if (!proceed) return;
+    }
+    await combat.nextRound();
   }
 
   /**
