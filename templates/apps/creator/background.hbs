@@ -33,15 +33,26 @@
     {{!-- One row per Background, the whole line a button. The rule under a row is drawn
           (`module/ink.js`) at the inventory's hairline weight, and never under the last, as on
           every ruled list in the system. The blurb is plain text — two braces, not three. --}}
+    {{#*inline "backgroundList"}}
     <div class="cairn-plain-list creator-background-list">
-        {{#each backgrounds}}
+        {{#each list}}
         <button type="button" class="creator-background-row{{#if this.selected}} selected{{/if}}"
             data-action="pickBackground" data-uuid="{{this.uuid}}"
-            {{#unless @last}}data-ink="hline" data-ink-seed="bg-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            {{#unless @last}}data-ink="hline" data-ink-seed="{{../seed}}-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
             <span class="creator-background-name">{{this.name}}</span>
             <span class="creator-background-blurb">{{this.blurb}}</span>
         </button>
         {{/each}}
     </div>
+    {{/inline}}
+    {{!-- The SRD's twenty, which the d20 above rolls. --}}
+    {{> backgroundList list=backgrounds seed="bg"}}
+
+    {{!-- The world's own Backgrounds: the d20 table has no face for them, so they are chosen
+          and never rolled. Drawn only when there is one. --}}
+    {{#if customBackgrounds.length}}
+    <h3 class="creator-custom-heading" data-ink="hline" data-ink-seed="step-background-custom" data-ink-w="1.8" data-ink-at="bottom">{{localize "CAIRN.CharacterCreator.CustomBackgrounds"}}</h3>
+    {{> backgroundList list=customBackgrounds seed="bg-custom"}}
+    {{/if}}
     {{/if}}
 </section>

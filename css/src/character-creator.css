@@ -93,6 +93,12 @@
                 padding-bottom: 2px;
                 flex: 0 0 auto;
             }
+
+            /* The world's own Backgrounds, under the SRD's twenty: a second heading of the same
+               kind, set off from the list above it. */
+            > h3.creator-custom-heading {
+                margin-top: 16px;
+            }
         }
 
         .step-heading {

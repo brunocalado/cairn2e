@@ -119,6 +119,17 @@ export async function getBackgrounds() {
   return withWorldCopies(shipped, worldBackgrounds()).sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Is this one of the SRD's twenty — the pack's own, or a Warden's imported copy of one? These are
+ * what the d20 rolls; a Background made in the world is chosen, never rolled.
+ * @param {Item} background
+ * @returns {boolean}
+ */
+export function isSrdBackground(background) {
+  const from = background.pack ? background.uuid : background._stats?.compendiumSource;
+  return !!from?.startsWith(`Compendium.${PACKS.BACKGROUNDS}.`);
+}
+
 /** Roll the d20 Backgrounds selector table and resolve the Background Item it points at — the
  *  Warden's imported copy of it when this user may see one. The d20 is the SRD's twenty; a
  *  Background made in the world is picked, not rolled. */

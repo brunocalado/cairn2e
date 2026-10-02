@@ -8,7 +8,7 @@
 import { SYSTEM_ID, FLAGS } from "../constants.js";
 import {
   TRAIT_KEYS, ATTR_KEYS, traitRows,
-  getBackgrounds, drawBackground, drawBackgroundTable,
+  getBackgrounds, isSrdBackground, drawBackground, drawBackgroundTable,
   rollAttributeSet, rollHitProtection, rollAge,
   rollTrait, rollAllTraits, drawBond, drawOmen, drawName,
   draftFromBackground, createCharacterFromDraft, applyDraftToActor
@@ -223,13 +223,17 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     context.hasBackground = !!d.backgroundUuid;
     for (const tab of Object.values(context.tabs)) tab.locked = tab.id !== "background" && !context.hasBackground;
     // The list prints each Background's blurb as one line of plain text beside its name — every
-    // blurb is a single short paragraph, so the blurb IS the brief description.
-    context.backgrounds = backgrounds.map((b) => ({
+    // blurb is a single short paragraph, so the blurb IS the brief description. Two lists: the
+    // SRD's twenty under the d20 that rolls them, and the world's own under a heading of their
+    // own, chosen by hand — the d20 table has no face for them.
+    const row = (b) => ({
       uuid: b.uuid,
       name: b.name,
       blurb: stripTags(b.system.description).trim(),
       selected: b.uuid === d.backgroundUuid
-    }));
+    });
+    context.backgrounds = backgrounds.filter(isSrdBackground).map(row);
+    context.customBackgrounds = backgrounds.filter((b) => !isSrdBackground(b)).map(row);
     // The background's `description` is its blurb — the names, gear and tables are fields of
     // their own, rendered below.
     context.blurb = d.description ? await enrich(d.description) : "";
