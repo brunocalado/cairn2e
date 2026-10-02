@@ -113,6 +113,15 @@
         font-family: var(--cairn-serif);
     }
 
+    /* The Report an Issue link stands alone among core's Settings buttons, so it wears the pair
+       the other way round — filled at rest, hollow under the pointer — to be found at a glance. */
+    &.cairn-report-issue a.button {
+        --button-background-color: var(--cairn-surface-fg);
+        --button-text-color: var(--cairn-surface-bg);
+        --button-hover-background-color: var(--cairn-surface-bg);
+        --button-hover-text-color: var(--cairn-surface-fg);
+    }
+
     /* The same panel popped out into a window. A floating window is a system window, so it takes
        the paper, the double rule and the ink button that every other one does (`window.css`,
        `controls.css`) rather than the rail's theme-following pair — and since those exclude
