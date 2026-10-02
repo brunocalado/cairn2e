@@ -32,13 +32,34 @@
            rule weighs (0,2,1) and a bare `button` here would lose to it. The window header is
            excluded as it is there: popped out, the tracker is a framed window, and its close
            and menu controls are core's. */
+        /* Filled at rest and hollow under the pointer — the pair the other way round from the
+           Warden tab, as the Settings tab's Report an Issue is: in a narrow dark panel the few
+           framed buttons are the things to find, and an outline on near-black read as empty. */
         & :is(button, a.button):where(:not(.window-header *)) {
-            --button-background-color: transparent;
+            --button-background-color: var(--cairn-surface-fg);
             --button-border-color: var(--cairn-surface-fg);
-            --button-text-color: var(--cairn-surface-fg);
-            --button-hover-background-color: var(--cairn-surface-fg);
+            --button-text-color: var(--cairn-surface-bg);
+            --button-hover-background-color: var(--cairn-surface-bg);
             --button-hover-border-color: var(--cairn-surface-fg);
-            --button-hover-text-color: var(--cairn-surface-bg);
+            --button-hover-text-color: var(--cairn-surface-fg);
+        }
+
+        /* Create Combat, Begin a Dungeon Exploration, Begin and End: two to a row, so a label
+           wraps. Core sets the label's line height to the whole header's height
+           (`--sidebar-header-height`), which drew a wrapped label as two lines a header apart and
+           out of the frame; the button grows with its label instead. */
+        & button.combat-control-lg {
+            align-items: center;
+            gap: 6px;
+            height: auto;
+            justify-content: center;
+            min-height: var(--button-size);
+            padding: 4px 8px;
+            white-space: normal;
+
+            span {
+                line-height: 1.25;
+            }
         }
 
         /* An inline control is a bare glyph, never a framed button: soft ink at rest, full ink
@@ -48,6 +69,7 @@
            36px otherwise overrides from a later layer. */
         & :is(button, a.button).inline-control {
             --button-size: 1.5rem;
+            --button-background-color: transparent;
             --button-border-color: transparent;
             --button-hover-border-color: transparent;
             --button-hover-background-color: transparent;
@@ -304,8 +326,8 @@
         }
     }
 
-    /* The fight, the roll and the Exhaustion choices are the panel's ink buttons (the rule at the
-       top of this block), full width in the narrow sidebar, with a card action's capital label. */
+    /* The fight, the roll and the Exhaustion choices are the panel's filled buttons (the rule at
+       the top of this block), full width in the narrow sidebar, with a card action's capital label. */
     .cairn-dungeon-fight,
     .cairn-dungeon-roll,
     .cairn-dungeon-exhaustion button {
