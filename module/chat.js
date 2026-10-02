@@ -86,16 +86,17 @@ export async function applyRollAsDamage(message) {
 }
 
 /**
- * The same action as a button under a bare roll — a `/r`, a dice-tray roll, anything core draws
+ * The same action as a button under a free roll — a `/r`, a dice-tray roll, anything core draws
  * from `message.rolls` alone — because a context-menu entry is found only by those who already
  * know it is there. A card this system posts is left alone: its body is its own, and a save or a
  * table draw is not damage. "Bare" is core's own test (ChatMessage#renderRollContent): content
- * with no element in it. Parsed in a `<template>`, so nothing in the content runs.
+ * with no element in it. Parsed in a `<template>`, so nothing in the content runs. A Reaction or
+ * the Die of Fate is bare too, so the system marks its own (`FLAGS.SYSTEM_ROLL`).
  * @param {ChatMessage} message
  * @param {HTMLElement} html
  */
 export function renderApplyRollButton(message, html) {
-  if (!game.user.isGM || !message.isRoll) return;
+  if (!game.user.isGM || !message.isRoll || message.getFlag(SYSTEM_ID, FLAGS.SYSTEM_ROLL)) return;
   const parsed = document.createElement("template");
   parsed.innerHTML = message.content;
   if (parsed.content.childElementCount) return;

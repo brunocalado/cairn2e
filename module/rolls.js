@@ -4,7 +4,7 @@
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3.
  */
-import { SYSTEM_ID, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
+import { SYSTEM_ID, FLAGS, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
 import { findTable, loadPack, stripTags } from "./helpers.js";
 import { slotsForItem } from "./data/_derived.js";
 import { scheduleInk } from "./ink.js";
@@ -35,6 +35,10 @@ const APPLY_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/apply-damage-dialo
 const IMPAIRED_FORMULA = "1d4";
 // Enhanced forces d12 regardless of the weapon's own die (core-rules.md → Attack Modifiers).
 const ENHANCED_FORMULA = "1d12";
+
+// A roll posted with no card body of its own reads in the log like a `/r`; this says it is not one,
+// so it is never offered as damage (`FLAGS.SYSTEM_ROLL`).
+const SYSTEM_ROLL_FLAGS = { [SYSTEM_ID]: { [FLAGS.SYSTEM_ROLL]: true } };
 
 /* -------------------------------------------- */
 /*  The Roll                                    */
@@ -497,7 +501,8 @@ export async function rollReaction(actor) {
   const label = game.i18n.localize(`CAIRN.Reactions.${band.key}`);
   const message = await roll.toMessage({
     speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
-    flavor: `${game.i18n.localize("CAIRN.Reaction")}: ${label}`
+    flavor: `${game.i18n.localize("CAIRN.Reaction")}: ${label}`,
+    flags: SYSTEM_ROLL_FLAGS
   });
   return { message, total: roll.total, key: band.key, label };
 }
@@ -515,7 +520,8 @@ export async function rollDieOfFate(actor) {
   const roll = await evaluateFormula("1d6");
   return roll.toMessage({
     speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
-    flavor: game.i18n.localize("CAIRN.DieOfFate")
+    flavor: game.i18n.localize("CAIRN.DieOfFate"),
+    flags: SYSTEM_ROLL_FLAGS
   });
 }
 
@@ -537,7 +543,8 @@ export async function rollEncounterCount(formula, label) {
   const roll = await new CairnRoll(String(formula)).evaluate();
   await roll.toMessage({
     speaker: ChatMessage.getSpeaker(),
-    flavor: game.i18n.localize("CAIRN.Encounter.CountFlavor", { label })
+    flavor: game.i18n.localize("CAIRN.Encounter.CountFlavor", { label }),
+    flags: SYSTEM_ROLL_FLAGS
   });
   return Math.max(roll.total ?? 0, 0);
 }

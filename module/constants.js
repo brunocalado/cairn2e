@@ -196,7 +196,15 @@ export const FLAGS = {
   CALENDAR_NOTE: "calendarNote",
 
   /** On a JournalEntry Folder: the one the calendar puts new notes in. */
-  CALENDAR_FOLDER: "calendarFolder"
+  CALENDAR_FOLDER: "calendarFolder",
+
+  /**
+   * On a ChatMessage: a roll this system posted with no card body — a Reaction, the Die of Fate,
+   * an encounter's head-count. Core draws those from `message.rolls` exactly as it draws a `/r`,
+   * so this mark is the only thing that tells them apart, and it keeps the Apply as damage button
+   * (`module/chat.js#renderApplyRollButton`) on the free rolls it is for.
+   */
+  SYSTEM_ROLL: "systemRoll"
 };
 
 /**
