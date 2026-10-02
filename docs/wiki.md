@@ -66,8 +66,9 @@ at 06:00. Each season begins on the 1st of its first month (Mourning, Sunrise, F
 table decision: the SRD's own dates for them cannot all give the 72 days it states.
 
 The **Calendar** window shows today, the **watch**, the year and the month. A day in Cairn is three
-watches, morning (from 06:00), afternoon (from 14:00) and night (from 22:00), drawn as a dial with
-the current one filled and a needle at the exact time. Everyone can open it, from the
+watches, morning (from 06:00), afternoon (from 14:00) and night (from 22:00), drawn as a dial of
+the date from midnight to midnight — night in two pieces, its small hours at the left and its
+first two hours at the right — with the current watch filled and a needle at the exact time. Everyone can open it, from the
 **Calendar** button in the Notes controls (left of the map, while a scene is shown), the
 **Calendar** macro on the hotbar, or **Actions → Calendar** on the character sheet. Players browse
 any month of any year and change nothing: the year's arrows and **Go to today** are on the toolbar
@@ -77,8 +78,8 @@ The **Warden** also:
 
 - drags the needle by its head along the dial to set the hour, in steps of the **Snap** on the
   toolbar (15 m, 30 m or 1 h, remembered in that browser). The needle never changes the date:
-  past midnight is the small hours of the same day. The time is set when the needle is let go,
-  and Escape puts it back;
+  left is earlier in the day, right is later. The time is set when the needle is let go, and
+  Escape puts it back;
 - types the time into the clock at the top right;
 - changes the date with **−1d** and **+1d** on the toolbar (same time of day), or selects a day
   and presses **Set as today**;

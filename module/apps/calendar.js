@@ -151,11 +151,6 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     return { year: y, month: m, day: Math.clamp(int(day, 0), 0, length - 1) };
   }
 
-  /** Seconds since the dial's day began (06:00) — the needle's place. */
-  static #into(worldTime, g) {
-    return ((worldTime - g.offset) % g.day + g.day) % g.day;
-  }
-
   /** The snap this client drags with, in minutes. */
   static get #snap() {
     const snap = game.settings.get(SYSTEM_ID, SETTINGS.CALENDAR_SNAP);
@@ -189,7 +184,6 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       const h = Math.floor(seconds / secondsPerHour);
       return `${pad(h % cal.days.hoursPerDay)}:${pad(Math.floor((seconds - h * secondsPerHour) / cal.days.secondsPerMinute))}`;
     };
-    const into = CairnCalendarApp.#into(game.time.worldTime, g);
     context.today = { date: formatDate(now.year, now.month, now.dayOfMonth), sub: this.#subOf(now.year, now.month, now.dayOfMonth) };
     context.time = `${pad(now.hour)}:${pad(now.minute)}`;
     context.isGM = isGM;
@@ -197,8 +191,13 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     context.canDrag = isGM && !journeying;
     context.setTodayOff = journeying || (view.year === now.year && view.month === now.month && view.day === now.dayOfMonth);
     context.journeyHint = t("CAIRN.Calendar.JourneyHint");
-    context.needle = (into / g.day * 100).toFixed(3);
-    context.watches = WATCHES.map((key, index) => {
+    // The dial is the header's date, midnight to midnight, so left is always earlier and right
+    // later. Night runs past midnight: it is drawn in two pieces that light together — its small
+    // hours at the left, its first two hours at the right, too narrow for the word, so the glyph
+    // alone. Each piece's width is its length in hours.
+    const sinceMidnight = (now.hour * cal.days.minutesPerHour + now.minute) * cal.days.secondsPerMinute + now.second;
+    context.needle = (sinceMidnight / g.day * 100).toFixed(3);
+    const watches = WATCHES.map((key, index) => {
       const watch = t(`CAIRN.Watches.${key}`);
       const start = clock(g.offset + index * g.watch);
       let hint = watch;
@@ -206,7 +205,17 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
         : t(index === lit ? "CAIRN.Calendar.WatchBack" : "CAIRN.Calendar.WatchOn", { watch, time: start });
       return { key, index, watch, lit: index === lit, hint };
     });
-    context.ticks = [0, 1, 2, 0].map((i, n) => ({ label: clock(g.offset + i * g.watch), at: n }));
+    const night = WATCHES.length - 1;
+    const piece = (index, from, to, named) => ({ ...watches[index], span: (to - from) / secondsPerHour, named });
+    context.watches = [
+      piece(night, 0, g.offset, true),
+      ...watches.slice(0, night).map((w, i) => piece(i, g.offset + i * g.watch, g.offset + (i + 1) * g.watch, true)),
+      piece(night, g.offset + night * g.watch, g.day, false)
+    ];
+    // Midnight at the left and each watch's start; not the closing midnight, which would print
+    // against 22:00 two hours away.
+    const marks = [0, ...WATCHES.map((_, i) => g.offset + i * g.watch)];
+    context.ticks = marks.map((at) => ({ label: clock(at), at: (at / g.day * 100).toFixed(3) }));
     const snap = CairnCalendarApp.#snap;
     context.snaps = SNAPS.map((minutes) => {
       const hours = minutes % cal.days.minutesPerHour === 0;
@@ -360,8 +369,8 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
 
   /**
    * The Warden drags the needle to set the hour of today — never the date, which the toolbar's
-   * day buttons and *Set as today* change. The dial reads 06:00 to 06:00, so the stretch past
-   * midnight is the small hours of the same date, and the far end stops one snap short of 06:00.
+   * day buttons and *Set as today* change. The dial is that date from midnight to midnight, and
+   * the far end stops one snap short of the next midnight.
    * While it moves only this window changes — the needle, the lit watch, the time field — and the
    * world clock is set once, on release: every `game.time.set` reaches every client and every
    * `updateWorldTime` hook. Escape, or a release where it began, moves nothing.
@@ -387,10 +396,10 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       const { left, width } = track.getBoundingClientRect();
       const share = Math.clamp((x - left) / width, 0, 1);
       const along = Math.min(Math.round(share * g.day / step) * step, g.day - step);
-      target = midnight + (g.offset + along) % g.day;
+      target = midnight + along;
       dial.style.setProperty("--at", `${(along / g.day * 100).toFixed(3)}%`);
       const lit = watchAt(target, g);
-      watches.forEach((w, i) => w.classList.toggle("lit", i === lit));
+      watches.forEach((w) => w.classList.toggle("lit", Number(w.dataset.watch) === lit));
       const { hour, minute } = game.time.calendar.timeToComponents(target);
       if (field) field.value = `${pad(hour)}:${pad(minute)}`;
     };

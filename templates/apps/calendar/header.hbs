@@ -1,10 +1,12 @@
 {{!-- Today, the watch and the Warden's clock (module/apps/calendar.js).
 
       The date line never wraps. Beside it is the time: a player reads it, the Warden types it. The
-      Warden's Show to players is on the title bar. The dial is a picture of the day: three watches
-      in their colours, the lit one filled, a needle at the exact time (`--at`, the share of the day since 06:00).
-      Its segments are the Warden's watch control; a player's are disabled. They carry no tooltip:
-      the word and the glyph already say which watch it is.
+      Warden's Show to players is on the title bar. The dial is a picture of the date, midnight to
+      midnight: three watches in their colours, Night in two pieces either side of the day (`span`,
+      each piece's hours, is its width), the lit one filled, a needle at the exact time (`--at`,
+      the share of the day since midnight). Its segments are the Warden's watch control; a
+      player's are disabled. They carry no tooltip: the word and the glyph already say which watch
+      it is.
 
       The Warden sets the hour by dragging the needle by its head, in steps of the snap; the date
       never moves with it. Under the dial, the toolbar: the year being looked at and Go to today
@@ -29,9 +31,9 @@
         <div class="cairn-calendar-watches">
             {{#each watches}}
             <button type="button" class="cairn-calendar-watch{{#if lit}} lit{{/if}}" data-action="pickWatch" data-watch="{{index}}"
-                    aria-label="{{hint}}" {{#unless ../isGM}}disabled{{/unless}}>
+                    style="--span: {{span}}" aria-label="{{hint}}" {{#unless ../isGM}}disabled{{/unless}}>
                 {{> "systems/cairn2e/templates/parts/watch-glyph.hbs" key=key}}
-                <span class="cairn-calendar-watch-name">{{watch}}</span>
+                {{#if named}}<span class="cairn-calendar-watch-name">{{watch}}</span>{{/if}}
             </button>
             {{/each}}
             {{#if canDrag}}
@@ -41,7 +43,7 @@
             {{/if}}
         </div>
         <div class="cairn-calendar-ticks" aria-hidden="true">
-            {{#each ticks}}<span>{{label}}</span>{{/each}}
+            {{#each ticks}}<span style="--at: {{at}}%">{{label}}</span>{{/each}}
         </div>
     </div>
 

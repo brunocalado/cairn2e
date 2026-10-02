@@ -107,10 +107,10 @@
             padding-top: 10px;
         }
 
+        /* Midnight to midnight: each segment as wide as its hours (`--span`), Night in two. */
         .cairn-calendar-watches {
             position: relative;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            display: flex;
             height: 36px;
             border: var(--cairn-rule) solid var(--cairn-ink);
             border-radius: var(--cairn-radius);
@@ -120,6 +120,8 @@
            4px out of the bottom of the frame, and the words sat 2px below its middle. */
         & button.cairn-calendar-watch {
             --button-size: 32px;
+            flex: var(--span) 1 0;
+            min-width: 0;
             gap: 7px;
             height: 100%;
             padding: 0;
@@ -254,26 +256,15 @@
             color: var(--cairn-ink-soft);
             font-variant-numeric: tabular-nums;
 
+            /* Each label centred on its hour (`--at`), midnight held inside the frame. */
             span {
                 position: absolute;
+                left: var(--at);
                 transform: translateX(-50%);
             }
 
-            span:nth-child(1) {
+            span:first-child {
                 left: 0;
-                transform: none;
-            }
-
-            span:nth-child(2) {
-                left: 33.333%;
-            }
-
-            span:nth-child(3) {
-                left: 66.667%;
-            }
-
-            span:nth-child(4) {
-                right: 0;
                 transform: none;
             }
         }
