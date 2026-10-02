@@ -36,6 +36,18 @@ const IMPAIRED_FORMULA = "1d4";
 // Enhanced forces d12 regardless of the weapon's own die (core-rules.md → Attack Modifiers).
 const ENHANCED_FORMULA = "1d12";
 
+/**
+ * The mode of a roll whispered to the Wardens: Reaction, Morale and both faction rolls. Each is
+ * the other side's state of mind or plans — the table meets it in how the creatures act, not by
+ * reading a number.
+ *
+ * `gm` and not `blind`: blind hides the result from the Warden too, which is the one person who
+ * needs it. v14 takes this as an OPTION on `Roll#toMessage`, which applies it to the message
+ * itself — the older roll-mode helper on `ChatMessage` is deprecated in this version, and naming
+ * it here would be a shipped file naming a deprecated API (`checks/deprecated-api.check.mjs`).
+ */
+const WARDEN_ONLY = "gm";
+
 // A roll posted with no card body of its own reads in the log like a `/r`; this says it is not one,
 // so it is never offered as damage (`FLAGS.SYSTEM_ROLL`).
 const SYSTEM_ROLL_FLAGS = { [SYSTEM_ID]: { [FLAGS.SYSTEM_ROLL]: true } };
@@ -102,8 +114,9 @@ async function evaluateSave(target) {
 /**
  * Render and post a save's chat card. `outcomeText` adds a line below the roll (Critical Damage).
  *
- * `messageMode` is left undefined by every caller but the faction's: `Roll#toMessage` falls back
- * to `core.messageMode` when it is, so an ordinary save is as public as the table's setting says.
+ * `messageMode` is left undefined by every caller but Morale's and the faction's: `Roll#toMessage`
+ * falls back to `core.messageMode` when it is, so an ordinary save is as public as the table's
+ * setting says.
  */
 async function postSaveRoll(roll, { actor, token, flavor, passed, outcomeText, messageMode } = {}) {
   const content = await foundry.applications.handlebars.renderTemplate(SAVE_CARD_TPL, {
@@ -153,7 +166,8 @@ export async function rollMorale(actor) {
   await postSaveRoll(roll, {
     actor,
     flavor: `${game.i18n.localize("CAIRN.Morale")} ${game.i18n.localize("CAIRN.Save", { key: game.i18n.localize("WIL") })}`,
-    passed
+    passed,
+    messageMode: WARDEN_ONLY
   });
   return passed;
 }
@@ -503,7 +517,7 @@ export async function rollReaction(actor) {
     speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
     flavor: `${game.i18n.localize("CAIRN.Reaction")}: ${label}`,
     flags: SYSTEM_ROLL_FLAGS
-  });
+  }, { messageMode: WARDEN_ONLY });
   return { message, total: roll.total, key: band.key, label };
 }
 
@@ -726,19 +740,13 @@ export async function drawNamedTable(ref) {
 /* -------------------------------------------- */
 
 /**
- * Both faction rolls are whispered to the Wardens.
+ * Both faction rolls are whispered to the Wardens ({@link WARDEN_ONLY}).
  *
  * A faction is campaign machinery: what it is about to do, and whether it is even allowed to act
  * this turn, are things the table is supposed to MEET rather than read. The same reasoning the
  * wilderness event and its encounter draw already follow (`drawWildernessEncounter` passes
  * `messageMode: "gm"` to `RollTable#draw`).
- *
- * `gm` and not `blind`: blind hides the result from the Warden too, which is the one person who
- * needs it. v14 takes this as an OPTION on `Roll#toMessage`, which applies it to the message
- * itself — the older roll-mode helper on `ChatMessage` is deprecated in this version, and naming
- * it here would be a shipped file naming a deprecated API (`checks/deprecated-api.check.mjs`).
  */
-const WARDEN_ONLY = "gm";
 
 /**
  * The **Faction Actions** table, verbatim from `srd-2e/wardens-guide/setting-seeds.md`:
