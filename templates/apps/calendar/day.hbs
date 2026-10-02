@@ -11,8 +11,8 @@
             <div class="cairn-calendar-note-body">
                 <div class="cairn-calendar-note-head">
                     <span class="cairn-calendar-note-title">{{title}}</span>
-                    <span class="cairn-item-tag">{{#if annual}}{{localize "CAIRN.Calendar.EveryYear"}}{{else}}{{localize "CAIRN.Calendar.Once"}}{{/if}}</span>
-                    {{#if wardenOnly}}<span class="cairn-item-tag">{{localize "CAIRN.Calendar.WardenOnly"}}</span>{{/if}}
+                    <span class="cairn-item-tag">{{#if annual}}<i class="fa-solid fa-repeat" inert></i> {{localize "CAIRN.Calendar.EveryYear"}}{{else}}{{localize "CAIRN.Calendar.Once"}}{{/if}}</span>
+                    {{#if wardenOnly}}<span class="cairn-item-tag"><i class="fa-solid fa-eye-slash" inert></i> {{localize "CAIRN.Calendar.WardenOnly"}}</span>{{/if}}
                 </div>
                 {{#if text}}<p class="cairn-calendar-note-text">{{text}}</p>{{/if}}
             </div>

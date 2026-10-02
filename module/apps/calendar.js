@@ -223,6 +223,9 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     context.view = view;
     context.columns = YEAR_DAYS + (leap ? MONTH_DAYS : 0);
     context.seasons = cal.seasons.values.map((s, i) => ({ ...SEASON_LOOKS[i], name: t(s.name), from: SEASON_STARTS[i], span: SEASON_DAYS }));
+    // The Reclamation belongs to no season, but its column gets a banner of its own all the same,
+    // a glyph alone: the name would not fit a month's width.
+    context.reclamationBanner = leap ? { from: YEAR_DAYS + 1, name: t(cal.months.values[RECLAMATION].name) } : null;
     context.months = cal.months.values.slice(0, leap ? RECLAMATION + 1 : RECLAMATION).map((m, index) => ({
       index,
       abbr: t(m.abbreviation),

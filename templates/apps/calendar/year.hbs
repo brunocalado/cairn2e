@@ -1,12 +1,17 @@
 {{!-- The year strip (the year itself is browsed from the header's toolbar): the four seasons as
       banners in their colours over the twelve months, one grid column a day, so each banner spans its 72 days exactly. A year ending
-      in 0 has a dashed Reclamation block of a month's width after Sunset (`columns` is then 312).
+      in 0 has a dashed Reclamation block of a month's width after Sunset (`columns` is then 312),
+      under a dashed banner of its own carrying a skull, since it belongs to no season.
       The viewed month is filled; a dot marks the month today is in. --}}
 <section class="cairn-calendar-year">
     <div class="cairn-calendar-strip" style="--columns: {{columns}}">
         {{#each seasons}}
         <span class="cairn-calendar-season" style="--from: {{from}}; --span: {{span}}" data-season="{{key}}"><i class="fa-solid {{icon}}" inert></i>{{name}}</span>
         {{/each}}
+        {{#if reclamationBanner}}
+        <span class="cairn-calendar-season reclamation" style="--from: {{reclamationBanner.from}}; --span: 24" data-season="reclamation"
+              aria-label="{{reclamationBanner.name}}"><i class="fa-solid fa-skull" inert></i></span>
+        {{/if}}
         {{#each months}}
         <button type="button" class="cairn-calendar-month{{#if viewed}} viewed{{/if}}{{#if reclamation}} reclamation{{/if}}"
                 style="--from: {{from}}" data-action="viewMonth" data-month="{{index}}" data-tooltip-text="{{name}}" aria-label="{{name}}">

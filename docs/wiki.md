@@ -88,8 +88,9 @@ The **Warden** also:
 - presses **Show to players**, on the window's title bar, to open everyone's calendar on the day
   the Warden is looking at.
 
-**Notes.** The day under the month grid lists the notes on it: a filled mark on a day means a note
-everyone sees, a hollow one a note only the Warden sees. Anyone who can read a note can post it to
+**Notes.** The day under the month grid lists the notes on it: a sticky note on a day means a note
+everyone sees, a struck-out eye a note only the Warden sees, and a note that comes back every year
+carries the repeat arrows on its tag. Anyone who can read a note can post it to
 chat with the scroll; a Warden-only note posts to the Wardens alone. The Warden right-clicks a day
 for **Add a note**: a title, the day it starts, **Every year** or one year only, how many days it
 lasts, whether **everyone** sees it, and plain text. Each note is a journal entry in the

@@ -10,14 +10,16 @@
      * The calendar window (module/apps/calendar.js) — today, the watch, the  *
      * year and the month of the Vald calendar.                              *
      *                                                                       *
-     * Monochrome but for the seasons: each has a colour (maintainer's call, *
-     * 2026-10-01), ground down toward ink like the store's gain and loss,   *
-     * on its banner and on the day it begins, which carries a 4px left rule *
-     * and the season's glyph. The lit watch and today are the only ink-     *
-     * filled cells, and the Reclamation is dashed. The window is as tall as *
-     * its content; only the day's notes scroll. Every position — the        *
-     * needle, a banner, a month on the strip — arrives as a custom property *
-     * from the context, because it is data; every design value is here.    *
+     * Monochrome but for the seasons and the watches: each has a colour    *
+     * (maintainer's call, 2026-10-01), ground down toward ink like the      *
+     * store's gain and loss. A season's is on its banner and on the day it  *
+     * begins, which carries a 4px left rule and the season's glyph; a       *
+     * watch's washes its segment, and fills it while it is lit. Today is    *
+     * the one ink-filled cell, and the Reclamation is dashed, under a       *
+     * banner of its own. The window is as tall as its content; only the     *
+     * day's notes scroll. Every position — the needle, a banner, a month on *
+     * the strip — arrives as a custom property from the context, because it *
+     * is data; every design value is here.                                  *
      **************************************************************************/
 
     &.cairn-calendar {
@@ -131,17 +133,55 @@
             }
         }
 
-        & button.cairn-calendar-watch.lit {
-            --button-background-color: var(--cairn-ink);
-            --button-text-color: var(--cairn-paper);
+        /* Each watch's colour: dawn gold, the afternoon's terracotta, the night's indigo — dark
+           enough that the lit segment's paper words keep their contrast. */
+        & button.cairn-calendar-watch[data-watch="0"] {
+            --cairn-watch: rgb(150 110 28);
         }
 
-        /* A player's dial only reads: full ink, no dimming, no hover. */
+        & button.cairn-calendar-watch[data-watch="1"] {
+            --cairn-watch: rgb(156 80 38);
+        }
+
+        & button.cairn-calendar-watch[data-watch="2"] {
+            --cairn-watch: rgb(46 54 102);
+        }
+
+        /* Unlit, a wash of the colour under ink words and a glyph in the colour; lit or hovered,
+           the colour itself under paper words. */
+        & button.cairn-calendar-watch {
+            --button-background-color: color-mix(in srgb, var(--cairn-watch) 14%, transparent);
+            --button-hover-background-color: var(--cairn-watch);
+            --button-hover-text-color: var(--cairn-paper);
+
+            .cairn-calendar-glyph {
+                color: var(--cairn-watch);
+            }
+        }
+
+        & button.cairn-calendar-watch.lit {
+            --button-background-color: var(--cairn-watch);
+            --button-text-color: var(--cairn-paper);
+
+            .cairn-calendar-glyph {
+                color: currentColor;
+            }
+        }
+
+        & button.cairn-calendar-watch:hover .cairn-calendar-glyph {
+            color: currentColor;
+        }
+
+        /* A player's dial only reads: full colour, no dimming, no hover. */
         & button.cairn-calendar-watch:disabled {
             --button-hover-background-color: var(--button-background-color);
             --button-hover-text-color: var(--button-text-color);
             opacity: 1;
             cursor: default;
+        }
+
+        & button.cairn-calendar-watch:disabled:not(.lit):hover .cairn-calendar-glyph {
+            color: var(--cairn-watch);
         }
 
         .cairn-calendar-glyph {
@@ -365,6 +405,10 @@
             --cairn-season: rgb(148 66 32);
         }
 
+        [data-season="reclamation"] {
+            --cairn-season: rgb(96 70 110);
+        }
+
         /* A banner: the season's colour as a wash under ink text, its rule in the full colour. */
         .cairn-calendar-season {
             grid-row: 1;
@@ -385,6 +429,13 @@
             i {
                 color: var(--cairn-season);
                 font-size: 10px;
+            }
+
+            /* The Reclamation's: dashed like its month below, and set off by the same 5px. */
+            &.reclamation {
+                margin-left: 5px;
+                border-style: dashed;
+                border-width: var(--cairn-hairline);
             }
         }
 
@@ -557,8 +608,8 @@
 
         .cairn-calendar-day-marks {
             display: flex;
-            gap: 4px;
-            height: 7px;
+            gap: 5px;
+            height: 10px;
         }
 
         /* The selected day's notes, the one part of the window that scrolls; both axes are
@@ -620,18 +671,11 @@
             white-space: pre-line;
         }
 
-        /* The grid's marks: a filled square for a note everyone reads, a hollow one for the
+        /* The grid's marks: a sticky note for a note everyone reads, a struck-out eye for the
            Warden's own. `currentColor`, so both invert on today's filled cell. */
         .cairn-calendar-mark {
-            width: 7px;
-            height: 7px;
-            background: currentColor;
-
-            &.hollow {
-                box-sizing: border-box;
-                background: none;
-                border: 1.5px solid currentColor;
-            }
+            font-size: 10px;
+            line-height: 1;
         }
     }
 
