@@ -336,9 +336,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // the feature has no Details tab, and a tab for a single toggle would put it a click away.
     context.isFeature = item.type === "feature";
     // The editor's own value, and what a reader who cannot edit sees instead of an editor: the
-    // description as it reads, links live (`tab-description.hbs`), and the same pair for the guise
-    // below. The recharge is still a toggled editor, and shows its enriched text until its pencil
-    // is pressed.
+    // description as it reads, links live (`tab-description.hbs`), and the same pair for the
+    // recharge and the guise below.
     // The guise to a user the relic is hidden from — and the editor's `value` carries it too, or the
     // real description would sit in the DOM of a disabled editor.
     context.hidden = item.isHiddenFromMe;

@@ -1,11 +1,13 @@
-{{!-- A live `<prose-mirror>`, not the `{{editor}}` helper: the helper emits appv1 markup that
-      nothing in the v2 framework activates, so the pencil it drew opened nothing (see
-      `templates/item/tab-description.hbs` for the whole finding). `toggled`, with the enriched
-      HTML as its content, so it reads as text — links live — until its pencil is pressed, and
-      leaving the field saves and closes it. --}}
+{{!-- As the item's description is (`templates/item/tab-description.hbs`, which has the whole
+      finding): for whoever may edit it, a `<prose-mirror>` that is always open — click and type,
+      saved on leaving the field — and for a reader the enriched text, links live. --}}
 <section class="tab {{tabs.recharge.cssClass}}" data-group="primary" data-tab="recharge">
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-recharge" data-ink-w="1.6">
-        <prose-mirror name="system.recharge" value="{{system.recharge}}" toggled
-            data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{rechargeHTML}}}</prose-mirror>
+        {{#if editable}}
+        <prose-mirror name="system.recharge" value="{{system.recharge}}"
+            data-document-uuid="{{item.uuid}}"></prose-mirror>
+        {{else}}
+        <div class="editor-content">{{{rechargeHTML}}}</div>
+        {{/if}}
     </div>
 </section>

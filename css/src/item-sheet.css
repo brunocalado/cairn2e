@@ -228,22 +228,6 @@
             display: none;
         }
 
-        /* A toggled editor's pencil, which core shows on hover over the box. Core draws it as a
-           dark translucent square over the text's top-right corner: a web-app control on paper.
-           Here it is the glyph alone, on the paper it sits over, soft ink until pointed at —
-           the same weight an item row gives its controls. */
-        prose-mirror > button.toggle {
-            background: var(--cairn-paper);
-            border: none;
-            box-shadow: none;
-            color: var(--cairn-ink-soft);
-
-            &:hover {
-                background: var(--cairn-paper);
-                color: var(--cairn-ink);
-            }
-        }
-
         /* Core gives the editor's own scroller a border and a ground; inside the drawn box both
            are a second edge. */
         .editor-content {

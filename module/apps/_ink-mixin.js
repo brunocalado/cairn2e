@@ -78,9 +78,8 @@ export const CairnInkMixin = (Base) => class extends Base {
     }
     // An editor's toolbar — where core puts the save button — is hidden, so leaving the field is
     // what commits it. `save()` writes the serialized HTML back onto the element and fires
-    // `change`, which is what `submitOnChange` listens for; on a `toggled` editor it also closes
-    // it back to the enriched text. A closed toggled editor has no ProseMirror to destroy and
-    // `save()` throws on it, hence `open`; focus moving between the editor's own parts is not
+    // `change`, which is what `submitOnChange` listens for. `save()` throws on an editor with no
+    // ProseMirror behind it, hence `open`; focus moving between the editor's own parts is not
     // leaving it.
     for (const editor of htmlElement.querySelectorAll("prose-mirror")) {
       editor.addEventListener("focusout", (event) => {
