@@ -24,8 +24,15 @@
     {{/if}}
 </div>
 {{#if system.unknown}}
+{{!-- An editor that is always open, as the description is (`tab-description.hbs`): click and
+      type, saved on leaving the field. A sheet that cannot be edited — a locked compendium's —
+      reads the enriched guise instead. --}}
 <div class="cairn-prose-box cairn-relic-guise" data-ink="box" data-ink-seed="relic-guise" data-ink-w="1.6">
-    <prose-mirror name="system.guiseDescription" value="{{system.guiseDescription}}" toggled
-        data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{guiseHTML}}}</prose-mirror>
+    {{#if editable}}
+    <prose-mirror name="system.guiseDescription" value="{{system.guiseDescription}}"
+        data-document-uuid="{{item.uuid}}"></prose-mirror>
+    {{else}}
+    <div class="editor-content">{{{guiseHTML}}}</div>
+    {{/if}}
 </div>
 {{/if}}
