@@ -5,6 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { EDIT_LIMITS } from "./constants.js";
+
 /**
  * Enrich authored HTML for display, with secrets shown to whoever owns the document it belongs to.
  * @param {string} html
@@ -108,6 +110,32 @@ export const stripTags = (html) => String(html ?? "").replace(/<[^>]+>/g, "").tr
  */
 export const abilityRows = (system) =>
   Object.entries(system.abilities).map(([key, { value, max }]) => ({ key, value, max }));
+
+/** The highest maximum a form accepts, which is what its `EDIT_LIMITS.statDigits` digits can say. */
+const STAT_MAX = 10 ** EDIT_LIMITS.statDigits - 1;
+
+/** A maximum as a form stores it: whole, and between 0 and 99. */
+export function clampStat(value) {
+  const n = Math.floor(Number(value));
+  return Number.isFinite(n) ? Math.min(Math.max(n, 0), STAT_MAX) : 0;
+}
+
+/**
+ * Hold a text field to digits, at most `digits` of them, as they are typed and as they are pasted.
+ *
+ * A number field is a TEXT input with `maxlength` and `inputmode="numeric"`, not `type="number"`:
+ * `maxlength` does not apply to a number input, which also lets `e`, `-` and `.` through to arrive
+ * as NaN and fail the DataModel's own check. The field simply does not take the character.
+ *
+ * The field keeps what it already has when nothing needs cutting, so the caret does not jump on
+ * every keystroke — assigning `value` at all would move it to the end of the line.
+ */
+export function digitsOnly(input, digits) {
+  input?.addEventListener("input", () => {
+    const clean = input.value.replace(/\D+/g, "").slice(0, digits);
+    if (input.value !== clean) input.value = clean;
+  });
+}
 
 /**
  * Why the HP an attribute row prints is 0 when the stored HP is not: Encumbered or Panic holds an

@@ -1,7 +1,8 @@
 {{!-- What a growth changed. The run is the outcome field's own choices with the blank last,
       wearing NONE and chosen on open: most growths in the Growth chapter move no number. The two
       blocks under it are one question asked two ways; `growth.js#promptGrowthGain` shows the one
-      the chosen button wants. --}}
+      the chosen button wants. The number is the character edit window's maximum: text with a
+      two-digit `maxlength`, kept to digits as it is typed and clamped to 0–99 on the way out. --}}
 <div class="cairn-gain-dialog">
     <div class="cairn-field-label">{{localize 'CAIRN.Growth.ApplyAttr'}}</div>
     <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Growth.ApplyAttr'}}">
@@ -14,7 +15,7 @@
     </div>
     <div class="cairn-field cairn-gain-number" hidden>
         <label for="gain-to">{{localize 'CAIRN.Growth.ApplyTo'}}</label>
-        <input id="gain-to" type="number" name="to" min="0" step="1" />
+        <input id="gain-to" type="text" name="to" maxlength="{{statDigits}}" inputmode="numeric" data-dtype="Number" />
     </div>
     <div class="cairn-gain-text">
         <label class="cairn-edit-label" for="gain-text">{{localize 'CAIRN.Growth.Gained'}}</label>

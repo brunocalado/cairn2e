@@ -4,7 +4,8 @@
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3.
  */
-import { SYSTEM_ID } from "./constants.js";
+import { SYSTEM_ID, EDIT_LIMITS } from "./constants.js";
+import { clampStat, digitsOnly } from "./helpers.js";
 import { gainUpdate, revertUpdate, attrPath, attrResource } from "./gains.js";
 import { paintInk, scheduleInk } from "./ink.js";
 
@@ -79,8 +80,11 @@ export async function promptGrowthGain(actor, item) {
       : k === "hp" ? game.i18n.localize("CAIRN.Scar.MaxHp") : game.i18n.localize(k),
     selected: k === ""
   }));
-  const content = await foundry.applications.handlebars.renderTemplate(GAIN_DIALOG_TPL, {
-    choices, gained: item.system.gained
+  // Handed over as a div element, not the string: DialogV2 runs a string through `cleanHTML`,
+  // which drops the number field's `inputmode`, so a phone would offer letters for a maximum.
+  const content = document.createElement("div");
+  content.innerHTML = await foundry.applications.handlebars.renderTemplate(GAIN_DIALOG_TPL, {
+    choices, gained: item.system.gained, statDigits: EDIT_LIMITS.statDigits
   });
   const result = await foundry.applications.api.DialogV2.prompt({
     classes: [SYSTEM_ID],
@@ -95,6 +99,8 @@ export async function promptGrowthGain(actor, item) {
       // on every switch too: a hidden box measures 0×0 and is skipped, but the frame it had
       // stays on the canvas until something paints over it — a ghost box across the button.
       const host = dialog.element.querySelector(".window-content");
+      // The character edit window's rule for a maximum: two digits, 0 to 99, nothing else typed.
+      digitsOnly(number.querySelector("input"), EDIT_LIMITS.statDigits);
       const apply = () => {
         const attr = radios.find((r) => r.checked)?.value ?? "";
         number.hidden = !attr;
@@ -119,7 +125,7 @@ export async function promptGrowthGain(actor, item) {
     // A blank number is a closed dialog, not a zero: assigning 0 is a real answer, so it is
     // the empty field and not the value that means "never mind".
     if (result.to === null || result.to === undefined) return;
-    return applyGrowthGain(actor, item, result.attr, result.to);
+    return applyGrowthGain(actor, item, result.attr, clampStat(result.to));
   }
   const text = (result.text ?? "").trim();
   if (!text) return;

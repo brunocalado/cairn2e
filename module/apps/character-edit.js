@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID, EDIT_LIMITS } from "../constants.js";
 import { traitRows, toPlainText, toPlainLines } from "../character-generator.js";
-import { abilityRows } from "../helpers.js";
+import { abilityRows, clampStat, digitsOnly } from "../helpers.js";
 import { CairnEditSheet } from "./_edit-sheet.js";
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps`;
@@ -17,28 +17,6 @@ const AGE_DIGITS = EDIT_LIMITS.ageDigits;
 const STAT_DIGITS = EDIT_LIMITS.statDigits;
 const TEXT_MAX = EDIT_LIMITS.text;
 const QUESTION_MAX = EDIT_LIMITS.question;
-
-/** The highest maximum this form accepts, which is what its digits can say. */
-const STAT_MAX = 10 ** STAT_DIGITS - 1;
-
-/** A maximum as this form stores it: whole, and between 0 and `STAT_MAX`. */
-function clampStat(value) {
-  const n = Math.floor(Number(value));
-  return Number.isFinite(n) ? Math.min(Math.max(n, 0), STAT_MAX) : 0;
-}
-
-/**
- * Hold a text field to digits, at most `digits` of them, as they are typed and as they are pasted.
- *
- * The field keeps what it already has when nothing needs cutting, so the caret does not jump on
- * every keystroke — assigning `value` at all would move it to the end of the line.
- */
-function digitsOnly(input, digits) {
-  input?.addEventListener("input", () => {
-    const clean = input.value.replace(/\D+/g, "").slice(0, digits);
-    if (input.value !== clean) input.value = clean;
-  });
-}
 
 /**
  * Every editable number and string on a character, in one window.
