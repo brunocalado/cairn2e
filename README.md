@@ -51,7 +51,7 @@ click. Scars, Panic,
 tracker follows Cairn's rules: sides take turns, with no initiative roll.
 
 <p align="center">
-  <img src="docs/images/chat-cards.png" alt="Chat cards: a failed STR save, a damage roll with an Apply button, damage overflowing into STR, a Scar notice, and a wilderness encounter" width="30%">
+  <img src="docs/images/chat-cards.png" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="30%">
   <img src="docs/images/store-cart.png" alt="A village store: items for sale on the left, the shopping cart on the right, gold and slot totals at the foot" width="66%">
 </p>
 

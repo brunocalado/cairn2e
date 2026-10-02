@@ -401,7 +401,7 @@ The result card shows what happened. When STR was lost, the target's owner gets 
 button on the card for Critical Damage. At STR 0 the target is dead.
 
 <p align="center">
-  <img src="images/chat-cards.png" alt="Chat cards: a failed STR save, a damage roll with an Apply button, damage overflowing into STR, a Scar notice, and a wilderness encounter" width="35%">
+  <img src="images/chat-cards.png" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="35%">
 </p>
 
 **Undoing a hit.** Applied it to the wrong token? The Warden can right-click the result card in the
