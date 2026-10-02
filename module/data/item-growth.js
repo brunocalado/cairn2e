@@ -5,6 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { grantsField } from "./_fields.js";
+
 const fields = foundry.data.fields;
 
 /**
@@ -68,7 +70,9 @@ export class GrowthData extends foundry.abstract.TypeDataModel {
       milestones: new fields.ArrayField(new fields.SchemaField({
         text: new fields.StringField({ required: true, blank: true }),
         done: new fields.BooleanField({ initial: false })
-      }))
+      })),
+      // The companion a growth gives — Falconry's falcon, the Half-Witch's Raven Familiar.
+      grants: grantsField()
     };
   }
 }

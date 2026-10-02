@@ -63,6 +63,21 @@ export function containerField() {
 }
 
 /**
+ * What an item comes with: the uuids of the Actors and gear dropped on its Grants zone — the
+ * Raven Familiar a growth gives, the servant that comes with a Blood Pail. The link is DATA, not a
+ * `@UUID` in the prose, so it survives a translation rewriting the description and the system can
+ * act on it (`apps/item-sheet.js`).
+ *
+ * Plain strings, not `DocumentUUIDField`, for the reason `item-background.js` gives: that field
+ * resolves a compendium uuid through `game.packs` while validating, and the pack build validates
+ * with no `game` at all.
+ * @returns {foundry.data.fields.ArrayField}
+ */
+export function grantsField() {
+  return new fields.ArrayField(new fields.StringField({ blank: false }));
+}
+
+/**
  * The fields every carried Item shares.
  *
  * What a thing costs is ONE number. "Most items take up one slot unless otherwise indicated.

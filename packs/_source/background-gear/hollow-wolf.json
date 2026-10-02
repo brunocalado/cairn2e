@@ -4,7 +4,7 @@
   "type": "growth",
   "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
   "system": {
-    "description": "<p>A <em>@UUID[Compendium.cairn2e.companions.Actor.llllfH3hScHAP0pz]{hollow wolf}</em> that had been frightening travelers. You took pity on the half-starved creature and nursed it back to health. Now it is loyal to you unto death. It is also a great tunneler. 5 HP, 11 STR, 13 DEX, 8 WIL, teeth (d6).</p>",
+    "description": "<p>A <em>hollow wolf</em> that had been frightening travelers. You took pity on the half-starved creature and nursed it back to health. Now it is loyal to you unto death. It is also a great tunneler. 5 HP, 11 STR, 13 DEX, 8 WIL, teeth (d6).</p>",
     "gained": "",
     "outcome": {
       "attr": "",
@@ -14,7 +14,10 @@
     },
     "table": "",
     "resolved": false,
-    "milestones": []
+    "milestones": [],
+    "grants": [
+      "Compendium.cairn2e.companions.Actor.llllfH3hScHAP0pz"
+    ]
   },
   "ownership": {
     "default": 0

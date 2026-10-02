@@ -470,6 +470,12 @@
   "CAIRN.Gold": "Gold",
   "CAIRN.GoldAbbrev": "gp",
   "CAIRN.GoldPieces": "Gold Pieces",
+  "CAIRN.Grants": {
+    "Drop": "Drag an actor or gear here",
+    "Label": "Grants",
+    "Refused": "Only an actor or a gear can be granted.",
+    "Stats": "{hp} HP · {str} STR · {dex} DEX · {wil} WIL"
+  },
   "CAIRN.Growth": {
     "Add": "Add a Growth",
     "AddMilestone": "Add a milestone",

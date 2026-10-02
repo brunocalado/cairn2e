@@ -4,7 +4,7 @@
   "type": "growth",
   "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
   "system": {
-    "description": "<p><strong>Falconry</strong>. You keep a @UUID[Compendium.cairn2e.companions.Actor.TGFd4pKtqEMenEDM]{falcon} [3 hp, 5 STR, 16 DEX, 4 WIL, claws (d6+d6), bite (d8)]. It only eats live game.</p>",
+    "description": "<p><strong>Falconry</strong>. You keep a falcon [3 hp, 5 STR, 16 DEX, 4 WIL, claws (d6+d6), bite (d8)]. It only eats live game.</p>",
     "gained": "",
     "outcome": {
       "attr": "",
@@ -14,7 +14,10 @@
     },
     "table": "",
     "resolved": false,
-    "milestones": []
+    "milestones": [],
+    "grants": [
+      "Compendium.cairn2e.companions.Actor.TGFd4pKtqEMenEDM"
+    ]
   },
   "ownership": {
     "default": 0

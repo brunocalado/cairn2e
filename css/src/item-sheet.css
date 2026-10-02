@@ -259,4 +259,77 @@
     .cairn-edit-text.cairn-growth-gained {
         flex: 0 0 auto;
     }
+
+    /* What a gear or a growth comes with (`parts/grants.hbs`): rows of the linked documents over
+       a drop zone. At the wrapper because one partial serves both subtypes' Details tabs. On the
+       gear the whole thing sits in a property row's track, so it stacks there instead of running
+       across the row. */
+    .cairn-grants-row {
+        align-items: start;
+    }
+
+    .cairn-grants {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .cairn-grant {
+        /* Two lines of text in a row the drawn rule runs under: room for the rule below the
+           numbers, which otherwise sat on it. */
+        padding-block: 3px 5px;
+
+        /* The picture, then the words beside it: a slot body spreads its children to the two
+           ends of the line, which put the name at the far side from its own picture. */
+        .cairn-slot-body {
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* The name and the numbers are the open control, and the row is the drag handle. */
+        .cairn-grant-text {
+            cursor: pointer;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            min-width: 0;
+        }
+    }
+
+    .cairn-grant-img {
+        border: none;
+        flex: 0 0 auto;
+        height: 28px;
+        object-fit: cover;
+        width: 28px;
+    }
+
+    .cairn-grant-stats {
+        color: var(--cairn-ink-soft);
+        font-size: 11px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* The drop zone: a dotted frame in soft ink at rest, the one place in the system a frame is
+       dotted, because it is the one frame that is a hole to put something in rather than an edge
+       around something. Under the pointer, or with a drag over it, it takes full ink and the one
+       permitted fill. */
+    .cairn-grants-drop {
+        border: var(--cairn-rule) dotted var(--cairn-ink-soft);
+        border-radius: var(--cairn-radius);
+        color: var(--cairn-ink-soft);
+        font-family: var(--cairn-serif);
+        font-size: 12px;
+        font-style: italic;
+        padding: 12px 8px;
+        text-align: center;
+
+        &:hover,
+        &.dragover {
+            background: var(--cairn-paper-sunk);
+            border-color: var(--cairn-ink);
+            color: var(--cairn-ink);
+        }
+    }
 }

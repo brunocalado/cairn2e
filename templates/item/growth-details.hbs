@@ -37,4 +37,12 @@
         <li class="cairn-empty">{{localize 'CAIRN.Growth.NoMilestones'}}</li>
         {{/each}}
     </ol>
+
+    {{!-- What the growth comes with — Falconry's falcon, the Raven Familiar. Always on the tab:
+          a growth is short, and four of the SRD's background growths are a companion. --}}
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Grants.Label'}}</h4>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-grants" data-ink-w="1" data-ink-a="0.34"></div>
+    {{> "systems/cairn2e/templates/parts/grants.hbs"}}
 </section>

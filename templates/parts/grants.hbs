@@ -1,0 +1,39 @@
+{{!-- What an item comes with (`system.grants`), shared by the gear's Grants row and the growth's
+      Grants zone. Each row names an Actor or a gear by its uuid: the name opens it, and the row
+      itself is a drag source carrying that document (`item-sheet.js#_onDragStart`) — `draggable`
+      is the class `DragDrop` binds, never the HTML attribute (`parts/slot-row.hbs`). A uuid that
+      resolves to nothing keeps its row and says so.
+
+      Under the rows, for whoever may edit the item, the drop zone: a dotted frame that turns to
+      full ink over a sunk ground while something is dragged across it (`.dragover`, set in
+      `item-sheet.js#_onRender`) or the pointer rests on it. --}}
+<div class="cairn-grants">
+    {{#if grants.length}}
+    <ol class="cairn-plain-list">
+        {{#each grants as |g i|}}
+        <li class="cairn-slot cairn-grant{{#if g.ok}} draggable{{/if}}" data-index="{{i}}" data-grant-uuid="{{g.uuid}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="grant-{{i}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-slot-body">
+                {{#if g.ok}}
+                <img class="cairn-grant-img" src="{{g.img}}" alt="" />
+                <span class="cairn-grant-text" data-action="grantOpen">
+                    <span class="cairn-item-title">{{g.name}}</span>
+                    {{#if g.stats}}<span class="cairn-grant-stats">{{g.stats}}</span>{{/if}}
+                </span>
+                {{else}}
+                <span class="cairn-item-title cairn-broken" data-tooltip="{{g.uuid}}">{{localize 'CAIRN.BackgroundBrokenRef'}}</span>
+                {{/if}}
+            </span>
+            {{#if @root.editable}}
+            <span class="cairn-item-controls">
+                <a data-action="grantRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+            {{/if}}
+        </li>
+        {{/each}}
+    </ol>
+    {{/if}}
+    {{#if @root.editable}}
+    <div class="cairn-grants-drop">{{localize 'CAIRN.Grants.Drop'}}</div>
+    {{/if}}
+</div>

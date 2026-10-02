@@ -6,7 +6,7 @@
  */
 
 import { SYSTEM_ID } from "../constants.js";
-import { itemBaseFields, usesField } from "./_fields.js";
+import { grantsField, itemBaseFields, usesField } from "./_fields.js";
 import { slotsForItem } from "./_derived.js";
 
 const fields = foundry.data.fields;
@@ -48,6 +48,7 @@ export class GearData extends foundry.abstract.TypeDataModel {
     return {
       ...itemBaseFields(),
       uses: usesField(),
+      grants: grantsField(),
       // Food the wilderness procedure spends: Make Camp eats one use, Supply deals new ones
       // (`procedures.md` → Make Camp, → Supply). A mark, not a name — a renamed or homebrew food
       // is still food.

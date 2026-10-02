@@ -89,6 +89,11 @@ const TALLER = { gear: 480, background: 480, growth: 480 };
  * things, so it is not a weapon, not armour and not part of anybody's body
  * (`data/item-gear.js#prepareBaseData` clears all three), and part of a body holds nothing.
  * Without this the Add row would keep offering rows whose value the next save wipes.
+ *
+ * Grants is the one axis with no first value to commit: what it holds is whatever gets dropped on
+ * it, and nothing can be written before the drop. So it has no `open`, and clicking it opens the
+ * row — its drop zone — on this sheet alone (`#grantsOpen`) until the window closes or a drop
+ * gives it a value of its own.
  */
 const AXES = [
   { id: "damage", label: "CAIRN.Damage", set: (sys) => !!sys.damage,
@@ -104,8 +109,16 @@ const AXES = [
   // Not on a container (a bag is not a limb) and not on a thing stowed in one: the document
   // would refuse the pointer it already has, and the row would claim a state it cannot hold.
   { id: "bodily", label: "CAIRN.Body", set: (sys) => sys.bodily,
-    open: { "system.bodily": true }, offer: (sys) => !sys.isContainer && !sys.container }
+    open: { "system.bodily": true }, offer: (sys) => !sys.isContainer && !sys.container },
+  { id: "grants", label: "CAIRN.Grants.Label", set: (sys) => sys.grants.length > 0 }
 ];
+
+/** What a Grants zone takes: any Actor but a party, and gear. A party is a roster of other
+ *  actors, not something an item can come with. */
+function grantable(document) {
+  if (document?.documentName === "Actor") return document.type !== "party";
+  return document?.documentName === "Item" && document.type === "gear";
+}
 
 /**
  * The one line that says what a subtype IS, printed under its name in the header.
@@ -149,6 +162,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       tableRemove: CairnItemSheet.#onTableRemove,
       gearRemove: CairnItemSheet.#onGearRemove,
       revealRelic: CairnItemSheet.#onRevealRelic,
+      grantOpen: CairnItemSheet.#onGrantOpen,
+      grantRemove: CairnItemSheet.#onGrantRemove,
       milestoneAdd: CairnItemSheet.#onMilestoneAdd,
       milestoneRemove: CairnItemSheet.#onMilestoneRemove
     }
@@ -416,7 +431,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       context.axes = {};
       context.addable = [];
       for (const axis of AXES) {
-        const set = axis.set(item.system);
+        const set = axis.set(item.system) || (axis.id === "grants" && this.#grantsOpen);
         context.axes[axis.id] = set;
         if (!set && (axis.offer?.(item.system) ?? true)) {
           context.addable.push({ id: axis.id, label: axis.label });
@@ -435,6 +450,24 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       );
       context.tables = await resolve(item.system.tables);
       context.startingGear = await resolve(item.system.startingGear);
+    }
+
+    // What the item comes with, as rows: the document's own name and picture, and for an actor the
+    // numbers the SRD prints beside a companion ("8 HP, 3 STR, 11 DEX, 13 WIL"), read off the
+    // actor rather than written in the prose. A uuid that resolves to nothing keeps its row, as a
+    // Background's does.
+    if (item.system.grants) {
+      context.grants = await Promise.all(item.system.grants.map(async (uuid) => {
+        const doc = await fromUuid(uuid).catch(() => null);
+        const row = { uuid, ok: !!doc, name: doc?.name ?? "", img: doc?.img ?? "" };
+        if (doc?.documentName === "Actor" && doc.system.abilities) {
+          const { hp, abilities } = doc.system;
+          row.stats = game.i18n.localize("CAIRN.Grants.Stats", {
+            hp: hp.max, str: abilities.STR.max, dex: abilities.DEX.max, wil: abilities.WIL.max
+          });
+        }
+        return row;
+      }));
     }
 
     // A container's contents are siblings in the actor's collection, resolved by the DataModel.
@@ -477,7 +510,48 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
    *  nothing left to save afterwards and nothing to remember that the document cannot answer. */
   static async #onAxisAdd(event, target) {
     const axis = AXES.find((a) => a.id === target.dataset.axis);
-    if (axis) await this.document.update(axis.open);
+    if (!axis) return;
+    if (!axis.open) {
+      this.#grantsOpen = true;
+      return this.render({ parts: ["details"] });
+    }
+    await this.document.update(axis.open);
+  }
+
+  /** The Grants row was opened from the Add row and has nothing in it yet (`AXES`). */
+  #grantsOpen = false;
+
+  /* -------------------------------------------- */
+  /*  Grants                                      */
+  /* -------------------------------------------- */
+
+  /**
+   * A document dropped on the Grants zone. Anyone who may edit the item may link to it, and what
+   * is linked is the uuid: the actor or gear itself is never copied onto the item.
+   * @param {Document} document
+   * @returns {Promise<Document|null>}
+   */
+  async #onDropGrant(document) {
+    if (!this.isEditable) return null;
+    if (!grantable(document) || document.uuid === this.document.uuid) {
+      ui.notifications.warn(game.i18n.localize("CAIRN.Grants.Refused"));
+      return null;
+    }
+    const list = this.document.system.grants;
+    // Listed once: a second drop of the same one is a slip, not a second companion.
+    if (list.includes(document.uuid)) return null;
+    await this.document.update({ "system.grants": [...list, document.uuid] });
+    return document;
+  }
+
+  /** Open what the row names. */
+  static async #onGrantOpen(event, target) {
+    const doc = await fromUuid(target.closest("[data-grant-uuid]")?.dataset.grantUuid).catch(() => null);
+    doc?.sheet.render({ force: true });
+  }
+
+  static async #onGrantRemove(event, target) {
+    await CairnItemSheet.#removeAt(this.document, "system.grants", CairnItemSheet.#rowIndex(target));
   }
 
   /* -------------------------------------------- */
@@ -511,6 +585,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   /** @override */
   _onClose(options) {
     super._onClose(options);
+    this.#grantsOpen = false;
     for (const [hook, id] of this.#itemHooks) Hooks.off(hook, id);
     this.#itemHooks = [];
   }
@@ -524,6 +599,15 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
    * `DragDrop` about it at all.
    */
   async _onDragStart(event) {
+    // A Grants row carries the document it names, so it lands on a character sheet or a scene as
+    // if it had been dragged out of its own compendium. Built from the uuid alone: `dataTransfer`
+    // takes data only while `dragstart` is being dispatched, so nothing here may wait on a lookup.
+    const grant = event.currentTarget.dataset.grantUuid;
+    if (grant) {
+      const type = foundry.utils.parseUuid(grant)?.type;
+      if (type) event.dataTransfer.setData("text/plain", JSON.stringify({ type, uuid: grant }));
+      return;
+    }
     const id = event.currentTarget.dataset.itemId;
     const held = id ? this.document.parent?.items.get(id) : null;
     if (!held) return super._onDragStart(event);
@@ -538,6 +622,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
    * siblings in a collection it does not have.
    */
   async _onDropDocument(event, document) {
+    if (event.target.closest?.(".cairn-grants-drop")) return this.#onDropGrant(document);
     if (this.document.type === "background") return this.#onDropBackground(document);
     if (document?.documentName !== "Item" || !this.document.system.isContainer) {
       return super._onDropDocument(event, document);
@@ -694,6 +779,16 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       field.addEventListener("change", () => {
         field.value = String(Math.max(min, Number(field.value) || 0));
       });
+    }
+
+    // The Grants zone says it will take the drop while one is over it. `:hover` does not follow a
+    // drag in Chromium, so the state is a class; `dragleave` fires when the pointer crosses into
+    // a child too, hence the `relatedTarget` test.
+    for (const zone of htmlElement.querySelectorAll(".cairn-grants-drop")) {
+      const over = (on) => zone.classList.toggle("dragover", on);
+      zone.addEventListener("dragover", () => over(true));
+      zone.addEventListener("dragleave", (event) => { if (!zone.contains(event.relatedTarget)) over(false); });
+      zone.addEventListener("drop", () => over(false));
     }
   }
 }
