@@ -40,8 +40,7 @@ export class CairnRulesSummary extends CairnInkMixin(HandlebarsApplicationMixin(
   };
 
   static PARTS = {
-    summary: { template: `${TEMPLATES}/summary.hbs`, scrollable: [".cairn-rules-body"] },
-    foot: { template: `${TEMPLATES}/foot.hbs` }
+    summary: { template: `${TEMPLATES}/summary.hbs`, scrollable: [".cairn-rules-body"] }
   };
 
   /** The one window this client has. */
@@ -53,11 +52,21 @@ export class CairnRulesSummary extends CairnInkMixin(HandlebarsApplicationMixin(
     return CairnRulesSummary.#instance.render({ force: true });
   }
 
-  /** @override — the foot is the Warden's share button, and a player has nothing to share. */
-  _configureRenderParts(options) {
-    const parts = super._configureRenderParts(options);
-    if (!game.user.isGM) delete parts.foot;
-    return parts;
+  /**
+   * @override — Show to everyone sits in the title bar, LEFT of the ellipsis, as a labelled button,
+   * the way the calendar's Show to players does (`calendar.js#_renderFrame`): a frame button would
+   * land right of the ellipsis with its word hidden in an `aria-label`. The Warden's alone.
+   */
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+    if (!game.user.isGM) return frame;
+    const button = frame.ownerDocument.createElement("button");
+    button.type = "button";
+    button.className = "header-control cairn-frame-label";
+    button.dataset.action = "shareRules";
+    button.textContent = game.i18n.localize("CAIRN.Journey.Push");
+    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    return frame;
   }
 
   /** The Warden asks every connected client to open its own window. */

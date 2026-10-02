@@ -13,8 +13,8 @@
      * A printed reference card, so it is set as one: three columns of       *
      * ruled headings over Lora bullets, the heading being the same capitals *
      * over a drawn rule `.cairn-edit-group` wears. The one table, Reactions, *
-     * is five cells inside the drawn box a field wears. The foot is          *
-     * Primitive 2, full width, as the journey's Warden foot is. Nothing      *
+     * is five cells inside the drawn box a field wears. The Warden's Show   *
+     * to everyone is a word in the title bar, as the calendar's is. Nothing *
      * carries a hue: a term is picked out with weight, a quality with italic.*
      **************************************************************************/
 
@@ -93,15 +93,6 @@
         .cairn-rules-roll {
             font-weight: 700;
             font-variant-numeric: tabular-nums;
-        }
-
-        .cairn-rules-foot {
-            flex: 0 0 auto;
-            display: flex;
-
-            button {
-                flex: 1 1 0;
-            }
         }
     }
 }
