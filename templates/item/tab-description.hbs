@@ -1,17 +1,17 @@
-{{!-- The description, read as text until its pencil is pressed — the journal's pattern.
+{{!-- The description. For whoever may edit the item it is an editor that is always open — click
+      and type, as every other text box in the system is; leaving the field saves it
+      (`_ink-mixin.js`), so the hidden toolbar (`css/src/item-sheet.css`) costs nothing. For a
+      reader it is the enriched text, so a link the Warden wrote is a link to click.
 
       This is `<prose-mirror>`, the real v14 element, and NOT the `{{editor}}` helper. The helper
       emits `<div class="editor"><div class="editor-content" data-edit="…">` and then leaves it
       there: nothing in the v2 framework ever activates that markup — only `appv1`'s
-      `FormApplication` did (`client/appv1/api/form-application-v1.mjs`), and
-      `createEditorInput` reaches the element itself only when `CONFIG.TextEditor.engines` carries
-      a renderer, which in 14.367 is empty. The pencil it drew opened nothing at all.
+      `FormApplication` did (`client/appv1/api/form-application-v1.mjs`).
 
-      `toggled`, with the enriched HTML as its content: until the element's own pencil opens it,
-      the box shows the description as it reads, so an `@UUID` link is a link a player can click
-      or a Warden can drag onto the map. An always-open editor printed the raw `@UUID[…]` source.
-      The toolbar stays hidden (`css/src/item-sheet.css`); leaving the field saves and closes it
-      (`_ink-mixin.js`), so nothing depends on a control that is not on screen.
+      It used to be `toggled`, read as enriched text until a pencil opened it, so the companions
+      five background items named could be `@UUID` links. Those links are the item's Grants now
+      (`parts/grants.hbs`), and the pencil was one click too many on every item. An open editor
+      shows `@UUID[…]` as its source, which is what an editor is for.
 
       The field stays rich: every description in the compendium is HTML, `<em>bulky</em>`
       included, and the formatting keyboard shortcuts still work. --}}
@@ -28,8 +28,12 @@
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-description" data-ink-w="1" data-ink-a="0.34"></div>
     {{/if}}
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-description" data-ink-w="1.6">
-        <prose-mirror name="system.description" value="{{descriptionValue}}" toggled
-            data-document-uuid="{{item.uuid}}" {{#unless editable}}disabled{{/unless}}>{{{descriptionHTML}}}</prose-mirror>
+        {{#if editable}}
+        <prose-mirror name="system.description" value="{{descriptionValue}}"
+            data-document-uuid="{{item.uuid}}"></prose-mirror>
+        {{else}}
+        <div class="editor-content">{{{descriptionHTML}}}</div>
+        {{/if}}
     </div>
     {{#if growth}}
     {{!-- A growth's tab is two parts under two headings. The first box is the story; the second is

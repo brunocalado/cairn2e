@@ -334,8 +334,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // The feature's one property sits in the header's caption row (`parts/item-header.hbs`):
     // the feature has no Details tab, and a tab for a single toggle would put it a click away.
     context.isFeature = item.type === "feature";
-    // What a toggled `<prose-mirror>` shows until its pencil is pressed: the description as it
-    // reads, links live. An always-open editor printed `@UUID[…]{Raven Familiar}` as raw text.
+    // The editor's own value, and what a reader who cannot edit sees instead of an editor: the
+    // description as it reads, links live (`tab-description.hbs`). The recharge and the guise
+    // below are still toggled editors, and show their enriched text until their pencil is pressed.
     // The guise to a user the relic is hidden from — and the editor's `value` carries it too, or the
     // real description would sit in the DOM of a disabled editor.
     context.hidden = item.isHiddenFromMe;

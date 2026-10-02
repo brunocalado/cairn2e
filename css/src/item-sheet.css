@@ -213,6 +213,14 @@
             min-height: 0;
         }
 
+        /* A reader's description is the enriched text with no editor round it, so it scrolls on
+           its own, as the editor it stands in for does. */
+        > .editor-content {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
         /* The whole menu CONTAINER, not just the `<menu>` inside it: core gives the container
            `flex: 0 0 var(--menu-height)` (foundry2.css), so hiding only the bar left a 42px band
            of reserved nothing at the top of the box and the text started below it. */
