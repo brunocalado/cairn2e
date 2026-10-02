@@ -501,13 +501,14 @@ Hooks.on("renderApplicationV2", (app, element) => {
 
 // A link to the system's issue tracker, above core's "Settings and Configuration". It is core's
 // own external-link markup (`a.button` in a `section`, as its Help and Documentation links are
-// drawn), so the sidebar styles it and no rule here does. The tab's one part is `root`, so every
+// drawn), but the section carries the scope class, so the button is drawn like the ones in the
+// system's own sidebar tab (css/src/sidebar-tab.css). The tab's one part is `root`, so every
 // render rebuilds the element from scratch and the link is added again each time.
 Hooks.on("renderSettings", (app, element) => {
   const settings = element.querySelector("section.settings");
   if (!settings || !game.system.bugs) return;
   const section = document.createElement("section");
-  section.className = "flexcol";
+  section.className = `${SYSTEM_ID} cairn-report-issue flexcol`;
   const link = document.createElement("a");
   link.className = "button";
   link.href = game.system.bugs;

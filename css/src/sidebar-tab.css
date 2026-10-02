@@ -91,24 +91,26 @@
                 margin: 0;
             }
         }
+    }
 
-        /* This panel deliberately follows the user's theme, and the system's ink button would
-           undo that: black-on-transparent in a dark sidebar is unreadable. The one place in the
-           system where an ink button must NOT appear, so it takes the swapping pair instead. */
-        /* `:is(button, a.button)` rather than a bare `button`: the generic control rule above is
-           `.cairn2e :is(button, a.button):not(…)` at (0,2,2), and a plain
-           `.cairn2e.cairn2e-sidebar button` is only (0,2,1) — it loses, and the ink button comes
-           back. Measured in a live client before this line was widened. */
-        & :is(button, a.button) {
-            --button-background-color: transparent;
-            --button-border-color: var(--cairn-surface-fg);
-            --button-text-color: var(--cairn-surface-fg);
-            --button-hover-background-color: var(--cairn-surface-fg);
-            --button-hover-border-color: var(--cairn-surface-fg);
-            --button-hover-text-color: var(--cairn-surface-bg);
-            justify-content: flex-start;
-            font-family: var(--cairn-serif);
-        }
+    /* This panel deliberately follows the user's theme, and the system's ink button would undo
+       that: black-on-transparent in a dark sidebar is unreadable. The one place in the system
+       where an ink button must NOT appear, so it takes the swapping pair instead — and so does
+       the Report an Issue link the system adds to core's Settings tab (module/cairn2e.js), whose
+       section carries the scope so it reads as one of this panel's buttons. */
+    /* `:is(button, a.button)` rather than a bare `button`: the generic control rule above is
+       `.cairn2e :is(button, a.button):not(…)` at (0,2,2), and a plain `.cairn2e.cairn2e-sidebar
+       button` is only (0,2,1) — it loses, and the ink button comes back. Measured in a live
+       client before this line was widened. */
+    &:is(.cairn2e-sidebar:where(:not(.sidebar-popout)), .cairn-report-issue) :is(button, a.button) {
+        --button-background-color: transparent;
+        --button-border-color: var(--cairn-surface-fg);
+        --button-text-color: var(--cairn-surface-fg);
+        --button-hover-background-color: var(--cairn-surface-fg);
+        --button-hover-border-color: var(--cairn-surface-fg);
+        --button-hover-text-color: var(--cairn-surface-bg);
+        justify-content: flex-start;
+        font-family: var(--cairn-serif);
     }
 
     /* The same panel popped out into a window. A floating window is a system window, so it takes
