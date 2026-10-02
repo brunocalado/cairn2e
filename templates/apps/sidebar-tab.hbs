@@ -12,12 +12,15 @@
 
 {{#if isGM}}
 <section class="cairn-tool-group flexcol">
-    <h4 class="divider">{{localize "CAIRN.Sidebar.Warden"}}</h4>
+    <h4 class="divider">{{localize "CAIRN.Sidebar.Generators"}}</h4>
     <button type="button" data-action="generateNpc">
         <i class="fas fa-user" inert></i> {{localize "CAIRN.GenerateNpc"}}
     </button>
     <button type="button" data-action="generateHireling">
         <i class="fas fa-hand-holding-dollar" inert></i> {{localize "CAIRN.GenerateHireling"}}
+    </button>
+    <button type="button" data-action="generateName">
+        <i class="fa-solid fa-signature" inert></i> {{localize "CAIRN.NameGen.Button"}}
     </button>
     <button type="button" data-action="generateMonster">
         <i class="fas fa-dragon" inert></i> {{localize "CAIRN.GenerateMonster"}}
@@ -25,26 +28,27 @@
     <button type="button" data-action="generateFaction">
         <i class="fas fa-sitemap" inert></i> {{localize "CAIRN.FactionGen.Button"}}
     </button>
-    <button type="button" data-action="generateName">
-        <i class="fa-solid fa-signature" inert></i> {{localize "CAIRN.NameGen.Button"}}
-    </button>
-    <button type="button" data-action="openStore">
-        <i class="fas fa-store" inert></i> {{localize "CAIRN.Store.Button"}}
-    </button>
-    <button type="button" data-action="openRules">
-        <i class="fas fa-book-open" inert></i> {{localize "CAIRN.RulesRef.Button"}}
-    </button>
+</section>
+
+<section class="cairn-tool-group flexcol">
+    <h4 class="divider">{{localize "CAIRN.Sidebar.Campaign"}}</h4>
     {{#if hasCalendar}}
     <button type="button" data-action="openCalendar">
         <i class="fa-solid fa-calendar-days" inert></i> {{localize "CAIRN.Calendar.Button"}}
     </button>
     {{/if}}
+    <button type="button" data-action="openJourney">
+        <i class="fas fa-route" inert></i> {{localize "CAIRN.Journey.Button"}}
+    </button>
+    <button type="button" data-action="openStore">
+        <i class="fas fa-store" inert></i> {{localize "CAIRN.Store.Button"}}
+    </button>
 </section>
 
 <section class="cairn-tool-group flexcol">
-    <h4 class="divider">{{localize "CAIRN.Sidebar.Travel"}}</h4>
-    <button type="button" data-action="openJourney">
-        <i class="fas fa-route" inert></i> {{localize "CAIRN.Journey.Button"}}
+    <h4 class="divider">{{localize "CAIRN.Sidebar.Reference"}}</h4>
+    <button type="button" data-action="openRules">
+        <i class="fas fa-book-open" inert></i> {{localize "CAIRN.RulesRef.Button"}}
     </button>
 </section>
 {{/if}}

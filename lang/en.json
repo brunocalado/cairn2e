@@ -1161,10 +1161,11 @@
     }
   },
   "CAIRN.Sidebar": {
+    "Campaign": "Campaign",
     "Characters": "Characters",
-    "Title": "Cairn 2e",
-    "Travel": "Wilderness",
-    "Warden": "Warden Tools"
+    "Generators": "Generators",
+    "Reference": "Reference",
+    "Title": "Cairn 2e"
   },
   "CAIRN.SlotCost": "Slots",
   "CAIRN.SlotCostLocked": "A Scroll is petty by rule: it takes up no slots.",
