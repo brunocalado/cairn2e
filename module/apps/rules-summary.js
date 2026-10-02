@@ -32,7 +32,9 @@ export class CairnRulesSummary extends CairnInkMixin(HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     id: "cairn2e-rules-summary",
     classes: [SYSTEM_ID, "cairn-rules"],
-    position: { width: 1240, height: 830 },
+    // As tall as the longest column, so no band of empty paper sits under the page. Core's own
+    // `.application` max-height keeps it on screen, and the body scrolls past that.
+    position: { width: 1240, height: "auto" },
     window: { title: "CAIRN.RulesRef.Title", icon: "fa-solid fa-book-open", resizable: true },
     actions: {
       shareRules: CairnRulesSummary.#onShare
