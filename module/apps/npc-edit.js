@@ -5,8 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "../constants.js";
-import { abilityRows } from "../helpers.js";
+import { SYSTEM_ID, EDIT_LIMITS } from "../constants.js";
+import { abilityRows, clampDigits, clampStat, digitsOnly } from "../helpers.js";
 import { CairnEditSheet } from "./_edit-sheet.js";
 import { NPC_DETAIL_KEYS, appearanceTraitRows, rollNpcDetail } from "../npc-generator.js";
 
@@ -73,6 +73,7 @@ export class CairnNpcEdit extends CairnEditSheet {
     context.actor = actor;
     context.system = system;
     context.abilities = abilityRows(system);
+    context.limits = EDIT_LIMITS;
     // Read off the field's own `choices` (an array on `NpcData`) so the buttons and what a save
     // will accept cannot drift apart. These buttons are also how a Warden reclassifies an actor —
     // the NPC the party ends up hiring becomes a hireling here.
@@ -97,6 +98,14 @@ export class CairnNpcEdit extends CairnEditSheet {
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
 
+    // The character window's numbers: text fields so `maxlength` applies, kept to digits here so
+    // a letter, a minus sign or a decimal point never reaches `data-dtype` as NaN.
+    // Every `.max` on the window is two digits: the three attributes, HP and the slots.
+    for (const box of htmlElement.querySelectorAll('input[name$=".max"]')) {
+      digitsOnly(box, EDIT_LIMITS.statDigits);
+    }
+    digitsOnly(htmlElement.querySelector('input[name="system.dayRate"]'), EDIT_LIMITS.rateDigits);
+
     // The Role buttons are radios; the checked one is the value the select used to hold. The nav
     // entry they hide is in the nav part, which renders first.
     const roles = [...htmlElement.querySelectorAll('input[name="system.role"]')];
@@ -109,6 +118,25 @@ export class CairnNpcEdit extends CairnEditSheet {
     };
     apply();
     for (const r of roles) r.addEventListener("change", apply);
+  }
+
+  /**
+   * @override — the same ranges the fields accept, applied where the form is read, as the
+   * character window does (`character-edit.js#_processFormData`): the maxima and the slots 0 to
+   * 99, the day rate 0 to 9999, whole. A value no keystroke made — the console, an autofill — is a
+   * number to make sense of, not a typo to refuse.
+   */
+  _processFormData(event, form, formData) {
+    const data = super._processFormData(event, form, formData);
+    const system = data.system;
+    if (!system) return data;
+    for (const ability of Object.values(system.abilities ?? {})) {
+      if ("max" in ability) ability.max = clampStat(ability.max);
+    }
+    if (system.hp && "max" in system.hp) system.hp.max = clampStat(system.hp.max);
+    if (system.slots && "max" in system.slots) system.slots.max = clampStat(system.slots.max);
+    if ("dayRate" in system) system.dayRate = clampDigits(system.dayRate, EDIT_LIMITS.rateDigits);
+    return data;
   }
 
   /** Fill the inputs a roll names. The form, not the document: Save writes, Cancel forgets. */

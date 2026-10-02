@@ -29,12 +29,13 @@ export const SYSTEM_ID = "cairn2e";
 export const TOOLTIP_CLASS = `${SYSTEM_ID} cairn-tooltip`;
 
 /**
- * What the character edit window accepts, held twice — on the control, where `maxlength` stops
- * the typing, and on the submit path, which stops everything a keystroke did not make. One set of
- * numbers for both, so the two cannot disagree: four digits of age, two of each maximum (0-99), a
- * thousand characters of Bond, Omen or table answer, two hundred of table question.
+ * What the edit windows accept, held twice — on the control, where `maxlength` stops the typing,
+ * and on the submit path, which stops everything a keystroke did not make. One set of numbers for
+ * both, so the two cannot disagree: four digits of age, two of each maximum and of an NPC's slots
+ * (0-99), four of a day rate (0-9999), a thousand characters of Bond, Omen or table answer, two
+ * hundred of table question.
  */
-export const EDIT_LIMITS = Object.freeze({ ageDigits: 4, statDigits: 2, text: 1000, question: 200 });
+export const EDIT_LIMITS = Object.freeze({ ageDigits: 4, statDigits: 2, rateDigits: 4, text: 1000, question: 200 });
 
 /**
  * World setting keys. 2e deletes every setting that configures away a rule — `use-panic`,

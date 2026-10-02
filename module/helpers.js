@@ -111,14 +111,14 @@ export const stripTags = (html) => String(html ?? "").replace(/<[^>]+>/g, "").tr
 export const abilityRows = (system) =>
   Object.entries(system.abilities).map(([key, { value, max }]) => ({ key, value, max }));
 
-/** The highest maximum a form accepts, which is what its `EDIT_LIMITS.statDigits` digits can say. */
-const STAT_MAX = 10 ** EDIT_LIMITS.statDigits - 1;
-
-/** A maximum as a form stores it: whole, and between 0 and 99. */
-export function clampStat(value) {
+/** A number as a field of `digits` digits stores it: whole, and between 0 and what they can say. */
+export function clampDigits(value, digits) {
   const n = Math.floor(Number(value));
-  return Number.isFinite(n) ? Math.min(Math.max(n, 0), STAT_MAX) : 0;
+  return Number.isFinite(n) ? Math.min(Math.max(n, 0), 10 ** digits - 1) : 0;
 }
+
+/** A maximum as a form stores it: whole, and between 0 and 99 (`EDIT_LIMITS.statDigits`). */
+export const clampStat = (value) => clampDigits(value, EDIT_LIMITS.statDigits);
 
 /**
  * Hold a text field to digits, at most `digits` of them, as they are typed and as they are pasted.

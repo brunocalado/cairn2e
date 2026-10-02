@@ -33,8 +33,8 @@
     </div>
     <div class="cairn-field cairn-unit-row">
         <label for="cairn-edit-dayrate">{{localize 'CAIRN.DayRate'}}</label>
-        <input id="cairn-edit-dayrate" class="cairn-edit-digits" type="number" name="system.dayRate"
-            value="{{system.dayRate}}" min="0" step="1" />
+        <input id="cairn-edit-dayrate" class="cairn-edit-digits" type="text" name="system.dayRate"
+            value="{{system.dayRate}}" maxlength="{{limits.rateDigits}}" inputmode="numeric" data-dtype="Number" />
         <span class="cairn-field-unit">{{localize 'CAIRN.Edit.RateUnit'}}</span>
     </div>
 </section>

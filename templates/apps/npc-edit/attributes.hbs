@@ -1,6 +1,7 @@
 {{!-- Maxima and the three numbers an NPC has that a character does not. A current value moves
       every session and belongs on the sheet under its brush cap; a maximum moves once, which is
-      what a form is for. --}}
+      what a form is for. The maxima and the slots are the character window's two-digit text
+      fields (0-99), kept to digits as they are typed and clamped on save (`npc-edit.js`). --}}
 <section class="tab cairn-edit-panel {{tab.cssClass}}" data-group="primary" data-tab="attributes">
     <div class="cairn-edit-col-head">
         <span></span>
@@ -10,15 +11,15 @@
     {{#each abilities as |ability|}}
     <div class="cairn-field">
         <label for="cairn-edit-{{ability.key}}">{{localize ability.key}}</label>
-        <input id="cairn-edit-{{ability.key}}" type="number" name="system.abilities.{{ability.key}}.max"
-            value="{{ability.max}}" min="0" step="1" />
+        <input id="cairn-edit-{{ability.key}}" type="text" name="system.abilities.{{ability.key}}.max"
+            value="{{ability.max}}" maxlength="{{@root.limits.statDigits}}" inputmode="numeric" data-dtype="Number" />
     </div>
     {{/each}}
 
     <div class="cairn-field">
         <label for="cairn-edit-hp">{{localize 'CAIRN.HitProtection'}}</label>
-        <input id="cairn-edit-hp" type="number" name="system.hp.max" value="{{system.hp.max}}"
-            min="0" step="1" />
+        <input id="cairn-edit-hp" type="text" name="system.hp.max" value="{{system.hp.max}}"
+            maxlength="{{limits.statDigits}}" inputmode="numeric" data-dtype="Number" />
     </div>
 
     {{!-- The character's form has no Armor row because a PC's armour is summed from what is
@@ -40,7 +41,7 @@
 
     <div class="cairn-field">
         <label for="cairn-edit-slots">{{localize 'CAIRN.Slots'}}</label>
-        <input id="cairn-edit-slots" type="number" name="system.slots.max" value="{{system.slots.max}}"
-            min="0" step="1" />
+        <input id="cairn-edit-slots" type="text" name="system.slots.max" value="{{system.slots.max}}"
+            maxlength="{{limits.statDigits}}" inputmode="numeric" data-dtype="Number" />
     </div>
 </section>
