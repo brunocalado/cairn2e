@@ -1,4 +1,4 @@
-# Unreleased
+# 0.0.8
 
 - [Added] The Warden can mark a relic **unknown**. Until it is revealed, its holder sees a name and an
   appearance the Warden wrote, on the sheet, in Barter, in the Store and in every chat card, and
@@ -8,6 +8,39 @@
   Procedures: places, terrains, factions, realms and forests, one tab each, showing every part and
   its die and rerolling any one of them. The words are new tables in the Warden Tables compendium,
   and Generate Faction now names its page by the Faction Names Formula.
+- [Added] A **Calendar** replaces the watch chip, kept on Foundry's world time in the Vald calendar:
+  twelve months of 24 days, a six-day week, four seasons and the Reclamation in years ending in 0.
+  It shows today, a watch dial with the time and a month grid, and opens from the Notes controls,
+  a Calendar hotbar macro, the character's Actions menu and the Warden's tools. The Warden sets the
+  time by dragging the needle, moves a day back or on, makes any day today and shows the calendar
+  to every player. A new world starts on 1 Mourning 7728, 06:00.
+- [Added] The Warden can add **notes** to any day of the calendar: a title, text, a length, every year
+  or once, Warden only or everyone. A new world starts with the SRD's 24 dated events.
+- [Added] The Warden can apply **any roll** in the log as damage, from its context menu or the Apply as
+  damage button under a bare roll, to HP or to one attribute, with or without armour. Each applied
+  hit's card carries a **Reverse the hit** button, so one roll applied to several targets can be
+  undone for one of them.
+- [Added] A gear or a growth lists the **actors and gear it grants**, dropped on it and dragged back out.
+  A granted Actor dragged onto the scene becomes one linked copy owned by the item's players; the
+  five background companions use it.
+- [Added] The character creator offers the world's own Backgrounds under **Other Backgrounds**, beside
+  the SRD's twenty, and a Warden's imported copy of one stands in for it.
+- [Added] A growth's Description carries a help mark explaining Downtime Milestones and their Costs.
+- [Changed] A targeted token is marked with thick ink brackets and a blood-red cross that read on any
+  map, and other players' target pips are larger.
+- [Changed] The Warden's tools are grouped into Generators, Campaign and Reference.
+- [Changed] Morale, Reaction and both faction rolls are whispered to the Wardens, with no private-roll
+  card left in the players' log; so is the Dungeon Event card.
+- [Changed] Dungeon exploration: **Next Turn** asks first when someone moved past torchlight with no
+  event rolled, and the distance moved is green within 40 ft, amber past it and red past 120 ft,
+  starting again from 0 each turn.
+- [Changed] An item's description is an editor that is always open for whoever may edit it; the
+  pencil is gone.
+- [Changed] The NPC edit window and a growth's gain take two-digit attributes (0-99), and an NPC's day
+  rate up to 9999.
+- [Changed] Rules Summary's Show to everyone moves to the title bar, and the window opens as tall as
+  its longest column.
+- [Fixed] Light Sources 0.5.0 is registered on every client.
 
 # 0.0.7
 
