@@ -17,9 +17,12 @@ import { SYSTEM_ID, FLAGS } from "./constants.js";
  * by the item's players, and sets a token LINKED to it where the row was dropped. Linked, because
  * a companion is one creature — the raven wounded on one scene is wounded on the next.
  *
- * One copy per item: the copy is recorded on the item ({@link FLAGS.GRANTED}), and the next drag
- * of the same row sets another token of THAT actor rather than a second raven. Two characters with
- * the growth each have their own. A copy the Warden deleted is made again on the next drag.
+ * A grant that is an Actor in the world's directory is that actor: it is put on the scene as it
+ * is, and the item's players are made its owners. A grant read from a compendium needs a world
+ * copy, because a token can only stand for a world Actor — one copy per item, recorded on the
+ * item ({@link FLAGS.GRANTED}), so the next drag of the same row sets another token of THAT actor
+ * rather than a second raven. Two characters with the growth each have their own. A copy the
+ * Warden deleted is made again on the next drag.
  *
  * Only an item in the world is handled here. An item read from a compendium has nobody to own the
  * copy and nowhere to record it, so its drop is left to core, which imports the Actor for a Warden
@@ -90,8 +93,10 @@ export async function applyGrant(request, user) {
   const actor = await grantedActor(item, grantUuid);
   if (!actor) return false;
   const token = await actor.getTokenDocument({}, { parent: scene });
-  // Centred under the pointer, as a token dragged from the Actors directory lands.
+  // Linked whatever the actor's own prototype says, and centred under the pointer, as a token
+  // dragged from the Actors directory lands.
   token.updateSource({
+    actorLink: true,
     x: x - (token.width * scene.grid.sizeX) / 2,
     y: y - (token.height * scene.grid.sizeY) / 2
   });
@@ -100,12 +105,23 @@ export async function applyGrant(request, user) {
 }
 
 /**
- * The world copy of what `item` grants: the one already made for this item, or a new one.
+ * The world's Actor for what `item` grants: the directory's own when the grant is one, else the
+ * copy already made for this item, or a new one.
  * @param {Item} item
  * @param {string} grantUuid
  * @returns {Promise<Actor|null>}
  */
 async function grantedActor(item, grantUuid) {
+  if (!grantUuid.startsWith("Compendium.")) {
+    const actor = await fromUuid(grantUuid);
+    if (actor?.documentName !== "Actor" || actor.pack) return null;
+    const owners = itemOwners(item).filter((id) => !actor.testUserPermission(game.users.get(id), "OWNER"));
+    if (owners.length) {
+      await actor.update(Object.fromEntries(owners.map((id) => [`ownership.${id}`, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER])));
+    }
+    return actor;
+  }
+
   // A list, not an object keyed by uuid: a uuid has dots, and `setFlag` would expand them into
   // nested objects (`FLAGS.GATHERED_TOKENS` records the cost of that).
   const made = item.getFlag(SYSTEM_ID, FLAGS.GRANTED) ?? [];
@@ -117,13 +133,8 @@ async function grantedActor(item, grantUuid) {
   const data = source.toObject();
   delete data._id;
   data.folder = (await grantsFolder()).id;
-  // Owned by whoever owns the item — the character's player — and not by the Warden who may be
-  // the one dragging it out; the Warden owns everything regardless.
-  const ownership = { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE };
-  for (const u of game.users) {
-    if (!u.isGM && item.testUserPermission(u, "OWNER")) ownership[u.id] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
-  }
-  data.ownership = ownership;
+  data.ownership = { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE };
+  for (const id of itemOwners(item)) data.ownership[id] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
   data.prototypeToken = foundry.utils.mergeObject(data.prototypeToken ?? {}, {
     actorLink: true,
     disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY
@@ -135,6 +146,12 @@ async function grantedActor(item, grantUuid) {
     { source: grantUuid, actor: actor.id }
   ]);
   return actor;
+}
+
+/** Who owns the item — the character's players — and not the Warden who may be the one dragging
+ *  it out; the Warden owns everything regardless. */
+function itemOwners(item) {
+  return game.users.filter((u) => !u.isGM && item.testUserPermission(u, "OWNER")).map((u) => u.id);
 }
 
 /** The "Grants" Actor folder, made on first use. */
