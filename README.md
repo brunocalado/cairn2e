@@ -38,6 +38,10 @@ the Warden has put there. Drag a sack or a cart onto another sheet you own, such
 and everything inside goes with it. A companion that comes with a background, like the Raven
 Familiar, is dragged from its item straight onto the map.
 
+<p align="center">
+  <img src="docs/images/rules-summary.png" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="90%">
+</p>
+
 ### Combat that does the math for you
 Roll damage and apply it to the targeted token. Armor soaks what it can, HP goes first, the rest
 spills into STR, and the chat card offers the critical-damage save when it's due. A fall or a
@@ -82,6 +86,10 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 </p>
 <p align="center">
   <img src="docs/images/faction-page.png" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="70%">
+</p>
+<p align="center">
+  <img src="docs/images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, and the selected day's notes" width="49%">
+  <img src="docs/images/name-generator.png" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="45%">
 </p>
 
 ### Everything in the box

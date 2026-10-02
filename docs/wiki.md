@@ -106,6 +106,10 @@ During a **journey** the journey spends the time, so these controls are switched
 the dial opens the journey. The calendar is Foundry's own world time, so a time-of-day lighting
 module follows it.
 
+<p align="center">
+  <img src="images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, and the selected day's notes" width="70%">
+</p>
+
 ### Settings
 
 Most of Cairn's rules have no on/off switch: they just apply. **Configure Settings** has only a
@@ -167,6 +171,10 @@ and **Next** to move between them:
 7. **Review**: check everything, then press **Create Character**. Anything you left blank is rolled
    for you.
 
+<p align="center">
+  <img src="images/character-creator.png" alt="The character creator's first step: choosing one of the twenty backgrounds" width="70%">
+</p>
+
 **Rolled once.** A player's attribute roll, swap and HP roll are kept even if they close the
 window, so closing it doesn't give a re-roll. The Warden can allow a new try from the character
 sheet's menu (the cog icon): **Reset generator rolls**.
@@ -221,6 +229,10 @@ the **Other Backgrounds** list.
 
 ## 3. The character sheet
 
+<p align="center">
+  <img src="images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, and ten inventory slots with fatigue markers" width="70%">
+</p>
+
 ### The top of the sheet
 
 - **Portrait and name.**
@@ -233,6 +245,13 @@ the **Other Backgrounds** list.
   **Barter** (see below), the **Rules Summary**, the **Calendar**, **Whisper** (a private word, spoken as the
   character, to the players you pick) and any macros the Warden has added (see
   [§1](#settings)).
+
+The **Rules Summary** puts the player's rules on one landscape page. The Warden can open it on
+everyone's screen with **Show to everyone**, on its title bar.
+
+<p align="center">
+  <img src="images/rules-summary.png" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="100%">
+</p>
 
 ### Attributes and HP
 
@@ -381,6 +400,10 @@ slots at the bottom of the screen). Clicking that slot rolls the weapon's damage
 The result card shows what happened. When STR was lost, the target's owner gets a **Roll STR save**
 button on the card for Critical Damage. At STR 0 the target is dead.
 
+<p align="center">
+  <img src="images/chat-cards.png" alt="Chat cards: a failed STR save, a damage roll with an Apply button, damage overflowing into STR, a Scar notice, and a wilderness encounter" width="35%">
+</p>
+
 **Undoing a hit.** Applied it to the wrong token? The Warden can right-click the result card in the
 chat and pick **Reverse the hit**. The HP and STR it took are given back.
 
@@ -496,6 +519,10 @@ directory like any other actor and choose **Party** as its type.
   (they come back out around it). A member can be held back from travelling with the party with
   the button on their row.
 
+<p align="center">
+  <img src="images/party-sheet.png" alt="The party sheet: each member's HP, attributes, armor and load" width="70%">
+</p>
+
 ---
 
 ## 11. Stores and coin
@@ -534,6 +561,10 @@ The Warden opens **Store** from the Cairn 2e tab.
   **gold** and the **slots** you'd need.
 - **Confirm** stays greyed out, with the reason, while you are short of coin or the things won't
   fit. Once it goes through, the gold and items are moved for you.
+
+<p align="center">
+  <img src="images/store-cart.png" alt="A village store: items for sale on the left, the shopping cart on the right, gold and slot totals at the foot" width="80%">
+</p>
 
 ---
 
@@ -589,6 +620,10 @@ A faction page is a form you keep up to date as the campaign goes:
 
 Both rolls go to the Wardens only.
 
+<p align="center">
+  <img src="images/faction-page.png" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="80%">
+</p>
+
 ### Generate Name
 
 Opens the **Name Generator**, the Warden's Guide's Naming Procedures with one tab each: **Place**
@@ -607,6 +642,10 @@ for the place), **Faction**, **Realm** and **Forest**.
   Terrain Synonym, Group Type, Ruler Type, Faction and Ruler Name Formula, Forest Adjective and
   Forest Noun), so you can roll any of them with `[[/table …]]`, and an imported copy you edit is
   the one the generator uses.
+
+<p align="center">
+  <img src="images/name-generator.png" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="60%">
+</p>
 
 ### Unknown relics
 
@@ -705,6 +744,10 @@ item to take it. The **±** buttons at the top let the Warden adjust the watches
 travelled by hand. **End the journey** closes it for everyone.
 
 Left to the Warden and the table: mounts, guides and maps, and how an encounter plays out.
+
+<p align="center">
+  <img src="images/journey.png" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="65%">
+</p>
 
 ### Routes on a map (pointcrawls)
 
