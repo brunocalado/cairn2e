@@ -472,7 +472,10 @@
   "CAIRN.GoldPieces": "Gold Pieces",
   "CAIRN.Grants": {
     "Drop": "Drag an actor or gear here",
+    "Failed": "That could not be put on the scene. The console has the reason.",
+    "FolderName": "Grants",
     "Label": "Grants",
+    "NoWarden": "The Warden has to be connected to put it on the scene.",
     "Refused": "Only an actor or a gear can be granted.",
     "Stats": "{hp} HP · {str} STR · {dex} DEX · {wil} WIL"
   },

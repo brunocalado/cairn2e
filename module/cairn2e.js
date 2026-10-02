@@ -52,6 +52,7 @@ import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
 import { registerCalendar, installCalendar, CairnCalendar } from "./calendar.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
 import { installCalendarEvents } from "./calendar-notes.js";
+import { GRANT_QUERY, applyGrant, onDropCanvasData } from "./grants.js";
 import * as models from "./data/_module.js";
 import * as rolls from "./rolls.js";
 
@@ -140,6 +141,10 @@ Hooks.once("init", async function () {
   // A barter writes the recipient's character, which the sender may not: the recipient's client,
   // or the Warden's, makes the write. `receiveBarter` checks the payload before it does.
   CONFIG.queries[BARTER_QUERY] = async (payload) => receiveBarter(payload);
+
+  // A player who drags a granted Actor onto the scene may create neither the copy nor its token:
+  // the Warden's client makes both. `applyGrant` checks the asker owns the item that grants it.
+  CONFIG.queries[GRANT_QUERY] = async (request, { user }) => applyGrant(request, user);
 
   // The token HUD, for the one control core has no room for: a party token sets its members
   // down and gathers them back in. Read once, when the HUD container is constructed
@@ -498,6 +503,10 @@ Hooks.once("ready", () => {
 Hooks.on("renderApplicationV2", (app, element) => {
   if (element.classList.contains(SYSTEM_ID)) element.dataset.tooltipClass = TOOLTIP_CLASS;
 });
+
+// A row of an item's Grants dropped on the scene: a granted Actor, put there through the Warden's
+// client (`module/grants.js`). Returning false is what keeps core's own Actor drop out of it.
+Hooks.on("dropCanvasData", onDropCanvasData);
 
 // A link to the system's issue tracker, above core's "Settings and Configuration". It is core's
 // own external-link markup (`a.button` in a `section`, as its Help and Documentation links are

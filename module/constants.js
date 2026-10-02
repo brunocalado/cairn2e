@@ -205,7 +205,15 @@ export const FLAGS = {
    * so this mark is the only thing that tells them apart, and it keeps the Apply as damage button
    * (`module/chat.js#renderApplyRollButton`) on the free rolls it is for.
    */
-  SYSTEM_ROLL: "systemRoll"
+  SYSTEM_ROLL: "systemRoll",
+
+  /**
+   * On an Item with Grants: the world copies made when its granted Actors were put on a scene
+   * (`module/grants.js`), as a list of `{ source, actor }` — the granted uuid and the copy's id.
+   * The next drag of the same row sets a token of that copy rather than making another. A list
+   * for the reason {@link FLAGS.GATHERED_TOKENS} gives: a uuid has dots.
+   */
+  GRANTED: "granted"
 };
 
 /**

@@ -6,6 +6,7 @@
  */
 
 import { SYSTEM_ID } from "../constants.js";
+import { GRANT_DRAG_KEY } from "../grants.js";
 import { moveCoin, promptCoinAmount } from "../coin.js";
 import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
@@ -603,10 +604,15 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // A Grants row carries the document it names, so it lands on a character sheet or a scene as
     // if it had been dragged out of its own compendium. Built from the uuid alone: `dataTransfer`
     // takes data only while `dragstart` is being dispatched, so nothing here may wait on a lookup.
+    // An Actor also names the item it came from, which is what lets a player put it on the scene
+    // through the Warden (`module/grants.js`).
     const grant = event.currentTarget.dataset.grantUuid;
     if (grant) {
       const type = foundry.utils.parseUuid(grant)?.type;
-      if (type) event.dataTransfer.setData("text/plain", JSON.stringify({ type, uuid: grant }));
+      if (!type) return;
+      const data = { type, uuid: grant };
+      if (type === "Actor") data[SYSTEM_ID] = { [GRANT_DRAG_KEY]: this.document.uuid };
+      event.dataTransfer.setData("text/plain", JSON.stringify(data));
       return;
     }
     const id = event.currentTarget.dataset.itemId;
