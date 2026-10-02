@@ -20,8 +20,8 @@ it handles the bookkeeping so your table can focus on the story.
 ## Why you'll like it
 
 ### A character in five minutes
-Pick one of the **20 backgrounds**, such as Aurifex, Bonekeeper or Fungal Forager, or let the
-dice pick one. The creator walks you through it step by step: a name from the background's own
+Pick one of the **20 backgrounds**, such as Aurifex, Bonekeeper or Fungal Forager, let the
+dice pick one, or choose one the Warden wrote for the campaign. The creator walks you through it step by step: a name from the background's own
 list, attributes, starting gear, personality traits, a Bond and an Omen. Anything you leave blank
 is rolled for you. Already built your character on [Kettlewright](https://kettlewright.com)?
 Import it with one click.
@@ -33,13 +33,16 @@ fists. Click STR, DEX or WIL to make a save. Rest, Restore and the **Die of Fate
 itself up from what you wear. When a character is overloaded or panicking, the sheet shows it.
 
 The **Actions** menu lets a player **Whisper** in character, **Barter** gear and coin with another
-player's character, open the one-page **Rules Summary**, and run the macros the Warden has put
-there. Drag a sack or a cart onto another sheet you own, such as your mule's, and everything
-inside goes with it.
+player's character, open the one-page **Rules Summary** or the **Calendar**, and run the macros
+the Warden has put there. Drag a sack or a cart onto another sheet you own, such as your mule's,
+and everything inside goes with it. A companion that comes with a background, like the Raven
+Familiar, is dragged from its item straight onto the map.
 
 ### Combat that does the math for you
 Roll damage and apply it to the targeted token. Armor soaks what it can, HP goes first, the rest
-spills into STR, and the chat card offers the critical-damage save when it's due. Scars, Panic,
+spills into STR, and the chat card offers the critical-damage save when it's due. A fall or a
+cave-in rolled on the spot applies the same way, and a hit on the wrong token is undone with one
+click. Scars, Panic,
 *impaired* and *enhanced* attacks, *blast*, Morale and Reactions are all handled. The combat
 tracker follows Cairn's rules: sides take turns, with no initiative roll.
 
@@ -49,8 +52,11 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 </p>
 
 ### A toolbox for the Warden
-- **One-click generators** for NPCs, hirelings, monsters and whole factions, all built from the
-  rulebook's own tables.
+- **One-click generators** for NPCs, hirelings, monsters, whole factions and names for places,
+  realms and forests, all built from the rulebook's own tables.
+- **A calendar** in the Vald reckoning of the Warden's Guide: watches, seasons, the Reclamation,
+  and notes on any day, starting with the setting's holidays. The Warden sets the time and shows
+  it to everyone.
 - **Journeys**: a shared travel window that runs the wilderness watch by watch. It rolls weather,
   getting lost and wilderness events, spends Rations and Fatigue on everyone's sheet, and an
   encounter can drop its creatures straight onto the map.
@@ -60,6 +66,8 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 - **Stores**: stock a market by dragging items onto its shelves and open it on every player's
   screen. Players fill a cart, and the store checks both their gold *and* their free slots before
   anything changes hands.
+- **Unknown relics**: a relic can hide behind the name and looks the Warden gives it, unusable
+  until it is revealed.
 - **Factions** that play: agents in rank order, an agenda to tick off, and buttons for faction
   actions and opposed saves.
 - **A party sheet** that shows everyone's HP, attributes and load at a glance, plus the followers
@@ -85,14 +93,15 @@ All the game content you need is already inside:
 | **Equipment** | the full Marketplace (gear, weapons, armor), plus carts, horses, mules and wagons |
 | **Magic** | 100 spellbooks, 100 scrolls and 46 relics |
 | **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings and the 5 companions some backgrounds start with |
-| **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, and the Warden's generator tables |
-| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, and the Warden's Reset Player Hotbars |
+| **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the naming tables, and the Warden's generator tables |
+| **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
+| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, and the Warden's Reset Player Hotbars |
 | **Homebrew** | *More Gear*, *More Spellbooks* and *More Scrolls*: extra content by the maintainer, kept in its own folder |
 
 ### It looks like the books
 The ink-on-paper design uses **Lora**, the typeface the Cairn books are set in. A new world opens
-on a welcome scene with its own music, and every player finds the saves, the Die of Fate, Rest and the
-Rules Summary already on their hotbar. With
+on a welcome scene with its own music, and every player finds the saves, the Die of Fate, Rest,
+Restore Abilities, the Rules Summary and the Calendar already on their hotbar. With
 [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) installed, you roll a custom 3D
 Cairn d20.
 

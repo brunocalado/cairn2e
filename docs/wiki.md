@@ -52,8 +52,9 @@ depend on who you are:
 | Section | Who sees it | Buttons |
 |---|---|---|
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
-| **Warden Tools** | the Warden only | Generate NPC · Generate Hireling · Generate Monster · Generate Faction · Generate Name · Store · Rules Summary · Calendar |
-| **Wilderness** | the Warden only | Journey |
+| **Generators** | the Warden only | Generate NPC · Generate Hireling · Generate Name · Generate Monster · Generate Faction |
+| **Campaign** | the Warden only | Calendar · Journey · Store |
+| **Reference** | the Warden only | Rules Summary |
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
 
@@ -152,8 +153,9 @@ and pick its language in Foundry's settings. To make one, see [Translating Cairn
 **Generate character** in the Cairn 2e tab opens a guided window with seven steps. Use **Back**
 and **Next** to move between them:
 
-1. **Background**: roll a d20 or pick one from the list. The Background gives you a list of names,
-   your starting gear and two small tables to roll on.
+1. **Background**: roll a d20 or pick one of the twenty from the list. Backgrounds the Warden wrote
+   for this world are listed under **Other Backgrounds**, to pick by hand. The Background gives you
+   a list of names, your starting gear and two small tables to roll on.
 2. **Name**: pick one of the Background's names, roll one, or type your own.
 3. **Attributes**: press **Roll 3d6 × 3**. If you like, pick two attributes and **Swap** them,
    once. Roll your **HP** here too.
@@ -193,7 +195,8 @@ the file. A new character is created and its sheet opens, followed by a short su
 ### Your own Backgrounds
 
 The Warden's Guide has a chapter on writing new Backgrounds (*Creating Backgrounds*). A Background
-you write in the world is offered by the character creator next to the twenty in the book.
+you write in the world is offered by the character creator under **Other Backgrounds**, below the
+twenty in the book.
 
 1. In the **Items** directory, create an Item of type **Background**. Fill in its blurb, its
    names, and its starting gold (every Background in the book uses `3d6`).
@@ -212,7 +215,7 @@ edit the copy. The creator then offers your copy instead of the book's, in the l
 roll, and a Kettlewright import uses it too. Share it the same way.
 
 The d20 roll only ever lands on the twenty in the book. A Background of your own is picked from
-the list.
+the **Other Backgrounds** list.
 
 ---
 
@@ -273,6 +276,9 @@ Each item row has small buttons: **equip / unequip**, **use / restore a use**, *
 moves to Aside, and the same button brings it back), **post to chat** and **delete**. A
 weapon has a die button that rolls its damage.
 
+**An item's description** is always open for whoever may edit it: click in it and type, and it is
+saved when you leave the box. Anyone else reads it with its links working.
+
 To add something, drag it from a compendium onto the sheet, or press **+** on a tab and pick a
 kind: gear, weapon, armor, spellbook, scroll, relic, container or coin. The **+** on **Body**
 offers only weapon, armor and gear, and what it makes is part of the body.
@@ -293,6 +299,21 @@ which the rules write as *d8+d8*.
 
 Either way, a container goes with everything inside it. What is part of the body never changes
 hands.
+
+### What an item grants
+
+A gear or a Growth can list the **actors and gear it comes with**: the Raven Familiar a Half-Witch
+gains, the servant that comes with the Blood Pail. On a gear, press **Grants** on the **Add** row of its
+Details tab; on a Growth, the **Grants** zone is on its Details tab. Drag an actor (not a party)
+or a gear onto the dotted zone to add it, and the **×** on its row takes it off. Click a name to
+open it.
+
+**Drag a granted actor from its row onto the map** to bring it into play. An actor from a compendium
+becomes one copy in the world, owned by the item's players, in a **Grants** folder of the Actors
+directory, and its token is linked to it, so a companion wounded on one scene is wounded on the
+next. Dragging the same row again sets another token of that same copy, not a second creature. An
+actor already in the world's directory is put on the map as it is, and the item's players are made
+its owners. The Warden has to be connected for a player's drag to work.
 
 ---
 
@@ -338,8 +359,8 @@ The Gear compendium has a **Transport** folder with a **Cart** (4 slots), **Hors
 | **Save** | Click **STR**, **DEX** or **WIL** on the sheet. You roll a d20 and need to roll equal to or under the attribute. A 1 always succeeds and a 20 always fails. |
 | **Weapon damage** | Click the die on the weapon's row. A small window offers **Impaired** (a d4), **Enhanced** (a d12), **Blast**, and **Second weapon** (roll both weapons' dice and keep the highest). **Shift-click** skips the window. A Panicked attacker is always Impaired. Fighting unarmed is the **Unarmed** row on the Petty tab. |
 | **Die of Fate** | The button at the top of a character sheet, or the macro. |
-| **Reaction** | The button at the top of an NPC sheet, or the macro. It rolls 2d6 on the Reaction table. |
-| **Morale** | The button at the top of an NPC sheet, or the macro. It rolls a WIL save for the enemy. Player characters never roll Morale. |
+| **Reaction** | The button at the top of an NPC sheet, or the macro. It rolls 2d6 on the Reaction table, and the card goes to the Wardens only. |
+| **Morale** | The button at the top of an NPC sheet, or the macro. It rolls a WIL save for the enemy, and the card goes to the Wardens only. Player characters never roll Morale. |
 
 **One-click weapon macro.** Drag a weapon from your sheet onto the hotbar (the row of numbered
 slots at the bottom of the screen). Clicking that slot rolls the weapon's damage.
@@ -350,7 +371,8 @@ slots at the bottom of the screen). Clicking that slot rolls the weapon's damage
 
 ### Applying damage
 
-1. Target the tokens that were hit.
+1. Target the tokens that were hit. A targeted token is marked with ink brackets and a blood-red
+   cross, and the pips that show other players' targets are larger and ringed the same way.
 2. Roll damage. The Warden sees an **Apply damage** button on the chat card. **Shift-click** it to
    re-target instead.
 3. The system takes the target's armor off the damage, removes it from HP, and carries whatever is
@@ -446,7 +468,9 @@ In Cairn, characters change through what happens to them, not through experience
 
 1. When the Warden says the character has grown, press **Add a Growth** on the Growth tab. (A
    Growth can't be dragged in from elsewhere: it is earned in play.)
-2. A Growth can have **milestones**, a list of steps to tick off.
+2. A Growth can have **milestones**, a list of steps to tick off, on its Details tab. The help mark
+   on its Description explains how Downtime Milestones and their Costs work; write the Costs in
+   the description.
 3. When it pays off, press **Record the gain**. Either pick which maximum it changes (HP, STR, DEX
    or WIL) and to what, or write the gain in words (for example "no longer needs Rations").
 
@@ -515,7 +539,7 @@ The Warden opens **Store** from the Cairn 2e tab.
 
 ## 12. Warden tools
 
-These buttons are in the **Warden Tools** section of the Cairn 2e tab. Only the Warden sees them.
+The generators are in the **Generators** section of the Cairn 2e tab. Only the Warden sees them.
 
 ### Generate NPC / Generate Hireling
 
@@ -562,6 +586,8 @@ A faction page is a form you keep up to date as the campaign goes:
   something. You then edit the page to match.
 - **Opposed save**: when two factions clash, the one most at risk rolls WIL with its top agent. On
   a fail, it doesn't act this time.
+
+Both rolls go to the Wardens only.
 
 ### Generate Name
 
@@ -702,15 +728,18 @@ from doing anything, and the Warden decides what happens.
 
 Press the **dungeon** button beside the **+** at the top of the combat tracker. Add the party's
 tokens the usual way (right-click a token and **Toggle Combat State**), then press **Begin
-Exploring**. The tracker counts **turns**, and **Next Turn** starts a new one.
+Exploring**. The tracker counts **turns**, and **Next Turn** starts a new one. If someone moved
+past torchlight this turn and no Dungeon Event was rolled, it asks first. The glyph beside it ends
+the exploration.
 
 ### Each turn
 
 - Each row has a line for what that character **does this turn**. Players fill in their own
   character's line. The actions from the rules (search, listen, force a door…) are offered as
   suggestions, but anything goes.
-- Beside it is **how far the token has moved** this turn. Past torchlight's 40 ft the number turns
-  bold, with a running figure. Moving further is allowed; it means the party is moving quickly.
+- Beside it is **how far the token has moved** this turn: green within torchlight's 40 ft, amber
+  and bold with a running figure past it, red past the 120 ft an action covers. Moving further is
+  allowed; it means the party is moving quickly.
 - The **✓** marks the character as having acted, as in a fight.
 - A new turn clears the lines, the marks and the distances.
 
@@ -821,8 +850,8 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
   world.
 - Only the Warden sees the **Bestiary**, so players can't read the monster stats.
 - **Companions** holds the creatures some backgrounds start with (the Blood Pail's servant, the
-  Falcon, the Hollow Wolf, the Homunculus, the Raven Familiar). The item or Growth that grants
-  one links to it.
+  Falcon, the Hollow Wolf, the Homunculus, the Raven Familiar). The item that grants one lists it
+  under **Grants** (see [§3](#what-an-item-grants)).
 
 **Monster pictures.** The Bestiary comes with Foundry's standard icons. To use your own art:
 
