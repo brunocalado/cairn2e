@@ -70,6 +70,8 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       viewToday: CairnCalendarApp.#onViewToday,
       pickWatch: CairnCalendarApp.#onPickWatch,
       pickSnap: CairnCalendarApp.#onPickSnap,
+      shiftDay: CairnCalendarApp.#onShiftDay,
+      setToday: CairnCalendarApp.#onSetToday,
       showToPlayers: CairnCalendarApp.#onShowToPlayers,
       postNote: CairnCalendarApp.#onPostNote,
       editNote: CairnCalendarApp.#onEditNote,
@@ -193,6 +195,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     context.isGM = isGM;
     context.journeying = journeying;
     context.canDrag = isGM && !journeying;
+    context.setTodayOff = journeying || (view.year === now.year && view.month === now.month && view.day === now.dayOfMonth);
     context.journeyHint = t("CAIRN.Calendar.JourneyHint");
     context.needle = (into / g.day * 100).toFixed(3);
     context.watches = WATCHES.map((key, index) => {
@@ -305,11 +308,11 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     if (partId === "header") {
       htmlElement.querySelector("input[name='time']")?.addEventListener("change", (event) => this.#onSetTime(event));
       htmlElement.querySelector(".cairn-calendar-needle.grab")?.addEventListener("pointerdown", (event) => this.#onDragNeedle(event));
+      htmlElement.querySelector("input[name='year']")?.addEventListener("change", (event) => {
+        this.#view = CairnCalendarApp.#clamp({ ...this.#view, year: Number.parseInt(event.target.value, 10) });
+        this.render();
+      });
     }
-    if (partId === "year") htmlElement.querySelector("input[name='year']")?.addEventListener("change", (event) => {
-      this.#view = CairnCalendarApp.#clamp({ ...this.#view, year: Number.parseInt(event.target.value, 10) });
-      this.render();
-    });
   }
 
   /** @override — the day menu is bound once: the element outlives every re-render, and core's
@@ -329,34 +332,36 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       {
         label: "CAIRN.Calendar.MakeToday",
         icon: '<i class="fa-solid fa-calendar-check"></i>',
-        visible: (target) => !CairnCalendarApp.#journeying && !this.#isToday(target),
-        onClick: (event, target) => this.#makeToday(target)
+        visible: (target) => !CairnCalendarApp.#journeying && !this.#isToday(Number(target.dataset.day)),
+        onClick: (event, target) => this.#makeToday(Number(target.dataset.day))
       }
     ], { jQuery: false, fixed: true });
   }
 
-  /** Is the day under the menu today? */
-  #isToday(target) {
+  /** Is this day of the viewed month today? */
+  #isToday(day) {
     const now = game.time.components;
     const { year, month } = this.#view;
-    return year === now.year && month === now.month && Number(target.dataset.day) === now.dayOfMonth;
+    return year === now.year && month === now.month && day === now.dayOfMonth;
   }
 
-  /** The Warden's *Make this today*: that day, at the time of day it is now. */
-  #makeToday(target) {
+  /** The Warden's *Make this today* and *Set as today*: that day of the viewed month, at the time
+   *  of day it is now. */
+  #makeToday(dayOfMonth) {
     if (!game.user.isGM || CairnCalendarApp.#journeying) return;
     const now = game.time.components;
     const { year, month } = this.#view;
-    const day = month * MONTH_DAYS + Number(target.dataset.day);
+    const day = month * MONTH_DAYS + dayOfMonth;
     return game.time.set(game.time.calendar.componentsToTime({ year, day, hour: now.hour, minute: now.minute, second: now.second }));
   }
 
   /**
-   * The Warden drags the needle along the day the dial shows, 06:00 to the next 06:00. While it
-   * moves only this window changes — the needle, the lit watch, the time field — and the world
-   * clock is set once, on release: every `game.time.set` reaches every client and every
-   * `updateWorldTime` hook. The far end is the next day's 06:00. Escape, or a release where it
-   * began, moves nothing.
+   * The Warden drags the needle to set the hour of today — never the date, which the toolbar's
+   * day buttons and *Set as today* change. The dial reads 06:00 to 06:00, so the stretch past
+   * midnight is the small hours of the same date, and the far end stops one snap short of 06:00.
+   * While it moves only this window changes — the needle, the lit watch, the time field — and the
+   * world clock is set once, on release: every `game.time.set` reaches every client and every
+   * `updateWorldTime` hook. Escape, or a release where it began, moves nothing.
    */
   #onDragNeedle(event) {
     if (event.button !== 0 || !game.user.isGM || CairnCalendarApp.#journeying) return;
@@ -369,17 +374,19 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     const watches = [...track.querySelectorAll(".cairn-calendar-watch")];
     const g = geometry();
     const from = game.time.worldTime;
-    const dayStart = from - CairnCalendarApp.#into(from, g);
-    const step = CairnCalendarApp.#snap * game.time.calendar.days.secondsPerMinute;
+    const { secondsPerMinute, minutesPerHour } = game.time.calendar.days;
+    const now = game.time.components;
+    const midnight = from - ((now.hour * minutesPerHour + now.minute) * secondsPerMinute + now.second);
+    const step = CairnCalendarApp.#snap * secondsPerMinute;
     let target = from;
 
     const place = (x) => {
       const { left, width } = track.getBoundingClientRect();
       const share = Math.clamp((x - left) / width, 0, 1);
-      target = dayStart + Math.round(share * g.day / step) * step;
-      dial.style.setProperty("--at", `${((target - dayStart) / g.day * 100).toFixed(3)}%`);
-      // The far end is the next day's 06:00, and the needle is drawn there in the last watch.
-      const lit = target - dayStart === g.day ? watches.length - 1 : watchAt(target, g);
+      const along = Math.min(Math.round(share * g.day / step) * step, g.day - step);
+      target = midnight + (g.offset + along) % g.day;
+      dial.style.setProperty("--at", `${(along / g.day * 100).toFixed(3)}%`);
+      const lit = watchAt(target, g);
       watches.forEach((w, i) => w.classList.toggle("lit", i === lit));
       const { hour, minute } = game.time.calendar.timeToComponents(target);
       if (field) field.value = `${pad(hour)}:${pad(minute)}`;
@@ -456,6 +463,20 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     if (!game.user.isGM) return;
     if (CairnCalendarApp.#journeying) return CairnJourneyTracker.open();
     return game.time.set(watchStartFor(game.time.worldTime, Number(target.dataset.watch), geometry()));
+  }
+
+  /** A day back or on, at the same time of day: the Reclamation's days are days like any other.
+   *  @this {CairnCalendarApp} */
+  static #onShiftDay(event, target) {
+    const days = Number(target.dataset.days);
+    if (!game.user.isGM || CairnCalendarApp.#journeying || Math.abs(days) !== 1) return;
+    return game.time.advance(days * geometry().day);
+  }
+
+  /** The selected day becomes today. @this {CairnCalendarApp} */
+  static #onSetToday() {
+    if (this.#isToday(this.#view.day)) return;
+    return this.#makeToday(this.#view.day);
   }
 
   /** The step this client's needle snaps to; a value not on offer is ignored. */

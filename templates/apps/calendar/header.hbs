@@ -6,8 +6,11 @@
       Its segments are the Warden's watch control; a player's are disabled. They carry no tooltip:
       the word and the glyph already say which watch it is.
 
-      The Warden moves time by dragging the needle by its head, in steps of the snap chosen under
-      the dial. During a journey the needle stays put, the snap is off and the hint says why. --}}
+      The Warden sets the hour by dragging the needle by its head, in steps of the snap; the date
+      never moves with it. Under the dial, the toolbar: the year being looked at and Go to today
+      for everyone, then the Warden's date controls — a day back or on, Set as today for the
+      selected day — and the snap. During a journey the needle stays put, the Warden's controls
+      are off and the hint under them says why. --}}
 <section class="cairn-calendar-head" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-head" data-ink-w="2">
     <div class="cairn-calendar-today">
         <div class="cairn-calendar-today-text">
@@ -42,16 +45,33 @@
         </div>
     </div>
 
-    {{#if isGM}}
-    <div class="cairn-calendar-snaprow">
-        {{#if journeying}}<p class="cairn-calendar-hint">{{journeyHint}}</p>{{/if}}
-        <span class="cairn-calendar-snaplabel">{{localize "CAIRN.Calendar.Snap"}}</span>
-        <div class="cairn-calendar-snaps" role="group" aria-label="{{localize 'CAIRN.Calendar.Snap'}}">
-            {{#each snaps}}
-            <button type="button" class="{{#if active}}active{{/if}}" data-action="pickSnap" data-minutes="{{minutes}}"
-                    aria-pressed="{{#if active}}true{{else}}false{{/if}}" {{#if ../journeying}}disabled{{/if}}>{{label}}</button>
-            {{/each}}
+    <div class="cairn-calendar-toolbar">
+        <div class="cairn-calendar-stepper">
+            <button type="button" class="cairn-calendar-arrow" data-action="viewYear" data-delta="-1" aria-label="{{localize 'CAIRN.Calendar.PreviousYear'}}"><i class="fa-solid fa-chevron-left" inert></i></button>
+            <input type="number" name="year" min="0" step="1" value="{{view.year}}" aria-label="{{localize 'CAIRN.Calendar.Year'}}">
+            <button type="button" class="cairn-calendar-arrow" data-action="viewYear" data-delta="1" aria-label="{{localize 'CAIRN.Calendar.NextYear'}}"><i class="fa-solid fa-chevron-right" inert></i></button>
         </div>
+        <button type="button" class="cairn-calendar-goto" data-action="viewToday">{{localize "CAIRN.Calendar.GoToToday"}}</button>
+        {{#if isGM}}
+        <div class="cairn-calendar-segments" role="group" aria-label="{{localize 'CAIRN.Calendar.Day'}}">
+            <button type="button" data-action="shiftDay" data-days="-1" aria-label="{{localize 'CAIRN.Calendar.DayBackHint'}}"
+                    {{#if journeying}}disabled{{/if}}>{{localize "CAIRN.Calendar.DayBack"}}</button>
+            <button type="button" data-action="shiftDay" data-days="1" aria-label="{{localize 'CAIRN.Calendar.DayOnHint'}}"
+                    {{#if journeying}}disabled{{/if}}>{{localize "CAIRN.Calendar.DayOn"}}</button>
+        </div>
+        <button type="button" class="cairn-calendar-goto" data-action="setToday" {{#if setTodayOff}}disabled{{/if}}>
+            {{localize "CAIRN.Calendar.SetToday"}}
+        </button>
+        <div class="cairn-calendar-snap">
+            <span class="cairn-calendar-snaplabel">{{localize "CAIRN.Calendar.Snap"}}</span>
+            <div class="cairn-calendar-segments" role="group" aria-label="{{localize 'CAIRN.Calendar.Snap'}}">
+                {{#each snaps}}
+                <button type="button" class="{{#if active}}active{{/if}}" data-action="pickSnap" data-minutes="{{minutes}}"
+                        aria-pressed="{{#if active}}true{{else}}false{{/if}}" {{#if ../journeying}}disabled{{/if}}>{{label}}</button>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
     </div>
-    {{/if}}
+    {{#if isGM}}{{#if journeying}}<p class="cairn-calendar-hint">{{journeyHint}}</p>{{/if}}{{/if}}
 </section>

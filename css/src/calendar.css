@@ -238,13 +238,23 @@
             }
         }
 
-        /* The Warden's snap, at the right under the dial: the steps as one segmented run in a
-           frame, the chosen one inked. During a journey its hint takes the room to its left. */
-        .cairn-calendar-snaprow {
+        /* The toolbar under the dial: the year and Go to today at the left, the Warden's day
+           controls and snap pushed to the right. A segmented run (the day pair, the snap) is
+           buttons inside one frame, the chosen snap inked. */
+        .cairn-calendar-toolbar {
             display: flex;
-            justify-content: flex-end;
             align-items: center;
             gap: 8px;
+
+            > .cairn-calendar-segments:first-of-type {
+                margin-left: auto;
+            }
+        }
+
+        .cairn-calendar-snap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .cairn-calendar-snaplabel {
@@ -255,14 +265,15 @@
             color: var(--cairn-ink-soft);
         }
 
-        .cairn-calendar-snaps {
+        .cairn-calendar-segments {
             display: flex;
+            flex: none;
             border: var(--cairn-rule) solid var(--cairn-ink);
             border-radius: var(--cairn-radius);
 
             button {
-                --button-size: 24px;
-                padding: 0 9px;
+                --button-size: 26px;
+                padding: 0 8px;
                 border: none;
                 border-radius: 0;
                 font-size: 12px;
@@ -282,7 +293,6 @@
         }
 
         .cairn-calendar-hint {
-            flex: 1;
             margin: 0;
             font-size: 12px;
             font-style: italic;
@@ -293,15 +303,6 @@
         .cairn-calendar-year {
             display: flex;
             flex-direction: column;
-            gap: 9px;
-        }
-
-        .cairn-calendar-yearbar,
-        .cairn-calendar-monthbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
         }
 
         .cairn-calendar-stepper {
@@ -332,10 +333,11 @@
             border: none;
         }
 
+        /* Go to today and Set as today: framed words, the height of the segmented runs. */
         & button.cairn-calendar-goto {
-            --button-size: 28px;
+            --button-size: 30px;
             flex: none;
-            padding: 0 12px;
+            padding: 0 8px;
             font-size: 11px;
         }
 
@@ -437,7 +439,10 @@
 
         /* The month's name, and at the right the selected day: its date, then where it falls. */
         .cairn-calendar-monthbar {
+            display: flex;
             align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
             padding-bottom: 6px;
         }
 

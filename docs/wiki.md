@@ -70,14 +70,18 @@ watches, morning (from 06:00), afternoon (from 14:00) and night (from 22:00), dr
 the current one filled and a needle at the exact time. Everyone can open it, from the
 **Calendar** button in the Notes controls (left of the map, while a scene is shown), the
 **Calendar** macro on the hotbar, or **Actions → Calendar** on the character sheet. Players browse
-any month of any year and change nothing; **Go to today** comes back.
+any month of any year and change nothing: the year's arrows and **Go to today** are on the toolbar
+under the dial.
 
 The **Warden** also:
 
-- drags the needle by its head along the dial, in steps of the **Snap** chosen under it (15 m,
-  30 m or 1 h, remembered in that browser); the time is set when the needle is let go, Escape
-  puts it back, and the far end is 06:00 the next day;
+- drags the needle by its head along the dial to set the hour, in steps of the **Snap** on the
+  toolbar (15 m, 30 m or 1 h, remembered in that browser). The needle never changes the date:
+  past midnight is the small hours of the same day. The time is set when the needle is let go,
+  and Escape puts it back;
 - types the time into the clock at the top right;
+- changes the date with **−1d** and **+1d** on the toolbar (same time of day), or selects a day
+  and presses **Set as today**;
 - clicks a watch on the dial to move on to its next start, or the filled one to go back to its
   start;
 - right-clicks a day for **Make this today** (same time of day);
