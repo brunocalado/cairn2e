@@ -145,13 +145,14 @@
             text-transform: uppercase;
         }
 
-        /* Whether players may visit the store on screen (`header.hbs`): a door, open or shut. Ink
-           weight says which, never a hue — full ink when it is open to them, soft ink when it is
-           not — and it sits on the square the buttons beside it are cut to, so the line keeps one
-           rhythm. */
+        /* Whether players may visit the store on screen (`header.hbs`): a door, open or shut, in
+           the store's own gain and loss — green open, red shut (maintainer's call, 2026-10-04). In
+           ink weight alone the two doors read as one glyph at a glance down the picker. Both
+           tokens are ground down toward ink, so the door stays quiet on the paper. It sits on
+           the square the buttons beside it are cut to, so the line keeps one rhythm. */
         .cairn-store-visibility {
             align-items: center;
-            color: var(--cairn-ink-soft);
+            color: var(--cairn-loss);
             display: flex;
             flex: 0 0 auto;
             font-size: 15px;
@@ -160,7 +161,7 @@
             width: 28px;
 
             &.is-open {
-                color: var(--cairn-ink);
+                color: var(--cairn-gain);
             }
         }
 
