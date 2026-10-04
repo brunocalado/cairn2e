@@ -17,7 +17,7 @@
             <img class="cairn-store-img" src="{{row.img}}" alt="" />
             <span class="cairn-item-name-and-tags" data-action="openItem">
                 <span class="cairn-item-title">{{row.name}}</span>
-                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system}}
+                {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system hidden=row.hidden}}
                 {{#if row.inCart}}<span class="cairn-item-tag">{{localize "CAIRN.Store.InCart"}} &times;{{row.inCart}}</span>{{/if}}
             </span>
             <span class="cairn-store-price">{{row.cost}} {{localize "CAIRN.GoldAbbrev"}}</span>

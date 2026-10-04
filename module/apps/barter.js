@@ -78,7 +78,8 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     const context = await super._prepareContext(options);
     const items = this.actor.items;
     const rows = [];
-    const byName = (a, b) => a.name.localeCompare(b.name);
+    // By the name this user reads: sorted by the real one, a guise would sit where its truth does.
+    const byName = (a, b) => a.shownName.localeCompare(b.shownName);
     // Part of the body is never offered: claws do not change hands.
     for (const item of items.filter((i) => i.type === "gear" && !i.system.container && !i.system.bodily).sort(byName)) {
       const contents = items.filter((i) => i.system.container === item.id).sort(byName);
@@ -90,7 +91,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
       for (const c of contents) {
         const coin = c.type === "coin";
         rows.push({
-          id: c.id, img: c.img, inside: true,
+          id: c.id, img: c.shownImg, inside: true,
           name: coin ? `${c.name} (${c.system.value} ${game.i18n.localize("CAIRN.GoldAbbrev")})` : c.shownName,
           // Coin is handed over by amount, below, so a sack is never picked on its own; inside a
           // container that goes, it goes too, and says so.

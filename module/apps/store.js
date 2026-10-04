@@ -285,6 +285,8 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       uuid: item.uuid,
       img: item.shownImg ?? item.img,
       name: item.shownName ?? item.name,
+      // A shelf may sell a thing unknown to whoever buys it: its tags go with its name.
+      hidden: !!item.isHiddenFromMe,
       system: item.system,
       cost: buyPrice(item.system.cost, buyRatio),
       inCart: this.#cart.buy.get(item.uuid) ?? 0
