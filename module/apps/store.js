@@ -7,8 +7,8 @@
 
 import { SYSTEM_ID, SETTINGS } from "../constants.js";
 import {
-  blankStore, withItem, withItems, withoutItem, withSettings, folderTree, sellable, sellPrice, buyPrice,
-  sellableOwn, cartSummary, untitledName
+  blankStore, defaultStores, withItem, withItems, withoutItem, withSettings, folderTree, sellable, sellPrice,
+  buyPrice, sellableOwn, cartSummary, untitledName
 } from "../store-rules.js";
 import { BELONGINGS } from "../coin-rules.js";
 import { copyOf } from "../helpers.js";
@@ -28,6 +28,13 @@ const SETTINGS_TPL = `${TEMPLATES}/settings.hbs`;
  * a type they do not know, so a shelf row dragged anywhere but the cart does nothing.
  */
 const STORE_DRAG = `${SYSTEM_ID}.store`;
+
+/**
+ * A store's name as this client reads it. The system's own stores are named by a localization key
+ * (`store-rules.js#defaultStores`), so a translation renames them; a name the Warden typed is no
+ * key, and `localize` hands it back as written. Every place a name is shown goes through here.
+ */
+const nameOf = (store) => game.i18n.localize(store.name);
 
 /**
  * The store window — one per client, drawn from `SETTINGS.STORES` and the cart this player has
@@ -141,9 +148,32 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     if (app?.rendered) app.render();
   }
 
+  /**
+   * Put the system's stores back in place of every store this world has — the Warden's "Restore
+   * Default Stores" macro. It asks first, because what it replaces is gone for good: stores the
+   * Warden made, and every change to the system's own. Items are untouched, and so is anything a
+   * character has already bought.
+   */
+  static async restoreDefaults() {
+    if (!game.user.isGM) {
+      ui.notifications.warn(game.i18n.localize("CAIRN.Store.RestoreWardenOnly"));
+      return;
+    }
+    const yes = await DialogV2.confirm({
+      classes: [SYSTEM_ID],
+      window: { title: "CAIRN.Store.RestoreTitle", icon: "fa-solid fa-triangle-exclamation" },
+      content: `<p>${game.i18n.localize("CAIRN.Store.RestoreWhat")}</p>`
+        + `<p><strong>${game.i18n.localize("CAIRN.Store.RestoreLost")}</strong></p>`
+        + `<p>${game.i18n.localize("CAIRN.Store.RestoreKept")}</p>`
+    });
+    if (!yes) return;
+    await game.settings.set(SYSTEM_ID, SETTINGS.STORES, defaultStores());
+    ui.notifications.info(game.i18n.localize("CAIRN.Store.Restored"));
+  }
+
   /** @override */
   get title() {
-    const name = this.#store?.name;
+    const name = this.#store && nameOf(this.#store);
     return name ? `${game.i18n.localize("CAIRN.Store.Title")} — ${name}` : game.i18n.localize("CAIRN.Store.Title");
   }
 
@@ -210,8 +240,8 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const store = this.#store;
 
     context.isGM = isGM;
-    context.stores = Object.entries(stores).map(([id, s]) => ({ id, name: s.name, selected: id === this.#storeId }));
-    context.store = store && { id: this.#storeId, name: store.name };
+    context.stores = Object.entries(stores).map(([id, s]) => ({ id, name: nameOf(s), selected: id === this.#storeId }));
+    context.store = store && { id: this.#storeId, name: nameOf(store) };
     // Both rates belong to the store, set in its own settings dialog.
     const buyRatio = store?.buyRatio ?? 100;
     // A uuid that no longer resolves is dropped from the drawing, never from the setting: the
@@ -449,7 +479,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     this.#storeId = foundry.utils.randomID();
     await this.#save(blankStore(name || untitledName(
       game.i18n.localize("CAIRN.Store.Untitled"),
-      Object.values(stores).map((s) => s.name)
+      Object.values(stores).map(nameOf)
     )));
   }
 
@@ -464,7 +494,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const store = this.#store;
     if (!game.user.isGM || !store) return;
     const content = await foundry.applications.handlebars.renderTemplate(SETTINGS_TPL, {
-      name: store.name,
+      name: nameOf(store),
       sellRatio: store.sellRatio,
       buyRatio: store.buyRatio ?? 100
     });
@@ -480,8 +510,11 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       },
       rejectClose: false
     });
-    const name = result?.name?.trim();
-    if (!name) return;
+    const typed = result?.name?.trim();
+    if (!typed) return;
+    // A name left as it was shown keeps what is stored, so a system store whose rates alone were
+    // changed still follows the language.
+    const name = typed === nameOf(store) ? store.name : typed;
     await this.#save(withSettings(store, { name, sellRatio: result.sellRatio, buyRatio: result.buyRatio }));
   }
 
@@ -492,7 +525,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const yes = await DialogV2.confirm({
       classes: [SYSTEM_ID],
       window: { title: "CAIRN.Store.DeleteTitle" },
-      content: `<p>${game.i18n.localize("CAIRN.Store.DeleteConfirm", { name: foundry.utils.escapeHTML(store.name) })}</p>`
+      content: `<p>${game.i18n.localize("CAIRN.Store.DeleteConfirm", { name: foundry.utils.escapeHTML(nameOf(store)) })}</p>`
     });
     if (!yes) return;
     const stores = { ...this.#stores };
@@ -614,7 +647,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     }
 
     // 5. The record.
-    await postStoreCard({ actor, storeName: store.name, bought: created, buyRatio, sold, goldBefore, goldAfter: actor.system.gold });
+    await postStoreCard({ actor, storeName: nameOf(store), bought: created, buyRatio, sold, goldBefore, goldAfter: actor.system.gold });
     this.#cart = { buy: new Map(), sell: new Set() };
     this.render();
   }

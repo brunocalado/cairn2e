@@ -1,0 +1,15 @@
+{
+  "_id": "oE3H7P7ByKJX2oct",
+  "name": "Restore Default Stores",
+  "type": "script",
+  "img": "icons/environment/settlement/market-stall.webp",
+  "scope": "global",
+  "command": "cairn2e.restoreDefaultStores();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!oE3H7P7ByKJX2oct"
+}

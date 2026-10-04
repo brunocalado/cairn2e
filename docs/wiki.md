@@ -543,6 +543,14 @@ your Aside tab.
 
 The Warden opens **Store** from the Cairn 2e tab.
 
+A new world already has ten small stores: **Weaponsmith**, **Armorer**, **Stables**,
+**Provisioner**, **Outfitter**, **Apothecary**, **Toolmaker**, **Curiosities**, **Tailor** and
+**Tavern**. Between them they sell everything in the rulebook's Marketplace except Ship's Passage,
+plus some of the **More Gear** compendium; the Tailor and the Tavern are all More Gear. They are
+only a starting point: rename them, restock them or delete them like any store you made. The
+Warden's **Restore Default Stores** macro brings all ten back as they first were, and deletes
+every other store, after a warning.
+
 **For the Warden:**
 
 - **New** makes a store. Give it a name.
@@ -849,6 +857,7 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **Roll Morale** | rolls a Morale save for the selected enemy | |
 | **Roll Reaction** | rolls 2d6 on the Reaction table | |
 | **Reset Player Hotbars** | puts the player macros back in their slots on every player's hotbar, leaving the other slots alone | |
+| **Restore Default Stores** | after a warning, replaces every store with the system's ten as they first were | |
 
 Each macro works on the **selected token**. With nothing selected, it works on **your own
 character**. Die of Fate and Reaction roll even with neither.
@@ -870,6 +879,7 @@ cairn2e.dieOfFate();        // 1d6
 cairn2e.rulesSummary();     // open the rules summary
 cairn2e.calendar();         // open the calendar
 cairn2e.resetPlayerHotbars(); // Warden only: refill every player's hotbar
+cairn2e.restoreDefaultStores(); // Warden only: every store back to the system's ten
 ```
 
 ---

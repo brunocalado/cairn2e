@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { MAX_SLOTS } from "./constants.js";
+import { MAX_SLOTS, packUuid } from "./constants.js";
 import { slotsForItem, sumUsedSlots } from "./data/_derived.js";
 import { BELONGINGS, placeOf, sackAt, spendPlan, gainFits } from "./coin-rules.js";
 
@@ -32,6 +32,191 @@ import { BELONGINGS, placeOf, sackAt, spendPlan, gainFits } from "./coin-rules.j
  */
 export function blankStore(name) {
   return { name, items: [], sellRatio: 50, buyRatio: 100 };
+}
+
+const weapon = (id) => packUuid("weapons", "Item", id);
+const armor = (id) => packUuid("armor", "Item", id);
+const gear = (id) => packUuid("gear", "Item", id);
+const homebrew = (id) => packUuid("more-gear", "Item", id);
+const shelf = (name, items) => ({ ...blankStore(name), items });
+
+/**
+ * The stores a world starts with: the setting's `default`, and what the Warden's "Restore Default
+ * Stores" macro writes back. Small and themed on purpose — a shop sells one kind of thing — and
+ * between them they hold every Item in the SRD's Marketplace but Ship's Passage, which is a
+ * port's to sell and not a stable's, plus the Homebrew gear that fills a gap beside it; the
+ * Tailor and the Tavern are Homebrew whole.
+ *
+ * Each name is a localization key, not a name: the store is read through `game.i18n.localize`
+ * (`module/apps/store.js`), so a translation module renames these through its language file,
+ * and a name the Warden typed — no key — comes back from `localize` as it was written. Shelves
+ * run cheapest first, the order the window draws them in.
+ */
+export function defaultStores() {
+  return {
+    weaponsmith: shelf("CAIRN.Store.Default.Weaponsmith", [
+      weapon("1QVV6Hd59hT1x4h1"), // Cudgel
+      weapon("a7ny2xCcpEwZTDuM"), // Dagger
+      weapon("hEOii1unpB3UBy5L"), // Sickle
+      weapon("xEjdizfTpn66xhpK"), // Sling
+      weapon("FR6w8pHdVrJYdftU"), // Staff
+      weapon("1aObADSCj3jIkUPw"), // Axe
+      weapon("7uFzZkd7iZC32dKu"), // Flail
+      weapon("7UPpQmxPZ5LgNQWN"), // Mace
+      weapon("hHDraN8apA23UPS9"), // Spear
+      weapon("FgArC8sR078bwJEr"), // Sword
+      weapon("xNFvJV971IDEj7zZ"), // Bow
+      weapon("PqnBufW2R8SfCcog"), // Halberd
+      weapon("WwEEaLMmjSyap9kH"), // Long Sword
+      weapon("2RgcMeClMBxWr0ip"), // War Hammer
+      weapon("qLSAVP83onsMvq0d")  // Crossbow
+    ]),
+    armorer: shelf("CAIRN.Store.Default.Armorer", [
+      armor("HgY89TClg3swr6Mx"), // Helmet
+      armor("ImIULTvK8p5ZoWUC"), // Shield
+      armor("wdc9nLqwIN0iNkFj"), // Gambeson
+      armor("WvHpP6L5AyMd6oO7"), // Brigandine
+      armor("vYkrBTEXzHrxUzSk"), // Chainmail
+      armor("HFI9vH2O90lK0XwE")  // Plate
+    ]),
+    stables: shelf("CAIRN.Store.Default.Stables", [
+      gear("zx6dah3S6hfrFBC3"), // Animal Feed
+      gear("tX5yhIVDnRmRHOft"), // Carriage Seat
+      homebrew("FiibVRieLmgcDKkZ"), // Donkey
+      homebrew("8WsMxniKtWFRDzc0"), // Saddle & Bridle
+      gear("S8va0NhfI1MpGSsu"), // Cart
+      gear("VJI4DiSg5Sswru2s"), // Mule
+      homebrew("R8uwbEVATuGEbHXr"), // Horse, draft
+      homebrew("y8TSuLCa3he2GDI0"), // Barding
+      homebrew("juT6hJSSk0N8oiwV"), // Oxen
+      homebrew("Gz5R0AVAjUG5DzlC"), // Camel
+      gear("4UgTnLDhgKLtyK1y"), // Horse
+      homebrew("6n8b28bouLbvoC3B"), // Cart, big
+      gear("WicimNRxtb4MPrsM")  // Wagon
+    ]),
+    provisioner: shelf("CAIRN.Store.Default.Provisioner", [
+      gear("sz3hlSxhxVLBvkKX"), // Chalk
+      gear("yQOui5IqPJ0IHTCf"), // Rope
+      homebrew("yypWKdw4aHNfxiTH"), // Tinder Box
+      gear("38nboO4axGNV5vQC"), // Torch
+      gear("MLu8HRRZKwQjdGBU"), // Containers
+      gear("5eQEA0pByDrzJ06P"), // Cooking Gear
+      gear("vwTBmANkGI22L7n2"), // Fire Oil
+      gear("lAOJ4KhINKHkQFKY"), // Lantern
+      gear("DEIG5kYj2mhV3hRM"), // Oil Can
+      homebrew("jAjEcR1YrKhpCVmA"), // Oilskin Bag
+      gear("o6vtsY4SfrFJHnol")  // Rations
+    ]),
+    outfitter: shelf("CAIRN.Store.Default.Outfitter", [
+      gear("BgBHOBRaOlLJCh31"), // Air Bladder
+      gear("C1iwGcA5I86vOI5Z"), // Pole
+      homebrew("hKFH48ZkCQ0QQiih"), // Stakes & Mallet
+      homebrew("KpQA9uUHYKruyfZo"), // Crowbar
+      gear("5yJLuqVex4HpsIhJ"), // Expeditionary Gear
+      gear("LpppO7mC1EgIRTXv"), // Fishing Rod
+      gear("Ep7hnDLh5HBoEOZr"), // Outdoor Comfort
+      gear("oRPrPL68rhEdLYxk"), // Dowsing Rod
+      homebrew("0QSZBiZq5bTatmmj"), // Rope Ladder
+      gear("x7XzCfvN7U9vRo4N"), // Spiked Boots
+      gear("tGF9mBAjp5fivlyB"), // Wilderness Clothes
+      gear("uAtHUVkrUHWlKi5x"), // Tent
+      gear("3QIHHBWQeDmDJASp"), // Grappling Hook
+      gear("B5pPWtT8ZvgBm70C"), // Spyglass
+      gear("jIUcDxlW7tojBgaG")  // Compass
+    ]),
+    apothecary: shelf("CAIRN.Store.Default.Apothecary", [
+      gear("dcg6C3sgIfUklUu7"), // Bathing Goods
+      gear("LJuSzL3jPRwPcvAL"), // Common Agents
+      homebrew("imAtEycOcQWwVP6X"), // Incense
+      gear("riO6dGPX20svCtL0"), // Repellent
+      gear("m9pA9rDapkpMFjYi"), // Antitoxin
+      gear("F8yysdbnA0y5L4sA"), // Bandages
+      gear("Pl1vyKGTou4BZeAC")  // Sedative
+    ]),
+    toolmaker: shelf("CAIRN.Store.Default.Toolmaker", [
+      gear("0zOZuLW1Yw2gr9wT"), // Chisel
+      gear("QYy0LFVooHDbjiTV"), // Caltrops
+      gear("OTCJHK1d9Rk6QIfR"), // Chain
+      gear("QDL96czD5DIDWr79"), // Common Tools
+      homebrew("h3EXPHVgXZXRxCn2"), // Drill
+      homebrew("P799Joyn54UqzS9a"), // Manacles
+      gear("5SZWEE7UyIgdgwSE"), // Net
+      gear("kWbQCs7Zt0qwwh8F"), // Gloves
+      gear("RFXTI1B6phAqB4hY"), // Sewing Kit
+      gear("TxTE0Kqi1Pemap5K"), // Specialized Tools
+      gear("oyCPkncx99bsRO5E"), // Chest
+      homebrew("YIgMWNexXwxKqJMb"), // Lock
+      gear("Re9jpaWAjgO528ON"), // Thieving Tools
+      gear("y9WcPO45F4qWK4Rv")  // Trap
+    ]),
+    curiosities: shelf("CAIRN.Store.Default.Curiosities", [
+      gear("qjn8EvZyXYZb1eST"), // Card Deck
+      homebrew("2oU4PHgmDqqUWESi"), // Glass Marbles
+      gear("8AfmfTU2E7oJ994j"), // Mirror
+      gear("sIS4sBDYuDjnLPo0"), // Games
+      homebrew("MDVFEbBdFbHAQPDq"), // Horn
+      homebrew("xj5GoUQZGs5ns7Tl"), // Lens
+      gear("7NQNLHQ66u6U31jM"), // Parchment
+      gear("5YhwJSdfOq8wWj9E"), // Simple Instruments
+      gear("7Wnavu7ZBS1W8hbB"), // Costume Gear
+      gear("CVGcWnnLF3qFEF3J"), // Smoking Pipe
+      gear("LsozBVpc307VB58Y"), // Whistle
+      gear("MiIdPDU4ca9DCT1P"), // Book
+      gear("nIuVR8I5HZctUgs6"), // Complex Instruments
+      homebrew("t8pStHMfLvW5B1xA")  // Hourglass
+    ]),
+    tailor: shelf("CAIRN.Store.Default.Tailor", [
+      homebrew("gsRUkDWYwojfVuel"), // Hat, straw
+      homebrew("IPbov0cLCcRyGD9G"), // Eye Patch
+      homebrew("PyxQELrsORDC9lGM"), // Apron, cloth
+      homebrew("PHTBANGUYQvaA6Z0"), // Belt, leather
+      homebrew("M9skHCnGwlzhb4zn"), // Boots, cloth
+      homebrew("deXCgnSoO5ql0XFP"), // Cap
+      homebrew("ECEb84hWKN8DoqGZ"), // Hat, simple
+      homebrew("85UZdMdDeWNSwjoO"), // Sandals
+      homebrew("DBz12FtJ7rQcOc73"), // Shirt, cloth
+      homebrew("0zqeoGPExD1qrUgZ"), // Skirt, cloth
+      homebrew("Fl366flR0I7dYXN7"), // Trousers
+      homebrew("enXXi4WpO2LQnEj6"), // Apron, leather
+      homebrew("eieMo7UUWg27BVBE"), // Boots, soft leather
+      homebrew("rRdZg0UFfrxGvrei"), // Cape, short
+      homebrew("3URhbFTFbMY5ZeDQ"), // Coat
+      homebrew("zWHbZerSLgI6O4Hn"), // Dress
+      homebrew("rMQZCGlfE8aJscaQ"), // Habit
+      homebrew("onHoiYdby4VmpfHa"), // Robe
+      homebrew("EvJ4wHAyVYzkzNrs"), // Tunic
+      homebrew("lA8F69O7VD9hoC6G"), // Boots, hard leather
+      homebrew("pXAoLI8QaL1IWsDw"), // Cape, long
+      homebrew("eg4aWyudRdye2Izr"), // Shirt, silk
+      homebrew("hzpzcdcEWTtlBTa0"), // Skirt, silk
+      homebrew("meTlmjzi23j0Rz27"), // Boots, reinforced
+      homebrew("Y5RGgLRaIhaDEpJD"), // Bodice
+      homebrew("QBPi4gjbAhtx6Fki"), // Hat, elegant
+      homebrew("mp78Zf52ICWXRHFy"), // Kilt
+      homebrew("DR1UTmsBr9jhsIxs"), // Tunic, silk
+      homebrew("Q1qn89wCidZZUVIt"), // Doublet
+      homebrew("qNlLMFkfMXkTrTDw"), // Dress, silk
+      homebrew("HoBDFMOaB541FfXP"), // Ballgown, simple
+      homebrew("IGqNrkBlwLnSAtUK"), // Coat, fur
+      homebrew("ThaCkyMhCmC10X1u")  // Ballgown, extravagant
+    ]),
+    tavern: shelf("CAIRN.Store.Default.Tavern", [
+      homebrew("0CmxUSfbtPFMBz5v"), // Bread
+      homebrew("gJCzHcBuasyyBlau"), // Inn Meal, poor
+      homebrew("3e21dtes7VRG0qH9"), // Mead
+      homebrew("c93L1fsC1rF8jdcO"), // Beer
+      homebrew("hR7BHskkiM7a7CIz"), // Cheese, local
+      homebrew("LV60yBoT2XGZzV1r"), // Inn Meal, good
+      homebrew("nsJia5RktOY3WcwK"), // Wine, poor
+      homebrew("5x23b7Ip47SQC0Gq"), // Inn Meal, superb
+      homebrew("ApRK0r0xGDIKrJyX"), // Moonshine
+      homebrew("34aQvMqgb8HP8fvp"), // Roast Chicken
+      homebrew("JRaB1j5guyzAB86d"), // Roast Goose
+      homebrew("NMJaebAwQWRvS9sv"), // Rum
+      homebrew("DFozNyWpcuFSc7hR"), // Wine, good
+      homebrew("FLJ7z1Py8d1ebaZo")  // Brandy
+    ])
+  };
 }
 
 /**

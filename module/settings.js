@@ -9,6 +9,7 @@ import { SYSTEM_ID, SETTINGS } from "./constants.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
 import { CairnStore } from "./apps/store.js";
+import { defaultStores } from "./store-rules.js";
 import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
@@ -164,12 +165,14 @@ export const registerSettings = () => {
 
   // Hidden: the Warden's saved stores (module/apps/store.js), not a rule toggle. Written on every
   // edit — there is no Save button and no draft to lose — and `onChange` is what puts a Warden's
-  // mid-session edit on a player's open window, the way JOURNEY does above.
+  // mid-session edit on a player's open window, the way JOURNEY does above. A world that has never
+  // written it reads the system's stores; the first edit saves them as the world's own, so a store
+  // the Warden deletes stays deleted.
   game.settings.register(SYSTEM_ID, SETTINGS.STORES, {
     scope: "world",
     config: false,
     type: Object,
-    default: {},
+    default: defaultStores(),
     onChange: () => CairnStore.refresh()
   });
 

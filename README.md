@@ -67,8 +67,8 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 - **Dungeons**: the combat tracker runs exploration turn by turn. It shows what each character
   is doing, how far their token moved, and when the rules call for a Dungeon Event. If a fight
   breaks out, the dungeon picks up again on the same turn once it ends.
-- **Stores**: stock a market by dragging items onto its shelves and open it on every player's
-  screen. Players fill a cart, and the store checks both their gold *and* their free slots before
+- **Stores**: ten small ones come ready, from the Weaponsmith to the Tavern. Stock your own by
+  dragging items onto its shelves, and open it on every player's screen. Players fill a cart, and the store checks both their gold *and* their free slots before
   anything changes hands.
 - **Unknown relics**: a relic can hide behind the name and looks the Warden gives it, unusable
   until it is revealed.
@@ -103,7 +103,7 @@ All the game content you need is already inside:
 | **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings and the 5 companions some backgrounds start with |
 | **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the naming tables, and the Warden's generator tables |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
-| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, and the Warden's Reset Player Hotbars |
+| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, and the Warden's Reset Player Hotbars and Restore Default Stores |
 | **Homebrew** | *More Gear*, *More Spellbooks* and *More Scrolls*: extra content by the maintainer, kept in its own folder |
 
 ### It looks like the books

@@ -120,6 +120,9 @@ Hooks.once("init", async function () {
     rulesSummary: () => CairnRulesSummary.open(),
     // The calendar window, for anyone — the supplied "Calendar" macro calls it.
     calendar: () => CairnCalendarApp.open(),
+    // Warden-only: every store back to the system's own, after a warning (module/apps/store.js).
+    // The "Restore Default Stores" macro calls it.
+    restoreDefaultStores: () => CairnStore.restoreDefaults(),
   };
   // The same object as a bare global, so a macro is one line: `cairn2e.rest()`.
   globalThis[SYSTEM_ID] = game.cairn2e;
