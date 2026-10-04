@@ -117,7 +117,8 @@ Every id in these packs is **derived, not invented**: `id16(seed)` = the first 1
 `"cairn2e:hireling:<slug>:item:<n>"` (same rule), `"cairn2e:companion:<slug>"` and `"cairn2e:companion:<slug>:item:<n>"` (same rule), `"cairn2e:scroll:<slug>"`, `"cairn2e:homebrew:<slug>"`,
 `"cairn2e:homebrew:folder:<slug>"`, the five magic packs' price folders (see *Prices on magic*), `"cairn2e:bgtable:<slug>:<n>"`,
 `"cairn2e:bggear:<slug>"`, `"cairn2e:bggear:folder:<slug>"`, `"cairn2e:warden:<slug>"` and
-`"cairn2e:warden:<slug>:<n>"` (a table's results, 1-based, in range order).
+`"cairn2e:warden:<slug>:<n>"` (a table's results, 1-based, in range order), and the journals'
+own (`vald-calendar`, `players-guide`, each in its section below).
 `<slug>` is `kebabCase(name)`, the same rule `tools/pack-common.mjs` applies to filenames. Compute
 a reference rather than looking it up, and a new document lands with the id everything else
 already expects.
@@ -453,6 +454,39 @@ delete like any other note.
 
 JournalEntries are not validated by the build (it validates Actor and Item `system` payloads only);
 `checks/compendium.check.mjs` holds the 24, their keys, flags and SRD weekdays instead.
+
+## `players-guide` — the rules, as the book prints them
+
+The five rules chapters of `srd-2e/players-guide/` — Overview & Principles, Character Creation,
+Core Rules, Procedures, Marketplace — one **JournalEntry** each, the SRD text verbatim. `vald.md`
+is setting, not rules, and is not here.
+
+- **Pages.** A chapter is split at its `##` sections, one `text` page each, named by the section,
+  so a link can open "Panic" or "Deprivation & Fatigue" directly; inside a page `###` becomes
+  `<h2>`, under the page title. **Marketplace** is the exception, one page: it is a price list,
+  read whole. One structural repair: Procedures prints *Terrain Difficulty* as a `##` between Path
+  Difficulty and Weather, both sections of Wilderness Exploration, and it is a `###` here.
+- **Ids** are derived: `id16("cairn2e:rules:<file>")` for the entry, `<file>` the SRD's basename
+  (`core-rules`), and `id16("cairn2e:rules:<file>:<kebab page name>")` for a page.
+- **Links**, all by uuid, never by name:
+  - the SRD's own links (`[Scars](#scars-table)`, `/second-edition/players-guide/…`) become
+    `@UUID[…JournalEntryPage.<id>#<slug>]`, the slug core's `JournalEntryPage.slugifyHeading` of
+    the target heading (`&` is "and": `#healing-and-recovery`); its background links point at the
+    `backgrounds` Items;
+  - a term defined in another section links to that section the first time a page uses it — Fatigue,
+    Critical Damage, Make Camp, panic, *impaired*, Relics, the Die of Fate;
+  - a Marketplace row links to what it sells: armour, each weapon of a list row, gear, transport,
+    upkeep and the hireling Actors. Room & Board, Stable & Feed and Medical Healing are services
+    and stay text, as do the items the rules text names in passing, except Bandages, Shields,
+    torch, lantern, oil can, Rations, carts, horses and mules;
+  - a table the text tells you to roll carries a `[[/table <uuid>]]` chip above it: Backgrounds,
+    the eight traits, Bonds, Omens, Reactions, the Die of Fate, Dungeon and Wilderness Events.
+    **Scars has none**: it is read by the HP lost, not rolled, and a d12 chip would deal a wrong
+    scar.
+
+`checks/compendium.check.mjs` holds the five chapters, their ids and keys, and every page link in
+the pack source landing on a page that exists and on a heading of it — a wrong `#slug` otherwise
+opens the page at its top without a word.
 
 ## Workflow
 

@@ -900,7 +900,7 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 | **Character Creation** | Backgrounds, Background Tables, Background Gear, Companions, Character Traits, Bonds, Omens |
 | **Equipment** | Gear, Weapons, Armor |
 | **Magic** | Spellbooks, Scrolls, Relics |
-| **Reference** | Game Tables, Bestiary, Hirelings, Vald Calendar |
+| **Reference** | Player's Guide, Game Tables, Bestiary, Hirelings, Vald Calendar |
 | **Warden** | Warden Tables |
 | **Homebrew** | More Gear, More Spellbooks, More Scrolls: extra content by the system's author, not from the Cairn book |
 

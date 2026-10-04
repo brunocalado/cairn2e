@@ -59,6 +59,11 @@ A translation module needs two things in its `module.json`:
   first; keep it free of other markup, because the calendar reads a note back as plain text. A
   world imports the events once, as its own notes, so a translation reaches a world only if it
   is active the first time the Warden launches it.
+- **The Player's Guide** (`cairn2e.players-guide`): each JournalEntry's `name`, and each page's
+  `name` and `text.content`. Keep every `@UUID[…]` and `[[/table …]]` exactly as it is and
+  translate only the `{label}` after a `@UUID`. A link that ends in `#slug` opens the page at the
+  heading with that slug, so when you translate a heading another link points at, change the slug
+  in that link to match: it is the heading lowercased, `&` written "and", spaces as dashes.
 
 ## 3. What never to translate
 

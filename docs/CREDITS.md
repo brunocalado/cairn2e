@@ -13,6 +13,19 @@ Third-party assets included in this system, their creators, and licenses.
 
 ---
 
+## Game Text
+
+* **Cairn Second Edition** — the rules, tables, backgrounds, bestiary, spellbooks and relics in the
+  compendium packs, and the five chapters of the **Player's Guide** compendium, which reproduce
+  the Player's Guide text verbatim.
+  * **Author:** Yochai Gal
+  * **Source:** [Cairn Repository](https://github.com/yochaigal/cairn) (`second-edition/`)
+  * **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+  * **Modifications:** The Player's Guide is split into one journal page per section, with links
+    added to the compendium's own documents and roll buttons on the tables it prints.
+
+---
+
 ## Fonts
 
 * **Lora (`fonts/`)**

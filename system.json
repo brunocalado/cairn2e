@@ -139,6 +139,13 @@
       "type": "Item"
     },
     {
+      "name": "players-guide",
+      "label": "Player's Guide",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/players-guide",
+      "type": "JournalEntry"
+    },
+    {
       "name": "tables",
       "label": "Game Tables",
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
@@ -232,7 +239,7 @@
           "name": "Reference",
           "sorting": "m",
           "color": "#3f5670",
-          "packs": ["tables", "bestiary", "hirelings", "vald-calendar"]
+          "packs": ["players-guide", "tables", "bestiary", "hirelings", "vald-calendar"]
         },
         {
           "name": "Warden",
