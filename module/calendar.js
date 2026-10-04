@@ -150,3 +150,45 @@ export function currentWatch() {
 export function advanceWatch() {
   return game.time.set(nextWatchStart(game.time.worldTime, geometry()));
 }
+
+/* -------------------------------------------- */
+
+/** The read-only date and time under the chat box's Format menu: one element, moved with the box. */
+let chatClock;
+
+/**
+ * Put the clock between the chat box's Format menu and its text, from `renderChatInput`. The box
+ * is one `<prose-mirror>` that core moves between the sidebar, the popout and the notifications
+ * area, and every move empties it (`replaceChildren` on connect) and builds the editor again
+ * asynchronously — the menu does not exist yet when the hook fires. So the clock goes in on the
+ * element's own `open` event, which core dispatches once the editor and its menu are built; the
+ * listener is added once, because the element outlives every move.
+ * @param {HTMLElement} input   `#chat-message`
+ */
+export function mountChatClock(input) {
+  if (!input || !(game.time.calendar instanceof CairnCalendar)) return;
+  if (!chatClock) {
+    chatClock = document.createElement("div");
+    chatClock.className = `${SYSTEM_ID} cairn-chat-clock`;
+    chatClock.append(document.createElement("span"), document.createElement("span"));
+    input.addEventListener("open", () => placeChatClock(input));
+  }
+  placeChatClock(input);
+}
+
+function placeChatClock(input) {
+  const menu = input.querySelector(":scope > .menu-container");
+  if (!menu) return;
+  refreshChatClock();
+  menu.after(chatClock);
+}
+
+/** Redraw the chat clock from the world time. Called on `updateWorldTime`. */
+export function refreshChatClock() {
+  if (!chatClock) return;
+  const now = game.time.components;
+  const pad = (n) => String(n).padStart(2, "0");
+  const [date, time] = chatClock.children;
+  date.textContent = formatDate(now.year, now.month, now.dayOfMonth);
+  time.textContent = `${pad(now.hour)}:${pad(now.minute)}`;
+}

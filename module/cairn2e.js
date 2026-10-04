@@ -49,7 +49,7 @@ import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
-import { registerCalendar, installCalendar, CairnCalendar } from "./calendar.js";
+import { registerCalendar, installCalendar, CairnCalendar, mountChatClock, refreshChatClock } from "./calendar.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
 import { installCalendarEvents } from "./calendar-notes.js";
 import { GRANT_QUERY, applyGrant, onDropCanvasData } from "./grants.js";
@@ -264,7 +264,12 @@ Hooks.once("init", async function () {
     };
   });
   // Every open calendar redraws when the clock moves, whoever moved it.
-  Hooks.on("updateWorldTime", () => CairnCalendarApp.refresh());
+  Hooks.on("updateWorldTime", () => {
+    CairnCalendarApp.refresh();
+    refreshChatClock();
+  });
+  // The date and time under the chat box's Format menu, wherever core moves the box.
+  Hooks.on("renderChatInput", (_app, elements) => mountChatClock(elements["#chat-message"]));
 
   // Right-clicking a message in the log offers this system's own entries. Registered in `init`
   // beside the rest; the hook itself fires every time a context menu is built, and the entry
