@@ -194,10 +194,11 @@
      * Format menu and its text (module/calendar.js#mountChatClock).         *
      *                                                                       *
      * Read-only, so it is a line of text and not a control. It carries the  *
-     * scope class itself, and takes its ground and ink from the tokens core *
-     * sets on `#chat-message` for the Format menu and the text box: the     *
-     * sidebar is see-through there, so text on no ground of its own sat on  *
-     * the scene, and the surface pair put dark ink on a dark map.           *
+     * scope class itself and is drawn as a chat message is — paper, ink,    *
+     * the 2px frame — with the FIXED pair, not the swapping one: the log    *
+     * above it is light in either theme, so its cards are always paper, and *
+     * the clock reads as one more of them. It needs a ground of its own     *
+     * anyway: the sidebar is see-through there, over the scene.             *
      **************************************************************************/
 
     &.cairn-chat-clock {
@@ -205,10 +206,12 @@
         display: flex;
         justify-content: space-between;
         gap: 8px;
-        padding: 2px 8px;
-        background: var(--menu-background, var(--background-color));
+        /* The frame's 2px come out of the padding, so the line keeps its height and inset. */
+        padding: 0 6px;
+        background: var(--cairn-paper);
+        border: var(--cairn-rule) solid var(--cairn-ink);
         border-radius: var(--cairn-radius);
-        color: var(--text-color);
+        color: var(--cairn-ink);
         font-family: var(--cairn-serif);
         font-size: 12px;
         line-height: 1.2;
