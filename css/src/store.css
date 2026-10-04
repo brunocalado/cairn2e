@@ -54,14 +54,20 @@
             grid-template-rows: auto minmax(0, 1fr);
         }
 
-        /* A shopper's window has a cart, and the cart is the second column. It has no head at
-           all — the part is dropped for them — so there is no head row here either: an empty
-           one would still carry the 10px gap under it. The rail sits over the left column only;
-           the cart starts level with it. */
+        /* A shopper's window has a cart, and the cart is the second column. Its head is only
+           the store picker, hidden when there is one store to be in — so there is no head row
+           then either: an empty one would still carry the 10px gap under it. The rail sits over
+           the left column only; the cart starts level with it. */
         .window-content:has(.cairn-store-cart) {
             grid-template-areas: "nav cart" "left cart" "foot foot";
             grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
             grid-template-rows: auto minmax(0, 1fr) auto;
+        }
+
+        /* With a picker, the head runs across both columns, over the rail and the cart. */
+        .window-content:has(.cairn-store-cart):has(.cairn-store-head:not([hidden])) {
+            grid-template-areas: "head head" "nav cart" "left cart" "foot foot";
+            grid-template-rows: auto auto minmax(0, 1fr) auto;
         }
 
         .cairn-store-head {

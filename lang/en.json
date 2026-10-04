@@ -1213,6 +1213,7 @@
     "Buying": "Buying",
     "Cart": "Cart",
     "CartEmpty": "Drag things here, or press + on a row.",
+    "Closed": "The store has closed.",
     "CoinSetAside": "No room for the coin where it was going \u2014 {amount} gold pieces were set aside, on your Aside tab.",
     "Confirm": "Confirm",
     "Default": {
@@ -1245,6 +1246,7 @@
     "NewTitle": "New store",
     "NoCharacter": "You have no character to shop with.",
     "NoRoom": "That would not fit in your ten slots.",
+    "NoneOpen": "No store is open to visit right now.",
     "NoStore": "No store yet \u2014 make one.",
     "NotSellable": "Only gear from a compendium or the Items directory can be put up for sale.",
     "NothingToSell": "Nothing of yours has a price.",
@@ -1274,6 +1276,10 @@
       "Yours": "Yours"
     },
     "TakeOut": "Take out of the cart",
+    "Visit": "Stores",
+    "VisitHint": "Visit a store the Warden has opened",
+    "Visitable": "Players can visit",
+    "VisitableHint": "When on, players open this store whenever they like from the Stores button on their character sheet, and can move between every store that is on. When off, they see it only when you use Open to players. Moving to another store empties their cart.",
     "Untitled": "Store",
     "WillGoThrough": "The trade will go through.",
     "Title": "Store"

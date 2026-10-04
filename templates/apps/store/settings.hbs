@@ -6,7 +6,12 @@
 
       `<range-picker>` is core's own form element and it draws its number box beside the track,
       so the form needs no read-out of its own; being form-associated, `FormDataExtended` hands
-      both back as Numbers with no `data-dtype`. --}}
+      both back as Numbers with no `data-dtype`.
+
+      Last, whether players may walk in on their own: the switch, with a help mark beside its
+      word for what that means at the table — the word alone cannot say where a player finds the
+      store, or what "Open to players" still does. The mark sits beside the label and never
+      inside it, or a click on the `?` would flip the switch. --}}
 <div class="cairn-store-settings">
     <div class="cairn-field">
         <label for="store-name">{{localize "CAIRN.Name"}}</label>
@@ -22,4 +27,10 @@
         <range-picker id="store-buy" name="buyRatio" value="{{buyRatio}}" min="25" max="300" step="5"></range-picker>
     </div>
     <p class="cairn-store-hint">{{localize "CAIRN.Store.BuyRateHint"}}</p>
+    <div class="cairn-store-visitable">
+        <label for="store-visitable">{{localize "CAIRN.Store.Visitable"}}</label>
+        {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.Store.VisitableHint"
+            label=(localize 'CAIRN.Store.VisitableHint') seed="store-visitable"}}
+        {{> "systems/cairn2e/templates/parts/toggle.hbs" field="visitable" value=visitable id="store-visitable"}}
+    </div>
 </div>

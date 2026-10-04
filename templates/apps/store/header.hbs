@@ -1,10 +1,11 @@
-{{!-- The head, and it is the Warden's alone: which store, then everything that acts on it —
-      New, Open to players, Settings, Delete. All but New are square and glyph-only, each saying
-      what it does in its tooltip; "Open to players" was a full-width band across the foot and is
-      one of these now, because it acts on the store named beside it like the other two.
-      A shopper has no head at all — the part is dropped for them (`store.js#_configureRenderParts`),
-      because their own name is not news and their gold is the first figure in the foot. --}}
-<header class="cairn-store-head">
+{{!-- The head: which store, then — for the Warden — everything that acts on it: New, Open to
+      players, Settings, Delete. All but New are square and glyph-only, each saying what it does in
+      its tooltip; "Open to players" was a full-width band across the foot and is one of these now,
+      because it acts on the store named beside it like the other two.
+      A shopper's head is the picker alone, between the stores they may walk into, and it is
+      hidden while there is one store to be in (`showHead`): their own name is not news and their
+      gold is the first figure in the foot. --}}
+<header class="cairn-store-head"{{#unless showHead}} hidden{{/unless}}>
     <div class="cairn-store-manage">
         {{#if stores.length}}
         <select name="store" aria-label="{{localize 'CAIRN.Store.Pick'}}">
@@ -13,6 +14,7 @@
             {{/each}}
         </select>
         {{/if}}
+        {{#if isGM}}
         <button type="button" data-action="storeNew">
             <i class="fas fa-plus" inert></i> {{localize "CAIRN.Store.New"}}
         </button>
@@ -26,6 +28,7 @@
         <button type="button" data-action="storeDelete" data-tooltip-text="{{localize 'CAIRN.Store.Delete'}}" aria-label="{{localize 'CAIRN.Store.Delete'}}">
             <i class="fas fa-trash" inert></i>
         </button>
+        {{/if}}
         {{/if}}
     </div>
 </header>

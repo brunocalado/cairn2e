@@ -173,7 +173,13 @@ export const registerSettings = () => {
     config: false,
     type: Object,
     default: defaultStores(),
-    onChange: () => CairnStore.refresh()
+    // The player's own sheet draws the Stores chip only while a store is open to visits, so its
+    // tab strip is redrawn with the window.
+    onChange: () => {
+      CairnStore.refresh();
+      const sheet = game.user.character?.sheet;
+      if (sheet?.rendered) sheet.render({ parts: ["nav"] });
+    }
   });
 
   // Hidden: the Warden's macros for every character's Actions menu, edited only through the menu

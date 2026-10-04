@@ -7,8 +7,8 @@
 
 import { SYSTEM_ID, SETTINGS } from "../constants.js";
 import {
-  blankStore, defaultStores, withItem, withItems, withoutItem, withSettings, folderTree, sellable, sellPrice,
-  buyPrice, sellableOwn, cartSummary, untitledName
+  blankStore, defaultStores, withItem, withItems, withoutItem, withSettings, storeChoices, folderTree, sellable,
+  sellPrice, buyPrice, sellableOwn, cartSummary, untitledName
 } from "../store-rules.js";
 import { BELONGINGS } from "../coin-rules.js";
 import { copyOf } from "../helpers.js";
@@ -57,10 +57,13 @@ const nameOf = (store) => game.i18n.localize(store.name);
  * A store is a list of uuids; the price on a row is the referenced Item's `cost` at the moment
  * the window draws, so "to change the price, edit the item" holds.
  *
- * Opening it: the sidebar tab (Warden), or the Warden's "Open to players", which is a socket
+ * Opening it: the sidebar tab (Warden); the Stores chip on a player's own character sheet, shown
+ * while any store is open to visits; or the Warden's "Open to players", which is a socket
  * broadcast carrying the store's id that every client answers by opening its own window
- * (`module/cairn2e.js`). There is no player-side entry point, and a player with no linked
- * character gets a notice rather than a window: with no purse there is nothing to show.
+ * (`module/cairn2e.js`). A shopper picks between the stores open to visits, and the one the
+ * Warden put on their screen (`store-rules.js#storeChoices`); changing store empties the cart. A
+ * player with no linked character gets a notice rather than a window: with no purse there is
+ * nothing to show.
  */
 export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
   /** @override — the ink layer is one canvas over `.window-content`, and the panes that scroll
@@ -114,9 +117,12 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
   /** The one window this client has. */
   static #instance = null;
 
-  /** The store on screen. The Warden changes it with the head's `<select>`; a player's is fixed
-   *  by the broadcast that opened the window. */
+  /** The store on screen. Both roles change it with the head's `<select>`. */
   #storeId = null;
+
+  /** The store the Warden last put on this shopper's screen. It stays a choice whether or not it
+   *  is open to visits, until the window closes. */
+  #pushed = null;
 
   /** What this player has put in the cart — `buy` by uuid to a quantity, `sell` the ids of their
    *  own items. Never persisted: reset when the store changes and when the window closes. */
@@ -126,26 +132,39 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
   #dd = null;
 
   /**
-   * Open the window on a store, or bring the open one forward. With no id the Warden gets the
-   * store already on screen, or the first one saved.
+   * Open the window on a store, or bring the open one forward. With no id it keeps the store
+   * already on screen, or takes the first this user may pick. A shopper is handed an id only by
+   * the Warden's broadcast, so an id here is also what makes that store theirs to see.
    */
   static open(storeId) {
-    if (!game.user.isGM && !game.user.character) {
+    const isGM = game.user.isGM;
+    if (!isGM && !game.user.character) {
       ui.notifications.warn(game.i18n.localize("CAIRN.Store.NoCharacter"));
       return null;
     }
     const app = CairnStore.#instance ??= new CairnStore();
-    if (storeId && storeId !== app.#storeId) {
-      app.#storeId = storeId;
-      app.#cart = { buy: new Map(), sell: new Set() };
+    if (storeId && !isGM) app.#pushed = storeId;
+    if (!isGM && !app.#choices.length) {
+      ui.notifications.info(game.i18n.localize("CAIRN.Store.NoneOpen"));
+      return null;
     }
+    if (storeId) app.#switchTo(storeId);
     return app.render({ force: true });
   }
 
-  /** Redraw the open window from the setting. A closed one is left closed. */
+  /**
+   * Redraw the open window from the setting. A closed one is left closed. A shopper whose last
+   * store has just closed to them is told so, and the window goes: there is nothing left to show.
+   */
   static refresh() {
     const app = CairnStore.#instance;
-    if (app?.rendered) app.render();
+    if (!app?.rendered) return;
+    if (!game.user.isGM && !app.#choices.length) {
+      ui.notifications.info(game.i18n.localize("CAIRN.Store.Closed"));
+      app.close();
+      return;
+    }
+    app.render();
   }
 
   /**
@@ -182,10 +201,22 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     return game.settings.get(SYSTEM_ID, SETTINGS.STORES);
   }
 
-  /** The store on screen, or null when there is none — the Warden's first open, or a store deleted
-   *  under a player's window. */
+  /** The ids of the stores this client may pick from, in the setting's order. */
+  get #choices() {
+    return storeChoices(this.#stores, { isGM: game.user.isGM, pushed: this.#pushed });
+  }
+
+  /** The store on screen, or null when there is none — the Warden's first open, or a store
+   *  deleted, or closed to visits, under a player's window. */
   get #store() {
-    return this.#stores[this.#storeId] ?? null;
+    return this.#choices.includes(this.#storeId) ? this.#stores[this.#storeId] : null;
+  }
+
+  /** Put another store on screen. Whatever was in the cart was the last store's, so it goes. */
+  #switchTo(storeId) {
+    if (storeId === this.#storeId) return;
+    this.#storeId = storeId;
+    this.#cart = { buy: new Map(), sell: new Set() };
   }
 
   /** Write one store back into the setting. The setting's `onChange` is what redraws. */
@@ -196,9 +227,10 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    // The Warden with no store chosen lands on the first one saved, so the window never opens on
-    // an empty shelf while there is a full one a click away.
-    if (game.user.isGM && !this.#store) this.#storeId = Object.keys(this.#stores)[0] ?? null;
+    // With no store chosen, or the chosen one gone from under the window, it lands on the first
+    // one this user may pick, so it never opens on an empty shelf while there is a full one a
+    // click away.
+    if (!this.#store) this.#switchTo(this.#choices[0] ?? null);
     // Core writes the frame's title on the first render only; the store's name is part of it
     // here, so every render says it again.
     if (this.hasFrame) {
@@ -217,10 +249,6 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       // The foot is the till, and the Warden buys nothing. Their one command — put this store on
       // every screen — is a glyph up in the head beside the two that act on the same store.
       delete parts.footer;
-    } else {
-      // A shopper has no head: their own name is not news and their gold is the foot's first
-      // figure. An empty band would still cost the grid a row and the gap under it.
-      delete parts.header;
     }
     return parts;
   }
@@ -240,7 +268,12 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const store = this.#store;
 
     context.isGM = isGM;
-    context.stores = Object.entries(stores).map(([id, s]) => ({ id, name: nameOf(s), selected: id === this.#storeId }));
+    // A shopper's head is the store picker and nothing else — their own name is not news and their
+    // gold is the foot's first figure — so with one store to be in it is hidden, and costs the
+    // grid no row. Hidden, not dropped from the parts: the count changes while the window is up,
+    // and a part left out of a render keeps its old element on the page.
+    context.showHead = isGM || this.#choices.length > 1;
+    context.stores = this.#choices.map((id) => ({ id, name: nameOf(stores[id]), selected: id === this.#storeId }));
     context.store = store && { id: this.#storeId, name: nameOf(store) };
     // Both rates belong to the store, set in its own settings dialog.
     const buyRatio = store?.buyRatio ?? 100;
@@ -328,16 +361,16 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     super._attachPartListeners(partId, htmlElement, options);
     // The <select> is a change, not a click, so it is not an action.
     htmlElement.querySelector("select[name=store]")?.addEventListener("change", (event) => {
-      this.#storeId = event.currentTarget.value;
-      this.#cart = { buy: new Map(), sell: new Set() };
+      this.#switchTo(event.currentTarget.value);
       this.render();
     });
   }
 
-  /** @override — the cart does not outlive the window. */
+  /** @override — the cart does not outlive the window, and nor does the Warden's push. */
   _onClose(options) {
     super._onClose(options);
     this.#cart = { buy: new Map(), sell: new Set() };
+    this.#pushed = null;
   }
 
   /**
@@ -484,7 +517,8 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
   }
 
   /**
-   * A store's own settings: its name, what it pays for a thing and what it charges for one.
+   * A store's own settings: its name, what it pays for a thing and what it charges for one, and
+   * whether players may walk in on their own.
    * Written straight into the setting like every other edit in this window — there is no draft
    * and no Save-or-lose-it. `<range-picker>` is form-associated, so `FormDataExtended` hands
    * both rates back as Numbers with no `data-dtype` on them.
@@ -496,7 +530,8 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const content = await foundry.applications.handlebars.renderTemplate(SETTINGS_TPL, {
       name: nameOf(store),
       sellRatio: store.sellRatio,
-      buyRatio: store.buyRatio ?? 100
+      buyRatio: store.buyRatio ?? 100,
+      visitable: store.visitable
     });
     const result = await DialogV2.prompt({
       classes: [SYSTEM_ID],
@@ -515,7 +550,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     // A name left as it was shown keeps what is stored, so a system store whose rates alone were
     // changed still follows the language.
     const name = typed === nameOf(store) ? store.name : typed;
-    await this.#save(withSettings(store, { name, sellRatio: result.sellRatio, buyRatio: result.buyRatio }));
+    await this.#save(withSettings(store, { name, sellRatio: result.sellRatio, buyRatio: result.buyRatio, visitable: result.visitable }));
   }
 
   /** @this {CairnStore} */

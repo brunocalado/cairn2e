@@ -324,4 +324,20 @@
         font-style: italic;
         margin: -6px 0 0;
     }
+
+    /* Whether players may walk in: the word in capitals as every label in the form, its help mark
+       beside it, and the switch after them — the row the apply-damage dialog's armour line
+       draws. It stands a little apart from the rates: it answers a different question. */
+    .cairn-store-visitable {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        margin-top: 4px;
+
+        > label {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+    }
 }

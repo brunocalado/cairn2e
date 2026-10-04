@@ -23,6 +23,19 @@
         </a>
         {{/each}}
 
+        {{#if showStores}}
+        {{!-- The stores the Warden lets players walk into, from the player's own character only
+              (`character-sheet.js`). A chip like Rest, because it is a thing on the sheet you
+              press, and it stands right before Gold: the purse is what it spends. It takes the
+              strip's `auto` margin from Gold when it is drawn, so the two sit at the right
+              together. --}}
+        <button type="button" class="cairn-chip cairn-store-visit" data-action="openStores"
+            data-ink="box" data-ink-seed="stores" data-ink-w="1.6" data-ink-fill="hover" data-ink-fill-a="0.14"
+            data-tooltip="{{localize 'CAIRN.Store.VisitHint'}}">
+            <span>{{localize 'CAIRN.Store.Visit'}}</span>
+        </button>
+        {{/if}}
+
         {{#if showGold}}
         {{!-- Gold wears the chip treatment, not a brush slab. It sits at the far right of the
               strip on its own, with no upright between it and the last tab: the chip's drawn box

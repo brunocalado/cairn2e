@@ -718,6 +718,17 @@
         width: 104px;
     }
 
+    /* The Stores chip (`parts/actor-tabs.hbs`), drawn only while a store is open to visits. It
+       stands right before Gold, so it takes Gold's `auto` margin and Gold sits beside it at the
+       strip's own gap. */
+    .cairn-tab-strip .cairn-store-visit {
+        margin-left: auto;
+
+        + .cairn-gold {
+            margin-left: 0;
+        }
+    }
+
     .cairn-gold-pair {
         align-items: baseline;
         display: flex;

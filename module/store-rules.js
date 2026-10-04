@@ -29,9 +29,14 @@ import { BELONGINGS, placeOf, sackAt, spendPlan, gainFits } from "./coin-rules.j
  * Both rates are percentages of an item's own cost and belong to the store alone, set in its
  * settings dialog. `sellRatio` starts at 50, the table's usual half: the SRD prices what is bought
  * (`marketplace.md`) and says nothing about selling. `buyRatio` starts at 100, the book price.
+ *
+ * `visitable` is whether players may walk in on their own, from their character sheet. It starts
+ * off — the system's own stores too — because a store is somewhere in the fiction: the Warden
+ * lets the players into the ones in the town they are in, and a new world's party is not at
+ * every counter at once, in the middle of a dungeon.
  */
 export function blankStore(name) {
-  return { name, items: [], sellRatio: 50, buyRatio: 100 };
+  return { name, items: [], sellRatio: 50, buyRatio: 100, visitable: false };
 }
 
 const weapon = (id) => packUuid("weapons", "Item", id);
@@ -232,9 +237,22 @@ export function untitledName(base, taken) {
   return `${base} ${n}`;
 }
 
-/** The settings form's write: the three values it holds, the shelves untouched. */
-export function withSettings(store, { name, sellRatio, buyRatio }) {
-  return { ...store, name, sellRatio, buyRatio };
+/** The settings form's write: the four values it holds, the shelves untouched. */
+export function withSettings(store, { name, sellRatio, buyRatio, visitable }) {
+  return { ...store, name, sellRatio, buyRatio, visitable: !!visitable };
+}
+
+/**
+ * The stores a client may pick from, by id, in the setting's order. The Warden has every one. A
+ * shopper has the stores open to visits, and the one the Warden put on their screen with "Open to
+ * players" (`pushed`) whether it is open to visits or not — for as long as the window it opened
+ * stays up.
+ * @param {Record<string, {visitable?: boolean}>} stores
+ * @param {{isGM: boolean, pushed?: string|null}} who
+ * @returns {string[]}
+ */
+export function storeChoices(stores, { isGM, pushed = null }) {
+  return Object.keys(stores).filter((id) => isGM || stores[id].visitable || id === pushed);
 }
 
 /**

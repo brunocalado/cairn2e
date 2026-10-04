@@ -5,18 +5,20 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, FLAGS } from "../constants.js";
+import { SYSTEM_ID, FLAGS, SETTINGS } from "../constants.js";
 import { regenerateActor, traitRows, toPlainText, toPlainLines } from "../character-generator.js";
 import { rollDieOfFate } from "../rolls.js";
 import { promptGrowthGain } from "../growth.js";
 import { enrich, copyOf, abilityRows, hpZero } from "../helpers.js";
 import { outcomeText } from "../scars.js";
+import { storeChoices } from "../store-rules.js";
 import { CairnActorSheet } from "./actor-sheet.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { CairnScars } from "./scars.js";
 import { CairnCharacterEdit } from "./character-edit.js";
 import { CairnCharacterCreator } from "./character-creator.js";
 import { CairnActionsMenu } from "./actions-menu.js";
+import { CairnStore } from "./store.js";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -54,7 +56,8 @@ export class CairnCharacterSheet extends CairnActorSheet {
       scarCreate: CairnCharacterSheet.#onScarCreate,
       scarResolve: CairnCharacterSheet.#onScarResolve,
       growthCreate: CairnCharacterSheet.#onGrowthCreate,
-      growthApply: CairnCharacterSheet.#onGrowthApply
+      growthApply: CairnCharacterSheet.#onGrowthApply,
+      openStores: CairnCharacterSheet.#onOpenStores
     }
   };
 
@@ -217,6 +220,12 @@ export class CairnCharacterSheet extends CairnActorSheet {
 
     // The strip is shared with the NPC sheet; only a character has a purse.
     context.showGold = true;
+    // The way into the stores the Warden lets players walk into, beside the gold that pays for
+    // them. Only on the player's own character: the store spends `game.user.character`'s purse,
+    // whichever sheet it is opened from. The Warden has the sidebar's Store, and a world with no
+    // store open to visits shows no chip at all.
+    context.showStores = !game.user.isGM && this.actor === game.user.character
+      && storeChoices(game.settings.get(SYSTEM_ID, SETTINGS.STORES), { isGM: false }).length > 0;
     return context;
   }
 
@@ -388,6 +397,10 @@ export class CairnCharacterSheet extends CairnActorSheet {
     button.textContent = game.i18n.localize("CAIRN.Actions.Title");
     frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
     return frame;
+  }
+
+  static #onOpenStores() {
+    CairnStore.open();
   }
 
   static async #onOpenActions() {

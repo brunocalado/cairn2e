@@ -558,11 +558,18 @@ every other store, after a warning.
   Items directory. The **×** on a row takes it off the shelf.
 - **Settings** sets what this store charges (100% is the book price, more is expensive, less is a
   sale) and what it pays when buying from characters (it starts at 50%, the usual half).
+- **Players can visit**, also in Settings, lets players walk into the store on their own. Every
+  store starts with it off: turn it on for the stores in the town the party is in.
 - Prices come from the items themselves. To change a price everywhere, edit the item.
 - **Open to players** opens the store on every player's screen.
 
 **For players:**
 
+- While the Warden lets you visit at least one store, a **Stores** button sits beside your Gold on
+  your character sheet. It opens the store, and the list at the top of the window moves between
+  every store you can visit. Moving to another store empties your cart.
+- The Warden can also open a store on your screen with **Open to players**. It joins your list until
+  you close the window, even if it is not one you can visit on your own.
 - The **For sale** tab lists the shelves. The **Yours** tab lists your own things that have a
   price.
 - Add things to the **cart** with **+** or by dragging them. The bottom of the window adds up the
