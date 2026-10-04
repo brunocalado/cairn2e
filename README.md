@@ -8,8 +8,8 @@ counts. This system brings **Cairn Second Edition** to [Foundry VTT](https://fou
 it handles the bookkeeping so your table can focus on the story.
 
 <p align="center">
-  <img src="docs/images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="49%">
-  <img src="docs/images/character-creator.png" alt="The character creator's first step: choosing one of the twenty backgrounds" width="49%">
+  <img src="docs/images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="49%">
+  <img src="docs/images/character-creator.webp" alt="The character creator's first step: choosing one of the twenty backgrounds" width="49%">
 </p>
 
 
@@ -39,7 +39,7 @@ and everything inside goes with it. A companion that comes with a background, li
 Familiar, is dragged from its item straight onto the map.
 
 <p align="center">
-  <img src="docs/images/rules-summary.png" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="90%">
+  <img src="docs/images/rules-summary.webp" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="90%">
 </p>
 
 ### Combat that does the math for you
@@ -51,8 +51,8 @@ click. Scars, Panic,
 tracker follows Cairn's rules: sides take turns, with no initiative roll.
 
 <p align="center">
-  <img src="docs/images/chat-cards.png" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="30%">
-  <img src="docs/images/store-cart.png" alt="The Outfitter, opened from a player's sheet: the store picker at the top, items for sale on the left, the cart on the right, gold and slot totals at the foot" width="66%">
+  <img src="docs/images/chat-cards.webp" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="30%">
+  <img src="docs/images/store-cart.webp" alt="The Outfitter, opened from a player's sheet: the store picker at the top, items for sale on the left, the cart on the right, gold and slot totals at the foot" width="66%">
 </p>
 
 ### A toolbox for the Warden
@@ -83,15 +83,20 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
   character dies, you can promote a hireling to a player character.
 
 <p align="center">
-  <img src="docs/images/journey.png" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="49%">
-  <img src="docs/images/party-sheet.png" alt="The party sheet: each member's HP, attributes, armor and load" width="49%">
+  <img src="docs/images/journey.webp" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="49%">
+  <img src="docs/images/party-sheet.webp" alt="The party sheet: each member's HP, attributes, armor and load" width="49%">
 </p>
 <p align="center">
-  <img src="docs/images/faction-page.png" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="70%">
+  <img src="docs/images/faction-page.webp" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="70%">
+  <img src="docs/images/dungeon-tracker.webp" alt="A dungeon exploration in the combat tracker: a character's action list open with each action's rule, the distance each token moved, the acted switches, and the Warden's Dungeon Event reminders" width="17%">
 </p>
 <p align="center">
-  <img src="docs/images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="49%">
-  <img src="docs/images/name-generator.png" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="45%">
+  <img src="docs/images/calendar.webp" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="49%">
+  <img src="docs/images/name-generator.webp" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="45%">
+</p>
+<p align="center">
+  <img src="docs/images/unknown-gear-warden.webp" alt="Unknown gear, the Warden's side: Harbinger's Bell with the eye in its title bar and the Guise tab its holder sees instead" width="36%">
+  <img src="docs/images/unknown-gear-player.webp" alt="Unknown gear, the holder's side: the same relic as a Tarnished Bell, with the picture and appearance the Warden wrote" width="36%">
 </p>
 
 ### Everything in the box

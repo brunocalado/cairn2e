@@ -117,7 +117,7 @@ the dial opens the journey. The calendar is Foundry's own world time, so a time-
 module follows it.
 
 <p align="center">
-  <img src="images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="70%">
+  <img src="images/calendar.webp" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="70%">
 </p>
 
 ### Settings
@@ -183,7 +183,7 @@ and **Next** to move between them:
    for you.
 
 <p align="center">
-  <img src="images/character-creator.png" alt="The character creator's first step: choosing one of the twenty backgrounds" width="70%">
+  <img src="images/character-creator.webp" alt="The character creator's first step: choosing one of the twenty backgrounds" width="70%">
 </p>
 
 **Rolled once.** A player's attribute roll, swap and HP roll are kept even if they close the
@@ -241,7 +241,7 @@ the **Other Backgrounds** list.
 ## 3. The character sheet
 
 <p align="center">
-  <img src="images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="70%">
+  <img src="images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="70%">
 </p>
 
 ### The top of the sheet
@@ -261,7 +261,7 @@ The **Rules Summary** puts the player's rules on one landscape page. The Warden 
 everyone's screen with **Show to everyone**, on its title bar.
 
 <p align="center">
-  <img src="images/rules-summary.png" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="100%">
+  <img src="images/rules-summary.webp" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="100%">
 </p>
 
 ### Attributes and HP
@@ -413,7 +413,7 @@ The result card shows what happened. When STR was lost, the target's owner gets 
 button on the card for Critical Damage. At STR 0 the target is dead.
 
 <p align="center">
-  <img src="images/chat-cards.png" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="35%">
+  <img src="images/chat-cards.webp" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="35%">
 </p>
 
 **Undoing a hit.** Applied it to the wrong token? The Warden can right-click the result card in the
@@ -532,7 +532,7 @@ directory like any other actor and choose **Party** as its type.
   the button on their row.
 
 <p align="center">
-  <img src="images/party-sheet.png" alt="The party sheet: each member's HP, attributes, armor and load" width="70%">
+  <img src="images/party-sheet.webp" alt="The party sheet: each member's HP, attributes, armor and load" width="70%">
 </p>
 
 ---
@@ -591,7 +591,7 @@ every other store, after a warning.
   fit. Once it goes through, the gold and items are moved for you.
 
 <p align="center">
-  <img src="images/store-cart.png" alt="The Outfitter, opened from a player's sheet: the store picker at the top, items for sale on the left, the cart on the right, gold and slot totals at the foot" width="80%">
+  <img src="images/store-cart.webp" alt="The Outfitter, opened from a player's sheet: the store picker at the top, items for sale on the left, the cart on the right, gold and slot totals at the foot" width="80%">
 </p>
 
 ---
@@ -649,7 +649,7 @@ A faction page is a form you keep up to date as the campaign goes:
 Both rolls go to the Wardens only.
 
 <p align="center">
-  <img src="images/faction-page.png" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="80%">
+  <img src="images/faction-page.webp" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="80%">
 </p>
 
 ### Generate Name
@@ -672,7 +672,7 @@ for the place), **Faction**, **Realm** and **Forest**.
   the one the generator uses.
 
 <p align="center">
-  <img src="images/name-generator.png" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="60%">
+  <img src="images/name-generator.webp" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="60%">
 </p>
 
 ### Unknown gear
@@ -695,6 +695,11 @@ see in its place: the name they call it (**Known as**), its **Picture**, and its
   posts a card saying what it turned out to be.
 - The real data never leaves the client, so a player who opens the console can read it. This is a
   table tool, not a lock.
+
+<p align="center">
+  <img src="images/unknown-gear-warden.webp" alt="The Warden's view of Harbinger's Bell: the eye in the title bar, and the Guise tab with the name Tarnished Bell, a plain bell picture and the appearance the holder sees" width="45%">
+  <img src="images/unknown-gear-player.webp" alt="The same relic on its holder's screen: Tarnished Bell, with the plain bell picture and the appearance the Warden wrote, and no Recharge tab" width="45%">
+</p>
 
 ### Encounters from tables
 
@@ -775,7 +780,7 @@ travelled by hand. **End the journey** closes it for everyone.
 Left to the Warden and the table: mounts, guides and maps, and how an encounter plays out.
 
 <p align="center">
-  <img src="images/journey.png" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="65%">
+  <img src="images/journey.webp" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="65%">
 </p>
 
 ### Routes on a map (pointcrawls)
@@ -819,6 +824,10 @@ the exploration.
 - The switch at the end of the row marks the character as having acted, as in a fight.
 - A new turn clears the lines, the marks and the distances.
 - The help mark at the top of the tracker sums up the turn; clicking it opens the Rules Summary.
+
+<p align="center">
+  <img src="images/dungeon-tracker.webp" alt="A dungeon exploration on turn 1: a panicked character's action list open with each action's rule and Shake off panic at the end, a character who searched and has acted, one who moved 45 ft with the running figure and the undo arrow, and the Warden's Dungeon Event reminders" width="35%">
+</p>
 
 ### Dungeon Events
 
