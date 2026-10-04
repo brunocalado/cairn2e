@@ -8,7 +8,7 @@ counts. This system brings **Cairn Second Edition** to [Foundry VTT](https://fou
 it handles the bookkeeping so your table can focus on the story.
 
 <p align="center">
-  <img src="docs/images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, and ten inventory slots with fatigue markers" width="49%">
+  <img src="docs/images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="49%">
   <img src="docs/images/character-creator.png" alt="The character creator's first step: choosing one of the twenty backgrounds" width="49%">
 </p>
 
@@ -52,7 +52,7 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
 
 <p align="center">
   <img src="docs/images/chat-cards.png" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="30%">
-  <img src="docs/images/store-cart.png" alt="A village store: items for sale on the left, the shopping cart on the right, gold and slot totals at the foot" width="66%">
+  <img src="docs/images/store-cart.png" alt="The Outfitter, opened from a player's sheet: the store picker at the top, items for sale on the left, the cart on the right, gold and slot totals at the foot" width="66%">
 </p>
 
 ### A toolbox for the Warden
@@ -65,13 +65,15 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
   getting lost and wilderness events, spends Rations and Fatigue on everyone's sheet, and an
   encounter can drop its creatures straight onto the map.
 - **Dungeons**: the combat tracker runs exploration turn by turn. It shows what each character
-  is doing, how far their token moved, and when the rules call for a Dungeon Event. If a fight
-  breaks out, the dungeon picks up again on the same turn once it ends.
+  is doing, offers the rulebook's actions with their rules, tracks how far each token moved (with
+  an undo), and says when the rules call for a Dungeon Event. If a fight breaks out, the dungeon
+  picks up again on the same turn once it ends.
 - **Stores**: ten small ones come ready, from the Weaponsmith to the Tavern. Stock your own by
-  dragging items onto its shelves, and open it on every player's screen. Players fill a cart, and the store checks both their gold *and* their free slots before
-  anything changes hands.
-- **Unknown relics**: a relic can hide behind the name and looks the Warden gives it, unusable
-  until it is revealed.
+  dragging items onto its shelves, open it on every player's screen, or let players walk in from
+  their own sheet. Players fill a cart, and the store checks both their gold *and* their free
+  slots before anything changes hands.
+- **Unknown gear**: any item, from a relic to a strange potion, can hide behind the name, picture
+  and appearance the Warden gives it, unusable until it is revealed.
 - **Factions** that play: agents in rank order, an agenda to tick off, and buttons for faction
   actions and opposed saves.
 - **A party sheet** that shows everyone's HP, attributes and load at a glance, plus the followers
@@ -88,7 +90,7 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
   <img src="docs/images/faction-page.png" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="70%">
 </p>
 <p align="center">
-  <img src="docs/images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, and the selected day's notes" width="49%">
+  <img src="docs/images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="49%">
   <img src="docs/images/name-generator.png" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="45%">
 </p>
 

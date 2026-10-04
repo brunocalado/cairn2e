@@ -109,12 +109,15 @@ roll; delete the note to roll again. The Reclamation has no season, so it has no
 day's colour only: the weather a journey travels in is the journey's own roll. The four tables are
 in the **Warden Tables** compendium too, to roll by hand.
 
+The date and time are also printed in the chat box, between its Format menu and its text, for
+everyone.
+
 During a **journey** the journey spends the time, so these controls are switched off and clicking
 the dial opens the journey. The calendar is Foundry's own world time, so a time-of-day lighting
 module follows it.
 
 <p align="center">
-  <img src="images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, and the selected day's notes" width="70%">
+  <img src="images/calendar.png" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="70%">
 </p>
 
 ### Settings
@@ -169,12 +172,13 @@ and **Next** to move between them:
    a list of names, your starting gear and two small tables to roll on.
 2. **Name**: pick one of the Background's names, roll one, or type your own.
 3. **Attributes**: press **Roll 3d6 × 3**. If you like, pick two attributes and **Swap** them,
-   once. Roll your **HP** here too.
+   once. Roll your **HP** here too. The help mark on each box says what it measures.
 4. **Background tables**: roll each of the Background's two tables. When a result names an item,
    you get that item.
 5. **Traits**: press **Roll all**, or roll the eight traits one by one.
 6. **Bond**: roll a Bond and an age. Tick **Youngest character** if that is you, and you roll an
-   **Omen** too.
+   **Omen** too. A roll fills the Bond's or the Omen's box, and what the box holds is what the
+   character keeps: reword the roll, or write your own.
 7. **Review**: check everything, then press **Create Character**. Anything you left blank is rolled
    for you.
 
@@ -237,7 +241,7 @@ the **Other Backgrounds** list.
 ## 3. The character sheet
 
 <p align="center">
-  <img src="images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, and ten inventory slots with fatigue markers" width="70%">
+  <img src="images/character-sheet.png" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="70%">
 </p>
 
 ### The top of the sheet
@@ -277,7 +281,8 @@ itself is for reading and playing at the table.
 ### Gold
 
 The gold amount sits at the end of the row of tabs. Click it and type a new total. Coins are real
-items that take space, so see [§11](#11-stores-and-coin) for how they are carried.
+items that take space, so see [§11](#11-stores-and-coin) for how they are carried. While the
+Warden lets players visit a store, a **Stores** button sits beside it.
 
 ### Tabs
 
@@ -579,14 +584,14 @@ every other store, after a warning.
 - The Warden can also open a store on your screen with **Open to players**. It joins your list until
   you close the window, even if it is not one you can visit on your own.
 - The **For sale** tab lists the shelves. The **Yours** tab lists your own things that have a
-  price.
+  price. Both are in alphabetical order.
 - Add things to the **cart** with **+** or by dragging them. The bottom of the window adds up the
   **gold** and the **slots** you'd need.
 - **Confirm** stays greyed out, with the reason, while you are short of coin or the things won't
   fit. Once it goes through, the gold and items are moved for you.
 
 <p align="center">
-  <img src="images/store-cart.png" alt="A village store: items for sale on the left, the shopping cart on the right, gold and slot totals at the foot" width="80%">
+  <img src="images/store-cart.png" alt="The Outfitter, opened from a player's sheet: the store picker at the top, items for sale on the left, the cart on the right, gold and slot totals at the foot" width="80%">
 </p>
 
 ---
@@ -670,23 +675,24 @@ for the place), **Faction**, **Realm** and **Forest**.
   <img src="images/name-generator.png" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="60%">
 </p>
 
-### Unknown relics
+### Unknown gear
 
-A relic a character finds is not always one they understand ("When a character first acquires a
-Relic they are not familiar with…", Warden's Guide, Knowledge). On a relic's **Details** tab the
-Warden has a **Warden** zone: switch on **Unknown to its holder**, then write what they call it
-(**Known as**) and what they can see of it.
+A thing a character finds is not always one they understand ("When a character first acquires a
+Relic they are not familiar with…", Warden's Guide, Knowledge). Any gear can be hidden this way: a
+relic, a strange potion, a sword with a past. The **eye** in the item sheet's title bar, the
+Warden's alone, hides it from its holder. A **Guise** tab then opens, where you write what they
+see in its place: the name they call it (**Known as**), its **Picture**, and its appearance.
 
-- Until it is revealed, every player sees that name and that appearance: on the sheet, in Barter,
-  in the Store, and in any chat card about it. Its picture is the real one, because what it looks
-  like is never the mystery.
+- Until it is revealed, every player sees the guise: on the sheet, in Barter, in a Store, inside a
+  container and in any chat card about it. Its die, armor, charges and Recharge are not shown.
 - It **cannot be used**: no equip, no charges, no damage, no post, no hotbar macro, and its sheet is
-  read-only with no Recharge tab. The holder can still carry it, set it aside, stow it, hand it
-  over or drop it. It is not offered for sale in a Store.
+  read-only. The holder can still carry it, set it aside, stow it, hand it over or drop it, but
+  not sell it in a Store.
+- A store's shelf can sell a gear that is unknown: the buyer sees its guise and pays its price.
 - Experimenting with it is a conversation: the player says what they try, and you rule — a WIL save
   if the fiction wants one.
-- You see the real name everywhere, with an **Unknown to them** tag. **Reveal the relic**, in the
-  relic's title-bar menu, switches it off and posts a card saying what it turned out to be.
+- You see the real name everywhere, with an **Unknown to them** tag. The eye again reveals it and
+  posts a card saying what it turned out to be.
 - The real data never leaves the client, so a player who opens the console can read it. This is a
   table tool, not a lock.
 
@@ -801,13 +807,18 @@ the exploration.
 ### Each turn
 
 - Each row has a line for what that character **does this turn**. Players fill in their own
-  character's line. The actions from the rules (search, listen, force a door…) are offered as
-  suggestions, but anything goes.
-- Beside it is **how far the token has moved** this turn: green within torchlight's 40 ft, amber
-  and bold with a running figure past it, red past the 120 ft an action covers. Moving further is
-  allowed; it means the party is moving quickly.
-- The **✓** marks the character as having acted, as in a fight.
+  character's line. The **list** button beside it offers the actions from the rules (search,
+  listen, force a door, move quickly…), each with its rule written under its name; picking one
+  writes it on the line, and the line stays free text, so anything goes.
+- A **Panicked** character also finds **Shake off panic** in that list: it rolls the WIL save,
+  and on a success the condition ends.
+- Beside the name is **how far the token has moved** this turn: green within torchlight's 40 ft,
+  amber and bold with a running figure past it, red past the 120 ft an action covers. Moving
+  further is allowed; it means the party is moving quickly. Moved too far? The **undo** arrow
+  beside the distance takes the token back to where the turn began, for its owner and the Warden.
+- The switch at the end of the row marks the character as having acted, as in a fight.
 - A new turn clears the lines, the marks and the distances.
+- The help mark at the top of the tracker sums up the turn; clicking it opens the Rules Summary.
 
 ### Dungeon Events
 
