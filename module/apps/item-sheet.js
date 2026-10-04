@@ -142,7 +142,7 @@ const MAGIC_HINT = {
 };
 
 /** The tab parts that are only drawn for the subtypes that declare them. */
-const OPTIONAL_PARTS = ["details", "recharge", "contents"];
+const OPTIONAL_PARTS = ["details", "recharge", "contents", "guise"];
 
 /**
  * One sheet class for every Item subtype. The properties block is chosen per document type in
@@ -162,7 +162,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       nameRemove: CairnItemSheet.#onNameRemove,
       tableRemove: CairnItemSheet.#onTableRemove,
       gearRemove: CairnItemSheet.#onGearRemove,
-      revealRelic: CairnItemSheet.#onRevealRelic,
+      toggleUnknown: CairnItemSheet.#onToggleUnknown,
       grantOpen: CairnItemSheet.#onGrantOpen,
       grantRemove: CairnItemSheet.#onGrantRemove,
       milestoneAdd: CairnItemSheet.#onMilestoneAdd,
@@ -179,7 +179,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     details: { template: `${TEMPLATES}/gear-details.hbs`, scrollable: [""] },
     description: { template: `${TEMPLATES}/tab-description.hbs`, scrollable: [""] },
     recharge: { template: `${TEMPLATES}/tab-recharge.hbs`, scrollable: [""] },
-    contents: { template: `${TEMPLATES}/tab-contents.hbs`, scrollable: [""] }
+    contents: { template: `${TEMPLATES}/tab-contents.hbs`, scrollable: [""] },
+    guise: { template: `${TEMPLATES}/tab-guise.hbs`, scrollable: [""] }
   };
 
   /** Item fields whose only display is inside an editor (see `CairnActorSheet.EDITOR_FIELDS`). */
@@ -194,7 +195,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
         { id: "details", label: "CAIRN.Details" },
         { id: "description", label: "CAIRN.Description" },
         { id: "recharge", label: "CAIRN.Recharge" },
-        { id: "contents", label: "CAIRN.Contents" }
+        { id: "contents", label: "CAIRN.Contents" },
+        { id: "guise", label: "CAIRN.Unknown.Tab" }
       ]
     }
   };
@@ -221,8 +223,11 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     return options;
   }
 
+  /** The tab to open once the render a toggle of `system.unknown` causes has drawn it. */
+  #pendingTab = null;
+
   /**
-   * @override — a relic unknown to this user is read, never written: its sheet holds the guise,
+   * @override — a gear unknown to this user is read, never written: its sheet holds the guise,
    * and a field left editable would be a field that writes the real data behind it. The
    * document's own guard refuses the write as well (`documents/item.js#_preUpdate`).
    */
@@ -230,21 +235,42 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     return super.isEditable && !this.item.isHiddenFromMe;
   }
 
-  /** @override — the title bar names the guise to a user the relic is hidden from. */
+  /** @override — the title bar names the guise to a user the gear is hidden from. */
   get title() {
     return this.item.isHiddenFromMe ? this.item.shownName : super.title;
   }
 
   /**
-   * @override — the Warden's Reveal, while the relic is unknown. It clears the one boolean and
-   * tells the table what the thing turned out to be.
+   * @override — the Warden's eye on a gear's title bar: hide it from its holder, or reveal it.
+   * A frame button rather than an entry in the ⋮ menu because it is a state to read at a glance,
+   * not only a command. Core draws the frame once (`api/application.mjs#_renderFrame`), so the
+   * icon is brought up to date on every render by `#syncUnknownButton`.
    */
-  _getHeaderControls() {
-    const controls = super._getHeaderControls();
-    if (game.user.isGM && this.item.type === "gear" && this.item.system.unknown) {
-      controls.push({ action: "revealRelic", icon: "fa-solid fa-eye", label: "CAIRN.Relic.Reveal" });
+  _getFrameButtons(options) {
+    const buttons = super._getFrameButtons(options);
+    if (game.user.isGM && this.item.type === "gear" && this.isEditable) {
+      buttons.unshift({ action: "toggleUnknown", ...this.#unknownButton() });
     }
-    return controls;
+    return buttons;
+  }
+
+  /** The eye's icon and label for the gear's current state. */
+  #unknownButton() {
+    const unknown = this.item.system.unknown;
+    return {
+      icon: unknown ? "fa-solid fa-eye" : "fa-solid fa-eye-slash",
+      label: unknown ? "CAIRN.Unknown.Reveal" : "CAIRN.Unknown.Hide"
+    };
+  }
+
+  /** Repaint the frame's eye: the frame outlives the render that drew it. */
+  #syncUnknownButton() {
+    const button = this.window.header?.querySelector('[data-action="toggleUnknown"]');
+    if (!button) return;
+    const { icon, label } = this.#unknownButton();
+    button.classList.remove("fa-eye", "fa-eye-slash");
+    button.classList.add(...icon.split(" "));
+    button.setAttribute("aria-label", game.i18n.localize(label));
   }
 
   /** Tab ids this document actually shows, in rail order. */
@@ -257,7 +283,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       "description",
       // A hidden relic's Recharge is part of what it hides.
       ...(sys.magic === "relic" && !this.item.isHiddenFromMe ? ["recharge"] : []),
-      ...(sys.isContainer ? ["contents"] : [])
+      ...(sys.isContainer ? ["contents"] : []),
+      // The Warden's own tab, while the holder does not know what this is: what they see instead.
+      ...(sys.unknown && game.user.isGM ? ["guise"] : [])
     ];
   }
 
@@ -293,6 +321,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     const explicit = Array.isArray(options.parts);
     super._configureRenderOptions(options);
     if (explicit || options.isFirstRender || !options.renderContext) return;
+    // Hiding or revealing swaps what every editor holds for a user who is not the Warden — the
+    // guise's text for the real one, or back — so that one change rebuilds them all.
+    if (foundry.utils.hasProperty(options.renderData ?? {}, "system.unknown")) return;
     // ...but an editor with no element on screen has nothing to keep, and skipping it here means
     // it is never built at all. The Recharge tab exists only while `magic` is `relic`, and that
     // transition IS a document update — so without the second clause the one render that would
@@ -307,7 +338,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // gain recorded from the character sheet while this sheet is open on that tab leaves the line
     // stale until the tab or the sheet is reopened. Either split the gained block into a part of
     // its own, or repaint that one line by hand here.
-    const editors = ["description", "recharge"];
+    const editors = ["description", "recharge", "guise"];
     const onScreen = new Set([...(this.element?.querySelectorAll("[data-application-part]") ?? [])]
       .map((part) => part.dataset.applicationPart));
     options.parts = options.parts.filter((id) => !editors.includes(id) || !onScreen.has(id));
@@ -338,16 +369,18 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // The editor's own value, and what a reader who cannot edit sees instead of an editor: the
     // description as it reads, links live (`tab-description.hbs`), and the same pair for the
     // recharge and the guise below.
-    // The guise to a user the relic is hidden from — and the editor's `value` carries it too, or the
+    // The guise to a user the gear is hidden from — and the editor's `value` carries it too, or the
     // real description would sit in the DOM of a disabled editor.
     context.hidden = item.isHiddenFromMe;
     context.displayName = item.shownName;
+    context.displayImg = item.shownImg;
     context.descriptionValue = item.shownDescription;
     context.descriptionHTML = await enrich(item.shownDescription, item);
     if (item.system.magic === "relic" && !context.hidden) context.rechargeHTML = await enrich(item.system.recharge, item);
-    // The Warden's zone on a relic's Details: whether its holder knows it, and the guise if not.
-    context.wardenRelic = game.user.isGM && item.type === "gear" && item.system.magic === "relic";
-    if (context.wardenRelic && item.system.unknown) context.guiseHTML = await enrich(item.system.guiseDescription, item);
+    // The Warden's Guise tab, while the holder does not know what this is.
+    if (game.user.isGM && item.type === "gear" && item.system.unknown) {
+      context.guiseHTML = await enrich(item.system.guiseDescription, item);
+    }
 
     // A scar's Details is a printout of `system.outcome`. The label of the row it changed is
     // built here rather than in the template: "hp" is the character's Hit Protection maximum and
@@ -411,7 +444,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       // number the prepared data masked straight back to 0, and left the row snapping to Petty
       // with nothing in the console to explain it — and the masked number then reappeared the
       // moment the item stopped being a Scroll.
-      const pettyByRule = item.system.magic === "scroll";
+      // Not to a viewer the scroll is hidden from: the row's tooltip would name what it is, and
+      // their sheet is read-only, so there is no click left to refuse.
+      const pettyByRule = item.system.magic === "scroll" && !context.hidden;
       const SLOT_WORDS = { 0: "CAIRN.Petty", 2: "CAIRN.Bulky" };
       const slots = item.system.slots;
       context.pettyByRule = pettyByRule;
@@ -425,7 +460,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       // `none` is one of the field's own four choices; only its position moves.
       const magicKinds = Object.keys(schema.getField("magic").choices);
       context.magicChoices = [...magicKinds.filter((kind) => kind !== "none"), "none"];
-      context.hint = MAGIC_HINT[item.system.magic] ?? "";
+      // The caption names the magic kind, which is part of what a guise hides.
+      context.hint = context.hidden ? "" : MAGIC_HINT[item.system.magic] ?? "";
 
       // Which axis rows are drawn, and which the Add row still offers. An axis is drawn exactly
       // when it has a value, so clicking its None button — or typing a 0 into Capacity or Max
@@ -486,18 +522,24 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   }
 
   /**
-   * The Warden reveals an unknown relic: the boolean goes, and a card tells the table what the
-   * guise turned out to be, with the real description as its body. The card is posted before the
-   * update so its caption can still name the guise the table knew it by.
+   * The Warden's eye. Hiding sets the one boolean and opens the Guise tab it brings, to be filled
+   * in. Revealing clears it, and a card tells the table what the guise turned out to be, with the
+   * real description as its body. The card is posted before the update so its caption can still
+   * name the guise the table knew it by.
    * @this {CairnItemSheet}
    */
-  static async #onRevealRelic() {
+  static async #onToggleUnknown() {
     const item = this.item;
-    if (!game.user.isGM || !item.system.unknown) return;
+    if (!game.user.isGM) return;
+    if (!item.system.unknown) {
+      this.#pendingTab = "guise";
+      await item.update({ "system.unknown": true });
+      return;
+    }
     const content = await foundry.applications.handlebars.renderTemplate(`systems/${SYSTEM_ID}/templates/chat/item-card.hbs`, {
       description: await enrich(item.system.description, item)
     });
-    const flavor = game.i18n.localize("CAIRN.Relic.Revealed", {
+    const flavor = game.i18n.localize("CAIRN.Unknown.Revealed", {
       guise: foundry.utils.escapeHTML(item.tableName), name: foundry.utils.escapeHTML(item.name)
     });
     await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: item.parent }), flavor, content });
@@ -767,6 +809,16 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       const id = part.dataset.applicationPart;
       if (OPTIONAL_PARTS.includes(id) && !ids.includes(id)) part.remove();
     }
+    // A tab that just went — the Guise, on a Reveal — leaves nothing active; core keeps the id it
+    // last opened (`api/application.mjs#_prepareTabs`), so the sheet is moved to its first tab.
+    // A tab that just came, on a hide, is opened. `changeTab` and not `tabGroups`: a part this
+    // render skipped (`_configureRenderOptions`) still wears the `active` class it was drawn with.
+    if (!ids.includes(this.tabGroups.primary)) this.#pendingTab = ids[0];
+    if (this.#pendingTab && ids.includes(this.#pendingTab)) {
+      this.changeTab(this.#pendingTab, "primary", { force: true });
+      this.#pendingTab = null;
+    }
+    this.#syncUnknownButton();
   }
 
   /** @override */

@@ -10,9 +10,16 @@
       character sheet stopped shouting its name out of a black block for the reason this one
       stopped too: a sheet already carrying inked caps reads as a web form with a title bar the
       moment a solid block lands at the top of it. The box is the same mark the Gold chip wears,
-      at the same weight. --}}
+      at the same weight.
+
+      A gear hidden from this user (`hidden`) shows the guise's picture, and is no image to edit:
+      core's picker would open on the real file's path. --}}
 <header class="item-header">
+    {{#if hidden}}
+    <img class="portrait" src="{{displayImg}}" data-tooltip="{{displayName}}" />
+    {{else}}
     <img class="portrait" src="{{item.img}}" data-action="editImage" data-edit="img" data-tooltip="{{displayName}}" />
+    {{/if}}
     <input class="name-input" type="text" name="name" value="{{displayName}}" placeholder="{{localize 'CAIRN.Name'}}"
         data-ink="box" data-ink-seed="item-name" data-ink-w="1.6" />
     {{#if isFeature}}

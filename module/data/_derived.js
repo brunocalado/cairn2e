@@ -167,7 +167,7 @@ export function layoutSlots(units, slotsMax) {
 }
 
 /**
- * The name the table reads for an item: a relic unknown to its holder goes by its guise, whoever
+ * The name the table reads for an item: a gear unknown to its holder goes by its guise, whoever
  * is writing — chat, a notification another user sees, a hotbar macro. Over plain data, so a
  * caller holding the data of an item already gone (a barter card naming what moved) can ask too.
  * `CairnItem#tableName` is this over the document.
@@ -176,5 +176,5 @@ export function layoutSlots(units, slotsMax) {
  */
 export function tableNameOf(data) {
   if (data.type !== "gear" || !data.system?.unknown) return data.name;
-  return String(data.system.guiseName ?? "").trim() || game.i18n.localize("CAIRN.Relic.Unknown");
+  return String(data.system.guiseName ?? "").trim() || game.i18n.localize("CAIRN.Unknown.Name");
 }

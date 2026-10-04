@@ -322,14 +322,14 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const uses = item.system.uses ?? { value: 0, max: 0 };
     return {
       id: item.id,
-      // The guise while the relic is unknown to this user (`documents/item.js#shownName`).
+      // The guise while the gear is unknown to this user (`documents/item.js#shownName`).
       name: item.shownName,
-      // Unknown to this user: the row offers no use, and prints no die, armour or charges.
+      // Unknown to this user: the row offers no use, and prints no die, armour, charges or capacity.
       hidden: item.isHiddenFromMe,
       // The Warden's reminder that the holder does not know what this is.
       unknownToHolder: item.type === "gear" && !!item.system.unknown && game.user.isGM,
       type: item.type,
-      img: item.img,
+      img: item.shownImg,
       system: item.system,
       isFatigue: item.type === "fatigue",
       isUsedUp: uses.max > 0 && uses.value <= 0,
@@ -421,7 +421,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   static async #onItemPost(event, target) {
     const item = this.#rowItem(target);
     if (!item) return;
-    // A relic unknown to the table posts its guise, whoever posts it: chat is read by everyone.
+    // A gear unknown to the table posts its guise, whoever posts it: chat is read by everyone.
     const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
       description: await enrich(item.tableDescription, this.actor)
     });

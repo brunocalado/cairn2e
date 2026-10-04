@@ -50,8 +50,8 @@ const GRANTED_ONLY = {
   growth: "CAIRN.Notify.GrowthNotGiven"
 };
 
-/** What a holder may still change on a relic unknown to them: where it is, and nothing else. */
-const UNKNOWN_RELIC_MOVES = new Set(["system.carried", "system.container"]);
+/** What a holder may still change on a gear unknown to them: where it is, and nothing else. */
+const UNKNOWN_MOVES = new Set(["system.carried", "system.container"]);
 
 export class CairnItem extends Item {
   /**
@@ -212,7 +212,7 @@ export class CairnItem extends Item {
    */
   async _preUpdate(changes, options, user) {
     if ((await super._preUpdate(changes, options, user)) === false) return false;
-    // An unknown relic is cargo to its holder: they may move it — set it aside, take it back,
+    // An unknown gear is cargo to its holder: they may move it — set it aside, take it back,
     // stow it — and nothing else. Every use would answer part of what the guise hides (its
     // charges, its die, its armour), so equipping, spending a charge and editing are refused for
     // a non-GM. An allow-list, so a field added to the model later is closed by default; a trade
@@ -221,8 +221,8 @@ export class CairnItem extends Item {
     if (this.type === "gear" && this.system.unknown && !user.isGM) {
       // Core's own bookkeeping (`_id`, `_stats`) is not the user's change.
       const touched = Object.keys(foundry.utils.flattenObject(changes)).filter((k) => !k.startsWith("_"));
-      if (touched.some((k) => !UNKNOWN_RELIC_MOVES.has(k))) {
-        ui.notifications.warn(game.i18n.localize("CAIRN.Relic.UnknownRefused", { name: this.tableName }));
+      if (touched.some((k) => !UNKNOWN_MOVES.has(k))) {
+        ui.notifications.warn(game.i18n.localize("CAIRN.Unknown.Refused", { name: this.tableName }));
         return false;
       }
     }
@@ -239,6 +239,11 @@ export class CairnItem extends Item {
     // update writes nothing at all. Gear alone has the field: a stowed sack of coin has nothing
     // to clear.
     if (this.type === "gear" && changes.system?.container) changes.system.equipped = false;
+    // Hidden from its holder is not held either: a worn armour would keep its number in the
+    // character's Armor total, which is the one thing the guise exists to keep back. A bodily
+    // thing is the exception the model already makes (`data/item-gear.js#prepareBaseData`): a
+    // tattoo is worn whether or not its bearer knows what it does.
+    if (this.type === "gear" && changes.system?.unknown === true) changes.system.equipped = false;
     const parent = this.parent;
     if (!parent || !changes.system) return;
 
@@ -248,7 +253,7 @@ export class CairnItem extends Item {
     if (now !== was) {
       const refusal = nestingRefusal(parent, after, now);
       if (refusal) {
-        ui.notifications.warn(game.i18n.localize(refusal, { name: this.name }));
+        ui.notifications.warn(game.i18n.localize(refusal, { name: this.shownName }));
         return false;
       }
     }
@@ -315,15 +320,15 @@ export class CairnItem extends Item {
   }
 
   /* -------------------------------------------- */
-  /*  Unknown relics                              */
+  /*  Unknown gear                                */
   /* -------------------------------------------- */
 
-  /** Unknown to this user: a relic the Warden has not revealed, seen by anyone but a GM. */
+  /** Unknown to this user: a gear the Warden has not revealed, seen by anyone but a GM. */
   get isHiddenFromMe() {
     return this.type === "gear" && !!this.system.unknown && !game.user.isGM;
   }
 
-  /** The name this user should see: the guise while the relic is hidden from them. Every sheet
+  /** The name this user should see: the guise while the gear is hidden from them. Every sheet
    *  and window reads this. */
   get shownName() {
     return this.isHiddenFromMe ? tableNameOf(this) : this.name;
@@ -334,16 +339,26 @@ export class CairnItem extends Item {
     return this.isHiddenFromMe ? this.system.guiseDescription : this.system.description;
   }
 
+  /** The picture this user should see: the guise's while the gear is hidden from them. */
+  get shownImg() {
+    return this.isHiddenFromMe ? this.system.guiseImg : this.img;
+  }
+
   /** The name everyone reads — chat, a notification another user sees, a hotbar macro: the guise
-   *  while the relic is unknown, WHOEVER writes it. A Warden posting from a player's sheet would
+   *  while the gear is unknown, WHOEVER writes it. A Warden posting from a player's sheet would
    *  otherwise put the real name into the public log. */
   get tableName() {
     return tableNameOf(this);
   }
 
-  /** The description everyone reads: the guise's while the relic is unknown, whoever posts. */
+  /** The description everyone reads: the guise's while the gear is unknown, whoever posts. */
   get tableDescription() {
     return this.type === "gear" && this.system.unknown ? this.system.guiseDescription : this.system.description;
+  }
+
+  /** The picture everyone sees — a hotbar macro's icon: the guise's while the gear is unknown. */
+  get tableImg() {
+    return this.type === "gear" && this.system.unknown ? this.system.guiseImg : this.img;
   }
 
   /** @override */

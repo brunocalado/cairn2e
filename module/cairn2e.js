@@ -626,7 +626,6 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/parts/watch-glyph.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/unknown-tag.hbs`,
     `systems/${SYSTEM_ID}/templates/parts/grants.hbs`,
-    `systems/${SYSTEM_ID}/templates/item/relic-warden.hbs`,
     `systems/${SYSTEM_ID}/templates/apps/combat-tracker-dungeon.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/encounter-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/journey-card.hbs`,

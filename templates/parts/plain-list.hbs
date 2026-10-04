@@ -32,12 +32,13 @@
         <div class="cairn-slot-body">
             {{!-- The name IS the affordance, as on the slot row: `itemEdit` is the pencil's
                   handler already, so the row and the pencil cannot drift apart. A container
-                  carries its capacity chip here, as it does on the ten. --}}
+                  carries its capacity chip here, as it does on the ten — and, as there, not
+                  while it is hidden from this user. --}}
             <span class="cairn-item-name-and-tags" data-action="itemEdit">
                 <span class="cairn-item-title">{{#if row.system.equipped}}<strong>{{row.name}}</strong>{{else}}{{row.name}}{{/if}}</span>
                 {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.system inBody=../inBody hidden=row.hidden}}
                 {{#if row.unknownToHolder}}{{> "systems/cairn2e/templates/parts/unknown-tag.hbs"}}{{/if}}
-                {{#if row.system.isContainer}}<span class="cairn-item-tag">{{row.system.contentsSlots}}/{{row.system.capacity}}</span>{{/if}}
+                {{#if row.system.isContainer}}{{#unless row.hidden}}<span class="cairn-item-tag">{{row.system.contentsSlots}}/{{row.system.capacity}}</span>{{/unless}}{{/if}}
                 {{#if row.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=row.usesDisplay editable=@root.editable hidden=row.hidden}}{{/if}}
             </span>
         </div>

@@ -470,7 +470,7 @@ export async function rollDamage(actor, item, { skipDialog = false } = {}) {
   if (!impaired && enhanced) tags.push(game.i18n.localize("CAIRN.Enhanced"));
   if (blast) tags.push(game.i18n.localize("CAIRN.Blast"));
   const weapons = [item, second].filter(Boolean);
-  // The table reads this: a relic unknown to its holder goes by its guise (`documents/item.js`).
+  // The table reads this: a gear unknown to its holder goes by its guise (`documents/item.js`).
   const base = `${game.i18n.localize("CAIRN.RollingDmgWith")} ${weapons.map((w) => w.tableName ?? w.name).join(" & ")}`;
   const label = tags.length ? `${base} (${tags.join(", ")})` : base;
 

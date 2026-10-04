@@ -192,13 +192,23 @@
        `min-height: 0` with `flex: 1` is the pair a flex scroller needs: without the floor
        removed, a long description claims the height of a long description and pushes the box's
        own foot out of the window. */
-    /* A relic's guise — the appearance its holder sees while it is unknown — sits under the
-       Warden's rows on the Details tab, where a box that only took the room left over would be
-       a sliver. */
-    .cairn-prose-box.cairn-relic-guise {
-        flex: none;
-        min-height: 110px;
+    /* The Guise tab: the appearance its holder sees sits under the name and picture rows, and
+       takes the room left over as the description takes its tab. */
+    .cairn-prose-box.cairn-guise-box {
         margin-top: 8px;
+    }
+
+    /* The guise's picture, in the row's track: a thumbnail to click, not a second portrait. */
+    .cairn-guise-img {
+        justify-self: start;
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        border: none;
+
+        &[data-action] {
+            cursor: pointer;
+        }
     }
 
     .cairn-prose-box {

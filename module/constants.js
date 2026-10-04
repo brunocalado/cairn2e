@@ -366,6 +366,10 @@ export const GEAR_ARTWORK = {
   container: "icons/containers/bags/pack-leather-strapped-tan.webp"
 };
 
+/** The picture a gear unknown to its holder shows them until the Warden picks another — the
+ *  `guiseImg` field's own `initial` (`data/item-gear.js`). A core path, like the artwork above. */
+export const GUISE_IMG = "icons/magic/symbols/question-stone-yellow.webp";
+
 /**
  * Compendium id of the `tables` pack — the system's RollTables: Scars (read by `rolls.js`),
  * Reactions, Die of Fate, and the Warden tables. Reused across the pack build and

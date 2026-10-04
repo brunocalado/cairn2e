@@ -30,7 +30,7 @@
       "party": {}
     },
     "Item": {
-      "gear": { "htmlFields": ["description", "recharge", "guiseDescription"] },
+      "gear": { "htmlFields": ["description", "recharge", "guiseDescription"], "filePathFields": { "guiseImg": ["IMAGE"] } },
       "coin": { "htmlFields": ["description"] },
       "fatigue": { "htmlFields": ["description"] },
       "background": { "htmlFields": ["description"] },

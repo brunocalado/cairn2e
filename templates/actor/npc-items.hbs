@@ -42,7 +42,7 @@
                     {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=item.system noSlotTags=true hidden=item.hidden}}
                     {{#if item.unknownToHolder}}{{> "systems/cairn2e/templates/parts/unknown-tag.hbs"}}{{/if}}
                     {{#if item.system.isContainer}}
-                    <span class="cairn-item-tag">{{item.system.contentsSlots}}/{{item.system.capacity}}</span>
+                    {{#unless item.hidden}}<span class="cairn-item-tag">{{item.system.contentsSlots}}/{{item.system.capacity}}</span>{{/unless}}
                     {{#unless item.system.carried}}<span class="cairn-item-tag">{{localize 'CAIRN.SetAsideTag'}}</span>{{/unless}}
                     {{/if}}
                     {{#if item.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=item.usesDisplay editable=@root.editable hidden=item.hidden}}{{/if}}

@@ -283,7 +283,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const items = resolved.filter((item) => item);
     context.rows = items.map((item) => ({
       uuid: item.uuid,
-      img: item.img,
+      img: item.shownImg ?? item.img,
       name: item.shownName ?? item.name,
       system: item.system,
       cost: buyPrice(item.system.cost, buyRatio),
@@ -653,7 +653,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       if (place === null) return;
     }
     const goldBefore = actor.system.gold;
-    // The card is read by everyone: a relic's guise, never its name (`documents/item.js#tableName`).
+    // The card is read by everyone: a gear's guise, never its name (`documents/item.js#tableName`).
     const sold = sell.map((item) => ({ name: item.tableName, price: sellPrice(item.system.cost, ratio) }));
 
     // 2. Sold things go.

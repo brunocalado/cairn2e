@@ -1,0 +1,36 @@
+{{!-- The Warden's alone, while the holder does not know what this gear is
+      (`knowledge-and-perception.md` → Knowledge): the name, picture and appearance they see in
+      its place. The real ones are never overwritten, so the eye in the title bar that brought
+      this tab is all a Reveal takes.
+
+      The picture is core's own `editImage` on another path: `data-edit` names the field, and the
+      form reads an `<img data-edit>`'s src on submit (`ux/form-data-extended.mjs`). --}}
+<section class="tab {{tabs.guise.cssClass}}" data-group="primary" data-tab="guise">
+    <div class="cairn-prop-list">
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="guise-name">
+            <span class="cairn-prop-label">
+                <label for="guise-name-{{item.id}}">{{localize 'CAIRN.Unknown.GuiseName'}}</label>
+                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.Unknown.Hint"
+                    label=(localize 'CAIRN.Unknown.Hint') seed="guise-hint"}}
+            </span>
+            <input id="guise-name-{{item.id}}" type="text" name="system.guiseName" value="{{system.guiseName}}"
+                placeholder="{{localize 'CAIRN.Unknown.Name'}}" {{#unless editable}}disabled{{/unless}} />
+        </div>
+        <div class="cairn-field cairn-prop-row">
+            <span class="cairn-field-label">{{localize 'CAIRN.Unknown.GuiseImg'}}</span>
+            <img class="cairn-guise-img" src="{{system.guiseImg}}" alt=""
+                {{#if editable}}data-action="editImage" data-edit="system.guiseImg"{{/if}} />
+        </div>
+    </div>
+    {{!-- An editor that is always open, as the description is (`tab-description.hbs`). A sheet
+          that cannot be edited — a locked compendium's — reads the enriched guise instead. --}}
+    <div class="cairn-prose-box cairn-guise-box" data-ink="box" data-ink-seed="item-guise" data-ink-w="1.6">
+        {{#if editable}}
+        <prose-mirror name="system.guiseDescription" value="{{system.guiseDescription}}"
+            data-document-uuid="{{item.uuid}}"></prose-mirror>
+        {{else}}
+        <div class="editor-content">{{{guiseHTML}}}</div>
+        {{/if}}
+    </div>
+</section>

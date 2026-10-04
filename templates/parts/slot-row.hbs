@@ -65,8 +65,9 @@
             {{#if row.item.unknownToHolder}}{{> "systems/cairn2e/templates/parts/unknown-tag.hbs"}}{{/if}}
             {{!-- A container on the ten (a Cart you pull, a bag) carries its capacity chip here
                   too. Its contents are read on its own sheet's Contents tab: this row cannot
-                  unfold without moving the numbered lines under it. --}}
-            {{#if row.item.system.isContainer}}<span class="cairn-item-tag">{{row.item.system.contentsSlots}}/{{row.item.system.capacity}}</span>{{/if}}
+                  unfold without moving the numbered lines under it. Not on a container hidden
+                  from this user: a bag that holds a hundred things says so in its chip. --}}
+            {{#if row.item.system.isContainer}}{{#unless row.item.hidden}}<span class="cairn-item-tag">{{row.item.system.contentsSlots}}/{{row.item.system.capacity}}</span>{{/unless}}{{/if}}
             {{#if row.item.showUses}}{{> "systems/cairn2e/templates/parts/item-uses.hbs" uses=row.item.usesDisplay editable=@root.editable hidden=row.item.hidden}}{{/if}}
         </span>
 

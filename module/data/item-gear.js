@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "../constants.js";
+import { GUISE_IMG, SYSTEM_ID } from "../constants.js";
 import { grantsField, itemBaseFields, usesField } from "./_fields.js";
 import { slotsForItem } from "./_derived.js";
 
@@ -82,11 +82,17 @@ export class GearData extends foundry.abstract.TypeDataModel {
         choices: { none: "none", spellbook: "spellbook", scroll: "scroll", relic: "relic" }
       }),
       recharge: new fields.HTMLField({ required: true, blank: true }),
-      // A relic whose holder does not yet know what it is (`knowledge-and-perception.md` → Relics).
-      // The guise is what they call it and what they can see. The real name, description and
-      // Recharge are never overwritten, so revealing it is clearing one boolean.
+      // A thing whose holder does not know what it is: "If a character has no justifiable
+      // knowledge of a subject, then they simply do not know anything about it"
+      // (`knowledge-and-perception.md` → Knowledge). Any gear — a scroll whose spell is unread, a
+      // vial, a bag that is a relic, a tattoo that appeared overnight. The guise is what they call
+      // it and what they can see. The real name, picture, description and Recharge are never
+      // overwritten, so revealing it is clearing one boolean.
       unknown: new fields.BooleanField({ initial: false }),
       guiseName: new fields.StringField({ required: true, blank: true, initial: "" }),
+      // Declared in `system.json`'s `filePathFields` too: the server sanitises a file path only
+      // when the manifest names it (`FilePathField`'s own doc comment).
+      guiseImg: new fields.FilePathField({ required: true, nullable: false, categories: ["IMAGE"], initial: GUISE_IMG }),
       guiseDescription: new fields.HTMLField({ required: true, blank: true }),
       // Storage axis. Zero holds nothing; a Mule is 6, a bag of holding whatever the Warden says.
       capacity: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
@@ -102,8 +108,6 @@ export class GearData extends foundry.abstract.TypeDataModel {
     if (this.uses.value > this.uses.max) this.uses.value = this.uses.max;
     // "Scrolls … are petty" (core-rules.md → Scrolls): by rule, not by choice.
     if (this.magic === "scroll") this.slots = 0;
-    // The SRD's Knowledge section names Relics alone: only a relic has a "what does it do" phase.
-    if (this.magic !== "relic") this.unknown = false;
     // A container is not a weapon and not armour. Both only ever apply while a thing is EQUIPPED
     // (`_derived.js#sumEquippedArmor`, and the equipped guard on every Roll Damage control), and a
     // container is never equipable (`documents/item.js#isEquipable`) — so a die or an armour value

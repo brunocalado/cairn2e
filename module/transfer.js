@@ -171,7 +171,7 @@ export async function sendBarter(actor, target, items, coin = 0) {
 
   const landed = new Set(result.landed);
   // Named from the bundle's data, because the source item may already be gone — and by the name
-  // the table reads, so a relic unknown to its holder goes by its guise (`documents/item.js`).
+  // the table reads, so a gear unknown to its holder goes by its guise (`documents/item.js`).
   const moved = bundles.filter((b) => landed.has(b.id)).map((b) => tableNameOf(b.data));
   const left = bundles.filter((b) => !landed.has(b.id)).map((b) => tableNameOf(b.data));
   await carryLight(actor, result.arrived);

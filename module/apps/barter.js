@@ -84,7 +84,7 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
       const contents = items.filter((i) => i.system.container === item.id).sort(byName);
       const whole = this.#picked.has(item.id);
       rows.push({
-        id: item.id, name: item.shownName, img: item.img, picked: whole, ringed: whole,
+        id: item.id, name: item.shownName, img: item.shownImg, picked: whole, ringed: whole,
         setAside: item.system.carried === false && !item.system.isContainer
       });
       for (const c of contents) {
