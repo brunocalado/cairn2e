@@ -819,6 +819,23 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       this.#pendingTab = null;
     }
     this.#syncUnknownButton();
+    this.#syncGuiseFields();
+  }
+
+  /**
+   * Repaint the Guise tab's name and picture. The tab is one part with the guise's editor, so a
+   * document update leaves it out (`_configureRenderOptions`) and the two would otherwise keep
+   * their old values — a guise named by code, or by a second Warden with the same sheet open.
+   * By hand rather than by rebuilding the part, which would rebuild the editor and drop any text
+   * typed in it and not yet saved. A name field being typed in is left to its typist.
+   */
+  #syncGuiseFields() {
+    const part = this.element.querySelector('[data-application-part="guise"]');
+    if (!part) return;
+    const name = part.querySelector('input[name="system.guiseName"]');
+    if (name && (name !== document.activeElement)) name.value = this.item.system.guiseName;
+    const img = part.querySelector("img.cairn-guise-img");
+    if (img) img.src = this.item.system.guiseImg;
   }
 
   /** @override */
