@@ -1279,6 +1279,8 @@
     "Visit": "Stores",
     "VisitHint": "Visit a store the Warden has opened",
     "Visitable": "Players can visit",
+    "VisitableOff": "Players cannot visit this store. Only Open to players shows it to them.",
+    "VisitableOn": "Players can visit this store from their character sheet.",
     "VisitableHint": "When on, players open this store whenever they like from the Stores button on their character sheet, and can move between every store that is on. When off, they see it only when you use Open to players. Moving to another store empties their cart.",
     "Untitled": "Store",
     "WillGoThrough": "The trade will go through.",

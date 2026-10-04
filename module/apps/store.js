@@ -274,7 +274,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     // and a part left out of a render keeps its old element on the page.
     context.showHead = isGM || this.#choices.length > 1;
     context.stores = this.#choices.map((id) => ({ id, name: nameOf(stores[id]), selected: id === this.#storeId }));
-    context.store = store && { id: this.#storeId, name: nameOf(store) };
+    context.store = store && { id: this.#storeId, name: nameOf(store), visitable: !!store.visitable };
     // Both rates belong to the store, set in its own settings dialog.
     const buyRatio = store?.buyRatio ?? 100;
     // A uuid that no longer resolves is dropped from the drawing, never from the setting: the

@@ -145,6 +145,25 @@
             text-transform: uppercase;
         }
 
+        /* Whether players may visit the store on screen (`header.hbs`): a door, open or shut. Ink
+           weight says which, never a hue — full ink when it is open to them, soft ink when it is
+           not — and it sits on the square the buttons beside it are cut to, so the line keeps one
+           rhythm. */
+        .cairn-store-visibility {
+            align-items: center;
+            color: var(--cairn-ink-soft);
+            display: flex;
+            flex: 0 0 auto;
+            font-size: 15px;
+            height: 28px;
+            justify-content: center;
+            width: 28px;
+
+            &.is-open {
+                color: var(--cairn-ink);
+            }
+        }
+
         /* The store's name takes the line; the buttons keep their size. */
         .cairn-store-manage select {
             flex: 1 1 auto;

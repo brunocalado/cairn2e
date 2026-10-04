@@ -558,8 +558,9 @@ every other store, after a warning.
   Items directory. The **×** on a row takes it off the shelf.
 - **Settings** sets what this store charges (100% is the book price, more is expensive, less is a
   sale) and what it pays when buying from characters (it starts at 50%, the usual half).
-- **Players can visit**, also in Settings, lets players walk into the store on their own. Every
-  store starts with it off: turn it on for the stores in the town the party is in.
+- **Players can visit**, also in Settings, lets players walk into the store on their own. The ten
+  stores a world starts with have it on; a store you make starts with it off. A door beside the
+  store's name shows which: open when players can visit, shut when they cannot.
 - Prices come from the items themselves. To change a price everywhere, edit the item.
 - **Open to players** opens the store on every player's screen.
 

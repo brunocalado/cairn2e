@@ -30,10 +30,9 @@ import { BELONGINGS, placeOf, sackAt, spendPlan, gainFits } from "./coin-rules.j
  * settings dialog. `sellRatio` starts at 50, the table's usual half: the SRD prices what is bought
  * (`marketplace.md`) and says nothing about selling. `buyRatio` starts at 100, the book price.
  *
- * `visitable` is whether players may walk in on their own, from their character sheet. It starts
- * off — the system's own stores too — because a store is somewhere in the fiction: the Warden
- * lets the players into the ones in the town they are in, and a new world's party is not at
- * every counter at once, in the middle of a dungeon.
+ * `visitable` is whether players may walk in on their own, from their character sheet. A store the
+ * Warden makes starts closed to them: it is somewhere in the fiction, and the Warden opens it when
+ * the party is in its town. The system's own stores start open (`defaultStores`).
  */
 export function blankStore(name) {
   return { name, items: [], sellRatio: 50, buyRatio: 100, visitable: false };
@@ -43,7 +42,7 @@ const weapon = (id) => packUuid("weapons", "Item", id);
 const armor = (id) => packUuid("armor", "Item", id);
 const gear = (id) => packUuid("gear", "Item", id);
 const homebrew = (id) => packUuid("more-gear", "Item", id);
-const shelf = (name, items) => ({ ...blankStore(name), items });
+const shelf = (name, items) => ({ ...blankStore(name), items, visitable: true });
 
 /**
  * The stores a world starts with: the setting's `default`, and what the Warden's "Restore Default
@@ -51,6 +50,9 @@ const shelf = (name, items) => ({ ...blankStore(name), items });
  * between them they hold every Item in the SRD's Marketplace but Ship's Passage, which is a
  * port's to sell and not a stable's, plus the Homebrew gear that fills a gap beside it; the
  * Tailor is Homebrew whole but for the SRD's Gloves, and the Tavern is Homebrew whole.
+ *
+ * All ten start open to visits, so a new world's players can shop from their sheets before the
+ * Warden has set anything up; closing the ones not in the party's town is one switch each.
  *
  * Each name is a localization key, not a name: the store is read through `game.i18n.localize`
  * (`module/apps/store.js`), so a translation module renames these through its language file,

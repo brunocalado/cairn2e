@@ -19,6 +19,18 @@
         </select>
         {{/if}}
         {{#if isGM}}
+        {{#if store}}
+        {{!-- Whether players may walk into the store on screen, read at a glance as the Warden
+              moves through the picker: an open door when they can, a closed one when only "Open
+              to players" will show it. A status, not a control — the switch is in Settings — so
+              it is a glyph with its meaning in a tooltip, not a square button beside the three
+              that act. --}}
+        <span class="cairn-store-visibility{{#if store.visitable}} is-open{{/if}}" role="img"
+              data-tooltip-text="{{#if store.visitable}}{{localize 'CAIRN.Store.VisitableOn'}}{{else}}{{localize 'CAIRN.Store.VisitableOff'}}{{/if}}"
+              aria-label="{{#if store.visitable}}{{localize 'CAIRN.Store.VisitableOn'}}{{else}}{{localize 'CAIRN.Store.VisitableOff'}}{{/if}}">
+            <i class="fas {{#if store.visitable}}fa-door-open{{else}}fa-door-closed{{/if}}" inert></i>
+        </span>
+        {{/if}}
         <button type="button" data-action="storeNew">
             <i class="fas fa-plus" inert></i> {{localize "CAIRN.Store.New"}}
         </button>
