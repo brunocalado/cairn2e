@@ -235,13 +235,57 @@
      * core's chrome, and it follows the user's theme.                       *
      **************************************************************************/
 
-    /* The name and the declaration stacked, so the row keeps core's one-line height for the
-       thumbnail and the controls either side of it. */
-    .cairn-dungeon-row .token-name {
-        display: flex;
-        flex-direction: column;
-        gap: 1px;
+    /* The row's body is one grid of two lines and three columns: the name, this turn's distance
+       and the undo slot; then the declaration across the first two and the list slot. The 20px
+       slots are kept when empty, so the distance, the field and both glyphs land in the same
+       columns on every row — a row that has moved, one that has not, one somebody else owns.
+       Core's `.token-name` is a flex column; this is the same box, laid out as a grid. */
+    .cairn-dungeon-row .cairn-dungeon-body {
+        align-items: center;
+        column-gap: 2px;
+        display: grid;
+        grid-template-areas:
+            "name    moved undo"
+            "declare declare list";
+        grid-template-columns: minmax(0, 1fr) auto 20px;
         min-width: 0;
+        row-gap: 1px;
+
+        .name {
+            grid-area: name;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .cairn-dungeon-moved {
+            grid-area: moved;
+            justify-self: end;
+        }
+
+        .cairn-dungeon-slot.is-undo {
+            grid-area: undo;
+        }
+
+        .cairn-dungeon-slot.is-list {
+            grid-area: list;
+        }
+    }
+
+    /* A slot holds one glyph at the field's height, so the row keeps one line's height per line.
+       `.icon` for the weight: the panel's inline-control rule, which sets the 1.5rem size, is
+       (0,4,1), and this comes after it. */
+    .cairn-dungeon-slot {
+        display: flex;
+        height: 20px;
+        justify-content: center;
+        width: 20px;
+    }
+
+    .cairn-dungeon-slot button.inline-control.icon {
+        --button-size: 20px;
+        font-size: 11px;
     }
 
     /* Primitive 3 on the sidebar: the rule and the text take the surface ink, not the sheet's
@@ -251,11 +295,12 @@
         --input-text-color: var(--cairn-surface-fg);
         --input-placeholder-color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
         border-bottom-color: color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
-        flex: 1 1 auto;
         font-size: 12px;
         font-style: italic;
+        grid-area: declare;
         height: 20px;
         min-width: 0;
+        width: 100%;
 
         &:focus {
             border-bottom-color: var(--cairn-surface-fg);
@@ -277,11 +322,10 @@
        A scene not measured in feet carries no pace and stays soft ink. */
     .cairn-dungeon-moved {
         color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
-        flex: 0 0 auto;
         font-family: var(--cairn-serif);
         font-size: 11px;
         font-variant-numeric: tabular-nums;
-        padding: 0 4px;
+        padding: 0 2px 0 4px;
         white-space: nowrap;
 
         &.is-torch {
@@ -305,30 +349,6 @@
         }
     }
 
-    /* The declaration and the button that opens its action list, on one line under the name. The
-       button is the row's other inline controls' glyph at the field's height, so the row keeps
-       its one-line height. `.icon` for the weight: the panel's inline-control rule, which sets
-       the 1.5rem size, is (0,4,1). */
-    .cairn-dungeon-declare {
-        align-items: center;
-        display: flex;
-        gap: 2px;
-    }
-
-    .cairn-dungeon-declare button.inline-control.icon {
-        --button-size: 20px;
-        flex: none;
-        font-size: 11px;
-    }
-
-    /* Undo this turn's movement, beside the distance it undoes — at the list button's size, so a
-       row that shows it gives up as little of the declaration's width as possible. */
-    .cairn-dungeon-row button.inline-control[data-action="revertMovement"] {
-        --button-size: 20px;
-        flex: none;
-        font-size: 11px;
-    }
-
     /* The open action list under its row: each action a full-width line, its name in the row's
        serif and its rule in the soft ink beneath, a soft-ink wash under the pointer. Not the
        panel's filled buttons — nine of those would be a wall of slabs; these are list rows that
@@ -336,7 +356,10 @@
     .cairn-dungeon-actions {
         border-bottom: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
         list-style: none;
-        padding: 0 4px 4px 40px;
+        /* The body's column: past the row's padding, thumbnail and gap on the left, short of the
+           acted column on the right, less the 4px each line pads its wash with. */
+        padding: 0 calc(var(--combatant-initiative-width, 44px) + 2 * var(--element-spacing) - 4px) 4px
+            calc(var(--sidebar-item-height) + 2 * var(--element-spacing) - 4px);
 
         ul {
             margin: 0;
