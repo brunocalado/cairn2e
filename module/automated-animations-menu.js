@@ -6,14 +6,13 @@
  */
 
 /**
- * The system's Automatic Recognition entries for Automated Animations, imported only when that
- * module is active (`automated-animations.js`).
+ * The system's Automatic Recognition menu for Automated Animations, imported only when that
+ * module is active (`automated-animations.js`). It is the whole menu: it replaces AA's default
+ * one, which is D&D's spells and class features, and whose few weapons play without a sound.
  *
  * AA finds an entry by the NAME of the item behind a chat message: the longest label contained
  * in the item's name, whitespace and case ignored. So "Hammer" plays for War Hammer and Smelting
- * Hammer, and "Knife" for every knife in the Background kits. AA's own default menu already
- * covers Sword, Dagger, Mace, Spear, Rapier, Handaxe, Bow, Crossbow, Bite, Claw and Cure Wounds;
- * nothing here repeats them.
+ * Hammer, and "Knife" for every knife in the Background kits.
  *
  * Only what can play without a Measured Template: a cast in Cairn names targets, never an area,
  * so every spell is an on-token effect (on the targets, or on the caster when there are none).
@@ -127,6 +126,13 @@ const WHISPER = (n) => `psfx.1st-level-spells.dissonant-whispers.v1.00${n}`;
 const DIVINATION = "psfx.magic-signs.rune.v1.divination.complete";
 const EARTH = "psfx.casting.earth.001";
 const GUST = "psfx.cantrips.gust.v1";
+const SWORD = "psfx.weapon-attacks.sword.v1";
+const SPEAR = "psfx.weapon-attacks.spear.v1";
+// The arrow's flight is in the file, so the distance picks the file: thirty feet, a typical shot.
+const ARROW = "psfx.ranged-weapons.longbow.v1.30ft";
+const BOOM = "psfx.3rd-level-spells.fireball.v1.001.explosion";
+const VINES = "psfx.1st-level-spells.entangle.vines.v1.001.intro";
+const NECROTIC = "psfx.impacts.magicaleffects.necrotic";
 
 /**
  * Every entry, keyed by the English label a translation aliases (`docs/translating.md`).
@@ -134,7 +140,14 @@ const GUST = "psfx.cantrips.gust.v1";
  * @returns {Array<[string, (label: string) => object]>}
  */
 const ENTRIES = () => [
-  // Marketplace and Background weapons AA's defaults miss.
+  // Marketplace and Background weapons.
+  ["Sword", (l) => melee(l, ["weapon", "sword", "01", "white"], SWORD)],
+  ["Greatsword", (l) => melee(l, ["weapon", "greatsword", "01", "white"], SWOOSH_HEAVY(6))],
+  ["Dagger", (l) => melee(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(6))],
+  ["Rapier", (l) => melee(l, ["weapon", "rapier", "01", "white"], SWOOSH_LIGHT(5))],
+  ["Handaxe", (l) => melee(l, ["weapon", "handaxe", "01", "white"], SWOOSH_HEAVY(1))],
+  ["Mace", (l) => melee(l, ["weapon", "mace", "01", "white"], SWOOSH_HEAVY(3))],
+  ["Spear", (l) => melee(l, ["weapon", "spear", "01", "white"], SPEAR)],
   ["Axe", (l) => melee(l, ["weapon", "greataxe", "01", "white"], SWOOSH_HEAVY(1))],
   ["Club", (l) => melee(l, ["weapon", "club", "01", "white"], SWOOSH_HEAVY(2))],
   ["Cudgel", (l) => melee(l, ["weapon", "club", "01", "white"], SWOOSH_HEAVY(2))],
@@ -146,22 +159,68 @@ const ENTRIES = () => [
   ["Staff", (l) => melee(l, ["weapon", "quarterstaff", "01", "white"], SWOOSH_LIGHT(3))],
   ["Knife", (l) => melee(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(4))],
   ["Falchion", (l) => melee(l, ["weapon", "falchion", "01", "white"], SWOOSH_LIGHT(5))],
-  ["Trident", (l) => melee(l, ["weapon", "spear", "01", "white"], "psfx.weapon-attacks.spear.v1")],
+  ["Trident", (l) => melee(l, ["weapon", "spear", "01", "white"], SPEAR)],
   ["Unarmed", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
   ["Fists", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
+  ["Bow", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  ["Crossbow", (l) => range(l, ["weapon", "bolt", "physical", "orange"], ARROW)],
   ["Sling", (l) => range(l, ["weapon", "sling", "01", "white"], SWOOSH_LIGHT(1))],
   ["Throwing Knives", (l) => range(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(1))],
   ["Blunderbuss", (l) => range(l, ["weapon", "bullet", "1", "orange"], "psfx.ranged-weapons.guns.single-fire.revolver")],
+  // Last Breath is a short sword, and without its own entry the Breath below would play fire.
+  ["Last Breath", (l) => melee(l, ["weapon", "shortsword", "01", "white"], SWORD)],
+  ["Blade", (l) => melee(l, ["weapon", "sword", "01", "white"], SWORD)],
+  // JB2A draws no whip, saw, awl or crowbar: the generic slash, a dagger's jab, a wrench's swing.
+  ["Whip", (l) => melee(l, ["generic", "1hs", "01", "white"], SWOOSH_LIGHT(1))],
+  ["Saw", (l) => melee(l, ["generic", "1hs", "01", "white"], SLASH)],
+  ["Awl", (l) => melee(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(4))],
+  ["Trowel", (l) => melee(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(4))],
+  ["Stake", (l) => melee(l, ["generic", "1hp", "01", "white"], SWOOSH_LIGHT(4))],
+  ["Crowbar", (l) => melee(l, ["weapon", "wrench", "01", "white"], SWOOSH_HEAVY(2))],
+  // The Fletchwind's bows, named by their wood alone.
+  ["Stone Pine", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  ["Western Yew", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  ["White Ash", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  ["Wych Elm", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  ["Sessile Oak", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  ["Striped Bamboo", (l) => range(l, ["weapon", "arrow", "regular", "regular"], ARROW)],
+  // A body made a weapon.
+  ["Alchemical Limb", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
+  ["Metal Arm", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
+  ["Metal Foot", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
+  ["Spiked Boots", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
+  ["Tupshead Crown", (l) => melee(l, ["generic", "2hp", "01", "white"], THUD)],
+  // Thrown and bursting: blast, so the burst is on each target.
+  ["Blast Sphere", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], BOOM)],
+  ["Fire Eggs", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], BOOM)],
+  ["Fireseeds", (l) => ontoken(l, ["generic", "explosion", "01", "red"], BOOM)],
+  ["Seed Bomb", (l) => ontoken(l, ["generic", "explosion", "01", "green"], BOOM)],
 
-  // Monster attacks that recur in the Bestiary.
+  // Monster attacks.
+  ["Bite", (l) => ontoken(l, ["creature", "bite", "01", "red"], SLASH)],
+  ["Claw", (l) => ontoken(l, ["creature", "claw", "01", "red"], SLASH)],
   ["Tentacles", (l) => melee(l, ["creature", "claw", "01", "green"], THUD)],
   ["Talons", (l) => melee(l, ["creature", "claw", "01", "brown"], SLASH)],
   ["Beak", (l) => melee(l, ["creature", "bite", "01", "grey"], SLASH)],
   ["Horn", (l) => melee(l, ["generic", "2hp", "01", "white"], THUD)],
   ["Gore", (l) => melee(l, ["generic", "2hp", "01", "white"], THUD)],
   ["Sting", (l) => melee(l, ["generic", "1hp", "01", "white"], SWOOSH_LIGHT(6))],
-  ["Touch", (l) => ontoken(l, ["energy", "strands", "01", "purple"], "psfx.impacts.magicaleffects.necrotic")],
+  ["Touch", (l) => ontoken(l, ["energy", "strands", "01", "purple"], NECROTIC)],
   ["Breath", (l) => ontoken(l, ["fire", "eruption", "01", "orange"], "psfx.creature.dragons.attacks.breath.small.fire")],
+  ["Teeth", (l) => melee(l, ["creature", "bite", "01", "grey"], SLASH)],
+  ["Nails", (l) => melee(l, ["creature", "claw", "01", "darkred"], SLASH)],
+  ["Tuber-Fingers", (l) => melee(l, ["creature", "claw", "01", "brown"], THUD)],
+  ["Tail Spike", (l) => melee(l, ["generic", "1hp", "01", "white"], SWOOSH_LIGHT(6))],
+  ["Sharpened Arms", (l) => melee(l, ["generic", "1hs", "01", "white"], SLASH)],
+  ["Knotted Arms", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD)],
+  ["Hooves", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD)],
+  ["Charge", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD)],
+  ["Life Drain", (l) => ontoken(l, ["energy", "strands", "01", "purple"], NECROTIC)],
+  ["Roots", (l) => ontoken(l, ["spell", "entangle", "01", "brown"], VINES)],
+  ["Vines", (l) => ontoken(l, ["spell", "entangle", "01", "green"], VINES)],
+  ["Tendrils", (l) => ontoken(l, ["spell", "entangle", "01", "darkpurple"], VINES)],
+  ["Spray", (l) => ontoken(l, ["liquid", "splash", "01", "blue"], "psfx.casting.water.001")],
+  ["Acid", (l) => ontoken(l, ["liquid", "splash", "01", "brightgreen"], "psfx.cantrips.acid-splash.v1.05ft")],
 
   // Spells (and the Scrolls that share their names) with something to show.
   ["Shield", (l) => ontoken(l, ["shieldspell", "complete", "01", "blue"], "psfx.1st-level-spells.shield-spell.intro.v1.003")],
@@ -189,9 +248,6 @@ const ENTRIES = () => [
   ["Telekinesis", (l) => ontoken(l, ["generic", "outpulse", "01", "purplepink"], CAST)],
   ["Earthquake", (l) => ontoken(l, ["impact", "groundcrack", "01", "orange"], EARTH)],
   ["Pit", (l) => ontoken(l, ["impact", "groundcrack", "01", "white"], EARTH)],
-  // AA's default Fog Cloud is a template effect, which a Cairn cast never places. An on-token
-  // entry of the same label is searched first (AA walks the on-token menu before the template
-  // one), so this is the one that plays.
   ["Fog Cloud", (l) => ontoken(l, ["smoke", "plume", "complete", "grey"], "psfx.casting.water.001")],
   ["Smoke Form", (l) => ontoken(l, ["smoke", "plume", "complete", "grey"], CAST)],
   ["Arcane Eye", (l) => ontoken(l, ["eyes", "single", "01", "bluegreen"], DIVINATION)],

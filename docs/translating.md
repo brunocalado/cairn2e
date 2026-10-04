@@ -121,9 +121,8 @@ Four features match a name, and each does so on purpose, against the name the us
   Each key is one of the system's English labels, listed in `module/automated-animations-menu.js`,
   and each value is the list of names to add for it. A label only needs to be part of the name:
   `Hammer` plays for *War Hammer* too. *Unarmed* needs nothing, because its label is
-  `CAIRN.Unarmed`, the same string that names the item. AA's own default entries (Sword, Dagger,
-  Bite, Claw…) are AA's to translate, not yours. Each name is added once per world, and the
-  Warden can edit or delete it afterwards.
+  `CAIRN.Unarmed`, the same string that names the item. Each name is added once per world, and
+  the Warden can edit or delete it afterwards.
 
 ## 6. What stays English
 

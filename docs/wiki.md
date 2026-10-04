@@ -149,9 +149,10 @@ All three are optional:
   with it.
 - [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
   [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
-  sounds Cairn's weapons, monster attacks and spells. The system adds its entries to the module's
-  Automatic Recognition menu once: an entry you edit or delete stays that way. Turning the
-  system's setting off stops any further additions.
+  sounds Cairn's weapons, monster attacks and spells. The first time, the system's entries replace
+  the module's Automatic Recognition menu, whose defaults are made for D&D; a later version only
+  adds its new entries, so an entry you edit or delete stays that way. Turning the system's
+  setting off stops any further changes.
 
 ### Other languages
 

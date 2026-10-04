@@ -156,7 +156,7 @@ export const registerSettings = () => {
   });
 
   // Hidden: the record behind the switch above (module/automated-animations.js).
-  game.settings.register(SYSTEM_ID, SETTINGS.ANIMATIONS_DELIVERED, {
+  game.settings.register(SYSTEM_ID, SETTINGS.ANIMATIONS_GIVEN, {
     scope: "world",
     config: false,
     type: Array,

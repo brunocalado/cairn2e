@@ -1180,7 +1180,7 @@
     },
     "Animations": {
       "Name": "Cairn animations for Automated Animations",
-      "Hint": "Add Cairn's weapons, monster attacks and spells to the Automatic Recognition menu, with JB2A Patreon animations and PSFX sounds. Each entry is added once: an entry you edit or delete stays that way. Turning this off stops any further additions; what was already added stays in the menu."
+      "Hint": "Replace the Automatic Recognition menu, once, with Cairn's weapons, monster attacks and spells, animated by JB2A Patreon and sounded by PSFX. A later version only adds its new entries: an entry you edit or delete stays that way. Turning this off stops any further changes; what is already in the menu stays."
     }
   },
   "CAIRN.Sidebar": {

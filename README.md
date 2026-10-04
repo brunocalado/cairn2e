@@ -144,8 +144,8 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
   that carries items onto the map, such as Canvas Loot, takes the flame with it.
 - [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
   [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
-  sounds Cairn's weapons, monster attacks and spells. The system adds its entries to AA's menu
-  once, and your edits to them are kept. A world setting turns this off.
+  sounds Cairn's weapons, monster attacks and spells. The system's menu replaces AA's own once,
+  your edits to it are kept, and a world setting turns this off.
 
 ## Learn more
 

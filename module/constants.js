@@ -109,15 +109,17 @@ export const SETTINGS = {
    *  injects it. Not a toggle: it is the transport. */
   BESTIARY_ART_MAP: "bestiary-art-map",
 
-  /** Shown only while Automated Animations is active — whether the system adds its animations
-   *  to that module's Automatic Recognition menu (`module/automated-animations.js`). Off means
-   *  the system never writes another AA setting; what it already added stays, as the Warden's. */
+  /** Shown only while Automated Animations is active — whether the system's animations replace
+   *  that module's Automatic Recognition menu, once, and later versions add their new entries
+   *  (`module/automated-animations.js`). Off means the system never writes another AA setting;
+   *  what it already wrote stays, as the Warden's. */
   ANIMATIONS: "automated-animations",
 
   /** Hidden (`config: false`) — every `menu:label` the system has already handed Automated
-   *  Animations. Not a toggle: it is what keeps an entry the Warden deleted from coming back, since
-   *  AA's merge only asks whether a label is in the menu right now. */
-  ANIMATIONS_DELIVERED: "automated-animations-delivered",
+   *  Animations. Not a toggle: empty, it means the system's menu has yet to replace AA's own;
+   *  afterwards it is what keeps an entry the Warden deleted from coming back, since AA's merge
+   *  only asks whether a label is in the menu right now. */
+  ANIMATIONS_GIVEN: "automated-animations-given",
 
   /** Hidden (`config: false`) — every saved store, `{ [id]: { name, items: string[] } }`, `items`
    *  being Item uuids (`module/apps/store.js`). A store is a price list: the price of a row is
