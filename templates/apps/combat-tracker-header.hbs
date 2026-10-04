@@ -69,8 +69,15 @@
     {{/if}}
 
     <div class="encounter-controls {{#if hasCombat}}combat{{/if}}">
+        {{!-- An exploration's help mark takes the first spacer's place, for everyone: the players
+              are the ones who need the cycle explained, and the label stays centred. --}}
         <div class="control-buttons left flexrow">
+            {{#if isDungeon}}
+            {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.Dungeon.Help"
+                label=(localize "CAIRN.Dungeon.HelpLabel") seed="dungeon" action="openRules"}}
+            {{else}}
             <div class="spacer"></div>
+            {{/if}}
             <div class="spacer"></div>
         </div>
 

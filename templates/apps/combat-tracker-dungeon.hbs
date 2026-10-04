@@ -3,9 +3,9 @@
 
       `procedures.md` → Dungeon Exploration Cycle: the Warden describes, the players declare their
       intended movements and actions, the Warden resolves them. So each row carries what its
-      player declared — free text, the SRD's actions offered as suggestions and never required —
-      how far the token moved this turn, and the same acted mark a fight's row has. Nothing here
-      stops anyone doing anything. --}}
+      player declared — free text, the SRD's actions offered in a list with their rules and never
+      required — how far the token moved this turn, and the same acted mark a fight's row has.
+      Nothing here stops anyone doing anything. --}}
 <li class="cairn-combat-side is-active">{{localize "CAIRN.Dungeon.Party"}}</li>
 
 {{#each dungeon.rows}}
@@ -16,11 +16,18 @@
 
         <div class="token-name">
             <strong class="name">{{name}}</strong>
-            <input type="text" class="cairn-declared" name="declared.{{id}}" value="{{declared}}"
-                   list="cairn-dungeon-actions" autocomplete="off"
-                   placeholder="{{localize "CAIRN.Dungeon.DeclarePlaceholder"}}"
-                   aria-label="{{localize "CAIRN.Dungeon.DeclareLabel" name=name}}"
-                   {{#unless isOwner}}disabled{{/unless}}>
+            <div class="cairn-dungeon-declare">
+                <input type="text" class="cairn-declared" name="declared.{{id}}" value="{{declared}}"
+                       autocomplete="off"
+                       placeholder="{{localize "CAIRN.Dungeon.DeclarePlaceholder"}}"
+                       aria-label="{{localize "CAIRN.Dungeon.DeclareLabel" name=name}}"
+                       {{#unless isOwner}}disabled{{/unless}}>
+                {{#if isOwner}}
+                    <button type="button" class="inline-control combatant-control icon fa-solid fa-list {{#if choosing}}active{{/if}}"
+                            data-action="toggleDungeonActions" data-tooltip aria-expanded="{{#if choosing}}true{{else}}false{{/if}}"
+                            aria-label="{{localize "CAIRN.Dungeon.ChooseAction"}}"></button>
+                {{/if}}
+            </div>
         </div>
 
         {{!-- The pace is a hue — within torchlight, past it, past the three torchlights an
@@ -31,6 +38,14 @@
             {{#if beyondTorch}}<i class="fa-solid fa-person-running" inert></i>{{/if}}{{moved}}&nbsp;{{units}}
         </span>
 
+        {{!-- Back to where the token stood when the turn began: core's recorded-movement undo,
+              for whoever owns the token — its player on their own row, the Warden on every row. --}}
+        {{#if canRevert}}
+            <button type="button" class="inline-control combatant-control icon fa-solid fa-rotate-left"
+                    data-action="revertMovement" data-tooltip
+                    aria-label="{{localize "CAIRN.Dungeon.RevertMovement"}}"></button>
+        {{/if}}
+
         <div class="cairn-combat-acted">
             {{#if isOwner}}
                 <button type="button" class="inline-control combatant-control icon fa-solid fa-check {{#if resolved}}active{{/if}}"
@@ -39,13 +54,24 @@
             {{/if}}
         </div>
     </li>
-{{/each}}
 
-<li class="cairn-dungeon-suggestions" hidden>
-    <datalist id="cairn-dungeon-actions">
-        {{#each dungeon.suggestions}}<option value="{{this}}"></option>{{/each}}
-    </datalist>
-</li>
+    {{!-- The open action list: each action's name and its rule line, readable without a hover.
+          A sibling of the row rather than inside it, where every click would also reach the
+          row's own `activateCombatant`. --}}
+    {{#if choosing}}
+        <li class="cairn-dungeon-actions" data-combatant-id="{{id}}">
+            <ul class="plain">
+                {{#each actions}}
+                    <li>
+                        <button type="button" data-action="chooseDungeonAction" data-key="{{key}}">
+                            <strong>{{label}}</strong><span>{{rule}}</span>
+                        </button>
+                    </li>
+                {{/each}}
+            </ul>
+        </li>
+    {{/if}}
+{{/each}}
 
 {{!-- The Warden's side: when the SRD says to roll, and the roll. The four triggers are
       reminders, never a gate — "If appropriate, the Warden should roll … Keep common sense in

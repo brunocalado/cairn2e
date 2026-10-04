@@ -8,6 +8,7 @@
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
 import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { consumeRation } from "../journey.js";
+import { CairnRulesSummary } from "./rules-summary.js";
 
 /** "move a distance equal to their torchlight's perimeter (about 40ft)" (`procedures.md`). */
 const TORCHLIGHT_FT = 40;
@@ -15,8 +16,13 @@ const TORCHLIGHT_FT = 40;
 /** "Players can use their action to move up to three times that distance" (`procedures.md`). */
 const HURRY_FT = 3 * TORCHLIGHT_FT;
 
-/** The actions `procedures.md` → Actions names, offered as suggestions for a declaration. */
-const DUNGEON_ACTIONS = ["search", "listen", "force", "disarm", "rest", "cast", "hurry"];
+/**
+ * The exploration actions a row offers (`procedures.md` → Actions, The Basics). Engaging an enemy
+ * is A Fight Breaks Out, and running away is the fight's Retreat (`core-rules.md` → Combat), so
+ * neither is here. Each key has a label (`CAIRN.Dungeon.Action.<key>`) and a rule line
+ * (`CAIRN.Dungeon.ActionRule.<key>`); a panicked character is offered `panic` after them.
+ */
+const DUNGEON_ACTIONS = ["search", "listen", "force", "disarm", "dodge", "cast", "rest", "hurry"];
 
 /** When the party risks a Dungeon Event (`procedures.md` → Dungeon Events), in the SRD's order. */
 const DUNGEON_TRIGGERS = ["linger", "hurry", "enter", "loud"];
@@ -73,6 +79,10 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       exhaustionFatigue: CairnCombatTracker.#onExhaustionFatigue,
       exhaustionRation: CairnCombatTracker.#onExhaustionRation,
       toggleResolved: CairnCombatTracker.#onToggleResolved,
+      toggleDungeonActions: CairnCombatTracker.#onToggleDungeonActions,
+      chooseDungeonAction: CairnCombatTracker.#onChooseDungeonAction,
+      revertMovement: CairnCombatTracker.#onRevertMovement,
+      openRules: CairnCombatTracker.#onOpenRules,
       rollDexSave: CairnCombatTracker.#onRollDexSave,
       rollMorale: CairnCombatTracker.#onRollMorale
     }
@@ -107,6 +117,13 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    * @type {Map<string, string>}
    */
   #drafts = new Map();
+
+  /**
+   * The combatant whose action list is open on this client, if any. Local like the drafts, so
+   * another client's update re-renders the tracker without closing the list being read.
+   * @type {string|null}
+   */
+  #choosing = null;
 
   /**
    * @inheritDoc
@@ -163,12 +180,20 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       if (!combatant) continue;
       const movement = movedThisTurn(combatant.token);
       const pace = paceOf(movement);
+      const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
       rows.push({
         ...turn,
         css: turn.css.replace("active", "").trim(),
         resolved: combatant.resolved,
         declared: this.#drafts.get(turn.id) ?? combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "",
+        choosing: turn.isOwner && (this.#choosing === turn.id),
+        actions: keys.map((key) => ({
+          key,
+          label: game.i18n.localize(`CAIRN.Dungeon.Action.${key}`),
+          rule: game.i18n.localize(`CAIRN.Dungeon.ActionRule.${key}`)
+        })),
         ...movement,
+        canRevert: !!combatant.token?.isOwner && (movement.moved > 0),
         pace,
         beyondTorch: (pace === "hurry") || (pace === "over"),
         paceLabel: { hurry: "CAIRN.Dungeon.BeyondTorch", over: "CAIRN.Dungeon.BeyondHurry" }[pace]
@@ -182,7 +207,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     return {
       rows,
       event: event ? { ...event, exhaustion: event.kind === "exhaustion" } : null,
-      suggestions: DUNGEON_ACTIONS.map((key) => game.i18n.localize(`CAIRN.Dungeon.Action.${key}`)),
       warden: game.user.isGM,
       triggers: DUNGEON_TRIGGERS.map((key) => ({
         label: game.i18n.localize(`CAIRN.Dungeon.Trigger.${key}`),
@@ -347,6 +371,56 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
     await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.RESOLVED, !combatant.resolved);
+  }
+
+  /**
+   * Open or close a dungeon row's action list. One list at a time: opening a row's closes any
+   * other, so the column never grows by more than one list.
+   */
+  static #onToggleDungeonActions(event, target) {
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
+    this.#choosing = (this.#choosing === combatantId) ? null : (combatantId ?? null);
+    this.render();
+  }
+
+  /**
+   * Declare the picked action: its name replaces whatever the field held, and the field stays
+   * free text — the SRD's list is examples ("such as … etc."), not the menu of what is allowed.
+   *
+   * Shaking off panic is the one action with a roll of its own: "A _panicked_ character must make
+   * a **WIL** **save** to overcome their condition as an **action** on their **turn**"
+   * (`procedures.md` → Panic). The list closes before the dice, so it is not left open behind the
+   * card.
+   */
+  static async #onChooseDungeonAction(event, target) {
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
+    const { key } = target.dataset;
+    const combatant = this.viewed?.combatants.get(combatantId);
+    if (!combatant?.isOwner || !key) return;
+    this.#choosing = null;
+    this.#drafts.delete(combatantId);
+    this.render();
+    if ((key === "panic") && combatant.actor && await rollSave(combatant.actor, "WIL")) {
+      await combatant.actor.toggleStatusEffect(CONDITION.PANICKED, { active: false });
+    }
+    await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED, game.i18n.localize(`CAIRN.Dungeon.Action.${key}`));
+  }
+
+  /** The header's help mark opens the Rules Summary, whose Dungeon section is the full text. */
+  static #onOpenRules() {
+    CairnRulesSummary.open();
+  }
+
+  /**
+   * Take a token back to where it stood when the dungeon turn began. With no movement id, core's
+   * `revertRecordedMovement` displaces the token to the first recorded waypoint and empties the
+   * history, and the history only ever holds this turn's moves — `CairnCombat#nextRound` clears it.
+   * A player may undo their own token with no GM in the loop (observed on 14.368); the button is
+   * drawn only for an owner.
+   */
+  static async #onRevertMovement(event, target) {
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
+    await this.viewed?.combatants.get(combatantId)?.token?.revertRecordedMovement();
   }
 
   /**

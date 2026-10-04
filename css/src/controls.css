@@ -345,6 +345,15 @@
             background: var(--cairn-ink);
             color: var(--cairn-paper);
         }
+
+        /* A mark that also opens something (`action` on the partial) is a button, which the ink
+           button primitive frames, pads and sizes; the mark keeps its own 16px disc. */
+        &:is(button) {
+            border: none;
+            cursor: pointer;
+            min-height: 0;
+            padding: 0;
+        }
     }
 
     /**************************************************************************
