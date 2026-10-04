@@ -173,6 +173,7 @@
     "ApplyWarning": "Replaces {name}'s name, attributes, identity and items. Containers and what they hold are kept.",
     "AttrHelp": {
       "DEX": "<strong>Dexterity</strong> — saves that need poise, speed or reflexes: dodging, climbing, sneaking, balancing. Acting in the first round of combat and running from danger both take a DEX save. At 0 DEX you are paralyzed.",
+      "HP": "<strong>Hit Protection</strong> — your ability to avoid damage in combat. It is not health or fortitude, and it comes back after a few moments of rest and a drink of water. Damage past 0 HP comes off STR. An attack that takes you to exactly 0 HP is a roll on the Scars table.",
       "Label": "What {attr} is for",
       "STR": "<strong>Strength</strong> — saves that need physical power: lifting gates, bending bars, resisting poison. Damage past 0 HP comes off STR, followed by a STR save to avoid critical damage. At 0 STR you die.",
       "WIL": "<strong>Willpower</strong> — saves to persuade, deceive, interrogate, intimidate, charm, provoke, or manipulate spells. A spell cast while deprived or in danger may call for a WIL save. At 0 WIL you are delirious."
@@ -180,6 +181,7 @@
     "Attributes": "Attributes",
     "Back": "Back",
     "Background": "Roll or choose a Background",
+    "BondPlaceholder": "Roll a Bond, or type your own…",
     "Change": "Change",
     "ChooseBackgroundFirst": "Roll or choose a background to begin.",
     "CustomBackgrounds": "Other Backgrounds",
@@ -191,6 +193,7 @@
     "NameHint": "Pick one of the Background's names, roll one, or type any name you like.",
     "NamePlaceholder": "Type a name, or pick one above",
     "Next": "Next",
+    "OmenPlaceholder": "Roll an Omen, or type your own…",
     "OnceHint": "Attributes, HP and the swap are rolled once. They are kept if you close this window.",
     "Open": "Generate Character",
     "PickName": "Pick a Name",

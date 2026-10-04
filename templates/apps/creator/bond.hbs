@@ -1,6 +1,6 @@
 {{!-- Three sections in the SRD's order — Bond, then Age, then (for the youngest) an Omen —
       each under the heading-with-roll the Attributes step uses, so the two roll-driven steps
-      read alike. The Omen roll is inert, not hidden, until Youngest is on: everything on a
+      read alike. The Omen roll and field are inert, not hidden, until Youngest is on: everything on a
       step is on screen from the first visit. --}}
 <section class="tab creator-step {{tab.cssClass}}" data-group="primary" data-tab="bond">
     <div class="step-heading" data-ink="hline" data-ink-seed="step-bond" data-ink-w="1.8" data-ink-at="bottom">
@@ -9,7 +9,12 @@
             <i class="fas fa-dice-d20"></i> {{localize "CAIRN.CharacterCreator.RollBond"}}
         </button>
     </div>
-    {{#if bondText}}<div class="bond-result" data-ink="vline" data-ink-seed="bond" data-ink-w="1.8">{{bondText}}</div>{{/if}}
+    {{!-- The roll fills the field and the field is the answer, as the Name step's is: rolled,
+          rolled and reworded, or written from nothing, it is what the character keeps. Left
+          blank, it is rolled on create. --}}
+    <textarea class="cairn-edit-text creator-text" name="bond" rows="3" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.CharacterCreator.BondPlaceholder'}}"
+        data-ink="box" data-ink-seed="creator-bond" data-ink-w="1.6">{{bondText}}</textarea>
 
     <div class="step-heading" data-ink="hline" data-ink-seed="step-age" data-ink-w="1.8" data-ink-at="bottom">
         <h3>{{localize "CAIRN.CharacterCreator.Age"}}</h3>
@@ -36,5 +41,8 @@
             <i class="fas fa-dice-d20"></i> {{localize "CAIRN.CharacterCreator.RollOmen"}}
         </button>
     </div>
-    {{#if omenText}}<div class="omen-result" data-ink="vline" data-ink-seed="omen" data-ink-w="1.8">{{omenText}}</div>{{/if}}
+    <textarea class="cairn-edit-text creator-text" name="omen" rows="3" maxlength="{{limits.text}}"
+        placeholder="{{localize 'CAIRN.CharacterCreator.OmenPlaceholder'}}"
+        data-ink="box" data-ink-seed="creator-omen" data-ink-w="1.6"
+        {{#unless draft.youngest}}disabled{{/unless}}>{{omenText}}</textarea>
 </section>

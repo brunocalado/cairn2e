@@ -267,7 +267,7 @@
 
         /* The Bond step's second and third headings follow content: the same air over them the
            HP heading gets over the swap row. */
-        .bond-result + .step-heading,
+        .creator-text + .step-heading,
         .section-controls + .step-heading {
             margin-top: 12px;
         }
@@ -374,14 +374,25 @@
             }
         }
 
+        /* The Bond and the Omen: the edit window's drawn text box, at three lines. That window's
+           box takes `flex: 1` to fill its panel; here it shares the panel with two other steps,
+           so it keeps its own height. */
+        .creator-text {
+            flex: 0 0 auto;
+            width: 100%;
+            margin: 6px 0 4px;
+        }
+
+        .creator-text:disabled {
+            opacity: 0.75;
+        }
+
         .table-block {
             margin-bottom: 8px;
         }
 
         /* A drawn quote: the bar at its left is a `vline` mark. */
-        .table-result,
-        .bond-result,
-        .omen-result {
+        .table-result {
             padding-left: 8px;
             margin: 4px 0;
         }

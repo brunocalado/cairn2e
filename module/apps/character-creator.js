@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, FLAGS } from "../constants.js";
+import { SYSTEM_ID, FLAGS, EDIT_LIMITS } from "../constants.js";
 import {
   TRAIT_KEYS, ATTR_KEYS, traitRows,
   getBackgrounds, isSrdBackground, drawBackground, drawBackgroundTable,
@@ -29,7 +29,8 @@ function enrich(html) {
  * The 2e character-creation flow as a wizard — one tab per numbered step of
  * `srd-2e/players-guide/character-creation.md`: roll or choose a Background, pick a name, roll
  * attributes (with the one permitted swap) and HP, roll the two Background tables, then the
- * eight traits, a Bond, age, and — if youngest — an Omen. The seventh tab is the Review: it
+ * eight traits, a Bond, age, and — if youngest — an Omen. The name, the traits, the Bond and the
+ * Omen are fields: a roll fills one, and whatever is typed there is what the character keeps. The seventh tab is the Review: it
  * prints the draft as it stands and, under a Status heading, says what is still needed or that
  * everything blank will be rolled on create; the one "Create Character" button is the footer's
  * right-hand button on that tab, where Next was. Tabs 2–7 are inert until a Background is chosen,
@@ -261,6 +262,8 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     // Both are drawn plain (`character-generator.js#drawBond`), and both print plain.
     context.bondText = d.bond ?? "";
     context.omenText = d.omen ?? "";
+    // The Bond and Omen fields hold what the edit window's do, at the same cap.
+    context.limits = EDIT_LIMITS;
 
     // The footer's Create button and the Review's Status line come from the same four conditions
     // `#onSubmit` checks, so the button and the line can never disagree about what is missing.
@@ -313,6 +316,14 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     for (const input of htmlElement.querySelectorAll("[data-trait-input]")) {
       input.addEventListener("change", (event) => {
         this.#draft.traits[event.target.dataset.traitInput] = event.target.value;
+      });
+    }
+
+    // Trimmed, so a field emptied to whitespace reads as blank and is rolled on create; capped
+    // here as well as by `maxlength`, which stops typing and pasting but not a script.
+    for (const key of ["bond", "omen"]) {
+      htmlElement.querySelector(`[name="${key}"]`)?.addEventListener("change", (event) => {
+        this.#draft[key] = event.target.value.slice(0, EDIT_LIMITS.text).trim();
       });
     }
 

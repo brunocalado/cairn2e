@@ -44,7 +44,8 @@
         </button>
     </div>
 
-    {{!-- HP is a box too but not a button: it is not part of the swap. --}}
+    {{!-- HP is a box too but not a button: it is not part of the swap. It sits in the same cell
+          as an attribute box, so its help mark lands in the same corner. --}}
     <div class="step-heading" data-ink="hline" data-ink-seed="step-hp" data-ink-w="1.8" data-ink-at="bottom">
         <h3>{{localize "CAIRN.CharacterCreator.HitProtection"}}</h3>
         <button type="button" class="mini" data-action="rollHp" {{#if hpLocked}}disabled{{/if}}>
@@ -52,9 +53,13 @@
         </button>
     </div>
     <div class="attr-row">
+        <div class="attr-cell">
         <div class="attr-box hp-box" data-ink="box" data-ink-seed="attr-hp" data-ink-w="1.6">
             <label>{{localize "CAIRN.HitProtection"}}</label>
             <span>{{#if draft.hp}}{{draft.hp}}{{else}}?{{/if}}</span>
+        </div>
+        {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip="CAIRN.CharacterCreator.AttrHelp.HP"
+            label=(localize "CAIRN.CharacterCreator.AttrHelp.Label" attr=(localize "CAIRN.HitProtection")) seed="hp"}}
         </div>
     </div>
 </section>
