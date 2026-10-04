@@ -1,3 +1,15 @@
+# 0.1.1
+
+- [Changed] **Automated Animations plays Cairn's own menu.** The first time a world loads, the
+  system's entries replace AA's Automatic Recognition menu, whose defaults are made for D&D; a
+  later version only adds its new entries, so an entry the Warden edits or deletes stays that way.
+  An existing world gets the replacement once, on its next load: export AA's menu first to keep
+  any entry made by hand.
+- [Fixed] **Every weapon and monster attack in the compendiums animates with a PSFX sound.** Sword,
+  Dagger, Mace, Spear, Rapier, Hand Axe, Great Sword, Bow, Crossbow, Bite and Claws played silent,
+  and whips, saws, the Fletchwind's bows, the Background explosives and many Bestiary attacks
+  played nothing at all. Last Breath swings a short sword instead of breathing fire.
+
 # 0.1.0
 
 - [Added] **Players visit stores on their own.** A store the Warden marks *Players can visit*
