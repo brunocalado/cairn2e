@@ -37,6 +37,13 @@ const STORE_DRAG = `${SYSTEM_ID}.store`;
 const nameOf = (store) => game.i18n.localize(store.name);
 
 /**
+ * Rows in alphabetical order, for the Warden and the shopper alike. By the name the row shows —
+ * a guise for a thing unknown to the viewer, sorted where its truth would give it away otherwise —
+ * and in the client's language, so a translated name lands where its own alphabet puts it.
+ */
+const byName = (a, b) => a.name.localeCompare(b.name, game.i18n.lang);
+
+/**
  * The store window — one per client, drawn from `SETTINGS.STORES` and the cart this player has
  * filled.
  *
@@ -290,7 +297,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       system: item.system,
       cost: buyPrice(item.system.cost, buyRatio),
       inCart: this.#cart.buy.get(item.uuid) ?? 0
-    }));
+    })).sort(byName);
     if (isGM) return context;
 
     // The shopper's side. The cart is reconciled against what is on the shelves and on the
@@ -314,7 +321,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
         system: item.system,
         price: sellPrice(item.system.cost, ratio),
         inCart: this.#cart.sell.has(item.id)
-      }))
+      })).sort(byName)
     }));
     const buy = [...this.#cart.buy].map(([uuid, qty]) => ({ doc: byUuid.get(uuid), qty }));
     const sell = [...this.#cart.sell].map((id) => actor.items.get(id));
