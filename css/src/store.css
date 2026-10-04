@@ -137,6 +137,14 @@
             gap: 8px;
         }
 
+        /* The shopper's word before the picker, set as a field's label is (`.cairn-field`). */
+        .cairn-store-manage > label {
+            flex: 0 0 auto;
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+
         /* The store's name takes the line; the buttons keep their size. */
         .cairn-store-manage select {
             flex: 1 1 auto;

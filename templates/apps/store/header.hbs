@@ -8,7 +8,11 @@
 <header class="cairn-store-head"{{#unless showHead}} hidden{{/unless}}>
     <div class="cairn-store-manage">
         {{#if stores.length}}
-        <select name="store" aria-label="{{localize 'CAIRN.Store.Pick'}}">
+        {{!-- A shopper's line is the picker alone, and a bare select across the window read as
+              loose; the word in front says what it picks, set as every field label is. The
+              Warden's line has its buttons to hold it in place, and names it by aria-label. --}}
+        {{#unless isGM}}<label for="cairn2e-store-pick">{{localize "CAIRN.Store.Pick"}}</label>{{/unless}}
+        <select id="cairn2e-store-pick" name="store" aria-label="{{localize 'CAIRN.Store.Pick'}}">
             {{#each stores as |s|}}
             <option value="{{s.id}}"{{#if s.selected}} selected{{/if}}>{{s.name}}</option>
             {{/each}}
