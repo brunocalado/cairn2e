@@ -546,7 +546,7 @@ The Warden opens **Store** from the Cairn 2e tab.
 A new world already has ten small stores: **Weaponsmith**, **Armorer**, **Stables**,
 **Provisioner**, **Outfitter**, **Apothecary**, **Toolmaker**, **Curiosities**, **Tailor** and
 **Tavern**. Between them they sell everything in the rulebook's Marketplace except Ship's Passage,
-plus some of the **More Gear** compendium; the Tailor and the Tavern are all More Gear. They are
+plus some of the **More Gear** compendium; the Tailor (but its Gloves) and the Tavern are all More Gear. They are
 only a starting point: rename them, restock them or delete them like any store you made. The
 Warden's **Restore Default Stores** macro brings all ten back as they first were, and deletes
 every other store, after a warning.

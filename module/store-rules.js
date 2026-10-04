@@ -45,7 +45,7 @@ const shelf = (name, items) => ({ ...blankStore(name), items });
  * Stores" macro writes back. Small and themed on purpose — a shop sells one kind of thing — and
  * between them they hold every Item in the SRD's Marketplace but Ship's Passage, which is a
  * port's to sell and not a stable's, plus the Homebrew gear that fills a gap beside it; the
- * Tailor and the Tavern are Homebrew whole.
+ * Tailor is Homebrew whole but for the SRD's Gloves, and the Tavern is Homebrew whole.
  *
  * Each name is a localization key, not a name: the store is read through `game.i18n.localize`
  * (`module/apps/store.js`), so a translation module renames these through its language file,
@@ -141,7 +141,6 @@ export function defaultStores() {
       homebrew("h3EXPHVgXZXRxCn2"), // Drill
       homebrew("P799Joyn54UqzS9a"), // Manacles
       gear("5SZWEE7UyIgdgwSE"), // Net
-      gear("kWbQCs7Zt0qwwh8F"), // Gloves
       gear("RFXTI1B6phAqB4hY"), // Sewing Kit
       gear("TxTE0Kqi1Pemap5K"), // Specialized Tools
       gear("oyCPkncx99bsRO5E"), // Chest
@@ -187,6 +186,7 @@ export function defaultStores() {
       homebrew("EvJ4wHAyVYzkzNrs"), // Tunic
       homebrew("lA8F69O7VD9hoC6G"), // Boots, hard leather
       homebrew("pXAoLI8QaL1IWsDw"), // Cape, long
+      gear("kWbQCs7Zt0qwwh8F"), // Gloves
       homebrew("eg4aWyudRdye2Izr"), // Shirt, silk
       homebrew("hzpzcdcEWTtlBTa0"), // Skirt, silk
       homebrew("meTlmjzi23j0Rz27"), // Boots, reinforced
