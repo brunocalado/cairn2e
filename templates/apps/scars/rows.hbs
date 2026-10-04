@@ -6,7 +6,7 @@
       is. The list is the scroller, which is what the part's `scrollable` is for. --}}
 <ol class="cairn-plain-list cairn-scars-list">
     {{#each rows as |row|}}
-    <li class="cairn-scars-row{{#if row.selected}} selected{{/if}}" data-action="scarPick" data-entry="{{row.entry}}"
+    <li class="cairn-scars-row{{#if row.selected}} selected{{/if}}" {{#unless @root.locked}}data-action="scarPick"{{/unless}} data-entry="{{row.entry}}"
         {{#unless @last}}data-ink="hline" data-ink-seed="scar-row-{{row.entry}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
         <span class="cairn-scars-n">{{row.entry}}</span>
         <span class="cairn-scars-text"><strong>{{row.title}}</strong> {{row.text}}</span>

@@ -82,12 +82,16 @@
             align-items: baseline;
             gap: 8px;
             padding: 4px 2px;
-            cursor: var(--cursor-pointer);
 
             /* Hover is said with the text alone. The rule under each row is a canvas stroke, not
                a border, so a ground painted on the row cannot meet it — the sunk fill sat inside
-               the ink line with a gap on every edge and read as a misregistered box. */
-            &:hover .cairn-scars-text {
+               the ink line with a gap on every edge and read as a misregistered box. A row a
+               player may not pick carries no action, and neither the hand nor the hover. */
+            &[data-action] {
+                cursor: var(--cursor-pointer);
+            }
+
+            &[data-action]:hover .cairn-scars-text {
                 color: var(--cairn-ink);
             }
         }

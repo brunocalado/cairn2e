@@ -506,6 +506,9 @@ export async function rollDamage(actor, item, { skipDialog = false } = {}) {
  */
 export async function rollScarDie(formula) {
   const roll = await evaluateFormula(formula);
+  // No message carries this roll, so Dice So Nice would never see it: the dice are thrown for
+  // the whole table by hand, and the window waits for them to land before printing the face.
+  await game.dice3d?.showForRoll(roll, game.user, true);
   return roll.total;
 }
 

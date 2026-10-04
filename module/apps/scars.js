@@ -96,6 +96,10 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
     super(options);
     this.hpLost = options.hpLost ?? null;
     this.entry = Math.min(Math.max(this.hpLost ?? 1, 1), SCAR_ENTRIES.length);
+    // The row a hit lands on is the HP it took, not a choice — and it is what the row's own dice
+    // are rolled against, so a player who could change it could also reroll the location by
+    // stepping off the row and back. Only the Warden may say otherwise.
+    this.locked = this.hpLost !== null && !game.user.isGM;
     this.location = null;
   }
 
@@ -109,6 +113,7 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
     const rows = (await tableRows()) ?? [];
     const spec = scarEntry(this.entry);
     context.hpLost = this.hpLost;
+    context.locked = this.locked;
     context.rows = rows.map((row) => ({ ...row, selected: row.entry === this.entry }));
     context.location = this.location;
     context.canRollLocation = !!spec.location && !this.location;
@@ -118,6 +123,7 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
 
   /** Choose a different row: the Warden's word beats the arithmetic. */
   static async #onPick(event, target) {
+    if (this.locked) return;
     const entry = Number(target.dataset.entry);
     if (!Number.isFinite(entry) || entry === this.entry) return;
     this.entry = entry;
