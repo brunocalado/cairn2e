@@ -1,3 +1,38 @@
+# 0.1.0
+
+- [Added] **Players visit stores on their own.** A store the Warden marks *Players can visit*
+  opens from a **Stores** button beside the Gold on a player's character sheet, and a list at the
+  top of the window moves between every store open to them. A door beside the Warden's store
+  picker shows, green or red, whether players can visit the store on screen.
+- [Added] A new world starts with **ten small stores**, from the Weaponsmith to the Tavern, open to
+  visits and selling the Marketplace between them. The Warden's **Restore Default Stores** macro
+  brings them back after a warning.
+- [Added] A **Player's Guide** compendium holds the SRD's rules chapters, one page per section,
+  linked to the items, tables, hirelings and backgrounds they name, with a roll button on every
+  table the text says to roll.
+- [Added] **Any gear can be unknown** to its holder, not only a relic. The eye in the item sheet's
+  title bar hides or reveals it, and a **Guise** tab holds the name, picture and appearance its
+  holder sees in its place, on the sheet, in Barter, inside a container and on a store's shelf.
+- [Added] **Weather on the calendar.** A cloud beside the selected date rolls that day's season on
+  the *Weather in Vald* table and writes the result as a note everyone sees. The four tables are in
+  the Warden Tables compendium.
+- [Added] The chat box shows the world's **date and time** between its Format menu and its text.
+- [Added] **Dungeon exploration.** Each row offers the rulebook's actions in a list, each with its
+  rule; a panicked character can **Shake off panic** from there; an undo takes a token back to
+  where the turn began; and a help mark in the header explains the turn and opens the Rules
+  Summary. The acted mark is a switch, and each row is laid out on one grid.
+- [Changed] The character creator's **Bond** and **Omen** are text boxes: a roll fills one, and
+  what it holds, reworded or written from nothing, is what the character keeps. The HP box has a
+  help mark that says what Hit Protection is.
+- [Changed] A store's shelf and a shopper's own list are in alphabetical order, by the name the
+  viewer reads. The Gloves are sold at the Tailor instead of the Toolmaker.
+- [Changed] The Scars window keeps the row the HP lost for a player answering a hit, and its dice
+  roll through Dice So Nice for the whole table.
+- [Fixed] The Guise tab shows a new name and picture set from outside the sheet without being
+  reopened.
+- [Changed] The README and the user guide cover this version, with new screenshots of a dungeon
+  exploration and of an unknown gear from both sides, and every screenshot is now WebP.
+
 # 0.0.9
 
 - [Changed] An unknown relic's appearance, a relic's recharge and an NPC's description are always
