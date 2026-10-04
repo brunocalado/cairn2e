@@ -349,17 +349,14 @@
         }
     }
 
-    /* The open action list under its row: each action a full-width line, its name in the row's
-       serif and its rule in the soft ink beneath, a soft-ink wash under the pointer. Not the
-       panel's filled buttons — nine of those would be a wall of slabs; these are list rows that
-       happen to be clickable. */
+    /* The open action list under its row, across the row's full width: each action one
+       paragraph, its name run in ahead of its rule, so a line holds as many words as the panel
+       does and the list stays short. A soft-ink wash under the pointer. Not the panel's filled
+       buttons — nine of those would be a wall of slabs; these are list rows that happen to be
+       clickable. */
     .cairn-dungeon-actions {
-        border-bottom: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
         list-style: none;
-        /* The body's column: past the row's padding, thumbnail and gap on the left, short of the
-           acted column on the right, less the 4px each line pads its wash with. */
-        padding: 0 calc(var(--combatant-initiative-width, 44px) + 2 * var(--element-spacing) - 4px) 4px
-            calc(var(--sidebar-item-height) + 2 * var(--element-spacing) - 4px);
+        padding: 0 var(--element-spacing) 4px;
 
         ul {
             margin: 0;
@@ -379,12 +376,9 @@
             --button-hover-background-color: color-mix(in srgb, var(--cairn-surface-fg) 10%, transparent);
             --button-hover-border-color: transparent;
             --button-hover-text-color: var(--cairn-surface-fg);
-            align-items: flex-start;
             border-width: 0;
-            display: flex;
-            flex-direction: column;
+            display: block;
             font-size: 11px;
-            gap: 1px;
             height: auto;
             letter-spacing: normal;
             line-height: 1.3;
@@ -402,6 +396,74 @@
             &:focus-visible {
                 outline: var(--cairn-hairline) solid var(--cairn-surface-fg);
             }
+        }
+    }
+
+    /* A rule between the party's rows (Primitive 7), never under the heading: each row's name,
+       field, glyphs and acted switch read as one entry, and an open action list sits inside its
+       row's entry. Square corners, since a rule runs to the edge. */
+    .cairn-dungeon-row {
+        border-radius: 0;
+        border-top: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
+    }
+
+    .cairn-combat-side + .cairn-dungeon-row {
+        border-top: none;
+    }
+
+    /* The acted switch: Primitive 5 drawn as a button (see the template), in the panel's
+       swapping pair — faint surface ink off, full surface ink on, a knob in the ground's colour —
+       and smaller than a sheet's, so it sits on the two lines of the row beside 20px glyphs.
+       `[data-action]` for the weight against the panel's filled-button rule (0,3,1). */
+    .cairn-combat-acted button.cairn-acted-switch[data-action] {
+        --button-background-color: transparent;
+        --button-border-color: transparent;
+        --button-hover-background-color: transparent;
+        --button-hover-border-color: transparent;
+        border-width: 0;
+        height: auto;
+        min-height: 0;
+        padding: 0;
+        width: auto;
+
+        .cairn-switch-track {
+            background: color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
+            border-radius: 9px;
+            height: 18px;
+            width: 32px;
+        }
+
+        .cairn-switch-knob {
+            background: var(--cairn-surface-bg);
+            height: 14px;
+            width: 14px;
+        }
+
+        &[aria-checked="true"] .cairn-switch-track {
+            background: var(--cairn-surface-fg);
+
+            .cairn-switch-knob {
+                transform: translateX(14px);
+            }
+        }
+
+        &:not(:disabled):hover[aria-checked="false"] .cairn-switch-track {
+            background: color-mix(in srgb, var(--cairn-surface-fg) 45%, transparent);
+        }
+
+        &:focus-visible {
+            outline: none;
+
+            .cairn-switch-track {
+                outline: var(--cairn-hairline) solid var(--cairn-surface-fg);
+                outline-offset: 2px;
+            }
+        }
+
+        /* Somebody else's row: the state is read, not set. */
+        &:disabled {
+            cursor: default;
+            opacity: 1;
         }
     }
 

@@ -4,7 +4,7 @@
       `procedures.md` → Dungeon Exploration Cycle: the Warden describes, the players declare their
       intended movements and actions, the Warden resolves them. So each row carries what its
       player declared — free text, the SRD's actions offered in a list with their rules and never
-      required — how far the token moved this turn, and the same acted mark a fight's row has.
+      required — how far the token moved this turn, and an acted switch for the same flag a fight's row ticks.
       Nothing here stops anyone doing anything. --}}
 <li class="cairn-combat-side is-active">{{localize "CAIRN.Dungeon.Party"}}</li>
 
@@ -54,12 +54,20 @@
             </span>
         </div>
 
+        {{!-- The acted mark is the system's toggle (Primitive 5), not a bare glyph: a pill with a
+              shape of its own reads as this row's, where a lone check floated in the column. It
+              is a `<button role="switch">` wearing the toggle's track and knob rather than the
+              partial's label and checkbox, because core's `activateCombatant` selects and pans to
+              the token on any click in the row that is not on an input or a button — the label's
+              track is neither. Everyone sees the state; only the owner can flip it. --}}
         <div class="cairn-combat-acted">
-            {{#if isOwner}}
-                <button type="button" class="inline-control combatant-control icon fa-solid fa-check {{#if resolved}}active{{/if}}"
-                        data-action="toggleResolved" data-tooltip
-                        aria-label="{{localize (ifThen resolved "CAIRN.Dungeon.ActedUndo" "CAIRN.Dungeon.Acted")}}"></button>
-            {{/if}}
+            <button type="button" class="cairn-switch cairn-acted-switch" role="switch"
+                    aria-checked="{{#if resolved}}true{{else}}false{{/if}}"
+                    data-action="toggleResolved" data-tooltip
+                    aria-label="{{localize (ifThen resolved "CAIRN.Dungeon.ActedUndo" "CAIRN.Dungeon.Acted")}}"
+                    {{#unless isOwner}}disabled{{/unless}}>
+                <span class="cairn-switch-track"><span class="cairn-switch-knob"></span></span>
+            </button>
         </div>
     </li>
 
@@ -72,7 +80,7 @@
                 {{#each actions}}
                     <li>
                         <button type="button" data-action="chooseDungeonAction" data-key="{{key}}">
-                            <strong>{{label}}</strong><span>{{rule}}</span>
+                            <strong>{{label}}</strong> <span>{{rule}}</span>
                         </button>
                     </li>
                 {{/each}}
