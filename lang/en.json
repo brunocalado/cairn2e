@@ -88,6 +88,8 @@
     "PreviousYear": "Previous year",
     "ReclamationDate": "{day} {year}",
     "ReclamationSub": "Reclamation, day {day} of {days}",
+    "RollWeather": "Roll the weather",
+    "RollWeatherHint": "Roll this day's weather on the Weather in Vald table for its season, and add it as a note everyone sees",
     "SaveNote": "Save",
     "SetToday": "Set as today",
     "Shown": "The calendar is open on every player's screen.",
@@ -104,6 +106,7 @@
     "WatchBack": "{watch}: back to {time}",
     "WatchJourney": "The {watch} watch. A journey is underway, and the watch moves when the journey resolves it: click to open the journey.",
     "WatchOn": "{watch}: on to {time}",
+    "Weather": "Weather",
     "Year": "Year",
     "MonthAbbr": {
       "Mourning": "Mou",

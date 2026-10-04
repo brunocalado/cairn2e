@@ -101,7 +101,7 @@ All the game content you need is already inside:
 | **Equipment** | the full Marketplace (gear, weapons, armor), plus carts, horses, mules and wagons |
 | **Magic** | 100 spellbooks, 100 scrolls and 46 relics |
 | **Bestiary** | 84 ready-to-drop monsters, plus 13 hirelings and the 5 companions some backgrounds start with |
-| **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the naming tables, and the Warden's generator tables |
+| **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the Weather in Vald, the naming tables, and the Warden's generator tables |
 | **Rules** | the Player's Guide — principles, character creation, core rules, procedures and the Marketplace — linked to the items, tables and backgrounds it names |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
 | **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, and the Warden's Reset Player Hotbars and Restore Default Stores |

@@ -106,8 +106,9 @@ export async function installCalendarEvents() {
  * @param {string} data.text
  * @param {{year: number|null, month: number, day: number, days: number}} data.note
  * @param {boolean} data.everyone
+ * @param {boolean} [data.weather]  a new note is the day's weather (`FLAGS.WEATHER`)
  */
-export async function saveNote({ entry, title, text, note, everyone }) {
+export async function saveNote({ entry, title, text, note, everyone, weather = false }) {
   const name = title.trim() || game.i18n.localize("CAIRN.Calendar.Untitled");
   const content = noteHTML(text);
   const format = CONST.JOURNAL_ENTRY_PAGE_FORMATS.HTML;
@@ -117,6 +118,7 @@ export async function saveNote({ entry, title, text, note, everyone }) {
     const folder = await ensureFolder();
     return foundry.documents.JournalEntry.implementation.create({
       name, folder: folder.id, ownership, [flag]: note,
+      ...(weather && { [`flags.${SYSTEM_ID}.${FLAGS.WEATHER}`]: true }),
       pages: [{ name, type: "text", text: { format, content } }]
     });
   }

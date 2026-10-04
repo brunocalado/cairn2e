@@ -102,6 +102,13 @@ the Warden can edit, hide or delete them like any other. A deleted one is back w
 the **Vald Calendar** compendium. A note hidden from players is kept out of their windows, not off
 their computers: a player who opens the console can read it.
 
+**Weather.** The cloud after the selected day's date is the Warden's **Roll the weather**: it rolls
+that day's season on the *Weather in Vald* table ("Frosty mornings", "Occasional heatwave") and
+adds the result as a **Weather** note everyone sees. A day that has its weather offers no second
+roll; delete the note to roll again. The Reclamation has no season, so it has no cloud. It is the
+day's colour only: the weather a journey travels in is the journey's own roll. The four tables are
+in the **Warden Tables** compendium too, to roll by hand.
+
 During a **journey** the journey spends the time, so these controls are switched off and clicking
 the dial opens the journey. The calendar is Foundry's own world time, so a time-of-day lighting
 module follows it.

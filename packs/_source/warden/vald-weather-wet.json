@@ -1,0 +1,108 @@
+{
+  "_id": "aTaTAUPWJR6Cbsy7",
+  "name": "Vald Weather (Wet)",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Wet column of the Weather in Vald table for a day of the Wet season. It describes the day; the weather a journey travels in is the Journey's own roll.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "WxoKaa4iae8QdzdC",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Light rain",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTaTAUPWJR6Cbsy7.WxoKaa4iae8QdzdC"
+    },
+    {
+      "_id": "WqIpOKQMYb4lY4mf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Overcast",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTaTAUPWJR6Cbsy7.WqIpOKQMYb4lY4mf"
+    },
+    {
+      "_id": "gx1LWhYbHjdwEUbk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Breezy",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTaTAUPWJR6Cbsy7.gx1LWhYbHjdwEUbk"
+    },
+    {
+      "_id": "c66ZHByJBSS7SpXu",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Heavy rain",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTaTAUPWJR6Cbsy7.c66ZHByJBSS7SpXu"
+    },
+    {
+      "_id": "9s1UDk0U2oINnxC1",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Thunderstorms",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTaTAUPWJR6Cbsy7.9s1UDk0U2oINnxC1"
+    },
+    {
+      "_id": "VXuNku52JhAdHeBk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Occasional showers",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aTaTAUPWJR6Cbsy7.VXuNku52JhAdHeBk"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!aTaTAUPWJR6Cbsy7"
+}

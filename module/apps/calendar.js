@@ -5,16 +5,17 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SETTINGS } from "../constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS, TABLES } from "../constants.js";
 import { WATCHES } from "../journey-rules.js";
 import {
   MONTH_DAYS, RECLAMATION, RECLAMATION_DAYS, SEASON_STARTS, SEASON_DAYS, YEAR_DAYS,
   isReclamationYear, seasonOf, watchStartFor, watchAt
 } from "../calendar-rules.js";
 import { RECLAMATION_DAY_NAMES, geometry, currentWatch, formatDate } from "../calendar.js";
-import { noteOf, notesOn, isPublic } from "../calendar-notes.js";
+import { noteOf, notesOn, isPublic, saveNote } from "../calendar-notes.js";
 import { noteText, noteOccurrence, absoluteDay } from "../calendar-rules.js";
 import { postCalendarNoteCard } from "../rolls.js";
+import { rollWardenText } from "../helpers.js";
 import { CairnCalendarNote } from "./calendar-note.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { CairnJourneyTracker } from "./journey-tracker.js";
@@ -27,13 +28,14 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/calendar`;
  *  every watch is a step at any snap. */
 const SNAPS = [15, 30, 60];
 
-/** Each season's glyph, and the key its colour is set by in the stylesheet, in the calendar's
- *  season order: the shortest day falls in Dead, the longest in Wet (`wardens-guide/vald.md`). */
+/** Each season's glyph, the key its colour is set by in the stylesheet, and its column of the
+ *  Weather in Vald table, in the calendar's season order: the shortest day falls in Dead, the
+ *  longest in Wet (`wardens-guide/vald.md`). */
 const SEASON_LOOKS = [
-  { key: "dead", icon: "fa-snowflake" },
-  { key: "dry", icon: "fa-sun" },
-  { key: "wet", icon: "fa-cloud-rain" },
-  { key: "harvest", icon: "fa-wheat-awn" }
+  { key: "dead", icon: "fa-snowflake", weather: TABLES.VALD_WEATHER_DEAD },
+  { key: "dry", icon: "fa-sun", weather: TABLES.VALD_WEATHER_DRY },
+  { key: "wet", icon: "fa-cloud-rain", weather: TABLES.VALD_WEATHER_WET },
+  { key: "harvest", icon: "fa-wheat-awn", weather: TABLES.VALD_WEATHER_HARVEST }
 ];
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -75,7 +77,8 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
       showToPlayers: CairnCalendarApp.#onShowToPlayers,
       postNote: CairnCalendarApp.#onPostNote,
       editNote: CairnCalendarApp.#onEditNote,
-      deleteNote: CairnCalendarApp.#onDeleteNote
+      deleteNote: CairnCalendarApp.#onDeleteNote,
+      rollWeather: CairnCalendarApp.#onRollWeather
     }
   };
 
@@ -272,7 +275,10 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
 
     // The selected day, and the notes on it this user may read.
     context.detail = { date: formatDate(view.year, view.month, view.day), sub: this.#subOf(view.year, view.month, view.day) };
-    context.notes = notesOn(view.year, view.month, view.day).map(({ entry, note }) => ({
+    const dayNotes = notesOn(view.year, view.month, view.day);
+    // The Reclamation belongs to no season, so it has no column of the table to roll.
+    context.canRollWeather = isGM && !reclamation && !dayNotes.some(({ entry }) => entry.getFlag(SYSTEM_ID, FLAGS.WEATHER));
+    context.notes = dayNotes.map(({ entry, note }) => ({
       id: entry.id,
       title: entry.name,
       text: noteText(entry.pages.find((p) => p.type === "text")?.text.content),
@@ -531,6 +537,30 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     if (!game.user.isGM) return;
     const entry = CairnCalendarApp.#noteEntry(target);
     if (entry) return CairnCalendarNote.confirmDelete(entry);
+  }
+
+  /**
+   * The Warden's Roll the weather: the selected day's season column of the Weather in Vald table,
+   * world copy first, written down as that day's note for everyone. Colour only — a journey rolls
+   * its own travel weather. A day that already has its weather is refused, and so is a second
+   * click while the first is still writing.
+   * @this {CairnCalendarApp}
+   */
+  static async #onRollWeather(event, target) {
+    if (!game.user.isGM || target.disabled) return;
+    const { year, month, day } = this.#view;
+    if (month === RECLAMATION) return;
+    if (notesOn(year, month, day).some(({ entry }) => entry.getFlag(SYSTEM_ID, FLAGS.WEATHER))) return;
+    target.disabled = true;
+    const text = await rollWardenText(SEASON_LOOKS[seasonOf(month, day)].weather);
+    if (!text) {
+      target.disabled = false;
+      return;
+    }
+    return saveNote({
+      title: game.i18n.localize("CAIRN.Calendar.Weather"), text,
+      note: { year, month: month + 1, day: day + 1, days: 1 }, everyone: true, weather: true
+    });
   }
 
   /** Every other connected client opens its window on the day the Warden is looking at.

@@ -196,6 +196,10 @@ export const FLAGS = {
    */
   CALENDAR_NOTE: "calendarNote",
 
+  /** On a calendar note's JournalEntry: `true` when the note is a day's Vald weather, written by
+   *  the calendar's Roll the weather. A day that has one offers no second roll. */
+  WEATHER: "weather",
+
   /** On a JournalEntry Folder: the one the calendar puts new notes in. */
   CALENDAR_FOLDER: "calendarFolder",
 
@@ -492,7 +496,13 @@ export const TABLES = {
   GROUP_TYPE: table("warden", "yZ9pH9tl7IPTZN0n"),
   RULER_TYPE: table("warden", "IGuzT0YefNApQ0jC"),
   FOREST_ADJECTIVE: table("warden", "0Ah2qN1D6oZKT04A"),
-  FOREST_NOUN: table("warden", "T7coF6JAtVPUBhGq")
+  FOREST_NOUN: table("warden", "T7coF6JAtVPUBhGq"),
+  // Weather in Vald (`srd-2e/wardens-guide/vald.md`), one column per season, read by the
+  // calendar's Roll the weather. Colour only: the travel weather is the Journey's own table.
+  VALD_WEATHER_DEAD: table("warden", "CifIfVBS7dXbZW7B"),
+  VALD_WEATHER_DRY: table("warden", "MIwjVXAVaXq8hYEJ"),
+  VALD_WEATHER_WET: table("warden", "aTaTAUPWJR6Cbsy7"),
+  VALD_WEATHER_HARVEST: table("warden", "ShzLpwdp8RGNhjF1")
 };
 
 /**

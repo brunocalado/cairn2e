@@ -1,0 +1,108 @@
+{
+  "_id": "MIwjVXAVaXq8hYEJ",
+  "name": "Vald Weather (Dry)",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Dry column of the Weather in Vald table for a day of the Dry season. It describes the day; the weather a journey travels in is the Journey's own roll.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "mbw6GaOWmM10Hw7r",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hot and sunny",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MIwjVXAVaXq8hYEJ.mbw6GaOWmM10Hw7r"
+    },
+    {
+      "_id": "PoRNyO1hamEm17ZK",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Warm and sunny",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MIwjVXAVaXq8hYEJ.PoRNyO1hamEm17ZK"
+    },
+    {
+      "_id": "sW7s7XlcdeDS1KIR",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Warm and breezy",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MIwjVXAVaXq8hYEJ.sW7s7XlcdeDS1KIR"
+    },
+    {
+      "_id": "2p5NVEIBDtGwbxDO",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Hot and humid",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MIwjVXAVaXq8hYEJ.2p5NVEIBDtGwbxDO"
+    },
+    {
+      "_id": "0Romfb1P5erBphqk",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Occasional heatwave",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MIwjVXAVaXq8hYEJ.0Romfb1P5erBphqk"
+    },
+    {
+      "_id": "eVGaDHRiwLyGUj7q",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Dry and windy",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!MIwjVXAVaXq8hYEJ.eVGaDHRiwLyGUj7q"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!MIwjVXAVaXq8hYEJ"
+}

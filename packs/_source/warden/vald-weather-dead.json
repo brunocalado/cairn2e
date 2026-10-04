@@ -1,0 +1,108 @@
+{
+  "_id": "CifIfVBS7dXbZW7B",
+  "name": "Vald Weather (Dead)",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Dead column of the Weather in Vald table for a day of the Dead season. It describes the day; the weather a journey travels in is the Journey's own roll.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "5PW4j8qif4EVI6Jn",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cold and clear",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!CifIfVBS7dXbZW7B.5PW4j8qif4EVI6Jn"
+    },
+    {
+      "_id": "JAuBdF9h86NjynXf",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Frosty mornings",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!CifIfVBS7dXbZW7B.JAuBdF9h86NjynXf"
+    },
+    {
+      "_id": "xbDvJsHcZJgy1Z5q",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Overcast skies",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!CifIfVBS7dXbZW7B.xbDvJsHcZJgy1Z5q"
+    },
+    {
+      "_id": "rlTRqDN3DcyFVzkE",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Light snow",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!CifIfVBS7dXbZW7B.rlTRqDN3DcyFVzkE"
+    },
+    {
+      "_id": "RefeYb8qmE0fIB2T",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Snow showers",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!CifIfVBS7dXbZW7B.RefeYb8qmE0fIB2T"
+    },
+    {
+      "_id": "UoOVa0rqutK1OvJ0",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Freezing rain",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!CifIfVBS7dXbZW7B.UoOVa0rqutK1OvJ0"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!CifIfVBS7dXbZW7B"
+}

@@ -4,7 +4,8 @@
       day is framed, and the day a season begins carries a heavy left rule in the season's colour
       with its glyph and name. A sticky note says a note everyone reads covers the day, a struck-out
       eye a Warden-only note — the same eye as the note's tag below. The Warden right-clicks a day
-      for its menu. --}}
+      for its menu, and the cloud after the selected day's date rolls its weather into a note — for
+      a day of a season that has no weather note yet. --}}
 <section class="cairn-calendar-monthview{{#if reclamation}} reclamation{{/if}}" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-grid" data-ink-w="2">
     <div class="cairn-calendar-monthbar" data-ink="hline" data-ink-at="bottom" data-ink-seed="calendar-month" data-ink-w="2">
         <span class="cairn-calendar-monthname">{{monthName}}</span>
@@ -12,6 +13,12 @@
             <span class="cairn-calendar-detail-date">{{detail.date}}</span>
             <span class="cairn-calendar-sub">{{detail.sub}}</span>
         </div>
+        {{#if canRollWeather}}
+        <button type="button" class="cairn-calendar-weather" data-action="rollWeather"
+                aria-label="{{localize 'CAIRN.Calendar.RollWeather'}}" data-tooltip="{{localize 'CAIRN.Calendar.RollWeatherHint'}}">
+            <i class="fa-solid fa-cloud-sun" inert></i>
+        </button>
+        {{/if}}
     </div>
     <div class="cairn-calendar-grid">
         {{#each heads}}<span class="cairn-calendar-head-cell">{{this}}</span>{{/each}}

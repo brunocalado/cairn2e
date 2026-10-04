@@ -1,0 +1,108 @@
+{
+  "_id": "ShzLpwdp8RGNhjF1",
+  "name": "Vald Weather (Harvest)",
+  "img": "icons/sundries/documents/document-sealed-signatures-red.webp",
+  "description": "<p>Roll the Harvest column of the Weather in Vald table for a day of the Harvest season. It describes the day; the weather a journey travels in is the Journey's own roll.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "results": [
+    {
+      "_id": "rcPhfUVSI2AP2TQw",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Mild and sunny",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!ShzLpwdp8RGNhjF1.rcPhfUVSI2AP2TQw"
+    },
+    {
+      "_id": "GEgySFmeU1GebxsB",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Cool and clear",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!ShzLpwdp8RGNhjF1.GEgySFmeU1GebxsB"
+    },
+    {
+      "_id": "NKwfINsVfJFZ94Cd",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Warm and sunny",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!ShzLpwdp8RGNhjF1.NKwfINsVfJFZ94Cd"
+    },
+    {
+      "_id": "UR2B99ihrJQnOtAH",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Warm and breezy",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!ShzLpwdp8RGNhjF1.UR2B99ihrJQnOtAH"
+    },
+    {
+      "_id": "DQPBtU5kJuZMjUod",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Light rain",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!ShzLpwdp8RGNhjF1.DQPBtU5kJuZMjUod"
+    },
+    {
+      "_id": "suKFroGhYkZI7wOw",
+      "type": "text",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "Heavy rain",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!ShzLpwdp8RGNhjF1.suKFroGhYkZI7wOw"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!tables!ShzLpwdp8RGNhjF1"
+}
