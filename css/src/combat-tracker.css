@@ -412,8 +412,13 @@
     }
 
     /* The acted switch: Primitive 5 drawn as a button (see the template), in the panel's
-       swapping pair — faint surface ink off, full surface ink on, a knob in the ground's colour —
-       and smaller than a sheet's, so it sits on the two lines of the row beside 20px glyphs.
+       swapping pair, with two states that differ in shape and not only in shade — at 18px a
+       faint track against a full one read as the same grey pill (maintainer, 2026-10-04).
+       Off is hollow: a soft-ink ring with a soft-ink knob at the left. On is solid and red —
+       the system's own `--cairn-loss`, ground down toward ink like the store's figures — with a
+       full-ink knob at the right: the row's action is spent (maintainer's call, 2026-10-04; green
+       read as the torchlight distance beside it, and core's `--color-level-error` was too loud
+       for the panel).
        `[data-action]` for the weight against the panel's filled-button rule (0,3,1). */
     .cairn-combat-acted button.cairn-acted-switch[data-action] {
         --button-background-color: transparent;
@@ -427,28 +432,36 @@
         width: auto;
 
         .cairn-switch-track {
-            background: color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
-            border-radius: 9px;
-            height: 18px;
-            width: 32px;
+            background: transparent;
+            border: var(--cairn-rule) solid color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+            border-radius: 10px;
+            box-sizing: border-box;
+            height: 20px;
+            width: 36px;
         }
 
         .cairn-switch-knob {
-            background: var(--cairn-surface-bg);
-            height: 14px;
-            width: 14px;
+            background: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
+            height: 12px;
+            width: 12px;
         }
 
         &[aria-checked="true"] .cairn-switch-track {
-            background: var(--cairn-surface-fg);
+            background: var(--cairn-loss);
+            border-color: var(--cairn-loss);
 
             .cairn-switch-knob {
-                transform: translateX(14px);
+                background: var(--cairn-surface-fg);
+                transform: translateX(16px);
             }
         }
 
         &:not(:disabled):hover[aria-checked="false"] .cairn-switch-track {
-            background: color-mix(in srgb, var(--cairn-surface-fg) 45%, transparent);
+            border-color: var(--cairn-surface-fg);
+
+            .cairn-switch-knob {
+                background: var(--cairn-surface-fg);
+            }
         }
 
         &:focus-visible {
@@ -464,6 +477,16 @@
         &:disabled {
             cursor: default;
             opacity: 1;
+        }
+    }
+
+    /* A dungeon row that has acted fades its picture and words as a fight's row does, but not
+       its switch: faded with the row, the switch's on state read as its off state. */
+    .combatant.cairn-dungeon-row.is-resolved {
+        opacity: 1;
+
+        > :not(.cairn-combat-acted) {
+            opacity: 0.55;
         }
     }
 
