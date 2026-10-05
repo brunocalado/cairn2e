@@ -142,8 +142,9 @@ Hooks.once("init", async function () {
   CONFIG.queries[journey.JOURNEY_QUERY] = async ({ type, ...data }, { user }) => journey.apply(type, data, user);
 
   // A barter writes the recipient's character, which the sender may not: the recipient's client,
-  // or the Warden's, makes the write. `receiveBarter` checks the payload before it does.
-  CONFIG.queries[BARTER_QUERY] = async (payload) => receiveBarter(payload);
+  // or the Warden's, makes the write. `receiveBarter` checks the payload — and that the asker owns
+  // the character the things come from — before it does.
+  CONFIG.queries[BARTER_QUERY] = async (payload, { user }) => receiveBarter(payload, user);
 
   // A player who drags a granted Actor onto the scene may create neither the copy nor its token:
   // the Warden's client makes both. `applyGrant` checks the asker owns the item that grants it.

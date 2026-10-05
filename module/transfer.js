@@ -5,8 +5,9 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "./constants.js";
+import { SYSTEM_ID, FLAGS } from "./constants.js";
 import { applyGold, gainPlaces, putCoin } from "./coin.js";
+import { BELONGINGS } from "./coin-rules.js";
 import { carryLight } from "./light-sources.js";
 import { bundleItems } from "./transfer-rules.js";
 import { tableNameOf } from "./data/_derived.js";
@@ -147,25 +148,39 @@ export async function landCoin(actor, amount) {
 /**
  * The receiving half of a barter, on a client that may write the recipient — theirs, the
  * Warden's, or the sender's own when they own both. The payload crossed a socket, so it is
- * checked before anything is written: a character, gear only (and coin inside a container that
- * travels), a whole non-negative amount of coin. A refusal writes nothing.
- * @param {{ targetUuid: string, bundles: object[], coin: number }} payload
+ * checked before anything is written, and nothing in it is taken on trust: it NAMES the things
+ * (`itemIds` on `sourceUuid`), and they are bundled here from the source's own documents, which
+ * every client holds. The asker must own the source — otherwise any player could make anything
+ * appear on anyone's character. Gear only (with what is inside a container that travels), a whole
+ * non-negative amount of coin. A refusal writes nothing.
+ *
+ * The coin is the sender's to have taken off already (`sendBarter` debits it before asking);
+ * this only lands it. A player who wanted coin from nowhere could type it onto their own sheet,
+ * which they own, so there is nothing for this side to guard there.
+ *
+ * What landed is also written on the recipient (`FLAGS.BARTER`), under the barter's id, so a
+ * sender whose query timed out can still learn what it lost.
+ * @param {{ id: string, sourceUuid: string, targetUuid: string, itemIds: string[], coin: number }} payload
+ * @param {User} user  Who asked — core's query context, or this user when the sender owns both.
  * @returns {Promise<{ landed: string[], arrived: Record<string, string>, coin: number }|{ refused: string }>}
  */
-export async function receiveBarter({ targetUuid, bundles, coin } = {}) {
+export async function receiveBarter({ id, sourceUuid, targetUuid, itemIds, coin } = {}, user) {
+  if (typeof id !== "string" || !id) return { refused: "id" };
   const actor = await fromUuid(targetUuid);
   if (actor?.documentName !== "Actor" || actor.type !== "character") return { refused: "target" };
-  if (!Array.isArray(bundles)) return { refused: "items" };
-  for (const b of bundles) {
-    if (!BARTER_TYPES.has(b?.data?.type)) return { refused: "items" };
-    if (!Array.isArray(b.contents) || b.contents.some((c) => !BARTER_CONTENT_TYPES.has(c?.data?.type))) {
-      return { refused: "items" };
-    }
-  }
+  const source = await fromUuid(sourceUuid);
+  if (source?.documentName !== "Actor" || source.type !== "character") return { refused: "source" };
+  if (!user || !source.testUserPermission(user, "OWNER")) return { refused: "source" };
+  if (!Array.isArray(itemIds) || new Set(itemIds).size !== itemIds.length) return { refused: "items" };
+  const chosen = itemIds.map((itemId) => source.items.get(itemId));
+  if (chosen.some((item) => !BARTER_TYPES.has(item?.type) || item.system.bodily)) return { refused: "items" };
+  const bundles = bundleItems(chosen.map((i) => i.toObject()), source.items.map((i) => i.toObject()));
+  if (bundles.some((b) => b.contents.some((c) => !BARTER_CONTENT_TYPES.has(c.data.type)))) return { refused: "items" };
   if (!Number.isInteger(coin) || coin < 0) return { refused: "coin" };
 
   const { landed, arrived } = await receiveItems(actor, bundles);
   const coinLanded = (await landCoin(actor, coin)) ? coin : 0;
+  await actor.setFlag(SYSTEM_ID, FLAGS.BARTER, { id, landed, arrived: Object.entries(arrived), coin: coinLanded });
   return { landed, arrived, coin: coinLanded };
 }
 
@@ -174,31 +189,51 @@ export async function receiveBarter({ targetUuid, bundles, coin } = {}) {
  * nobody who could is connected, in which case nothing was written anywhere.
  *
  * The recipient's own player first: it is their character, and the trade is between two
- * players. The active Warden when they are away. `User#query` throws when its user has gone, so
- * each is tried in turn, as the Scars window's hand-off does (`apps/scars.js`).
+ * players. The active Warden when they are away. A user who has gone is skipped before anything
+ * is sent; once a query is out, a failure — a timeout, above all — ends the search with
+ * `{ unanswered: true }`, because that client may have written all the same, and asking the
+ * next one would land the trade twice.
  * @param {Actor} target
- * @param {{ targetUuid: string, bundles: object[], coin: number }} payload
+ * @param {object} payload  As `receiveBarter`.
  * @returns {Promise<object|null>}
  */
 export async function deliverBarter(target, payload) {
-  if (target.isOwner) return receiveBarter(payload);
+  if (target.isOwner) return receiveBarter(payload, game.user);
   const owners = game.users.filter((u) => !u.isGM && u.active && target.testUserPermission(u, "OWNER"));
   const gm = game.users.activeGM;
   for (const user of gm ? [...owners, gm] : owners) {
+    if (!user.active) continue;
     try {
       return await user.query(BARTER_QUERY, payload, { timeout: 20000 });
     } catch (err) {
-      console.warn(`${SYSTEM_ID} | could not hand the barter to ${user.name}`, err);
+      console.warn(`${SYSTEM_ID} | ${user.name} did not answer the barter`, err);
+      return { unanswered: true };
     }
   }
   return null;
 }
 
 /**
+ * Put back coin the sender was debited for and that did not land: where it fits, else set aside —
+ * Belongings has no limit, so it is never lost.
+ * @param {Actor} actor
+ * @param {number} amount
+ */
+async function refundCoin(actor, amount) {
+  if (amount <= 0) return;
+  const [place] = gainPlaces(actor, amount);
+  await putCoin(actor, amount, place ?? BELONGINGS);
+}
+
+/**
  * The sending half of a barter, on the sender's client: the Barter window's Send.
  *
- * The receiver writes what lands (`deliverBarter`); the sender then loses exactly that and no
- * more, and is told what stayed. A card in chat says what went from whom to whom.
+ * The coin leaves the sender FIRST — the sender owns it, and a spend made while the answer is on
+ * its way can then no longer leave it both kept and received — and what does not land is put
+ * back. The receiver writes what lands (`deliverBarter`); the sender then loses exactly that and
+ * no more, and is told what stayed. With no answer at all it reads the recipient's record of the
+ * barter (`FLAGS.BARTER`) before deciding, since a slow client may have written anyway. A card
+ * in chat says what went from whom to whom.
  * @param {Actor} actor    The character handing things over.
  * @param {Actor} target   The character receiving them.
  * @param {Item[]} items   Gear of `actor`'s.
@@ -206,25 +241,35 @@ export async function deliverBarter(target, payload) {
  * @returns {Promise<boolean>}  Whether anything changed hands.
  */
 export async function sendBarter(actor, target, items, coin = 0) {
+  const id = foundry.utils.randomID();
+  // The names the card and the warnings use, by source id — read now, as the sources may be gone
+  // by the time the answer comes. By the name the table reads, so a gear unknown to its holder
+  // goes by its guise (`documents/item.js`).
   const bundles = bundleItems(items.map((i) => i.toObject()), actor.items.map((i) => i.toObject()));
-  const result = await deliverBarter(target, { targetUuid: target.uuid, bundles, coin });
+  if (coin > 0 && !(await applyGold(actor, -coin))) return false;
+  const payload = { id, sourceUuid: actor.uuid, targetUuid: target.uuid, itemIds: items.map((i) => i.id), coin };
+  let result = await deliverBarter(target, payload);
+  if (result?.unanswered) {
+    const record = target.getFlag(SYSTEM_ID, FLAGS.BARTER);
+    result = record?.id === id ? { ...record, arrived: Object.fromEntries(record.arrived) } : null;
+  }
   if (!result) {
+    await refundCoin(actor, coin);
     ui.notifications.warn(game.i18n.localize("CAIRN.Barter.NobodyToReceive", { name: target.name }));
     return false;
   }
   if (result.refused) {
+    await refundCoin(actor, coin);
     ui.notifications.error(game.i18n.localize("CAIRN.Barter.Refused"));
     return false;
   }
 
   const landed = new Set(result.landed);
-  // Named from the bundle's data, because the source item may already be gone — and by the name
-  // the table reads, so a gear unknown to its holder goes by its guise (`documents/item.js`).
   const moved = bundles.filter((b) => landed.has(b.id)).map((b) => tableNameOf(b.data));
   const left = bundles.filter((b) => !landed.has(b.id)).map((b) => tableNameOf(b.data));
   await carryLight(actor, result.arrived);
-  if (landed.size) await actor.deleteEmbeddedDocuments("Item", [...landed]);
-  if (result.coin) await applyGold(actor, -result.coin);
+  if (landed.size) await actor.deleteEmbeddedDocuments("Item", [...landed].filter((i) => actor.items.has(i)));
+  await refundCoin(actor, coin - result.coin);
 
   if (left.length) {
     ui.notifications.warn(game.i18n.localize("CAIRN.Barter.LeftBehind", { names: left.join(", "), name: target.name }));

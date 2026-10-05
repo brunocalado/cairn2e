@@ -78,11 +78,14 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     const context = await super._prepareContext(options);
     const items = this.actor.items;
     const rows = [];
-    // By the name this user reads: sorted by the real one, a guise would sit where its truth does.
-    const byName = (a, b) => a.shownName.localeCompare(b.shownName);
+    // Things by the name this user reads: sorted by the real one, a guise would sit where its
+    // truth does. Actors have no guise, and no `shownName` — sorting the recipients with the
+    // items' comparator threw the moment there were two of them.
+    const byShown = (a, b) => a.shownName.localeCompare(b.shownName);
+    const byName = (a, b) => a.name.localeCompare(b.name);
     // Part of the body is never offered: claws do not change hands.
-    for (const item of items.filter((i) => i.type === "gear" && !i.system.container && !i.system.bodily).sort(byName)) {
-      const contents = items.filter((i) => i.system.container === item.id).sort(byName);
+    for (const item of items.filter((i) => i.type === "gear" && !i.system.container && !i.system.bodily).sort(byShown)) {
+      const contents = items.filter((i) => i.system.container === item.id).sort(byShown);
       const whole = this.#picked.has(item.id);
       rows.push({
         id: item.id, name: item.shownName, img: item.shownImg, picked: whole, ringed: whole,

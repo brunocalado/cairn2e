@@ -165,6 +165,16 @@ export const FLAGS = {
   HOTBAR_SEEDED: "hotbar-seeded",
 
   /**
+   * On a character Actor: the last barter it received, as `{ id, landed, arrived, coin }` — the
+   * answer the receiving client wrote, kept where the sender can read it. A query that timed out
+   * may still have written, so the sender reads this before deciding what it lost: without it a
+   * slow answer left the thing on both characters. `arrived` is a list of `[sourceId, uuid]`
+   * pairs, not an object, because a flag object is merged on write and the last barter's keys
+   * would survive into this one.
+   */
+  BARTER: "barter",
+
+  /**
    * On a damage-result ChatMessage: what that hit took, as `{ actorUuid, hp, str }` — **deltas**,
    * not the before-values the card prints. `module/chat.js#reverseHit` adds them back, which
    * composes with anything that touched the actor in between; writing the absolutes back would
