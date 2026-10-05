@@ -39,7 +39,7 @@ const KINDS = {
 };
 
 /** The terrain a key stands for — Jungle rolls the Forest's synonyms, and so on. */
-export const terrainTarget = (key) => NAME_TERRAIN_SEE[key] ?? key;
+const terrainTarget = (key) => NAME_TERRAIN_SEE[key] ?? key;
 
 /**
  * The terrains the generator offers, as `CAIRN.NameGen.Terrain.<key>` keys: every terrain the

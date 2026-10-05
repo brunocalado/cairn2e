@@ -681,7 +681,7 @@ async function dealRations(actors, count) {
 /* -------------------------------------------- */
 
 /** "Day 2, night" — the caption of every card a watch posts. */
-export function watchLabel(journey) {
+function watchLabel(journey) {
   return game.i18n.localize("CAIRN.Journey.WatchFlavor", {
     day: journey.day,
     watch: game.i18n.localize(`CAIRN.Watches.${WATCHES[currentWatch()]}`)

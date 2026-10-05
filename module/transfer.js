@@ -135,7 +135,7 @@ export async function takeItem(actor, item, into = "") {
  * @param {number} amount
  * @returns {Promise<boolean>}  Whether it landed.
  */
-export async function landCoin(actor, amount) {
+async function landCoin(actor, amount) {
   if (amount <= 0) return true;
   const [place] = gainPlaces(actor, amount);
   if (place === undefined) {

@@ -58,7 +58,7 @@ export function notesOn(year, month, day) {
 }
 
 /** The folder new notes go in, or `undefined` if the Warden deleted it. */
-export function noteFolder() {
+function noteFolder() {
   return game.folders.find((f) => f.type === "JournalEntry" && f.getFlag(SYSTEM_ID, FLAGS.CALENDAR_FOLDER));
 }
 

@@ -8,7 +8,7 @@
 import { SYSTEM_ID } from "../constants.js";
 import * as journey from "../journey.js";
 import { watchesNeeded } from "../journey-rules.js";
-import { beginFromPage, ROUTE_TYPE } from "../pointcrawl.js";
+import { beginFromPage } from "../pointcrawl.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { JournalEntryPageHandlebarsSheet } = foundry.applications.sheets.journal;
@@ -85,6 +85,3 @@ export class CairnRoutePageSheet extends CairnInkMixin(JournalEntryPageHandlebar
     beginFromPage(this.page);
   }
 }
-
-/** The subtype this sheet is registered for. */
-export { ROUTE_TYPE };

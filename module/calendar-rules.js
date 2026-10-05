@@ -28,7 +28,6 @@ import { WATCHES } from "./journey-rules.js";
 /** "There are 24 hours in a day and 6 days in a week. Each month has 24 days (4 weeks), with
  *  12 months in a year." */
 export const MONTH_DAYS = 24;
-export const WEEK_DAYS = 6;
 export const YEAR_DAYS = 12 * MONTH_DAYS;
 /** The month index core gives the leap week: a thirteenth month with no days in an ordinary year. */
 export const RECLAMATION = 12;
