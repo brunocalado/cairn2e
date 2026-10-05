@@ -49,7 +49,11 @@ export class CairnCalendarNote extends CairnInkMixin(HandlebarsApplicationMixin(
     if (!game.user.isGM) return;
     const id = `${SYSTEM_ID}-calendar-note-${entry?.id ?? "new"}`;
     const app = foundry.applications.instances.get(id) ?? new CairnCalendarNote({ id, entry, date });
-    return app.render({ force: true });
+    // Every new note shares one window, so the one brought forward takes the day just clicked —
+    // it kept the day it was first opened on. Core writes a frame's title on the first render
+    // only, and the title names the day, so it is handed over again.
+    if (!entry && date) app.date = date;
+    return app.render({ force: true, window: { title: app.title } });
   }
 
   /** Delete a note, after asking; its form closes with it. */

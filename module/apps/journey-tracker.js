@@ -198,7 +198,9 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     // The watch that just ended, and what it turned up. `canEdit` and `index` are folded in here
     // rather than reached for with `../` in the template: the encounter block is two `{{#each}}`
     // frames deep, and a path that has to count them is one refactor from being silently wrong.
-    context.events = state.events.map((e, index) => ({ ...e, index, canEdit: isGM }));
+    // The Warden's alone: the rows are material to stage, and the party meets the result rather
+    // than reading the row it came from (`journey.js#rollEvent`).
+    context.events = isGM ? state.events.map((e, index) => ({ ...e, index, canEdit: true })) : [];
     context.eventsWatch = state.eventsWatch;
     context.need = need;
     context.canResolve = isGM && need.ready;
@@ -379,9 +381,19 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     this.#send("resupply");
   }
 
+  /** A Resolve is out: a second click while it runs is dropped, so one click is one watch — the
+   *  queue in `journey.apply` would only run it second, and Explore needs no roll to stop it. */
+  #busy = false;
+
   /** @this {CairnJourneyTracker} */
-  static #onResolveWatch() {
-    this.#send("resolveWatch");
+  static async #onResolveWatch() {
+    if (this.#busy) return;
+    this.#busy = true;
+    try {
+      await this.#send("resolveWatch");
+    } finally {
+      this.#busy = false;
+    }
   }
 
   /** @this {CairnJourneyTracker} */

@@ -141,7 +141,22 @@ export function effectiveTerrain(journey) {
  * @param {User} [user]  The user who asked; the Warden when omitted.
  * @returns {Promise<boolean>}
  */
-export async function apply(type, data = {}, user = game.user) {
+export function apply(type, data = {}, user = game.user) {
+  const run = queue.then(() => applyNow(type, data, user));
+  queue = run.catch(() => {});
+  return run;
+}
+
+/**
+ * The mutations, one after another. Each reads its own copy of the journey and saves the whole of
+ * it at the end, so two running at once each write over the other's work: two quick clicks on
+ * Resolve dealt the Rations twice, posted two cards and moved the clock two watches. Chained here,
+ * the second reads what the first saved.
+ */
+let queue = Promise.resolve();
+
+/** `apply`'s body, run in turn. */
+async function applyNow(type, data, user) {
   if (!game.user.isGM) return false;
   const wardenOnly = !user.isGM && !PLAYER_MUTATIONS.has(type);
   if (wardenOnly) return false;
@@ -303,7 +318,9 @@ async function addCrew(journey, { uuids }) {
   const before = crew.size;
   for (const uuid of Array.isArray(uuids) ? uuids : []) if (typeof uuid === "string") crew.add(uuid);
   if (crew.size === before) return;
+  const crewBefore = members(journey).length;
   journey.crew = [...crew];
+  dropStaleRolls(journey, crewBefore);
   await save(journey);
 }
 
@@ -311,7 +328,9 @@ async function addCrew(journey, { uuids }) {
 async function removeCrew(journey, { uuid }) {
   const crew = journey.crew.filter((u) => u !== uuid);
   if (crew.length === journey.crew.length) return;
+  const crewBefore = members(journey).length;
   journey.crew = crew;
+  dropStaleRolls(journey, crewBefore);
   await save(journey);
 }
 
@@ -431,6 +450,12 @@ async function resolveWatch(journey) {
 
   const action = need.action;
   const crew = members(journey);
+  // Camp and Supply are done BY someone: with nobody on the journey there is no Ration to eat and
+  // no hand to take the bounty, and the watch is not spent.
+  if ((action === "camp" || action === "supply") && !crew.length) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Journey.NoCrewFor", { action: game.i18n.localize(`CAIRN.Journey.Actions.${action}`) }));
+    return;
+  }
   const names = crew.map((a) => a.name).join(", ");
   const lines = [];
   const t = (k) => game.i18n.localize(k);
@@ -568,11 +593,12 @@ async function adjust(journey, { field, delta }) {
   if (field === "watchesNeeded") journey.watchesNeeded = Math.max(1, journey.watchesNeeded + d);
   else if (field === "progress") journey.progress = Math.min(Math.max(journey.progress + d, 0), journey.watchesNeeded);
   else return;
+  // Only on the transition: the Warden's `+1` that lands the party arrives them, and nothing
+  // afterwards walks them back — not a `−1` of progress, not a watch more for the weather. Where
+  // the party is is a fact about the fiction, not a function of a counter, so `arrived` stays
+  // true once set and `arrive` runs once a journey.
   const wasArrived = journey.arrived;
-  journey.arrived = journey.progress >= journey.watchesNeeded;
-  // Only on the transition: the Warden's `+1` that lands the party arrives them, and the `−1`
-  // afterwards does not walk them back — where the party is is a fact about the fiction, not a
-  // function of a counter, so `arrive` runs once and the position it set stays put.
+  journey.arrived = wasArrived || journey.progress >= journey.watchesNeeded;
   if (!wasArrived && journey.arrived) await arrive(journey, game.i18n.localize("CAIRN.Journey.Title"));
   await save(journey);
 }
@@ -630,6 +656,7 @@ export async function consumeRation(actor) {
  * writes and six renders of every open sheet.
  */
 async function dealRations(actors, count) {
+  if (!actors.length) return;
   const source = await fromUuid(GEAR.RATIONS);
   if (!source) return;
   const data = copyOf(source);

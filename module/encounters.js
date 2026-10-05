@@ -208,6 +208,7 @@ export async function addEncounterToScene(rows, message, { origin = null } = {})
     const count = await rollEncounterCount(row.countFormula, row.label);
     if (count < 1) continue;
 
+    const before = actors.length;
     if (row.kind === "npc") {
       // A fresh person each time, from the NPC generator, filed in the Encounters folder — all
       // of them in one create.
@@ -216,13 +217,20 @@ export async function addEncounterToScene(rows, message, { origin = null } = {})
       const actor = await importEncounterActor(row.uuid, folder);
       for (let i = 0; i < count && actor; i++) actors.push(actor);
     }
-    summary.push(`${count} × ${row.label}`);
+    // What was placed, not what was rolled: a row whose creature is gone put nothing down.
+    if (actors.length > before) summary.push(`${actors.length - before} × ${row.label}`);
   }
 
+  // The card is marked only once something is on the scene: a row that resolved to nothing left
+  // the button gone for good on an encounter that never happened.
+  if (!actors.length) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Encounter.NothingPlaced"));
+    return false;
+  }
   if (message) await message.setFlag(SYSTEM_ID, ADDED_FLAG, true);
-  if (actors.length) await placeTokens(scene, actors, origin ?? viewCentre());
-  if (summary.length) ui.notifications.info(game.i18n.localize("CAIRN.Encounter.Placed", { summary: summary.join(", ") }));
-  return actors.length > 0;
+  await placeTokens(scene, actors, origin ?? viewCentre());
+  ui.notifications.info(game.i18n.localize("CAIRN.Encounter.Placed", { summary: summary.join(", ") }));
+  return true;
 }
 
 /** Find the "Encounters" Actor folder by its {@link FOLDER_FLAG}, creating it on first use. */

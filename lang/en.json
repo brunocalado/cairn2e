@@ -400,6 +400,7 @@
     "FolderName": "Encounters",
     "NoActor": "That encounter row points at a creature that no longer exists.",
     "NoScene": "Open a scene before adding an encounter to it.",
+    "NothingPlaced": "Nothing was added to the scene.",
     "PickPoint": "Click the map where they appear — Escape to call it off.",
     "Placed": "Added to the scene: {summary}.",
     "RandomNpc": "random NPC"
@@ -622,6 +623,7 @@
     "NeedWeather": "Set the weather for this watch.",
     "Needed": "Needed",
     "NeedsWatches": "The journey takes {n} watches.",
+    "NoCrewFor": "Nobody is on the journey to {action}. Drag the party onto the roster first.",
     "NoParty": "the party",
     "NoSleep": "Nobody made camp: every character adds a Fatigue and is Deprived, and tomorrow's terrain is a step harder.",
     "NoTable": "The system's table {uuid} is missing from its compendium.",
