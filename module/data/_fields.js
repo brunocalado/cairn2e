@@ -66,7 +66,7 @@ export function containerField() {
  * What an item comes with: the uuids of the Actors and gear dropped on its Grants zone — the
  * Raven Familiar a growth gives, the servant that comes with a Blood Pail. The link is DATA, not a
  * `@UUID` in the prose, so it survives a translation rewriting the description and the system can
- * act on it (`apps/item-sheet.js`).
+ * act on it (`apps/_item-grants.js`).
  *
  * Plain strings, not `DocumentUUIDField`, for the reason `item-background.js` gives: that field
  * resolves a compendium uuid through `game.packs` while validating, and the pack build validates

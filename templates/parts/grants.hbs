@@ -1,12 +1,12 @@
 {{!-- What an item comes with (`system.grants`), shared by the gear's Grants row and the growth's
       Grants zone. Each row names an Actor or a gear by its uuid: the name opens it, and the row
-      itself is a drag source carrying that document (`item-sheet.js#_onDragStart`) — `draggable`
+      itself is a drag source carrying that document (`_item-grants.js#grantDrag`) — `draggable`
       is the class `DragDrop` binds, never the HTML attribute (`parts/slot-row.hbs`). A uuid that
       resolves to nothing keeps its row and says so.
 
       Under the rows, for whoever may edit the item, the drop zone: a dotted frame that turns to
       full ink over a sunk ground while something is dragged across it (`.dragover`, set in
-      `item-sheet.js#_onRender`) or the pointer rests on it. --}}
+      `_item-grants.js#bindGrantZones`) or the pointer rests on it. --}}
 <div class="cairn-grants">
     {{#if grants.length}}
     <ol class="cairn-plain-list">

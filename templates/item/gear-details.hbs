@@ -12,9 +12,9 @@
 
       But an axis row is drawn only when it says something. A Torch has no die, no armour, no
       magic, no charges and holds nothing, and the five rows saying so were the whole sheet; so
-      `axes.*` (`item-sheet.js#_prepareContext`) is true for an axis with a VALUE, and that is the
+      `axes.*` (`item-gear-sheet.js#_prepareContext`) is true for an axis with a VALUE, and that is the
       only test. The Add row at the foot offers the axes not on show and commits the first option
-      of the one clicked (`item-sheet.js#AXES`, `open`), so a row never appears empty and the
+      of the one clicked (`item-gear-sheet.js#AXES`, `open`), so a row never appears empty and the
       sheet never has to remember anything the document cannot answer; the row itself goes once
       every axis is on show. Blast and Takes Slots follow their axis as before: a rider on a die,
       a rider on a capacity.
@@ -32,7 +32,7 @@
         {{!-- The die, or none. Buttons, not a dropdown: the whole range is six short words, so a
               list that has to be opened to be read hides nothing but itself — and the one in use
               is then legible from across the table. The choices come from the field's own
-              `choices` with the blank LAST (`item-sheet.js#_prepareContext`): a blank die is the
+              `choices` with the blank LAST (`item-gear-sheet.js#_prepareContext`): a blank die is the
               model's own "not a weapon", and since the row is only ever added with a die in it,
               that button is the one that takes the row away — so it sits at the end of the run
               with the word None on it rather than leading with an unlabelled dash. The row is its
@@ -196,7 +196,7 @@
         {{#if axes.grants}}
         {{!-- What it comes with — the servant with a Blood Pail. Actors and gear, dropped on the
               zone, never typed. Opened from the Add row with nothing in it: the one axis that has
-              no first value to commit (`item-sheet.js#AXES`). --}}
+              no first value to commit (`item-gear-sheet.js#AXES`). --}}
         <div class="cairn-field cairn-prop-row cairn-grants-row"
             data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-grants">
             <span class="cairn-field-label">{{localize 'CAIRN.Grants.Label'}}</span>

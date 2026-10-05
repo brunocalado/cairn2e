@@ -13,6 +13,10 @@ import { CairnNpcSheet } from "./apps/npc-sheet.js";
 import { CairnPartySheet } from "./apps/party-sheet.js";
 import { CairnItem } from "./documents/item.js";
 import { CairnItemSheet } from "./apps/item-sheet.js";
+import { CairnGearSheet } from "./apps/item-gear-sheet.js";
+import { CairnBackgroundSheet } from "./apps/item-background-sheet.js";
+import { CairnGrowthSheet } from "./apps/item-growth-sheet.js";
+import { CairnScarSheet } from "./apps/item-scar-sheet.js";
 import * as characterGenerator from "./character-generator.js";
 import * as npcGenerator from "./npc-generator.js";
 import * as monsterGenerator from "./monster-generator.js";
@@ -235,7 +239,14 @@ Hooks.once("init", async function () {
     types: ["party"],
     makeDefault: true
   });
-  foundry.documents.collections.Items.registerSheet(SYSTEM_ID, CairnItemSheet, { makeDefault: true });
+  // Per Item type too: a coin, a Fatigue and a feature have no behaviour of their own and share
+  // the base sheet; every other kind has a class of its own.
+  const { Items } = foundry.documents.collections;
+  Items.registerSheet(SYSTEM_ID, CairnItemSheet, { types: ["coin", "fatigue", "feature"], makeDefault: true });
+  Items.registerSheet(SYSTEM_ID, CairnGearSheet, { types: ["gear"], makeDefault: true });
+  Items.registerSheet(SYSTEM_ID, CairnBackgroundSheet, { types: ["background"], makeDefault: true });
+  Items.registerSheet(SYSTEM_ID, CairnGrowthSheet, { types: ["growth"], makeDefault: true });
+  Items.registerSheet(SYSTEM_ID, CairnScarSheet, { types: ["scar"], makeDefault: true });
   // A journal page has no collection-level registrar; core registers its own page sheets through
   // `DocumentSheetConfig` and so does this one.
   foundry.applications.apps.DocumentSheetConfig.registerSheet(
