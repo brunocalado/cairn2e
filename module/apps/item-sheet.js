@@ -543,13 +543,10 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       await item.update({ "system.unknown": true });
       return;
     }
-    const content = await foundry.applications.handlebars.renderTemplate(`systems/${SYSTEM_ID}/templates/chat/item-card.hbs`, {
-      description: await enrich(item.system.description, item)
-    });
     const flavor = game.i18n.localize("CAIRN.Unknown.Revealed", {
       guise: foundry.utils.escapeHTML(item.tableName), name: foundry.utils.escapeHTML(item.name)
     });
-    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: item.parent }), flavor, content });
+    await item.postCard({ text: item.system.description, flavor });
     await item.update({ "system.unknown": false });
   }
 

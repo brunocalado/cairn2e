@@ -9,7 +9,6 @@ import { SYSTEM_ID } from "../constants.js";
 import { rollDamage, rollSave } from "../rolls.js";
 import { slotsForItem, layoutSlots, nestingRefusal } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
-import { enrich } from "../helpers.js";
 import { lightSpell } from "../light-sources.js";
 import { takeItem } from "../transfer.js";
 import { CairnSheetMixin, staleEditorParts } from "./_sheet-mixin.js";
@@ -19,16 +18,6 @@ import { bindSteppers, stepStat, flushSteps, fieldNumber, fitToText } from "./_s
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
-
-const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
-
-/**
- * An item's name as a chat message's caption. The message template draws `flavor` raw — exactly as
- * core's own does — and a player names their own items, so it is escaped here.
- */
-function postedName(item) {
-  return foundry.utils.escapeHTML(item.tableName);
-}
 
 /**
  * Shared behaviour for the three Cairn actor sheets. Not registered directly.
@@ -416,17 +405,14 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    *
    * This is where the inventory row's inline description went. A `<details>` in the ledger moved
    * the ten numbered lines every time one opened, and showing the table what a thing does is what
-   * the description was being opened for anyway. Enriched here rather than in `#itemView`: it is
-   * wanted once, on a click, not for every row on every render.
+   * the description was being opened for anyway. Enriched on the click rather than in `#itemView`:
+   * it is wanted once, not for every row on every render.
    */
   static async #onItemPost(event, target) {
     const item = this.#rowItem(target);
     if (!item) return;
     // A gear unknown to the table posts its guise, whoever posts it: chat is read by everyone.
-    const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
-      description: await enrich(item.tableDescription, this.actor)
-    });
-    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content });
+    await item.postCard();
   }
 
   /**
@@ -447,17 +433,9 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       modal: true
     });
     if (!proceed) return;
-    const written = item.system.description;
-    const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
-      description: await enrich(written, this.actor)
-    });
-    // `itemUuid` is for Automated Animations and anything else that looks for the message's item
-    // (`rolls.js#postDamageRoll`). The item is deleted below, but that module reads the flag
-    // synchronously on `createChatMessage`, before this await returns.
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content,
-      flags: { [SYSTEM_ID]: { itemUuid: item.uuid } }
-    });
+    // The item is deleted below, but Automated Animations reads the `itemUuid` flag synchronously
+    // on `createChatMessage`, before this await returns.
+    await item.postCard({ text: item.system.description, linkItem: true });
     await item.delete();
   }
 
@@ -490,13 +468,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       if (choice === "save") await rollSave(this.actor, "WIL");
     }
     const fatigued = (await this.actor.addFatigue()).length > 0;
-    const content = await foundry.applications.handlebars.renderTemplate(`${TEMPLATES}/chat/item-card.hbs`, {
-      description: await enrich(item.system.description, this.actor),
-      note: game.i18n.localize(fatigued ? "CAIRN.CastFatigue" : "CAIRN.CastNoFatigue")
-    });
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }), flavor: postedName(item), content,
-      flags: { [SYSTEM_ID]: { itemUuid: item.uuid } }
+    await item.postCard({
+      text: item.system.description,
+      note: game.i18n.localize(fatigued ? "CAIRN.CastFatigue" : "CAIRN.CastNoFatigue"),
+      linkItem: true
     });
     await lightSpell(this.actor, item);
   }

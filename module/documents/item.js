@@ -10,6 +10,9 @@ import { placeOf, sackAt } from "../coin-rules.js";
 import { SYSTEM_ID, DEFAULT_ARTWORK, GEAR_ARTWORK } from "../constants.js";
 import { revertScarGain } from "../scars.js";
 import { revertGrowthGain } from "../growth.js";
+import { enrich } from "../helpers.js";
+
+const ITEM_CARD_TEMPLATE = `systems/${SYSTEM_ID}/templates/chat/item-card.hbs`;
 
 /**
  * "Not enough room" — one message for every refused write, naming what would not fit.
@@ -366,6 +369,40 @@ export class CairnItem extends Item {
   /** The picture everyone sees — a hotbar macro's icon: the guise's while the gear is unknown. */
   get tableImg() {
     return this.type === "gear" && this.system.unknown ? this.system.guiseImg : this.img;
+  }
+
+  /* -------------------------------------------- */
+  /*  Chat                                        */
+  /* -------------------------------------------- */
+
+  /**
+   * Post this item to chat as read out loud: its text as the card's body, its name as the caption.
+   * Post, Consume, Cast and the Warden's Reveal all go through here.
+   *
+   * The text is enriched relative to the item, not its actor: a link the editor writes into an
+   * item's description is relative to that item, and resolved from the actor it is broken.
+   * @param {object} [options]
+   * @param {string} [options.text]      The HTML to enrich (default: what the table may read).
+   * @param {string} [options.note]      A footer line, already localized.
+   * @param {string} [options.flavor]    A caption replacing the name. The caller escapes what it
+   *                                     interpolates.
+   * @param {boolean} [options.linkItem] Flag the message with this item's uuid, for Automated
+   *                                     Animations and anything else that looks for the message's
+   *                                     item (`rolls.js#postDamageRoll`).
+   * @returns {Promise<ChatMessage>}
+   */
+  async postCard({ text = this.tableDescription, note, flavor, linkItem = false } = {}) {
+    const content = await foundry.applications.handlebars.renderTemplate(ITEM_CARD_TEMPLATE, {
+      description: await enrich(text, this), note
+    });
+    return ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.parent }),
+      // The message template draws `flavor` raw — exactly as core's own does — and a player names
+      // their own items.
+      flavor: flavor ?? foundry.utils.escapeHTML(this.tableName),
+      content,
+      ...(linkItem ? { flags: { [SYSTEM_ID]: { itemUuid: this.uuid } } } : {})
+    });
   }
 
   /** @override */
