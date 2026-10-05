@@ -18,8 +18,9 @@ import { gainUpdate, revertUpdate, attrPath, attrResource } from "./gains.js";
  *   "add"     the total is added to the maximum                 ("add that amount to your max HP")
  *   "set"     the total becomes the maximum, even if it is lower ("Take the new result as…")
  *
- * `deferred` marks a row whose gain waits on the fiction — "once mended", "when you get
- * over it", "after recovery". Nothing fires it; the player asks for it when their table agrees.
+ * `deferred` marks a row whose gain waits on the fiction — "until you rest", "once mended",
+ * "when you get over it", "after recovery". Nothing fires it; the player asks for it when their
+ * table agrees.
  *
  * `location` is the d6 that names where it landed, in face order — as keys of the
  * `CAIRN.Scar.Locations.*` strings, so the place is printed in the table's language. `choose` is
@@ -28,7 +29,7 @@ import { gainUpdate, revertUpdate, attrPath, attrResource } from "./gains.js";
 export const SCAR_ENTRIES = [
   { entry: 1, location: ["Neck", "Hands", "Eye", "Chest", "Legs", "Ear"], formula: "1d6", attr: "hp", mode: "higher" },
   { entry: 2, formula: "1d6", attr: "hp", mode: "higher" },
-  { entry: 3, formula: "1d6", attr: "hp", mode: "add", condition: CONDITION.DEPRIVED },
+  { entry: 3, formula: "1d6", attr: "hp", mode: "add", condition: CONDITION.DEPRIVED, deferred: true },
   { entry: 4, location: ["Leg", "Leg", "Arm", "Arm", "Rib", "Skull"], formula: "2d6", attr: "hp", mode: "higher", deferred: true },
   { entry: 5, formula: "2d6", attr: "hp", mode: "higher", deferred: true },
   // The d6 picks which attribute grows, so there is no fixed `attr` — the choice is written onto
