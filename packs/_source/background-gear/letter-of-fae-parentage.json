@@ -1,0 +1,31 @@
+{
+  "_id": "sH1mJBWYcWuKH2Eq",
+  "name": "Letter of Fae Parentage",
+  "type": "gear",
+  "img": "icons/sundries/documents/document-letter-formal-tan.webp",
+  "system": {
+    "description": "<p>You received a <strong>Letter</strong> (<em>petty</em>) detailing incontrovertible proof that your true parentage is that of Fae nobility. The note also indicates a date and location where you are to meet the letter's author, deep in the the Wood.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!sH1mJBWYcWuKH2Eq",
+  "folder": "BIioGZlcge5OdBKx"
+}

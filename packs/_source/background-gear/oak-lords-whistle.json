@@ -1,0 +1,31 @@
+{
+  "_id": "8bILYszGX1spcjyP",
+  "name": "Oak Lord's Whistle",
+  "type": "gear",
+  "img": "icons/tools/instruments/flute-simple-wood.webp",
+  "system": {
+    "description": "<p>You carved a <strong>Whistle</strong> (<em>petty</em>) from an <strong>Oak Lord's</strong> branch. Your act did not go unnoticed. You cannot seem to rid yourself of the whistle either.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!8bILYszGX1spcjyP",
+  "folder": "BIioGZlcge5OdBKx"
+}

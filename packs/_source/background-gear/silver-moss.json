@@ -1,0 +1,31 @@
+{
+  "_id": "txz4gOlGFHYqE5O7",
+  "name": "Silver Moss",
+  "type": "gear",
+  "img": "icons/commodities/stone/stone-chunk-moss-grey.webp",
+  "system": {
+    "description": "<p>You once freed a Naiad from a choked stream. In return, it gave you some <strong>Silver Moss</strong> (petty). Swallow it near water, and the creature will come, once, to repay its debt.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!txz4gOlGFHYqE5O7",
+  "folder": "BIioGZlcge5OdBKx"
+}

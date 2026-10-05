@@ -1,0 +1,31 @@
+{
+  "_id": "mlzGWLRCYV0T3rxe",
+  "name": "Strange Compass",
+  "type": "gear",
+  "img": "icons/tools/navigation/compass-worn-copper.webp",
+  "system": {
+    "description": "<p>A distant cousin left you a small inheritance. Take <strong>20Gp</strong> and a <strong>Strange Compass</strong> (<em>petty</em>) that always points towards something deep in the Wood.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!mlzGWLRCYV0T3rxe",
+  "folder": "BIioGZlcge5OdBKx"
+}

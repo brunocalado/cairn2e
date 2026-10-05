@@ -179,7 +179,9 @@ and **Next** to move between them:
 5. **Traits**: press **Roll all**, or roll the eight traits one by one.
 6. **Bond**: roll a Bond and an age. Tick **Youngest character** if that is you, and you roll an
    **Omen** too. A roll fills the Bond's or the Omen's box, and what the box holds is what the
-   character keeps: reword the roll, or write your own.
+   character keeps: reword the roll, or write your own. When the Bond you roll names an item (the
+   Strange Compass and 20gp, the Stone Heart), it is listed under the box and you get it. Rewording
+   the Bond keeps the items; press the **×** beside one to leave it behind.
 7. **Review**: check everything, then press **Create Character**. Anything you left blank is rolled
    for you.
 

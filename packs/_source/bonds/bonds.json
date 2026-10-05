@@ -23,6 +23,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.9BSsoLlFlSJbqOIb"
     },
     {
+      "_id": "CaBJlbeEI5Hb9VYa",
+      "type": "document",
+      "name": "Single Gem",
+      "img": "icons/commodities/gems/gem-faceted-round-white.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.gUNGlESBgj3uEBw9",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.CaBJlbeEI5Hb9VYa"
+    },
+    {
       "_id": "YF8i4jAzeOy4bkyC",
       "type": "text",
       "name": "",
@@ -36,6 +51,36 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.YF8i4jAzeOy4bkyC"
+    },
+    {
+      "_id": "lI5A0YXZCMjGzYnB",
+      "type": "document",
+      "name": "Strange Compass",
+      "img": "icons/tools/navigation/compass-worn-copper.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.mlzGWLRCYV0T3rxe",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.lI5A0YXZCMjGzYnB"
+    },
+    {
+      "_id": "j5nEv07SaCOrZ3F2",
+      "type": "document",
+      "name": "Gold",
+      "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.TFBn50KLgZ5IcZ1S",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.j5nEv07SaCOrZ3F2"
     },
     {
       "_id": "HNfLYUlgHEmoBmth",
@@ -53,6 +98,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.HNfLYUlgHEmoBmth"
     },
     {
+      "_id": "3pZxyD4vlldFtqBo",
+      "type": "document",
+      "name": "Portrait",
+      "img": "icons/equipment/neck/pendant-enamel.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.w189C6zpCtgO8cEX",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.3pZxyD4vlldFtqBo"
+    },
+    {
       "_id": "B7WmKVHYDVR1luY3",
       "type": "text",
       "name": "",
@@ -66,6 +126,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.B7WmKVHYDVR1luY3"
+    },
+    {
+      "_id": "2wAE8o1njJDrj6Hv",
+      "type": "document",
+      "name": "Tiny Crystal Prism",
+      "img": "icons/commodities/gems/gem-cluster-blue-white.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.qBeEAvCKZFgQpJbr",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.2wAE8o1njJDrj6Hv"
     },
     {
       "_id": "EtVBWq2HlPKTybv4",
@@ -83,6 +158,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.EtVBWq2HlPKTybv4"
     },
     {
+      "_id": "DUOtCRn3EEvcCjlE",
+      "type": "document",
+      "name": "Silver Moss",
+      "img": "icons/commodities/stone/stone-chunk-moss-grey.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.txz4gOlGFHYqE5O7",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.DUOtCRn3EEvcCjlE"
+    },
+    {
       "_id": "hCTXcoZXEd8r6WCS",
       "type": "text",
       "name": "",
@@ -96,6 +186,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.hCTXcoZXEd8r6WCS"
+    },
+    {
+      "_id": "1tIFxkJeqwfGGKjW",
+      "type": "document",
+      "name": "Journal",
+      "img": "icons/sundries/books/book-notes-ragged-green.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LE2YxZOunQ0nEuoc",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.1tIFxkJeqwfGGKjW"
     },
     {
       "_id": "tPvgnVKfqkTlBEjh",
@@ -113,6 +218,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.tPvgnVKfqkTlBEjh"
     },
     {
+      "_id": "Xbv0ML3nrhcjUuzQ",
+      "type": "document",
+      "name": "Ancient Key (half)",
+      "img": "icons/sundries/misc/key-ornate-iron-black.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.ntCbCGZ0lGpOZYLU",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.Xbv0ML3nrhcjUuzQ"
+    },
+    {
       "_id": "iBHXBw8EgSjpDF0s",
       "type": "text",
       "name": "",
@@ -126,6 +246,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.iBHXBw8EgSjpDF0s"
+    },
+    {
+      "_id": "eNGWqgbpFh3HZGGV",
+      "type": "document",
+      "name": "Letter of Fae Parentage",
+      "img": "icons/sundries/documents/document-letter-formal-tan.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.sH1mJBWYcWuKH2Eq",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.eNGWqgbpFh3HZGGV"
     },
     {
       "_id": "dZA8nQp1C7dPyTIb",
@@ -143,6 +278,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.dZA8nQp1C7dPyTIb"
     },
     {
+      "_id": "76DqUisyWempdkWW",
+      "type": "document",
+      "name": "Signet Ring",
+      "img": "icons/equipment/finger/ring-signet-silver.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.AUfymtcT8KbZhLK0",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.76DqUisyWempdkWW"
+    },
+    {
       "_id": "xMN76OAHKLNRy87p",
       "type": "text",
       "name": "",
@@ -156,6 +306,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.xMN76OAHKLNRy87p"
+    },
+    {
+      "_id": "Ksv9QD9gRL2SWlfK",
+      "type": "document",
+      "name": "Mischievous Spirit",
+      "img": "icons/creatures/magical/spirit-undead-ghost-tan-teal.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.SXkYH7gRDmauBBEl",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.Ksv9QD9gRL2SWlfK"
     },
     {
       "_id": "iTkUeUtSAML1Ybtk",
@@ -173,6 +338,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.iTkUeUtSAML1Ybtk"
     },
     {
+      "_id": "EI7sriE6OgRTBAcd",
+      "type": "document",
+      "name": "Rolled-Up Map",
+      "img": "icons/sundries/scrolls/scroll-bound-sealed-red-white.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.gUxTT0lmAwpiIP2g",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.EI7sriE6OgRTBAcd"
+    },
+    {
       "_id": "ilMo9oaqvZGULrLH",
       "type": "text",
       "name": "",
@@ -186,6 +366,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.ilMo9oaqvZGULrLH"
+    },
+    {
+      "_id": "4ynfsJOALhwxo3T3",
+      "type": "document",
+      "name": "Letter to the Lord of Winter",
+      "img": "icons/sundries/documents/document-sealed-brown-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.YMmk7UNsB9H6Jshv",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.4ynfsJOALhwxo3T3"
     },
     {
       "_id": "EYpeK6XUKTaDUhHb",
@@ -218,6 +413,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.MHDSgahiUzned8qJ"
     },
     {
+      "_id": "QwgNZpWpRTFJ8C2l",
+      "type": "document",
+      "name": "Bracelet",
+      "img": "icons/commodities/flowers/buds-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.RYxR0MxK7bAy55cN",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.QwgNZpWpRTFJ8C2l"
+    },
+    {
       "_id": "bm83U5TY3NioxRhj",
       "type": "text",
       "name": "",
@@ -231,6 +441,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.bm83U5TY3NioxRhj"
+    },
+    {
+      "_id": "Kz3dR6GgHQflrY8T",
+      "type": "document",
+      "name": "Stone Heart",
+      "img": "icons/commodities/biological/organ-heart-black.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.EtgcDKKGq6Hpy9EO",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.Kz3dR6GgHQflrY8T"
     },
     {
       "_id": "Qp1ch8hcwQwrstUR",
@@ -248,6 +473,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.Qp1ch8hcwQwrstUR"
     },
     {
+      "_id": "ZJz7Ffb52fnIBlmC",
+      "type": "document",
+      "name": "Oak Lord's Whistle",
+      "img": "icons/tools/instruments/flute-simple-wood.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.8bILYszGX1spcjyP",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.ZJz7Ffb52fnIBlmC"
+    },
+    {
       "_id": "C7ekar9poXJjyGPC",
       "type": "text",
       "name": "",
@@ -261,6 +501,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.C7ekar9poXJjyGPC"
+    },
+    {
+      "_id": "u2A279kpenTqwIdp",
+      "type": "document",
+      "name": "Blood-Red Flower",
+      "img": "icons/commodities/flowers/rosaecia-red.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.IDD5ZllRJlqRZGPO",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.u2A279kpenTqwIdp"
     },
     {
       "_id": "vgj0z4SnOWm9F7kQ",
@@ -278,6 +533,21 @@
       "_key": "!tables.results!bwB2rik5biBasY06.vgj0z4SnOWm9F7kQ"
     },
     {
+      "_id": "IV7dFQXgKqeSmTAs",
+      "type": "document",
+      "name": "Miniature Lute",
+      "img": "icons/tools/instruments/lute-gold-brown.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.LBlg66ePTtqGmFLu",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.IV7dFQXgKqeSmTAs"
+    },
+    {
       "_id": "j7YUNVOUVTN0r9oT",
       "type": "text",
       "name": "",
@@ -291,6 +561,21 @@
       "drawn": false,
       "flags": {},
       "_key": "!tables.results!bwB2rik5biBasY06.j7YUNVOUVTN0r9oT"
+    },
+    {
+      "_id": "Z4A5FYbYH4zNdZyW",
+      "type": "document",
+      "name": "Twig",
+      "img": "icons/commodities/wood/kindling-stick-tan.webp",
+      "documentUuid": "Compendium.cairn2e.background-gear.Item.BtxqwZgP1NmHg9fi",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!bwB2rik5biBasY06.Z4A5FYbYH4zNdZyW"
     },
     {
       "_id": "caUqk8DPyuRghoqR",

@@ -1,0 +1,31 @@
+{
+  "_id": "RYxR0MxK7bAy55cN",
+  "name": "Bracelet",
+  "type": "gear",
+  "img": "icons/commodities/flowers/buds-red.webp",
+  "system": {
+    "description": "<p>You promised a childhood friend that you'd bring them back a rare gift, something unique in all the world. Take a <strong>Bracelet</strong> (<em>petty</em>) woven from twine and wildflowers.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!RYxR0MxK7bAy55cN",
+  "folder": "BIioGZlcge5OdBKx"
+}

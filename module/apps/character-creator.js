@@ -77,6 +77,7 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
       rollTrait: CairnCharacterCreator.#onRollTrait,
       rollAllTraits: CairnCharacterCreator.#onRollAllTraits,
       rollBond: CairnCharacterCreator.#onRollBond,
+      dropBondGrant: CairnCharacterCreator.#onDropBondGrant,
       rollAge: CairnCharacterCreator.#onRollAge,
       rollOmen: CairnCharacterCreator.#onRollOmen,
       stepBack: CairnCharacterCreator.#onStepBack,
@@ -262,6 +263,17 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     // Both are drawn plain (`character-generator.js#drawBond`), and both print plain.
     context.bondText = d.bond ?? "";
     context.omenText = d.omen ?? "";
+    // What the drawn Bond hands over, by the documents' own names. A sack of coin says its amount,
+    // since every sack is called Gold.
+    context.bondGrants = await Promise.all(
+      d.bondGrants.map(async (uuid, index) => {
+        const doc = await fromUuid(uuid).catch(() => null);
+        const name = doc?.type === "coin"
+          ? game.i18n.localize("CAIRN.CharacterCreator.BondGold", { value: doc.system.value })
+          : doc?.name ?? uuid;
+        return { index, ok: !!doc, name };
+      })
+    );
     // The Bond and Omen fields hold what the edit window's do, at the same cap.
     context.limits = EDIT_LIMITS;
 
@@ -320,7 +332,8 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     }
 
     // Trimmed, so a field emptied to whitespace reads as blank and is rolled on create; capped
-    // here as well as by `maxlength`, which stops typing and pasting but not a script.
+    // here as well as by `maxlength`, which stops typing and pasting but not a script. The Bond's
+    // grants are left alone: they belong to the draw, not to the words.
     for (const key of ["bond", "omen"]) {
       htmlElement.querySelector(`[name="${key}"]`)?.addEventListener("change", (event) => {
         this.#draft[key] = event.target.value.slice(0, EDIT_LIMITS.text).trim();
@@ -469,7 +482,13 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
   }
 
   static async #onRollBond() {
-    this.#draft.bond = await drawBond();
+    ({ text: this.#draft.bond, grants: this.#draft.bondGrants } = await drawBond());
+    this.render({ parts: ["bond"] });
+  }
+
+  /** Strike one granted item off before the character is made. */
+  static async #onDropBondGrant(event, target) {
+    this.#draft.bondGrants.splice(Number(target.dataset.index), 1);
     this.render({ parts: ["bond"] });
   }
 
@@ -498,7 +517,7 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     if (Object.values(d.traits).filter(Boolean).length < TRAIT_KEYS.length) {
       d.traits = { ...(await rollAllTraits()), ...d.traits };
     }
-    if (!d.bond) d.bond = await drawBond();
+    if (!d.bond) ({ text: d.bond, grants: d.bondGrants } = await drawBond());
     if (!d.age) d.age = await rollAge();
     if (d.youngest && !d.omen) d.omen = await drawOmen();
     for (let i = 0; i < d.tables.length; i++) {

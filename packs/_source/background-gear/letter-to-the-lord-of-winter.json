@@ -1,0 +1,31 @@
+{
+  "_id": "YMmk7UNsB9H6Jshv",
+  "name": "Letter to the Lord of Winter",
+  "type": "gear",
+  "img": "icons/sundries/documents/document-sealed-brown-red.webp",
+  "system": {
+    "description": "<p>During your travels, you met a dying hunter who asked you to deliver a message to their loved ones. Take a <strong>Letter</strong> (<em>petty</em>), sealed with tree sap. It is addressed only to the <strong>Lord Of Winter</strong>.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!YMmk7UNsB9H6Jshv",
+  "folder": "BIioGZlcge5OdBKx"
+}

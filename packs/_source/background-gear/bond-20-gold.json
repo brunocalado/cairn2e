@@ -1,0 +1,18 @@
+{
+  "_id": "TFBn50KLgZ5IcZ1S",
+  "name": "Gold",
+  "type": "coin",
+  "img": "icons/containers/bags/coinpouch-simple-leather-brown.webp",
+  "system": {
+    "description": "<p>A distant cousin left you a small inheritance. Take <strong>20Gp</strong> and a <strong>Strange Compass</strong> (<em>petty</em>) that always points towards something deep in the Wood.</p>",
+    "value": 20,
+    "container": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!TFBn50KLgZ5IcZ1S",
+  "folder": "BIioGZlcge5OdBKx"
+}

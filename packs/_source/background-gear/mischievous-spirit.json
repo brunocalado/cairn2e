@@ -1,0 +1,31 @@
+{
+  "_id": "SXkYH7gRDmauBBEl",
+  "name": "Mischievous Spirit",
+  "type": "gear",
+  "img": "icons/creatures/magical/spirit-undead-ghost-tan-teal.webp",
+  "system": {
+    "description": "<p>You consumed a <strong>Mischievous Spirit</strong> that wreaks havoc on your insides, demanding to be taken home, deep in the Wood. It occupies one slot but absorbs one <strong>Fatigue</strong> each day. It wants you alive (for now).</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!SXkYH7gRDmauBBEl",
+  "folder": "BIioGZlcge5OdBKx"
+}

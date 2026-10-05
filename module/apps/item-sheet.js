@@ -57,11 +57,11 @@ const SUBTYPE_TABS = {
  */
 const SHEET_HEIGHT = 340;
 
-/** The largest slot cost the buttons run to, so the row is one contiguous scale. The heaviest
- *  thing the SRD prints is four — the Candelabra of `srd-2e/wardens-guide/dungeon-seeds.md` — and
- *  the run goes one past it, so a Warden's own heavier item is a click rather than a special case.
- *  A document above even that still appends its own button. */
-const SLOT_BUTTONS = 5;
+/** The largest slot cost the buttons run to, so the row is one contiguous scale. It is the ten
+ *  inventory slots: nothing heavier can be carried at all, and an item that grows — Bond 15's
+ *  Stone Heart gains a slot a month — reaches any weight a character could still hold with a
+ *  click. A document above even that still appends its own button. */
+const SLOT_BUTTONS = 10;
 
 /** The subtypes that need more, and what they need it for: a gear's Details is up to seven ruled
  *  rows in the common cases (a weapon, a container: the axis, its rider, the three every

@@ -15,6 +15,27 @@
     <textarea class="cairn-edit-text creator-text" name="bond" rows="3" maxlength="{{limits.text}}"
         placeholder="{{localize 'CAIRN.CharacterCreator.BondPlaceholder'}}"
         data-ink="box" data-ink-seed="creator-bond" data-ink-w="1.6">{{bondText}}</textarea>
+    {{!-- What the drawn Bond hands over, as the inventory's rows. They go with the draw, not with
+          the words above: rewording the Bond keeps them, a new roll replaces them, and the × strikes
+          one off. --}}
+    {{#if bondGrants.length}}
+    <div class="creator-bond-grants">
+        <h4>{{localize "CAIRN.CharacterCreator.BondGrants"}}</h4>
+        <ol class="cairn-plain-list">
+            {{#each bondGrants as |grant|}}
+            <li class="cairn-slot"
+                {{#unless @last}}data-ink="hline" data-ink-seed="bond-grant-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+                <span class="cairn-item-name-and-tags">
+                    <span class="cairn-item-title{{#unless grant.ok}} cairn-broken{{/unless}}">{{grant.name}}</span>
+                </span>
+                <span class="cairn-item-controls">
+                    <a data-action="dropBondGrant" data-index="{{grant.index}}" data-tooltip="{{localize 'CAIRN.CharacterCreator.DropBondGrant'}}"><i class="fas fa-xmark"></i></a>
+                </span>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+    {{/if}}
 
     <div class="step-heading" data-ink="hline" data-ink-seed="step-age" data-ink-w="1.8" data-ink-at="bottom">
         <h3>{{localize "CAIRN.CharacterCreator.Age"}}</h3>

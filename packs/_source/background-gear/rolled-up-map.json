@@ -1,0 +1,31 @@
+{
+  "_id": "gUxTT0lmAwpiIP2g",
+  "name": "Rolled-Up Map",
+  "type": "gear",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-red-white.webp",
+  "system": {
+    "description": "<p>A roaming storyteller once spun you tales of great treasure hidden deep in the Wood. You thought it naught but fancy, till they gave you <strong>A Rolled-Up Map</strong> (<em>petty</em>) marked with an X.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!gUxTT0lmAwpiIP2g",
+  "folder": "BIioGZlcge5OdBKx"
+}

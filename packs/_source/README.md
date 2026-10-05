@@ -116,7 +116,8 @@ Every id in these packs is **derived, not invented**: `id16(seed)` = the first 1
 `"cairn2e:npc:<slug>:item:<n>"` (1-based, stat-line order), `"cairn2e:hireling:<slug>"` and
 `"cairn2e:hireling:<slug>:item:<n>"` (same rule), `"cairn2e:companion:<slug>"` and `"cairn2e:companion:<slug>:item:<n>"` (same rule), `"cairn2e:scroll:<slug>"`, `"cairn2e:homebrew:<slug>"`,
 `"cairn2e:homebrew:folder:<slug>"`, the five magic packs' price folders (see *Prices on magic*), `"cairn2e:bgtable:<slug>:<n>"`,
-`"cairn2e:bggear:<slug>"`, `"cairn2e:bggear:folder:<slug>"`, `"cairn2e:warden:<slug>"` and
+`"cairn2e:bggear:<slug>"`, `"cairn2e:bggear:folder:<slug>"`, `"cairn2e:bond:<n>:<slug>"` (a Bonds
+result granting the `background-gear` document `<slug>` on face `<n>`), `"cairn2e:warden:<slug>"` and
 `"cairn2e:warden:<slug>:<n>"` (a table's results, 1-based, in range order), and the journals'
 own (`vald-calendar`, `players-guide`, each in its section below).
 `<slug>` is `kebabCase(name)`, the same rule `tools/pack-common.mjs` applies to filenames. Compute
@@ -352,14 +353,16 @@ each a thing to buy, not a sentence on the Dagger. A background's starting-gear 
 that table does not carry: `Boiled Leather (1 Armor)`, `Twine Bauble`, `Soporific Darts`. Those live in **`background-gear/`**, one Item pack of mixed
 subtypes, so that Weapons stays six documents long for anyone browsing it to buy something.
 
-The pack is exactly the residue of two lists: the twenty `## Starting Gear` lists in
-`srd-2e/backgrounds/`, and what each Background d6 table result grants (below). A line that names
-a Marketplace document points at it, every other line gets a document here. Nothing is added that
-no background names. `cost` is 0 throughout — background issue, not merchandise.
+The pack is exactly the residue of three lists: the twenty `## Starting Gear` lists in
+`srd-2e/backgrounds/`, what each Background d6 table result grants (below), and what a Bond grants
+(*What a Bond grants*, further down). A line that names a Marketplace document points at it, every
+other line gets a document here. Nothing is added that no background or Bond names. `cost` is 0
+throughout — background issue, not merchandise — but for the Bonds' Single Gem.
 
 The pack is filed by origin, in compendium folders: one `_folder-<slug>.json` per background, and
 `_folder-shared.json` for what more than one hands out — Boiled Leather (Fletchwind, Marchguard,
-Prowler) and the 2-use Antitoxin (Beast Handler, Greenwise). A document can sit in one folder only.
+Prowler) and the 2-use Antitoxin (Beast Handler, Greenwise) — and `_folder-bonds.json` for what the
+Bonds hand out. A document can sit in one folder only.
 Each document's `folder` names its folder's `_id`; the folder files are the same shape as
 `gear/_folder-transport.json`.
 
@@ -408,6 +411,27 @@ Five lines needed a call, settled 2026-09-15 against the SRD:
 | Cutpurse — `Lockpicks` | Its own document. The Marketplace's `Thieving Tools (Lockpick, Metal File, etc.)` is the 25gp kit; the SRD's `Lockpick` at 10 is a hireling. |
 | Fieldwarden — `Repellent (pick the type, 3 uses)` | Its own document, `uses 3/3`. The Marketplace `Repellent` ships with no use count and stays that way. |
 | Fletchwind — `Bow (see table)` | The Marketplace `Bow`. "See table" points at the background's own *How did you earn your bow?* d6, which describes the bow rather than replacing it. |
+
+### What a Bond grants
+
+`bonds/bonds.json` is authored as a Background d6 is: each face keeps its `text` result and, on the
+same range, one `document` result per thing it names, into the `Bonds` folder here. Eighteen of the
+twenty name a thing (`players-guide/character-creation.md` § Bonds); 13 (the wounded beast) and 20
+(the Moss Witch's curse) are prose alone, and so is 15's "cannot truly die". Each granted
+document's description is the face's whole prose. Settled with the maintainer on 2026-10-05:
+
+- **Not marked *petty* is one slot** — the Single Gem, the Journal and the Miniature Lute; the
+  Mischievous Spirit "occupies one slot" in so many words. Everything else the SRD marks *petty*.
+- **The Stone Heart starts *bulky*** (2) and "grows heavier by one slot" each month by the Warden's
+  hand; nothing automates it, and the gear sheet's Slots run reaches 10 so it is a click.
+- **The Single Gem keeps its 500gp** as `cost`, the one priced thing in the pack: its worth is the
+  Bond. Bond 2's 20gp is a `coin` of its own (`bond-20-gold.json`), not a Background's.
+- **Names that would clash are said in full:** the Marketplace sells a `Whistle`, so Bond 16's is
+  `Oak Lord's Whistle`; the two Letters are `Letter of Fae Parentage` and `Letter to the Lord of
+  Winter`; Bond 7's half key is `Ancient Key (half)`.
+
+A Bond drawn by a growth (Outrider's *Always Pay Your Debts*) keeps only its prose — the growth
+records the line it gained, and grants nothing beside it.
 
 ## `companions` — the creatures a background hands the party
 

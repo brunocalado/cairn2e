@@ -141,19 +141,21 @@ export async function drawBackground() {
   return { background, roll: draw.roll?.total ?? null };
 }
 
-/** Draw one d6 Background table (referenced by its full compendium uuid).
- *
- *  A roll lands on one `text` result — the prose, as `html` and as `text`, a sentence that is what
- *  the character keeps and every surface shows (nothing the player sees is markup) — and on the
- *  `document` results that share its range, which are what it grants: their uuids are `grants`. */
+/** A draw that grants: the one `text` result is the prose, as `html` and as `text` — a sentence
+ *  that is what the character keeps and every surface shows (nothing the player sees is markup) —
+ *  and the `document` results that share its range are what it grants: their uuids are `grants`. */
+function proseAndGrants(draw) {
+  const html = draw.results.find((r) => r.type === "text")?.description ?? "";
+  const grants = draw.results.filter((r) => r.type === "document").map((r) => r.documentUuid);
+  return { html, text: toPlainText(html), grants };
+}
+
+/** Draw one d6 Background table (referenced by its full compendium uuid). */
 export async function drawBackgroundTable(uuid) {
   const table = await fromUuid(uuid);
   if (!table) return null;
   const draw = await table.draw({ displayChat: false });
-  const prose = draw.results.find((r) => r.type === "text");
-  const grants = draw.results.filter((r) => r.type === "document").map((r) => r.documentUuid);
-  const html = prose?.description ?? "";
-  return { name: table.name, total: draw.roll?.total ?? null, html, text: toPlainText(html), grants };
+  return { name: table.name, total: draw.roll?.total ?? null, ...proseAndGrants(draw) };
 }
 
 /** Draw one d10 trait table; returns the plain trait word. */
@@ -169,9 +171,11 @@ export async function rollAllTraits() {
   return out;
 }
 
-/** Draw a Bond (d20) — plain text, like every other drawn line a character keeps. */
+/** Draw a Bond (d20) — plain text, like every other drawn line a character keeps, and the uuids
+ *  of what it hands over (the Strange Compass and 20gp), authored as a Background face's are. */
 export async function drawBond() {
-  return toPlainText(await drawTableText(TABLES.BONDS));
+  const { text, grants } = proseAndGrants(await drawTable(TABLES.BONDS));
+  return { text, grants };
 }
 
 /** Draw an Omen (d20) — plain text, like the Bond above it. */
@@ -428,6 +432,9 @@ export function draftFromBackground(background) {
     youngest: false,
     traits: {},
     bond: "",
+    // What the drawn Bond hands over, as uuids. They belong to the draw, not to the words: a
+    // Bond reworded or cleared keeps them, and the player strikes one off by hand.
+    bondGrants: [],
     omen: "",
     tableResults: []
   };
@@ -440,8 +447,8 @@ function tableSlot(result) {
 
 /**
  * Turn a finished draft into `Actor.create` data — attributes, HP, bond, omen, age, traits, and
- * the embedded Items: the Background itself, the starting gear, the sack of starting gold and
- * the two table results.
+ * the embedded Items: the Background itself, the starting gear, the sack of starting gold, and
+ * what the two table results and the Bond grant.
  * @param {object} draft
  * @returns {Promise<object>}
  */
@@ -496,6 +503,7 @@ export async function assembleActorData(draft) {
   };
   await embed(draft.startingGear);
   for (const result of draft.tableResults ?? []) await embed(result?.grants);
+  await embed(draft.bondGrants);
 
   // Coin is an Item (`data/item-coin.js`): the `3d6 Gold Pieces` every background opens with, and
   // whatever a table result added, are one sack on the body in the same batch as the gear.
@@ -630,7 +638,7 @@ export async function randomDraft() {
   draft.hp = await rollHitProtection();
   draft.age = await rollAge();
   draft.traits = await rollAllTraits();
-  draft.bond = await drawBond();
+  ({ text: draft.bond, grants: draft.bondGrants } = await drawBond());
   for (const uuid of draft.tables) draft.tableResults.push(await drawBackgroundTable(uuid));
   return draft;
 }

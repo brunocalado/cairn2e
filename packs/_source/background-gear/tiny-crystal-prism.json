@@ -1,0 +1,31 @@
+{
+  "_id": "qBeEAvCKZFgQpJbr",
+  "name": "Tiny Crystal Prism",
+  "type": "gear",
+  "img": "icons/commodities/gems/gem-cluster-blue-white.webp",
+  "system": {
+    "description": "<p>You found a <strong>Tiny Crystal Prism</strong> (<em>petty</em>) buried in the dirt. When held up to the light, it shows visions of an unknown location deep within the Wood. Sometimes you feel a presence looking back at you.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qBeEAvCKZFgQpJbr",
+  "folder": "BIioGZlcge5OdBKx"
+}

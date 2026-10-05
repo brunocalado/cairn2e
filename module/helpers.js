@@ -202,7 +202,10 @@ export const drawTable = async (uuid, options = {}) => {
 };
 
 /**
+ * The prose of one draw. A table whose faces also grant documents (the Bonds) draws them beside
+ * the `text` result, on the same range, so the prose is looked for rather than assumed first.
  * @param {string} uuid  a {@link TABLES} or {@link TRAIT_TABLES} member
  * @returns {Promise.<String>}
  */
-export const drawTableText = async (uuid) => (await drawTable(uuid)).results[0].description;
+export const drawTableText = async (uuid) =>
+  (await drawTable(uuid)).results.find((r) => r.type === "text")?.description ?? "";

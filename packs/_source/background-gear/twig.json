@@ -1,0 +1,31 @@
+{
+  "_id": "BtxqwZgP1NmHg9fi",
+  "name": "Twig",
+  "type": "gear",
+  "img": "icons/commodities/wood/kindling-stick-tan.webp",
+  "system": {
+    "description": "<p>A white crow appeared to you in a dream, holding a twig in its mouth. You awoke the next morning with the <strong>Twig</strong> (<em>petty</em>) in your hand. You believe it brings you luck. It smells faintly of sulfur.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!BtxqwZgP1NmHg9fi",
+  "folder": "BIioGZlcge5OdBKx"
+}
