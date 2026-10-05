@@ -226,7 +226,7 @@ function enrichDamage([match, formula, key, label]) {
 function renderDamage(element) {
   const chipEl = chipOf(element);
   if (!chipEl) return;
-  onActivate(element, () => rollAttributeDamage(chipEl.dataset.formula, chipEl.dataset.key, chipEl.textContent));
+  onActivate(element, () => rollAttributeDamage(chipEl.dataset.formula, chipEl.dataset.key, foundry.utils.escapeHTML(chipEl.textContent)));
 }
 
 /* -------------------------------------------- */

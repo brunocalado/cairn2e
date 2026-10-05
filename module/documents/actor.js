@@ -363,7 +363,7 @@ export class CairnActor extends Actor {
       `systems/${SYSTEM_ID}/templates/chat/recovery-card.hbs`, { lines });
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      flavor: game.i18n.localize(flavorKey, { name: this.name }),
+      flavor: game.i18n.localize(flavorKey, { name: foundry.utils.escapeHTML(this.name) }),
       content
     });
   }

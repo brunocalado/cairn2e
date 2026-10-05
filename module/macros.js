@@ -29,7 +29,9 @@ export const createCairnMacro = async (data, slot) => {
   }
 
   // The macro is on the hotbar, which other users can see: the gear's guise while unknown.
-  const command = `game.cairn2e.rollItemMacro("${actor.id}", "${item.id}");`;
+  // By the item's uuid, which names its actor too: an unlinked token's actor shares its base
+  // actor's id, so an actor id rolled the base actor's weapon — or found none.
+  const command = `game.cairn2e.rollItemMacro("${item.uuid}");`;
   let macro = game.macros.find((m) => m.name === item.tableName && m.command === command);
   if (!macro) {
     macro = await Macro.create({
@@ -45,18 +47,15 @@ export const createCairnMacro = async (data, slot) => {
 };
 
 /**
- * @param {string} actorId
- * @param {string} itemId
+ * @param {string} itemUuid  The weapon's uuid — a token's own for an unlinked token.
  * @return {Promise.<void>}
  */
-export const rollItemMacro = async (actorId, itemId) => {
-  const actor = game.actors.get(actorId);
-  const item = actor?.items.get(itemId);
+export const rollItemMacro = async (itemUuid) => {
+  const item = await fromUuid(itemUuid);
+  const actor = item?.parent;
 
-  if (!item || !actor) {
-    return ui.notifications.warn(
-      game.i18n.localize("CAIRN.Notify.MacroItemMissing", { actor: actor?.name, item: item?.name })
-    );
+  if (item?.documentName !== "Item" || actor?.documentName !== "Actor") {
+    return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.MacroItemMissing", { uuid: itemUuid }));
   }
 
   // A macro made before the Warden hid the gear still may not roll it.

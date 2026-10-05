@@ -881,7 +881,7 @@
     "HotbarsNoMacros": "None of the player macros is in this world's Macros directory — import them from the Macros compendium first.",
     "HotbarsReset": "Player macros placed on {count} player hotbar(s).",
     "HotbarsWardenOnly": "Only the Warden can reset the players' hotbars.",
-    "MacroItemMissing": "{actor} has no item named {item}.",
+    "MacroItemMissing": "This macro's weapon is gone: {uuid}.",
     "MacroNoTarget": "Select a token, or have a character assigned to you.",
     "MacroOwnedItemsOnly": "You can only create macro buttons for owned Items.",
     "MacroWeaponsOnly": "Macros are only supported for weapons.",
@@ -993,6 +993,7 @@
   "CAIRN.Route": {
     "SheetLabel": "Cairn 2e Route"
   },
+  "CAIRN.Routed": "Routed, or badly weakened",
   "CAIRN.Rule": {
     "Critical": {
       "Label": "Critical Damage",

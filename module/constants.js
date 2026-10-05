@@ -175,6 +175,14 @@ export const FLAGS = {
   BARTER: "barter",
 
   /**
+   * On the chat message of a Critical Damage STR save: the id of the damage card it answers. The
+   * card hides its button while an answer to it exists, so the save is rolled once per hit —
+   * without it, a re-render of the log brought the button back and a second save could be rolled
+   * after the first had already used up Doomed.
+   */
+  CRITICAL_SAVE_FOR: "critical-save-for",
+
+  /**
    * On a damage-result ChatMessage: what that hit took, as `{ actorUuid, hp, str }` — **deltas**,
    * not the before-values the card prints. `module/chat.js#reverseHit` adds them back, which
    * composes with anything that touched the actor in between; writing the absolutes back would

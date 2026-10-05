@@ -6,7 +6,7 @@
  */
 
 // Import Modules
-import { SYSTEM_ID, SETTINGS, CONDITION, TOOLTIP_CLASS } from "./constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS, CONDITION, TOOLTIP_CLASS } from "./constants.js";
 import { CairnActor } from "./documents/actor.js";
 import { CairnCharacterSheet } from "./apps/character-sheet.js";
 import { CairnNpcSheet } from "./apps/npc-sheet.js";
@@ -455,17 +455,19 @@ Hooks.once("ready", () => {
   // needs writing, and the losers fail the same way.
   const syncQueues = new Map();
   const runSync = (actor, owed) => {
-    const queued = (syncQueues.get(actor.id) ?? Promise.resolve())
+    const queued = (syncQueues.get(actor.uuid) ?? Promise.resolve())
       .then(() => actor.syncDerivedConditions(owed))
       .catch((err) => console.error(`${SYSTEM_ID} | condition sync failed`, err))
       .finally(() => {
-        if (syncQueues.get(actor.id) === queued) syncQueues.delete(actor.id);
+        if (syncQueues.get(actor.uuid) === queued) syncQueues.delete(actor.uuid);
       });
-    syncQueues.set(actor.id, queued);
+    syncQueues.set(actor.uuid, queued);
   };
 
-  // Ids, not actors: this map outlives every burst and holding documents in it would keep deleted
-  // ones alive. An actor that is gone by the time the flush runs simply is not found.
+  // Uuids, not actors: this map outlives every burst and holding documents in it would keep
+  // deleted ones alive. An actor that is gone by the time the flush runs simply is not found.
+  // Not ids either: an unlinked token's actor shares its base actor's id, so a full pack on the
+  // token synced — and found nothing to change on — the base actor in the sidebar.
   //
   // The value is the set of conditions that burst actually put in question, because a sync now
   // reconciles ONLY those. Forcing all five on every write is what made a Warden's manual toggle
@@ -476,16 +478,16 @@ Hooks.once("ready", () => {
   const flushSync = foundry.utils.debounce(() => {
     const batch = [...pendingSync];
     pendingSync.clear();
-    for (const [id, owed] of batch) {
-      const actor = game.actors.get(id);
+    for (const [uuid, owed] of batch) {
+      const actor = fromUuidSync(uuid);
       if (actor?.syncDerivedConditions) runSync(actor, owed);
     }
   }, 60);
   const syncConditions = (actor, ids) => {
-    if (!actor?.id || !actor.syncDerivedConditions || !game.users.activeGM?.isSelf) return;
-    const owed = pendingSync.get(actor.id) ?? new Set();
+    if (!actor?.uuid || !actor.syncDerivedConditions || !game.users.activeGM?.isSelf) return;
+    const owed = pendingSync.get(actor.uuid) ?? new Set();
     for (const id of ids) owed.add(id);
-    pendingSync.set(actor.id, owed);
+    pendingSync.set(actor.uuid, owed);
     flushSync();
   };
 
@@ -550,17 +552,21 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
   // is this system's (see `init`), so there is nothing here to select or dress. What is left is
   // the wiring for the controls a card's body draws.
 
-  // Critical Damage's STR save button (module/combat/damage.js posts it).
-  const token = canvas?.scene?.tokens?.get(message.speaker?.token);
+  // Critical Damage's STR save button (module/combat/damage.js posts it). The token is looked up
+  // on the scene the message names, not on the one this client has on screen: the owner may be
+  // looking at another scene, or at none. Once a save answers this card the button is gone for
+  // everyone (`rolls.js#rollCriticalDamageSave`).
   const strSaveBtn = html.querySelector(".roll-str-save");
   if (strSaveBtn) {
+    const token = game.scenes.get(message.speaker?.scene)?.tokens.get(message.speaker?.token);
+    const answered = game.messages.some((m) => m.getFlag(SYSTEM_ID, FLAGS.CRITICAL_SAVE_FOR) === message.id);
     // A token whose Actor was deleted has `actor === null`; a throw here would leave every other
     // button on the card unwired.
-    const canRoll = token?.actor && (token.actor.testUserPermission(game.user, "OWNER") || game.user.isGM);
+    const canRoll = !answered && token?.actor && (token.actor.testUserPermission(game.user, "OWNER") || game.user.isGM);
     if (canRoll) {
       strSaveBtn.addEventListener("click", async () => {
         strSaveBtn.setAttribute("disabled", "disabled");
-        await rolls.rollCriticalDamageSave(token.actor, token);
+        await rolls.rollCriticalDamageSave(token.actor, token, message.id);
       });
     } else {
       // `hidden`, not a display value set from JS: core's `[hidden] { display: none !important }`
@@ -607,6 +613,13 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
   // "Add to scene" button on an encounter-style RollTable draw card. GM-only; grows the
   // control only when the drawn rows parse as an encounter.
   await renderEncounterButton(message, html);
+});
+
+// A Critical Damage save that answers a card redraws that card on every client, so its button is
+// gone everywhere and not only for whoever pressed it (`rolls.js#rollCriticalDamageSave`).
+Hooks.on("createChatMessage", (message) => {
+  const card = game.messages.get(message.getFlag(SYSTEM_ID, FLAGS.CRITICAL_SAVE_FOR));
+  if (card) ui.chat.updateMessage(card);
 });
 
 const configureHandleBar = () => {

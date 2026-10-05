@@ -282,7 +282,7 @@ export async function sendBarter(actor, target, items, coin = 0) {
   const content = await foundry.applications.handlebars.renderTemplate(CARD_TPL, { items: moved, coin: result.coin });
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: game.i18n.localize("CAIRN.Barter.Flavor", { from: actor.name, to: target.name }),
+    flavor: game.i18n.localize("CAIRN.Barter.Flavor", { from: foundry.utils.escapeHTML(actor.name), to: foundry.utils.escapeHTML(target.name) }),
     content
   });
   return true;

@@ -139,7 +139,7 @@ async function evaluateSave(target) {
  * falls back to `core.messageMode` when it is, so an ordinary save is as public as the table's
  * setting says.
  */
-async function postSaveRoll(roll, { actor, token, flavor, passed, outcomeText, messageMode } = {}) {
+async function postSaveRoll(roll, { actor, token, flavor, passed, outcomeText, messageMode, flags } = {}) {
   const content = await foundry.applications.handlebars.renderTemplate(SAVE_CARD_TPL, {
     // The same roll line every other roll draws, rendered through the Roll's own chat template —
     // a save used to hand-draw it, which is why it could never show the die faces.
@@ -153,7 +153,8 @@ async function postSaveRoll(roll, { actor, token, flavor, passed, outcomeText, m
   return postRollMessage(roll, {
     speaker: token ? ChatMessage.getSpeaker({ token }) : ChatMessage.getSpeaker({ actor }),
     flavor,
-    content
+    content,
+    ...(flags ? { flags } : {})
   }, { messageMode });
 }
 
@@ -198,12 +199,19 @@ export async function rollMorale(actor) {
  * target's *current* STR — `module/combat/damage.js` has already written the post-overflow value
  * before this is called, so no override is needed. Unlike a plain save, failure means something
  * different for a PC (incapacitated, dies within the hour unless aided) than for an NPC or monster
- * (dead outright); upstream treated both the same.
+ * (dead outright), and a detachment is neither: "When a detachment takes Critical Damage, it is
+ * routed or significantly weakened. When it reaches 0 STR, it is destroyed" (`core-rules.md` →
+ * Detachments). Upstream treated all three the same.
+ *
+ * The save answers one card, once: it carries the card's id (`FLAGS.CRITICAL_SAVE_FOR`), and the
+ * card hides its button while such an answer exists (`cairn2e.js`). The mark is on the answer
+ * because the roller cannot write the Warden's card — a message is its author's.
  * @param {Actor} actor
  * @param {TokenDocument} [token]
+ * @param {string} [cardId]  The damage card the save answers.
  * @returns {Promise<boolean>}
  */
-export async function rollCriticalDamageSave(actor, token) {
+export async function rollCriticalDamageSave(actor, token, cardId) {
   const { roll, passed } = await evaluateSave(actor.system.abilities.STR.value);
 
   // Doomed (Scars, row 12): "If your next save against critical damage is a fail, you die
@@ -215,15 +223,17 @@ export async function rollCriticalDamageSave(actor, token) {
   const doomed = actor.statuses?.has(CONDITION.DOOMED) === true;
   if (doomed) await actor.toggleStatusEffect(CONDITION.DOOMED, { active: false });
 
-  const outcomeText = passed
-    ? game.i18n.localize("CAIRN.CriticalDamageSuccess")
-    : game.i18n.localize(actor.type === "character" && !doomed ? "CAIRN.Incapacitated" : "CAIRN.Dead");
+  const outcome = passed ? "CAIRN.CriticalDamageSuccess"
+    : actor.type === "character" && !doomed ? "CAIRN.Incapacitated"
+      : actor.system.isDetachment ? "CAIRN.Routed"
+        : "CAIRN.Dead";
   await postSaveRoll(roll, {
     actor,
     token,
     flavor: game.i18n.localize("CAIRN.Save", { key: game.i18n.localize("STR") }),
     passed,
-    outcomeText
+    outcomeText: game.i18n.localize(outcome),
+    flags: cardId ? { [SYSTEM_ID]: { [FLAGS.CRITICAL_SAVE_FOR]: cardId } } : undefined
   });
   return passed;
 }
@@ -471,7 +481,8 @@ export async function rollDamage(actor, item, { skipDialog = false } = {}) {
   if (blast) tags.push(game.i18n.localize("CAIRN.Blast"));
   const weapons = [item, second].filter(Boolean);
   // The table reads this: a gear unknown to its holder goes by its guise (`documents/item.js`).
-  const base = `${game.i18n.localize("CAIRN.RollingDmgWith")} ${weapons.map((w) => w.tableName ?? w.name).join(" & ")}`;
+  // Escaped: a weapon's name is typed by a player, and the flavor is drawn as markup.
+  const base = `${game.i18n.localize("CAIRN.RollingDmgWith")} ${weapons.map((w) => foundry.utils.escapeHTML(w.tableName ?? w.name)).join(" & ")}`;
   const label = tags.length ? `${base} (${tags.join(", ")})` : base;
 
   // Blast rolls separately for each affected target (core-rules.md → Attack Modifiers).
@@ -539,7 +550,7 @@ export async function rollReaction(actor) {
   const label = game.i18n.localize(`CAIRN.Reactions.${band.key}`);
   const message = await postRollMessage(roll, {
     speaker: actor ? ChatMessage.getSpeaker({ actor }) : ChatMessage.getSpeaker(),
-    flavor: `${game.i18n.localize("CAIRN.Reaction")}: ${label}`,
+    flavor: `${game.i18n.localize("CAIRN.Reaction")}: ${foundry.utils.escapeHTML(label)}`,
     content: await roll.render()
   }, { messageMode: WARDEN_ONLY });
   return { message, total: roll.total, key: band.key, label };
@@ -581,7 +592,7 @@ export async function rollEncounterCount(formula, label) {
   const roll = await new CairnRoll(String(formula)).evaluate();
   await roll.toMessage({
     speaker: ChatMessage.getSpeaker(),
-    flavor: game.i18n.localize("CAIRN.Encounter.CountFlavor", { label }),
+    flavor: game.i18n.localize("CAIRN.Encounter.CountFlavor", { label: foundry.utils.escapeHTML(label) }),
     flags: SYSTEM_ROLL_FLAGS
   });
   return Math.max(roll.total ?? 0, 0);
@@ -820,7 +831,7 @@ export async function rollFactionAction(name) {
   const roll = await new CairnRoll("1d6").evaluate();
   const row = FACTION_ACTIONS[roll.total];
   await postRollCard(roll, {
-    flavor: game.i18n.localize("CAIRN.Faction.ActionCaption", { name }),
+    flavor: game.i18n.localize("CAIRN.Faction.ActionCaption", { name: foundry.utils.escapeHTML(name) }),
     lead: row ? game.i18n.localize(row.name) : "",
     text: row ? game.i18n.localize(row.impact) : "",
     messageMode: WARDEN_ONLY
@@ -844,7 +855,7 @@ export async function rollFactionAction(name) {
 export async function rollFactionSave(agent, wil) {
   const { roll, passed } = await evaluateSave(wil);
   await postSaveRoll(roll, {
-    flavor: game.i18n.localize("CAIRN.Faction.SaveCaption", { name: agent }),
+    flavor: game.i18n.localize("CAIRN.Faction.SaveCaption", { name: foundry.utils.escapeHTML(agent) }),
     passed,
     outcomeText: game.i18n.localize(passed ? "CAIRN.Faction.SavePassed" : "CAIRN.Faction.SaveFailed"),
     messageMode: WARDEN_ONLY

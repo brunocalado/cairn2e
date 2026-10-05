@@ -96,7 +96,8 @@ export class CairnWhisper extends CairnInkMixin(HandlebarsApplicationMixin(Appli
     const to = [...this.#picked];
     if (!to.length) return ui.notifications.warn(game.i18n.localize("CAIRN.Whisper.NeedWho"));
     if (!text) return ui.notifications.warn(game.i18n.localize("CAIRN.Whisper.NeedText"));
-    const names = to.map((id) => game.users.get(id)?.name).filter(Boolean);
+    // Escaped: a user's name is typed, and both the flavor and the notice are drawn as markup.
+    const names = to.map((id) => game.users.get(id)?.name).filter(Boolean).map((n) => foundry.utils.escapeHTML(n));
     const content = await foundry.applications.handlebars.renderTemplate(CARD_TPL, {
       text: foundry.utils.escapeHTML(text).replace(/\r?\n/g, "<br>")
     });
