@@ -1,0 +1,25 @@
+{
+  "_id": "DO57KvZc2Zrtkfzt",
+  "name": "Second Bond",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "system": {
+    "description": "<p>A position of great honor, while it lasts: many guardians do not live out their natural lives. Roll a second time on the <strong>Bonds</strong> table.</p>",
+    "gained": "",
+    "outcome": {
+      "attr": "",
+      "from": 0,
+      "to": 0,
+      "formula": ""
+    },
+    "table": "Compendium.cairn2e.bonds.RollTable.bwB2rik5biBasY06",
+    "resolved": false,
+    "milestones": []
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DO57KvZc2Zrtkfzt",
+  "folder": "VCf486fS9s17em9n"
+}

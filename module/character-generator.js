@@ -505,10 +505,6 @@ export async function assembleActorData(draft) {
   for (const result of draft.tableResults ?? []) await embed(result?.grants);
   await embed(draft.bondGrants);
 
-  // Coin is an Item (`data/item-coin.js`): the `3d6 Gold Pieces` every background opens with, and
-  // whatever a table result added, are one sack on the body in the same batch as the gear.
-  if (gold > 0) items.push(coinItem(gold, game.i18n.localize("CAIRN.Gold")));
-
   const attrs = draft.attrs ?? { STR: 10, DEX: 10, WIL: 10 };
   const hp = draft.hp ?? 0;
 
@@ -530,8 +526,14 @@ export async function assembleActorData(draft) {
       second: tableSlot(draft.tableResults?.[1])
     }
   };
-  // Last, because a growth moves a number the lines above have just set.
-  for (const growth of growths) items.push(await resolveGrowth(growth, system));
+  // Last, because a growth moves a number the lines above have just set. A growth that draws a
+  // second Bond hands over what that Bond names, through the same `embed` as everything above.
+  for (const growth of growths) items.push(await resolveGrowth(growth, system, embed));
+
+  // Coin is an Item (`data/item-coin.js`): the `3d6 Gold Pieces` every background opens with, and
+  // whatever a table result or a Bond added, are one sack on the body in the same batch as the
+  // gear. After the growths, because a second Bond can add coin too.
+  if (gold > 0) items.push(coinItem(gold, game.i18n.localize("CAIRN.Gold")));
 
   return {
     name: draft.name?.trim() || draft.backgroundName || game.i18n.localize("CAIRN.CharacterCreator.DefaultName"),
@@ -553,15 +555,17 @@ export async function assembleActorData(draft) {
  *   maximum waiting to be healed up to. `from` / `to` are written, so deleting the growth puts
  *   the number back (`growth.js#revertGrowthGain`).
  * - `table` draws that table once and keeps the line as `gained` — "roll a second time on the
- *   Bonds table".
+ *   Bonds table" — and what the drawn face grants goes through `embed`, so a second Bond brings
+ *   its Strange Compass as the first one does.
  * - Neither: the gain is the growth's own prose — an ability, a vow, a companion.
  *
  * Every one of them is `resolved`: nothing about it is still owed.
  * @param {object} data    the growth's creation data (`copyOf`)
  * @param {object} system  the character's `system` as assembled so far; mutated
+ * @param {(uuids: string[]) => Promise<void>} embed  `assembleActorData`'s, for a drawn face's grants
  * @returns {Promise<object>}  `data`, resolved
  */
-async function resolveGrowth(data, system) {
+async function resolveGrowth(data, system, embed) {
   const { attr, formula } = data.system.outcome ?? {};
   if (attr && formula) {
     const res = attr === "hp" ? system.hp : system.abilities[attr];
@@ -570,7 +574,11 @@ async function resolveGrowth(data, system) {
     res.max = to;
     Object.assign(data.system.outcome, { from, to });
   }
-  if (data.system.table) data.system.gained = toPlainText(await drawTableText(data.system.table));
+  if (data.system.table) {
+    const { text, grants } = proseAndGrants(await drawTable(data.system.table));
+    data.system.gained = text;
+    await embed(grants);
+  }
   data.system.resolved = true;
   return data;
 }
