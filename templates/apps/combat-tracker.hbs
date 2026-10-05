@@ -27,18 +27,6 @@
             {{localize (concat "CAIRN.Combat.Side." side)}}
         </li>
 
-        {{!-- Morale comes due on the opponents' first casualty and again at half their number
-              (`core-rules.md`). The banner says the moment arrived; it never rolls, because the
-              bestiary's exceptions — a leader's WIL, a commander's presence — live in prose no
-              field here holds. The Warden picks the opponent and clicks its flag. --}}
-        {{#if (eq side "opponents")}}
-            {{#if @root.moraleDue}}
-                <li class="cairn-combat-morale" role="status">
-                    {{localize (concat "CAIRN.Combat.Morale." @root.moraleDue)}}
-                </li>
-            {{/if}}
-        {{/if}}
-
         {{#each rows}}
             <li class="combatant {{css}} {{#if resolved}}is-resolved{{/if}}"
                 data-combatant-id="{{id}}" data-action="activateCombatant">
@@ -102,7 +90,10 @@
                     </div>
                 {{/if}}
 
-                {{#if @root.moraleDue}}
+                {{!-- Morale, on every opponent and at any moment. The system whispers the Warden
+                      a reminder when a trigger is crossed (`CairnCombat#remindMorale`), but this
+                      never waits for it: who saves, and why, is the Warden's call. --}}
+                {{#if @root.user.isGM}}
                     {{#unless isAdventurer}}
                         <div class="cairn-combat-morale-roll">
                             <button type="button" class="inline-control combatant-control icon fa-solid fa-flag"

@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
+import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
 import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { consumeRation } from "../journey.js";
 import { CairnRulesSummary } from "./rules-summary.js";
@@ -162,9 +162,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     // The DEX save belongs to the first round of the COMBAT, not to a combatant's first round:
     // somebody who joins in round three never owed one (`core-rules.md`).
     context.isFirstRound = combat.round === 1;
-    // The Warden's prompt, and only the Warden's: Morale is a thing the enemy owes and the
-    // players are not supposed to be told the arithmetic behind it.
-    context.moraleDue = game.user.isGM ? combat.moraleDue : null;
   }
 
   /**
@@ -452,11 +449,11 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   /**
    * Roll Morale for one opponent, because the Warden asked for it on that row.
    *
-   * The trigger is detected, never acted on: the bestiary has monsters that save on their
-   * leader's WIL and monsters that pass automatically while a commander is present, and both are
-   * prose in a stat block. The Warden decides who saves and whether an exception applies; this
-   * only rolls what `rollMorale` already implements and marks the trigger spent either way,
-   * because the save happened.
+   * The button is on every opponent at every moment, and it is not tied to the reminder
+   * (`CairnCombat#remindMorale`): the bestiary has monsters that save on their leader's WIL and
+   * monsters that pass automatically while a commander is present, both prose in a stat block, and
+   * a Warden may call for Morale on a reason no count sees. The Warden decides who saves; this
+   * only rolls what `rollMorale` already implements.
    */
   static async #onRollMorale(event, target) {
     const combat = this.viewed;
@@ -464,9 +461,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const combatant = combat?.combatants.get(combatantId);
     if (!combatant?.actor) return;
 
-    const due = combat.moraleDue;
     const passed = await rollMorale(combatant.actor);
     if (!passed) await combatant.actor.toggleStatusEffect(CONDITION.FLEEING, { active: true });
-    if (due) await combat.setFlag(SYSTEM_ID, due === "half" ? MORALE_FLAGS.HALF : MORALE_FLAGS.FIRST_CASUALTY, true);
   }
 }

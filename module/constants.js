@@ -311,10 +311,13 @@ export const FIGHT_FLAGS = {
 export const MORALE_FLAGS = {
   /** How many opponents the fight started with — the baseline "half their number" is half of. */
   BASELINE: "opponentBaseline",
-  /** The first-casualty save has been made. Each trigger fires at most once per combat. */
-  FIRST_CASUALTY: "moraleFirstCasualty",
-  /** The half-strength save has been made. */
-  HALF: "moraleHalf"
+  /**
+   * The reminders already whispered, `{ firstCasualty, half, lone, down }`: each trigger reminds
+   * at most once per combat, and `down` is the casualty count the last reminder was sent at, so
+   * the next count is compared against it after a reload too. Written only when a reminder goes
+   * out — rolling Morale writes nothing here.
+   */
+  REMINDED: "moraleReminded"
 };
 
 /** A bag of coins worth less than this is *petty* and occupies no slot (`core-rules.md`). */

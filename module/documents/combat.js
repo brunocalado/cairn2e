@@ -6,7 +6,8 @@
  */
 
 import { COMBAT_FLAGS, FIGHT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
-import { moraleDue } from "../combat/morale.js";
+import { moraleTriggers } from "../combat/morale.js";
+import { postMoraleReminder } from "../rolls.js";
 
 /**
  * Cairn 2e combat.
@@ -29,7 +30,7 @@ export class CairnCombat extends Combat {
   /**
    * A dungeon exploration rather than a fight (`module/data/combat-dungeon.js`). Its rounds are
    * dungeon turns and its combatants are the party; everything that belongs to a fight — the
-   * Morale baseline and triggers, the first-round DEX save — stays off.
+   * Morale baseline and reminders, the first-round DEX save — stays off.
    */
   get isDungeon() {
     return this.type === "dungeon";
@@ -84,29 +85,43 @@ export class CairnCombat extends Combat {
   }
 
   /**
-   * Which Morale save the opponents owe right now, if any.
+   * How many opponents are down, for Morale.
    *
-   * The tracker raises this as a prompt for the Warden and never rolls it: two monsters in the
-   * bestiary carry exceptions written in prose (a leader's WIL, a commander's presence) that no
-   * field on this system holds.
-   * @returns {"firstCasualty"|"half"|null}
+   * "Lone foes must save when they're reduced to 0 HP" (core-rules.md → Morale): a single
+   * opponent is down at 0 HP even while it still stands on STR. A group's casualties are the ones
+   * the Warden marked defeated — a monster at 0 HP that passed its critical save still fights.
+   * @param {number} baseline  opponents present when the combat started
+   * @returns {number}
    */
-  get moraleDue() {
-    // An exploration has no opponents to break.
-    if (this.isDungeon) return null;
-    const baseline = this.getFlag(SYSTEM_ID, MORALE_FLAGS.BASELINE) ?? 0;
-    // "Lone foes must save when they're reduced to 0 HP" (core-rules.md → Morale): a single
-    // opponent is down at 0 HP even while it still stands on STR. A group's casualties are the
-    // ones the Warden marked defeated — a monster at 0 HP that passed its critical save still fights.
+  opponentsDown(baseline) {
     const isDown = baseline === 1
       ? (c) => c.isDefeated || c.actor?.system.hp?.value === 0
       : (c) => c.isDefeated;
-    return moraleDue({
-      baseline,
-      down: this.combatants.filter((c) => !c.isAdventurer && isDown(c)).length,
-      firstCasualtyDone: this.getFlag(SYSTEM_ID, MORALE_FLAGS.FIRST_CASUALTY) === true,
-      halfDone: this.getFlag(SYSTEM_ID, MORALE_FLAGS.HALF) === true
-    });
+    return this.combatants.filter((c) => !c.isAdventurer && isDown(c)).length;
+  }
+
+  /**
+   * Whisper the Warden one reminder for whatever Morale triggers the casualties have crossed
+   * since the last one, and record it so no trigger is reminded twice.
+   *
+   * A reminder and nothing else: it never rolls, never decides who saves, and the tracker's
+   * Morale button does not wait for it — the bestiary's exceptions (a leader's WIL, a commander's
+   * presence) are prose no field here holds, and the Warden may call for Morale on a reason no
+   * count sees. The caller makes sure exactly one client runs this (`cairn2e.js`).
+   * @returns {Promise<string[]>}  the triggers reminded, empty when there were none
+   */
+  async remindMorale() {
+    // An exploration has no opponents to break.
+    if (this.isDungeon || !this.started) return [];
+    const baseline = this.getFlag(SYSTEM_ID, MORALE_FLAGS.BASELINE) ?? 0;
+    const reminded = this.getFlag(SYSTEM_ID, MORALE_FLAGS.REMINDED) ?? {};
+    const after = this.opponentsDown(baseline);
+    const triggers = moraleTriggers({ baseline, before: reminded.down ?? 0, after, reminded });
+    if (!triggers.length) return triggers;
+    const sent = Object.fromEntries(triggers.map((t) => [t, true]));
+    await this.setFlag(SYSTEM_ID, MORALE_FLAGS.REMINDED, { ...reminded, ...sent, down: after });
+    await postMoraleReminder(triggers);
+    return triggers;
   }
 
   /**

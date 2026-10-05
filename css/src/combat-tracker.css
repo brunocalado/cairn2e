@@ -176,21 +176,6 @@
         opacity: 0.55;
     }
 
-    /* The Morale prompt. It is a demand, not a caption, so it is full ink at the rule weight
-       rather than the soft ink a side heading gets when it is not acting — and it sits inside the
-       list because a render part gets exactly one top-level element (see the template). */
-    .cairn-combat-morale {
-        border-bottom: var(--cairn-rule) solid var(--cairn-surface-fg);
-        color: var(--cairn-surface-fg);
-        font-family: var(--cairn-serif);
-        font-size: 11px;
-        font-style: italic;
-        letter-spacing: var(--cairn-label-track);
-        list-style: none;
-        margin: 0 0 4px;
-        padding: 2px 8px 4px;
-    }
-
     /* The Morale roll, and the first-round DEX save in its own narrow column left of the acted
        mark. The DEX save exists only in round one, so the row is a column narrower for the rest
        of the fight — deliberate: a permanently reserved gutter for a control that appears once

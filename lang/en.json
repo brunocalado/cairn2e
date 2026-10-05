@@ -270,8 +270,11 @@
     },
     "DexSavePrompt": "Roll the first-round DEX save",
     "Morale": {
-      "firstCasualty": "First casualty \u2014 the opponents owe a Morale save",
-      "half": "Half their number is down \u2014 the opponents owe a Morale save"
+      "firstCasualty": "their first casualty",
+      "half": "half their number down",
+      "lone": "a lone foe at 0 HP",
+      "Reminder": "A Morale save is due: {triggers}.",
+      "Hint": "Roll it from the flag on an opponent\u2019s row in the combat tracker."
     },
     "MoralePrompt": "Roll Morale for this opponent",
     "Side": {

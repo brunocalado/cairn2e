@@ -506,6 +506,27 @@ Hooks.once("ready", () => {
   for (const hook of ["createItem", "updateItem", "deleteItem"]) {
     Hooks.on(hook, (item) => syncConditions(item.parent, ITEM_DERIVED));
   }
+
+  // Whisper the Warden a Morale reminder when the opponents cross a trigger
+  // (`CairnCombat#remindMorale`). A casualty arrives as the Combatant's `defeated` or as the
+  // defeated status on its actor (`Combatant#isDefeated`), and a lone foe's as its HP reaching 0,
+  // so all four hooks lead here. One writer, the active GM, for the reason the sync above has one;
+  // debounced so marking an opponent defeated — a combatant update and a status effect at once —
+  // is one look, and serialised so a second look reads the flag the first one wrote rather than
+  // reminding again.
+  let moraleQueue = Promise.resolve();
+  const flushMorale = foundry.utils.debounce(() => {
+    moraleQueue = moraleQueue
+      .then(async () => {
+        for (const combat of game.combats) await combat.remindMorale();
+      })
+      .catch((err) => console.error(`${SYSTEM_ID} | Morale reminder failed`, err));
+  }, 100);
+  for (const hook of ["updateCombatant", "createActiveEffect", "deleteActiveEffect", "updateActor"]) {
+    Hooks.on(hook, () => {
+      if (game.users.activeGM?.isSelf) flushMorale();
+    });
+  }
 });
 
 // Every ApplicationV2, because the render hook is called for each class in the inheritance chain
@@ -645,6 +666,7 @@ const configureHandleBar = () => {
     `systems/${SYSTEM_ID}/templates/chat/journey-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/calendar-note-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/name-card.hbs`,
+    `systems/${SYSTEM_ID}/templates/chat/morale-reminder-card.hbs`,
     `systems/${SYSTEM_ID}/templates/chat/roll-card.hbs`,
   ]);
 

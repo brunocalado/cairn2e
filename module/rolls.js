@@ -26,6 +26,7 @@ const ROLL_CARD_TPL = `${TEMPLATES}/roll-card.hbs`;
 const JOURNEY_CARD_TPL = `${TEMPLATES}/journey-card.hbs`;
 const CALENDAR_NOTE_TPL = `${TEMPLATES}/calendar-note-card.hbs`;
 const NAME_CARD_TPL = `${TEMPLATES}/name-card.hbs`;
+const MORALE_REMINDER_TPL = `${TEMPLATES}/morale-reminder-card.hbs`;
 const DMG_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/damage-dialog.hbs`;
 const APPLY_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/apply-damage-dialog.hbs`;
 
@@ -37,9 +38,9 @@ const IMPAIRED_FORMULA = "1d4";
 const ENHANCED_FORMULA = "1d12";
 
 /**
- * The mode of a roll whispered to the Wardens: Reaction, Morale, both faction rolls and the
- * Dungeon Event. Each is the other side's state of mind or plans — the table meets it in how the
- * creatures act, not by reading a number.
+ * The mode of a roll whispered to the Wardens: Reaction, Morale and its reminder, both faction
+ * rolls and the Dungeon Event. Each is the other side's state of mind or plans — the table meets
+ * it in how the creatures act, not by reading a number.
  *
  * `gm` and not `blind`: blind hides the result from the Warden too, which is the one person who
  * needs it. v14 takes this as an OPTION on message creation, which applies it to the message
@@ -192,6 +193,26 @@ export async function rollMorale(actor) {
     messageMode: WARDEN_ONLY
   });
   return passed;
+}
+
+/**
+ * Remind the Wardens that Morale is due (`core-rules.md` → Morale), naming the trigger — or both,
+ * in one card, when one casualty crossed both. A reminder, not a roll: there is no die on it, and
+ * who saves on whose WIL is the Warden's to rule from the tracker's Morale button. Whispered for
+ * the same reason the Morale roll is: the players meet it in how the enemy acts.
+ * @param {Array<"firstCasualty"|"half"|"lone">} triggers
+ * @returns {Promise<ChatMessage>}
+ */
+export async function postMoraleReminder(triggers) {
+  const names = triggers.map((t) => game.i18n.localize(`CAIRN.Combat.Morale.${t}`));
+  const content = await foundry.applications.handlebars.renderTemplate(MORALE_REMINDER_TPL, {
+    lead: game.i18n.localize("CAIRN.Combat.Morale.Reminder", { triggers: game.i18n.getListFormatter().format(names) }),
+    hint: game.i18n.localize("CAIRN.Combat.Morale.Hint")
+  });
+  return ChatMessage.implementation.create(
+    { speaker: ChatMessage.getSpeaker(), flavor: game.i18n.localize("CAIRN.Morale"), content },
+    { messageMode: WARDEN_ONLY }
+  );
 }
 
 /**
