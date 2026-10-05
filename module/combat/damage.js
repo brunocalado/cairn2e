@@ -70,6 +70,9 @@ export class Damage {
    * @param {boolean} [options.armor=true]  Whether armour reduces an attribute hit.
    */
   static async applyToTargets(targetIds, damage, { attribute = null, armor = true } = {}) {
+    // A hit is whole points: the fields are integers, and a fraction would be rounded on the
+    // write but kept in the hit flag, so Reverse would give back a different number.
+    damage = Math.trunc(damage);
     let landed = 0;
     for (const id of targetIds) {
       const data = attribute
@@ -135,10 +138,9 @@ export class Damage {
   /**
    * The "Apply damage" button on a damage-roll chat card.
    * @param {PointerEvent} event
-   * @param {HTMLElement} html  The chat message's rendered root.
    * @param {ChatMessage} message
    */
-  static onClickChatMessageApplyButton(event, html, message) {
+  static onClickChatMessageApplyButton(event, message) {
     const targetIds = message.getFlag(SYSTEM_ID, "targets") ?? [];
     if (!targetIds.length) return;
 
@@ -157,9 +159,7 @@ export class Damage {
     // armour does not help.
     const attribute = message.getFlag(SYSTEM_ID, "attribute") ?? null;
     const armor = !event.currentTarget?.classList.contains("apply-dmg-no-armor");
-    // The roll line this system draws (`templates/chat/roll.hbs`), not core's `.dice-total` — that
-    // class carries core's grey-bar styling, so the roll line does not wear it.
-    const dmg = parseInt(html.querySelector(".cairn-card-total")?.textContent, 10);
+    const dmg = message.rolls[0]?.total;
     if (Number.isFinite(dmg)) return this.applyToTargets(targetIds, dmg, { attribute, armor });
   }
 

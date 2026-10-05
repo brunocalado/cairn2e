@@ -6,7 +6,7 @@
  */
 
 import { SYSTEM_ID, SETTINGS, FLAGS, CONDITION, DEFAULT_ARTWORK } from "../constants.js";
-import { attrResource, revertUpdate } from "../gains.js";
+import { attrPath, attrResource, gainUpdate, movedMaximum, revertUpdate } from "../gains.js";
 import { scarHpLost, outcomeLabel } from "../scars.js";
 import { tokenDefaults } from "../token-defaults.js";
 
@@ -455,6 +455,44 @@ export class CairnActor extends Actor {
   }
 
   /* -------------------------------------------- */
+  /*  A Scar's or a Growth's gain                 */
+  /* -------------------------------------------- */
+
+  /**
+   * Move a maximum by a gain and record on `record` (a Scar or a Growth) what it did, in ONE
+   * request: two awaited writes left a gain with no record, or a record of a gain never made, when
+   * the second failed. `parent` is the actor's own, as `Document#update` passes it, so a token's
+   * synthetic actor is routed to its delta (`client-backend.mjs#adjustActorDeltaRequest`).
+   * @param {Item} record
+   * @param {{ attr: string, mode: "higher"|"add"|"set", total: number }} gain
+   * @returns {Promise<{from: number, to: number}>}
+   */
+  async applyGain(record, { attr, mode, total }) {
+    const res = attrResource(this, attr);
+    const path = attrPath(attr);
+    const { from, to, value } = gainUpdate({ mode, total, max: res.max, value: res.value });
+    await foundry.documents.modifyBatch([
+      { action: "update", documentName: "Actor", parent: this.parent,
+        updates: [{ _id: this.id, [`${path}.max`]: to, [`${path}.value`]: value }] },
+      { action: "update", documentName: "Item", parent: this,
+        updates: [{ _id: record.id, "system.outcome.attr": attr, "system.outcome.from": from,
+          "system.outcome.to": to, "system.resolved": true }] }
+    ]);
+    return { from, to };
+  }
+
+  /** Put back what `record` did to a maximum, by the delta it recorded (`gains.js#revertUpdate`). */
+  async revertGain(record) {
+    if (!movedMaximum(record.system)) return null;
+    const { attr, from, to } = record.system.outcome;
+    const res = attrResource(this, attr);
+    const path = attrPath(attr);
+    const next = revertUpdate({ from, to, max: res.max, value: res.value });
+    await this.update({ [`${path}.max`]: next.max, [`${path}.value`]: next.value });
+    return next;
+  }
+
+  /* -------------------------------------------- */
   /*  Owned items (sheet actions)                 */
   /* -------------------------------------------- */
 
@@ -462,12 +500,11 @@ export class CairnActor extends Actor {
     await this.createEmbeddedDocuments("Item", [itemData]);
   }
 
-  /** The sentence the delete question adds for a Scar that changed a maximum, or "" for anything
-   *  else — including a Scar whose gain is still owed, which changed nothing. */
-  #scarRevertNotice(item) {
-    if (item.type !== "scar" || !item.system.resolved) return "";
+  /** The sentence the delete question adds for a Scar or a Growth that changed a maximum, or ""
+   *  for anything else — including one whose gain is still owed, which changed nothing. */
+  #revertNotice(item) {
+    if (!["scar", "growth"].includes(item.type) || !movedMaximum(item.system)) return "";
     const { attr, from, to } = item.system.outcome;
-    if (!attr || from === to) return "";
     const res = attrResource(this, attr);
     const { max } = revertUpdate({ from, to, max: res.max, value: res.value });
     const label = outcomeLabel(item.system.outcome);
@@ -485,11 +522,11 @@ export class CairnActor extends Actor {
     const name = foundry.utils.escapeHTML(item.shownName);
     const proceed = await foundry.applications.api.DialogV2.confirm({
       classes: [SYSTEM_ID],
-      // Deleting a Scar puts back what it did, so the question says which number moves and where
-      // to — the one thing about this delete that is not obvious from the row being removed.
+      // Deleting a Scar or a Growth puts back what it did, so the question says which number moves
+      // and where to — the one thing about this delete that is not obvious from the row removed.
       content: `${game.i18n.localize("CAIRN.Notify.ConfirmDelete")} ${name}?`
         + (inside ? ` ${game.i18n.localize("CAIRN.Notify.ConfirmDeleteContents", { n: inside })}` : "")
-        + this.#scarRevertNotice(item),
+        + this.#revertNotice(item),
       rejectClose: false,
       modal: true,
     });

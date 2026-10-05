@@ -7,6 +7,7 @@
 
 import { SYSTEM_ID } from "./constants.js";
 import { BELONGINGS, placeOf, sackAt, spendPlan, gainFits } from "./coin-rules.js";
+import { containerRoom } from "./data/_derived.js";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -38,9 +39,7 @@ const { DialogV2 } = foundry.applications.api;
 function freeAt(actor, place) {
   if (place === BELONGINGS) return Infinity;
   if (place === "") return actor.system.slotsFree ?? Infinity;
-  const container = actor.items.get(place);
-  if (!container?.system.isContainer) return 0;
-  return Math.max(0, container.system.capacity - container.system.contentsSlots);
+  return containerRoom(actor.items, place);
 }
 
 /**

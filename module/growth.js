@@ -6,14 +6,13 @@
  */
 import { SYSTEM_ID, EDIT_LIMITS } from "./constants.js";
 import { clampStat, digitsOnly } from "./helpers.js";
-import { gainUpdate, revertUpdate, attrPath, attrResource } from "./gains.js";
 import { paintInk, scheduleInk } from "./ink.js";
 
 const GAIN_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/growth-gain-dialog.hbs`;
 
 /**
  * Record what a Growth did to a maximum: write it on the actor, and write on the growth what it
- * did, so deleting the growth can put it back.
+ * did, so deleting the growth can put it back (`CairnActor#applyGain`, `CairnActor#revertGain`).
  *
  * `mode: "set"` because a growth is an ASSIGNMENT — the Warden says what the number now is. Both
  * of the SRD's numeric examples read that way: Ox rerolls Willpower and keeps the higher result,
@@ -31,24 +30,14 @@ const GAIN_DIALOG_TPL = `systems/${SYSTEM_ID}/templates/apps/growth-gain-dialog.
  * @param {number} total  the maximum it becomes
  */
 export async function applyGrowthGain(actor, growth, attr, total) {
-  const res = attrResource(actor, attr);
-  const path = attrPath(attr);
-  const { from, to, value } = gainUpdate({ mode: "set", total, max: res.max, value: res.value });
-  await actor.update({ [`${path}.max`]: to, [`${path}.value`]: value });
-  await growth.update({
-    "system.outcome.attr": attr,
-    "system.outcome.from": from,
-    "system.outcome.to": to,
-    "system.resolved": true
-  });
-  return { from, to };
+  return actor.applyGain(growth, { attr, mode: "set", total });
 }
 
 /**
  * Record a gain that is words and not a number — the common kind: "reads her Spellbook under
  * duress without a save", "no longer needs Rations". Nothing on the actor moves; the growth
  * holds the text and is resolved, so the row stops offering the control. Deleting it puts
- * nothing back, because nothing was taken (`revertGrowthGain` returns on a blank `attr`).
+ * nothing back, because nothing was taken (`gains.js#movedMaximum` is false on a blank `attr`).
  * @param {Item} growth
  * @param {string} text
  */
@@ -130,21 +119,4 @@ export async function promptGrowthGain(actor, item) {
   const text = (result.text ?? "").trim();
   if (!text) return;
   return recordGrowthGain(item, text);
-}
-/**
- * Put back what a growth did, when it is deleted.
- *
- * A growth that never recorded a gain wrote nothing and puts nothing back — which is most of
- * them, since most of what the Growth chapter describes has no number in it at all.
- * @param {Item} growth
- */
-export async function revertGrowthGain(growth) {
-  const actor = growth.parent;
-  const { attr, from, to } = growth.system.outcome;
-  if (!actor || !growth.system.resolved || !attr || from === to) return null;
-  const res = attrResource(actor, attr);
-  const path = attrPath(attr);
-  const next = revertUpdate({ from, to, max: res.max, value: res.value });
-  await actor.update({ [`${path}.max`]: next.max, [`${path}.value`]: next.value });
-  return next;
 }

@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 import { CONDITION } from "./constants.js";
-import { gainUpdate, revertUpdate, attrPath, attrResource } from "./gains.js";
+import { movedMaximum } from "./gains.js";
 
 /**
  * The twelve rows of the Scars table (`srd-2e/players-guide/core-rules.md` → Scars Table), as the
@@ -107,12 +107,13 @@ export function outcomeLabel({ attr }) {
  * @returns {string}
  */
 export function outcomeText(system) {
-  const { attr, from, to } = system.outcome;
-  return system.resolved && attr && from !== to ? `${outcomeLabel(system.outcome)} ${from} \u2192 ${to}` : "";
+  const { from, to } = system.outcome;
+  return movedMaximum(system) ? `${outcomeLabel(system.outcome)} ${from} \u2192 ${to}` : "";
 }
 
 /**
- * Apply a scar's gain: write the maximum on the actor, and record on the scar what it did.
+ * Apply a scar's gain: the maximum moves on the actor and the scar records what it did
+ * (`CairnActor#applyGain`). What is the Scar's own is the mode, read off its table row.
  *
  * The maximum is written DIRECTLY rather than through an ActiveEffect. The gain is permanent —
  * nothing expires it and nothing suppresses it — and the SRD's wording is assignment, not a
@@ -123,14 +124,8 @@ export function outcomeText(system) {
  * @param {number} total  the rolled gain
  */
 export async function applyScarGain(actor, scar, total) {
-  const spec = scarEntry(scar.system.entry);
-  const attr = scar.system.outcome.attr;
-  const res = attrResource(actor, attr);
-  const path = attrPath(attr);
-  const { from, to, value } = gainUpdate({ mode: spec.mode, total, max: res.max, value: res.value });
-  await actor.update({ [`${path}.max`]: to, [`${path}.value`]: value });
-  await scar.update({ "system.outcome.from": from, "system.outcome.to": to, "system.resolved": true });
-  return { from, to };
+  const { mode } = scarEntry(scar.system.entry);
+  return actor.applyGain(scar, { attr: scar.system.outcome.attr, mode, total });
 }
 
 /**
@@ -140,7 +135,6 @@ export async function applyScarGain(actor, scar, total) {
  */
 export async function revertScarGain(scar) {
   const actor = scar.parent;
-  const { attr, from, to } = scar.system.outcome;
   if (!actor) return null;
   // Doomed belongs to row 12 alone, so deleting that scar takes the mark with it. Deprived does
   // not work that way and is left alone: a character can be Deprived for a dozen reasons that
@@ -148,10 +142,5 @@ export async function revertScarGain(scar) {
   if (scar.system.entry === 12 && actor.statuses?.has(CONDITION.DOOMED)) {
     await actor.toggleStatusEffect(CONDITION.DOOMED, { active: false });
   }
-  if (!scar.system.resolved || !attr || from === to) return null;
-  const res = attrResource(actor, attr);
-  const path = attrPath(attr);
-  const next = revertUpdate({ from, to, max: res.max, value: res.value });
-  await actor.update({ [`${path}.max`]: next.max, [`${path}.value`]: next.value });
-  return next;
+  return actor.revertGain(scar);
 }

@@ -100,6 +100,24 @@ export function sumUsedSlots(items) {
 }
 
 /**
+ * Free slots in the container `id` as `items` stand: its capacity less what is stowed in it, never
+ * below 0. A pointer at something that is not a container is worth no room — never the body's.
+ * Over a plain list, so the store can ask it of a checkout that has not happened yet.
+ * @param {Iterable<{id: string, type: string, system?: object}>} items
+ * @param {string} id
+ * @returns {number}
+ */
+export function containerRoom(items, id) {
+  let capacity = 0;
+  let used = 0;
+  for (const item of items) {
+    if (item.id === id) capacity = item.system?.capacity ?? 0;
+    else if (item.system?.container === id) used += slotsForItem(item);
+  }
+  return Math.max(0, capacity - used);
+}
+
+/**
  * Slots a sack of coin occupies (`data/item-coin.js`). Under 100gp it is *petty* (0 slots). At and
  * above 100gp it counts; the common Cairn reading is one slot per 100gp. RAW only fixes the
  * *petty* boundary — a Warden who wants a different weight edits this one line (alpha: §0).

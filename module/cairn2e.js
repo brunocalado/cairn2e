@@ -620,7 +620,7 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
   // with and without armour. GM-only.
   for (const applyBtn of html.querySelectorAll(".apply-dmg")) {
     if (game.user.isGM) {
-      applyBtn.addEventListener("click", (event) => Damage.onClickChatMessageApplyButton(event, html, message));
+      applyBtn.addEventListener("click", (event) => Damage.onClickChatMessageApplyButton(event, message));
     } else {
       applyBtn.hidden = true;
     }

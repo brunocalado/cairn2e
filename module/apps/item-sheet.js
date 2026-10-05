@@ -11,6 +11,7 @@ import { moveCoin, promptCoinAmount } from "../coin.js";
 import { takeItem } from "../transfer.js";
 import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
+import { movedMaximum } from "../gains.js";
 import { enrich } from "../helpers.js";
 import { CairnSheetMixin, staleEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -407,9 +408,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // Details, and it reuses the scar's two maximum labels: they name a resource on the ACTOR, not a property of a scar, and one English string
     // in one place cannot drift from itself.
     if (item.type === "growth") {
-      const { attr, from, to } = item.system.outcome;
+      const { from, to } = item.system.outcome;
       context.growth = {
-        hasOutcome: item.system.resolved && !!attr && from !== to,
+        hasOutcome: movedMaximum(item.system),
         outcomeLabel: outcomeLabel(item.system.outcome),
         from,
         to

@@ -5,11 +5,10 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { slotsForItem, nestingRefusal, tableNameOf } from "../data/_derived.js";
+import { slotsForItem, nestingRefusal, tableNameOf, containerRoom } from "../data/_derived.js";
 import { placeOf, sackAt } from "../coin-rules.js";
 import { SYSTEM_ID, DEFAULT_ARTWORK, GEAR_ARTWORK } from "../constants.js";
 import { revertScarGain } from "../scars.js";
-import { revertGrowthGain } from "../growth.js";
 import { enrich } from "../helpers.js";
 
 const ITEM_CARD_TEMPLATE = `systems/${SYSTEM_ID}/templates/chat/item-card.hbs`;
@@ -120,10 +119,7 @@ export class CairnItem extends Item {
    * @returns {number}
    */
   static #budgetFor(parent, containerId) {
-    if (!containerId) return parent.system.slotsFree;
-    const container = parent.items.get(containerId);
-    if (!container?.system.isContainer) return 0;
-    return Math.max(0, container.system.capacity - container.system.contentsSlots);
+    return containerId ? containerRoom(parent.items, containerId) : parent.system.slotsFree;
   }
 
   /**
@@ -147,7 +143,7 @@ export class CairnItem extends Item {
     // macro, the directory — is refused, and BEFORE the parent test, so a world-level one cannot
     // exist either. The reason is not tidiness. A dropped record is a copy, and its `outcome`
     // claims a change that was never applied to THIS character — so deleting it later would put
-    // back a maximum they never gained (`revertScarGain`, `revertGrowthGain`). Refusing it here
+    // back a maximum they never gained (`CairnActor#revertGain`). Refusing it here
     // is what keeps every one of them on a sheet honest.
     for (const doc of [...documents]) {
       const notice = GRANTED_ONLY[doc.type];
@@ -326,7 +322,7 @@ export class CairnItem extends Item {
   async _preDelete(options, user) {
     if ((await super._preDelete(options, user)) === false) return false;
     if (this.type === "scar") await revertScarGain(this);
-    if (this.type === "growth") await revertGrowthGain(this);
+    if (this.type === "growth") await this.parent?.revertGain(this);
   }
 
   /* -------------------------------------------- */

@@ -57,6 +57,12 @@ export function revertUpdate({ from, to, max, value }) {
   return { max: next, value: Math.max(0, Math.min(value, next)) };
 }
 
+/** Whether a Scar or a Growth moved a maximum: resolved, with an attribute, and a pair that
+ *  differs. The one test behind printing the change, warning about it and putting it back. */
+export function movedMaximum({ resolved, outcome }) {
+  return !!resolved && !!outcome?.attr && outcome.from !== outcome.to;
+}
+
 /** Where on an actor an outcome's attribute lives. `hp` is the character's own pair; the other
  *  three are attributes. */
 export function attrPath(attr) {

@@ -6,7 +6,7 @@
  */
 
 import { MAX_SLOTS, packUuid } from "./constants.js";
-import { slotsForItem, sumUsedSlots } from "./data/_derived.js";
+import { containerRoom, sumUsedSlots } from "./data/_derived.js";
 import { BELONGINGS, placeOf, sackAt, spendPlan, gainFits } from "./coin-rules.js";
 
 /**
@@ -399,12 +399,7 @@ export function itemsAfter(items, soldIds, bought) {
 export function containerFree(items) {
   const all = Array.from(items);
   const free = {};
-  for (const item of all) {
-    if (!(item.system?.capacity > 0)) continue;
-    let used = 0;
-    for (const other of all) if (other.system?.container === item.id) used += slotsForItem(other);
-    free[item.id] = Math.max(0, item.system.capacity - used);
-  }
+  for (const item of all) if (item.system?.capacity > 0) free[item.id] = containerRoom(all, item.id);
   return free;
 }
 

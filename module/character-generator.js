@@ -553,7 +553,7 @@ export async function assembleActorData(draft) {
  * - `outcome.formula` rolls and adds to `outcome.attr`'s maximum — "Start with +d4 HP". The
  *   value rises with it: this is the Hit Protection the character starts play with, not a
  *   maximum waiting to be healed up to. `from` / `to` are written, so deleting the growth puts
- *   the number back (`growth.js#revertGrowthGain`).
+ *   the number back (`CairnActor#revertGain`).
  * - `table` draws that table once and keeps the line as `gained` — "roll a second time on the
  *   Bonds table" — and what the drawn face grants goes through `embed`, so a second Bond brings
  *   its Strange Compass as the first one does.
