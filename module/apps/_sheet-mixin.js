@@ -6,23 +6,11 @@
  */
 
 /**
- * What every document sheet in this system does, in one place — and the frame code every window
- * shares, sheet or not (`addFrameLabel`), which is a free function for that reason.
- *
- * It is a mixin rather than a base class because the sheets do not share an ancestor: an actor
- * sheet extends `ActorSheetV2` and an item sheet extends `ItemSheetV2`, and both of those are
- * already wrapped in `HandlebarsApplicationMixin`. A mixin composes over whichever of them a
- * sheet is built on, and a sheet added later opts in by naming it — which is the point: this is
- * where the next thing every sheet has to do goes, instead of being copied into each class.
- *
- * Apply it OUTERMOST, so what it defines wins over the class it wraps:
- *
- *     class CairnItemSheet extends CairnSheetMixin(HandlebarsApplicationMixin(ItemSheetV2)) {}
- *
- * A sheet that wants something else still overrides it in its own class — a subclass's member
- * beats the mixin's, which is how `CairnCharacterEdit` keeps titling itself "Edit: <name>".
- * @param {typeof foundry.applications.api.DocumentSheetV2} Base
+ * What the system's windows share: the mixin every document sheet is built on, the two editor
+ * helpers its render rules use, and the frame code every window uses, sheet or not
+ * (`addFrameLabel`), which is a free function for that reason.
  */
+
 /**
  * The editor parts a document change has left showing an old value.
  *
@@ -76,6 +64,23 @@ export function keptEditorParts(sheet, renderData) {
   return Object.values(editors).filter((id) => onScreen.has(id) && !stale.includes(id));
 }
 
+/**
+ * What every document sheet in this system does, in one place.
+ *
+ * It is a mixin rather than a base class because the sheets do not share an ancestor: an actor
+ * sheet extends `ActorSheetV2` and an item sheet extends `ItemSheetV2`, and both of those are
+ * already wrapped in `HandlebarsApplicationMixin`. A mixin composes over whichever of them a
+ * sheet is built on, and a sheet added later opts in by naming it — which is the point: this is
+ * where the next thing every sheet has to do goes, instead of being copied into each class.
+ *
+ * Apply it OUTERMOST, so what it defines wins over the class it wraps:
+ *
+ *     class CairnItemSheet extends CairnSheetMixin(HandlebarsApplicationMixin(ItemSheetV2)) {}
+ *
+ * A sheet that wants something else still overrides it in its own class — a subclass's member
+ * beats the mixin's, which is how `CairnCharacterEdit` keeps titling itself "Edit: <name>".
+ * @param {typeof foundry.applications.api.DocumentSheetV2} Base
+ */
 export const CairnSheetMixin = (Base) => class extends Base {
   /**
    * Document paths whose only display on the sheet is inside a ProseMirror editor, each with the
