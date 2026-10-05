@@ -24,11 +24,13 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 const STEPPED = /^system\.(hp|abilities\.\w+)\.value$/;
 
 /**
- * Shared behaviour for the three Cairn actor sheets. Not registered directly.
+ * The base of the two actor sheets that carry things — the character's and the NPC's. Not
+ * registered directly.
  *
  * Upstream shipped one 695-line `CairnActorSheet` that switched template on `actor.type`; the
  * two actor types share almost nothing, so this base holds only the genuinely common inventory
- * actions and each concrete class (`CairnCharacterSheet`, `CairnNpcSheet`) adds the rest.
+ * actions and each concrete class (`CairnCharacterSheet`, `CairnNpcSheet`) adds the rest. The
+ * party sheet is not built on it: a party carries nothing, so it stands on the mixins alone.
  */
 export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
   static DEFAULT_OPTIONS = {
@@ -172,17 +174,14 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
 
     // Right-click on the portrait opens it in core's `ImagePopout`, the window whose header
     // carries "Show to Players" — the same one core's own `showPortraitArtwork` header control
-    // opens (`sheets/actor-sheet.mjs:172`). A left-click keeps core's `editImage`. The party
-    // sheet is left out: its picture is a banner for a group, not a face to show the table.
-    if (this.actor.type !== "party") {
-      for (const img of htmlElement.querySelectorAll("img.portrait")) {
-        img.addEventListener("contextmenu", (event) => {
-          event.preventDefault();
-          const { img: src, name, uuid } = this.actor;
-          new foundry.applications.apps.ImagePopout({ src, uuid, window: { title: name } })
-            .render({ force: true });
-        });
-      }
+    // opens (`sheets/actor-sheet.mjs:172`). A left-click keeps core's `editImage`.
+    for (const img of htmlElement.querySelectorAll("img.portrait")) {
+      img.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        const { img: src, name, uuid } = this.actor;
+        new foundry.applications.apps.ImagePopout({ src, uuid, window: { title: name } })
+          .render({ force: true });
+      });
     }
 
     // A roll link is focusable (`tabindex="0"` in the template) so the keyboard can reach it,

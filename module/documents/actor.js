@@ -48,7 +48,7 @@ export class CairnActor extends Actor {
    *
    * Debounced, because the changes worth showing arrive in bursts: ten taps on a stepper, a
    * generator writing a whole inventory. Only the `members` and `followers` parts are asked for
-   * — the base sheet honours an explicit `parts` list (`apps/actor-sheet.js#_configureRenderOptions`),
+   * — core honours an explicit `parts` list (`HandlebarsApplicationMixin#_configureRenderOptions`),
    * so the header and the tab strip are not rebuilt and the roster tabs are all that redraw.
    */
   renderParties = foundry.utils.debounce(() => {

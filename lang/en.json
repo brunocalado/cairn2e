@@ -917,6 +917,7 @@
     "Missing": "Missing actor",
     "NoActiveParty": "There is no active party. Create one, or pick one from the Actors directory.",
     "NoFollowers": "Nobody is travelling with them.",
+    "NoItems": "A party carries nothing. Drop the item on a member's sheet.",
     "NoMembers": "Drop a character here.",
     "NoPartyInParty": "A party cannot join another party.",
     "OpenKey": "Open the party",

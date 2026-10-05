@@ -8,7 +8,11 @@
 import { SYSTEM_ID } from "../constants.js";
 import { CONDITIONS } from "../conditions.js";
 import { abilityRows } from "../helpers.js";
-import { CairnActorSheet } from "./actor-sheet.js";
+import { CairnSheetMixin } from "./_sheet-mixin.js";
+import { CairnInkMixin } from "./_ink-mixin.js";
+
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
 
@@ -25,11 +29,14 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
  * party's marching order (`srd-2e/players-guide/procedures.md` § Dungeon Elements → Doors), so
  * every row carries its index in that one array and never the index of the tab it is drawn in.
  */
-export class CairnPartySheet extends CairnActorSheet {
+export class CairnPartySheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
   static DEFAULT_OPTIONS = {
     classes: [SYSTEM_ID, "sheet", "actor", "party"],
     position: { width: 600, height: 620 },
     window: { resizable: true },
+    // The name field in the header saves as it is left, like every sheet's. `DocumentSheetV2`
+    // submits nothing on change by default.
+    form: { submitOnChange: true, closeOnSubmit: false },
     actions: {
       memberOpen: CairnPartySheet.#onMemberOpen,
       memberRemove: CairnPartySheet.#onMemberRemove,
@@ -61,6 +68,7 @@ export class CairnPartySheet extends CairnActorSheet {
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    context.actor = this.actor;
     const rows = this.actor.system.lineup.map((entry) => (entry.actor ? this.#row(entry) : this.#missingRow(entry)));
     // A member whose Actor is gone has no type to sort it by; it is shown with the party, on the
     // tab the sheet opens on, where it can be seen and taken off.
@@ -189,6 +197,18 @@ export class CairnPartySheet extends CairnActorSheet {
       "system.members": [...members, { actor: actor.uuid, deployed: true }]
     });
     return actor;
+  }
+
+  /**
+   * @override — a party carries nothing: an item belongs on a member's sheet.
+   *
+   * Core's own handler would copy the item onto the party, where no template draws it. The
+   * inventory sheets' move would be worse — the item leaves the character it came from and
+   * vanishes from view — so the drop is refused and says where the item goes instead.
+   */
+  async _onDropItem(_event, _item) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Party.NoItems"));
+    return null;
   }
 
   /* -------------------------------------------- */
