@@ -12,7 +12,7 @@ import { takeItem } from "../transfer.js";
 import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
 import { enrich } from "../helpers.js";
-import { CairnSheetMixin } from "./_sheet-mixin.js";
+import { CairnSheetMixin, staleEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -184,8 +184,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     guise: { template: `${TEMPLATES}/tab-guise.hbs`, scrollable: [""] }
   };
 
-  /** Item fields whose only display is inside an editor (see `CairnActorSheet.EDITOR_FIELDS`). */
-  static EDITOR_FIELDS = ["system.description", "system.recharge", "system.guiseDescription"];
+  /** Item fields whose only display is inside an editor, and their parts (see
+   *  `CairnActorSheet.EDITOR_FIELDS`). */
+  static EDITOR_FIELDS = { "system.description": "description", "system.recharge": "recharge", "system.guiseDescription": "guise" };
 
   // The group must be declared so `changeTab` accepts it; `_getTabsConfig` narrows the list to the
   // subtype's own tabs at render time.
@@ -339,19 +340,23 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // gain recorded from the character sheet while this sheet is open on that tab leaves the line
     // stale until the tab or the sheet is reopened. Either split the gained block into a part of
     // its own, or repaint that one line by hand here.
-    const editors = ["description", "recharge", "guise"];
+    // ...and one an outside write left showing an old value is rebuilt, unless its editor is being
+    // typed in (`_sheet-mixin.js#staleEditorParts`).
+    const editors = Object.values(this.constructor.EDITOR_FIELDS);
     const onScreen = new Set([...(this.element?.querySelectorAll("[data-application-part]") ?? [])]
       .map((part) => part.dataset.applicationPart));
-    options.parts = options.parts.filter((id) => !editors.includes(id) || !onScreen.has(id));
+    const stale = staleEditorParts(this, options.renderData, this.constructor.EDITOR_FIELDS);
+    options.parts = options.parts.filter((id) => !editors.includes(id) || !onScreen.has(id) || stale.includes(id));
   }
 
   /** @override */
   _canRender(options) {
     const { renderContext, renderData } = options;
     if (renderContext === "updateItem" && renderData) {
+      const editors = this.constructor.EDITOR_FIELDS;
       const touched = Object.keys(foundry.utils.flattenObject(renderData))
-        .filter((k) => !k.startsWith("_") && !this.constructor.EDITOR_FIELDS.includes(k));
-      if (!touched.length) return false;
+        .filter((k) => !k.startsWith("_") && !(k in editors));
+      if (!touched.length && !staleEditorParts(this, renderData, editors).length) return false;
     }
     return super._canRender(options);
   }
@@ -469,10 +474,11 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       // uses — puts the row straight back on the Add row rather than leaving a "none" to tidy.
       context.axes = {};
       context.addable = [];
+      const offer = this.isEditable;
       for (const axis of AXES) {
         const set = axis.set(item.system) || (axis.id === "grants" && this.#grantsOpen);
         context.axes[axis.id] = set;
-        if (!set && (axis.offer?.(item.system) ?? true)) {
+        if (offer && !set && (axis.offer?.(item.system) ?? true)) {
           context.addable.push({ id: axis.id, label: axis.label });
         }
       }
@@ -554,6 +560,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   /** Open one more axis, on its first value (`AXES#open`). The row IS the value, so there is
    *  nothing left to save afterwards and nothing to remember that the document cannot answer. */
   static async #onAxisAdd(event, target) {
+    // A sheet its viewer cannot edit draws none of these controls; a stale element still
+    // reaches the handler, so each list and axis write refuses here too.
+    if (!this.isEditable) return;
     const axis = AXES.find((a) => a.id === target.dataset.axis);
     if (!axis) return;
     if (!axis.open) {
@@ -709,6 +718,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   /** Take one item out of the container and back onto the body — where the ten apply again. A
    *  sack of coin asks how much comes out, as it asked how much went in (`actor-sheet.js#_onDropItem`). */
   static async #onContentRemove(event, target) {
+    if (!this.isEditable) return;
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     const held = this.document.parent?.items.get(id);
     if (!held) return;
@@ -748,6 +758,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
 
   /** Append an empty name row. It is blank on purpose — the row IS the prompt to type one. */
   static async #onNameAdd() {
+    if (!this.isEditable) return;
     await this.document.update({ "system.names": [...this.document.system.names, ""] });
   }
 
@@ -774,24 +785,29 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   }
 
   static async #onNameRemove(event, target) {
+    if (!this.isEditable) return;
     await CairnItemSheet.#removeAt(this.document, "system.names", CairnItemSheet.#rowIndex(target));
   }
 
   static async #onTableRemove(event, target) {
+    if (!this.isEditable) return;
     await CairnItemSheet.#removeAt(this.document, "system.tables", CairnItemSheet.#rowIndex(target));
   }
 
   static async #onGearRemove(event, target) {
+    if (!this.isEditable) return;
     await CairnItemSheet.#removeAt(this.document, "system.startingGear", CairnItemSheet.#rowIndex(target));
   }
 
   /** Append an empty, unticked milestone. Blank on purpose — the row IS the prompt to type one. */
   static async #onMilestoneAdd() {
+    if (!this.isEditable) return;
     const list = [...this.document.system.milestones, { text: "", done: false }];
     await this.document.update({ "system.milestones": list });
   }
 
   static async #onMilestoneRemove(event, target) {
+    if (!this.isEditable) return;
     await CairnItemSheet.#removeAt(this.document, "system.milestones", CairnItemSheet.#rowIndex(target));
   }
 

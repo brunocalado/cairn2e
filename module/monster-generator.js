@@ -359,6 +359,9 @@ export async function regenerateMonster(actor) {
   if (!tier) return actor;
 
   const { system, items } = await buildMonsterData(tier);
+  // The Warden's notes are not the dice's: a re-roll replaces the statline and keeps the text,
+  // as the NPC re-roll does. `buildMonsterData` starts a new monster with none.
+  delete system.description;
 
   const staleIds = actor.items.filter((i) => i.getFlag(SYSTEM_ID, "generated")).map((i) => i.id);
   if (staleIds.length) await actor.deleteEmbeddedDocuments("Item", staleIds);

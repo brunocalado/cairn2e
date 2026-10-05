@@ -12,7 +12,7 @@ import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { enrich } from "../helpers.js";
 import { lightSpell } from "../light-sources.js";
 import { takeItem } from "../transfer.js";
-import { CairnSheetMixin } from "./_sheet-mixin.js";
+import { CairnSheetMixin, staleEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { bindSteppers, stepStat, flushSteps, fieldNumber, fitToText } from "./_steppers.js";
@@ -84,12 +84,13 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   #editor = null;
 
   /**
-   * Document paths whose only display on this sheet is inside a ProseMirror editor. The editor
-   * already shows the value the user just saved, so an update that touches nothing else must not
-   * rebuild the sheet around it. Each concrete sheet lists its own.
-   * @type {string[]}
+   * Document paths whose only display on this sheet is inside a ProseMirror editor, each with the
+   * part that draws it. The editor already shows the value the user just saved, so an update that
+   * touches nothing else must not rebuild the sheet around it — only a part left showing an old
+   * value is rebuilt (`_sheet-mixin.js#staleEditorParts`). Each concrete sheet lists its own.
+   * @type {Record<string, string>}
    */
-  static EDITOR_FIELDS = [];
+  static EDITOR_FIELDS = {};
 
   /**
    * Which parts a document change actually invalidates.
@@ -130,7 +131,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const available = new Set(options.parts);
     const wanted = this.partsForRenderContext(options.renderContext)
       ?? options.parts.filter((id) => !this.#editorParts().includes(id));
-    options.parts = wanted.filter((id) => available.has(id));
+    const stale = staleEditorParts(this, options.renderData, this.constructor.EDITOR_FIELDS);
+    options.parts = [...wanted, ...stale].filter((id) => available.has(id));
   }
 
   /** @override — skip a render that cannot change anything the sheet draws. Same shape as core's
@@ -138,10 +140,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   _canRender(options) {
     const { renderContext, renderData } = options;
     if (renderContext === `update${this.document.documentName}` && renderData) {
-      const editorFields = this.constructor.EDITOR_FIELDS;
+      const editors = this.constructor.EDITOR_FIELDS;
       const touched = Object.keys(foundry.utils.flattenObject(renderData))
-        .filter((k) => !k.startsWith("_") && !editorFields.includes(k));
-      if (!touched.length) return false;
+        .filter((k) => !k.startsWith("_") && !(k in editors));
+      if (!touched.length && !staleEditorParts(this, renderData, editors).length) return false;
     }
     return super._canRender(options);
   }

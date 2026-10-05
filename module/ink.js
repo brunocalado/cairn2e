@@ -428,11 +428,13 @@ export const LIFT_MS = 130;
  */
 const liftLevels = new WeakMap();
 
-/** Set by `liftLevel` when something is still moving; read by `paintInk` to book another frame. */
-let liftMoving = false;
-
-/** The frame `paintInk` has already booked, so a hover mid-ramp does not start a second loop. */
-let liftFrame = 0;
+/**
+ * The frame each host's `paintInk` has booked, so a hover mid-ramp does not start a second loop.
+ * Per host, not one for the page: with a single slot, a repaint of one window cancelled the frame
+ * another had booked for its own ramp, and that window's mark stopped part-way and stayed there.
+ * @type {WeakMap<HTMLElement, number>}
+ */
+const liftFrames = new WeakMap();
 
 /**
  * Advance one element's lift toward `want` and hand back where it is now.
@@ -473,7 +475,6 @@ export function liftLevel(el, want, now) {
   state.value = want > state.value
     ? Math.min(want, state.value + step)
     : Math.max(want, state.value - step);
-  if (state.value !== want) liftMoving = true;
   return state.value;
 }
 
@@ -624,7 +625,9 @@ export function paintInk(host) {
   const under = prepare(ensureCanvas(host, false), width, height);
   const above = prepare(ensureCanvas(host, true), width, height);
   const now = performance.now();
-  liftMoving = false;
+  // Whether a mark on THIS host is still short of its target — read off each `liftLevel` it
+  // calls, never shared with another host's paint.
+  let moving = false;
 
   // The canvas origin, NOT the host's own rect origin. Both canvases sit at `inset: 0`, which
   // resolves against the host's PADDING box, while `getBoundingClientRect` returns its BORDER box
@@ -695,7 +698,9 @@ export function paintInk(host) {
         let lift = 0;
         let liftColor = null;
         if (mode !== undefined) {
-          lift = liftLevel(parent, parent.matches(":hover, :has(:focus-visible)") ? 1 : 0, now);
+          const want = parent.matches(":hover, :has(:focus-visible)") ? 1 : 0;
+          lift = liftLevel(parent, want, now);
+          if (lift !== want) moving = true;
           liftColor = mode ? INKS[mode] ?? null : null;
         }
         blitSlab(ctx, x, y, Math.round(rect.width), Math.round(rect.height), key, lift, liftColor);
@@ -766,13 +771,14 @@ export function paintInk(host) {
 
   // A mark that has not reached its target yet books the next frame. Exactly one is ever
   // outstanding: a pointer event that repaints mid-ramp cancels the booking and makes its own.
-  if (liftFrame) cancelAnimationFrame(liftFrame);
-  liftFrame = liftMoving
-    ? requestAnimationFrame(() => {
-      liftFrame = 0;
+  const booked = liftFrames.get(host);
+  if (booked) cancelAnimationFrame(booked);
+  if (moving) {
+    liftFrames.set(host, requestAnimationFrame(() => {
+      liftFrames.delete(host);
       paintInk(host);
-    })
-    : 0;
+    }));
+  } else liftFrames.delete(host);
 }
 
 /**

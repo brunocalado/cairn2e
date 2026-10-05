@@ -25,7 +25,9 @@
                 </span>
             </span>
             <span class="cairn-item-controls">
+                {{#if @root.editable}}
                 <a data-action="contentRemove" data-tooltip="{{localize 'CAIRN.TakeOut'}}"><i class="fas fa-arrow-up-from-bracket"></i></a>
+                {{/if}}
             </span>
         </li>
         {{else}}

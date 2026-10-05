@@ -22,6 +22,34 @@
  * beats the mixin's, which is how `CairnCharacterEdit` keeps titling itself "Edit: <name>".
  * @param {typeof foundry.applications.api.DocumentSheetV2} Base
  */
+/**
+ * The editor parts a document change has left showing an old value.
+ *
+ * A sheet keeps its ProseMirror parts out of an ordinary redraw: rebuilding one costs the user
+ * its scroll position and selection, and a save from that editor changes nothing it shows. But a
+ * write from elsewhere — a macro, a second Warden, a re-roll — left the sheet showing the old text,
+ * which the next edit then wrote back over the new. So a part is stale when the change touched its
+ * field and either there is no editor in it (a reader's enriched text) or the editor holds
+ * something else AND nobody is typing in it: an editor with focus keeps the user's text.
+ * @param {foundry.applications.api.DocumentSheetV2} sheet
+ * @param {object|undefined} renderData  The change, as core hands it to the render.
+ * @param {Record<string, string>} editors  Field path → the id of the part that draws it.
+ * @returns {string[]}  Part ids to rebuild.
+ */
+export function staleEditorParts(sheet, renderData, editors) {
+  const stale = [];
+  for (const [field, part] of Object.entries(editors)) {
+    if (!foundry.utils.hasProperty(renderData ?? {}, field)) continue;
+    const element = sheet.element?.querySelector(`[data-application-part="${part}"]`);
+    if (!element) continue;
+    const editor = element.querySelector(`prose-mirror[name="${field}"]`);
+    if (editor?.matches(":focus-within")) continue;
+    if (editor && editor.value === foundry.utils.getProperty(sheet.document, field)) continue;
+    stale.push(part);
+  }
+  return stale;
+}
+
 export const CairnSheetMixin = (Base) => class extends Base {
   /**
    * @override — the window says the document's NAME and nothing else.

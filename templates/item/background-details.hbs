@@ -31,9 +31,11 @@
 
     <div class="cairn-zone-head">
         <h4 class="cairn-zone">{{localize 'CAIRN.Names'}}</h4>
+        {{#if editable}}
         <a class="cairn-zone-add" data-action="nameAdd">
             <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.AddName'}}</span>
         </a>
+        {{/if}}
     </div>
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-bg-names" data-ink-w="1" data-ink-a="0.34"></div>
     <ol class="cairn-plain-list">
@@ -44,7 +46,9 @@
                 <input class="cairn-row-input" type="text" name="system.names.{{i}}" value="{{n}}" />
             </span>
             <span class="cairn-item-controls">
+                {{#if @root.editable}}
                 <a data-action="nameRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
             </span>
         </li>
         {{else}}
@@ -68,7 +72,9 @@
                 {{/if}}
             </span>
             <span class="cairn-item-controls">
+                {{#if @root.editable}}
                 <a data-action="gearRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
             </span>
         </li>
         {{else}}
@@ -92,7 +98,9 @@
                 {{/if}}
             </span>
             <span class="cairn-item-controls">
+                {{#if @root.editable}}
                 <a data-action="tableRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
             </span>
         </li>
         {{else}}

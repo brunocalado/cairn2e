@@ -50,8 +50,11 @@ export function gainUpdate({ mode, total, max, value }) {
  * is the one place a maximum is edited.
  */
 export function revertUpdate({ from, to, max, value }) {
-  const next = max - (to - from);
-  return { max: next, value: Math.min(value, next) };
+  // Clamped both ways: a maximum lowered by hand since the gain would otherwise revert below 0,
+  // and the model clamps a maximum at 0 but not the value under it — a Scar deleted from max HP 1
+  // left max 0 and HP −1.
+  const next = Math.max(0, max - (to - from));
+  return { max: next, value: Math.max(0, Math.min(value, next)) };
 }
 
 /** Where on an actor an outcome's attribute lives. `hp` is the character's own pair; the other

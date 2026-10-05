@@ -15,9 +15,11 @@
 <section class="tab {{tabs.details.cssClass}}" data-group="primary" data-tab="details">
     <div class="cairn-zone-head">
         <h4 class="cairn-zone">{{localize 'CAIRN.Growth.Milestones'}}</h4>
+        {{#if editable}}
         <a class="cairn-zone-add" data-action="milestoneAdd">
             <i class="fas fa-plus" inert></i><span>{{localize 'CAIRN.Growth.AddMilestone'}}</span>
         </a>
+        {{/if}}
     </div>
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-growth-milestones" data-ink-w="1" data-ink-a="0.34"></div>
     <ol class="cairn-plain-list">
@@ -30,7 +32,9 @@
                     placeholder="{{localize 'CAIRN.Growth.MilestonePlaceholder'}}" />
             </span>
             <span class="cairn-item-controls">
+                {{#if @root.editable}}
                 <a data-action="milestoneRemove" data-tooltip="{{localize 'CAIRN.Remove'}}"><i class="fas fa-xmark"></i></a>
+                {{/if}}
             </span>
         </li>
         {{else}}

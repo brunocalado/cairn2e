@@ -47,7 +47,7 @@ export class CairnNpcSheet extends CairnActorSheet {
     description: { template: `${TEMPLATES}/actor/npc-description.hbs`, scrollable: [""] }
   };
 
-  static EDITOR_FIELDS = ["system.description"];
+  static EDITOR_FIELDS = { "system.description": "description" };
 
   static TABS = {
     primary: {

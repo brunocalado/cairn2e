@@ -93,7 +93,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
   // and listing them here stopped a save from rebuilding an editor that already showed the value.
   // They are read-only text now and they are edited in the edit window instead — so a change to
   // either has to redraw the tab, or the sheet keeps showing what the character used to be.
-  static EDITOR_FIELDS = [];
+  static EDITOR_FIELDS = {};
 
   // Five views of two questions: what this character carries, and who they are. The old set had
   // an Effects tab the system never put anything in — no pack document ships an effect and

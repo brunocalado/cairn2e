@@ -254,9 +254,11 @@
         <div class="cairn-field cairn-prop-row">
             <span class="cairn-field-label">{{localize 'CAIRN.AddProperty'}}</span>
             <div class="cairn-choice" role="group" aria-label="{{localize 'CAIRN.AddProperty'}}">
+                {{#if @root.editable}}
                 {{#each addable as |axis|}}
                 <a class="cairn-choice-option" data-action="axisAdd" data-axis="{{axis.id}}">{{localize axis.label}}</a>
                 {{/each}}
+                {{/if}}
             </div>
         </div>
         {{/if}}

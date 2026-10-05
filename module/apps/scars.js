@@ -150,7 +150,24 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
    * table says, and what the Scars tab draws.
    */
   static async #onConfirm(event, target) {
+    // The flag outlives a re-render, the button's `disabled` does not: the scar's own create
+    // re-renders this actor-bound window within milliseconds, with a fresh enabled button, and a
+    // second click on it took a second Scar.
+    if (this.#busy) return;
+    this.#busy = true;
     target.setAttribute("disabled", "disabled");
+    try {
+      return await this.#confirm();
+    } finally {
+      this.#busy = false;
+    }
+  }
+
+  /** A Confirm is out. */
+  #busy = false;
+
+  /** `#onConfirm`'s body, run once at a time. */
+  async #confirm() {
     const actor = this.document;
     const spec = scarEntry(this.entry);
     const rows = (await tableRows()) ?? [];
@@ -270,7 +287,10 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
       ui.notifications.warn(game.i18n.localize("CAIRN.Scar.NoTable"));
       return null;
     }
-    const app = new CairnScars({ document: actor, hpLost });
+    // One window per character: a second open brings the first forward rather than stacking a
+    // twin under the same id, where either could take the Scar.
+    const app = [...foundry.applications.instances.values()].find((a) => a instanceof CairnScars && a.document === actor)
+      ?? new CairnScars({ document: actor, hpLost });
     return app.render(true);
   }
 }

@@ -5,7 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, MAX_SLOTS } from "./constants.js";
+import { SYSTEM_ID, FLAGS, MAX_SLOTS } from "./constants.js";
+import { unarmedItemData } from "./documents/actor.js";
 import { toPlainText, toPlainLines } from "./character-generator.js";
 import { sumUsedSlots } from "./data/_derived.js";
 import { tokenDefaults } from "./token-defaults.js";
@@ -224,6 +225,12 @@ export async function promoteToCharacter(actor) {
 
   if (features.length) {
     await actor.deleteEmbeddedDocuments("Item", features.map((f) => f.id));
+  }
+  // Every character has fists (`CairnActor#_preCreate`), and a promotion is an update that never
+  // passes through there — a hireling whose Sword was gone became a character with nothing to
+  // strike with.
+  if (!actor.items.some((i) => i.getFlag(SYSTEM_ID, FLAGS.UNARMED))) {
+    await actor.createEmbeddedDocuments("Item", [unarmedItemData()]);
   }
 
   ui.notifications.info(game.i18n.localize("CAIRN.Promote.Done", { name: actor.name }));
