@@ -5,15 +5,14 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SETTINGS, FLAGS, TABLES } from "../constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS, TABLES, SOCKET_EVENT } from "../constants.js";
 import { WATCHES } from "../journey-rules.js";
 import {
   MONTH_DAYS, RECLAMATION, RECLAMATION_DAYS, SEASON_STARTS, SEASON_DAYS, YEAR_DAYS,
-  isReclamationYear, seasonOf, watchStartFor, watchAt
+  isReclamationYear, seasonOf, watchStartFor, watchAt, noteText, noteOccurrence, absoluteDay
 } from "../calendar-rules.js";
 import { RECLAMATION_DAY_NAMES, geometry, currentWatch, formatDate } from "../calendar.js";
 import { noteOf, notesOn, isPublic, saveNote } from "../calendar-notes.js";
-import { noteText, noteOccurrence, absoluteDay } from "../calendar-rules.js";
 import { postCalendarNoteCard } from "../rolls.js";
 import { rollWardenText } from "../helpers.js";
 import { CairnCalendarNote } from "./calendar-note.js";
@@ -567,7 +566,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
    *  @this {CairnCalendarApp} */
   static #onShowToPlayers() {
     if (!game.user.isGM) return;
-    game.socket.emit(`system.${SYSTEM_ID}`, { type: "openCalendar", view: { ...this.#view } });
+    game.socket.emit(SOCKET_EVENT, { type: "openCalendar", view: { ...this.#view } });
     ui.notifications.info(game.i18n.localize("CAIRN.Calendar.Shown"));
   }
 }

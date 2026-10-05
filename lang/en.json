@@ -354,7 +354,7 @@
     "FatigueLead": "Every character adds a Fatigue.",
     "FatigueNoRoom": "No free slot, so no Fatigue was added: {names}. An item must be dropped to take it.",
     "Fight": "A Fight Breaks Out",
-    "Help": "<strong>Dungeon exploration</strong>, turn by turn.<br>1. The Warden describes; each player declares a movement and one action — the list button on your row offers them.<br>2. The Warden resolves everyone's actions at once.<br>3. Record what was used; the Warden may roll a Dungeon Event.<br>A turn is about 40 ft and one action, or the action spent to move up to 120 ft. Moved too far? The undo beside the distance takes the token back to where the turn began.<br>Click for the Rules Summary.",
+    "Help": "<strong>Dungeon exploration</strong>, turn by turn.<br/>1. The Warden describes; each player declares a movement and one action — the list button on your row offers them.<br/>2. The Warden resolves everyone's actions at once.<br/>3. Record what was used; the Warden may roll a Dungeon Event.<br/>A turn is about 40 ft and one action, or the action spent to move up to 120 ft. Moved too far? The undo beside the distance takes the token back to where the turn began.<br/>Click for the Rules Summary.",
     "HelpLabel": "How dungeon exploration works",
     "Moved": "Moved this turn",
     "NextTurn": "Next Turn",

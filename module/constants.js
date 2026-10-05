@@ -28,6 +28,9 @@ export const SYSTEM_ID = "cairn2e";
  */
 export const TOOLTIP_CLASS = `${SYSTEM_ID} cairn-tooltip`;
 
+/** The one socket channel a system may use: `system.<id>` (core's rule for packages). */
+export const SOCKET_EVENT = `system.${SYSTEM_ID}`;
+
 /**
  * What the edit windows accept, held twice — on the control, where `maxlength` stops the typing,
  * and on the submit path, which stops everything a keystroke did not make. One set of numbers for
@@ -237,7 +240,26 @@ export const FLAGS = {
    * The next drag of the same row sets a token of that copy rather than making another. A list
    * for the reason {@link FLAGS.GATHERED_TOKENS} gives: a uuid has dots.
    */
-  GRANTED: "granted"
+  GRANTED: "granted",
+
+  /** On a ChatMessage: the button on this encounter card has been used — it will not fire twice. */
+  ENCOUNTER_ADDED: "encounterAdded",
+
+  /** On an Actor: the source uuid an encounter copy was imported from — the key for "import once,
+   *  reuse" (`module/encounters.js`). */
+  ENCOUNTER_SOURCE: "encounterSource",
+
+  /** On an Actor Folder: the "Encounters" folder, found by this and not by its (localized) name. */
+  ENCOUNTERS_FOLDER: "encountersFolder",
+
+  /** On an Actor Folder: the "Grants" folder (`module/grants.js`), found by this and never by its
+   *  localized name. */
+  GRANTS_FOLDER: "grantsFolder",
+
+  /** On a JournalEntry: the journal generated factions are filed in (`module/faction-generator.js`),
+   *  found by this and never by its name — so the name can be in the table's language, and the
+   *  Warden can rename it. */
+  FACTIONS_JOURNAL: "factionsJournal"
 };
 
 /**

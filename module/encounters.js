@@ -31,18 +31,11 @@
  * carries every row's text and its enriched content links.
  */
 
-import { SYSTEM_ID } from "./constants.js";
+import { SYSTEM_ID, FLAGS } from "./constants.js";
 import { generateNpcs } from "./npc-generator.js";
 import { rollEncounterCount } from "./rolls.js";
 
 const ENCOUNTER_CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/encounter-card.hbs`;
-
-/** Message flag: the button on this card has been used — it will not fire twice. */
-const ADDED_FLAG = "encounterAdded";
-/** Actor flag: the source UUID this Actor was imported from — the key for "import once, reuse". */
-const SOURCE_FLAG = "encounterSource";
-/** Folder flag: marks the "Encounters" Actor folder, found by this and not by its (localized) name. */
-const FOLDER_FLAG = "encountersFolder";
 
 /**
  * The magic phrase — generate a person, don't import a creature — in the table's own language: it
@@ -181,8 +174,8 @@ function parseRow(li, randomNpc) {
 
 /**
  * Roll each row's quantity, resolve its Actor(s), and drop the tokens on the scene. Sets the
- * {@link ADDED_FLAG} so the card cannot fire twice. No open scene → a polite refusal, nothing
- * rolled or written.
+ * {@link FLAGS.ENCOUNTER_ADDED} so the card cannot fire twice. No open scene → a polite refusal,
+ * nothing rolled or written.
  *
  * `message` is null when the call did not come from a card — the journey window places from its
  * own Events block and remembers what it placed in the journey, not on a message. `origin` is
@@ -227,21 +220,22 @@ export async function addEncounterToScene(rows, message, { origin = null } = {})
     ui.notifications.warn(game.i18n.localize("CAIRN.Encounter.NothingPlaced"));
     return false;
   }
-  if (message) await message.setFlag(SYSTEM_ID, ADDED_FLAG, true);
+  if (message) await message.setFlag(SYSTEM_ID, FLAGS.ENCOUNTER_ADDED, true);
   await placeTokens(scene, actors, origin ?? viewCentre());
   ui.notifications.info(game.i18n.localize("CAIRN.Encounter.Placed", { summary: summary.join(", ") }));
   return true;
 }
 
-/** Find the "Encounters" Actor folder by its {@link FOLDER_FLAG}, creating it on first use. */
+/** Find the "Encounters" Actor folder by its {@link FLAGS.ENCOUNTERS_FOLDER}, creating it on first
+ *  use. */
 async function ensureEncountersFolder() {
-  const existing = game.folders.find((f) => f.type === "Actor" && f.getFlag(SYSTEM_ID, FOLDER_FLAG));
+  const existing = game.folders.find((f) => f.type === "Actor" && f.getFlag(SYSTEM_ID, FLAGS.ENCOUNTERS_FOLDER));
   if (existing) return existing;
   const FolderClass = foundry.utils.getDocumentClass("Folder");
   return FolderClass.create({
     name: game.i18n.localize("CAIRN.Encounter.FolderName"),
     type: "Actor",
-    flags: { [SYSTEM_ID]: { [FOLDER_FLAG]: true } }
+    flags: { [SYSTEM_ID]: { [FLAGS.ENCOUNTERS_FOLDER]: true } }
   });
 }
 
@@ -254,7 +248,7 @@ async function ensureEncountersFolder() {
  */
 async function importEncounterActor(uuid, folder) {
   const existing = game.actors.find(
-    (a) => a.folder?.id === folder.id && a.getFlag(SYSTEM_ID, SOURCE_FLAG) === uuid
+    (a) => a.folder?.id === folder.id && a.getFlag(SYSTEM_ID, FLAGS.ENCOUNTER_SOURCE) === uuid
   );
   if (existing) return existing;
 
@@ -267,7 +261,7 @@ async function importEncounterActor(uuid, folder) {
   const data = source.toObject();
   delete data._id;
   data.folder = folder.id;
-  data.flags = foundry.utils.mergeObject(data.flags ?? {}, { [SYSTEM_ID]: { [SOURCE_FLAG]: uuid } });
+  data.flags = foundry.utils.mergeObject(data.flags ?? {}, { [SYSTEM_ID]: { [FLAGS.ENCOUNTER_SOURCE]: uuid } });
   // Meeting is not fighting: the imported creature's tokens are neutral and unlinked whatever the
   // bestiary entry's own disposition says.
   data.prototypeToken = foundry.utils.mergeObject(data.prototypeToken ?? {}, {
@@ -377,7 +371,7 @@ export async function renderEncounterButton(message, html) {
   const rows = parseEncounterCard(html);
   if (!rows.length) return;
 
-  const added = !!message.getFlag(SYSTEM_ID, ADDED_FLAG);
+  const added = !!message.getFlag(SYSTEM_ID, FLAGS.ENCOUNTER_ADDED);
   const markup = await foundry.applications.handlebars.renderTemplate(ENCOUNTER_CARD_TPL, {
     added,
     rows: rows.map((r) => ({ count: r.countFormula, label: r.label }))

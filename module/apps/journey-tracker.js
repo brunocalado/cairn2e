@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "../constants.js";
+import { SYSTEM_ID, SOCKET_EVENT } from "../constants.js";
 import * as journey from "../journey.js";
 import { ACTIONS, WATCHES, WEATHER, PATHS, WEATHER_EFFECTS, pendingNeeds } from "../journey-rules.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -38,7 +38,7 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
   static INK_SCROLLERS = [];
 
   static DEFAULT_OPTIONS = {
-    id: "cairn2e-journey",
+    id: `${SYSTEM_ID}-journey`,
     classes: [SYSTEM_ID, "cairn-journey"],
     tag: "form",
     position: { width: 560, height: 700 },
@@ -446,7 +446,7 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
   /** The Warden asks every connected client to open its own window. */
   static #onPushToAll() {
     if (!game.user.isGM) return;
-    game.socket.emit(`system.${SYSTEM_ID}`, { type: "openJourney" });
+    game.socket.emit(SOCKET_EVENT, { type: "openJourney" });
     ui.notifications.info(game.i18n.localize("CAIRN.Journey.Pushed"));
   }
 

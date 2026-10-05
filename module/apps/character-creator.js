@@ -55,7 +55,7 @@ function enrich(html) {
 export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
   static DEFAULT_OPTIONS = {
     // One window per instance: the sidebar's and one per actor can be open side by side.
-    id: "cairn2e-character-creator-{id}",
+    id: `${SYSTEM_ID}-character-creator-{id}`,
     classes: [SYSTEM_ID, "character-creator"],
     /** The Actor the draft is written into; `null` creates a new one. */
     actor: null,

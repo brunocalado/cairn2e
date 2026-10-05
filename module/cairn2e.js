@@ -6,7 +6,7 @@
  */
 
 // Import Modules
-import { SYSTEM_ID, SETTINGS, FLAGS, CONDITION, TOOLTIP_CLASS } from "./constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS, CONDITION, TOOLTIP_CLASS, SOCKET_EVENT } from "./constants.js";
 import { CairnActor } from "./documents/actor.js";
 import { CairnCharacterSheet } from "./apps/character-sheet.js";
 import { CairnNpcSheet } from "./apps/npc-sheet.js";
@@ -407,7 +407,7 @@ Hooks.once("ready", () => {
 
   // The Warden's "Show to everyone": one broadcast, and every OTHER client opens its own journey
   // window (the emitter never receives its own broadcast; the Warden's is already open).
-  game.socket.on(`system.${SYSTEM_ID}`, (data) => {
+  game.socket.on(SOCKET_EVENT, (data) => {
     if (data?.type === "openJourney") CairnJourneyTracker.open();
     if (data?.type === "openStore") CairnStore.open(data.storeId);
     if (data?.type === "openRules") CairnRulesSummary.open();

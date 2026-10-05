@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID } from "../constants.js";
+import { SYSTEM_ID, SOCKET_EVENT } from "../constants.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -30,7 +30,7 @@ export class CairnRulesSummary extends CairnInkMixin(HandlebarsApplicationMixin(
   static INK_SCROLLERS = [".cairn-rules-body"];
 
   static DEFAULT_OPTIONS = {
-    id: "cairn2e-rules-summary",
+    id: `${SYSTEM_ID}-rules-summary`,
     classes: [SYSTEM_ID, "cairn-rules"],
     // As tall as the longest column, so no band of empty paper sits under the page. Core's own
     // `.application` max-height keeps it on screen, and the body scrolls past that.
@@ -74,7 +74,7 @@ export class CairnRulesSummary extends CairnInkMixin(HandlebarsApplicationMixin(
   /** The Warden asks every connected client to open its own window. */
   static #onShare() {
     if (!game.user.isGM) return;
-    game.socket.emit(`system.${SYSTEM_ID}`, { type: "openRules" });
+    game.socket.emit(SOCKET_EVENT, { type: "openRules" });
     ui.notifications.info(game.i18n.localize("CAIRN.RulesRef.Shared"));
   }
 }

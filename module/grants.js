@@ -32,9 +32,6 @@ import { SYSTEM_ID, FLAGS } from "./constants.js";
 /** The query the drop is handed to the Warden's client by. */
 export const GRANT_QUERY = `${SYSTEM_ID}.grantToScene`;
 
-/** Folder flag: the "Grants" Actor folder, found by this and never by its localized name. */
-const FOLDER_FLAG = "grantsFolder";
-
 /** The key the item sheet puts on a Grants row's drag data, naming the item it came from. */
 export const GRANT_DRAG_KEY = "grantFrom";
 
@@ -156,11 +153,11 @@ function itemOwners(item) {
 
 /** The "Grants" Actor folder, made on first use. */
 async function grantsFolder() {
-  const existing = game.folders.find((f) => f.type === "Actor" && f.getFlag(SYSTEM_ID, FOLDER_FLAG));
+  const existing = game.folders.find((f) => f.type === "Actor" && f.getFlag(SYSTEM_ID, FLAGS.GRANTS_FOLDER));
   if (existing) return existing;
   return foundry.utils.getDocumentClass("Folder").create({
     name: game.i18n.localize("CAIRN.Grants.FolderName"),
     type: "Actor",
-    flags: { [SYSTEM_ID]: { [FOLDER_FLAG]: true } }
+    flags: { [SYSTEM_ID]: { [FLAGS.GRANTS_FOLDER]: true } }
   });
 }

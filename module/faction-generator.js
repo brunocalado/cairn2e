@@ -51,19 +51,13 @@
  * `CAIRN.NameGen.Formula.*`, so a translation module orders them as its language does.
  */
 
-import { SYSTEM_ID, TABLES } from "./constants.js";
+import { SYSTEM_ID, FLAGS, TABLES } from "./constants.js";
 import { rollWardenText } from "./helpers.js";
 import { rollName, composeName } from "./name-generator.js";
-
-/** Flag on the journal generated factions are filed in. The journal is found by this, never by
- *  its name — so the name can be in the table's language, and the Warden can rename it — as the
- *  Encounters folder is (`encounters.js#FOLDER_FLAG`). */
-const JOURNAL_FLAG = "factionsJournal";
 
 /* -------------------------------------------- */
 /*  Rolling                                     */
 /* -------------------------------------------- */
-
 
 /**
  * Roll `count` **distinct** results on `Faction Advantage`, rerolling repeats (the SRD procedure).
@@ -130,12 +124,12 @@ async function buildFaction() {
 
 /** Find the `Factions` journal by its flag, creating it (named in the table's language) if absent. */
 async function ensureFactionsJournal() {
-  const existing = game.journal.find((j) => j.getFlag(SYSTEM_ID, JOURNAL_FLAG));
+  const existing = game.journal.find((j) => j.getFlag(SYSTEM_ID, FLAGS.FACTIONS_JOURNAL));
   if (existing) return existing;
   const JournalEntryClass = foundry.utils.getDocumentClass("JournalEntry");
   return JournalEntryClass.create({
     name: game.i18n.localize("CAIRN.FactionGen.JournalName"),
-    flags: { [SYSTEM_ID]: { [JOURNAL_FLAG]: true } }
+    flags: { [SYSTEM_ID]: { [FLAGS.FACTIONS_JOURNAL]: true } }
   });
 }
 

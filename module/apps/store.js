@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SETTINGS } from "../constants.js";
+import { SYSTEM_ID, SETTINGS, SOCKET_EVENT } from "../constants.js";
 import {
   blankStore, defaultStores, withItem, withItems, withoutItem, withSettings, storeChoices, folderTree, sellable,
   sellPrice, buyPrice, sellableOwn, cartSummary, untitledName
@@ -79,7 +79,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
   static INK_SCROLLERS = [".cairn-store-list", ".cairn-store-cart-lines"];
 
   static DEFAULT_OPTIONS = {
-    id: "cairn2e-store",
+    id: `${SYSTEM_ID}-store`,
     classes: [SYSTEM_ID, "cairn-store"],
     position: { width: 760, height: 640 },
     window: { title: "CAIRN.Store.Title", icon: "fas fa-store", resizable: true },
@@ -589,7 +589,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
   /** The Warden asks every connected client to open its own window on this store. @this {CairnStore} */
   static #onStoreOpenAll() {
     if (!game.user.isGM || !this.#store) return;
-    game.socket.emit(`system.${SYSTEM_ID}`, { type: "openStore", storeId: this.#storeId });
+    game.socket.emit(SOCKET_EVENT, { type: "openStore", storeId: this.#storeId });
     ui.notifications.info(game.i18n.localize("CAIRN.Store.Pushed"));
   }
 

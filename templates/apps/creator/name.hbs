@@ -13,8 +13,8 @@
     <p class="hint name-hint">{{localize "CAIRN.CharacterCreator.NameHint"}}</p>
     {{!-- The label wraps the field rather than pointing at an id: the edit windows use fixed
           ids (`for="cairn-edit-age"`) because one of each is ever open, but the creator is one
-          window per instance (`id: "cairn2e-character-creator-{id}"`) and two open side by
-          side would share the id. --}}
+          window per instance (its id ends in core's per-instance `{id}`) and two open side
+          by side would share the id. --}}
     <label class="name-field">
         <span>{{localize "CAIRN.Name"}}</span>
         <input type="text" name="charname" value="{{draft.name}}"

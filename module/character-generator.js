@@ -35,7 +35,7 @@
 import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, FLAGS, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
 import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf, withWorldCopies } from "./helpers.js";
-import { CairnRoll } from "./rolls.js";
+import { evaluateFormula } from "./rolls.js";
 import { gainUpdate } from "./gains.js";
 import { coinItem } from "./coin-rules.js";
 
@@ -75,10 +75,10 @@ const GOLD_LINE = /^(\d+d\d+(?:\s*[+-]\s*\d+)?)\s+Gold Pieces\.?$/i;
 /*  Dice                                        */
 /* -------------------------------------------- */
 
-/** Evaluate a plain formula and return its total. Never routed through the Cairn `d8+d8` shim —
- *  `2d20 + 10` must stay a sum, not become `{2d20,10}kh`. */
+/** A silent total for the generator's own rolls — attributes, HP, age, starting gold, a granted
+ *  growth's gain. No card: the character is the result. */
 async function rollTotal(formula) {
-  return (await new CairnRoll(formula).evaluate()).total;
+  return (await evaluateFormula(formula)).total;
 }
 
 /** 3d6 for each attribute, in STR/DEX/WIL order. The swap is the caller's to apply. */

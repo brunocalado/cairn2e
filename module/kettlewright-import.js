@@ -364,7 +364,7 @@ export async function buildImportData(kw) {
         // once Foundry stamps one on.
         for (let n = 0; n < count; n++) out.push(foundry.utils.deepClone(data));
       } catch (err) {
-        console.error("cairn2e | Kettlewright import: could not convert item", entry, err);
+        console.error(`${SYSTEM_ID} | Kettlewright import: could not convert item`, entry, err);
         summary.dropped.push(String(entry?.name ?? game.i18n.localize("CAIRN.KWImport.DefaultItemName")));
       }
     }
@@ -523,7 +523,7 @@ export async function importKettlewrightCharacter() {
   try {
     parsed = JSON.parse(await foundry.utils.readTextFromFile(picked));
   } catch (err) {
-    console.error("cairn2e | Kettlewright import: file is not valid JSON", err);
+    console.error(`${SYSTEM_ID} | Kettlewright import: file is not valid JSON`, err);
     ui.notifications.error(game.i18n.localize("CAIRN.KWImport.BadJson"));
     return null;
   }
@@ -566,7 +566,7 @@ export async function importKettlewrightCharacter() {
     await showSummary(summary);
     return actor;
   } catch (err) {
-    console.error("cairn2e | Kettlewright import: unexpected failure", err);
+    console.error(`${SYSTEM_ID} | Kettlewright import: unexpected failure`, err);
     ui.notifications.error(game.i18n.localize("CAIRN.KWImport.Failed"));
     return null;
   }
