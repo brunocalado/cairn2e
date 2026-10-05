@@ -16,7 +16,7 @@ const fields = foundry.data.fields;
  * Actor can put a token on a map.
  *
  * Members are referenced, never embedded: no Actor can contain an Actor. A uuid can therefore
- * outlive what it points at, and {@link PartyData#roster} is the one place that is dealt with —
+ * outlive what it points at, and {@link PartyData#lineup} is the one place that is dealt with —
  * nothing outside this file reads `members` directly.
  */
 export class PartyData extends foundry.abstract.TypeDataModel {
@@ -40,18 +40,25 @@ export class PartyData extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------- */
 
   /**
-   * The members whose uuid still resolves, in marching order.
-   *
-   * A deleted Actor leaves its uuid behind on every party that listed it. Resolving and dropping
-   * the misses here means no sheet, template or caller ever has to render a hole — and because
-   * this is a getter over live documents rather than stored data, nothing has to be written back
-   * when an Actor disappears.
-   * @type {Array<{actor: Actor, deployed: boolean}>}
+   * Every entry of `members`, in marching order, each with its place in that array and its Actor
+   * — `null` where the uuid no longer resolves. A deleted Actor leaves its uuid behind on every
+   * party that listed it, and the sheet draws that hole so it can be cleared: dropping it here
+   * shifted every later row's index by one, and a row's Remove took off the member before it.
+   * @type {Array<{index: number, uuid: string, actor: Actor|null, deployed: boolean}>}
+   */
+  get lineup() {
+    return this.members.map((m, index) => ({ index, uuid: m.actor, actor: fromUuidSync(m.actor) ?? null, deployed: m.deployed }));
+  }
+
+  /**
+   * The members whose uuid still resolves, in marching order — what the map controls and the
+   * journey move. Each keeps its `index` into `members`, so a write still addresses the right
+   * entry past a hole. Because this is a getter over live documents rather than stored data,
+   * nothing has to be written back when an Actor disappears.
+   * @type {Array<{index: number, uuid: string, actor: Actor, deployed: boolean}>}
    */
   get roster() {
-    return this.members
-      .map((m) => ({ actor: fromUuidSync(m.actor), deployed: m.deployed }))
-      .filter((m) => !!m.actor);
+    return this.lineup.filter((m) => !!m.actor);
   }
 
   /* -------------------------------------------- */

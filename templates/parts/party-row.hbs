@@ -15,7 +15,22 @@
       tab's 2 between them, because a mule can walk second.
 
       The last two readings are a player character's alone: an NPC keeps no ten-slot ledger and
-      takes no Fatigue, so the follower's row simply has fewer tags rather than empty ones. --}}
+      takes no Fatigue, so the follower's row simply has fewer tags rather than empty ones.
+
+      A member whose Actor was deleted keeps its place in the array, so it keeps a row: its
+      number, a label, and Remove, the one thing left to do with it. --}}
+{{#if missing}}
+<li class="cairn-slot cairn-party-member is-missing" data-index="{{index}}"
+    {{#unless @last}}data-ink="hline" data-ink-seed="party-member-{{id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+    <span class="cairn-slot-number" data-tooltip-text="{{localize 'CAIRN.Party.Order'}}">{{order}}</span>
+    <span class="cairn-party-headline"><span class="cairn-party-name">{{name}}</span></span>
+    <span class="cairn-item-controls">
+        {{#if @root.editable}}
+        <a data-action="memberRemove" data-tooltip="{{localize 'CAIRN.Party.Remove'}}"><i class="fas fa-xmark"></i></a>
+        {{/if}}
+    </span>
+</li>
+{{else}}
 <li class="cairn-slot cairn-party-member draggable{{#unless deployed}} is-held{{/unless}}"
     data-uuid="{{uuid}}" data-index="{{index}}"
     {{#unless @last}}data-ink="hline" data-ink-seed="party-member-{{id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
@@ -76,3 +91,4 @@
         {{/if}}
     </span>
 </li>
+{{/if}}

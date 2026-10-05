@@ -908,6 +908,7 @@
     "GatheringFromCombat": "{names} will leave the current combat and will not be back in the order.",
     "MakeActive": "Make this the active party",
     "Members": "Party",
+    "Missing": "Missing actor",
     "NoActiveParty": "There is no active party. Create one, or pick one from the Actors directory.",
     "NoFollowers": "Nobody is travelling with them.",
     "NoMembers": "Drop a character here.",

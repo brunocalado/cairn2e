@@ -61,10 +61,21 @@ export class CairnPartySheet extends CairnActorSheet {
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    const rows = this.actor.system.roster.map((entry, index) => this.#row(entry, index));
-    context.members = rows.filter((r) => r.isCharacter);
-    context.followers = rows.filter((r) => !r.isCharacter);
+    const rows = this.actor.system.lineup.map((entry) => (entry.actor ? this.#row(entry) : this.#missingRow(entry)));
+    // A member whose Actor is gone has no type to sort it by; it is shown with the party, on the
+    // tab the sheet opens on, where it can be seen and taken off.
+    context.members = rows.filter((r) => r.isCharacter || r.missing);
+    context.followers = rows.filter((r) => !r.isCharacter && !r.missing);
     return context;
+  }
+
+  /**
+   * The line of a member whose Actor no longer exists: its place, a label, and Remove — the one
+   * thing left to do with it.
+   * @param {{index: number}} entry
+   */
+  #missingRow({ index }) {
+    return { index, order: index + 1, id: `missing-${index}`, missing: true, name: game.i18n.localize("CAIRN.Party.Missing") };
   }
 
   /**
@@ -73,10 +84,9 @@ export class CairnPartySheet extends CairnActorSheet {
    * `index` is the member's place in `system.members`, handed down so a write can address the
    * right entry from either tab: the two tabs are filtered views of one array, and a row that
    * carried the position it happens to occupy on screen would edit somebody else's.
-   * @param {{actor: Actor, deployed: boolean}} entry
-   * @param {number} index
+   * @param {{index: number, actor: Actor, deployed: boolean}} entry
    */
-  #row({ actor, deployed }, index) {
+  #row({ index, actor, deployed }) {
     const system = actor.system;
     const isCharacter = actor.type === "character";
     return {
@@ -124,7 +134,7 @@ export class CairnPartySheet extends CairnActorSheet {
     if (!actor) return;
     event.dataTransfer.setData("text/plain", JSON.stringify({
       ...actor.toDragData(),
-      [SYSTEM_ID]: { fromIndex: Number(row.dataset.index) }
+      [SYSTEM_ID]: { fromIndex: Number(row.dataset.index), partyUuid: this.actor.uuid }
     }));
   }
 
@@ -159,10 +169,12 @@ export class CairnPartySheet extends CairnActorSheet {
   async _onDropActor(event, actor) {
     if (!this.isEditable) return null;
 
-    // A row dragged from this sheet is a move, not a second membership.
+    // A row dragged from this sheet is a move, not a second membership. One dragged from ANOTHER
+    // party's sheet is a join like a drop from the directory — its index means nothing here, and
+    // reading it as a reorder shuffled this party instead.
     const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
     const fromIndex = data?.[SYSTEM_ID]?.fromIndex;
-    if (Number.isInteger(fromIndex)) return this.#reorder(fromIndex, event);
+    if (Number.isInteger(fromIndex) && data[SYSTEM_ID].partyUuid === this.actor.uuid) return this.#reorder(fromIndex, event);
 
     if (actor.type === "party") {
       ui.notifications.warn(game.i18n.localize("CAIRN.Party.NoPartyInParty"));
@@ -199,7 +211,7 @@ export class CairnPartySheet extends CairnActorSheet {
 
     if (!event.shiftKey) {
       // Escaped before it reaches `localize`, which interpolates without escaping anything.
-      const name = foundry.utils.escapeHTML(fromUuidSync(entry.actor)?.name ?? "");
+      const name = foundry.utils.escapeHTML(fromUuidSync(entry.actor)?.name ?? game.i18n.localize("CAIRN.Party.Missing"));
       const ok = await foundry.applications.api.DialogV2.confirm({
         classes: [SYSTEM_ID],
         window: { title: game.i18n.localize("CAIRN.Party.RemoveTitle") },

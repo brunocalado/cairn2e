@@ -100,10 +100,11 @@
         /* Held back from the group's map movements. The row stays on the list and stays
            legible, because who is NOT walking out is as much of an answer as who is. The switch
            keeps its full ink: it is the control that says so, and a faded control reads as a
-           disabled one. */
+           disabled one. A member whose Actor is gone is faded the same way, its Remove kept. */
         .cairn-party-member.is-held .cairn-party-who,
         .cairn-party-member.is-held .cairn-party-headline,
-        .cairn-party-member.is-held .cairn-party-load {
+        .cairn-party-member.is-held .cairn-party-load,
+        .cairn-party-member.is-missing .cairn-party-headline {
             opacity: 0.5;
         }
 
@@ -135,6 +136,15 @@
 
         .cairn-party-member .cairn-switch {
             grid-column: 5;
+        }
+
+        /* A missing member has Remove and no switch. Its fifth track is held open at the
+           switch's width (`.cairn-switch-track`), so its × stands under every other row's ×
+           instead of where the switch would be. */
+        .cairn-party-member.is-missing::after {
+            content: "";
+            grid-column: 5;
+            width: 44px;
         }
 
         /* What the member is walking around with, as Tags (Primitive 8), under the name and

@@ -72,29 +72,16 @@ export class CairnActor extends Actor {
   }
 
   /**
-   * @override — a party belongs to the party. Gathered into one token the members have no tokens
-   * of their own, so the party's is the only thing the table can see the map through — a party
-   * only the Warden owned would leave the players in the dark while travelling. Editing the
-   * roster is the price, and a table with one Warden can pay it.
-   *
-   * `{ overwrite: false }` keeps it a default: a party created with ownership of its own keeps it.
-   */
-  static async create(data, options = {}) {
-    if (data.type === "party") {
-      foundry.utils.mergeObject(
-        data,
-        { ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER } },
-        { overwrite: false }
-      );
-    }
-    return super.create(data, options);
-  }
-
-  /**
    * @override — the prototype token's defaults (`module/token-defaults.js`), and every
    * character's fists: a bodily `gear` rolling d4, "Unarmed attacks always do d4 damage"
    * (`core-rules.md`). The fists are a real item rather than a line the sheet draws, so they can
    * be renamed, given another die or deleted like anything else a character has.
+   *
+   * And a party belongs to the party. Gathered into one token the members have no tokens of their
+   * own, so the party's is the only thing the table can see the map through — a party only the
+   * Warden owned would leave the players in the dark while travelling. Editing the roster is the
+   * price, and a table with one Warden can pay it. A default only: a party created with a default
+   * ownership of its own keeps it.
    *
    * Here rather than in `create`, because `_preCreate` runs for every path that makes an Actor —
    * the sidebar, the creator, the generators (`createDocuments` never passes through `create`),
@@ -104,6 +91,9 @@ export class CairnActor extends Actor {
   async _preCreate(data, options, user) {
     if ((await super._preCreate(data, options, user)) === false) return false;
     this.#applyTokenDefaults(data);
+    if (this.type === "party" && data.ownership?.default === undefined) {
+      this.updateSource({ ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER } });
+    }
     if (this.type !== "character") return;
     const items = this._source.items ?? [];
     if (items.some((i) => i.flags?.[SYSTEM_ID]?.[FLAGS.UNARMED])) return;
