@@ -300,6 +300,15 @@ export class CairnCharacterSheet extends CairnActorSheet {
   }
 
   /**
+   * Toggle one of the two hand-set conditions from the header chip. This writes the ActiveEffect,
+   * which is the only place the condition lives — so the token HUD entry lights with it, and a
+   * toggle from the HUD lights the chip. There is nothing to keep in step.
+   */
+  static async #onConditionToggle(event, target) {
+    await this.actor.toggleStatusEffect(target.dataset.condition);
+  }
+
+  /**
    * One circle in the Fatigue track. A marked circle removes that Fatigue; a free one adds a new
    * one. The circles over carried items are rendered inert, so this never has to guard them.
    *
@@ -309,15 +318,6 @@ export class CairnCharacterSheet extends CairnActorSheet {
    * Honouring the click would mean a stored position per item and gaps in the ledger, to model
    * something 2e does not have: the rule counts Fatigue, it does not place it.
    */
-  /**
-   * Toggle one of the two hand-set conditions from the header chip. This writes the ActiveEffect,
-   * which is the only place the condition lives — so the token HUD entry lights with it, and a
-   * toggle from the HUD lights the chip. There is nothing to keep in step.
-   */
-  static async #onConditionToggle(event, target) {
-    await this.actor.toggleStatusEffect(target.dataset.condition);
-  }
-
   static async #onFatigueToggle(event, target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     if (id) {

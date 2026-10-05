@@ -98,8 +98,9 @@ Hooks.once("init", async function () {
     // Warden-only faction generation (`generateFaction`) — the SRD "Setting Seeds → Factions"
     // tables composed into a private JournalEntry dossier.
     factionGenerator,
-    // The Wilderness Exploration journey (`current`, `apply`, `party`) and its window (`open`) —
-    // the sidebar-tab button opens the window; a macro can drive the state directly.
+    // The Wilderness Exploration journey — every export of `journey.js` (`current`, `apply`, …) —
+    // and its window (`open`); the sidebar-tab button opens the window; a macro can drive the
+    // state directly.
     journey: { ...journey, open: CairnJourneyTracker.open },
     // Warden-only, one-way Kettlewright `.json` → `character` Actor importer (`importKettlewrightCharacter`)
     // behind the sidebar-tab button.

@@ -29,15 +29,16 @@ export function unarmedItemData() {
  *
  * All arithmetic (slots, armour, encumbrance, effective HP) lives on the DataModels'
  * `prepareDerivedData` — see `module/data/actor-*.js`. This class holds only document-level
- * behaviour: the roll-data shim, the owned-item actions the sheet calls, and the 2e recovery
- * rules (Rest / restore Attributes / clear Fatigue), each of which a **Deprived** PC cannot
- * benefit from (`core-rules.md`).
+ * behaviour: the owned-item actions the sheet calls, and the 2e recovery rules (Rest / restore
+ * Attributes / clear Fatigue), each of which a **Deprived** PC cannot benefit from
+ * (`core-rules.md`).
  */
 export class CairnActor extends Actor {
   /**
-   * The `party` Actors whose roster lists this one. Filled by `PartyData#prepareBaseData` on
-   * every data preparation, which is what keeps it honest when a member is added or removed:
-   * the set is rebuilt from the model rather than maintained by hand on both sides.
+   * The `party` Actors whose roster lists this one. `PartyData#prepareBaseData` adds a party on
+   * every data preparation and nothing removes one, so a member taken off a roster keeps that
+   * party in its set until reload — `renderParties` may then redraw a party that no longer lists
+   * it, which is harmless.
    * @type {Set<Actor>}
    */
   parties = new Set();
@@ -46,9 +47,9 @@ export class CairnActor extends Actor {
    * Redraw the members list of every party that lists this Actor.
    *
    * Debounced, because the changes worth showing arrive in bursts: ten taps on a stepper, a
-   * generator writing a whole inventory. Only the `members` part is asked for — the base sheet
-   * honours an explicit `parts` list (`apps/actor-sheet.js#_configureRenderOptions`), so the
-   * party's other tab keeps its scroll position and nothing else rebuilds.
+   * generator writing a whole inventory. Only the `members` and `followers` parts are asked for
+   * — the base sheet honours an explicit `parts` list (`apps/actor-sheet.js#_configureRenderOptions`),
+   * so the header and the tab strip are not rebuilt and the roster tabs are all that redraw.
    */
   renderParties = foundry.utils.debounce(() => {
     for (const party of this.parties) party.render({ parts: ["members", "followers"] });

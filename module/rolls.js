@@ -455,7 +455,8 @@ export function secondWeaponCandidates(items, clicked) {
  * @param {boolean} [options.skipDialog=false]  Roll the weapon's own die with no modifier and
  *   no second weapon — the sheet passes this for a Shift-click. Panic and Detachments still
  *   decide first; they never asked.
- * @returns {Promise<ChatMessage|null>} `null` if the free-choice dialog was cancelled.
+ * @returns {Promise<ChatMessage|true|null>} The card; `true` for Blast, which posts one card per
+ *   target; `null` if the free-choice dialog was cancelled.
  */
 export async function rollDamage(actor, item, { skipDialog = false } = {}) {
   const targets = Array.from(game.user.targets);
@@ -603,8 +604,6 @@ export async function rollDieOfFate(actor) {
  * Roll how many creatures an encounter-table row calls for and post it to chat (Dice So Nice
  * animates it if present). The encounter "Add to scene" button (`module/encounters.js`) is the only
  * caller — the quantity is rolled here, the system's one place for dice, not in the button handler.
- * A plain formula, not `evaluateFormula`'s: the Cairn "keep highest" notation is a damage rule and
- * has no business in a head-count.
  * @param {string} formula  a dice expression or bare integer from the row (`1d6`, `2d4`, `3`)
  * @param {string} label  the creature name, for the card flavor
  * @returns {Promise<number>}  the rolled total, clamped to >= 0
@@ -729,8 +728,8 @@ export async function drawDungeonEvent() {
  * `helpers.js#rollWardenTable`, but `RollTable#draw()` rather than `roll()`: the point of this draw
  * is the chat card `module/encounters.js#renderEncounterButton` grows the "Add to scene"
  * button onto (via the `renderChatMessageHTML` hook in `module/cairn2e.js`), not a value to read.
- * Whispered like the event that chained into it, so the party meets the monster rather than the
- * table row it came from. Missing table → a warning, nothing drawn.
+ * Whispered to the Wardens, so the party meets the monster rather than the table row it came
+ * from; `displayChat: false` draws silently instead, which is how the journey window takes it. Missing table → a warning, nothing drawn.
  * @returns {Promise<ChatMessage|null>}
  */
 export async function drawWildernessEncounter({ displayChat = true } = {}) {

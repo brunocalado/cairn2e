@@ -153,12 +153,12 @@ export class Damage {
       return;
     }
 
-    // The roll line this system draws (`templates/chat/roll.hbs`), not core's `.dice-total` — that
-    // class carries core's grey-bar styling, so the roll line does not wear it.
     // A trap's card names the attribute it strikes, and its second button is the one that says
     // armour does not help.
     const attribute = message.getFlag(SYSTEM_ID, "attribute") ?? null;
     const armor = !event.currentTarget?.classList.contains("apply-dmg-no-armor");
+    // The roll line this system draws (`templates/chat/roll.hbs`), not core's `.dice-total` — that
+    // class carries core's grey-bar styling, so the roll line does not wear it.
     const dmg = parseInt(html.querySelector(".cairn-card-total")?.textContent, 10);
     if (Number.isFinite(dmg)) return this.applyToTargets(targetIds, dmg, { attribute, armor });
   }

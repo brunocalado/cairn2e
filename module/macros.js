@@ -39,7 +39,6 @@ export const createCairnMacro = async (data, slot) => {
       type: "script",
       img: item.tableImg,
       command,
-      // Was the literal "cairn.itemMacro" — the bare 1e id CLAUDE.md §4 forbids. Fixed in passing.
       flags: { [SYSTEM_ID]: { itemMacro: true } },
     });
   }

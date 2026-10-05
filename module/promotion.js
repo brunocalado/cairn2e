@@ -195,8 +195,8 @@ export async function promoteToCharacter(actor) {
         default: true,
         icon: "fas fa-user-check",
         label: game.i18n.localize("CAIRN.Promote.Promote"),
-        // `DialogV2` turns a `null` return into the action string, so "nobody" comes back as the
-        // action name and is told apart from a user id by the lookup below.
+        // The select's value, so "nobody" comes back as `""`; `game.users.get("")` finds no
+        // user, and the update below then names no owner.
         callback: (event, button) => button.form?.elements?.owner?.value ?? ""
       },
       { action: "cancel", icon: "fas fa-xmark", label: game.i18n.localize("CAIRN.Promote.Cancel") }

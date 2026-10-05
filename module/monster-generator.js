@@ -220,8 +220,6 @@ function makeAttackItem(verb, die) {
  * An equipped armour Item, so `armorTotal` derives via `NpcData.prepareDerivedData` (the actor's
  * own `armor` stays 0). `slots: 0` — natural armour is a hide, not carried gear, so it occupies no
  * slot, exactly like the attack Item; `sumEquippedArmor` keys off `armor`/`equipped`, not the cost.
- */
-/**
  * @param {string} feature     the rolled Monster Feature, as text
  * @param {boolean} isArmour   whether that feature's result is marked `flags.cairn2e.armour` —
  *                             Carapace, Scales and Shell ARE natural armour, and the Item is named

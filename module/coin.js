@@ -44,8 +44,9 @@ function freeAt(actor, place) {
 }
 
 /**
- * Put `amount` coin in `place`: grow the sack there, or make one. The only thing outside the
- * character generator and the Kettlewright import that creates a `coin` document.
+ * Put `amount` coin in `place`: grow the sack there, or make one. Every gain goes through here —
+ * barter, store, the sheet's chip, a drop — except the character generator, the Kettlewright
+ * import and the Create Item prompt's Coin preset, which make the document directly.
  * @param {Actor} actor
  * @param {number} amount  Positive.
  * @param {string} [place]  `""` for the body, a container id, or `BELONGINGS`.

@@ -70,8 +70,8 @@ export class GearData extends foundry.abstract.TypeDataModel {
       // neither set aside, stowed, handed over nor sold. It is still a `gear`, so a claw is a die
       // like a sword's and a hide can be armour — the axes are the same; only where it lives differs.
       bodily: new fields.BooleanField({ initial: false }),
-      // Uncapped per item (a single Plate is 3); the actor's total is summed over equipped items
-      // and capped at 3 by `_derived.js#sumEquippedArmor`.
+      // At most 3 on one item, the 2e cap (a Plate is 3); the actor's total is summed over equipped
+      // items and capped at 3 again by `_derived.js#sumEquippedArmor`.
       armor: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 3 }),
       // Magical axis — what using it costs: a Fatigue, the item itself, or a charge that
       // recharges (core-rules.md → Magic).

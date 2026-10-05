@@ -48,11 +48,13 @@
  *     travels — and the clock advances. A night nobody camped through adds a Fatigue and
  *     Deprived to everyone and raises the terrain's Difficulty a step for the next day.
  *
- * The event is the Warden's to narrate, so its card is whispered to the Wardens rather than
- * posted in the open, and an Encounter draw goes the same way.
+ * The event is the Warden's to narrate, so it is drawn into the Warden's window rather than
+ * posted: an Encounter's table is drawn silently and its rows parsed, and only the Reaction roll
+ * posts a card.
  *
  * What is NOT automated is what the SRD leaves to the Warden: mounts, guides and maps, the
- * weather's own Fatigue-or-watch choice, and the encounter that an Encounter event draws.
+ * weather's own Fatigue-or-watch choice, and placing and running the encounter that an Encounter
+ * event draws.
  */
 
 import { SYSTEM_ID, SETTINGS, GEAR, TABLES, CONDITION } from "./constants.js";

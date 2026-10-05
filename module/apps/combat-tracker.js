@@ -103,14 +103,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   };
 
   /**
-   * @inheritDoc
-   *
-   * Core has already built one entry per combatant in `context.turns`, with the thumbnail, the
-   * effect icons and the permission flags the row needs. Regroup those entries into the two sides
-   * rather than rebuilding them, then sort each side by name — with no initiative, the name is
-   * the only ordering 2e offers, and it is at least the one the players can predict.
-   */
-  /**
    * What a dungeon exploration's player has typed into their row and not yet committed, by
    * combatant id. Core restores the focused input after a re-render but draws it with the value
    * the flag held, so a keystroke that races another row's update would otherwise be thrown away.
@@ -135,6 +127,14 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     context.isDungeon = !!this.viewed?.isDungeon;
   }
 
+  /**
+   * @inheritDoc
+   *
+   * Core has already built one entry per combatant in `context.turns`, with the thumbnail, the
+   * effect icons and the permission flags the row needs. Regroup those entries into the two sides
+   * rather than rebuilding them, then sort each side by name — with no initiative, the name is
+   * the only ordering 2e offers, and it is at least the one the players can predict.
+   */
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
     const combat = this.viewed;

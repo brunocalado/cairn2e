@@ -11,7 +11,8 @@
  * Any RollTable draw card whose drawn rows parse as an encounter grows an **Add to scene** control
  * for the Warden. Clicking it rolls the quantity for real (`module/rolls.js#rollEncounterCount`),
  * imports the referenced bestiary Actor **once** into an "Encounters" folder, and drops that many
- * unlinked `disposition: NEUTRAL` tokens clustered at the view centre — one per grid cell.
+ * unlinked `disposition: NEUTRAL` tokens, one per grid cell — at the point the journey window
+ * picked when it hands one over, otherwise clustered at the view centre.
  *
  * The button automates **logistics only**. Nothing here reads a monster's stats or rolls its
  * attacks: meeting is not fighting (`srd-2e/wardens-guide/wilderness-exploration.md`) — roll
@@ -26,9 +27,11 @@
  * phrase **`random NPC`** runs `module/npc-generator.js#generateNpcs()` instead — a fresh person
  * each time, count optional, default one.
  *
- * Parsing works off the **rendered card HTML** (`.table-draw`), not the RollTable document: a
- * compendium table drawn straight from its sheet never enters `game.tables`, and the card already
- * carries every row's text and its enriched content links.
+ * There are two parsers for the one convention. {@link parseEncounterCard} works off the card's
+ * rendered HTML (`.table-draw`), not the RollTable document: a compendium table drawn straight
+ * from its sheet never enters `game.tables`, and the card already carries every row's text and
+ * its enriched content links. {@link parseEncounterResults} reads the `TableResult`s of a silent
+ * draw, which is what the journey window has — it posts no card to walk.
  */
 
 import { SYSTEM_ID, FLAGS } from "./constants.js";

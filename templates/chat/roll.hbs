@@ -4,9 +4,10 @@
 
       Three things here are core's and must stay: `dice-roll`, because Dice So Nice hides that
       element until its dice land; `data-action="expandRoll"`, which the ChatLog toggles `expanded`
-      on; and a `.dice-tooltip` child, which core's CSS opens when it is. `dice-total` stays on the
-      total because `combat/damage.js#onClickChatMessageApplyButton` reads the rolled number back
-      out of the DOM.
+      on; and a `.dice-tooltip` child, which core's CSS opens when it is. The total is
+      `.cairn-card-total`, which is what `combat/damage.js#onClickChatMessageApplyButton` reads the
+      rolled number back out of the DOM by; `dice-total` is deliberately absent, because it
+      carries core's grey-bar styling.
 
       `flavor` is never drawn here — it is the message's caption (`templates/chat/message.hbs`), and
       drawing it in both places printed it twice. A private roll arrives as `???` / `?`, which needs

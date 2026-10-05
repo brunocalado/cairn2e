@@ -41,9 +41,6 @@ import { parseGearLine, resolveItem, getBackgrounds, toPlainText } from "./chara
 
 const { DialogV2 } = foundry.applications.api;
 
-/** Fallback portrait when the export has no portable absolute image URL. */
-
-
 /** Art for a container Item the importer creates. */
 const CONTAINER_IMG = "icons/containers/bags/pack-simple-leather-tan.webp";
 

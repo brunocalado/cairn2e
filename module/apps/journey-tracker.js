@@ -111,7 +111,7 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
    * setting.
    *
    * Debounced, for the reason the condition sync in `cairn2e.js` is: dealing a Supply bounty
-   * fires one `createItem` per Ration, and five renders of a four-part window is five times the
+   * fires one `createItem` per Ration, and five renders of a five-part window is five times the
    * work for one logical change.
    *
    * Registered once, at `ready`, on every client — a player has the window open too and reads
@@ -149,8 +149,8 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     if (!state) {
       // The four tables the route page and this form share (`journey.js#routeChoices`), set to
       // whatever a pin's double-click pre-filled, plus the season, which is the world's and not
-      // the route's. `prefill` carries the two endpoints through the form as hidden inputs, so
-      // a journey begun from a route remembers which two points it runs between.
+      // the route's. `prefill` is the route a pin handed over (`pointcrawl.js#routeOf`), and
+      // only sets which buttons start selected.
       Object.assign(context, journey.routeChoices(this.#prefill ?? {}));
       context.seasons = choices(WEATHER, "CAIRN.Journey.Seasons");
       return context;

@@ -20,9 +20,9 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/journal`;
  *
  * Two faces, as every journal page has. In **edit** it is the journey window's own route form —
  * the same four runs of buttons, through the same partial and the same `routeChoices`
- * (`module/journey.js`) — over two `<select>`s naming the points it runs between, which are
- * sibling pages of this journal. In **view** it is one ruled line: the two points, the route,
- * its total in watches, the description, and the Warden's way in — *Begin the journey*, which
+ * (`module/journey.js`) — then the route's total in watches and its description. In **view** it
+ * is the name as a title over one ruled line: path, distance, terrain and vast extra with the
+ * total in watches, then the description, and the Warden's way in — *Begin the journey*, which
  * opens the window already set to this route.
  */
 export class CairnRoutePageSheet extends CairnInkMixin(JournalEntryPageHandlebarsSheet) {
