@@ -431,8 +431,9 @@ document's description is the face's whole prose. Settled with the maintainer on
   Winter`; Bond 7's half key is `Ancient Key (half)`.
 
 A second Bond is drawn by a growth and grants the same: Outrider's *Always Pay Your Debts* (a d6
-face) and Fieldwarden's *Second Bond* — the one rule a Background's blurb carries, so its growth is
-the last line of Fieldwarden's starting gear. The growth keeps the drawn line as `gained`, and what
+face) and Fieldwarden's *Second Bond* — a rule the Background's blurb carries, so its growth is the
+last line of Fieldwarden's starting gear. Foundling's blurb carries the other one, "Roll on the
+Omens table (even if you're not the youngest player)", granted the same way as its *Omen* growth. The growth keeps the drawn line as `gained`, and what
 that face names lands in the inventory beside the first Bond's (`character-generator.js#resolveGrowth`).
 
 ## `companions` — the creatures a background hands the party

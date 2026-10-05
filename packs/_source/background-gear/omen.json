@@ -1,0 +1,25 @@
+{
+  "_id": "tyWc2ZiHZYFrs7b2",
+  "name": "Omen",
+  "type": "growth",
+  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "system": {
+    "description": "<p>An odd birthmark, a strange smell: somehow, the touch of <em>elsewhere</em> still lingers. Roll on the <strong>Omens</strong> table (even if you're not the youngest player), but keep the results private for now.</p>",
+    "gained": "",
+    "outcome": {
+      "attr": "",
+      "from": 0,
+      "to": 0,
+      "formula": ""
+    },
+    "table": "Compendium.cairn2e.omens.RollTable.4VccV717afiJihEQ",
+    "resolved": false,
+    "milestones": []
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!tyWc2ZiHZYFrs7b2",
+  "folder": "MaDv2V4A5uj6cZV3"
+}
