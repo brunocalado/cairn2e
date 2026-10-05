@@ -64,10 +64,10 @@ export class CairnNpcSheet extends CairnActorSheet {
   };
 
   /** @override — an Item change redraws the header (`armorTotal`) and both item lists. */
-  partsForRenderContext(renderContext) {
+  partsForRenderContext(renderContext, renderData) {
     const subject = String(renderContext ?? "").replace(/^(create|update|delete)/, "").toLowerCase();
     if (subject === "items") return ["header", "items", "features"];
-    return null;
+    return super.partsForRenderContext(renderContext, renderData);
   }
 
   /**

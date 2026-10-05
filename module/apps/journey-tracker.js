@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SOCKET_EVENT } from "../constants.js";
+import { SYSTEM_ID, SETTINGS, SOCKET_EVENT } from "../constants.js";
 import * as journey from "../journey.js";
 import { ACTIONS, WATCHES, WEATHER, PATHS, WEATHER_EFFECTS, pendingNeeds } from "../journey-rules.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
@@ -121,7 +121,9 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
     const redraw = foundry.utils.debounce(() => CairnJourneyTracker.refresh(), 100);
     const onRoster = (actor) => {
       if (!actor?.uuid || !CairnJourneyTracker.#instance?.rendered) return false;
-      return !!journey.current()?.crew.includes(actor.uuid);
+      // Read, never copied: this runs on every Actor, Item and ActiveEffect change in the world,
+      // and `journey.current()` deep-clones the whole journey for callers that edit it.
+      return !!game.settings.get(SYSTEM_ID, SETTINGS.JOURNEY)?.crew.includes(actor.uuid);
     };
     Hooks.on("updateActor", (actor) => { if (onRoster(actor)) redraw(); });
     // Rations are gear uses and Fatigue is an item, so all three item hooks matter.

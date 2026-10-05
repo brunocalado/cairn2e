@@ -41,20 +41,32 @@ export function noteOf(entry) {
 export const isPublic = (entry) => (entry.ownership.default ?? LEVELS.NONE) >= LEVELS.OBSERVER;
 
 /**
+ * Every note this user may read: one walk of the journal, for a caller that asks about many days
+ * at once — the calendar's month grid asks about 25, and walked the journal 25 times.
+ * @returns {{entry: JournalEntry, note: object}[]}
+ */
+export function readableNotes() {
+  const found = [];
+  for (const entry of game.journal) {
+    const note = noteOf(entry);
+    if (note && entry.testUserPermission(game.user, "OBSERVER")) found.push({ entry, note });
+  }
+  return found;
+}
+
+/**
  * The notes covering a day that this user may read, in the order of their dates.
  * @param {number} year
  * @param {number} month  an index of the calendar's months, 12 the Reclamation
  * @param {number} day    0-based
+ * @param {{entry: JournalEntry, note: object}[]} [notes]  `readableNotes()`, walked once by a
+ *   caller that asks about many days
  * @returns {{entry: JournalEntry, note: object}[]}
  */
-export function notesOn(year, month, day) {
+export function notesOn(year, month, day, notes = readableNotes()) {
   const at = absoluteDay(year, month, day);
-  const found = [];
-  for (const entry of game.journal) {
-    const note = noteOf(entry);
-    if (note && noteCovers(note, at) && entry.testUserPermission(game.user, "OBSERVER")) found.push({ entry, note });
-  }
-  return found.sort((a, b) => (a.note.month - b.note.month) || (a.note.day - b.note.day) || a.entry.name.localeCompare(b.entry.name));
+  return notes.filter(({ note }) => noteCovers(note, at))
+    .sort((a, b) => (a.note.month - b.note.month) || (a.note.day - b.note.day) || a.entry.name.localeCompare(b.entry.name));
 }
 
 /** The folder new notes go in, or `undefined` if the Warden deleted it. */

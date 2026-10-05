@@ -268,9 +268,9 @@ Hooks.once("init", async function () {
       onChange: () => CairnCalendarApp.open()
     };
   });
-  // Every open calendar redraws when the clock moves, whoever moved it.
+  // Every open calendar redraws what the clock moved, whoever moved it.
   Hooks.on("updateWorldTime", () => {
-    CairnCalendarApp.refresh();
+    CairnCalendarApp.onWorldTime();
     refreshChatClock();
   });
   // The date and time under the chat box's Format menu, wherever core moves the box.

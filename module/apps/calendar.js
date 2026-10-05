@@ -12,7 +12,7 @@ import {
   isReclamationYear, seasonOf, watchStartFor, watchAt, noteText, noteOccurrence, absoluteDay
 } from "../calendar-rules.js";
 import { RECLAMATION_DAY_NAMES, geometry, currentWatch, formatDate } from "../calendar.js";
-import { noteOf, notesOn, isPublic, saveNote } from "../calendar-notes.js";
+import { noteOf, notesOn, readableNotes, isPublic, saveNote } from "../calendar-notes.js";
 import { postCalendarNoteCard } from "../rolls.js";
 import { rollWardenText } from "../helpers.js";
 import { CairnCalendarNote } from "./calendar-note.js";
@@ -99,6 +99,10 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
   /** The Warden is dragging the needle. */
   #dragging = false;
 
+  /** The date and the minute the window last drew. A clock that moved less than a minute changes
+   *  nothing on screen — the needle lags by under a minute, a fraction of a pixel of the dial. */
+  #drawn = { date: "", minute: "" };
+
   /**
    * Open the window, or bring the open one forward. `view` moves it to that day — the Warden's
    * Show to players, which arrives over the socket and is checked like any payload. A window
@@ -112,12 +116,25 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     return app.render({ force: true });
   }
 
-  /** Redraw the open window: the time moved, a journey began or ended, or a note changed. Not
-   *  while the Warden drags the needle: a redraw would pull it out of their hand. The drag ends
-   *  in a render of its own. */
+  /** Redraw the open window: a journey began or ended, or a note changed. Not while the Warden
+   *  drags the needle: a redraw would pull it out of their hand. The drag ends in a render of its
+   *  own. */
   static refresh() {
     const app = CairnCalendarApp.#instance;
     if (app?.rendered && !app.#dragging) app.render();
+  }
+
+  /**
+   * The world clock moved, on any client. A new date redraws everything — the strip and the grid
+   * mark today — a new minute only the header, and anything less nothing: the year, month and
+   * day parts read the date alone. Not while the needle is in hand, for `refresh`'s reason.
+   */
+  static onWorldTime() {
+    const app = CairnCalendarApp.#instance;
+    if (!app?.rendered || app.#dragging) return;
+    const now = game.time.components;
+    if (`${now.year}-${now.month}-${now.dayOfMonth}` !== app.#drawn.date) return app.render();
+    if (`${now.hour}:${now.minute}` !== app.#drawn.minute) return app.render({ parts: ["header"] });
   }
 
   /**
@@ -189,6 +206,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     };
     context.today = { date: formatDate(now.year, now.month, now.dayOfMonth), sub: this.#subOf(now.year, now.month, now.dayOfMonth) };
     context.time = `${pad(now.hour)}:${pad(now.minute)}`;
+    this.#drawn = { date: `${now.year}-${now.month}-${now.dayOfMonth}`, minute: `${now.hour}:${now.minute}` };
     context.isGM = isGM;
     context.journeying = journeying;
     context.canDrag = isGM && !journeying;
@@ -256,11 +274,13 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     context.monthName = t(month.name);
     context.heads = reclamation ? RECLAMATION_DAY_NAMES.map((k) => t(k)) : cal.days.values.map((d) => t(d.name));
     const length = reclamation ? RECLAMATION_DAYS : MONTH_DAYS;
+    // One walk of the journal for the whole grid and the selected day, not one per day.
+    const readable = readableNotes();
     context.days = Array.from({ length }, (_, day) => {
       const dayOfYear = view.month * MONTH_DAYS + day + 1;
       const season = reclamation ? -1 : SEASON_STARTS.indexOf(dayOfYear);
       // A filled mark for a note everyone reads, a hollow one for the Warden's own.
-      const notes = notesOn(view.year, view.month, day);
+      const notes = notesOn(view.year, view.month, day, readable);
       return {
         day,
         number: day + 1,
@@ -275,7 +295,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
 
     // The selected day, and the notes on it this user may read.
     context.detail = { date: formatDate(view.year, view.month, view.day), sub: this.#subOf(view.year, view.month, view.day) };
-    const dayNotes = notesOn(view.year, view.month, view.day);
+    const dayNotes = notesOn(view.year, view.month, view.day, readable);
     // The Reclamation belongs to no season, so it has no column of the table to roll.
     context.canRollWeather = isGM && !reclamation && !dayNotes.some(({ entry }) => entry.getFlag(SYSTEM_ID, FLAGS.WEATHER));
     context.notes = dayNotes.map(({ entry, note }) => ({

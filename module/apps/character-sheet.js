@@ -178,6 +178,26 @@ export class CairnCharacterSheet extends CairnActorSheet {
       row.last = i === rows.length - 1;
     }
 
+    // The strip is shared with the NPC sheet; only a character has a purse.
+    context.showGold = true;
+    // The way into the stores the Warden lets players walk into, beside the gold that pays for
+    // them. Only on the player's own character: the store spends `game.user.character`'s purse,
+    // whichever sheet it is opened from. The Warden has the sidebar's Store, and a world with no
+    // store open to visits shows no chip at all.
+    context.showStores = !game.user.isGM && this.actor === game.user.character
+      && storeChoices(game.settings.get(SYSTEM_ID, SETTINGS.STORES), { isGM: false }).length > 0;
+    return context;
+  }
+
+  /**
+   * @override — the Growth tab's rows, built only when that tab is drawn. Each description is
+   * enriched, which is async and the dearest thing the sheet prepares, and a stepper's write
+   * redraws the header alone.
+   */
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+    if (partId !== "growth") return context;
+
     // Every Scar taken, in the order they happened. `outcome` is the printed record of what each
     // one did to a maximum — never a field: the maxima are edited in the edit window and two
     // editable copies of one number drift.
@@ -218,15 +238,6 @@ export class CairnCharacterSheet extends CairnActorSheet {
       const row = context.growth.at(-1);
       row.tags = !!(row.outcome || row.progress);
     }
-
-    // The strip is shared with the NPC sheet; only a character has a purse.
-    context.showGold = true;
-    // The way into the stores the Warden lets players walk into, beside the gold that pays for
-    // them. Only on the player's own character: the store spends `game.user.character`'s purse,
-    // whichever sheet it is opened from. The Warden has the sidebar's Store, and a world with no
-    // store open to visits shows no chip at all.
-    context.showStores = !game.user.isGM && this.actor === game.user.character
-      && storeChoices(game.settings.get(SYSTEM_ID, SETTINGS.STORES), { isGM: false }).length > 0;
     return context;
   }
 

@@ -151,7 +151,8 @@ export const FLAGS = {
    * of `{ uuid, token }`. A follower's token is unlinked — `module/encounters.js` creates them
    * that way on purpose — so its state lives on the token and nowhere else, and gathering the
    * group in without this would delete a mount's wounds along with its picture. Read back when
-   * the party is set down again; position is the one thing taken from the party token instead.
+   * the party is set down again, and cleared once it has been; position is the one thing taken
+   * from the party token instead.
    *
    * A LIST, not an object keyed by uuid, and that is not a style choice: a uuid contains dots,
    * and `setFlag` expands a dotted key into nested objects, so `{ "Actor.abc": … }` was stored

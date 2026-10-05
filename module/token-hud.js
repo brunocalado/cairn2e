@@ -227,6 +227,10 @@ export class CairnTokenHUD extends TokenHUD {
     // Walk them onto the party token before they go, so the group is seen to close up rather
     // than to vanish. The delete cannot ride the same call: an animated update resolves as soon
     // as the write lands, not when the movement finishes.
+    // One write per member, not one for the group: core turns a batch's `animation.duration` into
+    // a single movement SPEED, worked out from the first token's distance
+    // (`Token._configureAnimationMovementSpeed`), so a member three cells away walked for 1200ms
+    // and was deleted a third of the way there. Measured in a client on 2026-10-05.
     await Promise.all(leaving.map((t) =>
       t.update({ x, y, alpha: 0 }, { animation: { duration: TRAVEL_MS } })));
     await new Promise((r) => setTimeout(r, TRAVEL_MS));
@@ -237,7 +241,7 @@ export class CairnTokenHUD extends TokenHUD {
    * Put every deployed member back on the map, in marching order.
    *
    * Each comes back as the token it was, out of the snapshot, falling back to its prototype for
-   * a member who has never been set down here. Everything is restored except WHERE: the party
+   * a member who was not gathered in. Everything is restored except WHERE: the party
    * has moved since, and returning the group to where it stood two rooms ago is never what was
    * meant. Position comes from the party token.
    */
@@ -258,8 +262,14 @@ export class CairnTokenHUD extends TokenHUD {
     }
 
     const created = await canvas.scene.createEmbeddedDocuments("Token", data);
-    await Promise.all(created.map((t) =>
-      t.update({ alpha: 1 }, { animation: { duration: TRAVEL_MS } })));
+    // The snapshot was of the tokens gathered in; they are on the map again, and from here on the
+    // map is what is true about them. Kept, it would hand a later set-down that finds no member
+    // token the wounds from before this one.
+    await this.actor.unsetFlag(SYSTEM_ID, FLAGS.GATHERED_TOKENS);
+    // One write for the group: they fade in where they stand, and a fade has no distance to
+    // turn into a speed (see `#gatherIn`), so each gets the whole of TRAVEL_MS.
+    await canvas.scene.updateEmbeddedDocuments("Token",
+      created.map((t) => ({ _id: t.id, alpha: 1 })), { animation: { duration: TRAVEL_MS } });
   }
 }
 

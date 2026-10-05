@@ -19,6 +19,10 @@ import { bindSteppers, stepStat, flushSteps, fieldNumber, fitToText } from "./_s
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
+/** The fields a header stepper writes (`parts/attribute-row.hbs`), drawn in the header and
+ *  nowhere else on either sheet. */
+const STEPPED = /^system\.(hp|abilities\.\w+)\.value$/;
+
 /**
  * Shared behaviour for the three Cairn actor sheets. Not registered directly.
  *
@@ -86,14 +90,20 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * selection, and its content cannot have changed except through its own field, whose render
    * the sheet mixin skips.
    * @param {string} [renderContext]
+   * @param {object} [renderData]  The change, as core hands it to the render.
    * @returns {string[]|null}
    */
-  partsForRenderContext(renderContext) {
+  partsForRenderContext(renderContext, renderData) {
     const subject = String(renderContext ?? "").replace(/^(create|update|delete)/, "").toLowerCase();
     // `growth` is in the list because a Scar and a Growth are both Items: taking one, rolling
     // the gain it owed, or writing a new growth is an Item create or update, and a tab left
     // out of this list simply never redraws.
     if (subject === "items") return ["header", "items", "petty", "belongings", "growth"];
+    // A stepper's write: only the header shows it, so only the header is rebuilt.
+    if (renderContext === `update${this.document.documentName}` && renderData) {
+      const keys = Object.keys(foundry.utils.flattenObject(renderData)).filter((k) => !k.startsWith("_"));
+      if (keys.length && keys.every((k) => STEPPED.test(k))) return ["header"];
+    }
     return null;
   }
 
@@ -107,7 +117,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // An editor part goes with every change unless it is on screen and current
     // (`_sheet-mixin.js#keptEditorParts`); the rest go when the change is theirs.
     const kept = keptEditorParts(this, options.renderData);
-    const wanted = this.partsForRenderContext(options.renderContext);
+    const wanted = this.partsForRenderContext(options.renderContext, options.renderData);
     const editors = Object.values(this.constructor.EDITOR_FIELDS);
     options.parts = options.parts.filter((id) => !kept.includes(id)
       && (!wanted || wanted.includes(id) || editors.includes(id)));
@@ -553,8 +563,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       // not onto a container row says "carry this yourself"; without it the drop read as a sort
       // and the thing stayed stowed, with nothing on screen to say why.
       if (item.system.container) return item.update({ "system.container": "" });
-      // Anywhere else is a sort, which the ledger draws by equipped-then-name anyway.
-      return super._onSortItem(event, item);
+      // Anywhere else is a reorder, and the ledger has none to change: it draws Fatigue last,
+      // then what is in hand, then by name (`prepareItems`), and nothing reads `sort`. Core's
+      // sort writes one for a redraw that looks the same.
+      return null;
     }
 
     // From anywhere else — another actor, a pack, the sidebar: `transfer.js#takeItem`.
