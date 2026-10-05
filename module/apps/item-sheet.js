@@ -8,6 +8,7 @@
 import { SYSTEM_ID } from "../constants.js";
 import { GRANT_DRAG_KEY } from "../grants.js";
 import { moveCoin, promptCoinAmount } from "../coin.js";
+import { takeItem } from "../transfer.js";
 import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
 import { enrich } from "../helpers.js";
@@ -694,17 +695,15 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       return null;
     }
 
-    // Already this actor's: move it. From anywhere else: copy it in, and let the document's
-    // capacity check refuse it if the container is full.
-    if (document.parent?.id === actor.id) {
+    // Already this actor's: stow it. From anywhere else it is the character sheet's drop, landing
+    // in here instead of on the body — off another actor a move, from a pack or the sidebar a
+    // copy (`transfer.js#takeItem`); the document's capacity check refuses it if this is full.
+    if (document.parent?.uuid === actor.uuid) {
       await document.update({ "system.container": this.document.id });
       return document;
     }
-    const data = foundry.utils.mergeObject(document.toObject(), {
-      "system.container": this.document.id
-    });
-    const [created] = await actor.createEmbeddedDocuments("Item", [data]);
-    return created ?? null;
+    await takeItem(actor, document, this.document.id);
+    return null;
   }
 
   /** Take one item out of the container and back onto the body — where the ten apply again. A

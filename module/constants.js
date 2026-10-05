@@ -310,6 +310,14 @@ export const GOLD_PETTY_THRESHOLD = 100;
 export const MAX_SLOTS = 10;
 
 /**
+ * The most documents one Kettlewright entry becomes. The file is user input, and its `quantity`
+ * is not bounded on the other side: one entry asking for 200,000 built that many items before
+ * the create could hang the server. Petty things are never trimmed by the ten, so nothing else
+ * would stop it. The importer says in its summary when it clamped.
+ */
+export const KW_MAX_QUANTITY = 100;
+
+/**
  * The image a document is created with, by subtype.
  *
  * Core gives every new Item `icons/svg/item-bag.svg` and every new Actor the mystery-man

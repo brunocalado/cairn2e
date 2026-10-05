@@ -634,8 +634,8 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
    * The checkout, in order: the container question first (so a cancel leaves the character
    * exactly as they were), then the sold things go, then the bought ones arrive on the body,
    * then the coin moves by the phase's rules, then the record. The charge is the price of what
-   * `createEmbeddedDocuments` returned, not of what was asked: the document creates the prefix of
-   * a batch that fits and warns about the rest, and coin is never taken for a thing that did not
+   * `createEmbeddedDocuments` returned, not of what was asked: the document drops from the batch
+   * whatever does not fit and warns about it, and coin is never taken for a thing that did not
    * arrive.
    * @this {CairnStore}
    */
@@ -647,7 +647,19 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
     const buyRatio = store.buyRatio ?? 100;
     const docs = await Promise.all([...this.#cart.buy.keys()].map((uuid) => fromUuid(uuid)));
     const buy = docs.filter((doc) => doc).map((doc) => ({ doc, qty: this.#cart.buy.get(doc.uuid) }));
-    const sell = [...this.#cart.sell].map((id) => actor.items.get(id)).filter((item) => item);
+    // The sell list is checked again as the character stands now: a container carted empty and
+    // filled since would be sold with everything in it (its delete takes its contents along,
+    // `CairnItem._preDeleteOperation`). Refused whole rather than trimmed, so nobody is paid less
+    // than the total they confirmed without being told why.
+    const sellable = new Set(sellableOwn(actor.items.contents).flatMap((group) => group.items.map((item) => item.id)));
+    const stale = [...this.#cart.sell].filter((id) => !sellable.has(id));
+    if (stale.length) {
+      for (const id of stale) this.#cart.sell.delete(id);
+      ui.notifications.warn(game.i18n.localize("CAIRN.Store.NoLongerSellable"));
+      this.render();
+      return;
+    }
+    const sell = [...this.#cart.sell].map((id) => actor.items.get(id));
     // Against the character as they stand now, not as the foot last drew them: a stale window.
     const summary = cartSummary({ items: actor.items.contents, gold: actor.system.gold, buy, sell, ratio, buyRatio, slotsMax: actor.system.slotsMax });
     if (!summary.ok) {

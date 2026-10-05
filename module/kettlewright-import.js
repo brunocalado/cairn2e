@@ -34,7 +34,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { SYSTEM_ID, PACKS, CONDITION, DEFAULT_ARTWORK } from "./constants.js";
+import { SYSTEM_ID, PACKS, CONDITION, DEFAULT_ARTWORK, KW_MAX_QUANTITY } from "./constants.js";
 import { coinItem } from "./coin-rules.js";
 import { stripTags, copyOf } from "./helpers.js";
 import { parseGearLine, resolveItem, getBackgrounds, toPlainText } from "./character-generator.js";
@@ -169,7 +169,7 @@ async function resolveKettlewrightItem(entry, packDocs) {
   const name = String(entry?.name ?? "").trim() || game.i18n.localize("CAIRN.KWImport.DefaultItemName");
   const tags = firstArray(entry, ["tags", "labels"]).map((t) => String(t).toLowerCase());
   const descText = String(entry?.description ?? entry?.notes ?? "");
-  const quantity = Math.max(1, num(entry?.quantity ?? entry?.amount, 1));
+  const quantity = Math.min(KW_MAX_QUANTITY, Math.max(1, num(entry?.quantity ?? entry?.amount, 1)));
   const uses = num(entry?.charges ?? entry?.uses, null);
   const maxUses = num(entry?.max_charges ?? entry?.maxCharges ?? entry?.max_uses, uses);
 
@@ -256,6 +256,7 @@ export async function buildImportData(kw) {
     bespoke: 0,
     containers: 0,
     dropped: [],
+    clamped: [],
     backgroundUnmatched: null,
     non2e: false
   };
@@ -355,6 +356,7 @@ export async function buildImportData(kw) {
     for (const entry of entries) {
       try {
         const { data, resolved, count } = await resolveKettlewrightItem(entry, packDocs);
+        if (num(entry?.quantity ?? entry?.amount, 1) > count) summary.clamped.push(data.name);
         if (resolved) summary.resolved++;
         else summary.bespoke++;
         // One entry of three is three documents here. Each is its own clone: they are separate
@@ -391,7 +393,6 @@ export async function buildImportData(kw) {
       items: await convert(buckets[i])
     });
   }
-  summary.containers = containers.length;
 
   const actorData = {
     name,
@@ -446,6 +447,9 @@ async function showSummary(summary) {
   }
   if (summary.backgroundUnmatched) {
     lines.push(`<li>${esc(t("CAIRN.KWImport.SummaryBackgroundUnmatched", { name: summary.backgroundUnmatched }))}</li>`);
+  }
+  if (summary.clamped.length) {
+    lines.push(`<li class="warning">${esc(t("CAIRN.KWImport.SummaryClamped", { max: KW_MAX_QUANTITY, names: summary.clamped.join(", ") }))}</li>`);
   }
   if (summary.dropped.length) {
     lines.push(
@@ -535,20 +539,27 @@ export async function importKettlewrightCharacter() {
 
     for (const statusId of statuses) await actor.toggleStatusEffect(statusId, { active: true });
 
-    // Containers first, so each one has an id; then every contained item in one batch, each
-    // pointing at the container it belongs to.
-    if (containers.length) {
-      const created = await actor.createEmbeddedDocuments(
-        "Item",
-        containers.map(({ items, ...container }) => container)
-      );
-      const held = [];
-      for (const [i, container] of created.entries()) {
-        for (const item of containers[i].items) {
-          held.push(foundry.utils.mergeObject(item, { "system.container": container.id }));
-        }
+    // One container at a time, each followed by its own contents pointing at its new id. Not one
+    // batch for every container: the document drops from a batch whatever does not fit (a pulled
+    // Cart past the ten), so the survivors cannot be paired with what was sent by position — a
+    // Cart's rope once landed in the Donkey. A refused container is reported with what it held,
+    // and so is any content its capacity turned away.
+    for (const { items, ...container } of containers) {
+      const [made] = await actor.createEmbeddedDocuments("Item", [container]);
+      if (!made) {
+        summary.dropped.push(container.name, ...items.map((i) => i.name));
+        continue;
       }
-      if (held.length) await actor.createEmbeddedDocuments("Item", held);
+      summary.containers++;
+      if (!items.length) continue;
+      const stowed = await actor.createEmbeddedDocuments("Item",
+        items.map((i) => foundry.utils.mergeObject(i, { "system.container": made.id })));
+      const landed = stowed.map((i) => i.name);
+      for (const { name } of items) {
+        const at = landed.indexOf(name);
+        if (at === -1) summary.dropped.push(name);
+        else landed.splice(at, 1);
+      }
     }
 
     actor.sheet.render(true);

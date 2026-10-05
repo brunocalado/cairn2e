@@ -201,6 +201,9 @@ export async function moveCoin(sack, amount, place) {
   const value = sack.system.value;
   amount = Math.min(Math.max(0, amount), value);
   if (!actor || amount <= 0) return false;
+  // Already there: `sackAt` would find this very sack, grow it, and then shrink or delete it as
+  // the source — destroying the amount moved.
+  if (placeOf(sack) === place) return false;
   const whole = amount >= value;
   if (whole && !sackAt(actor.items, place)) {
     const changes = place === BELONGINGS

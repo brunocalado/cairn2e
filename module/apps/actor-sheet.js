@@ -10,9 +10,8 @@ import { rollDamage, rollSave } from "../rolls.js";
 import { slotsForItem, layoutSlots, nestingRefusal } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { enrich } from "../helpers.js";
-import { carryLight, lightSpell } from "../light-sources.js";
-import { bundleItems } from "../transfer-rules.js";
-import { receiveItems } from "../transfer.js";
+import { lightSpell } from "../light-sources.js";
+import { takeItem } from "../transfer.js";
 import { CairnSheetMixin } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
@@ -585,6 +584,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       // it moves, because coin is the one thing a player halves. The rest of the sack stays; a
       // sack already in the container grows (`coin.js#moveCoin`).
       if (item.type === "coin" && row?.system.isContainer) {
+        // Onto the container it is already in: nothing to move, and nothing to ask.
+        if (item.system.container === row.id) return;
         const amount = await promptCoinAmount(item.system.value);
         if (amount) await moveCoin(item, amount, row.id);
         return;
@@ -604,38 +605,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       return super._onSortItem(event, item);
     }
 
-    // Every drop is a document. 2e's inventory is a list of items and a second Rope is a second
-    // line — there is no count for a match to raise, so nothing is looked up by name here.
-    //
-    // A container brings what is in it, a stowed thing arrives on the body, a sack joins the sack
-    // already here, and nothing arrives in anybody's hand (`transfer-rules.js`). No capacity check
-    // either: the document refuses a create that would not fit (`documents/item.js`), and says
-    // so. What this has to know is what DID land, so a refused move never deletes the thing it
-    // came from.
-    //
-    // A document straight out of a pack is stamped with its own uuid as `_stats.compendiumSource`,
-    // as core's import does: it is how the copy is still recognised (a light source, say) once a
-    // translation module has renamed it. A copy from a sidebar or another actor already carries
-    // whatever source it had.
-    const source = item.parent;
-    // Off another actor, part of the body stays where it is. From a pack or the sidebar it is a
-    // new thing — the Werewolf's claws land on the character exactly that way.
-    if (source && item.system.bodily) {
-      return ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Bodily", { name: item.shownName }));
-    }
-    const chosen = item.toObject();
-    if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };
-    const all = source ? source.items.map((i) => i.toObject()) : [chosen];
-    const { landed, arrived } = await receiveItems(this.actor, bundleItems([chosen], all));
-    if (!landed.length) return;
-
-    // The source goes, when this user may take it: a copy from a sheet they cannot modify is a
-    // copy, as core's own drop is, rather than a delete that rejects after the copy was made.
-    // Never mutate its in-memory data directly — upstream did, so a rejected write left the
-    // wrong value on screen.
-    if (source && source.uuid !== this.actor.uuid && item.isOwner) {
-      await carryLight(source, arrived);
-      await source.deleteEmbeddedDocuments("Item", landed);
-    }
+    // From anywhere else — another actor, a pack, the sidebar: `transfer.js#takeItem`.
+    return takeItem(this.actor, item);
   }
 }

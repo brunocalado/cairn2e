@@ -128,7 +128,9 @@ export class CairnItem extends Item {
    *
    * Batch-wise rather than per document, because ten Fatigue created in one call each see the
    * same free count in `_preCreate` and all think they fit. Here the batch is walked in order
-   * with a running count, so what is created is exactly the prefix that fits, and the actor is
+   * with a running count and whatever does not fit is taken out of it — not a prefix: a later,
+   * smaller thing still lands after a larger one is refused, so a caller that pairs what it sent
+   * with what came back by position is wrong. The actor is
    * valid whichever way the call came in. A character being CREATED with items (the generator,
    * the Kettlewright import) is not a parent in any collection yet and is left alone — the
    * creators build legal characters, and their items are the only way to reach this branch.
@@ -244,6 +246,11 @@ export class CairnItem extends Item {
     // thing is the exception the model already makes (`data/item-gear.js#prepareBaseData`): a
     // tattoo is worn whether or not its bearer knows what it does.
     if (this.type === "gear" && changes.system?.unknown === true) changes.system.equipped = false;
+    // Stowed is carried, as the models already say on prepared data (`GearData#prepareBaseData`,
+    // `CoinData#prepareBaseData`). Written into the change so the candidate below agrees: it is
+    // built over the SOURCE, where a thing set aside still says `carried: false`, and
+    // `slotsForItem` weighs that at nothing — a set-aside crate went into a full Backpack free.
+    if ((this.type === "gear" || this.type === "coin") && changes.system?.container) changes.system.carried = true;
     const parent = this.parent;
     if (!parent || !changes.system) return;
 

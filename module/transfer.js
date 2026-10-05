@@ -33,15 +33,16 @@ const BARTER_CONTENT_TYPES = new Set(["gear", "coin"]);
  */
 
 /**
- * Put `bundles` on `actor`.
+ * Put `bundles` on `actor`, at `into` — the body, or one of its containers.
  *
  * A container and its contents land together or not at all: the contents go in one batch
  * pointing at the new container, and if any is refused the new container goes again (taking the
  * ones that landed with it). Without that, the sender's delete of the original container would
  * destroy whatever did not arrive.
  *
- * A sack of coin lands through `putCoin` — grown into the sack already there, or made — at the
- * first place the whole amount fits. No question is asked: this may run on another user's client.
+ * A sack of coin lands through `putCoin` — grown into the sack already there, or made — in the
+ * container named, or else at the first place the whole amount fits. No question is asked: this
+ * may run on another user's client.
  *
  * `arrived` names the copy made of each landed source, so the sender can move what belongs to the
  * thing rather than to the actor — a light burning on it — before deleting the original. Contents
@@ -49,19 +50,22 @@ const BARTER_CONTENT_TYPES = new Set(["gear", "coin"]);
  * rolled back above. A sack of coin is merged into whatever sack is there, so it maps to nothing.
  * @param {Actor} actor
  * @param {{ id: string, data: object, contents: { id: string, data: object }[] }[]} bundles
+ * @param {string} [into]  A container id on `actor`; the body when empty. Whether it has room is
+ *   the document's to refuse.
  * @returns {Promise<{ landed: string[], arrived: Record<string, string> }>}  Source ids that now
  *   exist on `actor`, and each non-coin one's copy's uuid.
  */
-export async function receiveItems(actor, bundles) {
+export async function receiveItems(actor, bundles, into = "") {
   const landed = [];
   const arrived = {};
   for (const { id, data, contents } of bundles) {
     if (data.type === "coin") {
-      if (await landCoin(actor, data.system?.value ?? 0)) landed.push(id);
+      const value = data.system?.value ?? 0;
+      if (await (into ? putCoin(actor, value, into) : landCoin(actor, value))) landed.push(id);
       continue;
     }
 
-    const [made] = await actor.createEmbeddedDocuments("Item", [data]);
+    const [made] = await actor.createEmbeddedDocuments("Item", [{ ...data, system: { ...data.system, container: into } }]);
     if (!made) continue;
     let stowed = [];
     if (contents.length) {
@@ -77,6 +81,50 @@ export async function receiveItems(actor, bundles) {
     contents.forEach((c, i) => { arrived[c.id] = stowed[i].uuid; });
   }
   return { landed, arrived };
+}
+
+/**
+ * Move `item` onto `actor` — the drop of an item on a character sheet, or on a container's sheet
+ * (`into`). Every drop is a document. 2e's inventory is a list of items and a second Rope is a
+ * second line — there is no count for a match to raise, so nothing is looked up by name.
+ *
+ * A container brings what is in it, a stowed thing arrives where it is put, a sack joins the sack
+ * already there, and nothing arrives in anybody's hand (`transfer-rules.js`). No capacity check
+ * either: the document refuses a create that would not fit (`documents/item.js`), and says so.
+ * What this has to know is what DID land, so a refused move never deletes the thing it came from.
+ *
+ * Off another actor it is a move: the source goes, when this user may take it — a copy from a
+ * sheet they cannot modify is a copy, as core's own drop is, rather than a delete that rejects
+ * after the copy was made. From a pack or the sidebar it is a copy, stamped with its own uuid as
+ * `_stats.compendiumSource` when it came out of a pack, as core's import does: it is how the copy
+ * is still recognised (a light source, say) once a translation module has renamed it. A copy from
+ * a sidebar or another actor already carries whatever source it had.
+ * @param {Actor} actor
+ * @param {Item} item  Not already `actor`'s — moving within one actor is an update, not this.
+ * @param {string} [into]  A container id on `actor`; the body when empty.
+ * @returns {Promise<boolean>}  Whether anything landed.
+ */
+export async function takeItem(actor, item, into = "") {
+  const source = item.parent;
+  // Off another actor, part of the body stays where it is. From a pack or the sidebar it is a
+  // new thing — the Werewolf's claws land on the character exactly that way.
+  if (source && item.system.bodily) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Bodily", { name: item.shownName }));
+    return false;
+  }
+  const chosen = item.toObject();
+  if (item.pack) chosen._stats = { ...chosen._stats, compendiumSource: item.uuid };
+  const all = source ? source.items.map((i) => i.toObject()) : [chosen];
+  const { landed, arrived } = await receiveItems(actor, bundleItems([chosen], all), into);
+  if (!landed.length) return false;
+  // Never mutate the source's in-memory data directly — upstream did, so a rejected write left
+  // the wrong value on screen. The light moves before the delete: deleting a burning original
+  // first puts it out.
+  if (source && source.uuid !== actor.uuid && item.isOwner) {
+    await carryLight(source, arrived);
+    await source.deleteEmbeddedDocuments("Item", landed);
+  }
+  return true;
 }
 
 /**
