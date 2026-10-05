@@ -327,7 +327,9 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const lines = [];
     if (paid.length) lines.push(game.i18n.localize(paidKey, { names: names(paid) }));
     if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: names(unpaid) }));
-    await postJourneyCard({ flavor: combat.system.event.name, lead: game.i18n.localize(leadKey), lines });
+    // Escaped: the event's name is a table row's, which a Warden may have typed, and the flavor is
+    // drawn as markup.
+    await postJourneyCard({ flavor: foundry.utils.escapeHTML(combat.system.event.name), lead: game.i18n.localize(leadKey), lines });
   }
 
   /**
