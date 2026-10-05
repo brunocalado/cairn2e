@@ -6,12 +6,14 @@
  */
 
 import { SYSTEM_ID, CONDITION } from "../constants.js";
-import { appearanceTraitRows, regenerateNpc } from "../npc-generator.js";
+import { APPEARANCE_TRAIT_KEYS, regenerateNpc } from "../npc-generator.js";
+import { traitRows } from "../character-generator.js";
 import { regenerateMonster } from "../monster-generator.js";
 import { promoteToCharacter } from "../promotion.js";
 import { rollMorale, rollReaction } from "../rolls.js";
 import { enrich, abilityRows, hpZero } from "../helpers.js";
 import { CairnActorSheet } from "./actor-sheet.js";
+import { addFrameLabel } from "./_sheet-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { CairnNpcEdit } from "./npc-edit.js";
 
@@ -99,7 +101,7 @@ export class CairnNpcSheet extends CairnActorSheet {
     context.roleLabel = game.i18n.localize(`CAIRN.Role.${role.charAt(0).toUpperCase()}${role.slice(1)}`);
     context.abilities = abilityRows(system);
     context.hpZero = hpZero(system);
-    context.appearanceTraits = appearanceTraitRows(system);
+    context.appearanceTraits = traitRows(system.traits, APPEARANCE_TRAIT_KEYS);
     // What a reader who cannot edit sees instead of the editor (`templates/actor/npc-description.hbs`).
     context.descriptionHTML = await enrich(system.description, this.actor);
     // In collection order — for a bestiary creature, the SRD's own bullet order. A name that is
@@ -136,25 +138,17 @@ export class CairnNpcSheet extends CairnActorSheet {
   }
 
   /**
-   * @override — Promote sits in the title bar, LEFT of the ellipsis, as a labelled button.
-   *
-   * Not a frame button: core inserts those to the right of the ellipsis, icon-only, with the word
-   * in an `aria-label` nobody sees (`_renderFrameButtons` → before the ✕). The maintainer wants
-   * the word on the bar, so the button is built here and slotted before core's own controls
-   * toggle. Any `[data-action]` inside the application element dispatches through `actions`, which
-   * is how the quill already reaches `openEdit` from this header. Warden-only, like every other
-   * door to promotion; whether this actor is a person is decided per render (`_onRender`).
+   * @override — Promote sits in the title bar, LEFT of the ellipsis, as a labelled button
+   * (`_sheet-mixin.js#addFrameLabel`). Warden-only, like every other door to promotion; whether
+   * this actor is a person is decided per render (`_onRender`).
    */
   async _renderFrame(options) {
     const frame = await super._renderFrame(options);
-    if (!game.user.isGM) return frame;
-    const button = frame.ownerDocument.createElement("button");
-    button.type = "button";
-    button.className = "header-control cairn-frame-label";
-    button.dataset.action = "promoteToCharacter";
-    button.dataset.tooltip = game.i18n.localize("CAIRN.Promote.Title");
-    button.textContent = game.i18n.localize("CAIRN.Promote.Promote");
-    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    if (game.user.isGM) addFrameLabel(frame, {
+      action: "promoteToCharacter",
+      label: game.i18n.localize("CAIRN.Promote.Promote"),
+      tooltip: game.i18n.localize("CAIRN.Promote.Title")
+    });
     return frame;
   }
 

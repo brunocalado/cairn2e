@@ -52,7 +52,7 @@ export async function recordGrowthGain(growth, text) {
  * A form and not a roll — a growth has no die, and the Warden has already decided in the
  * fiction. The choices are read off the field's own `choices` rather than written out here, so
  * the options offered and what a save will accept cannot drift apart. Drawn from a template
- * into `DialogV2.prompt`, the way `rolls.js#promptDamageOptions` is.
+ * into `DialogV2.input`, the way `rolls.js#promptDamageOptions` is.
  *
  * The growth row's apply control on the character sheet opens it; it lives here, beside the two
  * writes it ends in.
@@ -75,7 +75,7 @@ export async function promptGrowthGain(actor, item) {
   content.innerHTML = await foundry.applications.handlebars.renderTemplate(GAIN_DIALOG_TPL, {
     choices, gained: item.system.gained, statDigits: EDIT_LIMITS.statDigits
   });
-  const result = await foundry.applications.api.DialogV2.prompt({
+  const result = await foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title: game.i18n.localize("CAIRN.Growth.ApplyTitle") },
     content,
@@ -101,10 +101,7 @@ export async function promptGrowthGain(actor, item) {
       for (const r of radios) r.addEventListener("change", apply);
       scheduleInk(host);
     },
-    ok: {
-      label: game.i18n.localize("CAIRN.Growth.Apply"),
-      callback: (ev, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-    },
+    ok: { label: game.i18n.localize("CAIRN.Growth.Apply") },
     rejectClose: false
   });
   // `FormDataExtended` reads the hidden block's field too; the chosen button says which of the

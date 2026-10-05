@@ -73,14 +73,11 @@ export async function createItemFromPrompt(actor, { petty = null, askPetty = fal
       <input type="checkbox" name="petty"${petty ? " checked" : ""}>
     </div>`;
 
-  const result = await foundry.applications.api.DialogV2.prompt({
+  const result = await foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title: game.i18n.localize("CAIRN.CreateItem") },
     content: content + pettyRow,
-    ok: {
-      label: game.i18n.localize("CAIRN.CreateItem"),
-      callback: (event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-    },
+    ok: { label: game.i18n.localize("CAIRN.CreateItem") },
     rejectClose: false
   });
   if (!result) return;

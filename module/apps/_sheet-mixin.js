@@ -6,7 +6,8 @@
  */
 
 /**
- * What every document sheet in this system does, in one place.
+ * What every document sheet in this system does, in one place — and the frame code every window
+ * shares, sheet or not (`addFrameLabel`), which is a free function for that reason.
  *
  * It is a mixin rather than a base class because the sheets do not share an ancestor: an actor
  * sheet extends `ActorSheetV2` and an item sheet extends `ItemSheetV2`, and both of those are
@@ -50,7 +51,54 @@ export function staleEditorParts(sheet, renderData, editors) {
   return stale;
 }
 
+/**
+ * The editor parts a document change must leave alone: drawn on screen, and not left stale by an
+ * outside write.
+ *
+ * One with no element on screen has nothing to keep, and leaving it out means it is never built
+ * at all. An item's Recharge tab exists only while `magic` is `relic`, and that transition IS a
+ * document update — so without this test the one render that would have created the part is the
+ * one that drops it, leaving a tab in the rail pointing at nothing until the sheet is reopened.
+ *
+ * The test is the DOM and not `sheet.parts`, which is core's record of every part it has ever
+ * rendered (`api/handlebars-application.mjs`) and keeps a detached element for one the sheet has
+ * since pruned in `_onRender` — so a relic turned back into a spellbook and into a relic again
+ * would be filtered out on that second pass and never rebuilt.
+ * @param {foundry.applications.api.DocumentSheetV2} sheet
+ * @param {object|undefined} renderData  The change, as core hands it to the render.
+ * @returns {string[]}  Part ids.
+ */
+export function keptEditorParts(sheet, renderData) {
+  const editors = sheet.constructor.EDITOR_FIELDS;
+  const onScreen = new Set([...(sheet.element?.querySelectorAll("[data-application-part]") ?? [])]
+    .map((part) => part.dataset.applicationPart));
+  const stale = staleEditorParts(sheet, renderData, editors);
+  return Object.values(editors).filter((id) => onScreen.has(id) && !stale.includes(id));
+}
+
 export const CairnSheetMixin = (Base) => class extends Base {
+  /**
+   * Document paths whose only display on the sheet is inside a ProseMirror editor, each with the
+   * part that draws it. The editor already shows the value the user just saved, so an update that
+   * touches nothing else must not rebuild the sheet around it — only a part left showing an old
+   * value is rebuilt (`staleEditorParts`). Each sheet that has one lists its own.
+   * @type {Record<string, string>}
+   */
+  static EDITOR_FIELDS = {};
+
+  /** @override — skip a render that cannot change anything the sheet draws. Same shape as core's
+   *  own `DocumentDirectory#_canRender` (`sidebar/document-directory.mjs:188`). */
+  _canRender(options) {
+    const { renderContext, renderData } = options;
+    if (renderContext === `update${this.document.documentName}` && renderData) {
+      const editors = this.constructor.EDITOR_FIELDS;
+      const touched = Object.keys(foundry.utils.flattenObject(renderData))
+        .filter((k) => !k.startsWith("_") && !(k in editors));
+      if (!touched.length && !staleEditorParts(this, renderData, editors).length) return false;
+    }
+    return super._canRender(options);
+  }
+
   /**
    * @override — the window says the document's NAME and nothing else.
    *
@@ -72,3 +120,23 @@ export const CairnSheetMixin = (Base) => class extends Base {
     return this.document?.name || super.title;
   }
 };
+
+/**
+ * A labelled button in the title bar, LEFT of the ellipsis.
+ *
+ * Not a frame button: core inserts those to the right of the ellipsis, icon-only, with the word
+ * in an `aria-label` nobody sees (`_renderFrameButtons` → before the ✕). This one shows the word,
+ * slotted before core's own controls toggle. Any `[data-action]` inside the application element
+ * dispatches through the window's `actions`, so it needs no listener of its own.
+ * @param {HTMLElement} frame  What `_renderFrame` returned.
+ * @param {{ action: string, label: string, tooltip?: string }} button  Label and tooltip localized.
+ */
+export function addFrameLabel(frame, { action, label, tooltip }) {
+  const button = frame.ownerDocument.createElement("button");
+  button.type = "button";
+  button.className = "header-control cairn-frame-label";
+  button.dataset.action = action;
+  if (tooltip) button.dataset.tooltip = tooltip;
+  button.textContent = label;
+  frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+}

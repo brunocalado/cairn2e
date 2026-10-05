@@ -493,7 +493,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
    * caller is the one that knows what to do with it.
    */
   static async #askName(title, initial = "") {
-    const result = await DialogV2.prompt({
+    const result = await DialogV2.input({
       classes: [SYSTEM_ID],
       window: { title: game.i18n.localize(title) },
       content: `
@@ -501,10 +501,7 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
           <label>${game.i18n.localize("CAIRN.Name")}</label>
           <input type="text" name="name" value="${foundry.utils.escapeHTML(initial)}" autofocus>
         </div>`,
-      ok: {
-        label: game.i18n.localize("CAIRN.Store.SaveName"),
-        callback: (event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-      },
+      ok: { label: game.i18n.localize("CAIRN.Store.SaveName") },
       rejectClose: false
     });
     return result ? result.name.trim() : null;
@@ -542,16 +539,13 @@ export class CairnStore extends CairnInkMixin(HandlebarsApplicationMixin(Applica
       buyRatio: store.buyRatio ?? 100,
       visitable: store.visitable
     });
-    const result = await DialogV2.prompt({
+    const result = await DialogV2.input({
       classes: [SYSTEM_ID],
       window: { title: game.i18n.localize("CAIRN.Store.SettingsTitle") },
       content,
       // A dialog has no ink pass of its own; the name's ruled underline is drawn.
       render: (_event, dialog) => scheduleInk(dialog.element.querySelector(".window-content")),
-      ok: {
-        label: game.i18n.localize("CAIRN.Store.SaveName"),
-        callback: (event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-      },
+      ok: { label: game.i18n.localize("CAIRN.Store.SaveName") },
       rejectClose: false
     });
     const typed = result?.name?.trim();

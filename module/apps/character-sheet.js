@@ -13,6 +13,7 @@ import { enrich, copyOf, abilityRows, hpZero } from "../helpers.js";
 import { outcomeText } from "../scars.js";
 import { storeChoices } from "../store-rules.js";
 import { CairnActorSheet } from "./actor-sheet.js";
+import { addFrameLabel } from "./_sheet-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { CairnScars } from "./scars.js";
 import { CairnCharacterEdit } from "./character-edit.js";
@@ -319,9 +320,8 @@ export class CairnCharacterSheet extends CairnActorSheet {
    * something 2e does not have: the rule counts Fatigue, it does not place it.
    */
   static async #onFatigueToggle(event, target) {
-    const id = target.closest("[data-item-id]")?.dataset.itemId;
-    if (id) {
-      const item = this.actor.items.get(id);
+    if (target.closest("[data-item-id]")) {
+      const item = this.rowItem(target);
       if (item?.type === "fatigue") await item.delete();
       return;
     }
@@ -360,7 +360,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
 
   /** The growth row's apply control: what this growth changed (`growth.js#promptGrowthGain`). */
   static async #onGrowthApply(event, target) {
-    const item = this.actor.items.get(target.closest("[data-item-id]").dataset.itemId);
+    const item = this.rowItem(target);
     if (!item || item.system.resolved) return;
     return promptGrowthGain(this.actor, item);
   }
@@ -369,7 +369,7 @@ export class CairnCharacterSheet extends CairnActorSheet {
   /** The die on a pending row: the gain that was waiting on the fiction. Same path the
    *  window takes when a row grows at once, so the save-then-grow rule is stated once. */
   static async #onScarResolve(event, target) {
-    const item = this.actor.items.get(target.closest("[data-item-id]").dataset.itemId);
+    const item = this.rowItem(target);
     if (!item || item.system.resolved) return;
     return CairnScars.resolve(this.actor, item);
   }
@@ -380,22 +380,18 @@ export class CairnCharacterSheet extends CairnActorSheet {
   }
 
   /**
-   * @override — Actions sits in the title bar, LEFT of the ellipsis, as a labelled button: the
-   * NPC sheet's Promote, built the same way (`npc-sheet.js#_renderFrame`), because a frame button
-   * would land right of the ellipsis with its word hidden in an `aria-label`. It is the owner's —
-   * the player the character belongs to, and the Warden — and never an observer's: every tool in
-   * the menu speaks or acts as the character.
+   * @override — Actions sits in the title bar, LEFT of the ellipsis, as a labelled button
+   * (`_sheet-mixin.js#addFrameLabel`). It is the owner's — the player the character belongs to,
+   * and the Warden — and never an observer's: every tool in the menu speaks or acts as the
+   * character.
    */
   async _renderFrame(options) {
     const frame = await super._renderFrame(options);
-    if (!this.actor.isOwner) return frame;
-    const button = frame.ownerDocument.createElement("button");
-    button.type = "button";
-    button.className = "header-control cairn-frame-label";
-    button.dataset.action = "openActions";
-    button.dataset.tooltip = game.i18n.localize("CAIRN.Actions.Tooltip");
-    button.textContent = game.i18n.localize("CAIRN.Actions.Title");
-    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    if (this.actor.isOwner) addFrameLabel(frame, {
+      action: "openActions",
+      label: game.i18n.localize("CAIRN.Actions.Title"),
+      tooltip: game.i18n.localize("CAIRN.Actions.Tooltip")
+    });
     return frame;
   }
 

@@ -36,20 +36,6 @@ const { DialogV2 } = foundry.applications.api;
 /** The six appearance slots an NPC shares with a PC — rolled off `cairn2e.character-traits` (d10). */
 export const APPEARANCE_TRAIT_KEYS = ["physique", "skin", "hair", "face", "speech", "clothing"];
 
-/**
- * The six appearance traits as label/value rows, for the sheet's read-only Details tab and the
- * edit window's inputs alike — one map, so the two surfaces cannot list them differently.
- * @param {object} system  An NPC's `system` data.
- * @returns {{ key: string, label: string, value: string }[]}
- */
-export function appearanceTraitRows(system) {
-  return APPEARANCE_TRAIT_KEYS.map((key) => ({
-    key,
-    label: `CAIRN.Trait.${key.charAt(0).toUpperCase()}${key.slice(1)}`,
-    value: system.traits?.[key] ?? ""
-  }));
-}
-
 /** The fields the edit window's dice fill, by key. `career` fills two: the Marketplace fixes the rate to the role. */
 export const NPC_DETAIL_KEYS = ["background", "quirk", "goal", "virtue", "vice", ...APPEARANCE_TRAIT_KEYS, "career"];
 
@@ -260,12 +246,22 @@ export async function regenerateNpc(actor) {
 
   const role = actor.system.role === "hireling" ? "hireling" : "npc";
   const { system, items } = await buildNpcData(role);
+  // Keep the actor's own role — only the rolled block is replaced.
+  return replaceGenerated(actor, { system: { ...system, role: actor.system.role }, items });
+}
 
+/**
+ * Swap a re-rolled block in: the items a generator granted go, the new `system` is written over
+ * the old, and the new items arrive. Anything the Warden added by hand carries no `generated`
+ * flag and stays. The NPC and the monster re-roll both end here.
+ * @param {CairnActor} actor
+ * @param {{ system: object, items: object[] }} built
+ * @returns {Promise<CairnActor>}
+ */
+export async function replaceGenerated(actor, { system, items }) {
   const staleIds = actor.items.filter((i) => i.getFlag(SYSTEM_ID, "generated")).map((i) => i.id);
   if (staleIds.length) await actor.deleteEmbeddedDocuments("Item", staleIds);
-
-  // Keep the actor's own role — only the rolled block is replaced.
-  await actor.update({ system: { ...system, role: actor.system.role } });
+  await actor.update({ system });
   if (items.length) await actor.createEmbeddedDocuments("Item", items);
   return actor;
 }

@@ -11,7 +11,7 @@ import { slotsForItem, layoutSlots, nestingRefusal } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { lightSpell } from "../light-sources.js";
 import { takeItem } from "../transfer.js";
-import { CairnSheetMixin, staleEditorParts } from "./_sheet-mixin.js";
+import { CairnSheetMixin, keptEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { bindSteppers, stepStat, flushSteps, fieldNumber, fitToText } from "./_steppers.js";
@@ -73,15 +73,6 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   #editor = null;
 
   /**
-   * Document paths whose only display on this sheet is inside a ProseMirror editor, each with the
-   * part that draws it. The editor already shows the value the user just saved, so an update that
-   * touches nothing else must not rebuild the sheet around it — only a part left showing an old
-   * value is rebuilt (`_sheet-mixin.js#staleEditorParts`). Each concrete sheet lists its own.
-   * @type {Record<string, string>}
-   */
-  static EDITOR_FIELDS = {};
-
-  /**
    * Which parts a document change actually invalidates.
    *
    * `renderContext` is `"{operation}{collection}"` for an embedded change and
@@ -90,9 +81,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * `["createlevels", "updatelevels", "deletelevels"]`. So an Item change arrives as
    * `"updateitems"`, not `"updateItem"`.
    *
-   * Returning `null` means "the default set", which is everything except the editor-only tabs:
-   * rebuilding a ProseMirror instance costs the user its scroll position and any selection, and
-   * its content cannot have changed except through its own field, which `_canRender` filters out.
+   * Returning `null` means "the default set", which is everything but the editor-only tabs on
+   * screen: rebuilding a ProseMirror instance costs the user its scroll position and any
+   * selection, and its content cannot have changed except through its own field, whose render
+   * the sheet mixin skips.
    * @param {string} [renderContext]
    * @returns {string[]|null}
    */
@@ -105,11 +97,6 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     return null;
   }
 
-  /** Parts never rendered by a document change unless the change is their own field. */
-  #editorParts() {
-    return ["description"];
-  }
-
   /** @override — narrow the set of parts a document change rebuilds. */
   _configureRenderOptions(options) {
     // A caller that asked for specific parts means it; only an unqualified render is narrowed.
@@ -117,24 +104,13 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     super._configureRenderOptions(options);
     if (explicit || options.isFirstRender || !options.renderContext) return;
 
-    const available = new Set(options.parts);
-    const wanted = this.partsForRenderContext(options.renderContext)
-      ?? options.parts.filter((id) => !this.#editorParts().includes(id));
-    const stale = staleEditorParts(this, options.renderData, this.constructor.EDITOR_FIELDS);
-    options.parts = [...wanted, ...stale].filter((id) => available.has(id));
-  }
-
-  /** @override — skip a render that cannot change anything the sheet draws. Same shape as core's
-   *  own `DocumentDirectory#_canRender` (`sidebar/document-directory.mjs:188`). */
-  _canRender(options) {
-    const { renderContext, renderData } = options;
-    if (renderContext === `update${this.document.documentName}` && renderData) {
-      const editors = this.constructor.EDITOR_FIELDS;
-      const touched = Object.keys(foundry.utils.flattenObject(renderData))
-        .filter((k) => !k.startsWith("_") && !(k in editors));
-      if (!touched.length && !staleEditorParts(this, renderData, editors).length) return false;
-    }
-    return super._canRender(options);
+    // An editor part goes with every change unless it is on screen and current
+    // (`_sheet-mixin.js#keptEditorParts`); the rest go when the change is theirs.
+    const kept = keptEditorParts(this, options.renderData);
+    const wanted = this.partsForRenderContext(options.renderContext);
+    const editors = Object.values(this.constructor.EDITOR_FIELDS);
+    options.parts = options.parts.filter((id) => !kept.includes(id)
+      && (!wanted || wanted.includes(id) || editors.includes(id)));
   }
 
   /* -------------------------------------------- */
@@ -345,9 +321,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   /* -------------------------------------------- */
 
   /** The Item document a control row refers to. */
-  #rowItem(target) {
-    const id = target.closest("[data-item-id]")?.dataset.itemId;
-    return this.actor.items.get(id);
+  rowItem(target) {
+    return this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
   }
 
   /* -------------------------------------------- */
@@ -360,7 +335,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   }
 
   static #onItemEdit(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     item?.sheet.render(true);
   }
 
@@ -369,7 +344,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   }
 
   static async #onItemEquipToggle(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (item) await item.update({ "system.equipped": !item.system.equipped });
   }
 
@@ -380,14 +355,14 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * when the ten are full, and says so.
    */
   static async #onSetAsideToggle(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (item?.system.isStashable) await item.update({ "system.carried": !item.system.carried });
   }
 
   // A consumable's charges — what a Torch or a relic has left. Upstream called these "quantity",
   // which is what the field they belong to is not: nothing in this system counts copies.
   static async #onItemUseIncrement(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (!item) return;
     await item.update({ "system.uses.value": Math.min(item.system.uses.value + 1, item.system.uses.max) });
   }
@@ -395,7 +370,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   // Spend a charge. The last one spent leaves the item at zero and on the sheet: a Torch that has
   // burned its three is still a Torch, and what a spent thing does next is the table's to say.
   static async #onItemUseDecrement(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (!item) return;
     await item.update({ "system.uses.value": Math.max(item.system.uses.value - 1, 0) });
   }
@@ -409,7 +384,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * it is wanted once, not for every row on every render.
    */
   static async #onItemPost(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (!item) return;
     // A gear unknown to the table posts its guise, whoever posts it: chat is read by everyone.
     await item.postCard();
@@ -423,7 +398,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * description, because that is what is written on a scroll.
    */
   static async #onItemConsume(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (item?.system.magic !== "scroll") return;
     const proceed = await foundry.applications.api.DialogV2.confirm({
       classes: [SYSTEM_ID],
@@ -446,7 +421,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * happens instead ("drop an item", or something else) is the Warden's call, not this handler's.
    */
   static async #onSpellCast(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (item?.system.magic !== "spellbook" || !item.system.equipped) return;
     // "If the PC is deprived or in danger … the Warden may require a PC to make a WIL save"
     // (core-rules.md → Casting Spells). Deprived is the one case the sheet can see; "in danger"
@@ -481,7 +456,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   /* -------------------------------------------- */
 
   static async #onRollDamage(event, target) {
-    const item = this.#rowItem(target);
+    const item = this.rowItem(target);
     if (!item?.system.damage) return;
     // Shift: the plain swing, no dialog — the common case should cost one click.
     await rollDamage(this.actor, item, { skipDialog: event.shiftKey });
@@ -556,7 +531,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     // one-level nesting are the document's to refuse (`documents/item.js#_preUpdate`), and it
     // warns; a refused update resolves to nothing and the row stays where it was.
     if (item.parent?.uuid === this.actor.uuid) {
-      const row = this.actor.items.get(event.target.closest("[data-item-id]")?.dataset.itemId);
+      const row = this.rowItem(event.target);
       // A sack of coin onto a container asks how much goes in — the one drop that can split what
       // it moves, because coin is the one thing a player halves. The rest of the sack stays; a
       // sack already in the container grows (`coin.js#moveCoin`).

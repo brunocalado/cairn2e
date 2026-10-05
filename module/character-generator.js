@@ -47,11 +47,13 @@ import { coinItem } from "./coin-rules.js";
 export const TRAIT_KEYS = ["physique", "skin", "hair", "face", "speech", "clothing", "virtue", "vice"];
 
 /**
- * The eight traits as the rows the sheet, the edit window and the creator draw.
+ * Traits as the rows the sheets, the edit windows and the creator draw: a PC's eight by default,
+ * an NPC's six appearance traits when `npc-generator.js#APPEARANCE_TRAIT_KEYS` is passed.
  * @param {Record<string, string>} [traits]
+ * @param {string[]} [keys]
  * @returns {{ key: string, label: string, value: string }[]}
  */
-export const traitRows = (traits) => TRAIT_KEYS.map((key) => ({
+export const traitRows = (traits, keys = TRAIT_KEYS) => keys.map((key) => ({
   key,
   label: `CAIRN.Trait.${key.charAt(0).toUpperCase()}${key.slice(1)}`,
   value: traits?.[key] ?? ""
@@ -195,26 +197,24 @@ export function drawName(draft) {
 /*  Text helpers                                */
 /* -------------------------------------------- */
 
+/** Tags to spaces and the entities authored HTML carries decoded — `&amp;` last, so `&amp;lt;`
+ *  reads `&lt;` and not `<`. */
+const untag = (html) => html
+  .replace(/<[^>]+>/g, " ")
+  .replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+  .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+
+/** A tag became a space, so `<em>specialty</em>.` would end "specialty ." — the space a closing
+ *  tag left in front of its own punctuation is closed up. */
+const tighten = (text) => text.replace(/\s+([.,;:!?)\]])/g, "$1").replace(/([[(])\s+/g, "$1");
+
 /**
  * Authored HTML as a sentence — tags gone, the entities they need decoded, whitespace collapsed.
  * `stripTags` leaves `&gt;` reading as `&gt;` and fuses two paragraphs into one word; both show
  * up in a Background table result, which is text a player reads.
  */
 export function toPlainText(html) {
-  return String(html ?? "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/\s+/g, " ")
-    // A tag becomes a space, so `<em>specialty</em>.` would otherwise end "specialty ." — the
-    // space a closing tag left in front of its own punctuation.
-    .replace(/\s+([.,;:!?)\]])/g, "$1")
-    .replace(/([[(])\s+/g, "$1")
-    .trim();
+  return tighten(untag(String(html ?? "")).replace(/\s+/g, " ")).trim();
 }
 
 /**
@@ -228,19 +228,10 @@ export function toPlainText(html) {
  * lines are capped at one, so a paste cannot stretch the tab it prints on.
  */
 export function toPlainLines(html) {
-  return String(html ?? "")
+  const blocks = String(html ?? "")
     .replace(/<br\s*\/?>/gi, "\n")
-    .replace(/<\/(p|div|li|h[1-6]|tr)\s*>/gi, "\n")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/[^\S\n]+/g, " ")
-    .replace(/\s+([.,;:!?)\]])/g, "$1")
-    .replace(/([[(])\s+/g, "$1")
+    .replace(/<\/(p|div|li|h[1-6]|tr)\s*>/gi, "\n");
+  return tighten(untag(blocks).replace(/[^\S\n]+/g, " "))
     .split("\n")
     .map((line) => line.trim())
     .join("\n")

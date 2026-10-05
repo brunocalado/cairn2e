@@ -8,7 +8,8 @@
 import { SYSTEM_ID, EDIT_LIMITS } from "../constants.js";
 import { abilityRows, clampDigits, clampStat, digitsOnly } from "../helpers.js";
 import { CairnEditSheet } from "./_edit-sheet.js";
-import { NPC_DETAIL_KEYS, appearanceTraitRows, rollNpcDetail } from "../npc-generator.js";
+import { NPC_DETAIL_KEYS, APPEARANCE_TRAIT_KEYS, rollNpcDetail } from "../npc-generator.js";
+import { traitRows } from "../character-generator.js";
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps`;
 
@@ -82,7 +83,7 @@ export class CairnNpcEdit extends CairnEditSheet {
       label: `CAIRN.Role.${r.charAt(0).toUpperCase()}${r.slice(1)}`,
       selected: system.role === r
     }));
-    context.appearanceTraits = appearanceTraitRows(system);
+    context.appearanceTraits = traitRows(system.traits, APPEARANCE_TRAIT_KEYS);
     return context;
   }
 

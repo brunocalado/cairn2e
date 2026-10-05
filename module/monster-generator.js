@@ -62,6 +62,7 @@
 import { CairnActor } from "./documents/actor.js";
 import { SYSTEM_ID, TABLES } from "./constants.js";
 import { pick, rollWardenTable, rollWardenText, stripTags } from "./helpers.js";
+import { replaceGenerated } from "./npc-generator.js";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -360,11 +361,5 @@ export async function regenerateMonster(actor) {
   // The Warden's notes are not the dice's: a re-roll replaces the statline and keeps the text,
   // as the NPC re-roll does. `buildMonsterData` starts a new monster with none.
   delete system.description;
-
-  const staleIds = actor.items.filter((i) => i.getFlag(SYSTEM_ID, "generated")).map((i) => i.id);
-  if (staleIds.length) await actor.deleteEmbeddedDocuments("Item", staleIds);
-
-  await actor.update({ system });
-  if (items.length) await actor.createEmbeddedDocuments("Item", items);
-  return actor;
+  return replaceGenerated(actor, { system, items });
 }

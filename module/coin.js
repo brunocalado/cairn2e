@@ -171,14 +171,11 @@ export async function promptCoinAmount(max) {
       <label>${game.i18n.localize("CAIRN.CoinAmount.Label", { max })}</label>
       <input type="number" name="amount" value="${max}" min="1" max="${max}" step="1" autofocus>
     </div>`;
-  const result = await DialogV2.prompt({
+  const result = await DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title: game.i18n.localize("CAIRN.CoinAmount.Title") },
     content,
-    ok: {
-      label: game.i18n.localize("CAIRN.CoinAmount.Move"),
-      callback: (event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-    },
+    ok: { label: game.i18n.localize("CAIRN.CoinAmount.Move") },
     rejectClose: false
   });
   const amount = Math.floor(Number(result?.amount));

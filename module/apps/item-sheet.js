@@ -13,7 +13,7 @@ import { nestingRefusal } from "../data/_derived.js";
 import { outcomeLabel } from "../scars.js";
 import { movedMaximum } from "../gains.js";
 import { enrich } from "../helpers.js";
-import { CairnSheetMixin, staleEditorParts } from "./_sheet-mixin.js";
+import { CairnSheetMixin, keptEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -186,7 +186,7 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   };
 
   /** Item fields whose only display is inside an editor, and their parts (see
-   *  `CairnActorSheet.EDITOR_FIELDS`). */
+   *  `CairnSheetMixin.EDITOR_FIELDS`). */
   static EDITOR_FIELDS = { "system.description": "description", "system.recharge": "recharge", "system.guiseDescription": "guise" };
 
   // The group must be declared so `changeTab` accepts it; `_getTabsConfig` narrows the list to the
@@ -327,39 +327,13 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // Hiding or revealing swaps what every editor holds for a user who is not the Warden — the
     // guise's text for the real one, or back — so that one change rebuilds them all.
     if (foundry.utils.hasProperty(options.renderData ?? {}, "system.unknown")) return;
-    // ...but an editor with no element on screen has nothing to keep, and skipping it here means
-    // it is never built at all. The Recharge tab exists only while `magic` is `relic`, and that
-    // transition IS a document update — so without the second clause the one render that would
-    // have created the part is the one that drops it, leaving a tab in the rail pointing at
-    // nothing until the sheet is closed and reopened.
-    //
-    // The test is the DOM and not `this.parts`, which is core's record of every part it has ever
-    // rendered (`api/handlebars-application.mjs`) and keeps a detached element for one this sheet
-    // has since pruned in `_onRender` — so a relic turned back into a spellbook and into a relic
-    // again would be filtered out on that second pass and never rebuilt.
+    // ...otherwise every editor on screen and current is left alone (`_sheet-mixin.js#keptEditorParts`).
     // TODO: the growth's Description part also prints the outcome line (`Max WIL 5 → 11`), so a
     // gain recorded from the character sheet while this sheet is open on that tab leaves the line
     // stale until the tab or the sheet is reopened. Either split the gained block into a part of
     // its own, or repaint that one line by hand here.
-    // ...and one an outside write left showing an old value is rebuilt, unless its editor is being
-    // typed in (`_sheet-mixin.js#staleEditorParts`).
-    const editors = Object.values(this.constructor.EDITOR_FIELDS);
-    const onScreen = new Set([...(this.element?.querySelectorAll("[data-application-part]") ?? [])]
-      .map((part) => part.dataset.applicationPart));
-    const stale = staleEditorParts(this, options.renderData, this.constructor.EDITOR_FIELDS);
-    options.parts = options.parts.filter((id) => !editors.includes(id) || !onScreen.has(id) || stale.includes(id));
-  }
-
-  /** @override */
-  _canRender(options) {
-    const { renderContext, renderData } = options;
-    if (renderContext === "updateItem" && renderData) {
-      const editors = this.constructor.EDITOR_FIELDS;
-      const touched = Object.keys(foundry.utils.flattenObject(renderData))
-        .filter((k) => !k.startsWith("_") && !(k in editors));
-      if (!touched.length && !staleEditorParts(this, renderData, editors).length) return false;
-    }
-    return super._canRender(options);
+    const kept = keptEditorParts(this, options.renderData);
+    options.parts = options.parts.filter((id) => !kept.includes(id));
   }
 
   /** @override */

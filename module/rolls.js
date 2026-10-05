@@ -274,7 +274,7 @@ async function promptDamageOptions(defaultBlast, weapons) {
     blast: defaultBlast,
     weapons: weapons.map((w) => ({ id: w.id, name: w.name, damage: w.system.damageLabel }))
   });
-  return foundry.applications.api.DialogV2.prompt({
+  return foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title: game.i18n.localize("CAIRN.RollDamage") },
     content,
@@ -292,10 +292,7 @@ async function promptDamageOptions(defaultBlast, weapons) {
         for (const other of seconds) if (other !== el) other.checked = false;
       });
     },
-    ok: {
-      label: game.i18n.localize("CAIRN.RollDamage"),
-      callback: (event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-    },
+    ok: { label: game.i18n.localize("CAIRN.RollDamage") },
     rejectClose: false
   });
 }
@@ -315,7 +312,7 @@ export async function promptApplyRollAsDamage(total) {
     selected: value === "hp"
   }));
   const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices });
-  return foundry.applications.api.DialogV2.prompt({
+  return foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }) },
     content,
@@ -336,10 +333,7 @@ export async function promptApplyRollAsDamage(total) {
       // The help mark's ring is drawn, and a dialog has no ink pass of its own.
       scheduleInk(dialog.element.querySelector(".window-content"));
     },
-    ok: {
-      label: game.i18n.localize("CAIRN.ApplyDamage"),
-      callback: (_event, button) => new foundry.applications.ux.FormDataExtended(button.form).object
-    },
+    ok: { label: game.i18n.localize("CAIRN.ApplyDamage") },
     rejectClose: false
   });
 }

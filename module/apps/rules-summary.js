@@ -7,6 +7,7 @@
 
 import { SYSTEM_ID, SOCKET_EVENT } from "../constants.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
+import { addFrameLabel } from "./_sheet-mixin.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -55,19 +56,15 @@ export class CairnRulesSummary extends CairnInkMixin(HandlebarsApplicationMixin(
   }
 
   /**
-   * @override — Show to everyone sits in the title bar, LEFT of the ellipsis, as a labelled button,
-   * the way the calendar's Show to players does (`calendar.js#_renderFrame`): a frame button would
-   * land right of the ellipsis with its word hidden in an `aria-label`. The Warden's alone.
+   * @override — Show to everyone sits in the title bar, LEFT of the ellipsis, as a labelled button
+   * (`_sheet-mixin.js#addFrameLabel`). The Warden's alone.
    */
   async _renderFrame(options) {
     const frame = await super._renderFrame(options);
-    if (!game.user.isGM) return frame;
-    const button = frame.ownerDocument.createElement("button");
-    button.type = "button";
-    button.className = "header-control cairn-frame-label";
-    button.dataset.action = "shareRules";
-    button.textContent = game.i18n.localize("CAIRN.Journey.Push");
-    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    if (game.user.isGM) addFrameLabel(frame, {
+      action: "shareRules",
+      label: game.i18n.localize("CAIRN.Journey.Push")
+    });
     return frame;
   }
 

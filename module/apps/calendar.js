@@ -17,6 +17,7 @@ import { postCalendarNoteCard } from "../rolls.js";
 import { rollWardenText } from "../helpers.js";
 import { CairnCalendarNote } from "./calendar-note.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
+import { addFrameLabel } from "./_sheet-mixin.js";
 import { CairnJourneyTracker } from "./journey-tracker.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -303,19 +304,15 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
   }
 
   /**
-   * @override — Show to players sits in the title bar, LEFT of the ellipsis, as a labelled button,
-   * built the way the NPC sheet's Promote is (`npc-sheet.js#_renderFrame`): a frame button would
-   * land right of the ellipsis with its word hidden in an `aria-label`. The Warden's alone.
+   * @override — Show to players sits in the title bar, LEFT of the ellipsis, as a labelled button
+   * (`_sheet-mixin.js#addFrameLabel`). The Warden's alone.
    */
   async _renderFrame(options) {
     const frame = await super._renderFrame(options);
-    if (!game.user.isGM) return frame;
-    const button = frame.ownerDocument.createElement("button");
-    button.type = "button";
-    button.className = "header-control cairn-frame-label";
-    button.dataset.action = "showToPlayers";
-    button.textContent = game.i18n.localize("CAIRN.Calendar.ShowToPlayers");
-    frame.querySelector('button[data-action="toggleControls"]').insertAdjacentElement("beforebegin", button);
+    if (game.user.isGM) addFrameLabel(frame, {
+      action: "showToPlayers",
+      label: game.i18n.localize("CAIRN.Calendar.ShowToPlayers")
+    });
     return frame;
   }
 
