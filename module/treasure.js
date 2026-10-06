@@ -23,10 +23,10 @@ const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/treasure-card.hbs`;
 
 /**
  * A drawn row lives in the window only. Closing the window drops it; the Warden rolls again.
- * @typedef {{ key: string, kind: "item", data: object, name: string, img: string, uuid: string|null }
+ * @typedef {{ key: string, kind: "item", data: object, name: string, img: string, uuid: string }
  *          | { key: string, kind: "coin", amount: number }} DrawnRow
  * `uuid` is the document the row was drawn from: a pack's item, or a world item a folder or table
- * named. Null for a gear made from a table's words, which has nothing behind its name.
+ * named.
  */
 
 /**
@@ -63,13 +63,6 @@ function itemRow(doc) {
   return { key: foundry.utils.randomID(), kind: "item", data, name: doc.tableName ?? doc.name, img: doc.img, uuid: doc.uuid };
 }
 
-/** A gear made from words alone — a Warden's own "art objects" table, a line they can edit later. */
-function textRow(name) {
-  const data = { name, type: "gear", system: {} };
-  const img = Item.implementation.getDefaultArtwork(data).img;
-  return { key: foundry.utils.randomID(), kind: "item", data: { ...data, img }, name, img, uuid: null };
-}
-
 const coinRow = (amount) => ({ key: foundry.utils.randomID(), kind: "coin", amount });
 
 /** What the Stash may hold of an Item: gear that is nobody's body part, and coin. */
@@ -78,23 +71,12 @@ const treasureKind = (doc) => doc?.documentName !== "Item" ? null
     : doc.type === "gear" && !doc.system.bodily ? "gear" : null;
 
 /**
- * A text result's words. Its `name` first — a plain field, taken as typed — then its description,
- * which is HTML: parsed rather than stripped by pattern, so an entity the editor wrote reads as
- * the character it stands for. A parsed document runs no script and loads no image.
- */
-function resultText(result) {
-  const name = String(result.name ?? "").trim();
-  if (name) return name;
-  return new DOMParser().parseFromString(String(result.description ?? ""), "text/html").body.textContent.trim();
-}
-
-/**
  * Draw one source `count` times.
  *
  * - **table:** `roll()` per count, never `draw()`, for `rollWardenTable`'s reason — drawing marks
  *   results drawn and posts a card. A result that is a gear becomes that gear; a coin Item becomes
- *   coin, since a party holds one sack per place and a second would be refused; a text result
- *   becomes a gear of that name. Anything else — an Actor, a Journal, a Feature — is skipped.
+ *   coin, since a party holds one sack per place and a second would be refused. Anything else — a
+ *   text result, an Actor, a Journal, a Feature — is skipped.
  * - **folder:** one document picked at random per count, among the gear in it and its subfolders.
  *   The same thing may come up twice; it is two rows.
  * - **coin:** the formula per count.
@@ -118,12 +100,7 @@ export async function drawSource(source) {
     for (let n = 0; n < source.count; n++) {
       const { results } = await doc.roll();
       for (const result of results) {
-        if (result.type !== "document") {
-          const text = resultText(result);
-          if (text) rows.push(textRow(text));
-          continue;
-        }
-        const item = await fromUuid(result.documentUuid);
+        const item = result.type === "document" ? await fromUuid(result.documentUuid) : null;
         const kind = treasureKind(item);
         if (kind === "gear") rows.push(itemRow(item));
         else if (kind === "coin" && item.system.value > 0) rows.push(coinRow(item.system.value));

@@ -743,9 +743,8 @@ invents nothing.
   100 gold where a sack stops being petty and starts to weigh. Type another formula in its field;
   one that isn't a dice formula is not kept.
 - **Roll** adds to the **Drawn** list instead of replacing it. A table result that is gear or coin
-  becomes that gear or coin, a text result becomes a gear with that text for its name (so a table of
-  your own art objects works, and you can edit the name once it is sent), and anything else is left
-  out, with a notice saying how many.
+  becomes that gear or coin, and anything else, text included, is left out, with a notice saying
+  how many.
 - **Strike it** (the **×** on a row) throws away a row you don't want, and **Clear** throws away
   all of them. Then roll again, if you like: what you kept stays. Closing the window drops
   whatever is drawn.
