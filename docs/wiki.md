@@ -226,8 +226,14 @@ twenty in the book.
    directory.
 3. Make its **two tables** (d6 each) in the **Rollable Tables** directory and drag them onto the
    sheet. Lay out each row the way the book's do: a **text** result with the answer, and, when
-   the answer is an item, a **document** result for that item on the same range. Open any table in
-   the *Background Tables* compendium to see one.
+   the answer is an item, a **document** result for that item on the same range. A row can grant
+   several items, one document result each; a granted coin Item adds to the starting gold. Open any
+   table in the *Background Tables* compendium to see one.
+
+   **Type `1d6` in the table's Formula box, and never press Normalize.** With the box empty, the
+   table counts every result as a face (six answers and six items roll a d12), and its first roll
+   renumbers the rows one after another, so an answer no longer comes with its item. Leave
+   **Draw with Replacement** ticked, as it is on a new table.
 4. **Share it.** Players are offered the Background once it has **Observer** for them (right-click
    it → *Configure Ownership*). Until then it is yours alone, a draft only you see. Its tables and
    gear need no sharing.
