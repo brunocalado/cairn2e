@@ -42,6 +42,7 @@ const weapon = (id) => packUuid("weapons", "Item", id);
 const armor = (id) => packUuid("armor", "Item", id);
 const gear = (id) => packUuid("gear", "Item", id);
 const homebrew = (id) => packUuid("more-gear", "Item", id);
+const material = (id) => packUuid("materials", "Item", id);
 const shelf = (name, items) => ({ ...blankStore(name), items, visitable: true });
 
 /**
@@ -49,7 +50,9 @@ const shelf = (name, items) => ({ ...blankStore(name), items, visitable: true })
  * Stores" macro writes back. Small and themed on purpose — a shop sells one kind of thing — and
  * between them they hold every Item in the SRD's Marketplace but Ship's Passage, which is a
  * port's to sell and not a stable's, plus the Homebrew gear that fills a gap beside it; the
- * Tailor is Homebrew whole but for the SRD's Gloves, and the Tavern is Homebrew whole.
+ * Tailor is Homebrew whole but for the SRD's Gloves, and the Tavern is Homebrew whole. The
+ * materials a recipe is made of that are bought, not found, sit on the shelf of the shop that
+ * sells their kind, at the front: they cost 1–3 gp, under anything else on it.
  *
  * All ten start open to visits, so a new world's players can shop from their sheets before the
  * Warden has set anything up; closing the ones not in the party's town is one switch each.
@@ -103,6 +106,11 @@ export function defaultStores() {
     ]),
     provisioner: shelf("CAIRN.Store.Default.Provisioner", [
       gear("sz3hlSxhxVLBvkKX"), // Chalk
+      material("SqWNZv1XM3TFGCzy"), // Raw Meat
+      material("cGgAyWkeJ0vEpBjU"), // Raw Fish
+      material("83I1A0OjQVBGRAuh"), // Flour
+      material("YvvcLqcivp6GvByA"), // Eggs
+      material("QYWDgXZrcx7Bk2LP"), // Salt
       gear("yQOui5IqPJ0IHTCf"), // Rope
       homebrew("yypWKdw4aHNfxiTH"), // Tinder Box
       gear("38nboO4axGNV5vQC"), // Torch
@@ -132,6 +140,8 @@ export function defaultStores() {
       gear("jIUcDxlW7tojBgaG")  // Compass
     ]),
     apothecary: shelf("CAIRN.Store.Default.Apothecary", [
+      material("YWkjnNFpBnAP6KEY"), // Herbs
+      material("W14ZDOc6ucmSlUN6"), // Mushrooms
       gear("dcg6C3sgIfUklUu7"), // Bathing Goods
       gear("LJuSzL3jPRwPcvAL"), // Common Agents
       homebrew("imAtEycOcQWwVP6X"), // Incense
@@ -141,6 +151,13 @@ export function defaultStores() {
       gear("Pl1vyKGTou4BZeAC")  // Sedative
     ]),
     toolmaker: shelf("CAIRN.Store.Default.Toolmaker", [
+      material("LR5yGUvpe1DllgXT"), // Iron Ingot
+      material("sdlljXZJsG0XDPai"), // Nails
+      material("8QljGICu9OT9Khym"), // Plank
+      material("uRm9psesRIQFI465"), // Wax
+      material("x5XamCV1i3lbU4GS"), // Steel Plate
+      material("5c5J4HtAjGWa2j6C"), // Glass
+      material("N9KmYAOZMNQ5ddSe"), // Steel Ingot
       gear("0zOZuLW1Yw2gr9wT"), // Chisel
       gear("QYy0LFVooHDbjiTV"), // Caltrops
       gear("OTCJHK1d9Rk6QIfR"), // Chain
@@ -172,6 +189,11 @@ export function defaultStores() {
       homebrew("t8pStHMfLvW5B1xA")  // Hourglass
     ]),
     tailor: shelf("CAIRN.Store.Default.Tailor", [
+      material("4OV0LEtVN8b8oVKx"), // Hide
+      material("lYFTNbfPIlf8ba44"), // Leather Strip
+      material("eXms8M5FCH5zalA0"), // Thread
+      material("JaJx5zyAPRdmz9Wj"), // Cloth
+      material("hg0aNqsFLKvtFVqS"), // Leather
       homebrew("gsRUkDWYwojfVuel"), // Hat, straw
       homebrew("IPbov0cLCcRyGD9G"), // Eye Patch
       homebrew("PyxQELrsORDC9lGM"), // Apron, cloth

@@ -1,0 +1,31 @@
+{
+  "_id": "eXms8M5FCH5zalA0",
+  "name": "Thread",
+  "type": "gear",
+  "img": "icons/commodities/cloth/thread-spindle-grey.webp",
+  "system": {
+    "description": "<p>Thread (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!eXms8M5FCH5zalA0",
+  "folder": "zLylAnE4nJVnTSMA"
+}

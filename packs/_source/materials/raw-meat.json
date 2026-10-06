@@ -1,0 +1,31 @@
+{
+  "_id": "SqWNZv1XM3TFGCzy",
+  "name": "Raw Meat",
+  "type": "gear",
+  "img": "icons/consumables/meat/steak-raw-red-pink.webp",
+  "system": {
+    "description": "<p>Raw Meat</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!SqWNZv1XM3TFGCzy",
+  "folder": "aOOdBB3yev2CzrPg"
+}

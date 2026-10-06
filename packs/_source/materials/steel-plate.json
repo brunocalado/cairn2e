@@ -1,0 +1,31 @@
+{
+  "_id": "x5XamCV1i3lbU4GS",
+  "name": "Steel Plate",
+  "type": "gear",
+  "img": "icons/commodities/metal/plate-steel.webp",
+  "system": {
+    "description": "<p>Steel Plate</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 2,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!x5XamCV1i3lbU4GS",
+  "folder": "BJycoTVmUHWMTOkU"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "5c5J4HtAjGWa2j6C",
+  "name": "Glass",
+  "type": "gear",
+  "img": "icons/commodities/materials/glass-cube.webp",
+  "system": {
+    "description": "<p>Glass</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 2,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!5c5J4HtAjGWa2j6C",
+  "folder": "EKoBeAW6wm3I3egt"
+}

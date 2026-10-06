@@ -1,0 +1,31 @@
+{
+  "_id": "lYFTNbfPIlf8ba44",
+  "name": "Leather Strip",
+  "type": "gear",
+  "img": "icons/sundries/survival/leather-strap-brown.webp",
+  "system": {
+    "description": "<p>Leather Strip (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lYFTNbfPIlf8ba44",
+  "folder": "fQ3CDA8Pwd952tKR"
+}

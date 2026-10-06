@@ -197,6 +197,13 @@
       "type": "Item"
     },
     {
+      "name": "materials",
+      "label": "Materials",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/materials",
+      "type": "Item"
+    },
+    {
       "name": "more-spellbooks",
       "label": "More Spellbooks",
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
@@ -251,7 +258,7 @@
           "name": "Homebrew",
           "sorting": "m",
           "color": "#5c5c5c",
-          "packs": ["more-gear", "more-spellbooks", "more-scrolls"]
+          "packs": ["more-gear", "materials", "more-spellbooks", "more-scrolls"]
         }
       ]
     }

@@ -1,0 +1,31 @@
+{
+  "_id": "cGgAyWkeJ0vEpBjU",
+  "name": "Raw Fish",
+  "type": "gear",
+  "img": "icons/consumables/meat/fillet-fish-pink-white.webp",
+  "system": {
+    "description": "<p>Raw Fish</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!cGgAyWkeJ0vEpBjU",
+  "folder": "aOOdBB3yev2CzrPg"
+}

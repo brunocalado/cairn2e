@@ -115,7 +115,7 @@ Every id in these packs is **derived, not invented**: `id16(seed)` = the first 1
 `"cairn2e:background:<slug>"`, `"cairn2e:spellbook:<slug>"`, `"cairn2e:npc:<slug>"`,
 `"cairn2e:npc:<slug>:item:<n>"` (1-based, stat-line order), `"cairn2e:hireling:<slug>"` and
 `"cairn2e:hireling:<slug>:item:<n>"` (same rule), `"cairn2e:companion:<slug>"` and `"cairn2e:companion:<slug>:item:<n>"` (same rule), `"cairn2e:scroll:<slug>"`, `"cairn2e:homebrew:<slug>"`,
-`"cairn2e:homebrew:folder:<slug>"`, the five magic packs' price folders (see *Prices on magic*), `"cairn2e:bgtable:<slug>:<n>"`,
+`"cairn2e:homebrew:folder:<slug>"`, `"cairn2e:material:<slug>"`, `"cairn2e:material:folder:<slug>"`, the five magic packs' price folders (see *Prices on magic*), `"cairn2e:bgtable:<slug>:<n>"`,
 `"cairn2e:bggear:<slug>"`, `"cairn2e:bggear:folder:<slug>"`, `"cairn2e:bond:<n>:<slug>"` (a Bonds
 result granting the `background-gear` document `<slug>` on face `<n>`), `"cairn2e:warden:<slug>"` and
 `"cairn2e:warden:<slug>:<n>"` (a table's results, 1-based, in range order), and the journals'
@@ -286,6 +286,31 @@ charm is that the Warden reads them. **None is a relic and none is a container**
 - **Icons** are core Foundry icons, one apiece. Core has no comb, spinning top, umbrella or
   portrait, so those four wear the nearest shape (a curved bone, a yo-yo, a rain cloud, a sketched
   figure). The Mirror of the Third Figure shares core's one mirror with the Marketplace Mirror.
+
+## `materials` — what crafting is made of
+
+**Not SRD** (CLAUDE.md § 1, Homebrew), made to be the ingredients of Grid Crafter recipes. 2e names the
+act — "given proper ingredients" (`procedures.md`, Herbology), "given time and adequate materials"
+(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 24 `gear`
+documents in six folders: **Metal** (Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
+(Stick, Plank, Stone, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather), **Cloth**
+(Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries) and **Raw Food** (Raw Meat, Raw Fish,
+Flour, Eggs, Salt).
+
+- **Found and bought.** Stick, Stone, Bone, Feather and Berries cost 0 gp and are on no shelf: the
+  Warden hands them out as loot. The other nineteen cost 1–3 gp and sit at the front of the shelf of
+  the shop that sells their kind — the Toolmaker, the Tailor, the Apothecary and the Provisioner. A
+  world already made keeps the stores it was seeded with.
+- **Petty** is Nails, Stick, Leather Strip, Feather, Thread, Herbs, Mushrooms, Wax, Berries and Salt;
+  ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost.
+- **Raw food is not food.** Make Camp does not eat Raw Meat; cooking it is the point.
+- **No material has uses.** Grid Crafter spends a whole item per cell, so a material with several uses
+  would lose all but one.
+- **The price rule:** a recipe's ingredients cost less than what it makes, so crafting is always the
+  cheaper way to a thing and never a way to turn gold into more gold.
+
+Ids derive from `cairn2e:material:<slug>` and `cairn2e:material:folder:<slug>`, `<slug>` being
+`kebabCase` of the name (the Wood & Stone folder is `wood-stone`).
 
 ## `more-spellbooks` and `more-scrolls` — the same list in both vessels
 

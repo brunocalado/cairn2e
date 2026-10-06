@@ -1,0 +1,31 @@
+{
+  "_id": "QYWDgXZrcx7Bk2LP",
+  "name": "Salt",
+  "type": "gear",
+  "img": "icons/consumables/food/salt-seasoning-spice-pink.webp",
+  "system": {
+    "description": "<p>Salt (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QYWDgXZrcx7Bk2LP",
+  "folder": "aOOdBB3yev2CzrPg"
+}
