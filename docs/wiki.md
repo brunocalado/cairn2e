@@ -189,6 +189,13 @@ and **Next** to move between them:
   <img src="images/character-creator.webp" alt="The character creator's first step: choosing one of the twenty backgrounds" width="70%">
 </p>
 
+**Rolls that come with the Background.** Some Backgrounds roll a second time on the Bonds or Omens
+table: the Foundling's **Omen** (whatever their age) and the Fieldwarden's **Second Bond**, at the
+foot of their starting gear, and two table answers, the Outrider's *Always Pay Your Debts* and the
+Mountebank's *False Prophet*. The creator rolls it when it makes the character and records it on
+the **Growth** tab. A second Bond hands over what it names, like the first one, and its gold joins
+the same sack.
+
 **Rolled once.** A player's attribute roll, swap and HP roll are kept even if they close the
 window, so closing it doesn't give a re-roll. The Warden can allow a new try from the character
 sheet's menu (the cog icon): **Reset generator rolls**.
@@ -400,7 +407,7 @@ The Gear compendium has a **Transport** folder with a **Cart** (4 slots), **Hors
 | **Weapon damage** | Click the die on the weapon's row. A small window offers **Impaired** (a d4), **Enhanced** (a d12), **Blast**, and **Second weapon** (roll both weapons' dice and keep the highest). **Shift-click** skips the window. A Panicked attacker is always Impaired. Fighting unarmed is the **Unarmed** row on the Petty tab. |
 | **Die of Fate** | The button at the top of a character sheet, or the macro. |
 | **Reaction** | The button at the top of an NPC sheet, or the macro. It rolls 2d6 on the Reaction table, and the card goes to the Wardens only. |
-| **Morale** | The button at the top of an NPC sheet, or the macro. It rolls a WIL save for the enemy, and the card goes to the Wardens only. Player characters never roll Morale. |
+| **Morale** | The button at the top of an NPC sheet, the flag on an opponent's row in the combat tracker, or the macro. It rolls a WIL save for the enemy, and the card goes to the Wardens only. Player characters never roll Morale. |
 
 **One-click weapon macro.** Drag a weapon from your sheet onto the hotbar (the row of numbered
 slots at the bottom of the screen). Clicking that slot rolls the weapon's damage.
@@ -419,7 +426,9 @@ slots at the bottom of the screen). Clicking that slot rolls the weapon's damage
    left over onto STR.
 
 The result card shows what happened. When STR was lost, the target's owner gets a **Roll STR save**
-button on the card for Critical Damage. At STR 0 the target is dead.
+button on the card for Critical Damage, from whichever scene they are on. It rolls once per hit:
+after the save, the button is gone. On a failure a character is incapacitated, a monster or NPC
+is dead, and a **detachment** is routed or badly weakened instead. At STR 0 the target is dead.
 
 <p align="center">
   <img src="images/chat-cards.webp" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="35%">
@@ -478,8 +487,11 @@ is built around that:
   on the map.
 - In the **first round** each player character has a button to roll the **DEX save** the rules ask
   for. Anyone who fails loses that turn.
-- The Warden gets a reminder when the opponents owe a **Morale** save: on their first casualty,
-  and when half of them are down. Players don't see it.
+- Every opponent's row has a **Morale** flag, the Warden's alone, that rolls that opponent's
+  Morale save at any moment.
+- When the opponents owe a Morale save (their first casualty, half their number down, or a lone
+  foe at 0 HP), the Warden is whispered one reminder. It rolls nothing: the flag does. Players
+  don't see it.
 
 The same tracker also runs a dungeon, turn by turn: see [§14](#14-exploring-a-dungeon).
 
@@ -511,7 +523,8 @@ In Cairn, characters change through what happens to them, not through experience
 **Growth** tab is where that is recorded.
 
 1. When the Warden says the character has grown, press **Add a Growth** on the Growth tab. (A
-   Growth can't be dragged in from elsewhere: it is earned in play.)
+   Growth can't be dragged in from elsewhere: it is earned in play, or comes with the Background;
+   see [§2](#the-character-creator).)
 2. A Growth can have **milestones**, a list of steps to tick off, on its Details tab. The help mark
    on its Description explains how Downtime Milestones and their Costs work; write the Costs in
    the description.
@@ -532,6 +545,8 @@ directory like any other actor and choose **Party** as its type.
 - The sheet has two tabs: **Party** for the player characters and **Followers** for hirelings,
   mounts and other companions. Each row shows that member's HP, attributes, armor and load at a
   glance. Click a name to open their sheet.
+- **A party carries nothing.** An item dropped on its sheet is refused with a warning and stays
+  where it was: drop it on a member's sheet instead.
 - **Press P** to open the active party's sheet from anywhere. To choose which party is active,
   right-click it in the Actors directory and pick **Make this the active party**. (You can change
   the key under **Configure Controls**.)
@@ -618,7 +633,7 @@ Armor is real.
 
 **The NPC sheet** has **Roll Morale**, **Roll Reaction** and a **Detachment** switch. A detachment
 is a large group fighting as one: its attacks are Enhanced and hit everyone nearby (Blast), and
-attacks against it are Impaired.
+attacks against it are Impaired. Failing a Critical Damage save routes it instead of killing it.
 
 - **Edit window.** Each identity field has a die that rolls just that field. **Randomize** rolls
   them all, and **Save** keeps the result.
@@ -633,7 +648,8 @@ attacks against it are Impaired.
 
 Pick how tough it is: **Standard** (3 HP, d6 attack), **Hardier** (6 HP, d8), **Serious** (10 HP,
 d10) or **Random**. You get a hostile monster with an attack, its special abilities as Features,
-and sometimes armor. **Re-roll Monster** in the sheet's menu makes a new one.
+and sometimes armor. **Re-roll Monster** in the sheet's menu rolls new stats, attack and features,
+and keeps the name, picture, token, description and any items you added by hand.
 
 ### Generate Faction
 
