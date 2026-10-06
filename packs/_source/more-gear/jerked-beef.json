@@ -10,9 +10,10 @@
     "cost": 4,
     "container": "",
     "uses": {
-      "value": 0,
-      "max": 0
+      "value": 2,
+      "max": 2
     },
+    "food": true,
     "damage": "",
     "blast": false,
     "armor": 0,

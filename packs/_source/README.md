@@ -188,8 +188,12 @@ have bands of their own:
 - **Drink** (7) and **Food** (15) — what a tavern sells, for shopping at the table: drinks by the
   bottle, the three inn meals (0 slots, one use — eaten there), and food that travels (bread,
   cheese, cured meat, fruit, nuts, honey). Raw staples by the pound (flour, lard, a side of beef)
-  were left out: the Cairn answer to food is `Rations`, and the Warden may rule any of these a
-  Ration. Prices kept within 1–15, under a night's Room & Board; champagne dropped as
+  were left out. Twelve of the fifteen are **food** — Make Camp and a dungeon's Exhaustion eat a
+  use of them as they eat Rations — under one rule that every pack is checked against: a food is
+  never *petty*, and it never beats Rations on meals per slot and price per meal at once, so
+  Rations stay worth buying (Bread is two meals, not four, for that reason). The three inn meals
+  are not food: they are eaten at the table, and a weightless meal for a gold piece would make
+  Rations pointless. Prices kept within 1–15, under a night's Room & Board; champagne dropped as
   anachronistic. They are two folders rather than one because a Warden pricing a tavern round
   reaches for one of them and not the other.
 - **Tools & Gear** (23) — the residue after 41 of the source's 66 lines turned out to be
