@@ -24,13 +24,13 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 const STEPPED = /^system\.(hp|abilities\.\w+)\.value$/;
 
 /**
- * The base of the two actor sheets that carry things — the character's and the NPC's. Not
- * registered directly.
+ * The base of the actor sheets that carry things — the character's, the NPC's and the party's,
+ * whose Stash holds what the group found. Not registered directly.
  *
  * Upstream shipped one 695-line `CairnActorSheet` that switched template on `actor.type`; the
- * two actor types share almost nothing, so this base holds only the genuinely common inventory
- * actions and each concrete class (`CairnCharacterSheet`, `CairnNpcSheet`) adds the rest. The
- * party sheet is not built on it: a party carries nothing, so it stands on the mixins alone.
+ * actor types share almost nothing, so this base holds only the genuinely common inventory
+ * actions and each concrete class (`CairnCharacterSheet`, `CairnNpcSheet`, `CairnPartySheet`)
+ * adds the rest.
  */
 export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
   static DEFAULT_OPTIONS = {
@@ -311,8 +311,9 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       showUses: uses.max > 0,
       // "They disappear after one use" (`srd-2e/players-guide/core-rules.md` → Scrolls). A scroll
       // is the one carried thing whose use is its end, so it is the one kind that carries this
-      // control — gear spends charges and stays, a relic recharges.
-      canConsume: item.system.magic === "scroll",
+      // control — gear spends charges and stays, a relic recharges. Not from a party's Stash: a
+      // scroll there is in nobody's hands, so nobody is reading it aloud.
+      canConsume: item.system.magic === "scroll" && item.parent?.type !== "party",
       // "Anyone can cast a spell by holding a Spellbook in both hands and reading its contents
       // aloud" (`srd-2e/players-guide/core-rules.md` → Casting Spells). Held is equipped; a
       // stowed book is not equipable at all (`documents/item.js`).

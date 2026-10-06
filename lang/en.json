@@ -917,7 +917,6 @@
     "Missing": "Missing actor",
     "NoActiveParty": "There is no active party. Create one, or pick one from the Actors directory.",
     "NoFollowers": "Nobody is travelling with them.",
-    "NoItems": "A party carries nothing. Drop the item on a member's sheet.",
     "NoMembers": "Drop a character here.",
     "NoPartyInParty": "A party cannot join another party.",
     "OpenKey": "Open the party",
@@ -927,7 +926,10 @@
     "Remove": "Remove from the party",
     "RemoveConfirm": "Take {name} off the party? Their own sheet is untouched.",
     "RemoveTitle": "Leave the party",
-    "SetDown": "Set the party down"
+    "SetDown": "Set the party down",
+    "Stash": "Stash",
+    "StashEmpty": "Nothing in the stash. Drop gear or coin here.",
+    "StashRefused": "{name} cannot go in the party's stash: it holds gear and coin, and nothing that is part of someone."
   },
   "CAIRN.PerDay": "{rate} gp per day",
   "CAIRN.Petty": "Petty",

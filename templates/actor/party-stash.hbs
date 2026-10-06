@@ -1,0 +1,13 @@
+{{!-- What the group holds and nobody in it carries: treasure found and not yet shared out, a
+      sack of coin, the spare rope. The rows are the Belongings rows (`parts/plain-list.hbs`), and
+      the document draws no control that would not mean anything here — no hand to equip into, no
+      setting aside a thing that is already on nobody (`documents/item.js#prepareDerivedData`).
+      A member takes something by dragging it onto their own sheet, where the ten apply. --}}
+<section class="tab {{tabs.stash.cssClass}}" data-group="primary" data-tab="stash">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize 'CAIRN.Party.Stash'}}</h4>
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-party-stash" data-ink-w="1" data-ink-a="0.34"></div>
+    {{> "systems/cairn2e/templates/parts/plain-list.hbs" rows=stash seed="stash"
+        empty=(localize 'CAIRN.Party.StashEmpty')}}
+</section>

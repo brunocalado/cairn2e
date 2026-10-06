@@ -8,11 +8,7 @@
 import { SYSTEM_ID } from "../constants.js";
 import { CONDITIONS } from "../conditions.js";
 import { abilityRows } from "../helpers.js";
-import { CairnSheetMixin } from "./_sheet-mixin.js";
-import { CairnInkMixin } from "./_ink-mixin.js";
-
-const { HandlebarsApplicationMixin } = foundry.applications.api;
-const { ActorSheetV2 } = foundry.applications.sheets;
+import { CairnActorSheet } from "./actor-sheet.js";
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
 
@@ -24,19 +20,21 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
  * What the sheet is for is the two questions a table asks constantly and otherwise answers by
  * opening four windows — how is everybody doing, and who is even here.
  *
- * Two tabs, split by what the member IS: the player characters, then everyone travelling with
- * them. The split is not a second list — `system.members` is one array and its ORDER is the
+ * Two roster tabs, split by what the member IS: the player characters, then everyone travelling
+ * with them. The split is not a second list — `system.members` is one array and its ORDER is the
  * party's marching order (`srd-2e/players-guide/procedures.md` § Dungeon Elements → Doors), so
  * every row carries its index in that one array and never the index of the tab it is drawn in.
+ *
+ * The third tab is the Stash: gear and coin that belong to the group and to nobody in it — what
+ * was found and not yet shared out. That is why it stands on the sheet for things that are
+ * carried. Its rows are the Belongings rows, its drop is any actor's drop (a move between actors,
+ * `transfer.js#takeItem`), and what may land there is the document's to refuse
+ * (`documents/item.js#_preCreateOperation`).
  */
-export class CairnPartySheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicationMixin(ActorSheetV2))) {
+export class CairnPartySheet extends CairnActorSheet {
   static DEFAULT_OPTIONS = {
     classes: [SYSTEM_ID, "sheet", "actor", "party"],
     position: { width: 600, height: 620 },
-    window: { resizable: true },
-    // The name field in the header saves as it is left, like every sheet's. `DocumentSheetV2`
-    // submits nothing on change by default.
-    form: { submitOnChange: true, closeOnSubmit: false },
     actions: {
       memberOpen: CairnPartySheet.#onMemberOpen,
       memberRemove: CairnPartySheet.#onMemberRemove,
@@ -48,7 +46,8 @@ export class CairnPartySheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     header: { template: `${TEMPLATES}/parts/party-header.hbs` },
     nav: { template: `${TEMPLATES}/parts/actor-tabs.hbs` },
     members: { template: `${TEMPLATES}/actor/party-members.hbs`, scrollable: [""] },
-    followers: { template: `${TEMPLATES}/actor/party-followers.hbs`, scrollable: [""] }
+    followers: { template: `${TEMPLATES}/actor/party-followers.hbs`, scrollable: [""] },
+    stash: { template: `${TEMPLATES}/actor/party-stash.hbs`, scrollable: [""] }
   };
 
   static TABS = {
@@ -56,10 +55,20 @@ export class CairnPartySheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       initial: "members",
       tabs: [
         { id: "members", label: "CAIRN.Party.Members" },
-        { id: "followers", label: "CAIRN.Party.Followers" }
+        { id: "followers", label: "CAIRN.Party.Followers" },
+        { id: "stash", label: "CAIRN.Party.Stash" }
       ]
     }
   };
+
+  /**
+   * @override — an Item change redraws the Stash and nothing else: the roster is made of Actors,
+   * and a member's own items reach it through `CairnActor#renderParties`.
+   */
+  partsForRenderContext(renderContext) {
+    const subject = String(renderContext ?? "").replace(/^(create|update|delete)/, "").toLowerCase();
+    return subject === "items" ? ["stash"] : null;
+  }
 
   /* -------------------------------------------- */
   /*  Prepare context                             */
@@ -68,12 +77,13 @@ export class CairnPartySheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    context.actor = this.actor;
     const rows = this.actor.system.lineup.map((entry) => (entry.actor ? this.#row(entry) : this.#missingRow(entry)));
     // A member whose Actor is gone has no type to sort it by; it is shown with the party, on the
     // tab the sheet opens on, where it can be seen and taken off.
     context.members = rows.filter((r) => r.isCharacter || r.missing);
     context.followers = rows.filter((r) => !r.isCharacter && !r.missing);
+    // Top level only: what is inside a container is on the container's own sheet, as everywhere.
+    context.stash = context.inventory.carried.filter((row) => !row.system.container);
     return context;
   }
 
@@ -197,18 +207,6 @@ export class CairnPartySheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       "system.members": [...members, { actor: actor.uuid, deployed: true }]
     });
     return actor;
-  }
-
-  /**
-   * @override — a party carries nothing: an item belongs on a member's sheet.
-   *
-   * Core's own handler would copy the item onto the party, where no template draws it. The
-   * inventory sheets' move would be worse — the item leaves the character it came from and
-   * vanishes from view — so the drop is refused and says where the item goes instead.
-   */
-  async _onDropItem(_event, _item) {
-    ui.notifications.warn(game.i18n.localize("CAIRN.Party.NoItems"));
-    return null;
   }
 
   /* -------------------------------------------- */

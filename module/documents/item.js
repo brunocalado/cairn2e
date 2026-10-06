@@ -156,6 +156,24 @@ export class CairnItem extends Item {
     const parent = operation.parent;
     if (!parent || !parent.collection?.has(parent.id)) return;
 
+    // A party's Stash holds what the group found and has not shared out: gear and coin. Nothing
+    // there is anybody's body, and a Fatigue, a Scar, a Growth, a Feature or a Background is
+    // something that happened to one person or is part of them. Checked here so every path meets
+    // it — a drop, a macro, a barter. Nor is anything in it in anyone's hand: a move between
+    // actors already arrives unequipped (`transfer-rules.js#arrival`), but a create does not, and
+    // an equipped sword in the Stash drew a damage roll that nobody could be making.
+    if (parent.type === "party") {
+      for (const doc of [...documents]) {
+        if ((doc.type === "gear" || doc.type === "coin") && !doc.system?.bodily) {
+          if (doc.type === "gear") doc.updateSource({ "system.equipped": false });
+          continue;
+        }
+        ui.notifications.warn(game.i18n.localize("CAIRN.Party.StashRefused", { name: doc.name }));
+        documents.splice(documents.indexOf(doc), 1);
+      }
+      if (!documents.length) return false;
+    }
+
     // Where a thing may go is a rule for every actor; how much fits is the character's alone.
     for (const doc of [...documents]) {
       const refusal = nestingRefusal(parent, doc, doc.system?.container ?? "");
@@ -245,6 +263,8 @@ export class CairnItem extends Item {
     // thing is the exception the model already makes (`data/item-gear.js#prepareBaseData`): a
     // tattoo is worn whether or not its bearer knows what it does.
     if (this.type === "gear" && changes.system?.unknown === true) changes.system.equipped = false;
+    // Nor is a thing in a party's Stash: there is no hand there to hold it (`_preCreateOperation`).
+    if (this.type === "gear" && this.parent?.type === "party" && changes.system?.equipped) changes.system.equipped = false;
     // Stowed is carried, as the models already say on prepared data (`GearData#prepareBaseData`,
     // `CoinData#prepareBaseData`). Written into the change so the candidate below agrees: it is
     // built over the SOURCE, where a thing set aside still says `carried: false`, and
@@ -425,6 +445,9 @@ export class CairnItem extends Item {
     // there is — and, being gear-shaped in no other way, is never in anyone's grip.
     sys.isStashable = (this.type === "gear" && !stowed && !(sys.isContainer && !sys.takesSlots) && !sys.bodily)
       || (this.type === "coin" && !stowed);
+    // In a party's Stash a thing is in nobody's hands and nobody's pack: there is no grip to put
+    // it in, and no "not on anyone" to set it aside to — it already is.
+    if (this.parent?.type === "party") sys.isEquipable = sys.isStashable = false;
     sys.hasUses = (sys.uses?.max ?? 0) > 0;
   }
 }

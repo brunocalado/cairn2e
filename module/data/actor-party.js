@@ -15,6 +15,11 @@ const fields = foundry.data.fields;
  * holds is a roster, and the reason it is an Actor rather than a JournalEntry is that only an
  * Actor can put a token on a map.
  *
+ * It also holds things: its Stash, the gear and coin the group found and has not shared out.
+ * Those are core's embedded `items`, which every Actor has, so nothing here declares them. What
+ * may land there is `documents/item.js#_preCreateOperation`'s to say, and no slot rule binds it —
+ * 2e counts slots for a character alone.
+ *
  * Members are referenced, never embedded: no Actor can contain an Actor. A uuid can therefore
  * outlive what it points at, and {@link PartyData#lineup} is the one place that is dealt with —
  * nothing outside this file reads `members` directly.
