@@ -1339,6 +1339,7 @@
     "Refused": "{count} thing(s) did not go into the Stash and are still drawn.",
     "Remove": "Take off the list",
     "Roll": "Roll",
+    "RollOne": "Roll this one",
     "Send": "Send to {party}",
     "SendNowhere": "Send",
     "SourceMissing": "{source} no longer exists, and drew nothing.",

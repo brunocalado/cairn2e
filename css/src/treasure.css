@@ -117,6 +117,11 @@
             text-align: center;
         }
 
+        /* The coin row has no ×; this holds its place, the width of a control cell. */
+        .cairn-treasure-control-space {
+            flex: 0 0 18px;
+        }
+
         .cairn-treasure-hint {
             color: var(--cairn-ink-soft);
             font-size: 12px;

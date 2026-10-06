@@ -41,6 +41,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     actions: {
       sourceToggle: CairnTreasure.#onSourceToggle,
       sourceRemove: CairnTreasure.#onSourceRemove,
+      sourceRoll: CairnTreasure.#onSourceRoll,
       treasureRoll: CairnTreasure.#onRoll,
       drawnOpen: CairnTreasure.#onDrawnOpen,
       drawnRemove: CairnTreasure.#onDrawnRemove,
@@ -141,6 +142,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
       : { key: row.key, name: row.name, img: row.img, uuid: row.uuid });
     const party = game.cairn2e.party;
     context.party = party && { name: party.name };
+    context.canRollOne = !!party && !this.#busy;
     context.canRoll = !!party && !this.#busy && sources.some((s) => s.on);
     context.canSend = !!party && !this.#busy && this.#drawn.length > 0;
     return context;
@@ -241,13 +243,31 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   async #whileBusy(work) {
     if (this.#busy) return;
     this.#busy = true;
-    await this.render({ parts: ["foot"] });
+    await this.render({ parts: ["sources", "foot"] });
     try {
       await work();
     } finally {
       this.#busy = false;
-      if (this.rendered) this.render({ parts: ["drawn", "foot"] });
+      if (this.rendered) this.render({ parts: ["sources", "drawn", "foot"] });
     }
+  }
+
+  /**
+   * Draw `sources`, each its typed number of times, and append what came up to the draft. What a
+   * table gave that the Stash cannot hold is counted and told once for the whole draw, not once
+   * per result.
+   */
+  async #drawInto(sources) {
+    await this.#whileBusy(async () => {
+      let skipped = 0;
+      for (const source of sources) {
+        const drawn = await drawSource(source, this.#counts.get(source.id) ?? 1);
+        if (drawn.missing) ui.notifications.warn(game.i18n.localize("CAIRN.Treasure.SourceMissing", { source: source.id }));
+        skipped += drawn.skipped;
+        this.#drawn.push(...drawn.rows);
+      }
+      if (skipped) ui.notifications.info(game.i18n.localize("CAIRN.Treasure.NotAnItem", { count: skipped }));
+    });
   }
 
   /* -------------------------------------------- */
@@ -266,23 +286,18 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     if (id) this.#save(withoutSource(this.#sources, id));
   }
 
-  /**
-   * Draw every ticked source and append what came up to the draft. What a table gave that the
-   * Stash cannot hold is counted and told once for the whole roll, not once per result.
-   * @this {CairnTreasure}
-   */
+  /** Draw every ticked source. @this {CairnTreasure} */
   static async #onRoll() {
     if (!game.cairn2e.party) return this.render();
-    await this.#whileBusy(async () => {
-      let skipped = 0;
-      for (const source of drawPlan(this.#sources)) {
-        const drawn = await drawSource(source, this.#counts.get(source.id) ?? 1);
-        if (drawn.missing) ui.notifications.warn(game.i18n.localize("CAIRN.Treasure.SourceMissing", { source: source.id }));
-        skipped += drawn.skipped;
-        this.#drawn.push(...drawn.rows);
-      }
-      if (skipped) ui.notifications.info(game.i18n.localize("CAIRN.Treasure.NotAnItem", { count: skipped }));
-    });
+    await this.#drawInto(drawPlan(this.#sources));
+  }
+
+  /** The dice on one row: that source alone, ticked or not, with its own count. @this {CairnTreasure} */
+  static async #onSourceRoll(event, target) {
+    if (!game.cairn2e.party) return this.render();
+    const id = target.closest("[data-source-id]")?.dataset.sourceId;
+    const source = this.#sources.find((s) => s.id === id);
+    if (source) await this.#drawInto([source]);
   }
 
   /**

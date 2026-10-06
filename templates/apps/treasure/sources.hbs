@@ -1,7 +1,8 @@
 {{!-- What the Warden offers to roll on: one list row (Primitive 7) per source — the switch that
       ticks it, what it is, and how many times it is drawn; coin also carries its formula. The ×
       takes a table or a folder off the list, never out of the world; coin has no ×, because
-      nothing could be dropped to bring it back. A source whose document is gone keeps its row,
+      nothing could be dropped to bring it back, and keeps an empty cell in its place so the dice
+      sit in one column. The dice roll that source alone, ticked or not, with its own count. A source whose document is gone keeps its row,
       named by its id, so the Warden sees it and takes it off.
 
       The whole section, which fills the window's left column down to the foot, is the drop target
@@ -24,9 +25,16 @@
             <input type="number" name="count" class="cairn-treasure-count" value="{{s.count}}" min="1" max="{{../maxCount}}" step="1"
                    aria-label="{{localize 'CAIRN.Treasure.Count'}}" data-tooltip-text="{{localize 'CAIRN.Treasure.Count'}}">
             <span class="cairn-item-controls">
-                {{#unless s.isCoin}}
+                {{#if s.isCoin}}
+                <span class="cairn-treasure-control-space" aria-hidden="true"></span>
+                {{else}}
                 <a data-action="sourceRemove" data-tooltip="{{localize 'CAIRN.Treasure.Remove'}}"><i class="fas fa-xmark"></i></a>
-                {{/unless}}
+                {{/if}}
+                {{#if ../canRollOne}}
+                <a data-action="sourceRoll" data-tooltip="{{localize 'CAIRN.Treasure.RollOne'}}"><i class="fas fa-dice-d20"></i></a>
+                {{else}}
+                <a class="is-disabled" aria-disabled="true" data-tooltip="{{localize 'CAIRN.Treasure.RollOne'}}"><i class="fas fa-dice-d20"></i></a>
+                {{/if}}
             </span>
         </li>
         {{/each}}

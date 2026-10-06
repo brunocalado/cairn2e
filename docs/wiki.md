@@ -743,6 +743,8 @@ invents nothing.
   this tool and not the rulebook's: it lands between 30 and 180 gold, so a roll often crosses the
   100 gold where a sack stops being petty and starts to weigh. Type another formula in its field;
   one that isn't a dice formula is not kept.
+- The dice on a row, right of its **×**, roll that source alone, ticked or not, with its own number,
+  and add to **Drawn**.
 - **Roll** adds to the **Drawn** list instead of replacing it. A table result that is gear or coin
   becomes that gear or coin, and anything else, text included, is left out, with a notice saying
   how many.
