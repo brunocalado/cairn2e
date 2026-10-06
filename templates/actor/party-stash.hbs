@@ -2,10 +2,16 @@
       sack of coin, the spare rope. The rows are the Belongings rows (`parts/plain-list.hbs`), and
       the document draws no control that would not mean anything here — no hand to equip into, no
       setting aside a thing that is already on nobody (`documents/item.js#prepareDerivedData`).
-      A member takes something by dragging it onto their own sheet, where the ten apply. --}}
+      A member takes something by dragging it onto their own sheet, where the ten apply, or is
+      handed it through Barter, which the head opens on the party itself. --}}
 <section class="tab {{tabs.stash.cssClass}}" data-group="primary" data-tab="stash">
     <div class="cairn-zone-head">
         <h4 class="cairn-zone">{{localize 'CAIRN.Party.Stash'}}</h4>
+        {{#if editable}}
+        <a class="cairn-zone-add" data-action="openBarter">
+            <i class="fas fa-handshake" inert></i><span>{{localize 'CAIRN.Barter.Title'}}</span>
+        </a>
+        {{/if}}
     </div>
     <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-party-stash" data-ink-w="1" data-ink-a="0.34"></div>
     {{> "systems/cairn2e/templates/parts/plain-list.hbs" rows=stash seed="stash"

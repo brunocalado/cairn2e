@@ -9,6 +9,7 @@ import { SYSTEM_ID } from "../constants.js";
 import { CONDITIONS } from "../conditions.js";
 import { abilityRows } from "../helpers.js";
 import { CairnActorSheet } from "./actor-sheet.js";
+import { CairnBarter } from "./barter.js";
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
 
@@ -29,7 +30,8 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
  * was found and not yet shared out. That is why it stands on the sheet for things that are
  * carried. Its rows are the Belongings rows, its drop is any actor's drop (a move between actors,
  * `transfer.js#takeItem`), and what may land there is the document's to refuse
- * (`documents/item.js#_preCreateOperation`).
+ * (`documents/item.js#_preCreateOperation`). Its head opens Barter on the party, so the group can
+ * hand what it holds to a character as one character hands things to another.
  */
 export class CairnPartySheet extends CairnActorSheet {
   static DEFAULT_OPTIONS = {
@@ -38,7 +40,8 @@ export class CairnPartySheet extends CairnActorSheet {
     actions: {
       memberOpen: CairnPartySheet.#onMemberOpen,
       memberRemove: CairnPartySheet.#onMemberRemove,
-      memberDeployToggle: CairnPartySheet.#onMemberDeployToggle
+      memberDeployToggle: CairnPartySheet.#onMemberDeployToggle,
+      openBarter: CairnPartySheet.#onOpenBarter
     }
   };
 
@@ -207,6 +210,19 @@ export class CairnPartySheet extends CairnActorSheet {
       "system.members": [...members, { actor: actor.uuid, deployed: true }]
     });
     return actor;
+  }
+
+  /* -------------------------------------------- */
+  /*  Barter                                      */
+  /* -------------------------------------------- */
+
+  /** Held one per sheet, as the Actions menu holds one per menu, so a second click raises the first. */
+  #barter = null;
+
+  /** Barter, with the party as the one handing things over. */
+  static async #onOpenBarter() {
+    this.#barter ??= new CairnBarter({ actor: this.actor });
+    await this.#barter.render({ force: true });
   }
 
   /* -------------------------------------------- */

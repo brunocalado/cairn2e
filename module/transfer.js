@@ -22,6 +22,9 @@ const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/barter-card.hbs`;
 const BARTER_TYPES = new Set(["gear"]);
 const BARTER_CONTENT_TYPES = new Set(["gear", "coin"]);
 
+/** Who may give or receive in a barter: a player's character, or the party's Stash. */
+const BARTER_ACTORS = new Set(["character", "party"]);
+
 /**
  * Writing a move between actors. What travels is `transfer-rules.js#bundleItems`; this is the
  * receiving half, and it only ever writes to the RECEIVER. The sender deletes what this reports
@@ -154,6 +157,12 @@ async function landCoin(actor, amount) {
  * appear on anyone's character. Gear only (with what is inside a container that travels), a whole
  * non-negative amount of coin. A refusal writes nothing.
  *
+ * A party is a source or a recipient like a character: its Stash is how the group shares out what
+ * it found. Accepting it as a source grants no write the asker did not already have — a player who
+ * owns the party can drag anything off it (`takeItem` deletes the source when the item is theirs),
+ * and a Warden who lowers the party's ownership closes both paths at once, because the same OWNER
+ * test decides both. An NPC stays out on either side.
+ *
  * The coin is the sender's to have taken off already (`sendBarter` debits it before asking);
  * this only lands it. A player who wanted coin from nowhere could type it onto their own sheet,
  * which they own, so there is nothing for this side to guard there.
@@ -167,9 +176,10 @@ async function landCoin(actor, amount) {
 export async function receiveBarter({ id, sourceUuid, targetUuid, itemIds, coin } = {}, user) {
   if (typeof id !== "string" || !id) return { refused: "id" };
   const actor = await fromUuid(targetUuid);
-  if (actor?.documentName !== "Actor" || actor.type !== "character") return { refused: "target" };
+  if (actor?.documentName !== "Actor" || !BARTER_ACTORS.has(actor.type)) return { refused: "target" };
   const source = await fromUuid(sourceUuid);
-  if (source?.documentName !== "Actor" || source.type !== "character") return { refused: "source" };
+  if (source?.documentName !== "Actor" || !BARTER_ACTORS.has(source.type)) return { refused: "source" };
+  if (source.uuid === actor.uuid) return { refused: "target" };
   if (!user || !source.testUserPermission(user, "OWNER")) return { refused: "source" };
   if (!Array.isArray(itemIds) || new Set(itemIds).size !== itemIds.length) return { refused: "items" };
   const chosen = itemIds.map((itemId) => source.items.get(itemId));
@@ -234,8 +244,8 @@ async function refundCoin(actor, amount) {
  * no more, and is told what stayed. With no answer at all it reads the recipient's record of the
  * barter (`FLAGS.BARTER`) before deciding, since a slow client may have written anyway. A card
  * in chat says what went from whom to whom.
- * @param {Actor} actor    The character handing things over.
- * @param {Actor} target   The character receiving them.
+ * @param {Actor} actor    The character or party handing things over.
+ * @param {Actor} target   The character or party receiving them.
  * @param {Item[]} items   Gear of `actor`'s.
  * @param {number} [coin]  Coin, by amount.
  * @returns {Promise<boolean>}  Whether anything changed hands.

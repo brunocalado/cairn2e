@@ -19,9 +19,11 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/barter`;
  * row, and an amount of coin. One way, with nothing to accept: the trade itself is talked out at
  * the table, and this is the moment the goods change hands.
  *
- * Only characters a player has as their own are offered, the sender's excepted. The write runs
- * where it is allowed (`transfer.js#sendBarter`): whatever fits arrives, whatever does not
- * stays, and the sender is told which. A card in chat says what went from whom to whom.
+ * Only characters a player has as their own are offered, the sender's excepted, and after them
+ * every party the sender belongs to. The party opens this too, from its Stash, and hands things
+ * to the characters. The write runs where it is allowed (`transfer.js#sendBarter`): whatever fits
+ * arrives, whatever does not stays, and the sender is told which. A card in chat says what went
+ * from whom to whom.
  *
  * A container goes with what is in it, so ticking one ticks its contents with it; a thing in a
  * container can also be handed over on its own, and arrives on the other character's body. The
@@ -108,11 +110,18 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
     context.rows = rows;
 
     const seen = new Set();
-    context.targets = game.users
+    const characters = game.users
       .filter((u) => !u.isGM && u.character)
       .map((u) => u.character)
       .filter((a) => a.type === "character" && a.id !== this.actor.id && !seen.has(a.id) && seen.add(a.id))
-      .sort(byName)
+      .sort(byName);
+    // A character hands things to every party whose roster lists it; a party hands them to the
+    // characters. Read off the rosters themselves, not `CairnActor#parties`, which keeps a party
+    // its member has left until reload — and would offer a Stash the character no longer shares.
+    const parties = this.actor.type === "character"
+      ? game.actors.filter((a) => a.type === "party" && a.system.members.some((m) => m.actor === this.actor.uuid)).sort(byName)
+      : [];
+    context.targets = [...characters, ...parties]
       .map((a) => ({ uuid: a.uuid, name: a.name, selected: a.uuid === this.#target }));
     context.actorId = this.actor.id;
     context.coinMax = this.#coinMax();
