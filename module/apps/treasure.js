@@ -6,7 +6,7 @@
  */
 
 import { SYSTEM_ID, SETTINGS } from "../constants.js";
-import { withSource, withoutSource, withSourceSettings, drawPlan, MAX_COUNT } from "../treasure-rules.js";
+import { withSource, withoutSource, withSourceSettings, drawPlan, clampCount, MAX_COUNT } from "../treasure-rules.js";
 import { sourceDocument, sourceLabel, drawSource, sendToStash, postTreasureCard } from "../treasure.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
@@ -15,12 +15,12 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/treasure`;
 
 /**
- * The Warden's Treasure window: the sources they offer, ticked and counted; what a Roll drew; and
+ * The Warden's Treasure window: the sources they offer, ticked, and how many times each is drawn; what a Roll drew; and
  * Send, which writes what is left onto the active party's Stash and posts a card saying so.
  *
  * Two kinds of state, kept apart on purpose. The SOURCES are the world setting
  * `SETTINGS.TREASURE_SOURCES`, written on every edit like the stores — no Save button, nothing to
- * lose — and redrawn by its `onChange`. The DRAFT is this window's alone: Roll appends to it,
+ * lose — and redrawn by its `onChange`. The DRAFT, and the counts beside the sources, are this window's alone: Roll appends to it,
  * because the Warden's flow is "strike what you do not like and roll again" and replacing would
  * throw away the rows that were kept; × strikes a row, Clear empties it, and closing the window
  * drops it, which is accepted — they roll again.
@@ -62,6 +62,9 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   /** @type {import("../treasure.js").DrawnRow[]} the draft */
   #drawn = [];
 
+  /** How many times each source is drawn, by id: this window's, gone on close, so it opens at 1. */
+  #counts = new Map();
+
   /** A roll or a send is out: both buttons are dead until it answers, so nothing lands twice. */
   #busy = false;
 
@@ -71,7 +74,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   /**
    * The list as this window last edited it, while a write of it is still out. Core's world-setting
    * write reads the stored document, which only moves when the server answers, and the first ever
-   * write is a create. So two edits in flight at once (two quick ticks, a count typed and then a
+   * write is a create. So two edits in flight at once (two quick ticks, a formula typed and then a
    * switch clicked) were both built on the old list, and the second erased the first — or, on a
    * world that had never written the setting, made a second document for the same key, and which
    * of the two a reload read back was chance.
@@ -121,7 +124,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
       return {
         id: s.id,
         on: s.on,
-        count: s.count,
+        count: this.#counts.get(s.id) ?? 1,
         isCoin: s.kind === "coin",
         formula: s.formula,
         // A source whose document is gone keeps its row, named by its id, so the Warden sees it
@@ -157,7 +160,9 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     for (const input of htmlElement.querySelectorAll("input[name=count]")) {
       input.addEventListener("change", () => {
         const id = input.closest("[data-source-id]").dataset.sourceId;
-        this.#save(withSourceSettings(this.#sources, id, { count: input.value }));
+        const count = clampCount(input.value);
+        this.#counts.set(id, count);
+        input.value = count;
       });
     }
     const formula = htmlElement.querySelector("input[name=formula]");
@@ -178,6 +183,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   _onClose(options) {
     super._onClose(options);
     this.#drawn = [];
+    this.#counts.clear();
     this.#busy = false;
   }
 
@@ -213,10 +219,10 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     let source = null;
     if (data?.type === "RollTable") {
       const table = await foundry.documents.RollTable.implementation.fromDropData(data);
-      if (table) source = { id: table.uuid, kind: "table", uuid: table.uuid, on: true, count: 1 };
+      if (table) source = { id: table.uuid, kind: "table", uuid: table.uuid, on: true };
     } else if (data?.type === "Folder") {
       const folder = await foundry.documents.Folder.implementation.fromDropData(data);
-      if (folder?.type === "Item") source = { id: folder.uuid, kind: "folder", uuid: folder.uuid, on: true, count: 1 };
+      if (folder?.type === "Item") source = { id: folder.uuid, kind: "folder", uuid: folder.uuid, on: true };
     }
     if (!source) {
       ui.notifications.warn(game.i18n.localize("CAIRN.Treasure.NotASource"));
@@ -270,7 +276,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     await this.#whileBusy(async () => {
       let skipped = 0;
       for (const source of drawPlan(this.#sources)) {
-        const drawn = await drawSource(source);
+        const drawn = await drawSource(source, this.#counts.get(source.id) ?? 1);
         if (drawn.missing) ui.notifications.warn(game.i18n.localize("CAIRN.Treasure.SourceMissing", { source: source.id }));
         skipped += drawn.skipped;
         this.#drawn.push(...drawn.rows);

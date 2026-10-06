@@ -23,21 +23,23 @@ export const MAX_COUNT = 10;
 
 /**
  * A source is a RollTable, an Item folder (subfolders included), or coin by formula.
- * `on` and `count` are the Warden's last choice and are kept, so the window reopens as it was left.
+ * `on` is the Warden's last choice and is kept, so the window reopens as it was left. How many
+ * times a source is drawn is not stored: it answers one roll, so every open of the window starts
+ * every count at 1.
  * Labels are NOT stored: the window reads the document's name when it draws, so a renamed or
  * translated table shows its new name.
- * @typedef {{ id: string, kind: "table"|"folder", uuid: string, on: boolean, count: number }
- *          | { id: "coin", kind: "coin", formula: string, on: boolean, count: number }} TreasureSource
+ * @typedef {{ id: string, kind: "table"|"folder", uuid: string, on: boolean }
+ *          | { id: "coin", kind: "coin", formula: string, on: boolean }} TreasureSource
  */
 
 /** @returns {TreasureSource[]} */
 export function defaultTreasureSources() {
-  const folder = (id, pack, folderId) => ({ id, kind: "folder", uuid: packUuid(pack, "Folder", folderId), on: false, count: 1 });
+  const folder = (id, pack, folderId) => ({ id, kind: "folder", uuid: packUuid(pack, "Folder", folderId), on: false });
   return [
     // A table's choice, not the SRD's: 30 to 180 gp, so a roll often crosses the line where "a
     // bag of coins worth less than 100gp is petty" (`character-creation.md`) and the haul starts
     // to weigh.
-    { id: "coin", kind: "coin", formula: "3d6*10", on: false, count: 1 },
+    { id: "coin", kind: "coin", formula: "3d6*10", on: false },
     folder("valuables-common", "more-gear", "zp21eCWEd0bf48mP"),       // Common (10gp)
     folder("valuables-ornamental", "more-gear", "Oo11ISGG2Z4h2h8D"),   // Ornamental (25gp)
     folder("valuables-semiprecious", "more-gear", "Qai89dBcno9Coube"), // Semiprecious (100gp)
@@ -64,19 +66,23 @@ export function withoutSource(list, id) {
   return list.filter((s) => s.id !== id);
 }
 
-/** One source's choices written back. `count` is a whole number from 1 to {@link MAX_COUNT}. */
-export function withSourceSettings(list, id, { on, count, formula } = {}) {
+/** A typed count as a whole number from 1 to {@link MAX_COUNT}. */
+export function clampCount(value) {
+  return Math.min(MAX_COUNT, Math.max(1, Math.trunc(Number(value)) || 1));
+}
+
+/** One source's choices written back. */
+export function withSourceSettings(list, id, { on, formula } = {}) {
   return list.map((s) => {
     if (s.id !== id) return s;
     const next = { ...s };
     if (on !== undefined) next.on = !!on;
-    if (count !== undefined) next.count = Math.min(MAX_COUNT, Math.max(1, Math.trunc(Number(count)) || 1));
     if (formula !== undefined && s.kind === "coin") next.formula = String(formula).trim();
     return next;
   });
 }
 
-/** What a Roll draws: the ticked sources, in the list's order, each carrying its own `count`. */
+/** What a Roll draws: the ticked sources, in the list's order. */
 export function drawPlan(list) {
-  return list.filter((s) => s.on && s.count >= 1);
+  return list.filter((s) => s.on);
 }

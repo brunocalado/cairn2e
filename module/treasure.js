@@ -83,11 +83,11 @@ const treasureKind = (doc) => doc?.documentName !== "Item" ? null
  * @param {import("./treasure-rules.js").TreasureSource} source
  * @returns {Promise<{ rows: DrawnRow[], skipped: number, missing: boolean }>}
  */
-export async function drawSource(source) {
+export async function drawSource(source, count = 1) {
   const rows = [];
   let skipped = 0;
   if (source.kind === "coin") {
-    for (let n = 0; n < source.count; n++) {
+    for (let n = 0; n < count; n++) {
       const total = (await evaluateFormula(source.formula)).total;
       if (total > 0) rows.push(coinRow(Math.floor(total)));
     }
@@ -97,7 +97,7 @@ export async function drawSource(source) {
   const doc = await sourceDocument(source);
   if (source.kind === "table") {
     if (!doc) return { rows, skipped, missing: true };
-    for (let n = 0; n < source.count; n++) {
+    for (let n = 0; n < count; n++) {
       const { results } = await doc.roll();
       for (const result of results) {
         const item = result.type === "document" ? await fromUuid(result.documentUuid) : null;
@@ -120,7 +120,7 @@ export async function drawSource(source) {
     : entries;
   const pool = items.filter((item) => treasureKind(item) === "gear");
   if (!pool.length) return { rows, skipped, missing: false };
-  for (let n = 0; n < source.count; n++) {
+  for (let n = 0; n < count; n++) {
     const face = (await evaluateFormula(`1d${pool.length}`)).total;
     rows.push(itemRow(pool[face - 1]));
   }
