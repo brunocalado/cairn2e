@@ -233,7 +233,9 @@ Two decisions, both arguable, both made here rather than per document:
   Star Sapphire). The top band is the SRD's own number: the Bond that hands a character a
   "**Single Gem** (500gp, cold and brittle)" (`players-guide/character-creation.md`). Their ids
   derive from `cairn2e:homebrew:folder:valuables-<band>`, and the check holds every stone to the
-  folder its price names — nothing sits loose in Valuables itself.
+  folder its price names — nothing sits loose in Valuables itself. Valuables sorts its bands manually, by
+  their `sort`, which rises with the price: Foundry orders subfolders by the parent's `sorting`,
+  and by name *Precious (500gp)* came before *Semiprecious (100gp)*. Strange Items does the same.
 - **Every stone is *petty*** — `slots: 0`. A bag of coins under 100gp is *petty* and every hundred
   after that is a slot (`character-creation.md` § Inventory Slots), so 500 gp in coin weighs five
   slots and the same value in one sapphire weighs none. That gap is not an oversight: it is the
