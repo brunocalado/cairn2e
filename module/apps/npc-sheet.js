@@ -102,21 +102,33 @@ export class CairnNpcSheet extends CairnActorSheet {
     context.abilities = abilityRows(system);
     context.hpZero = hpZero(system);
     context.appearanceTraits = traitRows(system.traits, APPEARANCE_TRAIT_KEYS);
-    // What a reader who cannot edit sees instead of the editor (`templates/actor/npc-description.hbs`).
-    context.descriptionHTML = await enrich(system.description, this.actor);
-    // In collection order — for a bestiary creature, the SRD's own bullet order. A name that is
-    // a label ("Magic", "Critical Damage") rather than a sentence takes the SRD's colon before
-    // its description; a lead sentence already ends in its own stop.
-    context.features = [];
-    for (const item of this.actor.items) {
-      if (item.type !== "feature") continue;
-      context.features.push({
-        id: item.id,
-        name: item.name,
-        critical: item.system.critical,
-        isLabel: !/[.!?)"\u201d\u2026]$/.test(item.name.trim()),
-        description: await enrich(item.system.description, this.actor)
-      });
+    return context;
+  }
+
+  /** @override — the Description and Features text, built only for the part that draws it.
+   *  Enriching is the dearest thing this sheet prepares, and a stepper's write redraws the
+   *  header alone. */
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+    if (partId === "description") {
+      // What a reader who cannot edit sees instead of the editor (`templates/actor/npc-description.hbs`).
+      context.descriptionHTML = await enrich(this.actor.system.description, this.actor);
+    }
+    if (partId === "features") {
+      // In collection order — for a bestiary creature, the SRD's own bullet order. A name that is
+      // a label ("Magic", "Critical Damage") rather than a sentence takes the SRD's colon before
+      // its description; a lead sentence already ends in its own stop.
+      context.features = [];
+      for (const item of this.actor.items) {
+        if (item.type !== "feature") continue;
+        context.features.push({
+          id: item.id,
+          name: item.name,
+          critical: item.system.critical,
+          isLabel: !/[.!?)"\u201d\u2026]$/.test(item.name.trim()),
+          description: await enrich(item.system.description, this.actor)
+        });
+      }
     }
     return context;
   }
