@@ -1,7 +1,9 @@
 {{!-- What the last rolls drew and the Warden has not struck: the draft, this window's alone. A
       thing is its image and its name; coin is its amount. The × strikes one row; Clear, on the
       head, strikes them all. Send writes what is left onto the party. An item row carries the uuid
-      of the document it was drawn from, and its name opens it; a coin row has none. --}}
+      of the document it was drawn from: its icon and its name open it, and its grip drags it onto
+      an actor or into chat. A coin row has none, and an empty cell holds the grip's place, so the
+      icons stay in one column. --}}
 <section class="cairn-treasure-drawn-zone">
     <div class="cairn-zone-head">
         <h4 class="cairn-zone">{{localize "CAIRN.Treasure.Drawn"}}</h4>
@@ -17,14 +19,14 @@
         <li class="cairn-slot cairn-treasure-row" data-key="{{row.key}}" {{#if row.uuid}}data-uuid="{{row.uuid}}"{{/if}}
             {{#unless @last}}data-ink="hline" data-ink-seed="treasure-drawn-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
             {{#if row.coin}}
+            <span class="cairn-treasure-grip-space" aria-hidden="true"></span>
             <i class="fa-solid fa-coins cairn-treasure-kind" inert></i>
-            {{else}}
-            <img class="cairn-treasure-img" src="{{row.img}}" alt="" />
-            {{/if}}
-            {{#if row.uuid}}
-            <span class="cairn-treasure-label" data-action="drawnOpen">{{row.name}}</span>
-            {{else}}
             <span class="cairn-treasure-label">{{row.name}}</span>
+            {{else}}
+            <a class="cairn-treasure-grip" data-tooltip="{{localize 'CAIRN.Treasure.DragHint'}}"
+               aria-label="{{localize 'CAIRN.Treasure.DragHint'}}"><i class="fa-solid fa-grip-vertical" inert></i></a>
+            <img class="cairn-treasure-img" src="{{row.img}}" alt="" draggable="false" data-action="drawnOpen" />
+            <span class="cairn-treasure-label" data-action="drawnOpen">{{row.name}}</span>
             {{/if}}
             <span class="cairn-item-controls">
                 <a data-action="drawnRemove" data-tooltip="{{localize 'CAIRN.Treasure.Strike'}}"><i class="fas fa-xmark"></i></a>

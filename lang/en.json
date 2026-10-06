@@ -1327,6 +1327,7 @@
     "Coin": "Coin",
     "Count": "How many times it is drawn",
     "CreateParty": "Create a party",
+    "DragHint": "Drag onto an actor or into chat. The row stays: strike it once given.",
     "Drawn": "Drawn",
     "DropHere": "Drop a RollTable or a folder of Items here to offer it.",
     "Empty": "Nothing drawn. Tick what to roll on, and roll.",

@@ -188,3 +188,27 @@ export function renderTreasureButton(message, html) {
     party.sheet.changeTab("stash", "primary");
   });
 }
+
+/**
+ * A drawn treasure dropped on the chat log is read out loud, as an item row's scroll control
+ * does. Only a drag from the Treasure window carries the mark, and only the Warden can start one:
+ * an item dragged from a sheet or a pack posts nothing, so a player cannot read out gear whose
+ * true nature is hidden from them, nor an item from a pack they cannot browse.
+ *
+ * Bound once per chat log element, from the `renderChatLog` hook on a first render: the sidebar
+ * log and a popped-out one are separate elements, and a popout closed and opened again is a new one.
+ */
+export function bindTreasureChatDrop(html) {
+  // No dragover to cancel: core cancels it on the document for every drag. The drop is caught on
+  // the way down, because the message box is a <prose-mirror> that takes a document drop itself
+  // and writes a link to it into the unsent message. Stopped there, the drop never reaches core's
+  // own cancel on the document either, so its default is cancelled here.
+  html.addEventListener("drop", async (event) => {
+    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
+    if (!data?.[SYSTEM_ID]?.treasure || !game.user.isGM) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const item = await fromUuid(data.uuid);
+    if (item?.documentName === "Item") await item.postCard();
+  }, { capture: true });
+}

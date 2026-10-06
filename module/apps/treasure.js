@@ -181,17 +181,35 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     this.#busy = false;
   }
 
-  /** The sources list takes a RollTable or an Item folder, from the world or a pack. */
+  /**
+   * The sources list takes a RollTable or an Item folder, from the world or a pack; a drawn item's
+   * grip drags it out.
+   */
   get #dragDrop() {
     return this.#dd ??= new foundry.applications.ux.DragDrop.implementation({
+      dragSelector: ".cairn-treasure-grip",
       dropSelector: ".cairn-treasure-sources-zone",
-      permissions: { drop: () => game.user.isGM },
-      callbacks: { drop: this.#onDrop.bind(this) }
+      permissions: { dragstart: () => game.user.isGM, drop: () => game.user.isGM },
+      callbacks: { dragstart: this.#onDragStart.bind(this), drop: this.#onDrop.bind(this) }
     });
+  }
+
+  /**
+   * A drawn item leaves as the document it was drawn from: an actor sheet takes it as any drop
+   * from a pack or the sidebar, and the chat log knows it by the mark. The row stays in the draft
+   * whatever happens to the drop — this window cannot tell whether the target took it (a
+   * character with no room refuses), so the Warden strikes it once it is given.
+   */
+  #onDragStart(event) {
+    const uuid = event.currentTarget.closest("[data-uuid]")?.dataset.uuid;
+    if (!uuid) return;
+    event.dataTransfer.setData("text/plain", JSON.stringify({ type: "Item", uuid, [SYSTEM_ID]: { treasure: true } }));
   }
 
   async #onDrop(event) {
     const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
+    // A drawn item let go over this window again: nothing to offer, and nothing to warn about.
+    if (data?.[SYSTEM_ID]?.treasure) return;
     let source = null;
     if (data?.type === "RollTable") {
       const table = await foundry.documents.RollTable.implementation.fromDropData(data);
@@ -262,9 +280,9 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   }
 
   /**
-   * A drawn row's name opens the thing it was drawn from: read-only while its pack is locked. A
-   * world item opens its own sheet, which the Warden can edit — that edits the world item, not
-   * the drawn copy, which was taken when the row was rolled.
+   * A drawn row's icon or name opens the thing it was drawn from: read-only while its pack is
+   * locked. A world item opens its own sheet, which the Warden can edit — that edits the world
+   * item, not the drawn copy, which was taken when the row was rolled.
    */
   static async #onDrawnOpen(event, target) {
     const uuid = target.closest("[data-uuid]")?.dataset.uuid;

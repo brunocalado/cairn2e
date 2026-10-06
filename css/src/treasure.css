@@ -52,6 +52,28 @@
             overflow-y: auto;
         }
 
+        /* A drawn item's grip, what drags it onto an actor or into chat. A coin row has nothing to
+           drag, and keeps an empty cell of the same width so its icon lines up with the items'. */
+        .cairn-treasure-grip,
+        .cairn-treasure-grip-space {
+            flex: 0 0 14px;
+            text-align: center;
+        }
+
+        .cairn-treasure-grip {
+            color: var(--cairn-ink-soft);
+            cursor: grab;
+            font-size: 11px;
+
+            &:hover {
+                color: var(--cairn-ink);
+            }
+
+            &:active {
+                cursor: grabbing;
+            }
+        }
+
         .cairn-treasure-kind {
             color: var(--cairn-ink-soft);
             flex: 0 0 14px;
@@ -77,8 +99,9 @@
             white-space: nowrap;
         }
 
-        /* The name of a row drawn from a document opens that document's sheet, as an inventory
-           row's name does. */
+        /* The icon and the name of a row drawn from a document open that document's sheet, as an
+           inventory row's name does. */
+        .cairn-treasure-img[data-action],
         .cairn-treasure-label[data-action] {
             cursor: pointer;
         }

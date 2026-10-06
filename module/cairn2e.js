@@ -26,7 +26,7 @@ import * as journey from "./journey.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnStore } from "./apps/store.js";
 import { CairnTreasure } from "./apps/treasure.js";
-import { renderTreasureButton } from "./treasure.js";
+import { renderTreasureButton, bindTreasureChatDrop } from "./treasure.js";
 import { CairnRulesSummary } from "./apps/rules-summary.js";
 import * as kettlewrightImport from "./kettlewright-import.js";
 import { CairnCharacterCreator } from "./apps/character-creator.js";
@@ -602,6 +602,12 @@ Hooks.on("renderSettings", (app, element) => {
   link.append(icon, ` ${game.i18n.localize("CAIRN.ReportIssue")}`);
   section.append(link);
   settings.before(section);
+});
+
+// A drawn treasure dragged out of the Treasure window posts its card when dropped on the log. The
+// element is the same across a log's re-renders, so it is bound on the first only.
+Hooks.on("renderChatLog", (_app, html, _context, options) => {
+  if (options.isFirstRender) bindTreasureChatDrop(html);
 });
 
 Hooks.on("renderChatMessageHTML", async (message, html) => {
