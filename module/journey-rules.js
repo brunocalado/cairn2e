@@ -145,3 +145,19 @@ export function pendingNeeds(journey) {
 export function eventsForWatch(night, action) {
   return night && action === "travel" ? 2 : 1;
 }
+
+/** Food: gear carrying the mark Make Camp and Exhaustion eat a use of. A mark, not a name — a
+ *  renamed or homebrew food is still food. */
+export const isFood = (i) => i.type === "gear" && i.system.food;
+
+/**
+ * The meal a character eats next: a use of the food closest to running out, so a half-eaten
+ * Rations is finished before a full one is opened and the slot it holds comes free. Ties keep
+ * inventory order — `Array#sort` is stable.
+ * @param {Iterable<{type: string, system: {food: boolean, uses: {value: number}}}>} items
+ * @returns {object|null}
+ */
+export function nextMeal(items) {
+  return [...items].filter((i) => isFood(i) && i.system.uses.value > 0)
+    .sort((a, b) => a.system.uses.value - b.system.uses.value)[0] ?? null;
+}

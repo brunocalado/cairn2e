@@ -61,7 +61,7 @@ import { SYSTEM_ID, SETTINGS, GEAR, TABLES, CONDITION } from "./constants.js";
 import { rollWardenTable, copyOf } from "./helpers.js";
 import {
   ACTIONS, WATCHES, WEATHER, WEATHER_EFFECTS, PATHS, DISTANCES, TERRAINS, VAST_MAX,
-  watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, pendingNeeds, eventsForWatch
+  watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, pendingNeeds, eventsForWatch, isFood, nextMeal
 } from "./journey-rules.js";
 import { currentWatch, advanceWatch } from "./calendar.js";
 import {
@@ -79,10 +79,8 @@ export const JOURNEY_QUERY = `${SYSTEM_ID}.journey`;
  * translation module renames it.
  */
 const EVENT = { ENCOUNTER: "encounter", EXHAUSTION: "exhaustion" };
-/** Supply creates the `gear` pack's Rations ({@link GEAR}.RATIONS); what Make Camp eats is any
- *  gear marked `food`. Food the procedure spends is marked on the item, not read off its name:
- *  a Warden's renamed or homebrew food is still food. */
-const isFood = (i) => i.type === "gear" && i.system.food;
+// Supply creates the `gear` pack's Rations ({@link GEAR}.RATIONS); what Make Camp eats is any
+// gear marked `food` (`isFood`), never one read off its name.
 
 /* -------------------------------------------- */
 /*  Reading                                     */
@@ -643,10 +641,10 @@ async function end() {
 /*  The sheets                                  */
 /* -------------------------------------------- */
 
-/** Spend one use of the character's food. `false` when there is none left to spend. Also what
- *  a dungeon's Exhaustion spends (`module/apps/combat-tracker.js`). */
+/** Spend one use of the character's food closest to running out (`nextMeal`). `false` when there
+ *  is none left to spend. Also what a dungeon's Exhaustion spends (`module/apps/combat-tracker.js`). */
 export async function eatFood(actor) {
-  const meal = actor.items.find((i) => isFood(i) && i.system.uses.value > 0);
+  const meal = nextMeal(actor.items);
   if (!meal) return false;
   await meal.update({ "system.uses.value": meal.system.uses.value - 1 });
   return true;
