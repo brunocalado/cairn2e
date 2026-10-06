@@ -1,0 +1,31 @@
+{
+  "_id": "lS725vSeEXA1wrVC",
+  "name": "Locket of Two Mornings",
+  "type": "gear",
+  "img": "icons/equipment/neck/amulet-round-engraved-gold.webp",
+  "system": {
+    "description": "<p>It contains two tiny images of the same field: one at sunrise, the other beneath thick fog. Occasionally, the sun moves from one image to the other.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lS725vSeEXA1wrVC",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

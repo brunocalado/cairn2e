@@ -1,0 +1,31 @@
+{
+  "_id": "ELtaX11601dDQQBW",
+  "name": "Drowned Music Box",
+  "type": "gear",
+  "img": "icons/commodities/treasure/box-jade-tassel.webp",
+  "system": {
+    "description": "<p>It makes no sound when opened, yet droplets of water seep from the wood. Nearby fish seem to follow a melody no one else can hear.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ELtaX11601dDQQBW",
+  "folder": "hc8o6QPy9sddmwlP"
+}

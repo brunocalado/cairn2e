@@ -1,0 +1,31 @@
+{
+  "_id": "MKGrCHDdKqOEPuyf",
+  "name": "Clear-Sky Umbrella",
+  "type": "gear",
+  "img": "icons/magic/air/weather-clouds-rain.webp",
+  "system": {
+    "description": "<p>It opens only when there are no clouds overhead. Beneath it, one can hear raindrops and muffled conversations from what sounds like a rain-soaked street.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!MKGrCHDdKqOEPuyf",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

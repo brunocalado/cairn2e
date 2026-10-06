@@ -1,0 +1,31 @@
+{
+  "_id": "sYjdTAnymbucpuvh",
+  "name": "Ashen Hourglass",
+  "type": "gear",
+  "img": "icons/magic/time/hourglass-tilted-gray.webp",
+  "system": {
+    "description": "<p>The ashes flow upward instead of down. When they reach the top, something small and long forgotten is often found nearby.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!sYjdTAnymbucpuvh",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

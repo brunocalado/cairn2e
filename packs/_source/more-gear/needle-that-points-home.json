@@ -1,0 +1,31 @@
+{
+  "_id": "qavQbcwHLHZW8SoV",
+  "name": "Needle That Points Home",
+  "type": "gear",
+  "img": "icons/tools/hand/needle-grey.webp",
+  "system": {
+    "description": "<p>When placed on a flat surface, it slowly turns toward a particular direction. Different people insist it points toward different places.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!qavQbcwHLHZW8SoV",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

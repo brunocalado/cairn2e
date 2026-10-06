@@ -1,0 +1,31 @@
+{
+  "_id": "T0poD65vcaTrcUYp",
+  "name": "Letter Addressed to No One",
+  "type": "gear",
+  "img": "icons/sundries/documents/envelope-sealed-red-tan.webp",
+  "system": {
+    "description": "<p>Its seal remains unbroken, and the recipient’s name is blank. Even so, each person recognizes the handwriting as belonging to someone different.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!T0poD65vcaTrcUYp",
+  "folder": "hc8o6QPy9sddmwlP"
+}

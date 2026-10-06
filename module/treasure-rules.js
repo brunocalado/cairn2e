@@ -42,6 +42,8 @@ export function defaultTreasureSources() {
     folder("valuables-ornamental", "more-gear", "Oo11ISGG2Z4h2h8D"),   // Ornamental (25gp)
     folder("valuables-semiprecious", "more-gear", "Qai89dBcno9Coube"), // Semiprecious (100gp)
     folder("valuables-precious", "more-gear", "HJvY3JTRuL5xJNFj"),     // Precious (500gp)
+    folder("strange-items-25gp", "more-gear", "hc8o6QPy9sddmwlP"),     // Strange Items › 25gp
+    folder("strange-items-100gp", "more-gear", "LKY9Y5cE0KzJw8Wo"),    // Strange Items › 100gp
     folder("relics-150", "relics", "GrRVMrn19Cm4uCtB"),
     folder("relics-300", "relics", "UlnseD8X1WIqJdUA"),
     folder("relics-600", "relics", "Pos0prP8w9WLaBgG"),

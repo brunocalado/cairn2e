@@ -1,0 +1,31 @@
+{
+  "_id": "GVLCgLBkgbO17ZNY",
+  "name": "Golden Nail",
+  "type": "gear",
+  "img": "icons/tools/fasteners/nail-steel-grey.webp",
+  "system": {
+    "description": "<p>It has no point and cannot be bent. Held near old timber, it releases the scent of a newly built house.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!GVLCgLBkgbO17ZNY",
+  "folder": "hc8o6QPy9sddmwlP"
+}

@@ -1,0 +1,31 @@
+{
+  "_id": "4VMTehLCt33wkXLX",
+  "name": "Compass of the Broken Circle",
+  "type": "gear",
+  "img": "icons/tools/navigation/compass-plain-blue.webp",
+  "system": {
+    "description": "<p>It draws perfect arcs but never completes a circle. The narrow gap always faces the same point on the horizon.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4VMTehLCt33wkXLX",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

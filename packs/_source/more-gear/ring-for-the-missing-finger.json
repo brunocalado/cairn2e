@@ -1,0 +1,31 @@
+{
+  "_id": "X9P60jyCzWg82vEl",
+  "name": "Ring for the Missing Finger",
+  "type": "gear",
+  "img": "icons/equipment/finger/ring-band-notched-gold.webp",
+  "system": {
+    "description": "<p>Too large for any finger and too small for a wrist. The inside is scored with marks resembling scratches made by fingernails.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!X9P60jyCzWg82vEl",
+  "folder": "hc8o6QPy9sddmwlP"
+}

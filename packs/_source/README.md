@@ -178,8 +178,8 @@ repository (`resources/more-equipment.md`), an OSE-derived price list that "does
 the items listed in the SRD, it just adds new ones". That sentence is the pack's rule: **a name the
 Marketplace sells is never here** — the check refuses it — and what came from that list was
 re-priced onto the Marketplace's own scale (1–200 gp, Wilderness Clothes 15, Common Tools 10,
-Room & Board 10) rather than copied from OSE. 119 documents in six compendium folders, one of which has
-bands of its own:
+Room & Board 10) rather than copied from OSE. 164 documents in seven compendium folders, two of which
+have bands of their own:
 
 - **Clothing** (33) — all *petty*, priced by material: plain cloth 5, leather/wool 15, silk or
   elegant 20–30, formal 40–60, the extravagant ballgown 100. Dropped as SRD duplicates: the three
@@ -203,6 +203,8 @@ bands of its own:
   `capacity` set, `takesSlots: false`, they haul themselves. The source's riding Horse (+2, 75)
   and Mule (+6, 50) contradict the SRD's and were dropped.
 - **Valuables** (36) — the stones a hoard is carried home as, in four subfolders. See below.
+- **Strange Items** (45) — oddities with no rules of their own, in two subfolders. Not from
+  *More Equipment*; see below.
 
 Skipped whole from the *More Equipment* list: **Livestock** (creatures without a statline — an
 Actor this system will not invent), **Livestock Feed** (`Animal Feed` covers it), Buildings,
@@ -238,6 +240,46 @@ Two decisions, both arguable, both made here rather than per document:
   reason a hoard gets cut into stones before it is carried anywhere. A Warden who wants a gem to
   cost a slot has the field on the sheet — the Wardens' Guide's own example jewel does exactly
   that, and it is large enough to fill a fist.
+
+### `Strange Items` — oddities, not relics
+
+The source is the maintainer's own list, 2026-10-06: fifty mysterious items with no mechanical
+effect, written with AI assistance, so no third-party licence applies. They are treasure in the
+2e sense — it "tells a story" and is "rarely useful beyond its worth and prestige"
+(`players-guide/overview-and-principles.md` § Treasure) — and not relics: a relic has uses, an
+effect and a Recharge (`wardens-guide/reliquary.md`), and none of these has any of the three. Their
+charm is that the Warden reads them. **None is a relic and none is a container**: `magic` is
+`none`, `uses` 0/0, `capacity` 0, and nothing holds anything.
+
+- **Two bands, priced and filed by band, never per item**, the subfolders **25gp** and **100gp**
+  of a root **Strange Items**, named by the price alone as the relics' bands are. The criterion:
+  > **100gp:** on its own, the thing points the party at something they can go after (a place,
+  > a direction, a person, a hidden thing) or hands back what was lost. **25gp:** everything else,
+  > strange to hold but leading nowhere by itself.
+
+  That puts 18 at 100gp and 27 at 25gp. The 100gp list is held by name in
+  `checks/compendium.check.mjs`; moving an item is a change to the rule, made there and in the
+  document's `folder` together. Nearest the line, and left at 25gp because none of them names who
+  or where: the Frosted-Glass Hammer, the Goblet of the Forgotten Toast and the Stone with a Pulse.
+  Folder ids derive from `cairn2e:homebrew:folder:strange-items[-<band>]`.
+- **Slots come from the object's size**, as the Marketplace measures it: a key, a ring or a feather
+  is *petty*; a book, a rope or a helm is one slot, like the Marketplace's Book and Rope; a framed
+  portrait or a drum is *bulky*.
+- **Five removed from the list.** The Seven-Bladed Pocketknife, the Lantern of Cold Light, the Mask
+  of the Final Guest and the Bell Without a Clapper, by the maintainer's choice; and the Black Wax
+  Candle, whose darkness is the SRD's own Lightsucker Candle — Homebrew never restates the SRD.
+- **Three rewritten by the maintainer**; every other text is the list's own, verbatim:
+  - the **Frosted-Glass Hammer** is a d4 weapon that may shatter after each attack, on a Die of
+    Fate of 1–3 (`core-rules.md`: "3 or under usually means bad luck"). The rule lives in the
+    description and the Warden rolls the *Die of Fate* macro; nothing automates it. It is the only
+    Strange Item with a `damage`;
+  - the **Helm of the Delayed Echo** gives no armour: it is a voice left behind;
+  - the **Chest of the Missing Thing** became the **Box of Last Losses**, which gives back what
+    was lost and takes something else. It is not a container — "impossibly deep" would have been a
+    bag of holding around the ten slots.
+- **Icons** are core Foundry icons, one apiece. Core has no comb, spinning top, umbrella or
+  portrait, so those four wear the nearest shape (a curved bone, a yo-yo, a rain cloud, a sketched
+  figure). The Mirror of the Third Figure shares core's one mirror with the Marketplace Mirror.
 
 ## `more-spellbooks` and `more-scrolls` — the same list in both vessels
 

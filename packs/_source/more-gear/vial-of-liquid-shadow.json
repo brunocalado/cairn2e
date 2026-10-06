@@ -1,0 +1,31 @@
+{
+  "_id": "AlgcfDozp3NbqhAR",
+  "name": "Vial of Liquid Shadow",
+  "type": "gear",
+  "img": "icons/consumables/potions/vial-cork-empty.webp",
+  "system": {
+    "description": "<p>The dark substance inside moves against the tilt of the glass. At midday, the vial appears almost empty.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!AlgcfDozp3NbqhAR",
+  "folder": "hc8o6QPy9sddmwlP"
+}

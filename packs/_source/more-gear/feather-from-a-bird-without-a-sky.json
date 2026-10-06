@@ -1,0 +1,31 @@
+{
+  "_id": "lApsJERz6pFixXcQ",
+  "name": "Feather from a Bird Without a Sky",
+  "type": "gear",
+  "img": "icons/commodities/materials/feather-black-blue.webp",
+  "system": {
+    "description": "<p>Blue on one side and black on the other. Near a flame, its shadow flaps its wings even while the feather remains still.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lApsJERz6pFixXcQ",
+  "folder": "hc8o6QPy9sddmwlP"
+}

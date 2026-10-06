@@ -1,0 +1,31 @@
+{
+  "_id": "nDoKCv3j1QgXe1Il",
+  "name": "The Pilgrim’s Folding Chair",
+  "type": "gear",
+  "img": "icons/commodities/wood/furniture-stool-brown.webp",
+  "system": {
+    "description": "<p>Far too light for its thick wooden frame. Anyone who sits in it briefly remembers a journey they may never have taken.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!nDoKCv3j1QgXe1Il",
+  "folder": "hc8o6QPy9sddmwlP"
+}

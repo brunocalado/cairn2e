@@ -731,8 +731,9 @@ a table aid, not a rule. Its defaults are the price bands of the system's own co
 invents nothing.
 
 - **Roll on** lists what can be rolled, each with a switch and a number for how many times it is
-  drawn (1 to 10). A new world offers **Coin**, the four **Valuables** bands, the three **Relics**
-  bands, the two **Scrolls** bands and the two **Spellbooks** bands, all switched off. The window
+  drawn (1 to 10). A new world offers **Coin**, the four **Valuables** bands, the two **Strange Items**
+  bands, the three **Relics** bands, the two **Scrolls** bands and the two **Spellbooks** bands, all
+  switched off. The window
   remembers what you switched on and how many.
 - **Choose your sources.** Drag a **Roll Table**, or a **folder of Items**, from a compendium or
   the sidebar onto the list to offer it. The **×** takes a source off the list; it never deletes

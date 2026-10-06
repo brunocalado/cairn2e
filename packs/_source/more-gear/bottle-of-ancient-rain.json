@@ -1,0 +1,31 @@
+{
+  "_id": "7yCpP7uO5pRsdtBb",
+  "name": "Bottle of Ancient Rain",
+  "type": "gear",
+  "img": "icons/consumables/potions/bottle-conical-corked-blue.webp",
+  "system": {
+    "description": "<p>A tiny, silent storm swirls inside the glass. Touching the cork fills the air with the scent of rain falling on soil in some distant place.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7yCpP7uO5pRsdtBb",
+  "folder": "hc8o6QPy9sddmwlP"
+}

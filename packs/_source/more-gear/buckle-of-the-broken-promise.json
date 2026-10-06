@@ -1,0 +1,31 @@
+{
+  "_id": "59pY9Br4MMZ1yBPf",
+  "name": "Buckle of the Broken Promise",
+  "type": "gear",
+  "img": "icons/commodities/leather/leather-buckle-embossed-gold.webp",
+  "system": {
+    "description": "<p>Its metal turns dull near people who once knew each other well. A sentence is engraved on the back, but its final word is missing.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!59pY9Br4MMZ1yBPf",
+  "folder": "hc8o6QPy9sddmwlP"
+}

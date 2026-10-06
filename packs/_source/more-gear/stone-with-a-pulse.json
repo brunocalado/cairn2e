@@ -1,0 +1,31 @@
+{
+  "_id": "uanhkg2qjIXWdHe3",
+  "name": "Stone with a Pulse",
+  "type": "gear",
+  "img": "icons/commodities/stone/boulder-grey.webp",
+  "system": {
+    "description": "<p>Smooth, heavy, and slightly warm. Pressed against the chest, its rhythm seems to follow a heart other than the holder’s own.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!uanhkg2qjIXWdHe3",
+  "folder": "hc8o6QPy9sddmwlP"
+}

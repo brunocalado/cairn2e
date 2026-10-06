@@ -1,0 +1,31 @@
+{
+  "_id": "irJAlpgEKsftPdOM",
+  "name": "Spinning Top That Wakes for Sleepers",
+  "type": "gear",
+  "img": "icons/weapons/misc/yo-yo.webp",
+  "system": {
+    "description": "<p>It begins turning whenever someone nearby falls asleep. It stops just before they awaken and falls pointing toward them.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!irJAlpgEKsftPdOM",
+  "folder": "hc8o6QPy9sddmwlP"
+}

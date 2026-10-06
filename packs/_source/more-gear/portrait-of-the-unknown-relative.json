@@ -1,0 +1,31 @@
+{
+  "_id": "tywDMaF1FDreEt3N",
+  "name": "Portrait of the Unknown Relative",
+  "type": "gear",
+  "img": "icons/sundries/documents/document-symbol-person-brown.webp",
+  "system": {
+    "description": "<p>It depicts someone whose features seem vaguely familiar. The painted face ages with every full moon, while the rest of the portrait remains unchanged.</p>",
+    "slots": 2,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!tywDMaF1FDreEt3N",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

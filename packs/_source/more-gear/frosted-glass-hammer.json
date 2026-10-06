@@ -1,0 +1,31 @@
+{
+  "_id": "uAacgoYPWGxlqTPY",
+  "name": "Frosted-Glass Hammer",
+  "type": "gear",
+  "img": "icons/tools/hand/hammer-mason-white-grey.webp",
+  "system": {
+    "description": "<p>It looks fragile, yet bears no cracks or chips. When struck against stone, it sounds like a knock from the other side of a door. In a fight it is a d4 weapon: after each attack made with it, roll the Die of Fate, and on a 1–3 it shatters. Striking stone never breaks it.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "d4",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!uAacgoYPWGxlqTPY",
+  "folder": "hc8o6QPy9sddmwlP"
+}

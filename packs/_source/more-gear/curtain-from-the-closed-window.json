@@ -1,0 +1,31 @@
+{
+  "_id": "4LVQNhDCghtGBqNe",
+  "name": "Curtain from the Closed Window",
+  "type": "gear",
+  "img": "icons/commodities/cloth/cloth-bolt-glow-white.webp",
+  "system": {
+    "description": "<p>A translucent scrap of fabric that stirs even without wind. Held against a wall, it reveals a landscape that is not truly there.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!4LVQNhDCghtGBqNe",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

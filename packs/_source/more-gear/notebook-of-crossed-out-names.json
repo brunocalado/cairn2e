@@ -1,0 +1,31 @@
+{
+  "_id": "WY4y0xReN6lpUg4q",
+  "name": "Notebook of Crossed-Out Names",
+  "type": "gear",
+  "img": "icons/sundries/books/book-worn-brown-grey.webp",
+  "system": {
+    "description": "<p>Every page contains lists of names hidden beneath heavy ink. A single blank line remains at the bottom of the final page.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WY4y0xReN6lpUg4q",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

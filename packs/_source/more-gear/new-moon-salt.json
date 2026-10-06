@@ -1,0 +1,31 @@
+{
+  "_id": "KJ3HzuWFEilhrBqA",
+  "name": "New-Moon Salt",
+  "type": "gear",
+  "img": "icons/commodities/materials/bowl-powder-grey.webp",
+  "system": {
+    "description": "<p>Black crystals kept in a small bone shaker. Beneath starlight, some grains arrange themselves into unknown constellations.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!KJ3HzuWFEilhrBqA",
+  "folder": "hc8o6QPy9sddmwlP"
+}

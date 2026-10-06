@@ -1,0 +1,31 @@
+{
+  "_id": "QhrR3kLjjGWkd9zU",
+  "name": "Dragon Tooth Far Too Small",
+  "type": "gear",
+  "img": "icons/commodities/bones/tooth-canine-white.webp",
+  "system": {
+    "description": "<p>White, curved, and no larger than a fingernail. It becomes coated in soot whenever someone mentions hidden treasure.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!QhrR3kLjjGWkd9zU",
+  "folder": "LKY9Y5cE0KzJw8Wo"
+}

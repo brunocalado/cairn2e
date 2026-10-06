@@ -1,0 +1,31 @@
+{
+  "_id": "45pmXNg9j29zAqUk",
+  "name": "Cold Ivory Comb",
+  "type": "gear",
+  "img": "icons/commodities/bones/bone-jaw-white.webp",
+  "system": {
+    "description": "<p>Its teeth never catch or tangle in hair. After it is used, a familiar melody lingers in the air, though no one can remember its words.</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 25,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!45pmXNg9j29zAqUk",
+  "folder": "hc8o6QPy9sddmwlP"
+}
