@@ -120,7 +120,8 @@ export function defaultStores() {
       gear("lAOJ4KhINKHkQFKY"), // Lantern
       gear("DEIG5kYj2mhV3hRM"), // Oil Can
       homebrew("jAjEcR1YrKhpCVmA"), // Oilskin Bag
-      gear("o6vtsY4SfrFJHnol")  // Rations
+      gear("o6vtsY4SfrFJHnol"), // Rations
+      homebrew("n6cVjhDIEJa4V8eu")  // Pemmican
     ]),
     outfitter: shelf("CAIRN.Store.Default.Outfitter", [
       gear("BgBHOBRaOlLJCh31"), // Air Bladder
@@ -243,6 +244,10 @@ export function defaultStores() {
       homebrew("JRaB1j5guyzAB86d"), // Roast Goose
       homebrew("NMJaebAwQWRvS9sv"), // Rum
       homebrew("DFozNyWpcuFSc7hR"), // Wine, good
+      homebrew("qJELvjFtKGhMdEEG"), // Mushroom Soup
+      homebrew("9cXVG6PemCUPDzD2"), // Honey Cakes
+      homebrew("Xi4rwuDAwmrOz8ae"), // Hunter's Stew
+      homebrew("B2Bf5ixPnIy1tUt1"), // Fish Stew
       homebrew("FLJ7z1Py8d1ebaZo")  // Brandy
     ])
   };

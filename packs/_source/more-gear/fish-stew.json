@@ -1,0 +1,32 @@
+{
+  "_id": "B2Bf5ixPnIy1tUt1",
+  "name": "Fish Stew",
+  "type": "gear",
+  "img": "icons/consumables/meat/fish-raw-bowl-wooden-green-purple.webp",
+  "system": {
+    "description": "<p>Fish Stew (four meals)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 14,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!B2Bf5ixPnIy1tUt1",
+  "folder": "oZhGiDOcu7cDovBl"
+}

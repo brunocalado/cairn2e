@@ -178,20 +178,22 @@ repository (`resources/more-equipment.md`), an OSE-derived price list that "does
 the items listed in the SRD, it just adds new ones". That sentence is the pack's rule: **a name the
 Marketplace sells is never here** — the check refuses it — and what came from that list was
 re-priced onto the Marketplace's own scale (1–200 gp, Wilderness Clothes 15, Common Tools 10,
-Room & Board 10) rather than copied from OSE. 164 documents in seven compendium folders, two of which
+Room & Board 10) rather than copied from OSE. 169 documents in seven compendium folders, two of which
 have bands of their own:
 
 - **Clothing** (33) — all *petty*, priced by material: plain cloth 5, leather/wool 15, silk or
   elegant 20–30, formal 40–60, the extravagant ballgown 100. Dropped as SRD duplicates: the three
   Gloves (Marketplace `Gloves`), both Cloaks (`Wilderness Clothes`), Jerkin (`Leather Jerkin` in
   `background-gear/`); the gendered "elegant hat, women's style" folded into `Hat, elegant`.
-- **Drink** (7) and **Food** (15) — what a tavern sells, for shopping at the table: drinks by the
+- **Drink** (7) and **Food** (20) — what a tavern sells, for shopping at the table: drinks by the
   bottle, the three inn meals (0 slots, one use — eaten there), and food that travels (bread,
   cheese, cured meat, fruit, nuts, honey). Raw staples by the pound (flour, lard, a side of beef)
-  were left out. Twelve of the fifteen are **food** — Make Camp and a dungeon's Exhaustion eat a
+  were left out. Seventeen of the twenty are **food** — Make Camp and a dungeon's Exhaustion eat a
   use of them as they eat Rations — under one rule that every pack is checked against: a food is
   never *petty*, and it never beats Rations on meals per slot and price per meal at once, so
-  Rations stay worth buying (Bread is two meals, not four, for that reason). The three inn meals
+  Rations stay worth buying (Bread is two meals, not four, for that reason). Five dishes — stews,
+  soup, cakes, pemmican — are dear to buy and pack more meals a slot than Rations, priced so that
+  buying them never beats Rations and cooking them is what makes them cheap. The three inn meals
   are not food: they are eaten at the table, and a weightless meal for a gold piece would make
   Rations pointless. Prices kept within 1–15, under a night's Room & Board; champagne dropped as
   anachronistic. They are two folders rather than one because a Warden pricing a tavern round

@@ -1,0 +1,32 @@
+{
+  "_id": "Xi4rwuDAwmrOz8ae",
+  "name": "Hunter's Stew",
+  "type": "gear",
+  "img": "icons/consumables/food/bowl-stew-brown.webp",
+  "system": {
+    "description": "<p>Hunter's Stew (four meals)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 14,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Xi4rwuDAwmrOz8ae",
+  "folder": "oZhGiDOcu7cDovBl"
+}

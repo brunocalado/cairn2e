@@ -1,0 +1,32 @@
+{
+  "_id": "9cXVG6PemCUPDzD2",
+  "name": "Honey Cakes",
+  "type": "gear",
+  "img": "icons/consumables/grains/donut-baked-frosted-brown.webp",
+  "system": {
+    "description": "<p>Honey Cakes (three meals)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 10,
+    "container": "",
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!9cXVG6PemCUPDzD2",
+  "folder": "oZhGiDOcu7cDovBl"
+}
