@@ -67,6 +67,19 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   /** The drag and drop, built once and re-bound on every render. */
   #dd = null;
 
+  /**
+   * The list as this window last edited it, while a write of it is still out. Core's world-setting
+   * write reads the stored document, which only moves when the server answers, and the first ever
+   * write is a create. So two edits in flight at once (two quick ticks, a count typed and then a
+   * switch clicked) were both built on the old list, and the second erased the first — or, on a
+   * world that had never written the setting, made a second document for the same key, and which
+   * of the two a reload read back was chance.
+   */
+  #pending = null;
+
+  /** Writes go out one at a time: the next waits for the last. */
+  #writes = Promise.resolve();
+
   /** Open the window, or bring the open one forward. The Warden's: a macro can call it too. */
   static open() {
     if (!game.user.isGM) return null;
@@ -81,12 +94,20 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   }
 
   get #sources() {
-    return game.settings.get(SYSTEM_ID, SETTINGS.TREASURE_SOURCES);
+    return this.#pending ?? game.settings.get(SYSTEM_ID, SETTINGS.TREASURE_SOURCES);
   }
 
-  /** Write the list back. The setting's `onChange` is what redraws. */
-  async #save(list) {
-    await game.settings.set(SYSTEM_ID, SETTINGS.TREASURE_SOURCES, list);
+  /**
+   * Write the list back. The setting's `onChange` is what redraws. Neither the pending list nor the
+   * chain is cleared on close: a write still out when the window closes has to land.
+   */
+  #save(list) {
+    this.#pending = list;
+    const write = this.#writes.then(() => game.settings.set(SYSTEM_ID, SETTINGS.TREASURE_SOURCES, list));
+    // Settled either way, so one failed write does not stall every later one. The pending list is
+    // dropped only if no newer edit replaced it meanwhile.
+    this.#writes = write.catch(() => {}).then(() => { if (this.#pending === list) this.#pending = null; });
+    return write;
   }
 
   /** @override */
