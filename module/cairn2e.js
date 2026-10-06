@@ -314,7 +314,11 @@ Hooks.once("init", async function () {
     }));
   });
   // The date and time under the chat box's Format menu, wherever core moves the box.
-  Hooks.on("renderChatInput", (_app, elements) => mountChatClock(elements["#chat-message"]));
+  Hooks.on("renderChatInput", (_app, elements) => {
+    mountChatClock(elements["#chat-message"]);
+    // With the sidebar collapsed or on another tab, the box sits here, outside every chat log.
+    bindTreasureChatDrop(elements["#chat-notifications"]);
+  });
 
   // Right-clicking a message in the log offers this system's own entries. Registered in `init`
   // beside the rest; the hook itself fires every time a context menu is built, and the entry
@@ -604,11 +608,8 @@ Hooks.on("renderSettings", (app, element) => {
   settings.before(section);
 });
 
-// A drawn treasure dragged out of the Treasure window posts its card when dropped on the log. The
-// element is the same across a log's re-renders, so it is bound on the first only.
-Hooks.on("renderChatLog", (_app, html, _context, options) => {
-  if (options.isFirstRender) bindTreasureChatDrop(html);
-});
+// A drawn treasure dragged out of the Treasure window posts its card when dropped on the chat.
+Hooks.on("renderChatLog", (_app, html) => bindTreasureChatDrop(html));
 
 Hooks.on("renderChatMessageHTML", async (message, html) => {
   // Every message in the log is drawn by this system's template, so the whole log is ours to

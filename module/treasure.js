@@ -189,25 +189,32 @@ export function renderTreasureButton(message, html) {
   });
 }
 
+/** The chat elements already listening for a drawn treasure. */
+const chatDropBound = new WeakSet();
+
 /**
- * A drawn treasure dropped on the chat log is read out loud, as an item row's scroll control
- * does. Only a drag from the Treasure window carries the mark, and only the Warden can start one:
- * an item dragged from a sheet or a pack posts nothing, so a player cannot read out gear whose
- * true nature is hidden from them, nor an item from a pack they cannot browse.
+ * A drawn treasure dropped on the chat is read out loud, as an item row's scroll control does.
+ * Only a drag from the Treasure window carries the mark, and only the Warden can start one: an
+ * item dragged from a sheet or a pack posts nothing, so a player cannot read out gear whose true
+ * nature is hidden from them, nor an item from a pack they cannot browse.
  *
- * Bound once per chat log element, from the `renderChatLog` hook on a first render: the sidebar
- * log and a popped-out one are separate elements, and a popout closed and opened again is a new one.
+ * The chat is three elements: the sidebar log, a popped-out log (a new element each time it is
+ * opened), and the corner where core moves the message box, with the latest messages, while the
+ * sidebar is collapsed or on another tab. Their render hooks fire again and again, so each element
+ * is bound once.
  */
 export function bindTreasureChatDrop(html) {
-  // No dragover to cancel: core cancels it on the document for every drag. The drop is caught on
-  // the way down, because the message box is a <prose-mirror> that takes a document drop itself
-  // and writes a link to it into the unsent message. Stopped there, the drop never reaches core's
-  // own cancel on the document either, so its default is cancelled here.
+  if (chatDropBound.has(html)) return;
+  chatDropBound.add(html);
+  // No dragover to cancel: core cancels it on the document for every drag. The drop's default is
+  // cancelled on the way down, because the message box is a <prose-mirror> that takes a document
+  // drop itself and writes a link to it into the unsent message, and ProseMirror leaves alone an
+  // event already cancelled. The drop is not stopped: its drop cursor, the line drawn where the
+  // link would land, is cleared by the drop reaching it, and stayed drawn when it did not.
   html.addEventListener("drop", async (event) => {
     const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
     if (!data?.[SYSTEM_ID]?.treasure || !game.user.isGM) return;
     event.preventDefault();
-    event.stopPropagation();
     const item = await fromUuid(data.uuid);
     if (item?.documentName === "Item") await item.postCard();
   }, { capture: true });
