@@ -1,3 +1,45 @@
+# 0.1.2
+
+- [Added] **A Bond gives what it names.** The Strange Compass and 20gp, the Stone Heart, the half
+  Ancient Key and the rest arrive in the new character's inventory. The creator lists them under the
+  Bond, rewording the Bond keeps them, and the **×** beside one leaves it behind.
+- [Added] **A second Bond or an Omen from the Background.** The Foundling draws an Omen whatever
+  their age, and the Fieldwarden and the Outrider's *Always Pay Your Debts* roll a second Bond. The
+  roll is recorded on the Growth tab, and a second Bond hands over its things like the first.
+- [Changed] **Morale.** Every opponent's row in the combat tracker has a Morale flag the Warden can
+  roll at any moment. When a trigger is crossed (first casualty, half their number down, or a lone
+  foe at 0 HP) the Warden is whispered one reminder, which rolls nothing. The tracker's banner is
+  gone.
+- [Changed] **Critical Damage** is rolled once per hit, by the target's owner, from any scene. A
+  detachment that fails it is routed rather than dead.
+- [Changed] Scar row 3, *Walloped*, makes the character Deprived and waits on the Growth tab for its
+  1d6 to max HP, like the other Scars whose gain comes later.
+- [Changed] Each kind of item has its own sheet, so a coin, a Fatigue or a feature shows no button
+  it never uses. A gear's slot count now goes up to ten.
+- [Changed] The calendar, the journey window and a sheet's **−** / **+** steppers redraw only what
+  changed, and feel faster.
+- [Fixed] **Barter** takes any number of recipients, takes the coin before it asks, and lands a
+  trade once even when the answer is slow.
+- [Fixed] **Coin, containers and stores** lose and duplicate nothing: a sack moved into its own
+  container stays whole, an item dropped on a container's sheet from another actor moves instead of
+  copying, and the checkout refuses a sale whose container filled up since. A Kettlewright import
+  fills each container with its own contents.
+- [Fixed] **Journeys.** A watch resolves once per click, a Supply roll made for another crew is
+  dropped, Camp or Supply with nobody does nothing, arrival is announced once, and an encounter is
+  marked *Added* only when something was placed. The Wilderness Event rows are the Warden's alone.
+- [Fixed] **The party sheet.** A row always edits the member it shows, a deleted member can be
+  removed, a row dragged from another party joins it, and an item dropped on the sheet is refused
+  with a warning instead of vanishing from the character it came from.
+- [Fixed] **Unlinked tokens** are their own creature: their conditions follow their own inventory,
+  and a hotbar macro made from their weapon rolls that weapon.
+- [Fixed] A sheet its viewer cannot edit shows no control that edits. The Scars window is one per
+  character and takes one Scar per confirm, and deleting a Scar never leaves negative HP. A monster
+  re-roll keeps the Warden's description, and a promoted hireling has fists.
+- [Fixed] **Reverse the hit** gives back exactly what Apply took when the roll had a fraction. A link
+  to another item in a description works on its chat card. Names typed by players reach chat as
+  text.
+- [Fixed] A new calendar note opens on the day that was clicked.
+
 # 0.1.1
 
 - [Changed] **Automated Animations plays Cairn's own menu.** The first time a world loads, the
