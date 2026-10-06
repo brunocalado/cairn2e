@@ -27,7 +27,7 @@ export async function actionMacros() {
   const uuids = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS);
   const rows = [];
   for (const uuid of uuids) {
-    let macro = null;
+    let macro;
     // A compendium that was disabled or deleted makes `fromUuid` throw rather than answer null.
     try {
       macro = await fromUuid(uuid);

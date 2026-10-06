@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "lint": "eslint --ext .js ./module --format node_modules/eslint-plugin-i18n-json/formatter.js lang/*",
+    "lint": "eslint module",
     "check": "node checks/run.mjs",
     "css": "node tools/build-css.mjs",
     "css:watch": "node tools/build-css.mjs --watch",
@@ -14,12 +14,12 @@
   "license": "GPL-3.0-only",
   "private": true,
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@foundryvtt/foundryvtt-cli": "^3.0.4",
-    "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
     "classic-level": "^3.0.0",
     "esbuild": "^0.28.2",
-    "eslint": "^8.25.0",
-    "eslint-plugin-i18n-json": "^4.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint": "^10.12.0",
+    "eslint-plugin-import-x": "^4.17.1",
+    "globals": "^17.13.0"
   }
 }

@@ -773,7 +773,7 @@ export function tableUuidOf(ref) {
  */
 export async function drawNamedTable(ref) {
   const address = tableUuidOf(ref);
-  let table = null;
+  let table;
   if (address) {
     table = address.uuid.startsWith("Compendium.") ? await findTable(address.uuid) : address.collection.get(address.id);
   } else {
