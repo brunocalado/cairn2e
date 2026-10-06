@@ -36,7 +36,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
   static DEFAULT_OPTIONS = {
     id: `${SYSTEM_ID}-treasure`,
     classes: [SYSTEM_ID, "cairn-treasure"],
-    position: { width: 460, height: "auto" },
+    position: { width: 800, height: "auto" },
     window: { icon: "fa-solid fa-gem", title: "CAIRN.Treasure.Title", resizable: true },
     actions: {
       sourceToggle: CairnTreasure.#onSourceToggle,

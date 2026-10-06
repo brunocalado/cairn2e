@@ -10,25 +10,44 @@
      * The treasure window (module/apps/treasure.js) — what the Warden rolls *
      * on, what came up, and Send to the party's Stash.                      *
      *                                                                       *
-     * Two zones of list rows (Primitive 7) under their headings, the       *
-     * sources with a switch (Primitive 5) and ruled fields (Primitive 3),  *
-     * then the foot's two ink buttons (Primitive 2). The window is as tall *
-     * as its content; each list scrolls past a height of its own, so a    *
-     * long draft never pushes Send off the screen.                         *
+     * Two zones of list rows (Primitive 7) under their headings, side by   *
+     * side: the sources, with a switch (Primitive 5) and ruled fields      *
+     * (Primitive 3), on the left; the draft they drew on the right; and    *
+     * the foot's two ink buttons (Primitive 2) under both. The window is   *
+     * as tall as its content; each list scrolls past a height of its own, *
+     * so a long draft never pushes Send off the screen.                    *
      **************************************************************************/
 
     &.cairn-treasure {
+        /* Each part's root sits directly in the content box, so the three roots are the grid's
+           items. A column is not stretched to its neighbour's height, so a short draft keeps
+           its rows' own height, but the sources zone is: it is the drop target, and the space
+           under its hint is part of the column the Warden drops on. */
         .window-content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-areas:
+                "sources drawn"
+                "foot    foot";
+            align-items: start;
+            column-gap: 16px;
+            row-gap: 10px;
             padding: 10px 16px 14px;
+        }
+
+        .cairn-treasure-sources-zone {
+            align-self: stretch;
+            grid-area: sources;
+        }
+
+        .cairn-treasure-drawn-zone {
+            grid-area: drawn;
         }
 
         /* Both axes named: beside a scrolling axis a `visible` one is promoted to `auto`. */
         .cairn-treasure-sources,
         .cairn-treasure-drawn {
-            max-height: 260px;
+            max-height: 360px;
             overflow-x: hidden;
             overflow-y: auto;
         }
@@ -80,6 +99,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            grid-area: foot;
 
             .cairn-treasure-hint {
                 margin: 0;
