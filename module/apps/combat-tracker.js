@@ -7,7 +7,7 @@
 
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
 import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
-import { consumeRation } from "../journey.js";
+import { eatFood } from "../journey.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 
 /** "move a distance equal to their torchlight's perimeter (about 40ft)" (`procedures.md`). */
@@ -302,7 +302,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   }
 
   static async #onExhaustionRation() {
-    await CairnCombatTracker.#spendExhaustion(this.viewed, consumeRation,
+    await CairnCombatTracker.#spendExhaustion(this.viewed, eatFood,
       "CAIRN.Dungeon.RationLead", "CAIRN.Dungeon.RationEaten", "CAIRN.Dungeon.RationNone");
   }
 

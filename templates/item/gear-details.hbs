@@ -158,13 +158,13 @@
                 value="{{system.uses.max}}" min="0" maxlength="4" inputmode="numeric" data-dtype="Number" />
         </div>
         {{!-- Food the wilderness procedure spends a use of at Make Camp. A mark and not a name, so
-              a Warden's own hardtack counts; it rides under Uses because a Ration is eaten a use
-              at a time. --}}
+              a Roast Goose or a Warden's own hardtack counts; it rides under Uses because food is
+              eaten a use at a time. --}}
         <div class="cairn-field cairn-prop-row"
-            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-ration">
-            <label for="gear-ration-{{item.id}}">{{localize 'CAIRN.Ration'}}</label>
-            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.ration" value=system.ration
-                id=(concat "gear-ration-" item.id)}}
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-food">
+            <label for="gear-food-{{item.id}}">{{localize 'CAIRN.Food'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.food" value=system.food
+                id=(concat "gear-food-" item.id)}}
         </div>
         {{/if}}
 

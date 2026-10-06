@@ -49,10 +49,10 @@ export class GearData extends foundry.abstract.TypeDataModel {
       ...itemBaseFields(),
       uses: usesField(),
       grants: grantsField(),
-      // Food the wilderness procedure spends: Make Camp eats one use, Supply deals new ones
-      // (`procedures.md` → Make Camp, → Supply). A mark, not a name — a renamed or homebrew food
-      // is still food.
-      ration: new fields.BooleanField({ initial: false }),
+      // Food: what Make Camp and a dungeon's Exhaustion eat a use of (`procedures.md` → Make Camp,
+      // → Dungeon Exploration Cycle). A mark, not a name — a Roast Goose or a Warden's hardtack is
+      // food exactly as Rations are.
+      food: new fields.BooleanField({ initial: false }),
       // Physical axis. A blank die is "not a weapon"; a zero is "not armour". *Impaired* forces
       // d4 and *Enhanced* d12 regardless of the die — that substitution lives in the roll code.
       damage: new fields.StringField({

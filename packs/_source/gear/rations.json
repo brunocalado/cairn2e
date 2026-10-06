@@ -13,7 +13,7 @@
       "value": 3,
       "max": 3
     },
-    "ration": true,
+    "food": true,
     "damage": "",
     "blast": false,
     "armor": 0,

@@ -231,7 +231,7 @@ export class CairnJourneyTracker extends CairnInkMixin(HandlebarsApplicationMixi
       uuid: actor.uuid,
       name: actor.name,
       img: actor.img,
-      rations: journey.rationsCarried(actor),
+      meals: journey.mealsCarried(actor),
       fatigue: actor.items.filter((i) => i.type === "fatigue").length,
       deprived: actor.system.deprived
     }));

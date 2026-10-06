@@ -849,8 +849,8 @@ spent. The **Day** it shows counts the days of the journey.
    - Players can make these rolls too.
 3. **Spend the watch.** The button only works once everything needed has been rolled. It then
    updates the sheets for you:
-   - **Make Camp** eats one Ration per person and clears their Fatigue. Anyone with no Ration
-     becomes Deprived.
+   - **Make Camp** eats one meal per person (a use of Rations, or of any gear marked *Food*) and
+     clears their Fatigue. Anyone with no meal becomes Deprived.
    - **Supply** hands out the Rations found.
    - **Travel** moves the party closer, or finds the way again if they were lost.
 
@@ -928,10 +928,10 @@ Warden's call.
 the tracker until the next turn. On **Exhaustion**, the party chooses:
 
 - **Each adds a Fatigue** gives every character a Fatigue.
-- **Each eats a ration** spends one Ration use from each character.
+- **Each eats a ration** spends one meal (a use of Rations, or of any gear marked *Food*) from each character.
 - To rest instead, use the **Rest** button on each sheet.
 
-The card says who had no free slot or no ration left.
+The card says who had no free slot or nothing left to eat.
 
 ### When a fight breaks out
 

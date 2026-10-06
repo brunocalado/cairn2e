@@ -80,9 +80,9 @@ export const JOURNEY_QUERY = `${SYSTEM_ID}.journey`;
  */
 const EVENT = { ENCOUNTER: "encounter", EXHAUSTION: "exhaustion" };
 /** Supply creates the `gear` pack's Rations ({@link GEAR}.RATIONS); what Make Camp eats is any
- *  gear marked `ration`. Food the procedure spends is marked on the item, not read off its name:
+ *  gear marked `food`. Food the procedure spends is marked on the item, not read off its name:
  *  a Warden's renamed or homebrew food is still food. */
-const isRation = (i) => i.type === "gear" && i.system.ration;
+const isFood = (i) => i.type === "gear" && i.system.food;
 
 /* -------------------------------------------- */
 /*  Reading                                     */
@@ -95,10 +95,10 @@ export function current() {
   return journey ? foundry.utils.deepClone(journey) : null;
 }
 
-/** How many Rations the character is carrying — uses, not items: a Ration is spent a use at a
- *  time (`consumeRation`), so three items with one use left are three Rations, not three stacks. */
-export function rationsCarried(actor) {
-  return actor.items.reduce((n, i) => n + (isRation(i) ? i.system.uses.value : 0), 0);
+/** How many meals the character is carrying — uses, not items: a meal is spent a use at a
+ *  time (`eatFood`), so three items with one use left are three meals, not three stacks. */
+export function mealsCarried(actor) {
+  return actor.items.reduce((n, i) => n + (isFood(i) ? i.system.uses.value : 0), 0);
 }
 
 /**
@@ -465,7 +465,7 @@ async function resolveWatch(journey) {
   // Make Camp: a Ration each; those who ate and slept clear every Fatigue.
   if (action === "camp") {
     for (const actor of crew) {
-      const ate = await consumeRation(actor);
+      const ate = await eatFood(actor);
       if (ate) {
         // Food and rest met: the need is answered, so Deprived lifts first — a Deprived PC "cannot
         // recover … from Fatigue" (`core-rules.md`), and nothing else in the system lifts it.
@@ -643,12 +643,12 @@ async function end() {
 /*  The sheets                                  */
 /* -------------------------------------------- */
 
-/** Spend one use of the character's Rations. `false` when there is none left to spend. Also what
+/** Spend one use of the character's food. `false` when there is none left to spend. Also what
  *  a dungeon's Exhaustion spends (`module/apps/combat-tracker.js`). */
-export async function consumeRation(actor) {
-  const rations = actor.items.find((i) => isRation(i) && i.system.uses.value > 0);
-  if (!rations) return false;
-  await rations.update({ "system.uses.value": rations.system.uses.value - 1 });
+export async function eatFood(actor) {
+  const meal = actor.items.find((i) => isFood(i) && i.system.uses.value > 0);
+  if (!meal) return false;
+  await meal.update({ "system.uses.value": meal.system.uses.value - 1 });
   return true;
 }
 
