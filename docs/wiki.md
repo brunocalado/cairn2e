@@ -52,7 +52,7 @@ depend on who you are:
 | Section | Who sees it | Buttons |
 |---|---|---|
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
-| **Generators** | the Warden only | Generate NPC · Generate Hireling · Generate Name · Generate Monster · Generate Faction |
+| **Generators** | the Warden only | Generate NPC · Generate Hireling · Generate Name · Generate Monster · Generate Faction · Treasure |
 | **Campaign** | the Warden only | Calendar · Journey · Store |
 | **Reference** | the Warden only | Rules Summary |
 
@@ -346,10 +346,10 @@ which the rules write as *d8+d8*.
 
 ### Giving things to another character
 
-- **Barter**, in the sheet's **Actions** menu, hands gear and coin to another player's character.
-  Tick what goes, type an amount of coin, pick who gets it and press **Hand over**. Whatever
-  doesn't fit on the other character stays with you, and a card in the chat says what changed
-  hands.
+- **Barter**, in the sheet's **Actions** menu, hands gear and coin to another player's character,
+  or to your party's **Stash** (see [§10](#10-the-party)). Tick what goes, type an amount of coin,
+  pick who gets it and press **Hand over**. Whatever doesn't fit on the other character stays
+  with you, and a card in the chat says what changed hands.
 - **Drag an item onto another sheet you own**, such as your hireling's or your mule's, to move it
   there. The Warden can do this between any two sheets.
 
@@ -551,11 +551,24 @@ directory like any other actor and choose **Party** as its type.
 
 - **Drag characters onto its sheet** to add them. The order of the list is the **marching order**;
   drag rows to change it.
-- The sheet has two tabs: **Party** for the player characters and **Followers** for hirelings,
-  mounts and other companions. Each row shows that member's HP, attributes, armor and load at a
-  glance. Click a name to open their sheet.
-- **A party carries nothing.** An item dropped on its sheet is refused with a warning and stays
-  where it was: drop it on a member's sheet instead.
+- The sheet has three tabs: **Party** for the player characters, **Followers** for hirelings,
+  mounts and other companions, and **Stash**. Each row on the first two shows that member's HP,
+  attributes, armor and load at a glance. Click a name to open their sheet.
+- **The Stash** is what the group holds and nobody carries: treasure found and not yet shared out,
+  a sack of coin, the spare rope. Drop gear or coin on the party's sheet and it lands in the
+  Stash tab, listed like the things on a character's Aside tab.
+  - **It weighs on nobody.** The party has no slots, so the Stash has no limit, and nothing in it
+    counts against any member's ten. Gear in the Stash is never equipped, and what is part of
+    a body cannot go in.
+  - **Members take things out by dragging** them onto their own sheet, where the ten slots apply
+    as always, or by **Barter** (below). Either way a container goes with everything inside it.
+  - **Barter** sits beside the Stash's name. A member hands gear and coin from their character to
+    the party, and takes them back out of the party to a character, through the same window as
+    on a character sheet (see [§3](#giving-things-to-another-character)). The party is offered
+    only to characters on its list. Whatever doesn't fit on the character stays in the Stash.
+  - **The Stash is open to the players by default**, because they own the party. A Warden who
+    wants it closed lowers the party's ownership (its default permission, as for any actor): a
+    player who can only observe it sees the Stash but is not offered Barter.
 - **Press P** to open the active party's sheet from anywhere. To choose which party is active,
   right-click it in the Actors directory and pick **Make this the active party**. (You can change
   the key under **Configure Controls**.)
@@ -708,6 +721,45 @@ for the place), **Faction**, **Realm** and **Forest**.
 <p align="center">
   <img src="images/name-generator.webp" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="60%">
 </p>
+
+### Treasure
+
+**Treasure**, in the **Generators** section, opens a window where the Warden rolls loot and sends
+it to the active party's **Stash** (see [§10](#10-the-party)). The Cairn 2e book has no treasure
+table: it says a treasure is specific to where it is found, and that it tells a story. So this is
+a table aid, not a rule. Its defaults are the price bands of the system's own compendiums, and it
+invents nothing.
+
+- **Roll on** lists what can be rolled, each with a switch and a number for how many times it is
+  drawn (1 to 10). A new world offers **Coin**, the four **Valuables** bands, the three **Relics**
+  bands, the two **Scrolls** bands and the two **Spellbooks** bands, all switched off. The window
+  remembers what you switched on and how many.
+- **Choose your sources.** Drag a **Roll Table**, or a **folder of Items**, from a compendium or
+  the sidebar onto the list to offer it. The **×** takes a source off the list; it never deletes
+  the table or the folder. A folder is read with its subfolders, and only gear is drawn from it.
+  A table is rolled like any other, so a result that points at another table follows it.
+- **Coin** is rolled by a dice formula in gold pieces. It starts as `3d6*10`, a choice for
+  this tool and not the rulebook's: it lands between 30 and 180 gold, so a roll often crosses the
+  100 gold where a sack stops being petty and starts to weigh. Type another formula in its field;
+  one that isn't a dice formula is not kept.
+- **Roll** adds to the **Drawn** list instead of replacing it. A table result that is gear or coin
+  becomes that gear or coin, a text result becomes a gear with that text for its name (so a table of
+  your own art objects works, and you can edit the name once it is sent), and anything else is left
+  out, with a notice saying how many.
+- **Strike it** (the **×** on a row) throws away a row you don't want, and **Clear** throws away
+  all of them. Then roll again, if you like: what you kept stays. Closing the window drops
+  whatever is drawn.
+- **Send** names the party it writes to (**Send to** *the party's name*). It puts everything
+  still drawn into the Stash and empties the list. Which party that is, is the **active party**
+  (see [§10](#10-the-party)). Anything the party can't hold stays drawn, with a notice.
+- **The card.** Sending posts a card in the open chat, saying what was found and with an **Open
+  the Stash** button that opens the party's sheet on its Stash. It only tells the table: it holds
+  nothing, and nothing is handed over by it. The button is hidden from anyone who can't see the
+  party. Players take what they want from the Stash itself.
+- **With no active party**, the window says so and **Roll** and **Send** are held back. **Create
+  a party** makes one, and the first party in a world becomes the active one by itself.
+
+A Warden's macro can open it with `cairn2e.treasure();`.
 
 ### Unknown gear
 
@@ -947,6 +999,7 @@ cairn2e.reaction();         // 2d6 on the Reaction table
 cairn2e.dieOfFate();        // 1d6
 cairn2e.rulesSummary();     // open the rules summary
 cairn2e.calendar();         // open the calendar
+cairn2e.treasure();         // Warden only: open the Treasure window
 cairn2e.resetPlayerHotbars(); // Warden only: refill every player's hotbar
 cairn2e.restoreDefaultStores(); // Warden only: every store back to the system's ten
 ```
