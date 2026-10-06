@@ -10,6 +10,8 @@ import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
 import { CairnStore } from "./apps/store.js";
 import { defaultStores } from "./store-rules.js";
+import { CairnTreasure } from "./apps/treasure.js";
+import { defaultTreasureSources } from "./treasure-rules.js";
 import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
@@ -103,7 +105,9 @@ export const registerSettings = () => {
     scope: "world",
     config: false,
     type: String,
-    default: ""
+    default: "",
+    // The Treasure window sends to this party, and with none it can neither roll nor send.
+    onChange: () => CairnTreasure.refresh()
   });
 
   // The Warden's own monster art (module/bestiary-art.js). Flipped mid-session it should not
@@ -193,6 +197,16 @@ export const registerSettings = () => {
       const sheet = game.user.character?.sheet;
       if (sheet?.rendered) sheet.render({ parts: ["nav"] });
     }
+  });
+
+  // Hidden: what the Warden's Treasure window offers (module/apps/treasure.js). Written on every
+  // edit, as the stores are, so the window reopens as it was left.
+  game.settings.register(SYSTEM_ID, SETTINGS.TREASURE_SOURCES, {
+    scope: "world",
+    config: false,
+    type: Array,
+    default: defaultTreasureSources(),
+    onChange: () => CairnTreasure.refresh()
   });
 
   // Hidden: the Warden's macros for every character's Actions menu, edited only through the menu

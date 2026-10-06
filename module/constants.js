@@ -135,7 +135,13 @@ export const SETTINGS = {
    *  holds and a store never keeps a copy that can drift. World scope: the Warden writes, core
    *  broadcasts, and a player's open window redraws on `onChange`. Only the Warden writes it,
    *  which the window enforces by drawing the editing controls for nobody else. */
-  STORES: "stores"
+  STORES: "stores",
+
+  /** Hidden (`config: false`) — what the Warden's Treasure window offers to roll on, in the
+   *  Warden's order (`module/treasure-rules.js`): RollTables, Item folders and coin by formula,
+   *  each with whether it is ticked and how many times it is drawn. World scope and written on
+   *  every edit, like the stores; no label is stored, so a renamed table shows its new name. */
+  TREASURE_SOURCES: "treasure-sources"
 };
 
 /**

@@ -15,6 +15,7 @@ import { CairnCalendarApp } from "./calendar.js";
 import { CairnNameGenerator } from "./name-generator.js";
 import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
+import { CairnTreasure } from "./treasure.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { importKettlewrightCharacter } from "../kettlewright-import.js";
 
@@ -45,6 +46,7 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
       generateMonster: CairnSidebarTab.#onGenerateMonster,
       generateFaction: CairnSidebarTab.#onGenerateFaction,
       generateName: CairnSidebarTab.#onGenerateName,
+      openTreasure: CairnSidebarTab.#onOpenTreasure,
       openJourney: CairnSidebarTab.#onOpenJourney,
       openStore: CairnSidebarTab.#onOpenStore,
       openRules: CairnSidebarTab.#onOpenRules,
@@ -123,6 +125,11 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
   /** @this {CairnSidebarTab} */
   static #onGenerateName() {
     CairnNameGenerator.open();
+  }
+
+  /** @this {CairnSidebarTab} */
+  static #onOpenTreasure() {
+    CairnTreasure.open();
   }
 
   /** @this {CairnSidebarTab} */

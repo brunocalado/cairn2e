@@ -1,0 +1,98 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The treasure window (module/apps/treasure.js) — what the Warden rolls *
+     * on, what came up, and Send to the party's Stash.                      *
+     *                                                                       *
+     * Two zones of list rows (Primitive 7) under their headings, the       *
+     * sources with a switch (Primitive 5) and ruled fields (Primitive 3),  *
+     * then the foot's two ink buttons (Primitive 2). The window is as tall *
+     * as its content; each list scrolls past a height of its own, so a    *
+     * long draft never pushes Send off the screen.                         *
+     **************************************************************************/
+
+    &.cairn-treasure {
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px 16px 14px;
+        }
+
+        /* Both axes named: beside a scrolling axis a `visible` one is promoted to `auto`. */
+        .cairn-treasure-sources,
+        .cairn-treasure-drawn {
+            max-height: 260px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .cairn-treasure-kind {
+            color: var(--cairn-ink-soft);
+            flex: 0 0 14px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .cairn-treasure-img {
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            flex: 0 0 auto;
+            height: 22px;
+            object-fit: cover;
+            width: 22px;
+        }
+
+        .cairn-treasure-label {
+            flex: 1;
+            font-size: 14px;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .cairn-treasure-formula {
+            flex: 0 0 5.5rem;
+            text-align: center;
+        }
+
+        .cairn-treasure-count {
+            flex: 0 0 2.5rem;
+            font-variant-numeric: tabular-nums;
+            text-align: center;
+        }
+
+        .cairn-treasure-hint {
+            color: var(--cairn-ink-soft);
+            font-size: 12px;
+            font-style: italic;
+            margin: 6px 0 0;
+        }
+
+        .cairn-treasure-foot {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .cairn-treasure-hint {
+                margin: 0;
+            }
+        }
+
+        .cairn-treasure-buttons {
+            display: flex;
+            gap: 8px;
+
+            button {
+                flex: 1;
+            }
+        }
+    }
+}

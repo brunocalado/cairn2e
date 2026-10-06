@@ -50,6 +50,7 @@ export const CSS_SOURCES = [
   "rules-summary.css",
   "calendar.css",
   "name-generator.css",
+  "treasure.css",
   "dialogs.css",
   "journal-pages.css",
   "table-draw.css",

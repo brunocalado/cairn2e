@@ -1,0 +1,32 @@
+{{!-- What the last rolls drew and the Warden has not struck: the draft, this window's alone. A
+      thing is its image and its name; coin is its amount. The × strikes one row; Clear, on the
+      head, strikes them all. Send writes what is left onto the party. --}}
+<section class="cairn-treasure-drawn-zone">
+    <div class="cairn-zone-head">
+        <h4 class="cairn-zone">{{localize "CAIRN.Treasure.Drawn"}}</h4>
+        {{#if drawn.length}}
+        <a class="cairn-zone-add" data-action="drawnClear">
+            <i class="fas fa-eraser" inert></i><span>{{localize "CAIRN.Treasure.Clear"}}</span>
+        </a>
+        {{/if}}
+    </div>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-treasure-drawn" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list cairn-treasure-drawn">
+        {{#each drawn as |row|}}
+        <li class="cairn-slot cairn-treasure-row" data-key="{{row.key}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="treasure-drawn-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            {{#if row.coin}}
+            <i class="fa-solid fa-coins cairn-treasure-kind" inert></i>
+            {{else}}
+            <img class="cairn-treasure-img" src="{{row.img}}" alt="" />
+            {{/if}}
+            <span class="cairn-treasure-label">{{row.name}}</span>
+            <span class="cairn-item-controls">
+                <a data-action="drawnRemove" data-tooltip="{{localize 'CAIRN.Treasure.Strike'}}"><i class="fas fa-xmark"></i></a>
+            </span>
+        </li>
+        {{else}}
+        <li class="cairn-empty">{{localize "CAIRN.Treasure.Empty"}}</li>
+        {{/each}}
+    </ol>
+</section>

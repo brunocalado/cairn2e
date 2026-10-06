@@ -1,0 +1,34 @@
+{{!-- What the Warden offers to roll on: one list row (Primitive 7) per source — the switch that
+      ticks it, what it is, and how many times it is drawn; coin also carries its formula. The ×
+      takes a table or a folder off the list, never out of the world; coin has no ×, because
+      nothing could be dropped to bring it back. A source whose document is gone keeps its row,
+      named by its id, so the Warden sees it and takes it off.
+
+      The whole section is the drop target for a RollTable or an Item folder, from the world or a
+      pack — the hint under the list says so, always, since the list is never empty. --}}
+<section class="cairn-treasure-sources-zone">
+    <h4 class="cairn-zone">{{localize "CAIRN.Treasure.Sources"}}</h4>
+    <div class="cairn-zone-rule" data-ink="hline" data-ink-seed="zone-treasure-sources" data-ink-w="1" data-ink-a="0.34"></div>
+    <ol class="cairn-plain-list cairn-treasure-sources">
+        {{#each sources as |s|}}
+        <li class="cairn-slot cairn-treasure-source" data-source-id="{{s.id}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="treasure-source-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" action="sourceToggle" value=s.on tooltip=s.label}}
+            <i class="fa-solid {{s.icon}} cairn-treasure-kind" inert></i>
+            <span class="cairn-treasure-label{{#if s.missing}} cairn-broken{{/if}}">{{s.label}}</span>
+            {{#if s.isCoin}}
+            <input type="text" name="formula" class="cairn-treasure-formula" value="{{s.formula}}"
+                   aria-label="{{localize 'CAIRN.Treasure.Formula'}}" data-tooltip-text="{{localize 'CAIRN.Treasure.Formula'}}">
+            {{/if}}
+            <input type="number" name="count" class="cairn-treasure-count" value="{{s.count}}" min="1" max="{{../maxCount}}" step="1"
+                   aria-label="{{localize 'CAIRN.Treasure.Count'}}" data-tooltip-text="{{localize 'CAIRN.Treasure.Count'}}">
+            <span class="cairn-item-controls">
+                {{#unless s.isCoin}}
+                <a data-action="sourceRemove" data-tooltip="{{localize 'CAIRN.Treasure.Remove'}}"><i class="fas fa-xmark"></i></a>
+                {{/unless}}
+            </span>
+        </li>
+        {{/each}}
+    </ol>
+    <p class="cairn-treasure-hint">{{localize "CAIRN.Treasure.DropHere"}}</p>
+</section>

@@ -25,6 +25,8 @@ import { renderEncounterButton } from "./encounters.js";
 import * as journey from "./journey.js";
 import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnStore } from "./apps/store.js";
+import { CairnTreasure } from "./apps/treasure.js";
+import { renderTreasureButton } from "./treasure.js";
 import { CairnRulesSummary } from "./apps/rules-summary.js";
 import * as kettlewrightImport from "./kettlewright-import.js";
 import { CairnCharacterCreator } from "./apps/character-creator.js";
@@ -86,9 +88,10 @@ Hooks.once("init", async function () {
     characterGenerator,
     // Called by the weapon-damage macros `createCairnMacro` writes to the hotbar.
     rollItemMacro,
-    // The world's active party Actor, or `null`. Three callers want it — the P key, and both
-    // halves of the directory's "Make active" entry — so it is derived once, here, rather than
-    // each of them re-reading the setting and re-testing the subtype.
+    // The world's active party Actor, or `null`. Several callers want it — the P key, both
+    // halves of the directory's "Make active" entry, and the Treasure window that sends to it — so
+    // it is derived once, here, rather than each of them re-reading the setting and re-testing the
+    // subtype.
     get party() {
       const actor = game.actors.get(game.settings.get(SYSTEM_ID, SETTINGS.ACTIVE_PARTY));
       return actor?.type === "party" ? actor : null;
@@ -128,6 +131,8 @@ Hooks.once("init", async function () {
     // Warden-only: every store back to the system's own, after a warning (module/apps/store.js).
     // The "Restore Default Stores" macro calls it.
     restoreDefaultStores: () => CairnStore.restoreDefaults(),
+    // Warden-only: the Treasure window, which refuses to open for anyone else (module/apps/treasure.js).
+    treasure: () => CairnTreasure.open(),
   };
   // The same object as a bare global, so a macro is one line: `cairn2e.rest()`.
   globalThis[SYSTEM_ID] = game.cairn2e;
@@ -646,6 +651,9 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
       scarBtn.hidden = true;
     }
   }
+
+  // The treasure card's button opens the party on its Stash, for whoever may see the party.
+  renderTreasureButton(message, html);
 
   // The journey's start card carries the way back into the tracker for a player who closed it.
   const journeyBtn = html.querySelector(".open-journey");

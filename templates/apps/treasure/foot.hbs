@@ -1,0 +1,21 @@
+{{!-- Roll and Send. Send names the party it writes to, because "which party" is answered by
+      "Make active" in the Actors directory and not here. With no active party there is nowhere to
+      send: both buttons are held back, the reason is said, and Create makes one — the first party
+      becomes the active one by itself. --}}
+<footer class="cairn-treasure-foot">
+    {{#unless party}}
+    <p class="cairn-treasure-hint">{{localize "CAIRN.Party.NoActiveParty"}}</p>
+    <button type="button" data-action="partyCreate">
+        <i class="fa-solid fa-people-group" inert></i> {{localize "CAIRN.Treasure.CreateParty"}}
+    </button>
+    {{/unless}}
+    <div class="cairn-treasure-buttons">
+        <button type="button" data-action="treasureRoll" {{disabled (not canRoll)}}>
+            <i class="fa-solid fa-dice" inert></i> {{localize "CAIRN.Treasure.Roll"}}
+        </button>
+        <button type="button" data-action="treasureSend" {{disabled (not canSend)}}>
+            <i class="fa-solid fa-sack-dollar" inert></i>
+            {{#if party}}{{localize "CAIRN.Treasure.Send" party=party.name}}{{else}}{{localize "CAIRN.Treasure.SendNowhere"}}{{/if}}
+        </button>
+    </div>
+</footer>
