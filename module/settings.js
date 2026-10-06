@@ -14,6 +14,7 @@ import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { deliverAnimations } from "./automated-animations.js";
+import { syncSceneDarkness } from "./calendar.js";
 
 /**
  * Register world settings.
@@ -140,6 +141,18 @@ export const registerSettings = () => {
     type: Object,
     default: null,
     onChange: (map) => injectBestiaryArt(map)
+  });
+
+  // The active scene's darkness from the clock (module/calendar.js). Turned on mid-session, the
+  // active scene catches up at once rather than at the next tick of the clock.
+  game.settings.register(SYSTEM_ID, SETTINGS.CLOCK_DARKNESS, {
+    name: "CAIRN.Settings.ClockDarkness.Name",
+    hint: "CAIRN.Settings.ClockDarkness.Hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: () => syncSceneDarkness()
   });
 
   // Shown only where it does something: without Automated Animations it would be a switch wired

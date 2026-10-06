@@ -133,6 +133,32 @@ export function watchStartFor(worldTime, index, g) {
   return start + mod(index - watchAt(worldTime, g), WATCHES.length) * g.watch;
 }
 
+/**
+ * Twilight on an English equinox day, as fractions of the calendar's day: full dark until 04:00,
+ * daylight from 06:30 to 17:30, full dark again from 20:00. The SRD names no sunrise; this is a
+ * table decision. Fractions rather than hours, as the watches are, so a calendar module's longer
+ * day stretches the curve with it.
+ */
+export const TWILIGHT = Object.freeze({ dawn: [4 / 24, 6.5 / 24], dusk: [17.5 / 24, 20 / 24] });
+
+/**
+ * A scene's darkness level at a moment, 0 to 1: linear through each twilight, in steps of 0.05 so
+ * a minute's nudge lands on the same step and writes nothing.
+ * @param {number} worldTime  seconds
+ * @param {{day: number}} g   {@link watchGeometry}'s
+ * @returns {number}
+ */
+export function darknessAt(worldTime, { day }) {
+  const t = mod(worldTime, day) / day;
+  const ramp = ([a, b]) => (t - a) / (b - a);
+  let level;
+  if ((t < TWILIGHT.dawn[0]) || (t >= TWILIGHT.dusk[1])) level = 1;
+  else if (t < TWILIGHT.dawn[1]) level = 1 - ramp(TWILIGHT.dawn);
+  else if (t < TWILIGHT.dusk[0]) level = 0;
+  else level = ramp(TWILIGHT.dusk);
+  return Math.round(level * 20) / 20;
+}
+
 /** Days from the epoch to a day: `month` an index of the calendar's months (12 the Reclamation),
  *  `day` 0-based. */
 export const absoluteDay = (year, month, day) => daysBeforeYear(year) + month * MONTH_DAYS + day;

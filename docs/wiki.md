@@ -113,8 +113,15 @@ The date and time are also printed in the chat box, between its Format menu and 
 everyone.
 
 During a **journey** the journey spends the time, so these controls are switched off and clicking
-the dial opens the journey. The calendar is Foundry's own world time, so a time-of-day lighting
-module follows it.
+the dial opens the journey.
+
+**Darkness.** A scene can follow the clock: tick **Follows the clock** under **Darkness Level
+Lock** in the scene's **Environment** settings. While it is the active scene, its darkness fades
+in over each change: fully dark from 20:00 to 04:00, fully light from 06:30 to 17:30, with dawn and
+dusk between. Leave it off for dungeons and interiors, which stay dark at noon; a locked scene is
+left alone too. A scene that was not active while time passed catches up when it is activated. If
+a time-of-day lighting module already does this, turn off **Scene darkness follows the clock** in
+Configure Settings, or the two will overwrite each other.
 
 <p align="center">
   <img src="images/calendar.webp" alt="The calendar: today and the time, the watch dial, the seasons over the months, a month grid with note marks, the weather cloud beside the selected date, and that day's notes" width="70%">
@@ -127,6 +134,8 @@ few options for this system:
 
 - **Bestiary artwork** and **Bestiary artwork folder**: use your own pictures for the monsters in
   the Bestiary compendium (see [§17](#17-compendiums)).
+- **Scene darkness follows the clock**: on by default; turn it off when a lighting module sets
+  the darkness instead (see [The calendar and the watch](#the-calendar-and-the-watch)).
 - **Actions menu macros → Choose macros**: drop macros here, and they appear in every character's
   **Actions** menu, run as that character (see [§3](#3-the-character-sheet)). A player sees only
   the ones they may run.

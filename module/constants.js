@@ -45,9 +45,9 @@ export const EDIT_LIMITS = Object.freeze({ ageDigits: 4, statDigits: 2, rateDigi
  * `use-gold-threshold`, `show-gold-not-cost`, `show-features-section`, `use-cairn-dice-notation`
  * are gone — and `show-generate-header` with them: it turned a Warden's tool into a switch that,
  * once on, showed it to players too. "Regenerate" is gated on the Warden's role instead.
- * Of the keys that remain, exactly one is a toggle — `BESTIARY_ART`, which configures away no
- * rule, only whose pictures the monsters wear. The rest are storage, pointers, or the record of a
- * one-time install.
+ * Of the keys that remain, two are toggles, and neither configures away a rule: `BESTIARY_ART`
+ * chooses whose pictures the monsters wear, and `CLOCK_DARKNESS` steps aside for a lighting module
+ * that does the same job. The rest are storage, pointers, or the record of a one-time install.
  */
 export const SETTINGS = {
   /** Hidden (`config: false`) — the one journey underway (`module/journey.js`), or `null`. It
@@ -111,6 +111,11 @@ export const SETTINGS = {
    *  client must apply the same answer; core broadcasts the write and each client's `onChange`
    *  injects it. Not a toggle: it is the transport. */
   BESTIARY_ART_MAP: "bestiary-art-map",
+
+  /** Shown — whether a scene that follows the clock has its darkness set from the world time
+   *  (`module/calendar.js#syncSceneDarkness`). On by default, so the box on the scene is the one
+   *  opt-in; off for a Warden whose lighting module does it, or the two overwrite each other. */
+  CLOCK_DARKNESS: "clock-darkness",
 
   /** Shown only while Automated Animations is active — whether the system's animations replace
    *  that module's Automatic Recognition menu, once, and later versions add their new entries
@@ -260,7 +265,12 @@ export const FLAGS = {
   /** On a JournalEntry: the journal generated factions are filed in (`module/faction-generator.js`),
    *  found by this and never by its name — so the name can be in the table's language, and the
    *  Warden can rename it. */
-  FACTIONS_JOURNAL: "factionsJournal"
+  FACTIONS_JOURNAL: "factionsJournal",
+
+  /** On a Scene: `true` when its darkness follows the world clock while it is the active scene
+   *  (`module/calendar.js#syncSceneDarkness`). Opt-in, because a dungeon stays dark at noon. Set
+   *  by the box the system adds to the scene's Environment settings. */
+  FOLLOWS_CLOCK: "follows-clock"
 };
 
 /**

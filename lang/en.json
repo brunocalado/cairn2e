@@ -1167,6 +1167,12 @@
     "Take": "Take this Scar",
     "Title": "Scars"
   },
+  "CAIRN.Scene": {
+    "FollowsClock": {
+      "Name": "Follows the clock",
+      "Hint": "While this is the active scene, its darkness follows the world time: dark from 20:00 to 04:00, light from 06:30 to 17:30, with dawn and dusk between. Leave it off for dungeons and interiors."
+    }
+  },
   "CAIRN.ScrollHint": "A Scroll is petty, causes no Fatigue, and is consumed after a single use.",
   "CAIRN.SecondWeapon": "Second weapon",
   "CAIRN.SetAside": "Set aside \u2014 it stays written down and leaves your hands",
@@ -1189,6 +1195,10 @@
     "BestiaryArtPath": {
       "Name": "Bestiary artwork folder",
       "Hint": "A folder under Data/ holding portraits/ and tokens/. Default: cairn2e-assets."
+    },
+    "ClockDarkness": {
+      "Name": "Scene darkness follows the clock",
+      "Hint": "A scene with \u201cFollows the clock\u201d ticked in its Environment settings grows dark at dusk and light at dawn while it is the active scene. Turn this off if a lighting module already does it, or the two will overwrite each other."
     },
     "Animations": {
       "Name": "Cairn animations for Automated Animations",

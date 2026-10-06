@@ -5,10 +5,10 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, SETTINGS } from "./constants.js";
+import { SYSTEM_ID, SETTINGS, FLAGS } from "./constants.js";
 import {
   isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, START_YEAR, RECLAMATION,
-  watchGeometry, watchAt, nextWatchStart
+  watchGeometry, watchAt, nextWatchStart, darknessAt
 } from "./calendar-rules.js";
 
 const month = (key, ordinal, days = 24, leapDays) => ({
@@ -149,6 +149,22 @@ export function currentWatch() {
 /** Move the world to the start of the next watch. Writes `core.time`, so the Warden's. */
 export function advanceWatch() {
   return game.time.set(nextWatchStart(game.time.worldTime, geometry()));
+}
+
+/**
+ * Set the active scene's darkness from the clock, if it follows the clock. Called on
+ * `updateWorldTime` and not from `CairnCalendar`, so it still runs under a calendar module. The
+ * active GM alone writes it: the hook fires on every client, and a player may not update a scene.
+ * A locked scene is left alone, since core drops a level written without its lock.
+ */
+export function syncSceneDarkness() {
+  const scene = game.scenes.active;
+  if (!game.user.isActiveGM || !scene) return;
+  if (!game.settings.get(SYSTEM_ID, SETTINGS.CLOCK_DARKNESS)) return;
+  if (!scene.getFlag(SYSTEM_ID, FLAGS.FOLLOWS_CLOCK) || scene.environment.darknessLock) return;
+  const level = darknessAt(game.time.worldTime, geometry());
+  if (level === scene.environment.darknessLevel) return;
+  return scene.update({ "environment.darknessLevel": level }, { animateDarkness: true });
 }
 
 /* -------------------------------------------- */

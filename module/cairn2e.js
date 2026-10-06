@@ -53,7 +53,7 @@ import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
-import { registerCalendar, installCalendar, CairnCalendar, mountChatClock, refreshChatClock } from "./calendar.js";
+import { registerCalendar, installCalendar, CairnCalendar, mountChatClock, refreshChatClock, syncSceneDarkness } from "./calendar.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
 import { installCalendarEvents } from "./calendar-notes.js";
 import { GRANT_QUERY, applyGrant, onDropCanvasData } from "./grants.js";
@@ -279,10 +279,34 @@ Hooks.once("init", async function () {
       onChange: () => CairnCalendarApp.open()
     };
   });
-  // Every open calendar redraws what the clock moved, whoever moved it.
+  // Every open calendar redraws what the clock moved, whoever moved it, and the active scene's
+  // darkness follows it if the scene asked to.
   Hooks.on("updateWorldTime", () => {
     CairnCalendarApp.onWorldTime();
     refreshChatClock();
+    syncSceneDarkness();
+  });
+  // A scene that sat idle while time passed catches up when it is activated, and the active one
+  // as soon as its box is ticked.
+  Hooks.on("updateScene", (scene, changed) => {
+    if (changed.active || foundry.utils.hasProperty(changed, `flags.${SYSTEM_ID}.${FLAGS.FOLLOWS_CLOCK}`)) {
+      syncSceneDarkness();
+    }
+  });
+  // The scene's opt-in, under core's "Darkness Level Lock" in its Environment settings. Named as
+  // the flag's path, so core's own form submit writes it with the rest of the scene.
+  Hooks.on("renderSceneConfig", (app, element) => {
+    const name = `flags.${SYSTEM_ID}.${FLAGS.FOLLOWS_CLOCK}`;
+    const lock = element.querySelector('[name="environment.darknessLock"]')?.closest(".form-group");
+    if (!lock || element.querySelector(`[name="${name}"]`)) return;
+    const { createFormGroup, createCheckboxInput } = foundry.applications.fields;
+    lock.after(createFormGroup({
+      label: "CAIRN.Scene.FollowsClock.Name",
+      hint: "CAIRN.Scene.FollowsClock.Hint",
+      localize: true,
+      rootId: app.id,
+      input: createCheckboxInput({ name, value: app.document.getFlag(SYSTEM_ID, FLAGS.FOLLOWS_CLOCK) ?? false })
+    }));
   });
   // The date and time under the chat box's Format menu, wherever core moves the box.
   Hooks.on("renderChatInput", (_app, elements) => mountChatClock(elements["#chat-message"]));
