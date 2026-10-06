@@ -42,6 +42,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
       sourceToggle: CairnTreasure.#onSourceToggle,
       sourceRemove: CairnTreasure.#onSourceRemove,
       treasureRoll: CairnTreasure.#onRoll,
+      drawnOpen: CairnTreasure.#onDrawnOpen,
       drawnRemove: CairnTreasure.#onDrawnRemove,
       drawnClear: CairnTreasure.#onDrawnClear,
       treasureSend: CairnTreasure.#onSend,
@@ -134,7 +135,7 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     const gp = game.i18n.localize("CAIRN.GoldAbbrev");
     context.drawn = this.#drawn.map((row) => row.kind === "coin"
       ? { key: row.key, coin: true, name: `${row.amount} ${gp}` }
-      : { key: row.key, name: row.name, img: row.img });
+      : { key: row.key, name: row.name, img: row.img, uuid: row.uuid });
     const party = game.cairn2e.party;
     context.party = party && { name: party.name };
     context.canRoll = !!party && !this.#busy && sources.some((s) => s.on);
@@ -258,6 +259,17 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
       }
       if (skipped) ui.notifications.info(game.i18n.localize("CAIRN.Treasure.NotAnItem", { count: skipped }));
     });
+  }
+
+  /**
+   * A drawn row's name opens the thing it was drawn from: read-only while its pack is locked. A
+   * world item opens its own sheet, which the Warden can edit — that edits the world item, not
+   * the drawn copy, which was taken when the row was rolled.
+   */
+  static async #onDrawnOpen(event, target) {
+    const uuid = target.closest("[data-uuid]")?.dataset.uuid;
+    const doc = uuid ? await fromUuid(uuid) : null;
+    doc?.sheet.render({ force: true });
   }
 
   /** @this {CairnTreasure} */

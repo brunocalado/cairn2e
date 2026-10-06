@@ -23,8 +23,10 @@ const CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/treasure-card.hbs`;
 
 /**
  * A drawn row lives in the window only. Closing the window drops it; the Warden rolls again.
- * @typedef {{ key: string, kind: "item", data: object, name: string, img: string }
+ * @typedef {{ key: string, kind: "item", data: object, name: string, img: string, uuid: string|null }
  *          | { key: string, kind: "coin", amount: number }} DrawnRow
+ * `uuid` is the document the row was drawn from: a pack's item, or a world item a folder or table
+ * named. Null for a gear made from a table's words, which has nothing behind its name.
  */
 
 /**
@@ -58,14 +60,14 @@ function itemRow(doc) {
   const data = copyOf(doc);
   // On nobody's body and in no container: the Stash is one flat list.
   Object.assign(data.system, { container: "", carried: true, equipped: false });
-  return { key: foundry.utils.randomID(), kind: "item", data, name: doc.tableName ?? doc.name, img: doc.img };
+  return { key: foundry.utils.randomID(), kind: "item", data, name: doc.tableName ?? doc.name, img: doc.img, uuid: doc.uuid };
 }
 
 /** A gear made from words alone — a Warden's own "art objects" table, a line they can edit later. */
 function textRow(name) {
   const data = { name, type: "gear", system: {} };
   const img = Item.implementation.getDefaultArtwork(data).img;
-  return { key: foundry.utils.randomID(), kind: "item", data: { ...data, img }, name, img };
+  return { key: foundry.utils.randomID(), kind: "item", data: { ...data, img }, name, img, uuid: null };
 }
 
 const coinRow = (amount) => ({ key: foundry.utils.randomID(), kind: "coin", amount });

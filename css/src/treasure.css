@@ -77,6 +77,12 @@
             white-space: nowrap;
         }
 
+        /* The name of a row drawn from a document opens that document's sheet, as an inventory
+           row's name does. */
+        .cairn-treasure-label[data-action] {
+            cursor: pointer;
+        }
+
         .cairn-treasure-formula {
             flex: 0 0 5.5rem;
             text-align: center;
