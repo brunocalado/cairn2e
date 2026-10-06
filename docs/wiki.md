@@ -736,8 +736,8 @@ invents nothing.
   switched off. The window
   remembers what you switched on.
 - **Choose your sources.** Drag a **Roll Table**, or a **folder of Items**, from a compendium or
-  the sidebar onto the list to offer it. The **×** takes a source off the list; it never deletes
-  the table or the folder. A folder is read with its subfolders, and only gear is drawn from it.
+  the sidebar onto the list to offer it. The **×** takes a source off the list, after asking (hold Shift to skip the question); it never
+  deletes the table or the folder. A folder is read with its subfolders, and only gear is drawn from it.
   A table is rolled like any other, so a result that points at another table follows it.
 - **Coin** is rolled by a dice formula in gold pieces. It starts as `3d6*10`, a choice for
   this tool and not the rulebook's: it lands between 30 and 180 gold, so a roll often crosses the

@@ -280,10 +280,28 @@ export class CairnTreasure extends CairnInkMixin(HandlebarsApplicationMixin(Appl
     if (id) this.#save(withSourceSettings(this.#sources, id, { on: target.checked }));
   }
 
-  /** The × on a source row: off the list, not out of the world. @this {CairnTreasure} */
-  static #onSourceRemove(event, target) {
+  /**
+   * The × on a source row: off the list, not out of the world. It asks first, because a default
+   * taken off comes back only by dragging its pack folder in again; Shift skips the question, as
+   * the party's Remove does. @this {CairnTreasure}
+   */
+  static async #onSourceRemove(event, target) {
     const id = target.closest("[data-source-id]")?.dataset.sourceId;
-    if (id) this.#save(withoutSource(this.#sources, id));
+    const source = this.#sources.find((s) => s.id === id);
+    if (!source) return;
+    if (!event.shiftKey) {
+      // The name is read from the document, as the row's label is, not off the page. Escaped before
+      // it reaches `localize`, which interpolates without escaping anything: a world table's name
+      // is typed by a user.
+      const name = foundry.utils.escapeHTML(sourceLabel(source, await sourceDocument(source)) ?? source.id);
+      const ok = await foundry.applications.api.DialogV2.confirm({
+        classes: [SYSTEM_ID],
+        window: { title: game.i18n.localize("CAIRN.Treasure.RemoveTitle") },
+        content: `<p>${game.i18n.localize("CAIRN.Treasure.RemoveConfirm", { name })}</p>`
+      });
+      if (!ok) return;
+    }
+    await this.#save(withoutSource(this.#sources, id));
   }
 
   /** Draw every ticked source. @this {CairnTreasure} */

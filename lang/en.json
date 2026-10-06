@@ -1338,6 +1338,8 @@
     "OpenStash": "Open the Stash",
     "Refused": "{count} thing(s) did not go into the Stash and are still drawn.",
     "Remove": "Take off the list",
+    "RemoveConfirm": "Take {name} off the list? Nothing is deleted from the world. Drag the table or folder back to offer it again.",
+    "RemoveTitle": "Take it off the list?",
     "Roll": "Roll",
     "RollOne": "Roll this one",
     "Send": "Send to {party}",
