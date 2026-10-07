@@ -101,7 +101,8 @@ A few table texts carry meaning in their shape. Keep the shape:
 
 ## 5. What works by name, and in which language
 
-Four features match a name, and each does so on purpose, against the name the user sees:
+Three features match a name, and one falls back on it. Each does so on purpose, against the name
+the user sees:
 
 - **The `[[/table …]]` chip**, written with a table's name, matches the names this world shows.
   In a translated world those are the translated names: Babele translates the compendium index
@@ -109,8 +110,11 @@ Four features match a name, and each does so on purpose, against the name the us
   language; shipped content should use it.
 - **Bestiary art** matches image files to monsters by name. It ignores accents and punctuation, so
   `Cao-Piscante.webp` and `Cão Piscante.webp` both reach "Cão Piscante".
-- **Light Sources** (the optional module) matches carried items to its light sources partly by
-  name. It works when the world was created with the translation already active.
+- **Light Sources** (the optional module) matches a carried item to its light source by the
+  compendium entry the item was copied from, so a Torch, Lantern, Candle Helmet or Lightsucker
+  Candle taken from the compendiums lights in any language, renamed or not. Only an item made
+  from scratch, with no compendium origin, is matched by name, and it must carry exactly the name
+  the compendium shows in that world.
 - **Automated Animations** (the optional module) picks an animation by the name of the item
   used: its entry plays when its label is part of the item's name. The system adds its entries
   under English labels, so a translation adds its own names beside them, through the system's
