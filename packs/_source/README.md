@@ -64,6 +64,20 @@ stowed, handed over or sold. In `bestiary/` the natural attacks are bodily and t
 schema, defaults included — so a diff reads the same on every file and validation has nothing to
 guess. `checks/compendium.check.mjs` holds all of this.
 
+### A count the SRD does not print
+
+The `uses` counter carries the SRD's number where it prints one. Where it prints none, a thing
+that is plainly one dose is `uses 1/1`, so the sheet can spend it and show it spent. A spent
+item stays on the sheet at 0; `+` refills it. The Marketplace's Antitoxin, Fire Oil, Sedative
+and Repellent are one dose each; the bigger vials backgrounds hand out are their own documents
+(`Antitoxin (2 uses)`, `Repellent (3 uses)`). The Greenwise's Healing Potion is one dose, like
+the Healing Salve the same background starts with. Three things stay without a count:
+- **Common Agents:** a kit of several things, and one count describes none of them.
+- **Blessed Tinctures:** plural, with no number and no effect in the SRD.
+- **A thing that is not a dose at all:** a Rope, a Lantern.
+
+Settled with the maintainer, 2026-10-07.
+
 ## Commands
 
 | Command | Direction |
@@ -477,15 +491,17 @@ gear: Prowler's Tooth (*petty*, worn on a chain) and Scrivener's six works, book
 slot. What stays prose is what no field can hold: the Fatigue a pet or a power costs each time it
 is used, and a limit such as "other metal armour nullifies it".
 
-Five lines needed a call, settled 2026-09-15 against the SRD:
+Seven lines needed a call, settled 2026-09-15 and 2026-10-07 against the SRD:
 
 | Line | Decision |
 |---|---|
 | Half Witch — `Spellbook (Thicket: …)` | The `Thicket` document in `spellbooks/`: same spell text, same italic rider. No new document. |
 | Jongleur — `Costume` | Its own document. The Marketplace's `Costume Gear (Face Paint, Disguise)` is a disguise kit; a jongleur's costume is what they perform in. |
 | Cutpurse — `Lockpicks` | Its own document. The Marketplace's `Thieving Tools (Lockpick, Metal File, etc.)` is the 25gp kit; the SRD's `Lockpick` at 10 is a hireling. |
-| Fieldwarden — `Repellent (pick the type, 3 uses)` | Its own document, `uses 3/3`. The Marketplace `Repellent` ships with no use count and stays that way. |
+| Fieldwarden — `Repellent (pick the type, 3 uses)` | Its own document, `uses 3/3`. The Marketplace `Repellent` is one dose (*A count the SRD does not print*). |
 | Fletchwind — `Bow (see table)` | The Marketplace `Bow`. "See table" points at the background's own *How did you earn your bow?* d6, which describes the bow rather than replacing it. |
+| Greenwise — `Healing Potion that completely restores STR` | `uses 1/1`: one dose (*A count the SRD does not print*). |
+| Hexenbane — `Blessed Tinctures` | No use count: plural, with no number and no effect in the SRD. |
 
 ### What a Bond grants
 
