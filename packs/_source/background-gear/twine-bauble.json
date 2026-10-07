@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/commodities/treasure/token-carved-stone-brown.webp",
   "system": {
-    "description": "<p>Twine Bauble (<em>petty</em>, <em>Ward</em> once per day)</p><p><em>Ward</em>: A silver circle 50ft across appears on the ground. Choose one species that cannot cross it.</p>",
+    "description": "<p>Twine Bauble (<em>petty</em>, <em>Ward</em> once per day)</p><p><em>Ward</em>: A silver circle 15 m (50 ft) across appears on the ground. Choose one species that cannot cross it.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 0,

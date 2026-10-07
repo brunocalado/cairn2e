@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>You create a halo of bright light in a 60ft radius.</p>",
+    "description": "<p>You create a halo of bright light in a 18 m (60 ft) radius.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

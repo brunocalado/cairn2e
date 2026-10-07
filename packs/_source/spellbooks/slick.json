@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
   "system": {
-    "description": "<p><em>Gloves are required for handling, lest the book is dropped in a most comical fashion.</em></p><p>Every surface in a 30ft radius becomes extremely slippery.</p>",
+    "description": "<p><em>Gloves are required for handling, lest the book is dropped in a most comical fashion.</em></p><p>Every surface in a 9 m (30 ft) radius becomes extremely slippery.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

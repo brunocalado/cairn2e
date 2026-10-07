@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-purple-detail.webp",
   "system": {
-    "description": "<p>Magical or godly beings cannot enter a 10ft circle.</p>",
+    "description": "<p>Magical or godly beings cannot enter a 3 m (10 ft) circle.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

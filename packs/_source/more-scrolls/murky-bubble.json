@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>You create a bubble supernatural shadow within a 20ft radius.</p>",
+    "description": "<p>You create a bubble supernatural shadow within a 6 m (20 ft) radius.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

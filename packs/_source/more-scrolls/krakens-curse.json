@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>Tentacles grapple all within 20 ft, STR save to break free.</p>",
+    "description": "<p>Tentacles grapple all within 6 m (20 ft), STR save to break free.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

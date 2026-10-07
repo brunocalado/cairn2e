@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-tooled-gold-purple.webp",
   "system": {
-    "description": "<p>Any hidden doors within 60ft light up as if on fire.</p>",
+    "description": "<p>Any hidden doors within 18 m (60 ft) light up as if on fire.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

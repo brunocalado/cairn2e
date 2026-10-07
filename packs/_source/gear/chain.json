@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/commodities/metal/chain-steel.webp",
   "system": {
-    "description": "<p>Chain (10ft)</p>",
+    "description": "<p>Chain (3 m / 10 ft)</p>",
     "slots": 1,
     "equipped": false,
     "cost": 10,

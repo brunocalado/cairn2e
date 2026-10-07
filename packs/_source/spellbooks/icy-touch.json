@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-embossed-roots-green.webp",
   "system": {
-    "description": "<p><em>Gloves required. Nonflammable.</em></p><p>A thick ice layer spreads across a touched surface, up to 10ft in radius.</p>",
+    "description": "<p><em>Gloves required. Nonflammable.</em></p><p>A thick ice layer spreads across a touched surface, up to 3 m (10 ft) in radius.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

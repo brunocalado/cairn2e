@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>A pit 10ft wide and 10ft deep opens in the ground.</p>",
+    "description": "<p>A pit 3 m (10 ft) wide and 3 m (10 ft) deep opens in the ground.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

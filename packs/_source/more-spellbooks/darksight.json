@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-embossed-roots-green.webp",
   "system": {
-    "description": "<p>Target can see 60 ft. in total darkness.</p>",
+    "description": "<p>Target can see 18 m (60 ft) in total darkness.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

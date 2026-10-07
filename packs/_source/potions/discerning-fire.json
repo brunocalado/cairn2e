@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/consumables/potions/potion-bottle-corked-white.webp",
   "system": {
-    "description": "<p>Shatter the flask and name one thing that burns: wood, rope, cloth, paper, leather, hair or bone. A pale, smokeless flame spreads through everything of that kind within 10ft and consumes it, leaving all else untouched. It cannot be told to burn flesh, and goes out when nothing of its kind is left.</p>",
+    "description": "<p>Shatter the flask and name one thing that burns: wood, rope, cloth, paper, leather, hair or bone. A pale, smokeless flame spreads through everything of that kind within 3 m (10 ft) and consumes it, leaving all else untouched. It cannot be told to burn flesh, and goes out when nothing of its kind is left.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 50,

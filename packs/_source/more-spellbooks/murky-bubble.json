@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-purple-detail.webp",
   "system": {
-    "description": "<p>You create a bubble supernatural shadow within a 20ft radius.</p>",
+    "description": "<p>You create a bubble supernatural shadow within a 6 m (20 ft) radius.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

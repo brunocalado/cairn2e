@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p>Constable's quarters. You escaped but left some friends behind. Take <strong>Strong Silk Rope</strong> (30ft) and a queasy feeling.</p>",
+    "description": "<p>Constable's quarters. You escaped but left some friends behind. Take <strong>Strong Silk Rope</strong> (9 m / 30 ft) and a queasy feeling.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,

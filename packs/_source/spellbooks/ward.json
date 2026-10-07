@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-turquoise-moon.webp",
   "system": {
-    "description": "<p><em>The covers are decorated with bizarre, otherworldly creatures with thousands of eyes.</em></p><p>A silver circle 50ft across appears on the ground. Choose one species that cannot cross it.</p>",
+    "description": "<p><em>The covers are decorated with bizarre, otherworldly creatures with thousands of eyes.</em></p><p>A silver circle 15 m (50 ft) across appears on the ground. Choose one species that cannot cross it.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 600,

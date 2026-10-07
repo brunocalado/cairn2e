@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
   "system": {
-    "description": "<p>You create a halo of bright light in a 60ft radius.</p>",
+    "description": "<p>You create a halo of bright light in a 18 m (60 ft) radius.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

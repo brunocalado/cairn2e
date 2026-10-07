@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>You may mentally 1 move item under 60lbs.</p>",
+    "description": "<p>You may mentally 1 move item under 30 kg.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

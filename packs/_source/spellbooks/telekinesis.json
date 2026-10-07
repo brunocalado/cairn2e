@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-eye-purple.webp",
   "system": {
-    "description": "<p><em>The owner can summon the book through mental command alone (WIL save or become deprived afterwards).</em></p><p>You may mentally 1 move item under 60lbs.</p>",
+    "description": "<p><em>The owner can summon the book through mental command alone (WIL save or become deprived afterwards).</em></p><p>You may mentally 1 move item under 30 kg.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

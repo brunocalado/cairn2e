@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-worn-purple.webp",
   "system": {
-    "description": "<p>You fire a ball of flame (1d10 damage) up to 20 feet away.</p>",
+    "description": "<p>You fire a ball of flame (1d10 damage) up to 6 m (20 ft) away.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

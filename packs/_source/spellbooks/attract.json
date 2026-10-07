@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-purple-detail.webp",
   "system": {
-    "description": "<p><em>Nearby compasses spin uselessly.</em></p><p>Two objects are strongly magnetically attracted to each other if they come within 10 feet.</p>",
+    "description": "<p><em>Nearby compasses spin uselessly.</em></p><p>Two objects are strongly magnetically attracted to each other if they come within 3 m (10 ft).</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

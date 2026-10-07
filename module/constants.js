@@ -11,6 +11,9 @@
  */
 export const SYSTEM_ID = "cairn2e";
 
+/** The table's conversion, 5 ft = 1.5 m: one grid square of a ready-made map is 1.5 m. */
+export const METRES_PER_FOOT = 0.3;
+
 /**
  * The classes this system's own tooltip wears (`css/src/tooltip-chips-embeds.css`, Primitive 10).
  *

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>A thick ice layer spreads across a touched surface, up to 10ft in radius.</p>",
+    "description": "<p>A thick ice layer spreads across a touched surface, up to 3 m (10 ft) in radius.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

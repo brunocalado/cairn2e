@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-tooled-gold-purple.webp",
   "system": {
-    "description": "<p><em>Can be destroyed to create a portal to another dimension.</em></p><p>An object or person you can see is transported from one place to another in a 50ft radius.</p>",
+    "description": "<p><em>Can be destroyed to create a portal to another dimension.</em></p><p>An object or person you can see is transported from one place to another in a 15 m (50 ft) radius.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 600,

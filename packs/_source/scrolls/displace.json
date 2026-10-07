@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>An object appears to be up to 15ft from its actual position.</p>",
+    "description": "<p>An object appears to be up to 4.5 m (15 ft) from its actual position.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

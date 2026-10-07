@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>An object or person you can see is transported from one place to another in a 50ft radius.</p>",
+    "description": "<p>An object or person you can see is transported from one place to another in a 15 m (50 ft) radius.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 100,

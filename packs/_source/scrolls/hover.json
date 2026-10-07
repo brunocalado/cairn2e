@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>An object hovers, frictionless, 2ft above the ground. It can hold up to one humanoid.</p>",
+    "description": "<p>An object hovers, frictionless, 0.6 m (2 ft) above the ground. It can hold up to one humanoid.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-worn-purple.webp",
   "system": {
-    "description": "<p><em>Closed by two powerful straps that spring open at inopportune times.</em></p><p>Two objects are strongly magnetically repelled from each other within 10 feet.</p>",
+    "description": "<p><em>Closed by two powerful straps that spring open at inopportune times.</em></p><p>Two objects are strongly magnetically repelled from each other within 3 m (10 ft).</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

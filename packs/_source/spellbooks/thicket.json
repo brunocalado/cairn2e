@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-turquoise-moon.webp",
   "system": {
-    "description": "<p><em>Wrapped in vines that must be destroyed again with each use.</em></p><p>A thicket of trees and dense brush up to 50ft wide suddenly sprouts up.</p>",
+    "description": "<p><em>Wrapped in vines that must be destroyed again with each use.</em></p><p>A thicket of trees and dense brush up to 15 m (50 ft) wide suddenly sprouts up.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

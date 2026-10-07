@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/consumables/potions/potion-bottle-fumes-blue.webp",
   "system": {
-    "description": "<p>Until the Warden says it fades, you see what is hidden from the living within 15ft: spirits, phantoms, invisible things, magic at work. What you can see can also see you — and knows that you can.</p>",
+    "description": "<p>Until the Warden says it fades, you see what is hidden from the living within 4.5 m (15 ft): spirits, phantoms, invisible things, magic at work. What you can see can also see you — and knows that you can.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 50,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>Every surface in a 30ft radius becomes extremely slippery.</p>",
+    "description": "<p>Every surface in a 9 m (30 ft) radius becomes extremely slippery.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

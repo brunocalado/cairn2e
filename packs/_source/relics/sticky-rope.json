@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
   "system": {
-    "description": "<p>A 100ft rope that can stick to any surface.</p>",
+    "description": "<p>A 30 m (100 ft) rope that can stick to any surface.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,
@@ -17,7 +17,7 @@
     "blast": false,
     "armor": 0,
     "magic": "relic",
-    "recharge": "<p>Cut off 10ft of rope, which then withers away.</p>",
+    "recharge": "<p>Cut off 3 m (10 ft) of rope, which then withers away.</p>",
     "capacity": 0,
     "takesSlots": false,
     "carried": true

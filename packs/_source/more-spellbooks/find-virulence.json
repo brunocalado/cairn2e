@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-tooled-gold-purple.webp",
   "system": {
-    "description": "<p>Detects poison in any creature or object within 30ft.</p>",
+    "description": "<p>Detects poison in any creature or object within 9 m (30 ft).</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>Mundane attacks cannot harm anyone within a 10ft radius, or vice-versa.</p>",
+    "description": "<p>Mundane attacks cannot harm anyone within a 3 m (10 ft) radius, or vice-versa.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 100,

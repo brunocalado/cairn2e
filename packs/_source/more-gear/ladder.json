@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/misc/ladder-white.webp",
   "system": {
-    "description": "<p>Ladder (10ft, <em>bulky</em>)</p>",
+    "description": "<p>Ladder (3 m / 10 ft, <em>bulky</em>)</p>",
     "slots": 2,
     "equipped": false,
     "cost": 10,

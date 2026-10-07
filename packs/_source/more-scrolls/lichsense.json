@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>You feel any undead within 60ft. WIL save to avoid detection by intelligent undead.</p>",
+    "description": "<p>You feel any undead within 18 m (60 ft). WIL save to avoid detection by intelligent undead.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

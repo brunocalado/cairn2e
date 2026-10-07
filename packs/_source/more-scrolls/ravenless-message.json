@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>You send a short message 1 mile that anyone along its path can hear.</p>",
+    "description": "<p>You send a short message 1.6 km that anyone along its path can hear.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

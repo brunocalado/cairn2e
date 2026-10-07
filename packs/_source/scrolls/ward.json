@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>A silver circle 50ft across appears on the ground. Choose one species that cannot cross it.</p>",
+    "description": "<p>A silver circle 15 m (50 ft) across appears on the ground. Choose one species that cannot cross it.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 100,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/misc/ladder-improvised.webp",
   "system": {
-    "description": "<p>Rope Ladder (25ft)</p>",
+    "description": "<p>Rope Ladder (7.5 m / 25 ft)</p>",
     "slots": 1,
     "equipped": false,
     "cost": 15,

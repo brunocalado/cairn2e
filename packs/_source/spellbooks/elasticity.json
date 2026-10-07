@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-purple-glyph.webp",
   "system": {
-    "description": "<p><em>Smells of taffy, and is very flexible.</em></p><p>Your body can stretch up to 10ft.</p>",
+    "description": "<p><em>Smells of taffy, and is very flexible.</em></p><p>Your body can stretch up to 3 m (10 ft).</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>A spray of cold air does d6 damage 20ft in one direction.</p>",
+    "description": "<p>A spray of cold air does d6 damage 6 m (20 ft) in one direction.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

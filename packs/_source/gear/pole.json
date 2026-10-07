@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/weapons/staves/staff-forked-wood.webp",
   "system": {
-    "description": "<p>Pole (10ft)</p>",
+    "description": "<p>Pole (3 m / 10 ft)</p>",
     "slots": 1,
     "equipped": false,
     "cost": 5,

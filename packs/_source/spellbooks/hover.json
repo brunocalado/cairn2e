@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
   "system": {
-    "description": "<p><em>Floats if dropped.</em></p><p>An object hovers, frictionless, 2ft above the ground. It can hold up to one humanoid.</p>",
+    "description": "<p><em>Floats if dropped.</em></p><p>An object hovers, frictionless, 0.6 m (2 ft) above the ground. It can hold up to one humanoid.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

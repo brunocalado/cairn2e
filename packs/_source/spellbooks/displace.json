@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-symbol-triangle-silver-brown.webp",
   "system": {
-    "description": "<p><em>Bits of string, clothing, and leaves are sometimes stuffed inside.</em></p><p>An object appears to be up to 15ft from its actual position.</p>",
+    "description": "<p><em>Bits of string, clothing, and leaves are sometimes stuffed inside.</em></p><p>An object appears to be up to 4.5 m (15 ft) from its actual position.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

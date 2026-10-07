@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-worn-purple.webp",
   "system": {
-    "description": "<p>You control a phantasmal hand that can lift up to 5 pounds.</p>",
+    "description": "<p>You control a phantasmal hand that can lift up to 2.5 kg.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

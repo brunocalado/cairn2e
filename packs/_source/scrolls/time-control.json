@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>Time in a 50ft bubble slows down or increases by 10% for 30 seconds.</p>",
+    "description": "<p>Time in a 15 m (50 ft) bubble slows down or increases by 10% for 30 seconds.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

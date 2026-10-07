@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-tooled-gold-purple.webp",
   "system": {
-    "description": "<p>A hazy fog surrounds you in a radius of 20ft. Attacks within the mist are impaired.</p>",
+    "description": "<p>A hazy fog surrounds you in a radius of 6 m (20 ft). Attacks within the mist are impaired.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

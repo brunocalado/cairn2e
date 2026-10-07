@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p>A guild warehouse. Take a <strong>Ladder</strong> (<em>bulky</em>, 10ft) and <strong>Blinding Powder</strong> (1 use).</p>",
+    "description": "<p>A guild warehouse. Take a <strong>Ladder</strong> (<em>bulky</em>, 3 m / 10 ft) and <strong>Blinding Powder</strong> (1 use).</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,

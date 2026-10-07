@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
   "system": {
-    "description": "<p>A smooth, flat stone that is slightly warm to the touch. Squeeze to record audio in a 40ft radius. Squeeze again to play it back, as many times as you like.</p>",
+    "description": "<p>A smooth, flat stone that is slightly warm to the touch. Squeeze to record audio in a 12 m (40 ft) radius. Squeeze again to play it back, as many times as you like.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p><strong>Fireflask</strong> Highly alcoholic, yet strangely delicious. When thrown, it creates a wall of flames 10ft high that burns out after a few minutes. 1 use.</p>",
+    "description": "<p><strong>Fireflask</strong> Highly alcoholic, yet strangely delicious. When thrown, it creates a wall of flames 3 m (10 ft) high that burns out after a few minutes. 1 use.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,

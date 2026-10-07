@@ -651,6 +651,24 @@ is setting, not rules, and is not here.
 the pack source landing on a page that exists and on a heading of it — a wrong `#slug` otherwise
 opens the page at its top without a word.
 
+## Measures are metric, with the feet beside them
+
+By the maintainer's decision, against the SRD: every distance in a description, table or journal
+reads in metres with the feet the map measures beside it, because scenes stay in feet. Metres =
+feet × 0.3 exactly (5 ft = 1.5 m), at most one decimal and no trailing `.0`.
+
+| ft | 2 | 3 | 5 | 10 | 15 | 20 | 25 | 30 | 40 | 50 | 60 | 100 | 120 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| m | 0.6 | 0.9 | 1.5 | 3 | 4.5 | 6 | 7.5 | 9 | 12 | 15 | 18 | 30 | 36 |
+
+- **In prose:** `3 m (10 ft)`, as in "A pit 3 m (10 ft) wide".
+- **Inside parentheses:** `(3 m / 10 ft, <em>bulky</em>)`, so one parenthesis never nests in another.
+- **Weight and the mile, metric only:** pounds × 0.5 → `50 kg`; 1 mile → `1.6 km`.
+- A **no-break space (U+00A0)** goes between a number and its unit, every time; an ordinary
+  space goes before `(` and around `/`.
+
+`checks/metric-distances.check.mjs` enforces the arithmetic, the pairing and the spacing.
+
 ## Workflow
 
 1. Edit a file under `packs/_source/<name>/`.

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
   "system": {
-    "description": "<p>15ft of highly flexible leather. Swirl in the air to generate a powerful subsonic effect that drives away wildlife. Also works underwater.</p>",
+    "description": "<p>4.5 m (15 ft) of highly flexible leather. Swirl in the air to generate a powerful subsonic effect that drives away wildlife. Also works underwater.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

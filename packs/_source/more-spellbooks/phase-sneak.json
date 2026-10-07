@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-embossed-spiral-purple-white.webp",
   "system": {
-    "description": "<p>Anyone within a 10ft radius is rendered invisible.</p>",
+    "description": "<p>Anyone within a 3 m (10 ft) radius is rendered invisible.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-purple-glyph.webp",
   "system": {
-    "description": "<p><em>Skin and warmer substances stick to it after use.</em></p><p>A straight wall of ice or fire 50ft long and 10ft high rises from the ground.</p>",
+    "description": "<p><em>Skin and warmer substances stick to it after use.</em></p><p>A straight wall of ice or fire 15 m (50 ft) long and 3 m (10 ft) high rises from the ground.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>You summon a 3ft wide floating disk that holds up to 100lbs.</p>",
+    "description": "<p>You summon a 0.9 m (3 ft) wide floating disk that holds up to 50 kg.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

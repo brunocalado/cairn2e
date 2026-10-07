@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-purple-detail.webp",
   "system": {
-    "description": "<p><em>When thrown, it just keeps going.</em></p><p>You jump up to 10ft high, once.</p>",
+    "description": "<p><em>When thrown, it just keeps going.</em></p><p>You jump up to 3 m (10 ft) high, once.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

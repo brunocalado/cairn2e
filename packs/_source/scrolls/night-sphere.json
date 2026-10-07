@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>A 50ft-wide sphere of darkness displaying the night sky appears before you.</p>",
+    "description": "<p>A 15 m (50 ft) wide sphere of darkness displaying the night sky appears before you.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

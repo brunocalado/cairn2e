@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
   "system": {
-    "description": "<p>A strong wire sprouts from your arms, affixing itself to two points within 50ft on each side.</p>",
+    "description": "<p>A strong wire sprouts from your arms, affixing itself to two points within 15 m (50 ft) on each side.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 50,

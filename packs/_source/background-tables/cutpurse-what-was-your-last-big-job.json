@@ -87,7 +87,7 @@
       "type": "text",
       "name": "",
       "img": "icons/svg/d20-black.svg",
-      "description": "<p>A guild warehouse. Take a <strong>Ladder</strong> (<em>bulky</em>, 10ft) and <strong>Blinding Powder</strong> (1 use).</p>",
+      "description": "<p>A guild warehouse. Take a <strong>Ladder</strong> (<em>bulky</em>, 3 m / 10 ft) and <strong>Blinding Powder</strong> (1 use).</p>",
       "weight": 1,
       "range": [
         3,
@@ -162,7 +162,7 @@
       "type": "text",
       "name": "",
       "img": "icons/svg/d20-black.svg",
-      "description": "<p>Constable's quarters. You escaped but left some friends behind. Take <strong>Strong Silk Rope</strong> (30ft) and a queasy feeling.</p>",
+      "description": "<p>Constable's quarters. You escaped but left some friends behind. Take <strong>Strong Silk Rope</strong> (9 m / 30 ft) and a queasy feeling.</p>",
       "weight": 1,
       "range": [
         5,

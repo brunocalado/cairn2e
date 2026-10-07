@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-eye-purple.webp",
   "system": {
-    "description": "<p>Tentacles grapple all within 20 ft, STR save to break free.</p>",
+    "description": "<p>Tentacles grapple all within 6 m (20 ft), STR save to break free.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,

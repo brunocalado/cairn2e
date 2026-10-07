@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/sundries/books/book-tooled-gold-purple.webp",
   "system": {
-    "description": "<p><em>If a rope is pulled through the iron loop on its spine, it becomes as heavy as an elephant.</em></p><p>A strong wire sprouts from your arms, affixing itself to two points within 50ft on each side.</p>",
+    "description": "<p><em>If a rope is pulled through the iron loop on its spine, it becomes as heavy as an elephant.</em></p><p>A strong wire sprouts from your arms, affixing itself to two points within 15 m (50 ft) on each side.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 300,
