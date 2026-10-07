@@ -1,0 +1,31 @@
+{
+  "_id": "7HBWiFzpfFZxXeeb",
+  "name": "Lethe Water",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-vial-corked-purple.webp",
+  "system": {
+    "description": "<p>Slipped into a drink, it makes whoever drinks it forget the hour before. They do not notice the gap.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!7HBWiFzpfFZxXeeb",
+  "folder": "pN7SCCHmhucK2c0v"
+}

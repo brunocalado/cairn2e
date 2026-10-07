@@ -1,0 +1,31 @@
+{
+  "_id": "PDXTPmOTFExeoDbg",
+  "name": "Last Stand Cordial",
+  "type": "gear",
+  "img": "icons/consumables/potions/bottle-bulb-corked-glowing-red.webp",
+  "system": {
+    "description": "<p>Drink it, or have it poured into your mouth, after you suffer Critical Damage. You rise and act as if unhurt until the Warden says it fades. Then you fall again, and unless you have been stabilized, you die within the hour as usual.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!PDXTPmOTFExeoDbg",
+  "folder": "pN7SCCHmhucK2c0v"
+}

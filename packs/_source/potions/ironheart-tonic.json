@@ -1,0 +1,31 @@
+{
+  "_id": "WxOy210nhZSlKs5n",
+  "name": "Ironheart Tonic",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-flask-corked-shiny-red.webp",
+  "system": {
+    "description": "<p>Drink it while <em>panicked</em> and the panic breaks at once, with no save. Until the Warden says it fades, you cannot become <em>panicked</em>. When it fades, the fear you held back arrives all at once: you are <em>deprived</em> until you rest.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!WxOy210nhZSlKs5n",
+  "folder": "pN7SCCHmhucK2c0v"
+}

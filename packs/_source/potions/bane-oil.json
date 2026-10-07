@@ -1,0 +1,31 @@
+{
+  "_id": "PTipsmetn3rdjLE8",
+  "name": "Bane Oil",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-jar-corked-labeled-poison-skull-green.webp",
+  "system": {
+    "description": "<p>Brewed with the bone of one kind of creature — wolf, ghoul, troll. Coat a weapon with it: until the Warden says it fades, its attacks against that kind are <em>enhanced</em>. Creatures of that kind can smell it from far away.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!PTipsmetn3rdjLE8",
+  "folder": "pN7SCCHmhucK2c0v"
+}

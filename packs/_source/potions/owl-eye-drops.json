@@ -1,0 +1,31 @@
+{
+  "_id": "DGesbkzk13zzwxOf",
+  "name": "Owl-Eye Drops",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-faceted-corked-blue.webp",
+  "system": {
+    "description": "<p>Two drops in each eye. Until the Warden says it fades, you see in darkness as if at dusk, and darkness alone cannot make you <em>panicked</em>. Bright light — a torch held close, open sun — dazzles you: your attacks are <em>impaired</em>.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!DGesbkzk13zzwxOf",
+  "folder": "pN7SCCHmhucK2c0v"
+}

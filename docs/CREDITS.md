@@ -23,7 +23,7 @@ Third-party assets included in this system, their creators, and licenses.
   * **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
   * **Modifications:** The Player's Guide is split into one journal page per section, with links
     added to the compendium's own documents and roll buttons on the tables it prints.
-* **Alchemy & Potions — For Cairn** — the potions in the Potions compendium.
+* **Alchemy & Potions — For Cairn** — nine of the potions in the Potions compendium.
   * **Author:** Daniel „Lyght" (*Alchemie und Zaubertränke*, https://ducklyght.itch.io/alchemie-und-zaubertraenke-cairn)
   * **Translation:** Luke Simonds (https://catshavenolord.itch.io/alchemy-and-potions-for-cairn)
   * **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

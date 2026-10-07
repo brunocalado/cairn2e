@@ -307,16 +307,19 @@ charm is that the Warden reads them. **None is a relic and none is a container**
 
 **Not SRD** (CLAUDE.md § 1, Homebrew), made to be the ingredients of Grid Crafter recipes. 2e names the
 act — "given proper ingredients" (`procedures.md`, Herbology), "given time and adequate materials"
-(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 24 `gear`
-documents in six folders: **Metal** (Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
+(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 27 `gear`
+documents in seven folders: **Metal** (Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
 (Stick, Plank, Stone, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather), **Cloth**
 (Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries) and **Raw Food** (Raw Meat, Raw Fish,
-Flour, Eggs, Salt).
+Flour, Eggs, Salt) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale).
 
 - **Found and bought.** Stick, Stone, Bone, Feather and Berries cost 0 gp and are on no shelf: the
   Warden hands them out as loot. The other nineteen cost 1–3 gp and sit at the front of the shelf of
   the shop that sells their kind — the Toolmaker, the Tailor, the Apothecary and the Provisioner. A
   world already made keeps the stores it was seeded with.
+- **Taken, not bought.** A Monster Part is taken from the creature it names, sits on no shelf, and
+  costs 25–35 gp. That is the most an alchemist pays, and most of a recipe's cost. Each serves two or
+  three potions.
 - **Petty** is Nails, Stick, Leather Strip, Feather, Thread, Herbs, Mushrooms, Wax, Berries and Salt;
   ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost.
 - **Raw food is not food.** Make Camp does not eat Raw Meat; cooking it is the point.
@@ -387,8 +390,8 @@ Attaché, Sinister Polymorph, Soul Annex, Summon Elemental, Trueshift, Ultimate 
 „Lyght" (German original *Alchemie und Zaubertränke*,
 https://ducklyght.itch.io/alchemie-und-zaubertraenke-cairn), translated by Luke Simonds
 (https://catshavenolord.itch.io/alchemy-and-potions-for-cairn), licensed CC BY-SA 4.0. Only the
-text is used, never the illustrations, and every potion is modified (`docs/CREDITS.md`). Nine
-`gear` documents; ids derive from `cairn2e:potion:<slug>` and `cairn2e:potion:folder:<slug>`.
+text is used, never the illustrations, and every potion is modified (`docs/CREDITS.md`). Sixteen
+`gear` documents (nine from the PDF, seven of the system's own); ids derive from `cairn2e:potion:<slug>` and `cairn2e:potion:folder:<slug>`.
 
 What changed from the PDF's ten:
 
@@ -405,12 +408,20 @@ What changed from the PDF's ten:
 **Price.** No 2e book prices a potion. A potion is one-use magic, so it takes the Scroll bands of
 the next section, **Common 50 / Greater 100**, by the same *Greater* criterion. New Potential is
 the one Greater potion: it permanently changes a character, which the party could not otherwise
-do at all. Filed by price like the magic packs: **Common (50gp)** holds eight, **Greater
+do at all. Filed by price like the magic packs: **Common (50gp)** holds fifteen, **Greater
 (100gp)** one.
 
 **Fields.** `magic: "none"`, `slots: 1`, `uses 1/1`: a potion is a Marketplace-style single dose,
 like the Sedative (*A count the SRD does not print*). Not `magic: "scroll"`, which would also
 make every potion *petty*.
+
+**The system's own seven.** Ironheart Tonic, Borrowed Vigor, Bane Oil, Honeytongue, Last Stand
+Cordial, Lethe Water and Owl-Eye Drops were written with the maintainer on 2026-10-07, so no
+third-party licence applies (the Strange Items' precedent). Each touches a 2e rule no other item
+does: Panic (`procedures.md` § Panic), Fatigue (`core-rules.md` § Deprivation & Fatigue), *enhanced*
+attacks (§ Attacks), Reactions (§ Reactions), Critical Damage (§ Critical Damage) and light
+(`procedures.md` § Light Sources); Lethe Water is fiction alone. Every one is brewed around a
+Monster Part (see `materials`).
 
 **Left out of the PDF:** its "potion of any spell", which in 2e is a Scroll, and its alchemist
 training and materials table, which are not potions.

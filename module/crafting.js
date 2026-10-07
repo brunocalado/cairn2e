@@ -42,6 +42,9 @@ const FISH = material("cGgAyWkeJ0vEpBjU");     // Raw Fish
 const FLOUR = material("83I1A0OjQVBGRAuh");    // Flour
 const EGGS = material("YvvcLqcivp6GvByA");     // Eggs
 const SALT = material("QYWDgXZrcx7Bk2LP");     // Salt
+const TROLL = material("HAq4pfOoxbN0BmCc");    // Troll Tallow
+const GARGOYLE = material("io87TFV1OHXBAnZ4"); // Gargoyle Grit
+const PIXIE = material("u4nsNVJWqnYoib9O");    // Pixie Scale
 const CHAIN = gear("OTCJHK1d9Rk6QIfR");        // Chain
 const ROPE = GEAR.ROPE;
 const HONEY = moreGear("uXeP0joPv5XTEMMx");    // Honey
@@ -390,7 +393,24 @@ export const RECIPES = [
   { id: "stoneform", result: potion("XEnQs002PTTeRAtY"), shaped: false,
     cells: [GLASS, STONE, STONE, SALT, _, _, _, _, _] },
   { id: "water-deflector", result: potion("DmH7WEDwJlwRrFTa"), shaped: false,
-    cells: [GLASS, WAX, WAX, FEATHER, _, _, _, _, _] }
+    cells: [GLASS, WAX, WAX, FEATHER, _, _, _, _, _] },
+
+  // Potions of the system's own, each around a Monster Part: rare, never sold, and most of the
+  // recipe's price, so brewing one saves little and the worth is in having taken the part.
+  { id: "ironheart-tonic", result: potion("WxOy210nhZSlKs5n"), shaped: false,
+    cells: [GLASS, GARGOYLE, SALT, HERBS, _, _, _, _, _] },
+  { id: "borrowed-vigor", result: potion("zTJaK6jvOwHVfnKF"), shaped: false,
+    cells: [GLASS, TROLL, HONEY, HERBS, _, _, _, _, _] },
+  { id: "bane-oil", result: potion("PTipsmetn3rdjLE8"), shaped: false,
+    cells: [GLASS, TROLL, BONE, SALT, _, _, _, _, _] },
+  { id: "honeytongue", result: potion("yBnyOTNpZMwoxROX"), shaped: false,
+    cells: [GLASS, PIXIE, HONEY, BERRIES, _, _, _, _, _] },
+  { id: "last-stand-cordial", result: potion("PDXTPmOTFExeoDbg"), shaped: false,
+    cells: [GLASS, TROLL, HERBS, MEAT, _, _, _, _, _] },
+  { id: "lethe-water", result: potion("7HBWiFzpfFZxXeeb"), shaped: false,
+    cells: [GLASS, PIXIE, MUSHROOMS, BERRIES, _, _, _, _, _] },
+  { id: "owl-eye-drops", result: potion("DGesbkzk13zzwxOf"), shaped: false,
+    cells: [GLASS, GARGOYLE, FEATHER, BERRIES, _, _, _, _, _] }
 ];
 
 /**
