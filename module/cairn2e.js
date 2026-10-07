@@ -50,6 +50,7 @@ import { addChatMessageContextOptions, renderApplyRollButton, renderReverseButto
 import { registerDiceSoNice } from "./dice-so-nice.js";
 import { registerAutomatedAnimations } from "./automated-animations.js";
 import { registerLightSources } from "./light-sources.js";
+import { registerCrafting } from "./crafting.js";
 import { installWelcomeWorld } from "./welcome.js";
 import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
@@ -328,6 +329,7 @@ Hooks.once("init", async function () {
   registerDiceSoNice();
   registerAutomatedAnimations();
   registerLightSources();
+  registerCrafting();
   configureHandleBar();
 });
 

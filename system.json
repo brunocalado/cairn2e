@@ -278,6 +278,13 @@
         "manifest": "https://raw.githubusercontent.com/brunocalado/light-sources/refs/heads/main/module.json",
         "compatibility": { "minimum": "0.5.0", "verified": "0.5.0" },
         "reason": "Lights a Torch, Lantern, Candle Helmet or Lightsucker Candle from the Token HUD, spends one of its uses and keeps the flame on it; lights Illuminate when it is cast."
+      },
+      {
+        "id": "grid-crafter",
+        "type": "module",
+        "manifest": "https://github.com/brunocalado/grid-crafter/releases/latest/download/module.json",
+        "compatibility": { "minimum": "0.0.2", "verified": "0.0.2" },
+        "reason": "Forges the Marketplace's weapons and armour from the Materials compendium on a crafting grid."
       }
     ]
   },
