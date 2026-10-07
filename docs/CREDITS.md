@@ -23,6 +23,14 @@ Third-party assets included in this system, their creators, and licenses.
   * **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
   * **Modifications:** The Player's Guide is split into one journal page per section, with links
     added to the compendium's own documents and roll buttons on the tables it prints.
+* **Alchemy & Potions — For Cairn** — the potions in the Potions compendium.
+  * **Author:** Daniel „Lyght" (*Alchemie und Zaubertränke*, https://ducklyght.itch.io/alchemie-und-zaubertraenke-cairn)
+  * **Translation:** Luke Simonds (https://catshavenolord.itch.io/alchemy-and-potions-for-cairn)
+  * **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+  * **Modifications:** Nine of the ten potions, rewritten for Cairn 2e: Shared Suffering
+    dropped; Alchemist's Fire and Dragon's Breath reworked as Discerning Fire and Dragon's Roar;
+    fixed durations removed; a WIL save added to New Potential; distances in feet; prices set by
+    this system's scroll bands.
 
 ---
 

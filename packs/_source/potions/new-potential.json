@@ -1,0 +1,31 @@
+{
+  "_id": "0UhW8YXgn00FGOCg",
+  "name": "New Potential",
+  "type": "gear",
+  "img": "icons/consumables/potions/bottle-bulb-corked-purple.webp",
+  "system": {
+    "description": "<p>Swap the scores of two attributes, maximum and current value together. The change is permanent. Body and mind resist it: make a WIL save, using your new WIL. On a failure you are <em>deprived</em> until you rest for a few hours.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 100,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!0UhW8YXgn00FGOCg",
+  "folder": "Ibe9XH3FNT8IiEQC"
+}

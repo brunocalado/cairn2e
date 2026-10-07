@@ -381,6 +381,40 @@ the party could not otherwise do at all: Astral Step, Banishment, Beguilement, E
 Extraplanar Convocation, Gorgon's Gaze, Master Undead, Orb of Immortality, Phase Anchor, Secret
 Attaché, Sinister Polymorph, Soul Annex, Summon Elemental, Trueshift, Ultimate Sacrifice.
 
+## `potions` — Alchemy & Potions, revised
+
+**Not SRD** (CLAUDE.md § 1, Homebrew). The source is *Alchemy & Potions — For Cairn*, by Daniel
+„Lyght" (German original *Alchemie und Zaubertränke*,
+https://ducklyght.itch.io/alchemie-und-zaubertraenke-cairn), translated by Luke Simonds
+(https://catshavenolord.itch.io/alchemy-and-potions-for-cairn), licensed CC BY-SA 4.0. Only the
+text is used, never the illustrations, and every potion is modified (`docs/CREDITS.md`). Nine
+`gear` documents; ids derive from `cairn2e:potion:<slug>` and `cairn2e:potion:folder:<slug>`.
+
+What changed from the PDF's ten:
+
+- **Shared Suffering is dropped.**
+- **Two are reworked, because the originals repeated fire damage the system already has**
+  (Marketplace Fire Oil, the Marchguard's Fireflask, the Aurifex's Pyrophoric Gel and Blast
+  Sphere): Alchemist's Fire is **Discerning Fire**, a flame that burns one named kind of thing,
+  and Dragon's Breath is **Dragon's Roar**, a Morale save for every enemy that hears it.
+- **No fixed durations.** An effect lasts until the Warden says it fades, the way 2e's spells
+  carry no duration (`wardens-guide/spellbooks.md`).
+- **New Potential gains a WIL save**, *deprived* on a failure.
+- **Metres are feet.**
+
+**Price.** No 2e book prices a potion. A potion is one-use magic, so it takes the Scroll bands of
+the next section, **Common 50 / Greater 100**, by the same *Greater* criterion. New Potential is
+the one Greater potion: it permanently changes a character, which the party could not otherwise
+do at all. Filed by price like the magic packs: **Common (50gp)** holds eight, **Greater
+(100gp)** one.
+
+**Fields.** `magic: "none"`, `slots: 1`, `uses 1/1`: a potion is a Marketplace-style single dose,
+like the Sedative (*A count the SRD does not print*). Not `magic: "scroll"`, which would also
+make every potion *petty*.
+
+**Left out of the PDF:** its "potion of any spell", which in 2e is a Scroll, and its alchemist
+training and materials table, which are not potions.
+
 ## Prices on magic — a table rule, not an SRD one
 
 `srd-2e/` prices no spellbook, scroll or relic; `core-rules.md` says spellbooks "are recovered from

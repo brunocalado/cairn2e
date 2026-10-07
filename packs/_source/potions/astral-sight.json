@@ -1,0 +1,31 @@
+{
+  "_id": "0uqB4aGNo7ZClrsG",
+  "name": "Astral Sight",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-bottle-fumes-blue.webp",
+  "system": {
+    "description": "<p>Until the Warden says it fades, you see what is hidden from the living within 15ft: spirits, phantoms, invisible things, magic at work. What you can see can also see you — and knows that you can.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!0uqB4aGNo7ZClrsG",
+  "folder": "pN7SCCHmhucK2c0v"
+}

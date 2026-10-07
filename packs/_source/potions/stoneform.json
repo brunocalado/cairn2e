@@ -1,0 +1,31 @@
+{
+  "_id": "XEnQs002PTTeRAtY",
+  "name": "Stoneform",
+  "type": "gear",
+  "img": "icons/consumables/potions/vial-ornet-silver-black.webp",
+  "system": {
+    "description": "<p>You become a plain grey stone about 3ft across. You can hear and feel, but not move or speak, and harm done to the stone is done to you. The Warden says when you return to your own shape. You may try to return sooner with a WIL save; on a failure, you stay as you are.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XEnQs002PTTeRAtY",
+  "folder": "pN7SCCHmhucK2c0v"
+}

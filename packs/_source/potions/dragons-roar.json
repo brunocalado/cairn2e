@@ -1,0 +1,31 @@
+{
+  "_id": "8kwslqDlLWCqvlO0",
+  "name": "Dragon's Roar",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-bottle-corked-fancy-orange.webp",
+  "system": {
+    "description": "<p>Drink it and keep your mouth shut. The next time you open it, you roar like a dragon. Every enemy that hears it makes a Morale save: WIL, or flee. Afterwards your voice is a cinder-dry whisper until the Warden says it returns.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!8kwslqDlLWCqvlO0",
+  "folder": "pN7SCCHmhucK2c0v"
+}

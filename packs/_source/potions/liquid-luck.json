@@ -1,0 +1,31 @@
+{
+  "_id": "ObiettKQSBCmEoli",
+  "name": "Liquid Luck",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-bottle-corked-stopper-ornate-yellow.webp",
+  "system": {
+    "description": "<p>Once, before the Warden says the luck has run out, you may reroll a save you have just made. The new result stands.</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 50,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!ObiettKQSBCmEoli",
+  "folder": "pN7SCCHmhucK2c0v"
+}
