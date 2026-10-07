@@ -15,6 +15,7 @@ const gear = (id) => packUuid("gear", "Item", id);
 const moreGear = (id) => packUuid("more-gear", "Item", id);
 const weapon = (id) => packUuid("weapons", "Item", id);
 const armor = (id) => packUuid("armor", "Item", id);
+const potion = (id) => packUuid("potions", "Item", id);
 
 // Every material id is id16("cairn2e:material:<slug>"), as the pack derives it.
 const IRON = material("LR5yGUvpe1DllgXT");     // Iron Ingot
@@ -28,6 +29,7 @@ const HIDE = material("4OV0LEtVN8b8oVKx");     // Hide
 const LEATHER = material("hg0aNqsFLKvtFVqS");  // Leather
 const STRIP = material("lYFTNbfPIlf8ba44");    // Leather Strip
 const BONE = material("BiqB4ygPYUZGMLkl");     // Bone
+const FEATHER = material("0G3hIrsmGNi4Y2dD");  // Feather
 const CLOTH = material("JaJx5zyAPRdmz9Wj");    // Cloth
 const THREAD = material("eXms8M5FCH5zalA0");   // Thread
 const GLASS = material("5c5J4HtAjGWa2j6C");    // Glass
@@ -57,7 +59,8 @@ const _ = null;
  * recipe book remembers the recipe by: never rename one.
  *
  * The stone and bone variants make the Marketplace's own Axe, Spear and Dagger from found things — a
- * stone axe is still a d8 Axe.
+ * stone axe is still a d8 Axe. The Aspect of Nature has three recipes the same way, one per animal
+ * part it is brewed with.
  */
 export const RECIPES = [
   // Intermediates: what the other recipes are made of.
@@ -362,7 +365,32 @@ export const RECIPES = [
   { id: "mushroom-soup", result: moreGear("qJELvjFtKGhMdEEG"), shaped: false,
     cells: [MUSHROOMS, MUSHROOMS, HERBS, _, _, _, _, _, _] },
   { id: "honey-cakes", result: moreGear("9cXVG6PemCUPDzD2"), shaped: false,
-    cells: [FLOUR, EGGS, HONEY, _, _, _, _, _, _] }
+    cells: [FLOUR, EGGS, HONEY, _, _, _, _, _, _] },
+
+  // Potions (Homebrew), brewed rather than found: 2e hires out an Alchemist and lets Herbology make
+  // a salve. Shapeless like the rest of alchemy, and every one is poured into a Glass vial.
+  { id: "discerning-fire", result: potion("JsXNGtyTd6do4Qbc"), shaped: false,
+    cells: [GLASS, MEAT, WAX, SALT, _, _, _, _, _] },
+  { id: "aspect-of-nature-feather", result: potion("Qt1LcaZpt75oXOXT"), shaped: false,
+    cells: [GLASS, HERBS, FEATHER, _, _, _, _, _, _] },
+  { id: "aspect-of-nature-bone", result: potion("Qt1LcaZpt75oXOXT"), shaped: false,
+    cells: [GLASS, HERBS, BONE, _, _, _, _, _, _] },
+  { id: "aspect-of-nature-hide", result: potion("Qt1LcaZpt75oXOXT"), shaped: false,
+    cells: [GLASS, HERBS, HIDE, _, _, _, _, _, _] },
+  { id: "astral-sight", result: potion("0uqB4aGNo7ZClrsG"), shaped: false,
+    cells: [GLASS, MUSHROOMS, BERRIES, SALT, _, _, _, _, _] },
+  { id: "dragons-roar", result: potion("8kwslqDlLWCqvlO0"), shaped: false,
+    cells: [GLASS, BONE, MEAT, SALT, _, _, _, _, _] },
+  { id: "liquid-luck", result: potion("ObiettKQSBCmEoli"), shaped: false,
+    cells: [GLASS, HONEY, HERBS, BERRIES, _, _, _, _, _] },
+  { id: "heartstopper", result: potion("9MwOmL24PBKxq00d"), shaped: false,
+    cells: [GLASS, MUSHROOMS, MUSHROOMS, MUSHROOMS, _, _, _, _, _] },
+  { id: "new-potential", result: potion("0UhW8YXgn00FGOCg"), shaped: false,
+    cells: [GLASS, EGGS, HERBS, MUSHROOMS, BERRIES, _, _, _, _] },
+  { id: "stoneform", result: potion("XEnQs002PTTeRAtY"), shaped: false,
+    cells: [GLASS, STONE, STONE, SALT, _, _, _, _, _] },
+  { id: "water-deflector", result: potion("DmH7WEDwJlwRrFTa"), shaped: false,
+    cells: [GLASS, WAX, WAX, FEATHER, _, _, _, _, _] }
 ];
 
 /**
