@@ -1309,6 +1309,7 @@
   "CAIRN.TakeOut": "Take out",
   "CAIRN.TakesSlots": "Takes Slots",
   "CAIRN.TakesSlotsHint": "You haul it \u2014 a bag on your back, a cart pulled with both hands \u2014 so it costs slots like anything else. Off, it hauls itself, costs none, and is always on your Aside tab.",
+  "CAIRN.TokenDistance": "{metres} m ({feet} ft)",
   "CAIRN.Trait": {
     "Clothing": "Clothing",
     "Face": "Face",

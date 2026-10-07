@@ -230,6 +230,13 @@ Hooks.once("init", async function () {
   // The canvas turn ring. Core lights it for the one token at `combat.combatant`, which this
   // system has no answer for; CairnToken lights every token of the side that is acting instead.
   CONFIG.Token.objectClass = CairnToken;
+  // The token tooltip is drawn in Lora through PIXI, which only sees a face core loaded before the
+  // canvas: the stylesheet's @font-face loads Lora on first DOM use, which may come after the
+  // first hover, and PIXI falls back to another face without a word.
+  CONFIG.fontDefinitions.Lora = {
+    editor: false,
+    fonts: [{ urls: [`systems/${SYSTEM_ID}/fonts/Lora-Variable.woff2`], weight: "400 700" }]
+  };
 
   // Register sheet application classes — per Actor type, since the two sheets share almost no
   // controls. The core fallback sheets stay registered as non-default alternatives.

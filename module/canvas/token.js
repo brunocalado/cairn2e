@@ -5,27 +5,109 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { METRES_PER_FOOT } from "../constants.js";
+import { nearestSpaces } from "../token-distance-rules.js";
+
 /**
- * The reticule's three strokes, widest first, each laid over the one before. The paper halo is
- * what keeps the mark readable on a dark cave map and the ink on a pale parchment one; the blood
- * core is the system's own `--cairn-blood`, so a target reads as this system's mark rather than
- * core's. Hex, not the CSS tokens, because the canvas cannot read custom properties.
+ * The system's paper and ink, for what it draws on the canvas. Paper as a halo under ink is what
+ * keeps a mark readable on a dark cave map and a pale parchment one alike. Hex, not the CSS
+ * tokens, because the canvas cannot read custom properties.
+ */
+const PAPER = 0xf8f6f1;
+const INK = 0x191813;
+
+/**
+ * The reticule's three strokes, widest first, each laid over the one before. The blood core is
+ * the system's own `--cairn-blood`, so a target reads as this system's mark rather than core's.
  */
 const RETICULE_STROKES = [
-  { color: 0xf8f6f1, width: 12 },
-  { color: 0x191813, width: 8 },
+  { color: PAPER, width: 12 },
+  { color: INK, width: 8 },
   { color: 0x6e1414, width: 4.5 }
 ];
 
 /**
  * Cairn 2e token.
  *
- * Two things differ from core's token: the turn marker, because 2e's round is side-based
- * (`core-rules.md` → Combat) and there is no single combatant "whose turn it is" to point at; and
+ * Three things differ from core's token: the turn marker, because 2e's round is side-based
+ * (`core-rules.md` → Combat) and there is no single combatant "whose turn it is" to point at;
  * the target reticule, because core's four small triangles in the token's disposition colour
- * vanish against a busy map.
+ * vanish against a busy map; and the tooltip, which adds the distance from the selected token
+ * while this one is hovered, in the system's face.
  */
 export class CairnToken extends foundry.canvas.placeables.Token {
+  /** @override — the distance from the selected token under core's elevation. */
+  _getTooltipText() {
+    return [super._getTooltipText(), this.#distanceFromSelected()].filter(Boolean).join("\n");
+  }
+
+  /**
+   * @override — core's body carried across unchanged, with the system's face and ink in place of
+   * `_getTextStyle()`. Calling `super` and swapping the style afterwards would leave
+   * `levelIndicator` sized and placed from core's font. `_getTextStyle` itself stays core's,
+   * because the nameplate uses it too.
+   */
+  _refreshTooltip() {
+    this.tooltip.text = this._getTooltipText();
+    this.tooltip.style = this.#tooltipStyle();
+    const s = canvas.dimensions.uiScale;
+    const { fontSize } = PIXI.TextMetrics.measureFont(this.tooltip.style.toFontString());
+    this.levelIndicator.width = this.levelIndicator.height = fontSize * s * 1.25;
+    this.levelIndicator.y = this.tooltip.y - (this.tooltip.text ? this.tooltip.height : 0);
+  }
+
+  /** @inheritDoc — core redraws the tooltip only when elevation changes; hover changes it here. */
+  _onHoverIn(event, options) {
+    const result = super._onHoverIn(event, options);
+    this.renderFlags.set({ refreshTooltip: true });
+    return result;
+  }
+
+  /** @inheritDoc */
+  _onHoverOut(event, options) {
+    const result = super._onHoverOut(event, options);
+    this.renderFlags.set({ refreshTooltip: true });
+    return result;
+  }
+
+  /**
+   * How far the first controlled token stands from this one, while this one is hovered: between
+   * the nearest square under each, so a large token reads what a player counts on the map, and
+   * through the scene's own `measurePath`, so the figure agrees with core's ruler, elevation
+   * included. It refreshes on the next hover, not while either token moves.
+   * @returns {string}  "" when there is nothing to measure
+   */
+  #distanceFromSelected() {
+    const source = canvas.tokens.controlled[0];
+    if (!this.hover || !source || (source === this)) return "";
+    const [from, to] = nearestSpaces(source.document, this.document, canvas.grid.size);
+    const { distance } = canvas.grid.measurePath([
+      { ...from, elevation: source.document.elevation },
+      { ...to, elevation: this.document.elevation }
+    ]);
+    const { units } = canvas.grid;
+    // Scenes stay in feet and the table reads metres; any other unit is printed as core prints
+    // elevation, in the scene's own.
+    if (units !== "ft") return `${Math.round(distance * 10) / 10} ${units}`.trim();
+    const metres = Math.round(distance * METRES_PER_FOOT * 10) / 10;
+    return game.i18n.localize("CAIRN.TokenDistance", { metres, feet: distance });
+  }
+
+  /**
+   * Lora in ink on a paper halo, with no drop shadow: the system's monochrome look, and readable
+   * on any map. Lora is registered in `CONFIG.fontDefinitions`, so it is loaded before the canvas
+   * draws; a face PIXI asks for that is not loaded yet falls back to another without a word.
+   * @returns {PIXI.TextStyle}
+   */
+  #tooltipStyle() {
+    const style = CONFIG.canvasTextStyle.clone();
+    Object.assign(style, {
+      fontFamily: "Lora", fontSize: 24, fill: INK, stroke: PAPER, strokeThickness: 4,
+      dropShadow: false, wordWrapWidth: this.w * 2.5
+    });
+    return style;
+  }
+
   /**
    * @override — mark every token of the side that is acting, not one token.
    *
@@ -114,8 +196,8 @@ export class CairnToken extends foundry.canvas.placeables.Token {
     const x0 = (this.w / 2) - ((others.length - 1) * step / 2);
     const y = -14 * s;
     for (const [i, u] of others.entries()) {
-      g.lineStyle({ color: 0xf8f6f1, width: 6 * s }).drawCircle(x0 + (i * step), y, r);
-      g.lineStyle({ color: 0x191813, width: 3 * s }).beginFill(u.color, 1).drawCircle(x0 + (i * step), y, r).endFill();
+      g.lineStyle({ color: PAPER, width: 6 * s }).drawCircle(x0 + (i * step), y, r);
+      g.lineStyle({ color: INK, width: 3 * s }).beginFill(u.color, 1).drawCircle(x0 + (i * step), y, r).endFill();
     }
   }
 }
