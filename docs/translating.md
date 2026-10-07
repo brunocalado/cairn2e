@@ -65,6 +65,11 @@ A translation module needs two things in its `module.json`:
   heading with that slug, so when you translate a heading another link points at, change the slug
   in that link to match: it is the heading lowercased, `&` written "and", spaces as dashes.
 
+- **Measures.** The system's text gives distances in metres with the feet the map measures beside
+  them (`12 m (40 ft)`, or `12 m / 40 ft` inside parentheses), because scenes stay in feet. Keep
+  the feet beside the metres: they are what a player reads off the ruler. The distance shown when
+  hovering a token is `CAIRN.TokenDistance`, `{metres} m ({feet} ft)`.
+
 ## 3. What never to translate
 
 - **Ids, uuids and `documentUuid`.** The system finds every document through them.

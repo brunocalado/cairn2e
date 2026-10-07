@@ -166,6 +166,12 @@ All four are optional:
 - [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's gear from
   materials on a crafting grid, and cooks food (see [§12](#12-crafting-with-grid-crafter)).
 
+### Measures
+
+Distances in the system's text read in metres with the feet the map measures beside them, such as
+`12 m (40 ft)`, because Foundry's maps stay in feet. Weights are in kilograms and long distances in
+kilometres. This is the system's choice: the Cairn books use feet and pounds.
+
 ### Other languages
 
 The system is in English. A translation is a separate module, made by the community: install it
@@ -347,6 +353,13 @@ set aside, put in a container, handed over or sold. Unarmed is an ordinary item:
 it another die, or delete it. A weapon with **Paired** switched on rolls its die twice and keeps the higher,
 which the rules write as *d8+d8*.
 
+**Food.** Any gear can be food: switch on **Food**, under **Uses** on its Details tab, and its line
+on the sheet carries a **Food** tag. Rations, and most of the food in More Gear, already have it.
+Make Camp and a dungeon's Exhaustion eat a use of it as they eat Rations (see [§14](#each-watch)).
+
+**One dose.** A potion, an Antitoxin, Fire Oil, a Sedative or a Repellent has one use: the use
+button on its row spends it, and restoring the use refills it.
+
 ### Giving things to another character
 
 - **Barter**, in the sheet's **Actions** menu, hands gear and coin to another player's character,
@@ -505,6 +518,12 @@ is built around that:
   foe at 0 HP), the Warden is whispered one reminder. It rolls nothing: the flag does. Players
   don't see it.
 
+**How far away.** Select a token and hover another: above the hovered one appears how far apart
+they are, in metres with the map's feet beside them. It counts from the nearest square of one to
+the nearest square of the other, so a large creature reads as you would count it on the map, and
+it includes any difference in height. It works for everyone, in a fight or out of one, and it is
+measured again on the next hover, not while either token moves.
+
 The same tracker also runs a dungeon, turn by turn: see [§15](#15-exploring-a-dungeon).
 
 ---
@@ -607,8 +626,9 @@ The Warden opens **Store** from the Cairn 2e tab.
 A new world already has ten small stores: **Weaponsmith**, **Armorer**, **Stables**,
 **Provisioner**, **Outfitter**, **Apothecary**, **Toolmaker**, **Curiosities**, **Tailor** and
 **Tavern**. Between them they sell everything in the rulebook's Marketplace except Ship's Passage,
-plus some of the **More Gear** compendium; the Tailor (but its Gloves) and the Tavern are all More Gear. They are
-only a starting point: rename them, restock them or delete them like any store you made. The
+plus some of the **More Gear** compendium; the Tailor (but its Gloves) and the Tavern are all
+homebrew. The Toolmaker, Tailor, Apothecary and Provisioner also sell the crafting **Materials**
+that are bought (see [§12](#12-crafting-with-grid-crafter)). They are only a starting point: rename them, restock them or delete them like any store you made. The
 Warden's **Restore Default Stores** macro brings all ten back as they first were, and deletes
 every other store, after a warning.
 
@@ -649,20 +669,23 @@ every other store, after a warning.
 
 [Grid Crafter](https://github.com/brunocalado/grid-crafter) is an optional module. With it active,
 the Marketplace's weapons, armour and most of its gear are made from materials laid on a 3×3 grid,
-and food is cooked the same way. Crafting is homebrew: Cairn has no crafting rules of its own.
+food is cooked and potions are brewed the same way. Crafting is homebrew: Cairn has no crafting
+rules of its own.
 
 **Materials.** The **Materials** compendium, in the Homebrew folder, holds what things are made of:
 ingots and nails, planks and glass, hide and leather, cloth and thread, herbs and raw food. Most are
 bought: the **Toolmaker**, **Tailor**, **Apothecary** and **Provisioner** sell them. Stick, Stone,
 Bone, Feather and Berries cost nothing and no store sells them: they are found, hunted or gathered,
-whenever the Warden says so. Raw meat and fish are not food, so Make Camp won't eat them until they
-are cooked.
+whenever the Warden says so. The three **Monster Parts**, Troll Tallow, Gargoyle Grit and Pixie
+Scale, are taken from the creature they name and sold nowhere; they are the dear part of a
+potion. Raw meat and fish are not food, so Make Camp won't eat them until they are cooked.
 
 **Recipes.** Grid Crafter's Recipe Book lists them all under **Cairn 2e**. What a recipe spends
 always costs less than what it makes, so making a thing is cheaper than buying it. Some things are
 made in steps: two Iron Ingots make a Steel Ingot, and a Steel Ingot makes two Steel Plates.
 Weapons, armour and tools have a shape, which works anywhere on the grid and mirrored left to right.
-Food, and mixtures such as Antitoxin and Repellent, have none: put the ingredients in any cells.
+Food, mixtures such as Antitoxin and Repellent, and the sixteen **Potions** have none: put the
+ingredients in any cells. Every potion is poured into a Glass vial, one of its ingredients.
 
 **Room for the result.** Each ingredient is a whole item from your own sheet, a Mule's or Cart's
 load included, but not a hireling's. Crafting spends them and then needs room for what it makes. If
@@ -765,6 +788,9 @@ table: it says a treasure is specific to where it is found, and that it tells a 
 a table aid, not a rule. Its defaults are the price bands of the system's own compendiums, and it
 invents nothing.
 
+The window has two columns, **Roll on** at the left and **Drawn** at the right, with **Roll** and
+**Send** under both.
+
 - **Roll on** lists what can be rolled, each with a switch and a number for how many times it is
   drawn this time (1 to 10; it starts at 1 whenever the window opens). A new world offers **Coin**, the four **Valuables** bands, the two **Strange Items**
   bands, the three **Relics** bands, the two **Scrolls** bands and the two **Spellbooks** bands, all
@@ -777,12 +803,17 @@ invents nothing.
 - **Coin** is rolled by a dice formula in gold pieces. It starts as `3d6*10`, a choice for
   this tool and not the rulebook's: it lands between 30 and 180 gold, so a roll often crosses the
   100 gold where a sack stops being petty and starts to weigh. Type another formula in its field;
-  one that isn't a dice formula is not kept.
+  one that isn't a dice formula is not kept. Coin has no **×**: it is always on the list.
 - The dice on a row, right of its **×**, roll that source alone, ticked or not, with its own number,
   and add to **Drawn**.
 - **Roll** adds to the **Drawn** list instead of replacing it. A table result that is gear or coin
   becomes that gear or coin, and anything else, text included, is left out, with a notice saying
   how many.
+- **Read before you keep.** Click a drawn item's picture or name to open the item it was drawn
+  from (read-only when it comes from a compendium), so a relic or a spellbook can be read first.
+- **Hand one over directly.** Drag a drawn item by its grip, at the left of its row, onto any
+  actor's sheet, where it lands as a drop from a compendium does, or into the chat, where it is
+  read out loud. The row stays: strike it once it is given.
 - **Strike it** (the **×** on a row) throws away a row you don't want, and **Clear** throws away
   all of them. Then roll again, if you like: what you kept stays. Closing the window drops
   whatever is drawn.
@@ -885,7 +916,8 @@ spent. The **Day** it shows counts the days of the journey.
 3. **Spend the watch.** The button only works once everything needed has been rolled. It then
    updates the sheets for you:
    - **Make Camp** eats one meal per person (a use of Rations, or of any gear marked *Food*) and
-     clears their Fatigue. Anyone with no meal becomes Deprived.
+     clears their Fatigue. The food closest to running out goes first, so a half-eaten meal is
+     finished before a fresh one is opened. Anyone with no meal becomes Deprived.
    - **Supply** hands out the Rations found.
    - **Travel** moves the party closer, or finds the way again if they were lost.
 
@@ -940,8 +972,9 @@ the exploration.
   writes it on the line, and the line stays free text, so anything goes.
 - A **Panicked** character also finds **Shake off panic** in that list: it rolls the WIL save,
   and on a success the condition ends.
-- Beside the name is **how far the token has moved** this turn: green within torchlight's 40 ft,
-  amber and bold with a running figure past it, red past the 120 ft an action covers. Moving
+- Beside the name is **how far the token has moved** this turn, in the map's feet: green within
+  torchlight's 12 m (40 ft), amber and bold with a running figure past it, red past the
+  36 m (120 ft) an action covers. Moving
   further is allowed; it means the party is moving quickly. Moved too far? The **undo** arrow
   beside the distance takes the token back to where the turn began, for its owner and the Warden.
 - The switch at the end of the row marks the character as having acted, as in a fight.
@@ -956,7 +989,7 @@ the exploration.
 
 Under the party, the Warden sees when the rules call for a roll on the **Dungeon Events** table:
 when the party stays too long in one place, moves quickly, enters a new area, or makes noise.
-"Moves quickly" lights up by itself when a token has gone past 40 ft. The other three are the
+"Moves quickly" lights up by itself when a token has gone past 12 m (40 ft). The other three are the
 Warden's call.
 
 **Roll a Dungeon Event** rolls the table. The card goes to the Warden only, and the result stays in
@@ -1054,7 +1087,7 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 | **Magic** | Spellbooks, Scrolls, Relics |
 | **Reference** | Player's Guide, Game Tables, Bestiary, Hirelings, Vald Calendar |
 | **Warden** | Warden Tables |
-| **Homebrew** | More Gear, Materials, More Spellbooks, More Scrolls: extra content by the system's author, not from the Cairn book |
+| **Homebrew** | More Gear, Materials, More Spellbooks, More Scrolls, Potions: extra content, not from the Cairn books |
 
 **Macros** sits at the top of the folder.
 
@@ -1064,6 +1097,13 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 - **Companions** holds the creatures some backgrounds start with (the Blood Pail's servant, the
   Falcon, the Hollow Wolf, the Homunculus, the Raven Familiar). The item that grants one lists it
   under **Grants** (see [§3](#what-an-item-grants)).
+- **More Gear** holds clothing, food, drink, tools and transport the Marketplace doesn't list, the
+  **Valuables** in four price bands and forty-five **Strange Items**, oddities whose meaning the
+  Warden reads, in two. The Treasure window rolls on both (see [Treasure](#treasure)).
+- **Potions** holds sixteen one-dose potions: nine from *Alchemy & Potions — For Cairn*, revised
+  for Cairn 2e (credited in [CREDITS](CREDITS.md)), and seven of the system's own, each brewed
+  around a part taken from a Troll, a Gargoyle or a Pixie. No store sells them; with Grid Crafter
+  they are brewed (see [§12](#12-crafting-with-grid-crafter)).
 
 **Monster pictures.** The Bestiary comes with Foundry's standard icons. To use your own art:
 

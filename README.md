@@ -48,7 +48,8 @@ spills into STR, and the chat card offers the critical-damage save when it's due
 cave-in rolled on the spot applies the same way, and a hit on the wrong token is undone with one
 click. Scars, Panic,
 *impaired* and *enhanced* attacks, *blast*, Morale and Reactions are all handled. The combat
-tracker follows Cairn's rules: sides take turns, with no initiative roll.
+tracker follows Cairn's rules: sides take turns, with no initiative roll. Select a token and
+hover another to read how far apart they are, height included.
 
 <p align="center">
   <img src="docs/images/chat-cards.webp" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="30%">
@@ -60,7 +61,7 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
   realms and forests, all built from the rulebook's own tables.
 - **A calendar** in the Vald reckoning of the Warden's Guide: watches, seasons, the Reclamation,
   and notes on any day, starting with the setting's holidays. The Warden sets the time and shows
-  it to everyone.
+  it to everyone, and a scene can darken and lighten with the clock.
 - **Journeys**: a shared travel window that runs the wilderness watch by watch. It rolls weather,
   getting lost and wilderness events, spends Rations and Fatigue on everyone's sheet, and an
   encounter can drop its creatures straight onto the map.
@@ -72,12 +73,14 @@ tracker follows Cairn's rules: sides take turns, with no initiative roll.
   dragging items onto its shelves, open it on every player's screen, or let players walk in from
   their own sheet. Players fill a cart, and the store checks both their gold *and* their free
   slots before anything changes hands.
+- **Treasure**: roll loot from the price bands of the compendiums or from tables and folders of
+  your own, strike what you don't want, and send the rest to the party's Stash.
 - **Unknown gear**: any item, from a relic to a strange potion, can hide behind the name, picture
   and appearance the Warden gives it, unusable until it is revealed.
 - **Factions** that play: agents in rank order, an agenda to tick off, and buttons for faction
   actions and opposed saves.
 - **A party sheet** that shows everyone's HP, attributes and load at a glance, plus the followers
-  travelling with them.
+  travelling with them and a **Stash** for what the group holds and nobody carries.
 - **Live rules in your notes**: write `[[/save WIL]]` in a journal and it becomes a clickable
   save. A trap written as `[[/damage d6 STR]]` rolls its damage against STR instead of HP. When a
   character dies, you can promote a hireling to a player character.
@@ -112,7 +115,10 @@ All the game content you need is already inside:
 | **Rules** | the Player's Guide — principles, character creation, core rules, procedures and the Marketplace — linked to the items, tables and backgrounds it names |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
 | **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, and the Warden's Reset Player Hotbars and Restore Default Stores |
-| **Homebrew** | *More Gear*, *More Spellbooks* and *More Scrolls*: extra content by the maintainer, kept in its own folder |
+| **Homebrew** | *More Gear* (clothing, food, drink, tools, transport, valuables and strange items), *Materials* for crafting, *More Spellbooks*, *More Scrolls* and 16 *Potions*: extra content, not from the Cairn books, kept in its own folder |
+
+Distances read in metres with the feet the map measures beside them, `12 m (40 ft)`, and weights
+in kilograms.
 
 ### It looks like the books
 The ink-on-paper design uses **Lora**, the typeface the Cairn books are set in. A new world opens
@@ -146,6 +152,8 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
   [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
   sounds Cairn's weapons, monster attacks and spells. The system's menu replaces AA's own once,
   your edits to it are kept, and a world setting turns this off.
+- [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's weapons,
+  armour and gear from materials on a crafting grid, cooks food and brews potions.
 
 ## Learn more
 
