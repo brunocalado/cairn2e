@@ -18,12 +18,13 @@ not teach the rules: they are in the Cairn 2e books and free online at
 9. [Growth](#9-growth)
 10. [The party](#10-the-party)
 11. [Stores and coin](#11-stores-and-coin)
-12. [Warden tools](#12-warden-tools)
-13. [Journeys through the wilderness](#13-journeys-through-the-wilderness)
-14. [Exploring a dungeon](#14-exploring-a-dungeon)
-15. [Handy shortcuts in text](#15-handy-shortcuts-in-text)
-16. [Macros](#16-macros)
-17. [Compendiums](#17-compendiums)
+12. [Crafting with Grid Crafter](#12-crafting-with-grid-crafter)
+13. [Warden tools](#13-warden-tools)
+14. [Journeys through the wilderness](#14-journeys-through-the-wilderness)
+15. [Exploring a dungeon](#15-exploring-a-dungeon)
+16. [Handy shortcuts in text](#16-handy-shortcuts-in-text)
+17. [Macros](#17-macros)
+18. [Compendiums](#18-compendiums)
 
 ---
 
@@ -35,7 +36,7 @@ Create a world on the **Cairn 2e** system and launch it. The first time it opens
 
 - a **Welcome** scene, with its own music;
 - the game master seat renamed to **Warden**, which is what Cairn calls it;
-- the system's macros in a **Cairn 2e** folder of the Macros directory (see [§16](#16-macros)).
+- the system's macros in a **Cairn 2e** folder of the Macros directory (see [§17](#17-macros)).
 
 Each player finds their macros on the hotbar the first time they log in: the three saves, the
 Die of Fate, the Rules Summary and the Calendar on the left, Rest and Restore Abilities at the far end. Only
@@ -133,7 +134,7 @@ Most of Cairn's rules have no on/off switch: they just apply. **Configure Settin
 few options for this system:
 
 - **Bestiary artwork** and **Bestiary artwork folder**: use your own pictures for the monsters in
-  the Bestiary compendium (see [§17](#17-compendiums)).
+  the Bestiary compendium (see [§18](#18-compendiums)).
 - **Scene darkness follows the clock**: on by default; turn it off when a lighting module sets
   the darkness instead (see [The calendar and the watch](#the-calendar-and-the-watch)).
 - **Actions menu macros → Choose macros**: drop macros here, and they appear in every character's
@@ -146,7 +147,7 @@ What a store charges and pays is set on each store (see [§11](#11-stores-and-co
 
 ### Recommended modules
 
-All three are optional:
+All four are optional:
 
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls your dice in 3D, including a
   custom Cairn d20. The other dice wear the **Cairn Blood Moon** theme until a player picks
@@ -162,6 +163,8 @@ All three are optional:
   the module's Automatic Recognition menu, whose defaults are made for D&D; a later version only
   adds its new entries, so an entry you edit or delete stays that way. Turning the system's
   setting off stops any further changes.
+- [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's gear from
+  materials on a crafting grid, and cooks food (see [§12](#12-crafting-with-grid-crafter)).
 
 ### Other languages
 
@@ -449,7 +452,7 @@ chat and pick **Reverse the hit**. The HP and STR it took are given back.
 ### Traps
 
 Damage from a trap comes off an attribute, usually STR or DEX, and not off HP. Write it into your
-dungeon notes as a shortcut ([§15](#15-handy-shortcuts-in-text)), for example `[[/damage d6 STR]]`.
+dungeon notes as a shortcut ([§16](#16-handy-shortcuts-in-text)), for example `[[/damage d6 STR]]`.
 Target the characters it hits and click it. The card offers two buttons:
 
 - **Apply to STR**: armor reduces the damage, as usual.
@@ -502,7 +505,7 @@ is built around that:
   foe at 0 HP), the Warden is whispered one reminder. It rolls nothing: the flag does. Players
   don't see it.
 
-The same tracker also runs a dungeon, turn by turn: see [§14](#14-exploring-a-dungeon).
+The same tracker also runs a dungeon, turn by turn: see [§15](#15-exploring-a-dungeon).
 
 ---
 
@@ -642,7 +645,39 @@ every other store, after a warning.
 
 ---
 
-## 12. Warden tools
+## 12. Crafting with Grid Crafter
+
+[Grid Crafter](https://github.com/brunocalado/grid-crafter) is an optional module. With it active,
+the Marketplace's weapons, armour and most of its gear are made from materials laid on a 3×3 grid,
+and food is cooked the same way. Crafting is homebrew: Cairn has no crafting rules of its own.
+
+**Materials.** The **Materials** compendium, in the Homebrew folder, holds what things are made of:
+ingots and nails, planks and glass, hide and leather, cloth and thread, herbs and raw food. Most are
+bought: the **Toolmaker**, **Tailor**, **Apothecary** and **Provisioner** sell them. Stick, Stone,
+Bone, Feather and Berries cost nothing and no store sells them: they are found, hunted or gathered,
+whenever the Warden says so. Raw meat and fish are not food, so Make Camp won't eat them until they
+are cooked.
+
+**Recipes.** Grid Crafter's Recipe Book lists them all under **Cairn 2e**. What a recipe spends
+always costs less than what it makes, so making a thing is cheaper than buying it. Some things are
+made in steps: two Iron Ingots make a Steel Ingot, and a Steel Ingot makes two Steel Plates.
+Weapons, armour and tools have a shape, which works anywhere on the grid and mirrored left to right.
+Food, and mixtures such as Antitoxin and Repellent, have none: put the ingredients in any cells.
+
+**Room for the result.** Each ingredient is a whole item from your own sheet, a Mule's or Cart's
+load included, but not a hireling's. Crafting spends them and then needs room for what it makes. If
+the result won't fit in the slots the ingredients leave free, the craft is refused and nothing is
+spent.
+
+**Never crafted:** animals and services; the Compass, Spyglass and Complex Instruments; spellbooks,
+scrolls and relics, which are found, never made; background gear; and More Gear's drinks, clothing,
+tools, valuables, strange items and transport.
+
+Whether crafting takes a Downtime Action, a workshop, or only a moment is the Warden's call.
+
+---
+
+## 13. Warden tools
 
 The generators are in the **Generators** section of the Cairn 2e tab. Only the Warden sees them.
 
@@ -810,7 +845,7 @@ change it.
 
 ---
 
-## 13. Journeys through the wilderness
+## 14. Journeys through the wilderness
 
 **Journey** in the Cairn 2e tab opens a window, shared with everyone, that runs travel watch by
 watch.
@@ -883,7 +918,7 @@ button.
 
 ---
 
-## 14. Exploring a dungeon
+## 15. Exploring a dungeon
 
 A dungeon runs in the **combat tracker**, one turn at a time. Any dangerous place counts: a ruin, a
 manor house, a cave. The tracker keeps count and reminds you of the rules. It never stops anyone
@@ -941,7 +976,7 @@ everything as it was.
 
 ---
 
-## 15. Handy shortcuts in text
+## 16. Handy shortcuts in text
 
 Anything you write in a journal, an item or NPC description, or a chat message can contain these
 shortcuts:
@@ -962,7 +997,7 @@ Rules you can name with `@Rule[...]`: `panic`, `impaired`, `enhanced`, `deprived
 
 ---
 
-## 16. Macros
+## 17. Macros
 
 A new world imports the **Macros** compendium into a **Cairn 2e** folder of the Macros
 directory, and fills each player's hotbar on their first login (see [§1](#a-new-world)). The
@@ -1008,7 +1043,7 @@ cairn2e.restoreDefaultStores(); // Warden only: every store back to the system's
 
 ---
 
-## 17. Compendiums
+## 18. Compendiums
 
 The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** folder:
 
@@ -1019,7 +1054,7 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 | **Magic** | Spellbooks, Scrolls, Relics |
 | **Reference** | Player's Guide, Game Tables, Bestiary, Hirelings, Vald Calendar |
 | **Warden** | Warden Tables |
-| **Homebrew** | More Gear, More Spellbooks, More Scrolls: extra content by the system's author, not from the Cairn book |
+| **Homebrew** | More Gear, Materials, More Spellbooks, More Scrolls: extra content by the system's author, not from the Cairn book |
 
 **Macros** sits at the top of the folder.
 
