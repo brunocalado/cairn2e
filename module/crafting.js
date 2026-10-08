@@ -548,16 +548,41 @@ export const DISMANTLES = RECIPES
   .flatMap((r) => {
     const ways = r.variants ?? [r];
     const tools = new Set(ways.map((v) => v.requires ?? null));
-    if (tools.size > 1) return [];
     const first = ways[0].cells;
     return [{
       id: `${r.id}-dismantle`, kind: "dismantle", input: r.result, refund: true,
       outputs: (Array.isArray(first[0]) ? first.flat() : first).filter(Boolean),
       favorite: { recipe: `${SYSTEM_ID}.${r.id}`, variant: "v0" },
-      requires: [...tools][0] ?? undefined,
+      // Ways that need different tools leave `requires` to askForTheTool.
+      requires: tools.size === 1 ? ([...tools][0] ?? undefined) : undefined,
       categories: categoriesOf(r)
     }];
   });
+
+/** The crafting recipe each split-tool dismantle undoes, by the id Grid Crafter gives it. */
+const SPLIT = new Map(RECIPES
+  .filter((r) => new Set((r.variants ?? [r]).map((v) => v.requires ?? null)).size > 1)
+  .map((r) => [`${SYSTEM_ID}.${r.id}-dismantle`, r]));
+
+/**
+ * A dismantle asks for the tool of the way the item was made, which one `requires` cannot say for an
+ * Axe knapped from stone or forged from iron. The receipt's parts are the cells of the variant that
+ * made it. An item with no receipt, or whose receipt no variant spends any more, is taken as made
+ * the first way, which is what it breaks into. The tool is matched by its pack source, never by
+ * name, so a renamed or translated tool still counts.
+ */
+function askForTheTool(actor, recipe, item, veto, salvage) {
+  const made = SPLIT.get(recipe.id);
+  if (!made) return;
+  const key = (uuids) => [...uuids].sort().join();
+  const cells = (v) => (Array.isArray(v.cells[0]) ? v.cells.flat() : v.cells).filter(Boolean);
+  const spent = salvage.receipt ? key(salvage.receipt.parts.map((p) => p.uuid)) : null;
+  const way = made.variants.find((v) => key(cells(v)) === spent) ?? made.variants[0];
+  if (!way.requires || actor.items.some((i) => i._stats.compendiumSource === way.requires)) return;
+  veto.reason = game.i18n.localize("CAIRN.Crafting.DismantleNeedsTool",
+    { item: item.name, tool: foundry.utils.fromUuidSync(way.requires)?.name ?? "" });
+  return false;
+}
 
 /** A recipe's categories as keys under `CAIRN.Crafting.Category`: what it makes, its trades, Without Tools. */
 export function categoriesOf(recipe) {
@@ -570,7 +595,8 @@ export function categoriesOf(recipe) {
  * Register the recipes when Grid Crafter is ready; the hook never fires without the module, so
  * nothing here runs in a world that does not use it. Every client registers, because Grid Crafter
  * keeps recipes in memory, not in the world. Categories are names the books show, so they are
- * localized here, where `game.i18n` is ready.
+ * localized here, where `game.i18n` is ready. The tool a split-tool dismantle asks for is checked on
+ * `preDismantle`, which Grid Crafter fires only on the client that pressed Dismantle.
  */
 export function registerCrafting() {
   const label = (c) => game.i18n.localize(`CAIRN.Crafting.Category.${c}`);
@@ -578,5 +604,6 @@ export function registerCrafting() {
     ...RECIPES.map((r) => ({ ...r, categories: categoriesOf(r).map(label) })),
     ...DISMANTLES.map((d) => ({ ...d, categories: d.categories.map(label) }))
   ]));
+  Hooks.on(`${MODULE}.preDismantle`, askForTheTool);
   Hooks.once(`${MODULE}.ready`, installForgeMacro);
 }
