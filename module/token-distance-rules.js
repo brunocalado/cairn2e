@@ -5,6 +5,27 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { METRES_PER_FOOT } from "./constants.js";
+
+/**
+ * No distance the system prints carries more than one decimal. Rounded on the magnitude, because
+ * `Math.round` takes a half towards +∞: an elevation 7.5 ft below would read -2.2 m against
+ * +2.3 m above.
+ * @param {number} n
+ * @returns {number}
+ */
+export const toTenth = (n) => Math.sign(n) * Math.round(Math.abs(n) * 10) / 10;
+
+/**
+ * A distance in the scene's feet as the table reads it: the metres, and the feet beside them,
+ * each to one decimal at most. `CAIRN.TokenDistance` takes the result as it is.
+ * @param {number} feet
+ * @returns {{metres: number, feet: number}}
+ */
+export function metric(feet) {
+  return { metres: toTenth(feet * METRES_PER_FOOT), feet: toTenth(feet) };
+}
+
 /**
  * The two grid-space centres, one under each token, that sit closest to each other: what a
  * player counts on the map. Centre to centre would be wrong for anything larger than 1×1, since

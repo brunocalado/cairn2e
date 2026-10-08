@@ -5,8 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { METRES_PER_FOOT } from "../constants.js";
-import { nearestSpaces } from "../token-distance-rules.js";
+import { metric, nearestSpaces, toTenth } from "../token-distance-rules.js";
 
 /**
  * The system's paper and ink, for what it draws on the canvas. Paper as a halo under ink is what
@@ -88,9 +87,8 @@ export class CairnToken extends foundry.canvas.placeables.Token {
     const { units } = canvas.grid;
     // Scenes stay in feet and the table reads metres; any other unit is printed as core prints
     // elevation, in the scene's own.
-    if (units !== "ft") return `${Math.round(distance * 10) / 10} ${units}`.trim();
-    const metres = Math.round(distance * METRES_PER_FOOT * 10) / 10;
-    return game.i18n.localize("CAIRN.TokenDistance", { metres, feet: distance });
+    if (units !== "ft") return `${toTenth(distance)} ${units}`.trim();
+    return game.i18n.localize("CAIRN.TokenDistance", metric(distance));
   }
 
   /**
