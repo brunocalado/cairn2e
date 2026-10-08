@@ -1,3 +1,37 @@
+# 0.1.3
+
+- [Added] **The party's Stash.** Gear and coin dropped on the party sheet land in a Stash tab that
+  weighs on nobody, and leave it for a member's sheet as any drop between actors does. A barter can
+  start from the Stash or end in it.
+- [Added] **The Treasure window.** The Warden rolls treasure from the tables and price-band folders
+  they choose, each source with its own count and dice, strikes what they do not want, and sends the
+  rest to the active party's Stash with a card for the table. A drawn item opens from its name or
+  icon and drags onto any sheet or into chat. Crafting materials can be rolled too.
+- [Added] **Forty-five Strange Items** in More Gear, oddities whose meaning the Warden reads, in a
+  100gp band and a 25gp band beside the Valuables.
+- [Added] **Food.** Any gear can be marked Food, and Make Camp and Exhaustion eat it as they eat
+  Rations, finishing the meal closest to running out first. More Gear's foods are food, and five new
+  dishes are made to be cooked.
+- [Added] **Crafting with Grid Crafter.** Twenty-four crafting materials join the Homebrew folder and
+  the shops that sell them. With Grid Crafter active, the Marketplace's weapons, armour and gear are
+  forged, food is cooked and potions are brewed from materials, each trade asking for its tool, with
+  a way without tools for most recipes. Tallow, Resin, Sinew and Reeds give the Torch four ways to
+  burn. The Forge joins the Actions menu, and a thing made or bought breaks back into its materials.
+- [Added] **Potions.** Nine potions from Alchemy & Potions join the Homebrew folder, and seven of
+  the system's own join the Potions pack, each brewed around a part taken from a Troll, a Gargoyle
+  or a Pixie. An Antitoxin, Fire Oil, a Sedative, a Repellent and the Greenwise's Healing Potion are
+  one dose each, spent and refilled on the sheet.
+- [Added] **The scene follows the clock.** A box in a scene's Environment settings makes its
+  darkness track the world time, dark from 20:00 to 04:00 and light from 06:30 to 17:30. One setting
+  switches it off for the whole world.
+- [Added] Hovering a token while another is selected shows the distance between them, elevation
+  included.
+- [Changed] **Metric measures.** Distances read in metres with the map's feet beside them, on hover,
+  on the ruler and on a dragged token, and weights read in kilograms.
+- [Fixed] The Player's Guide's Herbology salve restores 1d4 STR, as the published book prints it.
+- [Fixed] A sheet's name shows its descenders and accents whole, and a space typed in any text field
+  is a space again rather than a digit-wide gap.
+
 # 0.1.2
 
 - [Added] **A Bond gives what it names.** The Strange Compass and 20gp, the Stone Heart, the half
