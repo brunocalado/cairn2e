@@ -68,7 +68,14 @@ A translation module needs two things in its `module.json`:
 - **Measures.** The system's text gives distances in metres with the feet the map measures beside
   them (`12 m (40 ft)`, or `12 m / 40 ft` inside parentheses), because scenes stay in feet. Keep
   the feet beside the metres: they are what a player reads off the ruler. The distance shown when
-  hovering a token is `CAIRN.TokenDistance`, `{metres} m ({feet} ft)`.
+  hovering a token, dragging one or measuring with the ruler is `CAIRN.TokenDistance`,
+  `{metres} m ({feet} ft)`, and the ruler's height is `CAIRN.ElevationMetres`.
+
+- **Grid Crafter's recipes** (the optional module). A recipe is named after the item it makes, so
+  translating the item translates the recipe. Its categories in the Recipe Book are
+  `CAIRN.Crafting.Category.*`. The **Forge** macro is created in the world once, the first time
+  Grid Crafter is active, and named from `CAIRN.Crafting.ForgeMacro` then: a translation reaches it
+  only if it is active at that moment.
 
 ## 3. What never to translate
 

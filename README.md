@@ -34,7 +34,7 @@ itself up from what you wear. When a character is overloaded or panicking, the s
 
 The **Actions** menu lets a player **Whisper** in character, **Barter** gear and coin with another
 player's character, open the one-page **Rules Summary** or the **Calendar**, and run the macros
-the Warden has put there. Drag a sack or a cart onto another sheet you own, such as your mule's,
+the Warden has put there. With Grid Crafter active, the **Forge** is there too. Drag a sack or a cart onto another sheet you own, such as your mule's,
 and everything inside goes with it. A companion that comes with a background, like the Raven
 Familiar, is dragged from its item straight onto the map.
 
@@ -49,7 +49,8 @@ cave-in rolled on the spot applies the same way, and a hit on the wrong token is
 click. Scars, Panic,
 *impaired* and *enhanced* attacks, *blast*, Morale and Reactions are all handled. The combat
 tracker follows Cairn's rules: sides take turns, with no initiative roll. Select a token and
-hover another to read how far apart they are, height included.
+hover another to read how far apart they are, height included. The ruler and a dragged token read
+in metres too.
 
 <p align="center">
   <img src="docs/images/chat-cards.webp" alt="Chat cards: a damage roll with an Apply button, the hit overflowing into STR with Roll STR save and Reverse the hit, a failed STR save, a Scar notice, and a wilderness encounter" width="30%">
@@ -73,8 +74,8 @@ hover another to read how far apart they are, height included.
   dragging items onto its shelves, open it on every player's screen, or let players walk in from
   their own sheet. Players fill a cart, and the store checks both their gold *and* their free
   slots before anything changes hands.
-- **Treasure**: roll loot from the price bands of the compendiums or from tables and folders of
-  your own, strike what you don't want, and send the rest to the party's Stash.
+- **Treasure**: roll loot from the price bands of the compendiums, crafting materials by kind, or
+  tables and folders of your own, strike what you don't want, and send the rest to the party's Stash.
 - **Unknown gear**: any item, from a relic to a strange potion, can hide behind the name, picture
   and appearance the Warden gives it, unusable until it is revealed.
 - **Factions** that play: agents in rank order, an agenda to tick off, and buttons for faction
@@ -153,7 +154,9 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
   sounds Cairn's weapons, monster attacks and spells. The system's menu replaces AA's own once,
   your edits to it are kept, and a world setting turns this off.
 - [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's weapons,
-  armour and gear from materials on a crafting grid, cooks food and brews potions.
+  armour and gear from materials on a crafting grid, cooks food and brews potions. Some recipes
+  need a tool, such as Smithing Tools or a Sewing Kit, and many things can also be made without
+  one. A weapon, an armour or a piece of gear can be taken apart again for its materials.
 
 ## Learn more
 

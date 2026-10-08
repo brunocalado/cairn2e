@@ -164,12 +164,14 @@ All four are optional:
   adds its new entries, so an entry you edit or delete stays that way. Turning the system's
   setting off stops any further changes.
 - [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's gear from
-  materials on a crafting grid, and cooks food (see [§12](#12-crafting-with-grid-crafter)).
+  materials on a crafting grid, cooks food, brews potions and takes things apart again (see
+  [§12](#12-crafting-with-grid-crafter)).
 
 ### Measures
 
 Distances in the system's text read in metres with the feet the map measures beside them, such as
-`12 m (40 ft)`, because Foundry's maps stay in feet. Weights are in kilograms and long distances in
+`12 m (40 ft)`, because Foundry's maps stay in feet. The ruler, a dragged token and the distance
+shown on hover read the same way. Weights are in kilograms and long distances in
 kilometres. This is the system's choice: the Cairn books use feet and pounds.
 
 ### Other languages
@@ -289,7 +291,8 @@ the **Other Backgrounds** list.
 - **Actions**, in the sheet's title bar, opens a small menu for the character's owner:
   **Barter** (see below), the **Rules Summary**, the **Calendar**, **Whisper** (a private word, spoken as the
   character, to the players you pick) and any macros the Warden has added (see
-  [§1](#settings)).
+  [§1](#settings)). With Grid Crafter active, the **Forge** is there too (see
+  [§12](#12-crafting-with-grid-crafter)).
 
 The **Rules Summary** puts the player's rules on one landscape page. The Warden can open it on
 everyone's screen with **Show to everyone**, on its title bar.
@@ -522,7 +525,8 @@ is built around that:
 they are, in metres with the map's feet beside them. It counts from the nearest square of one to
 the nearest square of the other, so a large creature reads as you would count it on the map, and
 it includes any difference in height. It works for everyone, in a fight or out of one, and it is
-measured again on the next hover, not while either token moves.
+measured again on the next hover, not while either token moves. Dragging a token or measuring with
+the ruler reads in metres with the feet beside them too.
 
 The same tracker also runs a dungeon, turn by turn: see [§15](#15-exploring-a-dungeon).
 
@@ -705,6 +709,17 @@ is to hand: a Torch burns Wax, Tallow or Resin, or is a rushlight of Reeds and T
 tanned with Salt or Herbs; Rations are salted meat or fish; Common Agents are boiled from Hide and
 Bone in a pot, or mixed from Resin and Tallow. Knowing the
 recipe is knowing every variant.
+
+**Taking things apart.** A weapon, an armour or a piece of gear that a recipe makes can be broken
+back down with Grid Crafter's pickaxe, beside the Recipe Book. One made at the table gives back
+exactly what was spent on it, whichever variant made it, so making and breaking undo each other.
+One that was bought, looted or given breaks into the recipe's first way, the Marketplace's, which
+is worth less than the thing itself: a bought sword broken for its iron loses gold. Breaking asks
+for the tool of the way the thing was made, so a forged Axe needs Smithing Tools and a stone one
+nothing. If the parts won't fit on the sheet, nothing is broken. Food, potions, materials and what
+is spent by use (the Torch, the Lantern, the Oil Can, Bandages, Parchment, Antitoxin, Fire Oil, the
+Sedative and the Repellent) never break down, and neither does the Cart, whose load would go with
+it.
 
 **The Forge in the Actions menu.** The first time Grid Crafter is active in a world, the system makes
 a **Forge** macro that every player may run and adds it to the sheet's **Actions** menu, so a player
