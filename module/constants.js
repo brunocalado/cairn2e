@@ -85,6 +85,11 @@ export const SETTINGS = {
    *  record of a one-time install: a Warden who deletes the folder is not asking for it back. */
   CALENDAR_EVENTS_INSTALLED: "calendar-events-installed",
 
+  /** Hidden (`config: false`) — whether Grid Crafter's forge has been made a world Macro and put
+   *  in the Actions menu (`module/crafting.js`). The record of a one-time install: a Warden who
+   *  takes it off the menu or deletes it is not asking for it back on the next launch. */
+  FORGE_MACRO_INSTALLED: "forge-macro-installed",
+
   /** Hidden (`config: false`) — the step, in minutes, the calendar's needle snaps to when the
    *  Warden drags it (`module/apps/calendar.js`). Client scope: it is how one hand likes to drag,
    *  not a rule of the table. */

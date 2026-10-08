@@ -81,6 +81,14 @@ export const registerSettings = () => {
     default: false
   });
 
+  // Hidden: the record of the forge macro's one-time install (module/crafting.js).
+  game.settings.register(SYSTEM_ID, SETTINGS.FORGE_MACRO_INSTALLED, {
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: false
+  });
+
   // Hidden: whether the SRD's dated events were imported as notes (module/calendar-notes.js).
   game.settings.register(SYSTEM_ID, SETTINGS.CALENDAR_EVENTS_INSTALLED, {
     scope: "world",

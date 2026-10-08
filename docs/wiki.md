@@ -675,8 +675,9 @@ rules of its own.
 **Materials.** The **Materials** compendium, in the Homebrew folder, holds what things are made of:
 ingots and nails, planks and glass, hide and leather, cloth and thread, herbs and raw food. Most are
 bought: the **Toolmaker**, **Tailor**, **Apothecary** and **Provisioner** sell them. Stick, Stone,
-Bone, Feather and Berries cost nothing and no store sells them: they are found, hunted or gathered,
-whenever the Warden says so. The three **Monster Parts**, Troll Tallow, Gargoyle Grit and Pixie
+Bone, Feather, Berries, Resin, Reeds and Sinew cost nothing and no store sells them: they are found,
+hunted or gathered, whenever the Warden says so. Tallow is bought, or rendered from Raw Meat in a
+pot. The three **Monster Parts**, Troll Tallow, Gargoyle Grit and Pixie
 Scale, are taken from the creature they name and sold nowhere; they are the dear part of a
 potion. Raw meat, fowl and fish, milk and vegetables are not food, so Make Camp won't eat them until
 they are cooked.
@@ -698,10 +699,17 @@ Smithing Tools and the Apothecary the Alchemy Kit, both from More Gear.
 **More than one way.** Some recipes have variants, each its own layout and its own tool, shown as a
 row apiece under the recipe's name. Most are a way to do without the tool: the Axe and the Spear
 knapped from Stone, the Dagger and a fish-hook of Bone, a Shield faced with Hide instead of an iron
-boss, Rope twisted from Leather Strips, Wilderness Clothes of two Hides tied with a strip. Others
-use what is to hand: a Torch burns Wax or fat (Raw Meat), Leather is tanned with Salt or Herbs,
-Rations are salted meat or fish, Common Agents are boiled from Hide and Bone in a pot. Knowing the
+boss, Rope twisted from Leather Strips, Wilderness Clothes of two Hides tied with a strip, a Bow
+strung with Sinew, a basket (Containers) or a mat (Outdoor Comfort) woven from Reeds. Others use what
+is to hand: a Torch burns Wax, Tallow or Resin, or is a rushlight of Reeds and Tallow; Leather is
+tanned with Salt or Herbs; Rations are salted meat or fish; Common Agents are boiled from Hide and
+Bone in a pot, or mixed from Resin and Tallow. Knowing the
 recipe is knowing every variant.
+
+**The Forge in the Actions menu.** The first time Grid Crafter is active in a world, the system makes
+a **Forge** macro that every player may run and adds it to the sheet's **Actions** menu, so a player
+opens the crafting table from their own sheet. It happens once: take it off the list in **Actions
+menu macros** and it stays off.
 
 **Categories.** Each recipe is filed under what it makes (Materials, Weapons, Armour, Gear, Food,
 Potions), under the trade of every tool it can use (Smithing, Sewing, Cooking, Alchemy), and under
@@ -813,8 +821,9 @@ The window has two columns, **Roll on** at the left and **Drawn** at the right, 
 
 - **Roll on** lists what can be rolled, each with a switch and a number for how many times it is
   drawn this time (1 to 10; it starts at 1 whenever the window opens). A new world offers **Coin**, the four **Valuables** bands, the two **Strange Items**
-  bands, the three **Relics** bands, the two **Scrolls** bands and the two **Spellbooks** bands, all
-  switched off. The window
+  bands, the seven folders of crafting **Materials** (Metal, Wood & Stone, Hide & Bone, Cloth, Herbs,
+  Raw Food, Monster Parts), the three **Relics** bands, the two **Scrolls** bands and the two
+  **Spellbooks** bands, all switched off. The window
   remembers what you switched on.
 - **Choose your sources.** Drag a **Roll Table**, or a **folder of Items**, from a compendium or
   the sidebar onto the list to offer it. The **×** takes a source off the list, after asking (hold Shift to skip the question); it never

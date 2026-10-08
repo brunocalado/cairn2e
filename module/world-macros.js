@@ -65,6 +65,32 @@ export async function installWorldMacros() {
 }
 
 /**
+ * Put Grid Crafter's forge in every character's Actions menu, the first time the module is active in
+ * a world. The menu lists world macros a user may run, so the forge is a world Macro at Observer —
+ * enough to run it (`Macro#canUserExecute` asks for Limited), not to edit it — appended to the
+ * Warden's list. "Once" is written before anything is created, as the system macros' install above:
+ * a Warden who takes the forge off the menu keeps it off. Called from Grid Crafter's ready hook
+ * (`module/crafting.js`), so a world without the module never gets it.
+ */
+export async function installForgeMacro() {
+  if (!game.user.isActiveGM || game.settings.get(SYSTEM_ID, SETTINGS.FORGE_MACRO_INSTALLED)) return;
+  try {
+    await game.settings.set(SYSTEM_ID, SETTINGS.FORGE_MACRO_INSTALLED, true);
+    const macro = await Macro.implementation.create({
+      name: game.i18n.localize("CAIRN.Crafting.ForgeMacro"),
+      type: "script",
+      command: "GridCrafter.forge();",
+      img: "icons/skills/trades/smithing-anvil-silver-red.webp",
+      ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER }
+    });
+    const list = game.settings.get(SYSTEM_ID, SETTINGS.ACTION_MACROS);
+    await game.settings.set(SYSTEM_ID, SETTINGS.ACTION_MACROS, [...list, macro.uuid]);
+  } catch (err) {
+    console.error(`${SYSTEM_ID} | could not install the forge macro`, err);
+  }
+}
+
+/**
  * The world copies of the player macros, as `{ slot: macroId }`. A copy is found by
  * `_stats.compendiumSource`, so a renamed or translated one still counts; a slot whose macro the
  * Warden deleted is left out.

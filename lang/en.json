@@ -311,7 +311,8 @@
       "Smithing": "Smithing",
       "Weapons": "Weapons",
       "WithoutTools": "Without Tools"
-    }
+    },
+    "ForgeMacro": "Forge"
   },
   "CAIRN.CreateItem": "Create Item",
   "CAIRN.CriticalDamageFull": "Critical Damage",

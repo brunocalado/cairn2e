@@ -6,6 +6,7 @@
  */
 
 import { GEAR, SYSTEM_ID, packUuid } from "./constants.js";
+import { installForgeMacro } from "./world-macros.js";
 
 /** Grid Crafter: an optional module that forges items from ingredients laid on a 3×3 grid. */
 const MODULE = "grid-crafter";
@@ -42,6 +43,10 @@ const FISH = material("cGgAyWkeJ0vEpBjU");     // Raw Fish
 const FLOUR = material("83I1A0OjQVBGRAuh");    // Flour
 const EGGS = material("YvvcLqcivp6GvByA");     // Eggs
 const SALT = material("QYWDgXZrcx7Bk2LP");     // Salt
+const TALLOW = material("cn0bmxAJv4XOVrJd");   // Tallow
+const RESIN = material("kpvdmQ2helBdb6py");    // Resin
+const REEDS = material("1KOlG5ivhFCLhkqS");    // Reeds
+const SINEW = material("OmvXDxrrQMCTWr2A");    // Sinew
 const MILK = material("QfYsVtcCaat3wc4h");     // Milk
 const FOWL = material("zu4qKYpliSHqKu3G");     // Raw Fowl
 const VEG = material("VJDxi8WZpgu7aEIS");      // Vegetables
@@ -80,8 +85,9 @@ const TRADES = new Map([[SMITHING, "Smithing"], [SEWING, "Sewing"], [COOKING, "C
  *
  * A thing made more than one way is one recipe with `variants`, at most four, each its own grid and
  * tool. Most give a way without the tool from found or cheap things: the stone axe and spear, the
- * bone dagger and fish-hook, the hide-faced shield, rawhide rope, a fur wrap tied with strips. A
- * stone axe is still a d8 Axe. Raw Meat stands for its fat wherever fat burns, as in the torch.
+ * bone dagger and fish-hook, the hide-faced shield, rawhide rope, a fur wrap tied with strips, a
+ * sinew bowstring, a reed basket or mat. A stone axe is still a d8 Axe. The Torch has the most: wax,
+ * tallow, resin, or a rushlight of reeds.
  *
  * `requires` is a tool the crafter must carry, by one rule per trade: whatever is worked from an
  * ingot or a plate needs Smithing Tools, a brewed vial needs an Alchemy Kit, a dish cooked over the
@@ -107,7 +113,9 @@ export const RECIPES = [
       { cells: [HIDE, SALT, _, _, _, _, _, _, _] },
       { cells: [HIDE, HERBS, _, _, _, _, _, _, _] }] },
     { id: "leather-strip", result: STRIP, quantity: 4,
-      cells: [[LEATHER, _, _], [_, _, _], [_, _, _]] }
+      cells: [[LEATHER, _, _], [_, _, _], [_, _, _]] },
+    { id: "tallow", result: TALLOW, requires: COOKING, quantity: 2, shaped: false,
+      cells: [MEAT, _, _, _, _, _, _, _, _] }
   ]),
 
   // Weapons, cheapest first, as the Weaponsmith shelves them.
@@ -164,10 +172,13 @@ export const RECIPES = [
       cells: [[_, STEEL, _],
               [_, STEEL, _],
               [_, STRIP, _]] },
-    { id: "bow", result: weapon("xNFvJV971IDEj7zZ"),
-      cells: [[STICK, THREAD, _],
-              [STICK, _, _],
-              [STICK, THREAD, _]] },
+    { id: "bow", result: weapon("xNFvJV971IDEj7zZ"), variants: [
+      { cells: [[STICK, THREAD, _],
+                [STICK, _, _],
+                [STICK, THREAD, _]] },
+      { cells: [[STICK, SINEW, _],
+                [STICK, _, _],
+                [STICK, SINEW, _]] }] },
     { id: "halberd", result: weapon("PqnBufW2R8SfCcog"), requires: SMITHING,
       cells: [[STEEL, STICK, _],
               [STEEL, STICK, _],
@@ -263,16 +274,21 @@ export const RECIPES = [
               [_, STICK, _],
               [_, _, _]] },
     { id: "common-agents", result: gear("LJuSzL3jPRwPcvAL"), shaped: false, variants: [
-      { cells: [HERBS, WAX, MEAT, _, _, _, _, _, _] },
-      { requires: COOKING, cells: [HIDE, BONE, _, _, _, _, _, _, _] }] },
+      { cells: [HERBS, WAX, TALLOW, _, _, _, _, _, _] },
+      { requires: COOKING, cells: [HIDE, BONE, _, _, _, _, _, _, _] },
+      { cells: [RESIN, TALLOW, _, _, _, _, _, _, _] }] },
     { id: "common-tools", result: gear("QDL96czD5DIDWr79"), requires: SMITHING,
       cells: [[IRON, _, IRON],
               [STICK, _, STICK],
               [_, _, _]] },
-    { id: "containers", result: gear("MLu8HRRZKwQjdGBU"), requires: SEWING,
-      cells: [[LEATHER, THREAD, LEATHER],
-              [_, _, _],
-              [_, _, _]] },
+    { id: "containers", result: gear("MLu8HRRZKwQjdGBU"), variants: [
+      { requires: SEWING,
+        cells: [[LEATHER, THREAD, LEATHER],
+                [_, _, _],
+                [_, _, _]] },
+      { cells: [[REEDS, REEDS, REEDS],
+                [_, _, _],
+                [_, _, _]] }] },
     { id: "cooking-gear", result: COOKING, requires: SMITHING,
       cells: [[IRON, _, IRON],
               [_, IRON, _],
@@ -292,13 +308,16 @@ export const RECIPES = [
     { id: "fire-oil", result: gear("vwTBmANkGI22L7n2"),
       cells: [[_, CLOTH, _],
               [_, GLASS, _],
-              [_, MEAT, _]] },
+              [_, TALLOW, _]] },
     { id: "fishing-rod", result: gear("LpppO7mC1EgIRTXv"), variants: [
       { cells: [[STICK, _, _],
                 [_, STICK, THREAD],
                 [_, _, NAILS]] },
       { cells: [[STICK, _, _],
                 [_, STICK, THREAD],
+                [_, _, BONE]] },
+      { cells: [[STICK, _, _],
+                [_, STICK, SINEW],
                 [_, _, BONE]] }] },
     { id: "games", result: gear("sIS4sBDYuDjnLPo0"),
       cells: [[BONE, PLANK, BONE],
@@ -325,13 +344,16 @@ export const RECIPES = [
               [THREAD, THREAD, _],
               [_, _, _]] },
     { id: "oil-can", result: gear("DEIG5kYj2mhV3hRM"), requires: SMITHING,
-      cells: [[_, MEAT, _],
-              [_, MEAT, _],
+      cells: [[_, TALLOW, _],
+              [_, TALLOW, _],
               [_, IRON, _]] },
-    { id: "outdoor-comfort", result: gear("Ep7hnDLh5HBoEOZr"),
-      cells: [[HIDE, CLOTH, CLOTH],
-              [_, _, _],
-              [_, _, _]] },
+    { id: "outdoor-comfort", result: gear("Ep7hnDLh5HBoEOZr"), variants: [
+      { cells: [[HIDE, CLOTH, CLOTH],
+                [_, _, _],
+                [_, _, _]] },
+      { cells: [[REEDS, REEDS, _],
+                [REEDS, REEDS, _],
+                [_, _, _]] }] },
     { id: "parchment", result: gear("7NQNLHQ66u6U31jM"),
       cells: [[HIDE, SALT, HIDE],
               [_, _, _],
@@ -383,9 +405,15 @@ export const RECIPES = [
       { cells: [[_, WAX, _],
                 [_, CLOTH, _],
                 [_, STICK, _]] },
-      { cells: [[_, MEAT, _],
+      { cells: [[_, TALLOW, _],
                 [_, CLOTH, _],
-                [_, STICK, _]] }] },
+                [_, STICK, _]] },
+      { cells: [[_, RESIN, _],
+                [_, CLOTH, _],
+                [_, STICK, _]] },
+      { cells: [[_, TALLOW, _],
+                [_, REEDS, _],
+                [_, REEDS, _]] }] },
     { id: "trap", result: GEAR.TRAP, requires: SMITHING,
       cells: [[IRON, NAILS, IRON],
               [_, CHAIN, _],
@@ -458,7 +486,7 @@ export const RECIPES = [
   // a salve. Shapeless like the rest of alchemy, and every one is poured into a Glass vial.
   ...filed("Potions", [
     { id: "discerning-fire", result: potion("JsXNGtyTd6do4Qbc"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, MEAT, WAX, SALT, _, _, _, _, _] },
+      cells: [GLASS, TALLOW, WAX, SALT, _, _, _, _, _] },
     { id: "aspect-of-nature", result: potion("Qt1LcaZpt75oXOXT"), shaped: false, variants: [
       { requires: ALCHEMY, cells: [GLASS, HERBS, FEATHER, _, _, _, _, _, _] },
       { requires: ALCHEMY, cells: [GLASS, HERBS, BONE, _, _, _, _, _, _] },
@@ -466,7 +494,7 @@ export const RECIPES = [
     { id: "astral-sight", result: potion("0uqB4aGNo7ZClrsG"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, MUSHROOMS, BERRIES, SALT, _, _, _, _, _] },
     { id: "dragons-roar", result: potion("8kwslqDlLWCqvlO0"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, BONE, MEAT, SALT, _, _, _, _, _] },
+      cells: [GLASS, BONE, TALLOW, SALT, _, _, _, _, _] },
     { id: "liquid-luck", result: potion("ObiettKQSBCmEoli"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, HONEY, HERBS, BERRIES, _, _, _, _, _] },
     { id: "heartstopper", result: potion("9MwOmL24PBKxq00d"), requires: ALCHEMY, shaped: false,
@@ -489,7 +517,7 @@ export const RECIPES = [
     { id: "honeytongue", result: potion("yBnyOTNpZMwoxROX"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, PIXIE, HONEY, BERRIES, _, _, _, _, _] },
     { id: "last-stand-cordial", result: potion("PDXTPmOTFExeoDbg"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, TROLL, HERBS, MEAT, _, _, _, _, _] },
+      cells: [GLASS, TROLL, HERBS, TALLOW, _, _, _, _, _] },
     { id: "lethe-water", result: potion("7HBWiFzpfFZxXeeb"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, PIXIE, MUSHROOMS, BERRIES, _, _, _, _, _] },
     { id: "owl-eye-drops", result: potion("DGesbkzk13zzwxOf"), requires: ALCHEMY, shaped: false,
@@ -514,4 +542,5 @@ export function registerCrafting() {
   Hooks.once(`${MODULE}.ready`, (api) => api.registerRecipes(SYSTEM_ID, RECIPES.map((r) => ({
     ...r, categories: categoriesOf(r).map((c) => game.i18n.localize(`CAIRN.Crafting.Category.${c}`))
   }))));
+  Hooks.once(`${MODULE}.ready`, installForgeMacro);
 }

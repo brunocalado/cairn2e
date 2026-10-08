@@ -315,24 +315,27 @@ charm is that the Warden reads them. **None is a relic and none is a container**
 
 **Not SRD** (CLAUDE.md § 1, Homebrew), made to be the ingredients of Grid Crafter recipes. 2e names the
 act — "given proper ingredients" (`procedures.md`, Herbology), "given time and adequate materials"
-(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 30 `gear`
+(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 34 `gear`
 documents in seven folders: **Metal** (Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
-(Stick, Plank, Stone, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather), **Cloth**
-(Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries) and **Raw Food** (Raw Meat, Raw Fish,
-Raw Fowl, Flour, Eggs, Milk, Vegetables, Salt) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale).
+(Stick, Plank, Stone, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather, Sinew),
+**Cloth** (Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries, Resin, Reeds) and **Raw Food**
+(Raw Meat, Raw Fish, Raw Fowl, Flour, Eggs, Milk, Vegetables, Salt, Tallow) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale).
 
-- **Found and bought.** Stick, Stone, Bone, Feather and Berries cost 0 gp and are on no shelf: the
-  Warden hands them out as loot. The other twenty-two cost 1–3 gp and sit at the front of the shelf of
+- **Found and bought.** Stick, Stone, Bone, Feather, Berries, Resin, Reeds and Sinew cost 0 gp and
+  are on no shelf: the Warden hands them out as loot. The other twenty-three cost 1–3 gp and sit at the front of the shelf of
   the shop that sells their kind — the Toolmaker, the Tailor, the Apothecary and the Provisioner. A
   world already made keeps the stores it was seeded with.
 - **Taken, not bought.** A Monster Part is taken from the creature it names, sits on no shelf, and
   costs 25–35 gp. That is the most an alchemist pays, and most of a recipe's cost. Each serves two or
   three potions.
-- **Petty** is Nails, Stick, Leather Strip, Feather, Thread, Herbs, Mushrooms, Wax, Berries and Salt;
+- **Petty** is Nails, Stick, Leather Strip, Feather, Sinew, Thread, Herbs, Mushrooms, Wax, Berries,
+  Resin, Reeds, Salt and Tallow;
   ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost.
 - **Raw food is not food.** Make Camp does not eat Raw Meat, Milk or Vegetables; cooking them is the
   point. Raw Fowl is its own material, apart from Raw Meat, so the roasts and the fowl soup need a
-  bird and not any carcass.
+  bird and not any carcass. **Tallow** is fat: rendered from Raw Meat with Cooking Gear (two from one)
+  or bought, it is what a torch, fire oil, an oil can, grease and three potions burn or bind with,
+  where those recipes once spent the meat itself.
 - **No material has uses.** Grid Crafter spends a whole item per cell, so a material with several uses
   would lose all but one.
 - **The price rule:** a recipe's ingredients cost less than what it makes, so crafting is always the

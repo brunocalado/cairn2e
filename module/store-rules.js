@@ -114,6 +114,7 @@ export function defaultStores() {
       material("QfYsVtcCaat3wc4h"), // Milk
       material("zu4qKYpliSHqKu3G"), // Raw Fowl
       material("VJDxi8WZpgu7aEIS"), // Vegetables
+      material("cn0bmxAJv4XOVrJd"), // Tallow
       gear("yQOui5IqPJ0IHTCf"), // Rope
       homebrew("yypWKdw4aHNfxiTH"), // Tinder Box
       gear("38nboO4axGNV5vQC"), // Torch

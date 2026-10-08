@@ -1,0 +1,31 @@
+{
+  "_id": "1KOlG5ivhFCLhkqS",
+  "name": "Reeds",
+  "type": "gear",
+  "img": "icons/consumables/plants/grass-dried-bundle-brown.webp",
+  "system": {
+    "description": "<p>Reeds (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!1KOlG5ivhFCLhkqS",
+  "folder": "2Yzsr9IIsfysN2i5"
+}

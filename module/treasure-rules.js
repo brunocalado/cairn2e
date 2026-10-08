@@ -14,8 +14,9 @@ import { packUuid } from "./constants.js";
  * The SRD has no treasure table: a Treasure "is specific to the environment from where it is
  * recovered" (`overview-and-principles.md` § Treasure). So the window is a Warden's aid and not a
  * rule, and its defaults invent nothing. They are the folders the system's packs are already filed
- * in by price — the Valuables bands, the relics, scrolls and spellbooks by what they cost — and
- * the Warden adds a table or a folder of their own by dropping it on the window.
+ * in by price — the Valuables bands, the relics, scrolls and spellbooks by what they cost — and the
+ * crafting materials by kind; the Warden adds a table or a folder of their own by dropping it on
+ * the window.
  */
 
 /** The most draws one source makes per Roll. Ten of anything is a hoard; past it, roll again. */
@@ -46,6 +47,15 @@ export function defaultTreasureSources() {
     folder("valuables-precious", "more-gear", "HJvY3JTRuL5xJNFj"),     // Precious (500gp)
     folder("strange-items-25gp", "more-gear", "hc8o6QPy9sddmwlP"),     // Strange Items › 25gp
     folder("strange-items-100gp", "more-gear", "LKY9Y5cE0KzJw8Wo"),    // Strange Items › 100gp
+    // Grid Crafter's ingredients, one source per folder of the pack, so the Warden ticks the kind a
+    // place would hold: ore in a mine, hides in a lair, a larder's raw food.
+    folder("materials-metal", "materials", "BJycoTVmUHWMTOkU"),
+    folder("materials-wood-stone", "materials", "EKoBeAW6wm3I3egt"),
+    folder("materials-hide-bone", "materials", "fQ3CDA8Pwd952tKR"),
+    folder("materials-cloth", "materials", "zLylAnE4nJVnTSMA"),
+    folder("materials-herbs", "materials", "2Yzsr9IIsfysN2i5"),
+    folder("materials-raw-food", "materials", "aOOdBB3yev2CzrPg"),
+    folder("materials-monster-parts", "materials", "hn5ypPA0QaXngbEr"),
     folder("relics-150", "relics", "GrRVMrn19Cm4uCtB"),
     folder("relics-300", "relics", "UlnseD8X1WIqJdUA"),
     folder("relics-600", "relics", "Pos0prP8w9WLaBgG"),
