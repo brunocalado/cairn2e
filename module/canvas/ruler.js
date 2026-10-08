@@ -8,7 +8,13 @@
 import { SYSTEM_ID } from "../constants.js";
 import { metric, toTenth } from "../token-distance-rules.js";
 
-/** Core's label markup with the system's figures; core's classes stay, so core's CSS styles it. */
+/**
+ * Core's label markup with the system's figures; core's classes stay, so core's CSS styles it. A
+ * template of its own rather than `12 m (40 ft)` written into core's `cost.total`: that gives
+ * core's fields a meaning core does not know, and the label breaks without an error the day
+ * core's template prints them differently. Rewriting `#hud #measurement` after it renders races
+ * core, which replaces those children on every refresh.
+ */
 const WAYPOINT_LABEL_TEMPLATE = `systems/${SYSTEM_ID}/templates/canvas/waypoint-label.hbs`;
 
 /**
