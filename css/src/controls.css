@@ -116,8 +116,14 @@
         border-bottom: var(--cairn-hairline) solid var(--cairn-ink);
         border-radius: 0;
         font-family: var(--cairn-serif);
-        font-variant-numeric: tabular-nums;
         padding: 0 2px;
+
+        /* Tabular figures on number fields only. Lora's `tnum` also swaps the space for
+           `space.tf`, a digit-wide space, so on a text field every typed space came out more than
+           twice as wide — 18px against 8px in the 30px name. */
+        &[type="number"] {
+            font-variant-numeric: tabular-nums;
+        }
 
         /* Focus thickens the rule rather than drawing an outline; core's own outline is already
            transparent by the token above, so a keyboard user still sees the change. */
