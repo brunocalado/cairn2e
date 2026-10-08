@@ -111,6 +111,9 @@ export function defaultStores() {
       material("83I1A0OjQVBGRAuh"), // Flour
       material("YvvcLqcivp6GvByA"), // Eggs
       material("QYWDgXZrcx7Bk2LP"), // Salt
+      material("QfYsVtcCaat3wc4h"), // Milk
+      material("zu4qKYpliSHqKu3G"), // Raw Fowl
+      material("VJDxi8WZpgu7aEIS"), // Vegetables
       gear("yQOui5IqPJ0IHTCf"), // Rope
       homebrew("yypWKdw4aHNfxiTH"), // Tinder Box
       gear("38nboO4axGNV5vQC"), // Torch
@@ -149,7 +152,8 @@ export function defaultStores() {
       gear("riO6dGPX20svCtL0"), // Repellent
       gear("m9pA9rDapkpMFjYi"), // Antitoxin
       gear("F8yysdbnA0y5L4sA"), // Bandages
-      gear("Pl1vyKGTou4BZeAC")  // Sedative
+      gear("Pl1vyKGTou4BZeAC"), // Sedative
+      homebrew("6PdKfobixgDpByOk")  // Alchemy Kit
     ]),
     toolmaker: shelf("CAIRN.Store.Default.Toolmaker", [
       material("LR5yGUvpe1DllgXT"), // Iron Ingot
@@ -170,6 +174,7 @@ export function defaultStores() {
       gear("TxTE0Kqi1Pemap5K"), // Specialized Tools
       gear("oyCPkncx99bsRO5E"), // Chest
       homebrew("YIgMWNexXwxKqJMb"), // Lock
+      homebrew("BlfhkEV97jV7USHZ"), // Smithing Tools
       gear("Re9jpaWAjgO528ON"), // Thieving Tools
       gear("y9WcPO45F4qWK4Rv")  // Trap
     ]),

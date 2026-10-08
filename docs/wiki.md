@@ -678,7 +678,8 @@ bought: the **Toolmaker**, **Tailor**, **Apothecary** and **Provisioner** sell t
 Bone, Feather and Berries cost nothing and no store sells them: they are found, hunted or gathered,
 whenever the Warden says so. The three **Monster Parts**, Troll Tallow, Gargoyle Grit and Pixie
 Scale, are taken from the creature they name and sold nowhere; they are the dear part of a
-potion. Raw meat and fish are not food, so Make Camp won't eat them until they are cooked.
+potion. Raw meat, fowl and fish, milk and vegetables are not food, so Make Camp won't eat them until
+they are cooked.
 
 **Recipes.** Grid Crafter's Recipe Book lists them all under **Cairn 2e**. What a recipe spends
 always costs less than what it makes, so making a thing is cheaper than buying it. Some things are
@@ -686,6 +687,14 @@ made in steps: two Iron Ingots make a Steel Ingot, and a Steel Ingot makes two S
 Weapons, armour and tools have a shape, which works anywhere on the grid and mirrored left to right.
 Food, mixtures such as Antitoxin and Repellent, and the sixteen **Potions** have none: put the
 ingredients in any cells. Every potion is poured into a Glass vial, one of its ingredients.
+
+**Tools.** Many recipes need a tool the character carries. It never goes on the grid and is never
+spent; without it the craft is refused and nothing is lost. Anything worked from an ingot or a plate
+needs **Smithing Tools**, a brewed vial (potions, Antitoxin, Sedative) needs an **Alchemy Kit**, a
+dish cooked over the fire needs **Cooking Gear**, and cloth, leather or hide sewn with thread needs
+a **Sewing Kit**. Salted, dried and mixed food needs nothing, nor do the stone axe, the stone spear
+and the bone dagger: they are how a character without a forge gets a weapon. The Toolmaker sells
+Smithing Tools and the Apothecary the Alchemy Kit, both from More Gear.
 
 **Room for the result.** Each ingredient is a whole item from your own sheet, a Mule's or Cart's
 load included, but not a hireling's. Crafting spends them and then needs room for what it makes. If

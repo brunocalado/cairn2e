@@ -1,0 +1,32 @@
+{
+  "_id": "lbf5XcSob8ICRK05",
+  "name": "Trail Mix",
+  "type": "gear",
+  "img": "icons/consumables/nuts/pistachios-nute-shell-green-white.webp",
+  "system": {
+    "description": "<p>Trail Mix (four meals)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 14,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!lbf5XcSob8ICRK05",
+  "folder": "oZhGiDOcu7cDovBl"
+}

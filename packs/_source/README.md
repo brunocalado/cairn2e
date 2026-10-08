@@ -192,17 +192,17 @@ repository (`resources/more-equipment.md`), an OSE-derived price list that "does
 the items listed in the SRD, it just adds new ones". That sentence is the pack's rule: **a name the
 Marketplace sells is never here** — the check refuses it — and what came from that list was
 re-priced onto the Marketplace's own scale (1–200 gp, Wilderness Clothes 15, Common Tools 10,
-Room & Board 10) rather than copied from OSE. 169 documents in seven compendium folders, two of which
+Room & Board 10) rather than copied from OSE. 179 documents in seven compendium folders, two of which
 have bands of their own:
 
 - **Clothing** (33) — all *petty*, priced by material: plain cloth 5, leather/wool 15, silk or
   elegant 20–30, formal 40–60, the extravagant ballgown 100. Dropped as SRD duplicates: the three
   Gloves (Marketplace `Gloves`), both Cloaks (`Wilderness Clothes`), Jerkin (`Leather Jerkin` in
   `background-gear/`); the gendered "elegant hat, women's style" folded into `Hat, elegant`.
-- **Drink** (7) and **Food** (20) — what a tavern sells, for shopping at the table: drinks by the
+- **Drink** (7) and **Food** (28) — what a tavern sells, for shopping at the table: drinks by the
   bottle, the three inn meals (0 slots, one use — eaten there), and food that travels (bread,
   cheese, cured meat, fruit, nuts, honey). Raw staples by the pound (flour, lard, a side of beef)
-  were left out. Seventeen of the twenty are **food** — Make Camp and a dungeon's Exhaustion eat a
+  were left out. Twenty-five of the twenty-eight are **food** — Make Camp and a dungeon's Exhaustion eat a
   use of them as they eat Rations — under one rule that every pack is checked against: a food is
   never *petty*, and it never beats Rations on meals per slot and price per meal at once, so
   Rations stay worth buying (Bread is two meals, not four, for that reason). Five dishes — stews,
@@ -210,14 +210,22 @@ have bands of their own:
   buying them never beats Rations and cooking them is what makes them cheap. The three inn meals
   are not food: they are eaten at the table, and a weightless meal for a gold piece would make
   Rations pointless. Prices kept within 1–15, under a night's Room & Board; champagne dropped as
-  anachronistic. They are two folders rather than one because a Warden pricing a tavern round
+  anachronistic. Eight more are the maintainer's own, made to be cooked with Grid Crafter and priced
+  by the same rule: Meat Pie, Fish Pie and Vegetable Pottage (three meals, 10), Fowl Soup and Trail
+  Mix (four meals, 14 — the stews' price), and Mushroom Omelette, Berry Tart and Porridge (two meals,
+  5). Trail Mix is the one recipe that saves slots: Nuts, Dried Fruit and Honey, three meals in three
+  slots, become four in one. They are two folders rather than one because a Warden pricing a tavern round
   reaches for one of them and not the other.
-- **Tools & Gear** (23) — the residue after 41 of the source's 66 lines turned out to be
+- **Tools & Gear** (25) — the residue after 41 of the source's 66 lines turned out to be
   Marketplace items under another name or price (Torch 1 vs 5, Lockpicks = Thieving Tools, Cook
   Pots = Cooking Gear, Bedroll = Outdoor Comfort…). Snapped to the analogue: Barding 150 → 60
   (Plate), Large Trap 20 → 50 (it must cost more than the 35 gp Trap it is larger than), Lock
   30 → 25 (Chest), Rope Ladder 25 → 15, Tinder Box 3 → 5 (Torch). Holy Symbol and Holy Water
-  dropped: the 2e rules have no religion for them to serve.
+  dropped: the 2e rules have no religion for them to serve. Two are the maintainer's own, the tools
+  a Grid Crafter recipe requires where the Marketplace has none: **Smithing Tools** (hammer, tongs
+  and anvil, *bulky*, 25 — the Thieving Tools' price, a trade's kit, and two slots because an anvil
+  is the point) and the **Alchemy Kit** (alembic, mortar and vials, 30 — what the Marketplace's
+  Alchemist asks for a day). Toolmaker and Apothecary sell them.
 - **Transport** (5) — Camel (+3, fast) 75, Donkey (+4, slow) 20, draft Horse (+3) 40, Oxen
   (+6, slow) 60 and the big Cart (+6) 100, modelled like the Marketplace's Horse and Mule:
   `capacity` set, `takesSlots: false`, they haul themselves. The source's riding Horse (+2, 75)
@@ -307,14 +315,14 @@ charm is that the Warden reads them. **None is a relic and none is a container**
 
 **Not SRD** (CLAUDE.md § 1, Homebrew), made to be the ingredients of Grid Crafter recipes. 2e names the
 act — "given proper ingredients" (`procedures.md`, Herbology), "given time and adequate materials"
-(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 27 `gear`
+(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 30 `gear`
 documents in seven folders: **Metal** (Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
 (Stick, Plank, Stone, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather), **Cloth**
 (Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries) and **Raw Food** (Raw Meat, Raw Fish,
-Flour, Eggs, Salt) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale).
+Raw Fowl, Flour, Eggs, Milk, Vegetables, Salt) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale).
 
 - **Found and bought.** Stick, Stone, Bone, Feather and Berries cost 0 gp and are on no shelf: the
-  Warden hands them out as loot. The other nineteen cost 1–3 gp and sit at the front of the shelf of
+  Warden hands them out as loot. The other twenty-two cost 1–3 gp and sit at the front of the shelf of
   the shop that sells their kind — the Toolmaker, the Tailor, the Apothecary and the Provisioner. A
   world already made keeps the stores it was seeded with.
 - **Taken, not bought.** A Monster Part is taken from the creature it names, sits on no shelf, and
@@ -322,7 +330,9 @@ Flour, Eggs, Salt) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Sca
   three potions.
 - **Petty** is Nails, Stick, Leather Strip, Feather, Thread, Herbs, Mushrooms, Wax, Berries and Salt;
   ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost.
-- **Raw food is not food.** Make Camp does not eat Raw Meat; cooking it is the point.
+- **Raw food is not food.** Make Camp does not eat Raw Meat, Milk or Vegetables; cooking them is the
+  point. Raw Fowl is its own material, apart from Raw Meat, so the roasts and the fowl soup need a
+  bird and not any carcass.
 - **No material has uses.** Grid Crafter spends a whole item per cell, so a material with several uses
   would lose all but one.
 - **The price rule:** a recipe's ingredients cost less than what it makes, so crafting is always the

@@ -1,0 +1,32 @@
+{
+  "_id": "pYctxhdwCKopKSWM",
+  "name": "Fowl Soup",
+  "type": "gear",
+  "img": "icons/consumables/food/pot-soup-white.webp",
+  "system": {
+    "description": "<p>Fowl Soup (four meals)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 14,
+    "container": "",
+    "uses": {
+      "value": 4,
+      "max": 4
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!pYctxhdwCKopKSWM",
+  "folder": "oZhGiDOcu7cDovBl"
+}

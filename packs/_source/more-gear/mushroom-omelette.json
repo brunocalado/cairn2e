@@ -1,0 +1,32 @@
+{
+  "_id": "Bo0yQLTSar45lqlU",
+  "name": "Mushroom Omelette",
+  "type": "gear",
+  "img": "icons/consumables/eggs/egg-broken-yolk-yellow.webp",
+  "system": {
+    "description": "<p>Mushroom Omelette (two meals)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 5,
+    "container": "",
+    "uses": {
+      "value": 2,
+      "max": 2
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!Bo0yQLTSar45lqlU",
+  "folder": "oZhGiDOcu7cDovBl"
+}

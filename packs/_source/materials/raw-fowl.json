@@ -1,0 +1,31 @@
+{
+  "_id": "zu4qKYpliSHqKu3G",
+  "name": "Raw Fowl",
+  "type": "gear",
+  "img": "icons/consumables/meat/chicken-breast-raw-pink.webp",
+  "system": {
+    "description": "<p>Raw Fowl</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!zu4qKYpliSHqKu3G",
+  "folder": "aOOdBB3yev2CzrPg"
+}
