@@ -41,6 +41,7 @@ import { CairnCombat } from "./documents/combat.js";
 import { CairnCombatant } from "./documents/combatant.js";
 import { CairnCombatTracker } from "./apps/combat-tracker.js";
 import { CairnToken } from "./canvas/token.js";
+import { CairnRuler, CairnTokenRuler } from "./canvas/ruler.js";
 import { CONDITIONS } from "./conditions.js";
 import { createCairnMacro, rollItemMacro, macroApi } from "./macros.js";
 import { Damage } from "./combat/damage.js";
@@ -230,6 +231,9 @@ Hooks.once("init", async function () {
   // The canvas turn ring. Core lights it for the one token at `combat.combatant`, which this
   // system has no answer for; CairnToken lights every token of the side that is acting instead.
   CONFIG.Token.objectClass = CairnToken;
+  // Both rulers label in metres with the scene's feet beside them, as the token's hover does.
+  CONFIG.Token.rulerClass = CairnTokenRuler;
+  CONFIG.Canvas.rulerClass = CairnRuler;
   // The token tooltip is drawn in Lora through PIXI, which only sees a face core loaded before the
   // canvas: the stylesheet's @font-face loads Lora on first DOM use, which may come after the
   // first hover, and PIXI falls back to another face without a word.

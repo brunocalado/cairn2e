@@ -398,6 +398,7 @@
   "CAIRN.EditCharacter": "Edit Character",
   "CAIRN.EditItem": "Edit Item",
   "CAIRN.EditNpc": "Edit NPC",
+  "CAIRN.ElevationMetres": "{metres} m",
   "CAIRN.Encounter": {
     "Add": "Add to scene",
     "Added": "Added to scene",
