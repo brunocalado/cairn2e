@@ -684,7 +684,7 @@ they are cooked.
 **Recipes.** Grid Crafter's Recipe Book lists them all under **Cairn 2e**. What a recipe spends
 always costs less than what it makes, so making a thing is cheaper than buying it. Some things are
 made in steps: two Iron Ingots make a Steel Ingot, and a Steel Ingot makes two Steel Plates.
-Weapons, armour and tools have a shape, which works anywhere on the grid and mirrored left to right.
+Weapons, armour and tools have a shape, which works anywhere on the grid, exactly as drawn.
 Food, mixtures such as Antitoxin and Repellent, and the sixteen **Potions** have none: put the
 ingredients in any cells. Every potion is poured into a Glass vial, one of its ingredients.
 
@@ -692,9 +692,20 @@ ingredients in any cells. Every potion is poured into a Glass vial, one of its i
 spent; without it the craft is refused and nothing is lost. Anything worked from an ingot or a plate
 needs **Smithing Tools**, a brewed vial (potions, Antitoxin, Sedative) needs an **Alchemy Kit**, a
 dish cooked over the fire needs **Cooking Gear**, and cloth, leather or hide sewn with thread needs
-a **Sewing Kit**. Salted, dried and mixed food needs nothing, nor do the stone axe, the stone spear
-and the bone dagger: they are how a character without a forge gets a weapon. The Toolmaker sells
+a **Sewing Kit**. Salted, dried and mixed food needs nothing. The Toolmaker sells
 Smithing Tools and the Apothecary the Alchemy Kit, both from More Gear.
+
+**More than one way.** Some recipes have variants, each its own layout and its own tool, shown as a
+row apiece under the recipe's name. Most are a way to do without the tool: the Axe and the Spear
+knapped from Stone, the Dagger and a fish-hook of Bone, a Shield faced with Hide instead of an iron
+boss, Rope twisted from Leather Strips, Wilderness Clothes of two Hides tied with a strip. Others
+use what is to hand: a Torch burns Wax or fat (Raw Meat), Leather is tanned with Salt or Herbs,
+Rations are salted meat or fish, Common Agents are boiled from Hide and Bone in a pot. Knowing the
+recipe is knowing every variant.
+
+**Categories.** Each recipe is filed under what it makes (Materials, Weapons, Armour, Gear, Food,
+Potions), under the trade of every tool it can use (Smithing, Sewing, Cooking, Alchemy), and under
+**Without Tools** when one of its variants needs none: the list to read in the wild.
 
 **Room for the result.** Each ingredient is a whole item from your own sheet, a Mule's or Cart's
 load included, but not a hireling's. Crafting spends them and then needs room for what it makes. If

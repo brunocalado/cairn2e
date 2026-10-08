@@ -298,6 +298,21 @@
   "CAIRN.ContainerDropHint": "Drag an item here to put it inside.",
   "CAIRN.Contents": "Contents",
   "CAIRN.Cost": "Cost",
+  "CAIRN.Crafting": {
+    "Category": {
+      "Alchemy": "Alchemy",
+      "Armour": "Armour",
+      "Cooking": "Cooking",
+      "Food": "Food",
+      "Gear": "Gear",
+      "Materials": "Materials",
+      "Potions": "Potions",
+      "Sewing": "Sewing",
+      "Smithing": "Smithing",
+      "Weapons": "Weapons",
+      "WithoutTools": "Without Tools"
+    }
+  },
   "CAIRN.CreateItem": "Create Item",
   "CAIRN.CriticalDamageFull": "Critical Damage",
   "CAIRN.CriticalDamageSuccess": "Still in the fight, albeit with a lower STR score.",
