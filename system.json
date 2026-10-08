@@ -290,7 +290,7 @@
         "id": "grid-crafter",
         "type": "module",
         "manifest": "https://github.com/brunocalado/grid-crafter/releases/latest/download/module.json",
-        "compatibility": { "minimum": "0.0.2", "verified": "0.0.2" },
+        "compatibility": { "minimum": "0.0.3", "verified": "0.0.3" },
         "reason": "Forges the Marketplace's weapons, armour and gear, and cooks food, from the Materials compendium on a crafting grid."
       }
     ]

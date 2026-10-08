@@ -97,6 +97,8 @@ const TRADES = new Map([[SMITHING, "Smithing"], [SEWING, "Sewing"], [COOKING, "C
  *
  * A recipe is filed under what it makes, then under the trade of every tool its variants require,
  * then under Without Tools when one of them requires none: the list a party in the wild looks at.
+ *
+ * The durable weapons, armour and gear also break back down into what they were made of (`DISMANTLES`).
  */
 export const RECIPES = [
   // Intermediates: what the other recipes are made of.
@@ -525,6 +527,38 @@ export const RECIPES = [
   ])
 ];
 
+/**
+ * What is used up, and the Cart, never break down. A thing with uses would come apart into fresh
+ * parts however far it was used; the Cart is a container, and deleting a container deletes its load.
+ */
+const UNBROKEN = new Set(["antitoxin", "bandages", "cart", "fire-oil", "lantern", "oil-can",
+  "parchment", "repellent", "sedative", "torch"]);
+
+/**
+ * Homebrew: the durable things a recipe makes break back down. With `refund`, an item made at the
+ * table gives back exactly what its receipt says was spent, so making and breaking is an undo and
+ * nothing grows. An item with no receipt (bought, looted, given at creation) breaks into the
+ * recipe's first variant, the Marketplace's way, which costs less than the item: a bought thing
+ * broken and sold loses gold. cairn2e copies flags with an item that changes hands and has no
+ * stacks, so a crafted thing keeps its receipt. Grid Crafter names unnamed variants `v0`… by
+ * position, so the first is always `v0`.
+ */
+export const DISMANTLES = RECIPES
+  .filter((r) => ["Weapons", "Armour", "Gear"].includes(r.categories[0]) && !UNBROKEN.has(r.id))
+  .flatMap((r) => {
+    const ways = r.variants ?? [r];
+    const tools = new Set(ways.map((v) => v.requires ?? null));
+    if (tools.size > 1) return [];
+    const first = ways[0].cells;
+    return [{
+      id: `${r.id}-dismantle`, kind: "dismantle", input: r.result, refund: true,
+      outputs: (Array.isArray(first[0]) ? first.flat() : first).filter(Boolean),
+      favorite: { recipe: `${SYSTEM_ID}.${r.id}`, variant: "v0" },
+      requires: [...tools][0] ?? undefined,
+      categories: categoriesOf(r)
+    }];
+  });
+
 /** A recipe's categories as keys under `CAIRN.Crafting.Category`: what it makes, its trades, Without Tools. */
 export function categoriesOf(recipe) {
   const tools = new Set((recipe.variants ?? [recipe]).map((v) => v.requires ?? null));
@@ -539,8 +573,10 @@ export function categoriesOf(recipe) {
  * localized here, where `game.i18n` is ready.
  */
 export function registerCrafting() {
-  Hooks.once(`${MODULE}.ready`, (api) => api.registerRecipes(SYSTEM_ID, RECIPES.map((r) => ({
-    ...r, categories: categoriesOf(r).map((c) => game.i18n.localize(`CAIRN.Crafting.Category.${c}`))
-  }))));
+  const label = (c) => game.i18n.localize(`CAIRN.Crafting.Category.${c}`);
+  Hooks.once(`${MODULE}.ready`, (api) => api.registerRecipes(SYSTEM_ID, [
+    ...RECIPES.map((r) => ({ ...r, categories: categoriesOf(r).map(label) })),
+    ...DISMANTLES.map((d) => ({ ...d, categories: d.categories.map(label) }))
+  ]));
   Hooks.once(`${MODULE}.ready`, installForgeMacro);
 }
