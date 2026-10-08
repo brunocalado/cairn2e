@@ -604,7 +604,7 @@ directory like any other actor and choose **Party** as its type.
   the button on their row.
 
 <p align="center">
-  <img src="images/party-sheet.webp" alt="The party sheet: each member's HP, attributes, armor and load" width="70%">
+  <img src="images/party-sheet.webp" alt="The party sheet: each member's HP, attributes, armor and load, with the Followers and Stash tabs beside the party" width="70%">
 </p>
 
 ---
@@ -872,6 +872,10 @@ The window has two columns, **Roll on** at the left and **Drawn** at the right, 
   a party** makes one, and the first party in a world becomes the active one by itself.
 
 A Warden's macro can open it with `cairn2e.treasure();`.
+
+<p align="center">
+  <img src="images/treasure.webp" alt="The Treasure window: the sources to roll on at the left, with Coin, a Valuables band, a Strange Items band and Metal materials switched on, and what was drawn at the right, ready to send to the party's Stash" width="80%">
+</p>
 
 ### Unknown gear
 

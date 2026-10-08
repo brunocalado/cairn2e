@@ -88,7 +88,7 @@ in metres too.
 
 <p align="center">
   <img src="docs/images/journey.webp" alt="The journey window: the route and watches travelled, the weather, the party's rations and fatigue, the chosen wilderness action and a wilderness event" width="49%">
-  <img src="docs/images/party-sheet.webp" alt="The party sheet: each member's HP, attributes, armor and load" width="49%">
+  <img src="docs/images/party-sheet.webp" alt="The party sheet: each member's HP, attributes, armor and load, with the Followers and Stash tabs beside the party" width="49%">
 </p>
 <p align="center">
   <img src="docs/images/faction-page.webp" alt="A faction page: traits, advantages, agents, a partly completed agenda and obstacles" width="70%">
@@ -101,6 +101,9 @@ in metres too.
 <p align="center">
   <img src="docs/images/unknown-gear-warden.webp" alt="Unknown gear, the Warden's side: Harbinger's Bell with the eye in its title bar and the Guise tab its holder sees instead" width="36%">
   <img src="docs/images/unknown-gear-player.webp" alt="Unknown gear, the holder's side: the same relic as a Tarnished Bell, with the picture and appearance the Warden wrote" width="36%">
+</p>
+<p align="center">
+  <img src="docs/images/treasure.webp" alt="The Treasure window: the sources to roll on at the left, with Coin, a Valuables band, a Strange Items band and Metal materials switched on, and what was drawn at the right, ready to send to the party's Stash" width="74%">
 </p>
 
 ### Everything in the box
