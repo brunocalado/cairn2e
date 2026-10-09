@@ -1,3 +1,8 @@
+# 0.1.4
+
+- [Fixed] The Gold on a character sheet changes as soon as a sack of coin is added, changed or
+  removed, instead of waiting for the sheet to be closed and opened again.
+
 # 0.1.3
 
 - [Added] **The party's Stash.** Gear and coin dropped on the party sheet land in a Stash tab that
