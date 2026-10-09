@@ -99,8 +99,9 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const subject = String(renderContext ?? "").replace(/^(create|update|delete)/, "").toLowerCase();
     // `growth` is in the list because a Scar and a Growth are both Items: taking one, rolling
     // the gain it owed, or writing a new growth is an Item create or update, and a tab left
-    // out of this list simply never redraws.
-    if (subject === "items") return ["header", "items", "petty", "belongings", "growth"];
+    // out of this list simply never redraws. `nav` because the Gold chip sits on the tab strip
+    // and its number is the sum of the coin sacks, which are Items too.
+    if (subject === "items") return ["header", "nav", "items", "petty", "belongings", "growth"];
     // A stepper's write: only the header shows it, so only the header is rebuilt.
     if (renderContext === `update${this.document.documentName}` && renderData) {
       const keys = Object.keys(foundry.utils.flattenObject(renderData)).filter((k) => !k.startsWith("_"));
