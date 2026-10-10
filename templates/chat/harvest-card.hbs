@@ -1,0 +1,11 @@
+{{!-- What a strike set off (`module/harvest.js`), as its body: the resource is the message's
+      `flavor` and the striking character its speaker. A Warden's reminder is a lead and a hint;
+      a save asked of the player carries the button, wired in `harvest.js` and hidden once a save
+      answers the card. --}}
+<p class="cairn-card-lead">{{lead}}</p>
+{{#if hint}}
+<p class="cairn-card-note">{{hint}}</p>
+{{/if}}
+{{#if save}}
+<button type="button" class="cairn-card-action roll-harvest-save" data-key="{{save}}">{{saveLabel}}</button>
+{{/if}}

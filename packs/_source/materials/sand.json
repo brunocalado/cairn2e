@@ -1,0 +1,31 @@
+{
+  "_id": "xqeJCm9Csrt1LUM6",
+  "name": "Sand",
+  "type": "gear",
+  "img": "icons/commodities/materials/bowl-powder-yellow.webp",
+  "system": {
+    "description": "<p>Sand</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!xqeJCm9Csrt1LUM6",
+  "folder": "EKoBeAW6wm3I3egt"
+}

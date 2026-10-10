@@ -292,6 +292,12 @@
         "manifest": "https://github.com/brunocalado/grid-crafter/releases/latest/download/module.json",
         "compatibility": { "minimum": "0.0.3", "verified": "0.0.3" },
         "reason": "Forges the Marketplace's weapons, armour and gear, and cooks food, from the Materials compendium on a crafting grid."
+      },
+      {
+        "id": "canvas-harvest",
+        "type": "module",
+        "manifest": "https://github.com/brunocalado/canvas-harvest/releases/latest/download/module.json",
+        "reason": "Places ore veins, trees, herb patches, carcasses and monster parts on the map for the party to mine, chop, gather and carve into the Materials compendium."
       }
     ]
   },

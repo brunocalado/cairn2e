@@ -206,6 +206,20 @@ export const FLAGS = {
   CRITICAL_SAVE_FOR: "critical-save-for",
 
   /**
+   * On the chat message of a save a harvest card asked for (`module/harvest.js`): the id of that
+   * card, which hides its button once answered, as Critical Damage's does.
+   */
+  HARVEST_SAVE_FOR: "harvest-save-for",
+
+  /**
+   * On a Canvas Harvest spot (a RegionBehavior): the world time it ran dry, read back to refill it
+   * when its resource grows back; and that its first strike has already been heard, so a noisy
+   * resource warns the Warden once per spot and not on every blow. A refill clears both.
+   */
+  HARVEST_DRY_AT: "harvest-dry-at",
+  HARVEST_HEARD: "harvest-heard",
+
+  /**
    * On a damage-result ChatMessage: what that hit took, as `{ actorUuid, hp, str }` — **deltas**,
    * not the before-values the card prints. `module/chat.js#reverseHit` adds them back, which
    * composes with anything that touched the actor in between; writing the absolutes back would

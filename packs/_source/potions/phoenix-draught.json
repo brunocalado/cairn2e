@@ -1,0 +1,24 @@
+{
+  "_id": "F2OGvyqsOHE4YYVj",
+  "name": "Phoenix Draught",
+  "type": "gear",
+  "img": "icons/consumables/potions/flask-corked-red-glow.webp",
+  "system": {
+    "description": "<p>Drink it and burn from the inside, without a mark. Every attribute you have lost returns to its maximum at once: the week of rest a healer would ask for, spent in one feverish hour. Until you sleep a full night afterwards, you are <em>deprived</em>.</p>",
+    "slots": 1,
+    "cost": 50,
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "magic": "none",
+    "recharge": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!F2OGvyqsOHE4YYVj",
+  "folder": "pN7SCCHmhucK2c0v"
+}

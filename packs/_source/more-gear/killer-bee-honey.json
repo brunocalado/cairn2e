@@ -1,0 +1,24 @@
+{
+  "_id": "XgoKSVexKCJyveRP",
+  "name": "Killer Bee Honey",
+  "type": "gear",
+  "img": "icons/consumables/potions/potion-jar-corked-orange.webp",
+  "system": {
+    "description": "<p>Dark honey from a Killer Bee hive. Each use heals 1d6 STR.</p>",
+    "slots": 1,
+    "cost": 30,
+    "uses": {
+      "value": 3,
+      "max": 3
+    },
+    "magic": "none",
+    "recharge": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!XgoKSVexKCJyveRP",
+  "folder": "oZhGiDOcu7cDovBl"
+}

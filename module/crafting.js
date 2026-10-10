@@ -19,52 +19,59 @@ const armor = (id) => packUuid("armor", "Item", id);
 const potion = (id) => packUuid("potions", "Item", id);
 
 // Every material id is id16("cairn2e:material:<slug>"), as the pack derives it.
-const IRON = material("LR5yGUvpe1DllgXT");     // Iron Ingot
-const STEEL = material("N9KmYAOZMNQ5ddSe");    // Steel Ingot
-const PLATE = material("x5XamCV1i3lbU4GS");    // Steel Plate
-const NAILS = material("sdlljXZJsG0XDPai");    // Nails
-const STICK = material("yBZHeqyV5CbuMJYv");    // Stick
-const PLANK = material("8QljGICu9OT9Khym");    // Plank
-const STONE = material("agcb3KV9VY4LxjuU");    // Stone
-const HIDE = material("4OV0LEtVN8b8oVKx");     // Hide
-const LEATHER = material("hg0aNqsFLKvtFVqS");  // Leather
-const STRIP = material("lYFTNbfPIlf8ba44");    // Leather Strip
-const BONE = material("BiqB4ygPYUZGMLkl");     // Bone
-const FEATHER = material("0G3hIrsmGNi4Y2dD");  // Feather
-const CLOTH = material("JaJx5zyAPRdmz9Wj");    // Cloth
-const THREAD = material("eXms8M5FCH5zalA0");   // Thread
-const GLASS = material("5c5J4HtAjGWa2j6C");    // Glass
-const HERBS = material("YWkjnNFpBnAP6KEY");    // Herbs
-const MUSHROOMS = material("W14ZDOc6ucmSlUN6"); // Mushrooms
-const WAX = material("uRm9psesRIQFI465");      // Wax
-const BERRIES = material("Wa6Zczi11KDvWqmE");  // Berries
-const MEAT = material("SqWNZv1XM3TFGCzy");     // Raw Meat
-const FISH = material("cGgAyWkeJ0vEpBjU");     // Raw Fish
-const FLOUR = material("83I1A0OjQVBGRAuh");    // Flour
-const EGGS = material("YvvcLqcivp6GvByA");     // Eggs
-const SALT = material("QYWDgXZrcx7Bk2LP");     // Salt
-const TALLOW = material("cn0bmxAJv4XOVrJd");   // Tallow
-const RESIN = material("kpvdmQ2helBdb6py");    // Resin
-const REEDS = material("1KOlG5ivhFCLhkqS");    // Reeds
-const SINEW = material("OmvXDxrrQMCTWr2A");    // Sinew
-const MILK = material("QfYsVtcCaat3wc4h");     // Milk
-const FOWL = material("zu4qKYpliSHqKu3G");     // Raw Fowl
-const VEG = material("VJDxi8WZpgu7aEIS");      // Vegetables
-const TROLL = material("HAq4pfOoxbN0BmCc");    // Troll Tallow
-const GARGOYLE = material("io87TFV1OHXBAnZ4"); // Gargoyle Grit
-const PIXIE = material("u4nsNVJWqnYoib9O");    // Pixie Scale
+export const IRON = material("LR5yGUvpe1DllgXT");     // Iron Ingot
+export const STEEL = material("N9KmYAOZMNQ5ddSe");    // Steel Ingot
+export const PLATE = material("x5XamCV1i3lbU4GS");    // Steel Plate
+export const NAILS = material("sdlljXZJsG0XDPai");    // Nails
+export const STICK = material("yBZHeqyV5CbuMJYv");    // Stick
+export const PLANK = material("8QljGICu9OT9Khym");    // Plank
+export const STONE = material("agcb3KV9VY4LxjuU");    // Stone
+export const HIDE = material("4OV0LEtVN8b8oVKx");     // Hide
+export const LEATHER = material("hg0aNqsFLKvtFVqS");  // Leather
+export const STRIP = material("lYFTNbfPIlf8ba44");    // Leather Strip
+export const BONE = material("BiqB4ygPYUZGMLkl");     // Bone
+export const FEATHER = material("0G3hIrsmGNi4Y2dD");  // Feather
+export const CLOTH = material("JaJx5zyAPRdmz9Wj");    // Cloth
+export const THREAD = material("eXms8M5FCH5zalA0");   // Thread
+export const GLASS = material("5c5J4HtAjGWa2j6C");    // Glass
+export const HERBS = material("YWkjnNFpBnAP6KEY");    // Herbs
+export const MUSHROOMS = material("W14ZDOc6ucmSlUN6"); // Mushrooms
+export const WAX = material("uRm9psesRIQFI465");      // Wax
+export const BERRIES = material("Wa6Zczi11KDvWqmE");  // Berries
+export const MEAT = material("SqWNZv1XM3TFGCzy");     // Raw Meat
+export const FISH = material("cGgAyWkeJ0vEpBjU");     // Raw Fish
+export const FLOUR = material("83I1A0OjQVBGRAuh");    // Flour
+export const EGGS = material("YvvcLqcivp6GvByA");     // Eggs
+export const SALT = material("QYWDgXZrcx7Bk2LP");     // Salt
+export const TALLOW = material("cn0bmxAJv4XOVrJd");   // Tallow
+export const RESIN = material("kpvdmQ2helBdb6py");    // Resin
+export const REEDS = material("1KOlG5ivhFCLhkqS");    // Reeds
+export const SINEW = material("OmvXDxrrQMCTWr2A");    // Sinew
+export const MILK = material("QfYsVtcCaat3wc4h");     // Milk
+export const FOWL = material("zu4qKYpliSHqKu3G");     // Raw Fowl
+export const VEG = material("VJDxi8WZpgu7aEIS");      // Vegetables
+export const TROLL = material("HAq4pfOoxbN0BmCc");    // Troll Tallow
+export const GARGOYLE = material("io87TFV1OHXBAnZ4"); // Gargoyle Grit
+export const PIXIE = material("u4nsNVJWqnYoib9O");    // Pixie Scale
+export const ORE = material("nWysMnhCCgiq13Zh");      // Iron Ore
+export const LOG = material("ELXBpzbBAf3k7QEp");      // Log
+export const SAND = material("xqeJCm9Csrt1LUM6");     // Sand
+export const FLAX = material("ZSSAgkRzc51itx21");     // Flax
+export const VENOM = material("xQUhjnaKlDs7IXrQ");    // Viper Venom Sac
+export const PHOENIX = material("V9HdC1BIrFgfwOUo");  // Phoenix Feather
 const CHAIN = gear("OTCJHK1d9Rk6QIfR");        // Chain
 const ROPE = GEAR.ROPE;
-const HONEY = moreGear("uXeP0joPv5XTEMMx");    // Honey
-const NUTS = moreGear("e57xJZLLUbIofqNi");     // Nuts
-const DRIED_FRUIT = moreGear("7C67dwIW4uzc5Zhd"); // Dried Fruit
+export const HONEY = moreGear("uXeP0joPv5XTEMMx");    // Honey
+export const NUTS = moreGear("e57xJZLLUbIofqNi");     // Nuts
+export const DRIED_FRUIT = moreGear("7C67dwIW4uzc5Zhd"); // Dried Fruit
 const GAMBESON = armor("wdc9nLqwIN0iNkFj");    // Gambeson
 
 // The tools a recipe requires: carried, never placed on the grid, never spent.
-const SMITHING = moreGear("BlfhkEV97jV7USHZ"); // Smithing Tools
-const ALCHEMY = moreGear("6PdKfobixgDpByOk");  // Alchemy Kit
+export const SMITHING = moreGear("BlfhkEV97jV7USHZ"); // Smithing Tools
+export const ALCHEMY = moreGear("6PdKfobixgDpByOk");  // Alchemy Kit
 const COOKING = gear("5eQEA0pByDrzJ06P");      // Cooking Gear
 const SEWING = gear("RFXTI1B6phAqB4hY");       // Sewing Kit
+const AXE = weapon("1aObADSCj3jIkUPw");        // Axe, which splits a log into boards
 
 const _ = null;
 
@@ -117,7 +124,16 @@ export const RECIPES = [
     { id: "leather-strip", result: STRIP, quantity: 4,
       cells: [[LEATHER, _, _], [_, _, _], [_, _, _]] },
     { id: "tallow", result: TALLOW, requires: COOKING, quantity: 2, shaped: false,
-      cells: [MEAT, _, _, _, _, _, _, _, _] }
+      cells: [MEAT, _, _, _, _, _, _, _, _] },
+    // What Canvas Harvest's veins, trees, sand banks and flax give is raw: it is worked here first.
+    { id: "iron-ingot", result: IRON, requires: SMITHING, shaped: false,
+      cells: [ORE, ORE, _, _, _, _, _, _, _] },
+    { id: "plank", result: PLANK, requires: AXE, quantity: 2, shaped: false,
+      cells: [LOG, _, _, _, _, _, _, _, _] },
+    { id: "glass", result: GLASS, requires: SMITHING, shaped: false,
+      cells: [SAND, SAND, _, _, _, _, _, _, _] },
+    { id: "thread", result: THREAD, requires: SEWING, quantity: 2, shaped: false,
+      cells: [FLAX, FLAX, _, _, _, _, _, _, _] }
   ]),
 
   // Weapons, cheapest first, as the Weaponsmith shelves them.
@@ -237,8 +253,10 @@ export const RECIPES = [
       cells: [[_, HIDE, _],
               [_, THREAD, _],
               [_, _, _]] },
-    { id: "antitoxin", result: GEAR.ANTITOXIN, requires: ALCHEMY, shaped: false,
-      cells: [HERBS, HERBS, MUSHROOMS, GLASS, _, _, _, _, _] },
+    // The second way is the SRD's own: "An antitoxin can be made from their poison sacs" (Viper).
+    { id: "antitoxin", result: GEAR.ANTITOXIN, shaped: false, variants: [
+      { requires: ALCHEMY, cells: [HERBS, HERBS, MUSHROOMS, GLASS, _, _, _, _, _] },
+      { requires: ALCHEMY, cells: [VENOM, HERBS, GLASS, _, _, _, _, _, _] }] },
     { id: "bandages", result: gear("F8yysdbnA0y5L4sA"),
       cells: [[CLOTH, HERBS, CLOTH],
               [_, _, _],
@@ -523,7 +541,9 @@ export const RECIPES = [
     { id: "lethe-water", result: potion("7HBWiFzpfFZxXeeb"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, PIXIE, MUSHROOMS, BERRIES, _, _, _, _, _] },
     { id: "owl-eye-drops", result: potion("DGesbkzk13zzwxOf"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, GARGOYLE, FEATHER, BERRIES, _, _, _, _, _] }
+      cells: [GLASS, GARGOYLE, FEATHER, BERRIES, _, _, _, _, _] },
+    { id: "phoenix-draught", result: potion("F2OGvyqsOHE4YYVj"), requires: ALCHEMY, shaped: false,
+      cells: [GLASS, PHOENIX, HERBS, HONEY, _, _, _, _, _] }
   ])
 ];
 

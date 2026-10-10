@@ -192,14 +192,14 @@ repository (`resources/more-equipment.md`), an OSE-derived price list that "does
 the items listed in the SRD, it just adds new ones". That sentence is the pack's rule: **a name the
 Marketplace sells is never here** — the check refuses it — and what came from that list was
 re-priced onto the Marketplace's own scale (1–200 gp, Wilderness Clothes 15, Common Tools 10,
-Room & Board 10) rather than copied from OSE. 179 documents in seven compendium folders, two of which
+Room & Board 10) rather than copied from OSE. 181 documents in seven compendium folders, two of which
 have bands of their own:
 
 - **Clothing** (33) — all *petty*, priced by material: plain cloth 5, leather/wool 15, silk or
   elegant 20–30, formal 40–60, the extravagant ballgown 100. Dropped as SRD duplicates: the three
   Gloves (Marketplace `Gloves`), both Cloaks (`Wilderness Clothes`), Jerkin (`Leather Jerkin` in
   `background-gear/`); the gendered "elegant hat, women's style" folded into `Hat, elegant`.
-- **Drink** (7) and **Food** (28) — what a tavern sells, for shopping at the table: drinks by the
+- **Drink** (7) and **Food** (29) — what a tavern sells, for shopping at the table: drinks by the
   bottle, the three inn meals (0 slots, one use — eaten there), and food that travels (bread,
   cheese, cured meat, fruit, nuts, honey). Raw staples by the pound (flour, lard, a side of beef)
   were left out. Twenty-five of the twenty-eight are **food** — Make Camp and a dungeon's Exhaustion eat a
@@ -215,7 +215,11 @@ have bands of their own:
   Mix (four meals, 14 — the stews' price), and Mushroom Omelette, Berry Tart and Porridge (two meals,
   5). Trail Mix is the one recipe that saves slots: Nuts, Dried Fruit and Honey, three meals in three
   slots, become four in one. They are two folders rather than one because a Warden pricing a tavern round
-  reaches for one of them and not the other.
+  reaches for one of them and not the other. **Killer Bee Honey** is the one SRD thing here: the
+  Killer Bees' "special honey that heals 1d6 STR. 3 uses" (`wardens-guide/bestiary.md`), which no
+  SRD pack carries as an item. It sits in Food because it is honey, and it is not marked food,
+  because Make Camp would eat a dose of healing as a meal. 30 gp, a Monster Part's price: it is
+  taken from a hive Canvas Harvest places, never sold.
 - **Tools & Gear** (25) — the residue after 41 of the source's 66 lines turned out to be
   Marketplace items under another name or price (Torch 1 vs 5, Lockpicks = Thieving Tools, Cook
   Pots = Cooking Gear, Bedroll = Outdoor Comfort…). Snapped to the analogue: Barding 150 → 60
@@ -230,7 +234,7 @@ have bands of their own:
   (+6, slow) 60 and the big Cart (+6) 100, modelled like the Marketplace's Horse and Mule:
   `capacity` set, `takesSlots: false`, they haul themselves. The source's riding Horse (+2, 75)
   and Mule (+6, 50) contradict the SRD's and were dropped.
-- **Valuables** (36) — the stones a hoard is carried home as, in four subfolders. See below.
+- **Valuables** (37) — the stones a hoard is carried home as, in four subfolders. See below.
 - **Strange Items** (45) — oddities with no rules of their own, in two subfolders. Not from
   *More Equipment*; see below.
 
@@ -249,6 +253,8 @@ wears a core Foundry icon from `icons/commodities/`, one apiece, chosen by colou
 files there became 36 documents — `Emerald Brilliant Green` folded into `Emerald`, `Spinel Deep
 Blue` into `Spinel`, the two graded pearls into one, `Small Diamond` renamed `Diamond` — and the
 seven organics (Amber, Coral, Ivory, Jet, Pearl, Black Pearl, Shell) were dropped as not stone.
+One more is the maintainer's own: the **Gold Nugget**, Semiprecious (100gp), the gold a Canvas
+Harvest gem vein turns up now and then. Not a stone, but raw mineral wealth carried as one.
 
 Two decisions, both arguable, both made here rather than per document:
 
@@ -315,22 +321,33 @@ charm is that the Warden reads them. **None is a relic and none is a container**
 
 **Not SRD** (CLAUDE.md § 1, Homebrew), made to be the ingredients of Grid Crafter recipes. 2e names the
 act — "given proper ingredients" (`procedures.md`, Herbology), "given time and adequate materials"
-(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 34 `gear`
-documents in seven folders: **Metal** (Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
-(Stick, Plank, Stone, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather, Sinew),
-**Cloth** (Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries, Resin, Reeds) and **Raw Food**
-(Raw Meat, Raw Fish, Raw Fowl, Flour, Eggs, Milk, Vegetables, Salt, Tallow) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale).
+(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 42 `gear`
+documents in seven folders: **Metal** (Iron Ore, Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
+(Log, Stick, Plank, Stone, Rubble, Sand, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather, Sinew),
+**Cloth** (Flax, Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries, Resin, Reeds), **Raw Food**
+(Raw Meat, Raw Fish, Raw Fowl, Flour, Eggs, Milk, Vegetables, Salt, Tallow) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale,
+Viper Venom Sac, Phoenix Feather, Manticore Spike).
 
 - **Found and bought.** Stick, Stone, Bone, Feather, Berries, Resin, Reeds and Sinew cost 0 gp and
-  are on no shelf: the Warden hands them out as loot. The other twenty-three cost 1–3 gp and sit at the front of the shelf of
+  are on no shelf: the Warden hands them out as loot. So do the five that Canvas Harvest's places
+  give raw (`module/harvest.js`), each worked into a bought material by a recipe: **Iron Ore** (two
+  smelt to an Iron Ingot, Smithing Tools), **Log** (two Planks, with an Axe), **Sand** (two melt to
+  Glass, Smithing Tools), **Flax** (two spin to two Thread, Sewing Kit), and **Rubble**, the waste
+  rock a gem vein mostly gives, which no recipe spends on purpose. The other twenty-three cost 1–3 gp and sit at the front of the shelf of
   the shop that sells their kind — the Toolmaker, the Tailor, the Apothecary and the Provisioner. A
   world already made keeps the stores it was seeded with.
 - **Taken, not bought.** A Monster Part is taken from the creature it names, sits on no shelf, and
   costs 25–35 gp. That is the most an alchemist pays, and most of a recipe's cost. Each serves two or
-  three potions.
+  three potions. The three added for Canvas Harvest come from the bestiary's own words and take
+  their price from there: the **Phoenix Feather** (35, "highly-sought after for their healing
+  properties") serves the Phoenix Draught; the **Manticore Spike** is the SRD's 150 gp ("A single
+  spike is worth 150gp to a collector") and serves no recipe; the **Viper Venom Sac** ("An antitoxin
+  can be made from their poison sacs") is 10, below the band, because the Antitoxin it is brewed into
+  costs 20 and the price rule holds.
 - **Petty** is Nails, Stick, Leather Strip, Feather, Sinew, Thread, Herbs, Mushrooms, Wax, Berries,
-  Resin, Reeds, Salt and Tallow;
-  ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost.
+  Resin, Reeds, Salt, Tallow, Flax and every Monster Part but Troll Tallow;
+  ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost, and a Log and
+  Rubble are *bulky*: two slots, the weight of a tree or a vein's waste carried out.
 - **Raw food is not food.** Make Camp does not eat Raw Meat, Milk or Vegetables; cooking them is the
   point. Raw Fowl is its own material, apart from Raw Meat, so the roasts and the fowl soup need a
   bird and not any carcass. **Tallow** is fat: rendered from Raw Meat with Cooking Gear (two from one)
@@ -403,8 +420,8 @@ Attaché, Sinister Polymorph, Soul Annex, Summon Elemental, Trueshift, Ultimate 
 „Lyght" (German original *Alchemie und Zaubertränke*,
 https://ducklyght.itch.io/alchemie-und-zaubertraenke-cairn), translated by Luke Simonds
 (https://catshavenolord.itch.io/alchemy-and-potions-for-cairn), licensed CC BY-SA 4.0. Only the
-text is used, never the illustrations, and every potion is modified (`docs/CREDITS.md`). Sixteen
-`gear` documents (nine from the PDF, seven of the system's own); ids derive from `cairn2e:potion:<slug>` and `cairn2e:potion:folder:<slug>`.
+text is used, never the illustrations, and every potion is modified (`docs/CREDITS.md`). Seventeen
+`gear` documents (nine from the PDF, eight of the system's own); ids derive from `cairn2e:potion:<slug>` and `cairn2e:potion:folder:<slug>`.
 
 What changed from the PDF's ten:
 
@@ -421,19 +438,23 @@ What changed from the PDF's ten:
 **Price.** No 2e book prices a potion. A potion is one-use magic, so it takes the Scroll bands of
 the next section, **Common 50 / Greater 100**, by the same *Greater* criterion. New Potential is
 the one Greater potion: it permanently changes a character, which the party could not otherwise
-do at all. Filed by price like the magic packs: **Common (50gp)** holds fifteen, **Greater
+do at all. Filed by price like the magic packs: **Common (50gp)** holds sixteen, **Greater
 (100gp)** one.
 
 **Fields.** `magic: "none"`, `slots: 1`, `uses 1/1`: a potion is a Marketplace-style single dose,
 like the Sedative (*A count the SRD does not print*). Not `magic: "scroll"`, which would also
 make every potion *petty*.
 
-**The system's own seven.** Ironheart Tonic, Borrowed Vigor, Bane Oil, Honeytongue, Last Stand
-Cordial, Lethe Water and Owl-Eye Drops were written with the maintainer on 2026-10-07, so no
+**The system's own eight.** Ironheart Tonic, Borrowed Vigor, Bane Oil, Honeytongue, Last Stand
+Cordial, Lethe Water and Owl-Eye Drops were written with the maintainer on 2026-10-07, and the
+Phoenix Draught on 2026-10-10, so no
 third-party licence applies (the Strange Items' precedent). Each touches a 2e rule no other item
 does: Panic (`procedures.md` § Panic), Fatigue (`core-rules.md` § Deprivation & Fatigue), *enhanced*
 attacks (§ Attacks), Reactions (§ Reactions), Critical Damage (§ Critical Damage) and light
-(`procedures.md` § Light Sources); Lethe Water is fiction alone. Every one is brewed around a
+(`procedures.md` § Light Sources); Lethe Water is fiction alone. The Phoenix Draught does what
+"Attribute loss … can usually be restored with a week's rest, facilitated by a healer"
+(`core-rules.md` § Healing & Recovery) does, in an hour, and leaves the drinker *deprived* until
+they sleep; it never raises the dead, which is the relic Phoenix Ash's. Every one is brewed around a
 Monster Part (see `materials`).
 
 **Left out of the PDF:** its "potion of any spell", which in 2e is a Scroll, and its alchemist

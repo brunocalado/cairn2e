@@ -1,0 +1,24 @@
+{
+  "_id": "F5ZogXdhwxwOIKpn",
+  "name": "Gold Nugget",
+  "type": "gear",
+  "img": "icons/commodities/stone/stone-nugget-gold.webp",
+  "system": {
+    "description": "<p>Raw gold the size of a thumb, picked out of the rock.</p>",
+    "slots": 0,
+    "cost": 100,
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "magic": "none",
+    "recharge": "",
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!F5ZogXdhwxwOIKpn",
+  "folder": "Qai89dBcno9Coube"
+}

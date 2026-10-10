@@ -1,0 +1,31 @@
+{
+  "_id": "V9HdC1BIrFgfwOUo",
+  "name": "Phoenix Feather",
+  "type": "gear",
+  "img": "icons/commodities/materials/feather-white-glowing-fire.webp",
+  "system": {
+    "description": "<p>Sifted from a phoenix's ashes, and still warm however long it is kept. Sought after for its healing (petty).</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 35,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!V9HdC1BIrFgfwOUo",
+  "folder": "hn5ypPA0QaXngbEr"
+}

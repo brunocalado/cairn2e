@@ -550,6 +550,155 @@
     "Title": "Growth",
     "Zone": "Growth"
   },
+  "CAIRN.Harvest": {
+    "Hive": {
+      "Hint": "What the bees do is yours to decide.",
+      "Lead": "{name} broke into the {resource}. It is awake."
+    },
+    "Night": "{resource} stirs in the dark. It can only be worked while the sun is on it.",
+    "Noise": {
+      "Hint": "Noise draws attention: check for an encounter.",
+      "Lead": "{name} is working the {resource}, and the sound carries."
+    },
+    "Resource": {
+      "Bear": {
+        "Name": "Bear",
+        "Verb": "Butcher"
+      },
+      "BirdNest": {
+        "Name": "Bird Nest",
+        "Verb": "Gather"
+      },
+      "Bramble": {
+        "Name": "Bramble",
+        "Verb": "Pick"
+      },
+      "Deadfall": {
+        "Name": "Deadfall",
+        "Verb": "Gather"
+      },
+      "FishCatch": {
+        "Name": "Fish Catch",
+        "Verb": "Gut"
+      },
+      "FishingSpot": {
+        "Name": "Fishing Spot",
+        "Verb": "Fish"
+      },
+      "Fowl": {
+        "Name": "Fowl",
+        "Verb": "Pluck"
+      },
+      "FrozenGargoyle": {
+        "Name": "Frozen Gargoyle",
+        "Verb": "Scrape"
+      },
+      "GameTrail": {
+        "Name": "Game Trail",
+        "Verb": "Trap"
+      },
+      "GemVein": {
+        "Name": "Gem Vein",
+        "Verb": "Mine"
+      },
+      "HerbPatch": {
+        "Name": "Herb Patch",
+        "Verb": "Gather"
+      },
+      "IronVein": {
+        "Name": "Iron Vein",
+        "Verb": "Mine"
+      },
+      "KillerBeeHive": {
+        "Name": "Killer Bee Hive",
+        "Verb": "Gather"
+      },
+      "LargeGame": {
+        "Name": "Large Game",
+        "Verb": "Butcher"
+      },
+      "ManticoreCarcass": {
+        "Name": "Manticore Carcass",
+        "Verb": "Pull"
+      },
+      "MushroomRing": {
+        "Name": "Mushroom Ring",
+        "Verb": "Gather"
+      },
+      "OldBattlefield": {
+        "Name": "Old Battlefield",
+        "Verb": "Scavenge"
+      },
+      "PhoenixAshes": {
+        "Name": "Phoenix Ashes",
+        "Verb": "Sift"
+      },
+      "PixieBed": {
+        "Name": "Pixie Bed",
+        "Verb": "Gather"
+      },
+      "Predator": {
+        "Name": "Predator",
+        "Verb": "Skin"
+      },
+      "ReedBed": {
+        "Name": "Reed Bed",
+        "Verb": "Cut"
+      },
+      "RockFace": {
+        "Name": "Rock Face",
+        "Verb": "Quarry"
+      },
+      "SaltCrust": {
+        "Name": "Salt Crust",
+        "Verb": "Scrape"
+      },
+      "SandBank": {
+        "Name": "Sand Bank",
+        "Verb": "Dig"
+      },
+      "SkeletonRemains": {
+        "Name": "Skeleton Remains",
+        "Verb": "Scatter"
+      },
+      "SmallGame": {
+        "Name": "Small Game",
+        "Verb": "Skin"
+      },
+      "SpiderNest": {
+        "Name": "Spider Nest",
+        "Verb": "Cut"
+      },
+      "Tree": {
+        "Name": "Tree",
+        "Verb": "Chop"
+      },
+      "TrollCarcass": {
+        "Name": "Troll Carcass",
+        "Verb": "Carve"
+      },
+      "ViperCarcass": {
+        "Name": "Viper Carcass",
+        "Verb": "Milk"
+      },
+      "WildFlax": {
+        "Name": "Wild Flax",
+        "Verb": "Pull"
+      },
+      "WildHive": {
+        "Name": "Wild Hive",
+        "Verb": "Gather"
+      },
+      "WingedBeast": {
+        "Name": "Winged Beast",
+        "Verb": "Butcher"
+      }
+    },
+    "Venom": {
+      "Fail": "{name} tried and failed: the venom touched them. The Warden says what it does.",
+      "Lead": "{name} works the {resource}, close to its venom."
+    }
+  },
   "CAIRN.Hazards": {
     "Button": "Hazards",
     "Crushing": {

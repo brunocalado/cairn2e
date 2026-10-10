@@ -216,6 +216,29 @@ export async function postMoraleReminder(triggers) {
 }
 
 /**
+ * The save a harvest card asks for (`module/harvest.js`): a viper milked for its venom sac, say.
+ * What a failure costs is the Warden's to rule, so nothing is rolled or applied beyond the save; a
+ * failure only adds the line the card handed over. The answer carries the card's id, as
+ * {@link rollCriticalDamageSave}'s does, so the button is gone once it is answered.
+ * @param {Actor} actor
+ * @param {"STR"|"DEX"|"WIL"} key
+ * @param {{token?: TokenDocument, cardId: string, failText: string}} options
+ * @returns {Promise<boolean>}
+ */
+export async function rollHarvestSave(actor, key, { token, cardId, failText }) {
+  const { roll, passed } = await evaluateSave(actor.system.abilities[key].value);
+  await postSaveRoll(roll, {
+    actor,
+    token,
+    flavor: game.i18n.localize("CAIRN.Save", { key: game.i18n.localize(key) }),
+    passed,
+    outcomeText: passed ? "" : failText,
+    flags: { [SYSTEM_ID]: { [FLAGS.HARVEST_SAVE_FOR]: cardId } }
+  });
+  return passed;
+}
+
+/**
  * The STR save Critical Damage prompts (core-rules.md → Critical Damage), rolled against the
  * target's *current* STR — `module/combat/damage.js` has already written the post-overflow value
  * before this is called, so no override is needed. Unlike a plain save, failure means something

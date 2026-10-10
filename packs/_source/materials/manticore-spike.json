@@ -1,0 +1,31 @@
+{
+  "_id": "2FgWKVJ3Kuf4yAcJ",
+  "name": "Manticore Spike",
+  "type": "gear",
+  "img": "icons/commodities/biological/tail-spiked-green.webp",
+  "system": {
+    "description": "<p>A spike from a manticore's tail. A collector pays well for one (petty).</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 150,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!2FgWKVJ3Kuf4yAcJ",
+  "folder": "hn5ypPA0QaXngbEr"
+}
