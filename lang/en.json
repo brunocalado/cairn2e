@@ -550,6 +550,65 @@
     "Title": "Growth",
     "Zone": "Growth"
   },
+  "CAIRN.Hazards": {
+    "Button": "Hazards",
+    "Crushing": {
+      "Name": "Crushing",
+      "Summary": "Heavy objects, rubble, closing walls and ceilings. Damage goes straight to STR. Someone pinned but under no pressure takes nothing just for waiting.",
+      "Repeats": "Roll again only when it keeps pressing, as a structure gives way. Buried: the impact first, then crushing or Drowning if they cannot breathe.",
+      "Light": "A few stones from a collapsing ceiling.",
+      "Serious": "A falling crate, a door slammed by a mechanism.",
+      "Severe": "A heavy beam across the legs.",
+      "Extreme": "Caught whole under a falling wall, still alive.",
+      "Save": "Usually DEX to dive clear; STR to hold the beam while others get out; WIL to make whoever works the mechanism stop."
+    },
+    "Drowning": {
+      "Name": "Drowning",
+      "Summary": "Drowning, smoke, gas: anything that stops a character breathing. Damage goes straight to STR.",
+      "Repeats": "Roll again whenever the exposure has gone on long enough to earn a new consequence. There is no fixed interval.",
+      "Light": "A brief but real exposure: a lungful of smoke.",
+      "Serious": "Still trapped while the smoke thickens.",
+      "Severe": "Under water with no air left.",
+      "Extreme": "Dragged deep by a current, or sealed in with the smoke.",
+      "Save": "Usually STR to swim against the current; DEX to slip through a gap; WIL to stay calm and not breathe in."
+    },
+    "Exposure": {
+      "Name": "Exposure",
+      "Summary": "Fire, acid, great heat, bitter cold. Damage goes straight to STR. A brief touch may do no harm.",
+      "Repeats": "Roll again whenever the exposure has gone on long enough to earn a new consequence. There is no fixed interval.",
+      "Light": "A hand on a hot surface.",
+      "Serious": "Caught in a burning room.",
+      "Severe": "A fall into concentrated acid.",
+      "Extreme": "Wrapped in flames, or a night in the open in deep winter.",
+      "Save": "Usually STR to endure the heat or the cold; DEX to leap out of the flames; WIL for a spell against them."
+    },
+    "Fall": {
+      "Name": "Fall",
+      "Summary": "Damage goes straight to STR. Height is the guide; the landing decides the die: water, snow or branches one step down, rock or spikes one step up. A short hop is no harm; from about 18 m (60 ft) onto hard ground, a fall is Fatal.",
+      "Repeats": "Rolled once, on landing.",
+      "Light": "About 3 m (10 ft), one storey.",
+      "Serious": "About 6 m (20 ft), two storeys.",
+      "Severe": "About 9 m (30 ft), three storeys.",
+      "Extreme": "About 12 m (40 ft), four storeys: lived through only by luck or a soft landing.",
+      "Save": "Usually DEX to catch a ledge or roll with the landing; STR to hold on to a rope; WIL for a spell or a relic in the last instant."
+    },
+    "FatalNote": "No roll. Only when survival is not plausible, and only after the danger was made plain.",
+    "Flavor": "{hazard}: {step}",
+    "HouseRule": "House rulings, not Cairn 2e. Target the tokens first; the card offers Apply with and without armour, which helps only where it would.",
+    "NoTarget": "Target the tokens that make the save first.",
+    "Principle": "Decide first what the fiction makes possible; roll only for the uncertainty that is really there.",
+    "SaveButton": "{key} save",
+    "SaveLabel": "Avoid it",
+    "SaveRule": "Only if it makes sense in the fiction and the Warden agrees. Say what a pass and a failure mean before the roll.",
+    "Step": {
+      "Light": "Light",
+      "Serious": "Serious",
+      "Severe": "Severe",
+      "Extreme": "Extreme",
+      "Fatal": "Fatal"
+    },
+    "Title": "Hazards"
+  },
   "CAIRN.Hireling": {
     "Career": {
       "Alchemist": "Alchemist",

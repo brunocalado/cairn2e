@@ -17,6 +17,7 @@ import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
 import { CairnTreasure } from "./treasure.js";
 import { CairnRulesSummary } from "./rules-summary.js";
+import { CairnHazards } from "./hazards.js";
 import { importKettlewrightCharacter } from "../kettlewright-import.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -50,6 +51,7 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
       openJourney: CairnSidebarTab.#onOpenJourney,
       openStore: CairnSidebarTab.#onOpenStore,
       openRules: CairnSidebarTab.#onOpenRules,
+      openHazards: CairnSidebarTab.#onOpenHazards,
       openCalendar: CairnSidebarTab.#onOpenCalendar
     }
   };
@@ -145,6 +147,11 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
   /** @this {CairnSidebarTab} */
   static #onOpenRules() {
     CairnRulesSummary.open();
+  }
+
+  /** @this {CairnSidebarTab} */
+  static #onOpenHazards() {
+    CairnHazards.open();
   }
 
   /** @this {CairnSidebarTab} */

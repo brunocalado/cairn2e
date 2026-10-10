@@ -1,0 +1,11 @@
+{{!-- Which hazard is on show (Primitive 2, segmented). A part of its own so that choosing one
+      re-renders the hazard below and never this group: the radio keeps its focus, and the arrow
+      keys keep moving through the four. --}}
+<div class="cairn-choice cairn-hazards-pick" role="radiogroup" aria-label="{{localize 'CAIRN.Hazards.Title'}}">
+    {{#each hazards as |h|}}
+    <label class="cairn-choice-option">
+        <input type="radio" name="hazard" value="{{h.id}}" {{checked h.checked}} />
+        <span>{{h.name}}</span>
+    </label>
+    {{/each}}
+</div>
