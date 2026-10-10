@@ -12,10 +12,11 @@
      *                                                                       *
      * The hazard is a segmented choice (Primitive 2) across the top; under *
      * it the ladder is list rows (Primitive 7) of label, example and the   *
-     * die's ink button, and the saves take the same row with the label in *
-     * the same gutter, so the eye reads one column of step names. A window *
-     * that sits beside the canvas, so the gutter is fixed and narrow. No   *
-     * hue: the step names are the heading capitals, the asides soft italic.*
+     * die's ink button, on one shared grid so the step names stand in a    *
+     * column only as wide as the longest. Avoid it runs the window's full  *
+     * width, each save an ink button with its help mark; the principle is  *
+     * the one boxed thing. Every word is the Warden's, so all of it is     *
+     * full ink: no soft ink, no hue.                                       *
      **************************************************************************/
 
     &.cairn-hazards {
@@ -47,25 +48,25 @@
             padding-bottom: 10px;
         }
 
-        .cairn-hazards-repeats,
-        .cairn-hazards-hint,
-        .cairn-hazards-foot p {
-            color: var(--cairn-ink-soft);
+        .cairn-hazards-repeats {
             font-style: italic;
         }
 
+        /* One grid for the whole ladder, each row a subgrid of it: the label column is sized by
+           the longest step name, not by a guess, and every row's columns still line up. */
         .cairn-hazards-steps {
+            column-gap: 12px;
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr) 3rem;
             margin: 0;
             padding: 0 0 6px;
         }
 
-        /* One gutter for every row, the saves' included, so a fixed first column rather than
-           `max-content` row by row: each row is its own grid, and their labels would not line up. */
         .cairn-hazards-row {
             align-items: center;
             display: grid;
-            gap: 10px;
-            grid-template-columns: 5.5rem minmax(0, 1fr) 3rem;
+            grid-column: 1 / -1;
+            grid-template-columns: subgrid;
             min-height: 34px;
             padding: 4px 0;
         }
@@ -75,6 +76,7 @@
             font-size: 12px;
             font-weight: 700;
             letter-spacing: var(--cairn-label-track);
+            margin: 0;
             text-transform: uppercase;
         }
 
@@ -82,6 +84,11 @@
             font-family: var(--cairn-serif);
             font-size: 13px;
             line-height: 1.3;
+
+            /* Fatal has no die, so its sentence takes the die's column too. */
+            &:last-child {
+                grid-column: 2 / -1;
+            }
         }
 
         /* A die is written `d8`, as the books print it: the ink button's capitals would make it D8. */
@@ -92,40 +99,32 @@
             width: 100%;
         }
 
-        /* The saves have no die column: their text runs to the right edge. */
         .cairn-hazards-save {
-            align-items: start;
-            grid-template-columns: 5.5rem minmax(0, 1fr);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
             padding-bottom: 12px;
-
-            .cairn-hazards-label {
-                line-height: 1.35;
-            }
-
-            .cairn-hazards-example {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-            }
         }
 
         .cairn-hazards-saves {
             display: flex;
-            gap: 6px;
+            gap: 12px;
+        }
+
+        /* A save's button and the help mark that says what it covers on this hazard. */
+        .cairn-hazards-ask {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            gap: 5px;
 
             button {
                 flex: 1;
             }
         }
 
-        .cairn-hazards-foot {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-
-            p {
-                font-size: 12px;
-            }
+        .cairn-hazards-principle {
+            padding: 8px 10px;
         }
     }
 }

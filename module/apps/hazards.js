@@ -8,21 +8,24 @@
 import { SYSTEM_ID } from "../constants.js";
 import { HAZARDS, HAZARD_STEPS, HAZARD_SAVES } from "../hazard-rules.js";
 import { rollAttributeDamage, rollSave } from "../rolls.js";
+import { enricherActor } from "../enrichers.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/hazards`;
+const SAVE_CARD_TPL = `systems/${SYSTEM_ID}/templates/chat/hazard-save-card.hbs`;
 
 /**
  * The Warden's hazards — one hazard at a time, its ladder of dice, and the saves that may avoid
- * it. A picker in front of two functions that already exist: a die is `rollAttributeDamage`
- * against STR, exactly what a `[[/damage d8 STR]]` chip does, so it lands on the trap card with
- * its Apply and Apply-without-armour; a save is `rollSave` for each targeted token. It adds no
- * damage logic of its own.
+ * it. Every word in it is for the Warden; the players meet only the cards. A die is
+ * `rollAttributeDamage` against STR, exactly what a `[[/damage d8 STR]]` chip does, so it lands on
+ * the trap card with its Apply and Apply-without-armour. A save is a card with a button, posted
+ * for the table: whoever is caught clicks it and rolls their own, as a `[[/save]]` chip would. It
+ * adds no damage logic of its own.
  *
- * The rulings are house rules, not Cairn 2e (`hazard-rules.js`), and the window says so in its
- * foot. Which hazard is shown is this window's alone and is forgotten on close.
+ * The rulings are house rules, not Cairn 2e (`hazard-rules.js`). Which hazard is shown is this
+ * window's alone and is forgotten on close.
  */
 export class CairnHazards extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
   static DEFAULT_OPTIONS = {
@@ -32,7 +35,7 @@ export class CairnHazards extends CairnInkMixin(HandlebarsApplicationMixin(Appli
     window: { title: "CAIRN.Hazards.Title", icon: "fa-solid fa-person-falling", resizable: false },
     actions: {
       rollStep: CairnHazards.#onRollStep,
-      rollSave: CairnHazards.#onRollSave
+      askSave: CairnHazards.#onAskSave
     }
   };
 
@@ -81,11 +84,16 @@ export class CairnHazards extends CairnInkMixin(HandlebarsApplicationMixin(Appli
         example: game.i18n.localize(die ? `${key}.${step}` : "CAIRN.Hazards.FatalNote")
       };
     });
-    context.saveHint = game.i18n.localize(`${key}.Save`);
-    context.saves = HAZARD_SAVES.map((attr) => ({
-      key: attr,
-      label: game.i18n.localize("CAIRN.Hazards.SaveButton", { key: game.i18n.localize(attr) })
-    }));
+    context.saves = HAZARD_SAVES.map((attr) => {
+      const name = game.i18n.localize(attr);
+      return {
+        key: attr,
+        label: game.i18n.localize("CAIRN.Save", { key: name }),
+        // The help mark's tooltip: core localizes `data-tooltip` itself, so this is the key.
+        tip: `${key}.Saves.${attr}`,
+        help: game.i18n.localize("CAIRN.Hazards.SaveHelp", { key: name })
+      };
+    });
     return context;
   }
 
@@ -119,20 +127,38 @@ export class CairnHazards extends CairnInkMixin(HandlebarsApplicationMixin(Appli
   }
 
   /**
-   * The chosen save for every targeted token. Not the Warden's controlled token, as a `[[/save]]`
-   * chip would roll: the dice beside it roll against targets, and one window aiming its two kinds
-   * of roll at different tokens would be a trap of its own.
+   * Ask the table for the save: a card whose button anyone may press. Nothing is rolled here —
+   * the Warden does not know who is caught until the players say, and each rolls their own.
    * @this {CairnHazards}
    */
-  static async #onRollSave(event, target) {
+  static async #onAskSave(event, target) {
     const key = target.dataset.key;
     if (!HAZARD_SAVES.includes(key)) return;
-    // A party token has no attributes to save with.
-    const actors = Array.from(game.user.targets, (t) => t.actor).filter((a) => a?.system.abilities?.[key]);
-    if (!actors.length) {
-      ui.notifications.warn(game.i18n.localize("CAIRN.Hazards.NoTarget"));
-      return;
-    }
-    for (const actor of actors) await rollSave(actor, key);
+    const content = await foundry.applications.handlebars.renderTemplate(SAVE_CARD_TPL, {
+      key,
+      label: game.i18n.localize("CAIRN.Save", { key: game.i18n.localize(key) })
+    });
+    await ChatMessage.implementation.create({
+      speaker: ChatMessage.getSpeaker(),
+      flavor: foundry.utils.escapeHTML(game.i18n.localize(`CAIRN.Hazards.${this.#hazard.capitalize()}.Name`)),
+      content
+    });
   }
+}
+
+/**
+ * The save card's button (`#onAskSave` posts it), on every client: it rolls for whoever clicks,
+ * by the `[[/save]]` chip's rule — the selected token, else the clicker's own character. It stays
+ * after a roll, because more than one character may be caught.
+ * @param {ChatMessage} message
+ * @param {HTMLElement} html
+ */
+export function renderHazardSaveButton(message, html) {
+  const button = html.querySelector(".roll-hazard-save");
+  if (!button || !HAZARD_SAVES.includes(button.dataset.key)) return;
+  button.addEventListener("click", () => {
+    const actor = enricherActor();
+    if (!actor?.system.abilities) return ui.notifications.warn(game.i18n.localize("CAIRN.Enrich.NoActor"));
+    return rollSave(actor, button.dataset.key);
+  });
 }

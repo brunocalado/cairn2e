@@ -27,6 +27,7 @@ import { CairnJourneyTracker } from "./apps/journey-tracker.js";
 import { CairnStore } from "./apps/store.js";
 import { CairnTreasure } from "./apps/treasure.js";
 import { renderTreasureButton, bindTreasureChatDrop } from "./treasure.js";
+import { renderHazardSaveButton } from "./apps/hazards.js";
 import { CairnRulesSummary } from "./apps/rules-summary.js";
 import * as kettlewrightImport from "./kettlewright-import.js";
 import { CairnCharacterCreator } from "./apps/character-creator.js";
@@ -676,6 +677,9 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
 
   // The treasure card's button opens the party on its Stash, for whoever may see the party.
   renderTreasureButton(message, html);
+
+  // The Hazards window's save card: anyone caught presses it and rolls their own.
+  renderHazardSaveButton(message, html);
 
   // The journey's start card carries the way back into the tracker for a player who closed it.
   const journeyBtn = html.querySelector(".open-journey");

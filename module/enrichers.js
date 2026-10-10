@@ -88,10 +88,11 @@ const CONDITION_RULES = {
  * A chip is read by everyone at the table and clicked by one of them, so it cannot carry an
  * actor of its own — the page it sits on does not know who is reading it. Selection first
  * because that is what a Warden running four NPCs means by "this one"; the assigned character
- * second because that is what a player with nothing selected means.
+ * second because that is what a player with nothing selected means. The Hazards window's save
+ * card is read and clicked the same way, so its button asks this too.
  * @returns {Actor|null}
  */
-function enricherActor() {
+export function enricherActor() {
   const controlled = canvas?.tokens?.controlled ?? [];
   if (controlled.length) return controlled[0].actor ?? null;
   return game.user.character ?? null;

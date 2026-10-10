@@ -1,0 +1,7 @@
+{{!-- The Warden asks the table for a save against a hazard (`apps/hazards.js`): a body, its caption
+      the hazard. The button is for anyone caught in it, and rolls for whoever presses it — wired in
+      `renderHazardSaveButton`, and left in place, since more than one may be caught. --}}
+<p class="cairn-card-lead">{{localize "CAIRN.Hazards.SaveCard"}}</p>
+<button type="button" class="cairn-card-action roll-hazard-save" data-key="{{key}}">
+    <i class="fa-solid fa-dice-d20" inert></i> {{label}}
+</button>

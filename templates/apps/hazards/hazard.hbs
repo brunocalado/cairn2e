@@ -1,9 +1,11 @@
-{{!-- The hazard chosen above (`pick.hbs`). Each says the same four things in the same order —
-      what it covers, the ladder with one example per step, whether it repeats, whether a save
-      avoids it. A step's button IS the roll: one click,
-      d4 to d10 of STR damage against the targets. Fatal has no button, on purpose — STR to 0 on
-      the sheet is one edit, and a button that kills is too easy to press. The three saves are on
-      every hazard, with no default among them: the attribute follows what the character does. --}}
+{{!-- The hazard chosen above (`pick.hbs`). Every word here is for the Warden. Each hazard says the
+      same four things in the same order — what it covers, the ladder with one example per step,
+      whether it repeats, whether a save avoids it. A step's button IS the roll: one click, d4 to
+      d10 of STR damage against the targets. Fatal has no button, on purpose — STR to 0 on the
+      sheet is one edit, and a button that kills is too easy to press. A save button rolls nothing:
+      it posts a card the players roll from. All three are on every hazard, with no default among
+      them, because the attribute follows what the character does; the help mark beside each says
+      what it usually covers here. --}}
 <div class="cairn-hazards-body">
     <div class="cairn-hazards-about" data-ink="hline" data-ink-seed="hazards-about" data-ink-w="1.8" data-ink-at="bottom">
         <p>{{summary}}</p>
@@ -23,21 +25,18 @@
         {{/each}}
     </ol>
 
-    <div class="cairn-hazards-row cairn-hazards-save" data-ink="hline" data-ink-seed="hazards-save" data-ink-w="1.8" data-ink-at="bottom">
-        <span class="cairn-hazards-label">{{localize "CAIRN.Hazards.SaveLabel"}}</span>
-        <div class="cairn-hazards-example">
-            <p>{{localize "CAIRN.Hazards.SaveRule"}}</p>
-            <p class="cairn-hazards-hint">{{saveHint}}</p>
-            <div class="cairn-hazards-saves">
-                {{#each saves as |v|}}
-                <button type="button" data-action="rollSave" data-key="{{v.key}}">{{v.label}}</button>
-                {{/each}}
-            </div>
+    <section class="cairn-hazards-save" data-ink="hline" data-ink-seed="hazards-save" data-ink-w="1.8" data-ink-at="bottom">
+        <h4 class="cairn-hazards-label">{{localize "CAIRN.Hazards.SaveLabel"}}</h4>
+        <p>{{localize "CAIRN.Hazards.SaveRule"}}</p>
+        <div class="cairn-hazards-saves">
+            {{#each saves as |v|}}
+            <span class="cairn-hazards-ask">
+                <button type="button" data-action="askSave" data-key="{{v.key}}">{{v.label}}</button>
+                {{> "systems/cairn2e/templates/parts/help-mark.hbs" tip=v.tip label=v.help seed=(concat "hazards-save-" v.key)}}
+            </span>
+            {{/each}}
         </div>
-    </div>
+    </section>
 
-    <footer class="cairn-hazards-foot">
-        <p>{{localize "CAIRN.Hazards.Principle"}}</p>
-        <p>{{localize "CAIRN.Hazards.HouseRule"}}</p>
-    </footer>
+    <p class="cairn-hazards-principle" data-ink="box" data-ink-seed="hazards-principle" data-ink-w="1.6">{{localize "CAIRN.Hazards.Principle"}}</p>
 </div>

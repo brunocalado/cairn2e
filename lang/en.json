@@ -709,7 +709,11 @@
       "Serious": "A falling crate, a door slammed by a mechanism.",
       "Severe": "A heavy beam across the legs.",
       "Extreme": "Caught whole under a falling wall, still alive.",
-      "Save": "Usually DEX to dive clear; STR to hold the beam while others get out; WIL to make whoever works the mechanism stop."
+      "Saves": {
+        "STR": "Holding the beam up while the others get out.",
+        "DEX": "Diving clear before it lands.",
+        "WIL": "Making whoever works the mechanism stop."
+      }
     },
     "Drowning": {
       "Name": "Drowning",
@@ -719,7 +723,11 @@
       "Serious": "Still trapped while the smoke thickens.",
       "Severe": "Under water with no air left.",
       "Extreme": "Dragged deep by a current, or sealed in with the smoke.",
-      "Save": "Usually STR to swim against the current; DEX to slip through a gap; WIL to stay calm and not breathe in."
+      "Saves": {
+        "STR": "Swimming against the current.",
+        "DEX": "Slipping through a gap to the air.",
+        "WIL": "Staying calm and not breathing in."
+      }
     },
     "Exposure": {
       "Name": "Exposure",
@@ -729,7 +737,11 @@
       "Serious": "Caught in a burning room.",
       "Severe": "A fall into concentrated acid.",
       "Extreme": "Wrapped in flames, or a night in the open in deep winter.",
-      "Save": "Usually STR to endure the heat or the cold; DEX to leap out of the flames; WIL for a spell against them."
+      "Saves": {
+        "STR": "Enduring the heat or the cold.",
+        "DEX": "Leaping out of the flames.",
+        "WIL": "A spell against it."
+      }
     },
     "Fall": {
       "Name": "Fall",
@@ -739,16 +751,19 @@
       "Serious": "About 6 m (20 ft), two storeys.",
       "Severe": "About 9 m (30 ft), three storeys.",
       "Extreme": "About 12 m (40 ft), four storeys: lived through only by luck or a soft landing.",
-      "Save": "Usually DEX to catch a ledge or roll with the landing; STR to hold on to a rope; WIL for a spell or a relic in the last instant."
+      "Saves": {
+        "STR": "Holding on to a rope.",
+        "DEX": "Catching a ledge, or rolling with the landing.",
+        "WIL": "A spell or a relic in the last instant."
+      }
     },
     "FatalNote": "No roll. Only when survival is not plausible, and only after the danger was made plain.",
     "Flavor": "{hazard}: {step}",
-    "HouseRule": "House rulings, not Cairn 2e. Target the tokens first; the card offers Apply with and without armour, which helps only where it would.",
-    "NoTarget": "Target the tokens that make the save first.",
     "Principle": "Decide first what the fiction makes possible; roll only for the uncertainty that is really there.",
-    "SaveButton": "{key} save",
+    "SaveCard": "Whoever is caught in it rolls.",
+    "SaveHelp": "What a {key} save covers here",
     "SaveLabel": "Avoid it",
-    "SaveRule": "Only if it makes sense in the fiction and the Warden agrees. Say what a pass and a failure mean before the roll.",
+    "SaveRule": "Offer one only when the fiction leaves a way out, and say what a pass and a failure mean before anyone rolls. The button posts a card; whoever is caught rolls their own.",
     "Step": {
       "Light": "Light",
       "Serious": "Serious",
