@@ -292,7 +292,10 @@
 
         /* `:has()` carries the specificity of its argument, so this lands at (0,2,1) and beats
            `.window-content label`'s ink — without it the chosen button is paper text on paper. */
-        &:has(input:checked) {
+        /* An action option stands for a value too when it opens a menu of them (the gear sheet's
+           "3+"), so the chosen mark is also a class the template sets. */
+        &:has(input:checked),
+        &.cairn-choice-chosen {
             background: var(--cairn-ink);
             color: var(--cairn-paper);
             font-weight: 700;
@@ -314,17 +317,56 @@
            repainted the chosen button's text faint — faint ink on the ink ground it had just been
            given, i.e. an empty black box where the answer was. `:where()` carries no specificity
            of its own, so this stays level and simply no longer claims the chosen one. */
-        &:has(input:disabled):where(:not(:has(input:checked))) {
+        &:has(input:disabled):where(:not(:has(input:checked))),
+        &[aria-disabled="true"]:where(:not(.cairn-choice-chosen)) {
             border-color: var(--cairn-ink-faint);
             color: var(--cairn-ink-faint);
         }
 
-        &:has(input:disabled) {
+        &:has(input:disabled),
+        &[aria-disabled="true"] {
             cursor: default;
         }
 
-        &:has(input:disabled):hover {
+        &:has(input:disabled):hover,
+        &[aria-disabled="true"]:hover {
             background: none;
+        }
+    }
+
+    /* Core's ContextMenu when the system opens one as a picker (the gear sheet's "3+"). It is
+       fixed to `<body>`, outside every window, so it carries the scope class itself and the rules
+       are written on it, as the enriched chip's are. Ink on paper like the sheet it drops from,
+       whatever the theme: core's dark panel, rounded and shadowed, is the very thing a native
+       `<select>` list was meant to avoid. */
+    &.cairn-menu {
+        background: var(--cairn-paper);
+        border: var(--cairn-rule) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
+        box-shadow: none;
+        color: var(--cairn-ink);
+        font-family: var(--cairn-serif);
+        min-width: 0;
+
+        li.context-item {
+            border: none;
+            font-size: 12px;
+            font-variant-numeric: tabular-nums;
+            line-height: 18px;
+            padding: 2px 16px;
+            text-align: center;
+            transition: none;
+
+            &:hover {
+                background: var(--cairn-paper-sunk);
+                color: var(--cairn-ink);
+            }
+
+            &.cairn-menu-chosen {
+                background: var(--cairn-ink);
+                color: var(--cairn-paper);
+                font-weight: 700;
+            }
         }
     }
 

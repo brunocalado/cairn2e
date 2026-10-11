@@ -206,12 +206,14 @@
 
         {{/unless}}
 
-        {{!-- What carrying it costs of the ten, as one contiguous scale — the Armour row above is
-              the same control for the same reason. Two of the buttons wear 2e's word instead of a
-              digit, because *petty* IS zero and *bulky* IS two: the word teaches the rule where the
-              choice is made, and the eye still reads a scale with two landmarks. Two toggles stood
-              here before, which could say both at once and needed a validation clause to police
-              each other; one number can say neither.
+        {{!-- What carrying it costs of the ten, as one scale — the Armour row above is the same
+              control for the same reason. Two of the buttons wear 2e's word instead of a digit,
+              because *petty* IS zero and *bulky* IS two: the word teaches the rule where the choice
+              is made. The fourth, "3+", stands for every heavier cost and opens them as a menu
+              (`item-gear-sheet.js#bindHeavySlots`); once one is chosen it shows that number,
+              inverted like any chosen button. Eleven buttons wrapped onto a second line, for costs
+              almost nothing has. Two toggles stood here before, which could say both at once and
+              needed a validation clause to police each other; one number can say neither.
 
               On a container the character hauls this says what it costs on the ten (a Cart is
               bulky); on one that hauls itself it changes nothing.
@@ -234,6 +236,9 @@
                     <span>{{choice.label}}</span>
                 </label>
                 {{/each}}
+                <a class="cairn-choice-option cairn-slot-heavy{{#if slotHeavy.chosen}} cairn-choice-chosen{{/if}}"
+                    role="button" aria-haspopup="menu" aria-pressed="{{slotHeavy.chosen}}"
+                    {{#if slotHeavy.locked}}aria-disabled="true"{{/if}}>{{slotHeavy.label}}</a>
             </div>
         </div>
 

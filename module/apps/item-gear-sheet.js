@@ -15,11 +15,12 @@ import { bindGrantZones, dropGrant, grantDrag, grantRows, onGrantOpen, onGrantRe
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates/item`;
 
-/** The largest slot cost the buttons run to, so the row is one contiguous scale. It is the ten
- *  inventory slots: nothing heavier can be carried at all, and an item that grows — Bond 15's
- *  Stone Heart gains a slot a month — reaches any weight a character could still hold with a
- *  click. A document above even that still appends its own button. */
-const SLOT_BUTTONS = 10;
+/** The heavy slot costs, three to the ten inventory slots, offered from one "3+" button instead of
+ *  eight more: the run of eleven wrapped onto a second line, and every pack document costs 0, 1
+ *  or 2. Ten is as far as anything can be carried, and an item that grows — Bond 15's Stone Heart
+ *  gains a slot a month — still reaches it with a click. A document above even that is offered
+ *  its own cost too. */
+const HEAVY_SLOTS = Array.fromRange(8, 3);
 
 /**
  * The axes a gear's Details tab draws only when they say something. A Torch has no die, no
@@ -226,13 +227,18 @@ export class CairnGearSheet extends CairnItemSheet {
     const SLOT_WORDS = { 0: "CAIRN.Petty", 2: "CAIRN.Bulky" };
     const slots = item.system.slots;
     context.pettyByRule = pettyByRule;
-    context.slotChoices = Array.fromRange(SLOT_BUTTONS + 1)
-      .concat(slots > SLOT_BUTTONS ? [slots] : [])
+    context.slotChoices = Array.fromRange(3)
       .map((value) => ({
         value,
         label: SLOT_WORDS[value] ? game.i18n.localize(SLOT_WORDS[value]) : String(value),
         disabled: pettyByRule && value !== 0
       }));
+    // The fourth button stands for every heavier cost, and shows the one chosen.
+    context.slotHeavy = {
+      chosen: slots > 2,
+      label: slots > 2 ? String(slots) : game.i18n.localize("CAIRN.SlotHeavy"),
+      locked: pettyByRule || !this.isEditable
+    };
     // `none` is one of the field's own four choices; only its position moves.
     const magicKinds = Object.keys(schema.getField("magic").choices);
     context.magicChoices = [...magicKinds.filter((kind) => kind !== "none"), "none"];
@@ -327,6 +333,7 @@ export class CairnGearSheet extends CairnItemSheet {
   /** @override */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
+    this.#bindHeavySlots();
     // A gear with no parent Actor holds nothing and nothing can reach it, so there is nothing
     // for a hook to watch. Any gear with one is watched, not only a container: the capacity is
     // a field on this sheet, so a sword can become a bag while the window is open.
@@ -338,6 +345,34 @@ export class CairnGearSheet extends CairnItemSheet {
     for (const hook of ["createItem", "updateItem", "deleteItem"]) {
       this.#itemHooks.push([hook, Hooks.on(hook, refresh)]);
     }
+  }
+
+  /**
+   * The "3+" button's menu, bound once: the element outlives every re-render, and core's menu
+   * delegates from it. Core's ContextMenu rather than a `<select>`, because Chrome paints an open
+   * `<select>`'s list itself and keeps its own highlight whatever the stylesheet says; the menu is
+   * the system's own HTML, drawn in ink on paper in every browser (`css/src/controls.css`).
+   */
+  #bindHeavySlots() {
+    const entries = [];
+    new foundry.applications.ux.ContextMenu.implementation(this.element, ".cairn-slot-heavy:not([aria-disabled])", entries, {
+      eventName: "click",
+      jQuery: false,
+      fixed: true,
+      relative: "target",
+      classes: [SYSTEM_ID, "cairn-menu"],
+      // Rebuilt on every opening, so the cost the item has now is the one marked, and a document
+      // heavier than the ten is offered its own.
+      onOpen: () => {
+        const slots = this.item.system.slots;
+        const values = slots > HEAVY_SLOTS.at(-1) ? [...HEAVY_SLOTS, slots] : HEAVY_SLOTS;
+        entries.splice(0, Infinity, ...values.map((value) => ({
+          label: String(value),
+          classes: value === slots ? "cairn-menu-chosen" : "",
+          onClick: () => this.item.update({ "system.slots": value })
+        })));
+      }
+    });
   }
 
   /** @override */

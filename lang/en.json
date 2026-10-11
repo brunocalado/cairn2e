@@ -1467,6 +1467,7 @@
   },
   "CAIRN.SlotCost": "Slots",
   "CAIRN.SlotCostLocked": "A Scroll is petty by rule: it takes up no slots.",
+  "CAIRN.SlotHeavy": "3+",
   "CAIRN.Slots": "Slots",
   "CAIRN.SpellbookHint": "Cast by holding it in both hands and reading aloud; then add a Fatigue.",
   "CAIRN.StartingGear": "Starting Gear",
