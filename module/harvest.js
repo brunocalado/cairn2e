@@ -7,9 +7,9 @@
 
 import { FLAGS, SYSTEM_ID, packUuid } from "./constants.js";
 import {
-  BERRIES, BONE, CLOTH, EGGS, FEATHER, FISH, FLAX, FOWL, GARGOYLE, HERBS, HIDE, HONEY, IRON, LOG, MEAT,
-  MUSHROOMS, NAILS, NUTS, ORE, PHOENIX, PIXIE, REEDS, RESIN, SALT, SAND, SINEW, STICK, STONE, TALLOW,
-  THREAD, TROLL, VENOM, WAX
+  ACORNS, BERRIES, BONE, CLOTH, EGGS, FEATHER, FISH, FLAX, FOWL, FRUIT, GARGOYLE, GRAIN, HERBS, HIDE, HONEY,
+  IRON, LOG, MEAT, MUSHROOMS, NAILS, NUTS, ORE, PHOENIX, PIXIE, REEDS, RESIN, SALT, SAND, SINEW, STICK,
+  STONE, TALLOW, THREAD, TROLL, VEG, VENOM, WAX
 } from "./crafting.js";
 import { SEASON_DAYS, darknessAt, watchGeometry } from "./calendar-rules.js";
 import { rollHarvestSave } from "./rolls.js";
@@ -42,7 +42,8 @@ const RUBY = moreGear("2MqTbhayTL7tcsK5");             // Ruby
 /**
  * The items each Tool Set counts, keyed by Canvas Harvest's set ids. A resource switches a set on
  * and any of its items opens it, so "a blade" is nine knives and not the four a resource could list.
- * The Gather set stays empty: herbs, berries and nests are worked with bare hands.
+ * The Gather set opens only what has to be dug or reaped; herbs, fruit, nuts and nests are worked
+ * with bare hands.
  */
 export const TOOL_SETS = {
   strike: [
@@ -66,6 +67,11 @@ export const TOOL_SETS = {
     bgGear("xdDnbv6De7W1mrwi"),    // Silver Knife
     bgGear("1xLPGZIJcr5EUPbB"),    // Needle-knife
     bgGear("RD22fSaMtxvVpaJ5")     // Bonesaw
+  ],
+  gather: [
+    weapon("hEOii1unpB3UBy5L"),    // Sickle
+    bgGear("AEIkWM8jNgsnCuCh"),    // Sharpened Trowel
+    bgGear("gJdBtG0fnS8XIAJA")     // Root Knife
   ]
 };
 
@@ -144,13 +150,29 @@ export const RESOURCES = [
     drops: [drop(FLAX, 1, 1, 3)] },
   { id: "reed-bed", category: "Foraging", img: "icons/consumables/plants/dried-bundle-tied-stems-sticks-brown.webp", animation: "gather",
     strikes: 5, tags: [TAGS.REGROW_WEEK],
-    drops: [drop(REEDS, 1, 1, 3)] },
+    drops: [drop(REEDS, 3, 1, 3), drop(VEG, 1)] },
   { id: "wild-hive", category: "Foraging", img: "icons/consumables/food/honey-beehive-brown.webp", animation: "gather",
     strikes: 3, tags: [TAGS.REGROW_SEASON],
     drops: [drop(HONEY, 2), drop(WAX, 3, 1, 2)] },
   { id: "bird-nest", category: "Foraging", img: "icons/consumables/eggs/egg-nest-pink.webp", animation: "gather",
     strikes: 2, tags: [TAGS.REGROW_WEEK],
     drops: [drop(EGGS, 3), drop(FEATHER, 2, 1, 3)] },
+  // Food for the Supply action: fruit and nuts dry into Rations, grain and acorns grind to Flour.
+  { id: "fruit-tree", category: "Foraging", img: "icons/consumables/fruit/apple-red-tree-green.webp", animation: "gather",
+    strikes: 5, tags: [TAGS.REGROW_SEASON],
+    drops: [drop(FRUIT, 6, 1, 3), drop(STICK, 1)] },
+  { id: "hazel-thicket", category: "Foraging", img: "icons/consumables/nuts/hazelnut-acorn-tree-brown.webp", animation: "gather",
+    strikes: 4, tags: [TAGS.REGROW_SEASON],
+    drops: [drop(NUTS, 4, 1, 2), drop(STICK, 2, 1, 3)] },
+  { id: "oak-mast", category: "Foraging", img: "icons/consumables/nuts/hazelnut-acorn-shell-brown.webp", animation: "gather",
+    strikes: 4, tags: [TAGS.REGROW_SEASON],
+    drops: [drop(ACORNS, 5, 1, 3), drop(NUTS, 1)] },
+  { id: "wild-roots", category: "Foraging", img: "icons/consumables/vegetable/root-potato-leafy-brown.webp", animation: "gather",
+    toolSets: ["gather"], strikes: 4, tags: [TAGS.REGROW_WEEK],
+    drops: [drop(VEG, 4, 1, 2), drop(HERBS, 1)] },
+  { id: "wild-grain", category: "Foraging", img: "icons/consumables/grains/wheat-yellow.webp", animation: "gather",
+    toolSets: ["gather"], strikes: 5, tags: [TAGS.REGROW_SEASON],
+    drops: [drop(GRAIN, 1, 1, 3)] },
   { id: "fishing-spot", category: "HuntingAndFishing", img: "icons/skills/trades/fishing-rod-gray.webp", animation: "gather",
     tools: FISHING, strikes: 4, tags: [TAGS.REGROW_DAY],
     drops: [drop(FISH, 1)] },

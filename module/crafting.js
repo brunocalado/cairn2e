@@ -50,6 +50,9 @@ export const SINEW = material("OmvXDxrrQMCTWr2A");    // Sinew
 export const MILK = material("QfYsVtcCaat3wc4h");     // Milk
 export const FOWL = material("zu4qKYpliSHqKu3G");     // Raw Fowl
 export const VEG = material("VJDxi8WZpgu7aEIS");      // Vegetables
+export const FRUIT = material("3aN55A9w4QRJXHK4");    // Fruit
+export const GRAIN = material("GQ5MT3yAMGUxGULY");    // Grain
+export const ACORNS = material("P1Q1bQ5YI7HQFPgj");   // Acorns
 export const TROLL = material("HAq4pfOoxbN0BmCc");    // Troll Tallow
 export const GARGOYLE = material("io87TFV1OHXBAnZ4"); // Gargoyle Grit
 export const PIXIE = material("u4nsNVJWqnYoib9O");    // Pixie Scale
@@ -133,7 +136,11 @@ export const RECIPES = [
     { id: "glass", result: GLASS, requires: SMITHING, shaped: false,
       cells: [SAND, SAND, _, _, _, _, _, _, _] },
     { id: "thread", result: THREAD, requires: SEWING, quantity: 2, shaped: false,
-      cells: [FLAX, FLAX, _, _, _, _, _, _, _] }
+      cells: [FLAX, FLAX, _, _, _, _, _, _, _] },
+    // Grain is ground between two stones; acorns are bitter until leached in a pot of water first.
+    { id: "flour", result: FLOUR, shaped: false, variants: [
+      { cells: [GRAIN, GRAIN, _, _, _, _, _, _, _] },
+      { requires: COOKING, cells: [ACORNS, ACORNS, ACORNS, _, _, _, _, _, _] }] }
   ]),
 
   // Weapons, cheapest first, as the Weaponsmith shelves them.
@@ -455,7 +462,10 @@ export const RECIPES = [
   ...filed("Food", [
     { id: "rations", result: GEAR.RATIONS, shaped: false, variants: [
       { cells: [MEAT, MEAT, SALT, _, _, _, _, _, _] },
-      { cells: [FISH, FISH, SALT, _, _, _, _, _, _] }] },
+      { cells: [FISH, FISH, SALT, _, _, _, _, _, _] },
+      // Foraged: "hunt, fish, or forage for food" (procedures.md, Supply) all end in Rations.
+      { cells: [DRIED_FRUIT, DRIED_FRUIT, NUTS, _, _, _, _, _, _] },
+      { requires: COOKING, cells: [FLOUR, FLOUR, SALT, _, _, _, _, _, _] }] },
     { id: "smoked-meat", result: moreGear("UYMZMEjqOvH0cVNq"), shaped: false,
       cells: [MEAT, SALT, _, _, _, _, _, _, _] },
     { id: "salted-fish", result: moreGear("FZGY21ESRCyLxI0E"), quantity: 2, shaped: false,
@@ -476,8 +486,9 @@ export const RECIPES = [
       cells: [FLOUR, EGGS, HONEY, _, _, _, _, _, _] },
     { id: "bread", result: moreGear("0CmxUSfbtPFMBz5v"), requires: COOKING, quantity: 2, shaped: false,
       cells: [FLOUR, _, _, _, _, _, _, _, _] },
-    { id: "dried-fruit", result: DRIED_FRUIT, shaped: false,
-      cells: [BERRIES, BERRIES, _, _, _, _, _, _, _] },
+    { id: "dried-fruit", result: DRIED_FRUIT, shaped: false, variants: [
+      { cells: [BERRIES, BERRIES, _, _, _, _, _, _, _] },
+      { cells: [FRUIT, FRUIT, _, _, _, _, _, _, _] }] },
     { id: "cheese-local", result: moreGear("hR7BHskkiM7a7CIz"), requires: COOKING, quantity: 2, shaped: false,
       cells: [MILK, MILK, SALT, _, _, _, _, _, _] },
     { id: "roast-chicken", result: moreGear("34aQvMqgb8HP8fvp"), requires: COOKING, shaped: false,

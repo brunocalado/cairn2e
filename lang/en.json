@@ -602,6 +602,10 @@
         "Name": "Frozen Gargoyle",
         "Verb": "Scrape"
       },
+      "FruitTree": {
+        "Name": "Wild Fruit Tree",
+        "Verb": "Pick"
+      },
       "GameTrail": {
         "Name": "Game Trail",
         "Verb": "Trap"
@@ -609,6 +613,10 @@
       "GemVein": {
         "Name": "Gem Vein",
         "Verb": "Mine"
+      },
+      "HazelThicket": {
+        "Name": "Hazel Thicket",
+        "Verb": "Gather"
       },
       "HerbPatch": {
         "Name": "Herb Patch",
@@ -632,6 +640,10 @@
       },
       "MushroomRing": {
         "Name": "Mushroom Ring",
+        "Verb": "Gather"
+      },
+      "OakMast": {
+        "Name": "Oak Mast",
         "Verb": "Gather"
       },
       "OldBattlefield": {
@@ -694,9 +706,17 @@
         "Name": "Wild Flax",
         "Verb": "Pull"
       },
+      "WildGrain": {
+        "Name": "Wild Grain",
+        "Verb": "Reap"
+      },
       "WildHive": {
         "Name": "Wild Hive",
         "Verb": "Gather"
+      },
+      "WildRoots": {
+        "Name": "Wild Roots",
+        "Verb": "Dig"
       },
       "WingedBeast": {
         "Name": "Winged Beast",

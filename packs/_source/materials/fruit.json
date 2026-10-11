@@ -1,0 +1,31 @@
+{
+  "_id": "3aN55A9w4QRJXHK4",
+  "name": "Fruit",
+  "type": "gear",
+  "img": "icons/consumables/fruit/apple-ripe-red.webp",
+  "system": {
+    "description": "<p>Fruit (<em>petty</em>)</p>",
+    "slots": 0,
+    "equipped": false,
+    "cost": 0,
+    "container": "",
+    "uses": {
+      "value": 0,
+      "max": 0
+    },
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!3aN55A9w4QRJXHK4",
+  "folder": "aOOdBB3yev2CzrPg"
+}
