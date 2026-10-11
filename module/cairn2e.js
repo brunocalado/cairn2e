@@ -31,6 +31,7 @@ import { renderHazardSaveButton } from "./apps/hazards.js";
 import { CairnRulesSummary } from "./apps/rules-summary.js";
 import * as kettlewrightImport from "./kettlewright-import.js";
 import { CairnCharacterCreator } from "./apps/character-creator.js";
+import { registerSelectMenus } from "./select-menu.js";
 import { CairnGamePause } from "./apps/game-pause.js";
 import { CairnSidebarTab } from "./apps/sidebar-tab.js";
 import { CairnRoutePageSheet } from "./apps/route-page-sheet.js";
@@ -454,6 +455,10 @@ Hooks.once("ready", () => {
   // A world's first launch under the Vald calendar sets its clock to 1 Mourning 7728, 06:00
   // (module/calendar.js), and imports the SRD's dated events as its first notes
   // (module/calendar-notes.js). Not awaited, like the above.
+  // Every <select> in a system window opens an ink-on-paper menu, not the browser's own list
+  // (module/select-menu.js).
+  registerSelectMenus();
+
   installCalendar();
   installCalendarEvents();
   // Every open calendar redraws when a note changes, on whichever client changed it.

@@ -109,7 +109,8 @@
         --input-placeholder-color: var(--cairn-ink-soft);
         --input-focus-outline-color: transparent;
         /* Readable options in the OS-painted `<select>` popup, which nothing inside `.cairn2e`
-           can reach. */
+           can reach. A click opens the system's own menu instead (`module/select-menu.js`); the
+           keyboard still opens this one. */
         --color-select-option-bg: var(--cairn-paper);
         background: transparent;
         border: none;
@@ -334,11 +335,13 @@
         }
     }
 
-    /* Core's ContextMenu when the system opens one as a picker (the gear sheet's "3+"). It is
-       fixed to `<body>`, outside every window, so it carries the scope class itself and the rules
-       are written on it, as the enriched chip's are. Ink on paper like the sheet it drops from,
-       whatever the theme: core's dark panel, rounded and shadowed, is the very thing a native
-       `<select>` list was meant to avoid. */
+    /* Core's ContextMenu when the system opens one as a picker: the gear sheet's "3+", and every
+       `<select>` in a system window (`module/select-menu.js`), whose own list Chrome paints with
+       the operating system's blue. It is fixed to `<body>`, outside every window, so it carries
+       the scope class itself and the rules are written on it, as the enriched chip's are. Ink on
+       paper like the window it drops from, whatever the theme: core's dark panel, rounded and
+       shadowed, is no closer to the sheet than Chrome's list. A run of figures is centred; words
+       read from the left, as the `<select>` they stand for does. */
     &.cairn-menu {
         background: var(--cairn-paper);
         border: var(--cairn-rule) solid var(--cairn-ink);
@@ -354,7 +357,6 @@
             font-variant-numeric: tabular-nums;
             line-height: 18px;
             padding: 2px 16px;
-            text-align: center;
             transition: none;
 
             &:hover {
@@ -367,6 +369,10 @@
                 color: var(--cairn-paper);
                 font-weight: 700;
             }
+        }
+
+        &.cairn-menu-figures li.context-item {
+            text-align: center;
         }
     }
 

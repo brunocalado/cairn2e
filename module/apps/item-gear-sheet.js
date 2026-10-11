@@ -360,7 +360,7 @@ export class CairnGearSheet extends CairnItemSheet {
       jQuery: false,
       fixed: true,
       relative: "target",
-      classes: [SYSTEM_ID, "cairn-menu"],
+      classes: [SYSTEM_ID, "cairn-menu", "cairn-menu-figures"],
       // Rebuilt on every opening, so the cost the item has now is the one marked, and a document
       // heavier than the ten is offered its own.
       onOpen: () => {
