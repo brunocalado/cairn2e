@@ -551,6 +551,15 @@
     "Zone": "Growth"
   },
   "CAIRN.Harvest": {
+    "Category": {
+      "Carcasses": "Carcasses",
+      "Foraging": "Foraging",
+      "HuntingAndFishing": "Hunting & Fishing",
+      "MonsterParts": "Monster Parts",
+      "Remains": "Remains",
+      "StoneAndOre": "Stone & Ore",
+      "Timber": "Timber"
+    },
     "Hive": {
       "Hint": "What the bees do is yours to decide.",
       "Lead": "{name} broke into the {resource}. It is awake."
