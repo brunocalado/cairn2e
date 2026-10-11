@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-octagon-yellow.webp",
   "system": {
     "description": "<p>Honey-yellow, cut in eight sides.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

@@ -4,8 +4,8 @@
   "type": "gear",
   "img": "icons/commodities/materials/feather-white-glowing-fire.webp",
   "system": {
-    "description": "<p>Sifted from a phoenix's ashes, and still warm however long it is kept. Sought after for its healing (petty).</p>",
-    "slots": 0,
+    "description": "<p>Sifted from a phoenix's ashes, and still warm however long it is kept. Sought after for its healing.</p>",
+    "slots": 1,
     "equipped": false,
     "cost": 35,
     "container": "",

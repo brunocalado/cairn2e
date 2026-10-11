@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-trapeze-yellow-green.webp",
   "system": {
     "description": "<p>Yellow-green and hard enough to scratch almost anything it is set beside.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

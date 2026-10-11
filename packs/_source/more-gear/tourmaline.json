@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-teardrop-pink.webp",
   "system": {
     "description": "<p>A teardrop that is pink at one end and green at the other.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

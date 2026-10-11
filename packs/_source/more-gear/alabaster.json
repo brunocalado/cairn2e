@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-cushion-white.webp",
   "system": {
     "description": "<p>Soft white stone, translucent at the edges. Carvers prize it more than jewellers do.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 10,
     "container": "",

@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-cushion-orange-white.webp",
   "system": {
     "description": "<p>Fire moves in it \u2014 green, orange, red \u2014 and none of it is fixed.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

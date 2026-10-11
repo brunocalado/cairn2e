@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-oval-green.webp",
   "system": {
     "description": "<p>Dark green flecked with red, which the superstitious say is old blood.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 25,
     "container": "",

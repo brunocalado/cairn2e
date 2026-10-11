@@ -4,8 +4,8 @@
   "type": "gear",
   "img": "icons/commodities/materials/powder-teal.webp",
   "system": {
-    "description": "<p>Shimmering dust found where a Pixie slept, invisible until breathed on (<em>petty</em>).</p>",
-    "slots": 0,
+    "description": "<p>Shimmering dust found where a Pixie slept, invisible until breathed on.</p>",
+    "slots": 1,
     "equipped": false,
     "cost": 35,
     "container": "",

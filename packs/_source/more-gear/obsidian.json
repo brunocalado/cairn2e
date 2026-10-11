@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-round-black.webp",
   "system": {
     "description": "<p>Black volcanic glass, and sharp wherever it has broken.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 10,
     "container": "",

@@ -4,8 +4,8 @@
   "type": "gear",
   "img": "icons/commodities/biological/tail-spiked-green.webp",
   "system": {
-    "description": "<p>A spike from a manticore's tail. A collector pays well for one (petty).</p>",
-    "slots": 0,
+    "description": "<p>A spike from a manticore's tail. A collector pays well for one.</p>",
+    "slots": 1,
     "equipped": false,
     "cost": 150,
     "container": "",

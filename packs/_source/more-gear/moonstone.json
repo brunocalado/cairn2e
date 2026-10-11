@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-oval-white.webp",
   "system": {
     "description": "<p>Milk-white, and a blue light drifts under the surface.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

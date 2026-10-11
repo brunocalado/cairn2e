@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-cushion-red-white.webp",
   "system": {
     "description": "<p>Red and white in flat bands, meant to be carved through one layer into the next.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

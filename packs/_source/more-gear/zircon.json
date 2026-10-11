@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-round-white.webp",
   "system": {
     "description": "<p>Colourless and fiercely bright, cut round.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

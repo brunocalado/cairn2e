@@ -5,7 +5,7 @@
   "img": "icons/commodities/stone/ore-chunk-yellow-gold.webp",
   "system": {
     "description": "<p>Brassy cubes that have been sold as gold more than once.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 10,
     "container": "",

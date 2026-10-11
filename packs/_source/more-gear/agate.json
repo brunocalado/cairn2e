@@ -5,7 +5,7 @@
   "img": "icons/commodities/stone/geode-raw-brown.webp",
   "system": {
     "description": "<p>Banded brown and cream, cut from a geode and polished smooth.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 10,
     "container": "",

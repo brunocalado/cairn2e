@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-cushion-red.webp",
   "system": {
     "description": "<p>Brown-red and even-coloured, a carver's stone.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

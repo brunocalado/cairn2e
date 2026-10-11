@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-radiant-red.webp",
   "system": {
     "description": "<p>Bright red and faceted, and mistaken for a ruby by everyone but a jeweller.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

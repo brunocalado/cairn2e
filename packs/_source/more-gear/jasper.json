@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-rectangle-red.webp",
   "system": {
     "description": "<p>Opaque and brick-red, veined with darker threads.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 10,
     "container": "",

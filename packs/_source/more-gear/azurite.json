@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-cushion-blue.webp",
   "system": {
     "description": "<p>Deep blue and crumbling, ground for pigment as often as it is worn.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 25,
     "container": "",

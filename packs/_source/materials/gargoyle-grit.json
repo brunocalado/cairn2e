@@ -4,8 +4,8 @@
   "type": "gear",
   "img": "icons/commodities/stone/paver-gravel-grey.webp",
   "system": {
-    "description": "<p>Stone dust scraped from a Gargoyle while daylight holds it frozen. At night it stirs in its pouch (<em>petty</em>).</p>",
-    "slots": 0,
+    "description": "<p>Stone dust scraped from a Gargoyle while daylight holds it frozen. At night it stirs in its pouch.</p>",
+    "slots": 1,
     "equipped": false,
     "cost": 30,
     "container": "",

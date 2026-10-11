@@ -270,12 +270,13 @@ Two decisions, both arguable, both made here rather than per document:
   folder its price names — nothing sits loose in Valuables itself. Valuables sorts its bands manually, by
   their `sort`, which rises with the price: Foundry orders subfolders by the parent's `sorting`,
   and by name *Precious (500gp)* came before *Semiprecious (100gp)*. Strange Items does the same.
-- **Every stone is *petty*** — `slots: 0`. A bag of coins under 100gp is *petty* and every hundred
-  after that is a slot (`character-creation.md` § Inventory Slots), so 500 gp in coin weighs five
-  slots and the same value in one sapphire weighs none. That gap is not an oversight: it is the
-  reason a hoard gets cut into stones before it is carried anywhere. A Warden who wants a gem to
-  cost a slot has the field on the sheet — the Wardens' Guide's own example jewel does exactly
-  that, and it is large enough to fill a fist.
+- **Every stone takes one slot** — `slots: 1` (maintainer's call, 2026-10-10). The SRD calls no gem
+  *petty*: "Most items take up one slot, unless otherwise indicated" (`character-creation.md`
+  § Inventory Slots), the Bond's Single Gem (500gp) is not marked, and the Wardens' Guide's example
+  jewel is "large enough to take up an entire slot". Stones were once *petty*, and a Canvas Harvest
+  gem vein made that a way to carry unlimited wealth for nothing. A stone is still the light way to
+  move a hoard: coin under 100gp is *petty* and every hundred after that is a slot, so 500 gp in coin
+  weighs five slots and one sapphire weighs one.
 
 ### `Strange Items` — oddities, not relics
 
@@ -345,9 +346,11 @@ Viper Venom Sac, Phoenix Feather, Manticore Spike).
   can be made from their poison sacs") is 10, below the band, because the Antitoxin it is brewed into
   costs 20 and the price rule holds.
 - **Petty** is Nails, Stick, Leather Strip, Feather, Sinew, Thread, Herbs, Mushrooms, Wax, Berries,
-  Resin, Reeds, Salt, Tallow, Flax and every Monster Part but Troll Tallow;
+  Resin, Reeds, Salt, Tallow, Flax and the Viper Venom Sac;
   ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost, and a Log and
-  Rubble are *bulky*: two slots, the weight of a tree or a vein's waste carried out.
+  Rubble are *bulky*: two slots, the weight of a tree or a vein's waste carried out. Every other
+  Monster Part takes a slot too (maintainer's call, 2026-10-10): at 25 gp and up, a petty one let a
+  party that found a spot to harvest carry a fortune that weighed nothing.
 - **Raw food is not food.** Make Camp does not eat Raw Meat, Milk or Vegetables; cooking them is the
   point. Raw Fowl is its own material, apart from Raw Meat, so the roasts and the fowl soup need a
   bird and not any carcass. **Tallow** is fat: rendered from Raw Meat with Cooking Gear (two from one)

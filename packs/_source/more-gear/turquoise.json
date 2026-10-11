@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-fragments-turquoise.webp",
   "system": {
     "description": "<p>Sky-blue veined with black, opaque and lightly porous.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 25,
     "container": "",

@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-rough-oval-blue.webp",
   "system": {
     "description": "<p>Night-blue, dusted with gold flecks of pyrite.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",

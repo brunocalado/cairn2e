@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-oval-blue.webp",
   "system": {
     "description": "<p>Cornflower blue, cut oval, flawless.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 500,
     "container": "",

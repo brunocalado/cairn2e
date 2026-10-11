@@ -5,7 +5,7 @@
   "img": "icons/commodities/gems/gem-faceted-navette-red.webp",
   "system": {
     "description": "<p>Wine-dark red, cut to a long point at both ends.</p>",
-    "slots": 0,
+    "slots": 1,
     "equipped": false,
     "cost": 100,
     "container": "",
