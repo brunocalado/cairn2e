@@ -158,23 +158,25 @@ export const RESOURCES = [
     tools: TRAPS, strikes: 3, tags: [TAGS.REGROW_DAY],
     drops: [drop(MEAT, 3), drop(FOWL, 2), drop(HIDE, 1)] },
 
-  // Carcasses, dragged onto the dead creature's token.
+  // Carcasses, dragged onto the dead creature's token. Meat is what a carcass is cut for, so it is
+  // the likeliest drop on every one: a bird or a hare comes away without any less than one time in
+  // fifteen.
   { id: "small-game", category: "Carcasses", img: "icons/commodities/leather/fur-brown.webp", animation: "carve",
-    toolSets: ["carve"], strikes: 2, drops: [drop(MEAT, 3), drop(HIDE, 1), drop(BONE, 1)] },
+    toolSets: ["carve"], strikes: 2, drops: [drop(MEAT, 6), drop(HIDE, 1), drop(BONE, 1)] },
   { id: "large-game", category: "Carcasses", img: "icons/creatures/mammals/deer-antlers-green.webp", animation: "carve",
     toolSets: ["carve"], strikes: 5,
-    drops: [drop(MEAT, 4, 1, 2), drop(HIDE, 2), drop(BONE, 2), drop(SINEW, 2, 1, 2)] },
+    drops: [drop(MEAT, 6, 1, 2), drop(HIDE, 2), drop(BONE, 1), drop(SINEW, 1, 1, 2)] },
   { id: "fowl", category: "Carcasses", img: "icons/commodities/biological/wing-bird-white.webp", animation: "carve",
-    strikes: 2, drops: [drop(FOWL, 2), drop(FEATHER, 3, 1, 3)] },
+    strikes: 2, drops: [drop(FOWL, 4), drop(FEATHER, 1, 1, 3)] },
   { id: "bear", category: "Carcasses", img: "icons/commodities/claws/claw-bear-brown.webp", animation: "carve",
     toolSets: ["carve"], strikes: 6,
-    drops: [drop(MEAT, 4, 1, 2), drop(HIDE, 3), drop(BONE, 2), drop(SINEW, 1, 1, 2), drop(TALLOW, 2, 1, 2)] },
+    drops: [drop(MEAT, 6, 1, 2), drop(HIDE, 2), drop(BONE, 1), drop(SINEW, 1, 1, 2), drop(TALLOW, 2, 1, 2)] },
   { id: "predator", category: "Carcasses", img: "icons/creatures/abilities/wolf-howl-moon-white.webp", animation: "carve",
     toolSets: ["carve"], strikes: 4,
-    drops: [drop(HIDE, 3), drop(BONE, 2), drop(SINEW, 2, 1, 2), drop(MEAT, 1)] },
+    drops: [drop(MEAT, 5), drop(HIDE, 3), drop(BONE, 1), drop(SINEW, 1, 1, 2)] },
   { id: "winged-beast", category: "Carcasses", img: "icons/commodities/biological/wing-lizard-brown.webp", animation: "carve",
     toolSets: ["carve"], strikes: 5,
-    drops: [drop(FEATHER, 4, 1, 3), drop(MEAT, 2), drop(BONE, 2), drop(HIDE, 1)] },
+    drops: [drop(MEAT, 5), drop(FEATHER, 3, 1, 3), drop(BONE, 1), drop(HIDE, 1)] },
   { id: "fish-catch", category: "Carcasses", img: "icons/environment/creatures/fish-crosshatched-silver-blue.webp", animation: "carve",
     toolSets: ["carve"], strikes: 3, drops: [drop(FISH, 1, 1, 2)] },
   // Remains: bones, rags and webbing where others met their end.
