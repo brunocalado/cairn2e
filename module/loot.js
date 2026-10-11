@@ -38,7 +38,10 @@ function restyle(messageData) {
   const data = messageData.flags[MODULE];
   const key = TEXT[data.event];
   if (!template || !key) return;
-  messageData.flavor = foundry.utils.escapeHTML(data.item.name);
+  // `quantity` is absent when the world has no stack size, so a lone item never reads "1 ×".
+  const { name, quantity } = data.item;
+  const label = (quantity > 1) ? game.i18n.localize("CAIRN.Loot.Stack", { quantity, name }) : name;
+  messageData.flavor = foundry.utils.escapeHTML(label);
   messageData.content = template({
     img: data.item.img,
     text: game.i18n.localize(key, { distance: data.event === "throw" ? distanceOf(data) : "" }),
