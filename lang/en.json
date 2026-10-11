@@ -1298,7 +1298,7 @@
       "Dex": "<strong>Dexterity (DEX)</strong> — poise, speed and reflexes: dodging, climbing, sneaking, balancing.",
       "Wil": "<strong>Willpower (WIL)</strong> — persuading, deceiving, interrogating, intimidating, charming, provoking, manipulating spells.",
       "Outside": "Damage taken outside of combat goes to an Attribute instead, usually STR.",
-      "Zero": "At 0 STR a PC dies, at 0 DEX they are paralyzed, and at 0 WIL they are delirious."
+      "Zero": "At 0 STR a PC dies, at 0 DEX they are paralyzed, and at 0 WIL they are delirious. At 0 DEX or WIL they are unable to act until restored through extended rest or by extraordinary means."
     },
     "Saves": {
       "Title": "Saves",
