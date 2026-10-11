@@ -1,3 +1,32 @@
+# 0.1.5
+
+- [Added] **The Hazards window.** The Warden's sidebar opens falls, drowning, crushing and
+  exposure, one die per severity, taken straight from STR. It speaks to the Warden alone, and a
+  save posts a card that whoever is caught rolls from.
+- [Added] **Canvas Harvest.** With the module active, 33 resources can be placed on the map for the
+  party to mine, chop, gather and carve: ore and gem veins, trees, herb patches, hives, fishing
+  spots, carcasses and monster parts, each giving the raw side of a Grid Crafter recipe. A viper
+  asks for a DEX save, a hive and a noisy vein tell the Warden, a gargoyle can only be scraped by
+  day, and herbs, hives and game trails grow back by the world's clock.
+- [Added] **Foraging.** A wild fruit tree, a hazel thicket, an oak mast, wild roots and wild grain
+  can be foraged, and the reed bed gives roots too. Fruit and nuts dry into Rations, grain and
+  acorns grind to Flour, and a sickle, trowel or root knife opens what has to be dug or reaped.
+- [Added] New materials and recipes: Iron Ore, Log, Sand, Flax and Rubble, the Viper Venom Sac,
+  Phoenix Feather and Manticore Spike, Killer Bee Honey, the Gold Nugget and the Phoenix Draught,
+  with recipes that smelt ore, split logs, melt sand, spin flax and brew antitoxin from a venom sac.
+- [Added] The Resource Book lists the harvest resources in seven groups: Stone & Ore, Timber,
+  Foraging, Hunting & Fishing, Carcasses, Remains and Monster Parts.
+- [Changed] Every select in a system window opens a menu drawn in ink on paper instead of the
+  browser's own list. The slot cost reads Petty, 1, Bulky and 3+, and the row no longer wraps.
+- [Changed] Canvas Loot's drop, throw, pickup and placed messages are Cairn cards: the item is the
+  caption, with the count for a stack (5 × Gold Coins), whoever acted is the sender, and a throw's
+  distance reads in metres with the feet beside them.
+- [Changed] A carcass is cut for its meat: Raw Meat and Raw Fowl are the likeliest drop on every one.
+- [Fixed] Every precious stone, the Gold Nugget and the costly Monster Parts take a slot: the SRD
+  calls no gem petty.
+- [Fixed] The rules summary says what 0 DEX or WIL does: the character cannot act until restored
+  through extended rest or by extraordinary means.
+
 # 0.1.4
 
 - [Fixed] The Gold on a character sheet changes as soon as a sack of coin is added, changed or
