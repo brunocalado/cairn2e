@@ -55,6 +55,7 @@ import { registerAutomatedAnimations } from "./automated-animations.js";
 import { registerLightSources } from "./light-sources.js";
 import { registerCrafting } from "./crafting.js";
 import { registerHarvest } from "./harvest.js";
+import { registerLoot } from "./loot.js";
 import { installWelcomeWorld } from "./welcome.js";
 import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
@@ -345,6 +346,7 @@ Hooks.once("init", async function () {
   registerLightSources();
   registerCrafting();
   registerHarvest();
+  registerLoot();
   configureHandleBar();
 });
 

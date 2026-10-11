@@ -166,6 +166,27 @@
         }
     }
 
+    /* A Canvas Loot card's line: the item's art as a stamp beside what happened to it. While the
+       item lies on the map the line pans to it, and says so on hover with the list row's wash —
+       mixed from the card's own text colour, as the caption's is, so it reads in a dark log. */
+    .cairn-loot-line {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        &[data-canvas-loot-show]:hover {
+            background: color-mix(in srgb, var(--cairn-surface-fg) 7%, transparent);
+        }
+    }
+
+    /* Core frames a chat <img>, and a framed stamp reads as a broken thumbnail. */
+    .cairn-loot-icon {
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        border: none;
+    }
+
     /* A card's footer line — what reading the item aloud cost. Secondary, like the formula. */
     .cairn-card-note {
         font-size: 11px;

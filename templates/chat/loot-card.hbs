@@ -1,0 +1,7 @@
+{{!-- A Canvas Loot event (`module/loot.js`), as its body: the item is the message's `flavor` and
+      whoever dropped, threw or picked it up its speaker. While the item lies on the map the line
+      pans to it: `data-canvas-loot-show` is the module's own hook for that click. --}}
+<p class="cairn-loot-line"{{#if show}} data-canvas-loot-show data-tooltip="{{localize "CAIRN.Loot.Show"}}"{{/if}}>
+    <img class="cairn-loot-icon" src="{{img}}" alt="">
+    <span>{{text}}</span>
+</p>

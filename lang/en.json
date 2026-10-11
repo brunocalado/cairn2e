@@ -997,6 +997,13 @@
     "SummaryResolved": "{count} item(s) matched a compendium entry",
     "SummaryTitle": "Kettlewright import — {name}"
   },
+  "CAIRN.Loot": {
+    "Place": "Placed on the map.",
+    "Drop": "Dropped on the ground.",
+    "Throw": "Thrown {distance}.",
+    "Pickup": "Picked up.",
+    "Show": "Show on the map"
+  },
   "CAIRN.MacroFolder": "Cairn 2e",
   "CAIRN.Magic": "Magic",
   "CAIRN.MagicKind": {
