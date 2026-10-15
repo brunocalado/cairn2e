@@ -289,7 +289,9 @@ export class CairnTokenHUD extends TokenHUD {
     // map is what is true about them. Kept, it would hand a later set-down that finds no member
     // token the wounds from before this one.
     await this.actor.unsetFlag(SYSTEM_ID, FLAGS.GATHERED_TOKENS);
-    // Held until every walk settles, so the press guard (`#working`) covers the whole set-down.
+    // Held until every walk is written, so the press guard (`#working`) covers the whole set-down.
+    // `move` resolves when the write lands, not when the animation ends (measured at 14.369): a
+    // gather pressed mid-walk reads the members on their final spaces, which is where they are.
     await Promise.all(walks);
   }
 }
