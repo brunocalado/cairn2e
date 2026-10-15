@@ -17,8 +17,9 @@ const fields = foundry.data.fields;
  *
  * It also holds things: its Stash, the gear and coin the group found and has not shared out.
  * Those are core's embedded `items`, which every Actor has, so nothing here declares them. What
- * may land there is `documents/item.js#_preCreateOperation`'s to say, and no slot rule binds it —
- * 2e counts slots for a character alone.
+ * may land there is `documents/item.js#_preCreateOperation`'s to say. No ten-slot rule binds it —
+ * 2e counts the body's slots for a character alone — but a container in it, a mule kept for the
+ * group, still holds only its own capacity.
  *
  * Members are referenced, never embedded: no Actor can contain an Actor. A uuid can therefore
  * outlive what it points at, and {@link PartyData#lineup} is the one place that is dealt with —

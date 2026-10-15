@@ -114,12 +114,17 @@ export class CairnItem extends Item {
    * The free slots a document is measured against: the container it names, or the body's ten.
    * A pointer at a container that is not there is worth no room at all, rather than silently
    * falling back to the body.
+   *
+   * The ten are a character's alone — 2e counts no slots for a party's Stash or an NPC — but a
+   * container's capacity is the container's, wherever it stands: a mule kept in the Stash still
+   * carries six slots and no more.
    * @param {Actor} parent  The actor the item is (or is becoming) part of.
    * @param {string} containerId  `system.container` as it will stand after the write.
    * @returns {number}
    */
   static #budgetFor(parent, containerId) {
-    return containerId ? containerRoom(parent.items, containerId) : parent.system.slotsFree;
+    if (containerId) return containerRoom(parent.items, containerId);
+    return parent.type === "character" ? parent.system.slotsFree : Infinity;
   }
 
   /**
@@ -174,7 +179,8 @@ export class CairnItem extends Item {
       if (!documents.length) return false;
     }
 
-    // Where a thing may go is a rule for every actor; how much fits is the character's alone.
+    // Where a thing may go is a rule for every actor, and so is how much a container holds; only
+    // the body's ten are the character's alone (`#budgetFor`).
     for (const doc of [...documents]) {
       const refusal = nestingRefusal(parent, doc, doc.system?.container ?? "");
       if (!refusal) continue;
@@ -200,7 +206,6 @@ export class CairnItem extends Item {
       taken.add(place);
     }
     if (!documents.length) return false;
-    if (parent.type !== "character") return;
 
     // One running budget per destination — the body under "", a container under its id — so a
     // batch that fills a Backpack cannot also be charged against the ten.
@@ -297,7 +302,6 @@ export class CairnItem extends Item {
         }
       }
     }
-    if (parent.type !== "character") return;
 
     const added = now === was ? slotsForItem(after) - slotsForItem(this) : slotsForItem(after);
     if (added <= 0) return;

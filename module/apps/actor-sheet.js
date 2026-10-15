@@ -234,7 +234,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
    * `carried` is the fourth view of the same items, for a sheet that draws no ledger at all: one
    * flat list, zero-slot items included, containers and their contents included too — on an NPC
    * a container someone dropped on a hireling is one more row, not a hidden one. An NPC is bound
-   * by no slot rule, so nothing it owns is ever set aside out of that list.
+   * by no ten-slot rule, so nothing it owns is ever set aside out of that list.
    *
    * `body` is what the character IS rather than carries — fists, claws, a metal arm on its
    * shoulder (`system.bodily`). It weighs nothing, as *petty* does, and is drawn on the Petty tab,
@@ -255,8 +255,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     const body = [];
     const petty = [];
     // A sheet with no ten-slot ledger draws this instead: every carried item in one list, zero-slot
-    // ones included. An NPC is bound by no slot rule — `CairnItem._preCreateOperation` refuses
-    // nothing on one — so nothing it owns may be filtered out of its own sheet.
+    // ones included. An NPC is bound by no ten-slot rule — only a container's own capacity limits
+    // what it holds (`CairnItem.#budgetFor`) — so nothing it owns may be filtered out of its sheet.
     const carried = [];
     // Belongings: everything the character has written down that is not under direct possession —
     // a sword left on the dungeon floor, a crest at the inn, and every mule and cart, which are
