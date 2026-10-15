@@ -19,8 +19,15 @@
         <span class="cairn-item-title">{{localize "CAIRN.Calendar.Button"}}</span>
     </li>
     {{/if}}
-    <li class="cairn-slot cairn-actions-row" data-action="openWhisper" role="button">
+    <li class="cairn-slot cairn-actions-row" data-action="openWhisper" role="button"
+        {{#if hasStores}}data-ink="hline" data-ink-seed="actions-whisper" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/if}}>
         <span class="cairn-actions-glyph"><i class="fa-solid fa-comment-dots" inert></i></span>
         <span class="cairn-item-title">{{localize "CAIRN.Whisper.Title"}}</span>
     </li>
+    {{#if hasStores}}
+    <li class="cairn-slot cairn-actions-row" data-action="openStores" role="button">
+        <span class="cairn-actions-glyph"><i class="fas fa-store" inert></i></span>
+        <span class="cairn-item-title">{{localize "CAIRN.Store.Visit"}}</span>
+    </li>
+    {{/if}}
 </ol>

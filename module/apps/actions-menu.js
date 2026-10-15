@@ -12,6 +12,8 @@ import { CairnBarter } from "./barter.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { CairnCalendarApp } from "./calendar.js";
 import { CairnCalendar } from "../calendar.js";
+import { CairnStore } from "./store.js";
+import { storeChoices } from "../store-rules.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -41,7 +43,7 @@ export async function actionMacros() {
 
 /**
  * Actions — the character's table tools, opened from the button left of the sheet's ellipsis:
- * Barter, the rules summary, the calendar and Whisper.
+ * Barter, the rules summary, the calendar, Whisper and the stores.
  *
  * Table tooling, not a 2e rule: nothing in the SRD asks for it. It lists the system's own tools
  * first and then whatever macros the Warden curated (`SETTINGS.ACTION_MACROS`), each run with this
@@ -61,6 +63,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
       openRules: CairnActionsMenu.#onOpenRules,
       openCalendar: CairnActionsMenu.#onOpenCalendar,
       openWhisper: CairnActionsMenu.#onOpenWhisper,
+      openStores: CairnActionsMenu.#onOpenStores,
       runMacro: CairnActionsMenu.#onRunMacro
     }
   };
@@ -75,9 +78,9 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   /** Every open menu, so the Warden's edit to the list reaches them (`module/settings.js`). */
   static #open = new Set();
 
-  /** Redraw the macro list of every open menu. */
-  static refresh() {
-    for (const app of CairnActionsMenu.#open) app.render({ parts: ["macros"] });
+  /** Redraw every open menu: the macro list by default, the tools when a store opens or closes. */
+  static refresh(parts = ["macros"]) {
+    for (const app of CairnActionsMenu.#open) app.render({ parts });
   }
 
   /** @param {{ actor: Actor }} options */
@@ -102,6 +105,10 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
       .map(({ uuid, macro }) => ({ uuid, name: macro.name, img: macro.img }));
     // A calendar module that replaces the world calendar brings its own window.
     context.hasCalendar = game.time.calendar instanceof CairnCalendar;
+    // The same test as the sheet's Stores chip: the store spends `game.user.character`'s purse,
+    // so the row shows only on the player's own character, and only while a store is open.
+    context.hasStores = !game.user.isGM && this.actor === game.user.character
+      && storeChoices(game.settings.get(SYSTEM_ID, SETTINGS.STORES), { isGM: false }).length > 0;
     return context;
   }
 
@@ -135,6 +142,11 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   static async #onOpenWhisper() {
     this.#whisper ??= new CairnWhisper({ actor: this.actor });
     await this.#whisper.render({ force: true });
+  }
+
+  /** One window per client, like the rules summary. */
+  static async #onOpenStores() {
+    await CairnStore.open();
   }
 
   static async #onRunMacro(event, target) {
