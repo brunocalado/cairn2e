@@ -9,8 +9,14 @@ import { SYSTEM_ID, FLAGS } from "./constants.js";
 
 const { TokenHUD } = foundry.applications.hud;
 
-/** How long a member takes to slide in or out of the party token, in milliseconds. */
+/** How long a member takes to walk onto the party token as it is gathered in, in milliseconds. */
 const TRAVEL_MS = 400;
+
+/** The pause between one member stepping out from under the party token and the next, in ms. */
+const STAGGER_MS = 200;
+
+/** How many steps from the party token the search for free spaces may walk before it gives up. */
+const SEARCH_STEPS = 6;
 
 /**
  * Put each condition's name beside its icon in the token HUD's status palette.
@@ -238,73 +244,110 @@ export class CairnTokenHUD extends TokenHUD {
   }
 
   /**
-   * Put every deployed member back on the map, in marching order.
+   * Put every deployed member back on the map: each steps out from under the party token, one
+   * after another, and walks to the nearest free space no wall cuts off.
    *
    * Each comes back as the token it was, out of the snapshot, falling back to its prototype for
    * a member who was not gathered in. Everything is restored except WHERE: the party
    * has moved since, and returning the group to where it stood two rooms ago is never what was
    * meant. Position comes from the party token.
+   *
+   * There is no marching-order layout. Once the members are on the map, where they stand is the
+   * order, and the players move them straight away; the roster only decides who steps out first.
+   *
+   * Each member is created just before it walks, not the whole group up front and hidden under
+   * the party token: a party token with transparent art would show the pile waiting there.
+   * And each walks with its own `move`, never one batched update — core turns a batch's duration
+   * into one speed from the first token's distance (see `#gatherIn`). There is no fade either:
+   * `move` carries extra token data only with a single waypoint, so a path cannot carry `alpha`,
+   * and stepping out from under the party token already reads as arriving.
    */
   async #setDown() {
     const roster = this.actor.system.roster.filter((m) => m.deployed);
     if (!roster.length) return;
 
     const gathered = this.actor.getFlag(SYSTEM_ID, FLAGS.GATHERED_TOKENS) ?? [];
-    const places = marchingPositions(this.document, roster.length);
-    const data = [];
+    const spaces = freeSpaces(this.document, roster.length);
+    const { x, y, elevation } = this.document;
+    const walks = [];
 
     for (const [i, { actor }] of roster.entries()) {
       const kept = gathered.find((g) => g.uuid === actor.uuid)?.token;
       const source = kept ?? (await actor.getTokenDocument()).toObject();
       // A stored `_id` would ask the scene to re-create a token under an id it no longer has.
       delete source._id;
-      data.push({ ...source, ...places[i], elevation: this.document.elevation, alpha: 0 });
+      const [token] = await canvas.scene.createEmbeddedDocuments("Token",
+        [{ ...source, x, y, elevation, alpha: 1 }]);
+      // A member with no space left stays where it was made, under the party token: on a scene
+      // with nowhere to stand, that is the honest answer.
+      const path = spaces[i]?.path;
+      if (path?.length) walks.push(token.move(path, { showRuler: false }));
+      if (i < roster.length - 1) await new Promise((r) => setTimeout(r, STAGGER_MS));
     }
 
-    const created = await canvas.scene.createEmbeddedDocuments("Token", data);
     // The snapshot was of the tokens gathered in; they are on the map again, and from here on the
     // map is what is true about them. Kept, it would hand a later set-down that finds no member
     // token the wounds from before this one.
     await this.actor.unsetFlag(SYSTEM_ID, FLAGS.GATHERED_TOKENS);
-    // One write for the group: they fade in where they stand, and a fade has no distance to
-    // turn into a speed (see `#gatherIn`), so each gets the whole of TRAVEL_MS.
-    await canvas.scene.updateEmbeddedDocuments("Token",
-      created.map((t) => ({ _id: t.id, alpha: 1 })), { animation: { duration: TRAVEL_MS } });
+    // Held until every walk settles, so the press guard (`#working`) covers the whole set-down.
+    await Promise.all(walks);
   }
 }
 
 /**
- * Where the members stand once they are set down: single file behind the party token, first on
- * the roster nearest to it.
+ * The spaces the members can walk to from the party token, nearest first, each with the path
+ * that reaches it as a list of token positions (top-left points).
  *
- * A marching order is a line, and drawing it as one is the only layout that says which it is —
- * a ring or a block puts the order somewhere only the sheet can be read for. The column runs
- * down the map because a Foundry scene has no facing to run away from, and the party token
- * stays where it is at the head of it.
+ * A breadth-first search over grid spaces. A step is allowed only where the party token's own
+ * `checkCollision` finds no wall between the two centres — closed doors and the token's level
+ * included — so nobody ends up on the far side of a wall from the group. The search walks
+ * THROUGH occupied spaces, because a member may step past an ally and only cannot stop on one.
  *
- * Occupied cells are stepped over. A member held back is standing in that line already, and
- * numbering the deployed members 1..n dropped the next one exactly on top of them — measured in
- * a client on 2026-09-20, with one member held back mid-column. The cap is there because a
- * crowded scene has no free cell to find and a search for one must still end.
- * @param {TokenDocument} origin  the party's own token
+ * "Occupied" is every space a token covers, not its top-left corner: a 2×2 token beside the
+ * party covers spaces its position never names, and testing positions alone stacked a member on
+ * it. The search is bounded by SEARCH_STEPS because a crowded or walled-in scene has no free
+ * space to find, and the search must still end.
+ * @param {TokenDocument} origin  the party's own token, which must be on the canvas
  * @param {number} count
- * @returns {Array<{x: number, y: number}>}
+ * @returns {Array<{path: Array<{x: number, y: number}>}>}  at most `count` entries
  */
-function marchingPositions(origin, count) {
-  const size = canvas.grid.size;
-  const taken = new Set(canvas.scene.tokens.map((t) => `${t.x},${t.y}`));
-  const out = [];
-  for (let step = 1; out.length < count && step <= count * 4; step++) {
-    const point = canvas.grid.getTopLeftPoint({ x: origin.x, y: origin.y + step * size });
-    const key = `${point.x},${point.y}`;
-    if (taken.has(key)) continue;
-    taken.add(key);
-    out.push(point);
+function freeSpaces(origin, count) {
+  // A gridless scene still needs steps to search by: a square grid of the scene's own size.
+  const grid = canvas.grid.isGridless
+    ? new foundry.grid.SquareGrid({ size: canvas.grid.size, distance: canvas.grid.distance })
+    : canvas.grid;
+  const key = ({ i, j }) => `${i},${j}`;
+  const taken = new Set();
+  for (const t of canvas.scene.tokens) {
+    // `getOccupiedGridSpaceOffsets` answers nothing on a gridless scene.
+    const spaces = canvas.grid.isGridless ? [grid.getOffset(t.object.center)] : t.getOccupiedGridSpaceOffsets();
+    for (const s of spaces) taken.add(key(s));
   }
-  // A scene with nowhere left to stand still has to put them somewhere: the last cells of the
-  // column, on top of whatever is there, rather than fewer members than the party has.
-  while (out.length < count) {
-    out.push(canvas.grid.getTopLeftPoint({ x: origin.x, y: origin.y + (out.length + 1) * size }));
+
+  const { sceneRect } = canvas.dimensions;
+  const start = grid.getOffset(origin.object.center);
+  const seen = new Set([key(start)]);
+  const out = [];
+  let ring = [{ offset: start, path: [] }];
+  for (let step = 1; step <= SEARCH_STEPS && ring.length; step++) {
+    const next = [];
+    for (const { offset, path } of ring) {
+      const from = grid.getCenterPoint(offset);
+      for (const space of grid.getAdjacentOffsets(offset)) {
+        const k = key(space);
+        if (seen.has(k)) continue;
+        const to = grid.getCenterPoint(space);
+        if (!sceneRect.contains(to.x, to.y)) continue;
+        if (origin.object.checkCollision(to, { origin: from })) continue;
+        seen.add(k);
+        const reached = { offset: space, path: [...path, grid.getTopLeftPoint(space)] };
+        next.push(reached);
+        if (taken.has(k)) continue;
+        out.push(reached);
+        if (out.length === count) return out;
+      }
+    }
+    ring = next;
   }
   return out;
 }
