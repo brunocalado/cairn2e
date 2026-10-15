@@ -13,6 +13,10 @@
  * Attribute, typically STR" (core-rules.md → Attribute Loss) and traps priced in STR dice
  * (procedures.md → Traps). They are the maintainer's own, kept on purpose. One ladder for all
  * four, so a step name is the same die on every hazard; only the examples differ.
+ *
+ * The fall's examples are one storey (3 m) per step, Light to Extreme at four storeys, and Fatal
+ * from about 18 m onto hard ground: trauma medicine puts the height at which about half of adults
+ * die near four or five storeys, so a fifth survivable step at 15 m would be a lie.
  */
 export const HAZARD_STEPS = Object.freeze([
   { id: "light", die: "d4" },
@@ -27,6 +31,7 @@ export const HAZARDS = Object.freeze(["fall", "drowning", "crushing", "exposure"
 /**
  * Every hazard offers all three saves: the attribute follows what the character does, not the
  * hazard (core-rules.md → Attributes) — a fall is DEX to catch a ledge and STR to hold a rope.
- * Each hazard's `Save` string suggests the usual ones; the Warden decides whether any applies.
+ * Each hazard's `Saves` strings say what each one usually covers there, as a help mark beside its
+ * button; the Warden decides whether any applies.
  */
 export const HAZARD_SAVES = Object.freeze(["STR", "DEX", "WIL"]);
