@@ -1,3 +1,17 @@
+# 0.1.6
+
+- [Added] A player's Actions menu has a Stores row while a store is open to visits, beside the
+  sheet's Stores chip.
+- [Added] A folder of actors dropped on the party sheet joins the roster at once: its actors and
+  those one folder down, skipping parties and anyone already on it. A compendium folder is refused.
+- [Added] An item dropped from another sheet onto a container's row lands inside it, so a player can
+  put their own gear straight into the mule the party keeps in its Stash. A Fatigue is still refused.
+- [Changed] Setting the party down walks each member out from under the party token, one after
+  another, to the nearest free space no wall cuts off. The single-file column is gone.
+- [Fixed] A container holds only its own capacity on every actor: a mule kept in the party's Stash
+  or by a hireling carries six slots and refuses the seventh, while the ten body slots stay a
+  character's alone.
+
 # 0.1.5
 
 - [Added] **The Hazards window.** The Warden's sidebar opens falls, drowning, crushing and
