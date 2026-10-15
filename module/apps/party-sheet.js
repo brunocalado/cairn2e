@@ -212,6 +212,41 @@ export class CairnPartySheet extends CairnActorSheet {
     return actor;
   }
 
+  /**
+   * @override — a folder of actors joins the roster at once: its own actors and those one folder
+   * down, so a "Hirelings" folder inside the group's comes along, but nothing deeper.
+   *
+   * A compendium folder is refused because a member is held by uuid, and a pack's uuid would make
+   * the pack's copy the member instead of a character in the world. Parties and actors already on
+   * the roster are skipped rather than refused, so dropping the same folder twice is harmless. The
+   * newcomers go to the back in one update, and the GM arranges the marching order afterwards.
+   */
+  async _onDropFolder(event, folder) {
+    if (!this.isEditable) return null;
+    if (folder.type !== "Actor") {
+      ui.notifications.warn(game.i18n.localize("CAIRN.Party.FolderNotActors"));
+      return null;
+    }
+    if (folder.pack) {
+      ui.notifications.warn(game.i18n.localize("CAIRN.Party.FolderFromCompendium"));
+      return null;
+    }
+
+    const members = this.actor.system.members;
+    const joining = [folder, ...folder.getSubfolders()]
+      .flatMap((f) => f.contents)
+      .filter((a) => a.type !== "party" && !members.some((m) => m.actor === a.uuid));
+    if (!joining.length) {
+      ui.notifications.info(game.i18n.localize("CAIRN.Party.FolderNobodyNew", { folder: folder.name }));
+      return null;
+    }
+    await this.actor.update({
+      "system.members": [...members, ...joining.map((a) => ({ actor: a.uuid, deployed: true }))]
+    });
+    ui.notifications.info(game.i18n.localize("CAIRN.Party.FolderJoined", { count: joining.length, folder: folder.name }));
+    return folder;
+  }
+
   /* -------------------------------------------- */
   /*  Barter                                      */
   /* -------------------------------------------- */
