@@ -55,7 +55,7 @@ depend on who you are:
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
 | **Generators** | the Warden only | Generate NPC · Generate Hireling · Generate Name · Generate Monster · Generate Faction · Treasure |
 | **Campaign** | the Warden only | Calendar · Journey · Store |
-| **Reference** | the Warden only | Rules Summary |
+| **Reference** | the Warden only | Rules Summary · Hazards |
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
 
@@ -876,6 +876,28 @@ A Warden's macro can open it with `cairn2e.treasure();`.
 <p align="center">
   <img src="images/treasure.webp" alt="The Treasure window: the sources to roll on at the left, with Coin, a Valuables band, a Strange Items band and Metal materials switched on, and what was drawn at the right, ready to send to the party's Stash" width="80%">
 </p>
+
+### Hazards
+
+**Hazards**, in the **Reference** section, holds the Warden's rulings for four dangers the Cairn 2e
+book has no rule for: **Fall**, **Drowning** (smoke and gas too), **Crushing** and **Exposure**
+(fire, acid, great heat, bitter cold). They are house rulings, not Cairn 2e. They follow the book's
+own rule that harm outside combat comes off an attribute, usually STR, and so they never touch HP.
+
+Pick the hazard at the top. Every hazard climbs the same ladder, so a step is the same die on all
+four: **Light** d4, **Serious** d6, **Severe** d8, **Extreme** d10, and **Fatal**. Each step has an
+example beside it (for a fall, the height), and a line above the ladder says whether the hazard is
+rolled once or again as it goes on.
+
+- **A die** rolls that much STR damage against the targeted tokens, on the same card as a trap
+  ([Traps](#traps)): Apply with armor or without, the Warden's choice. With nothing targeted it
+  still rolls, and the card has no Apply.
+- **Fatal** has no die. It is for when surviving is not plausible, and only after the danger was
+  made plain.
+- **Avoid it** offers a STR, DEX and WIL save on every hazard, since the attribute follows what the
+  character does; the help mark beside each says what it usually covers there. Offer one only when
+  the fiction leaves a way out. The button posts a card in chat, and whoever is caught presses it
+  to roll their own save.
 
 ### Unknown gear
 
