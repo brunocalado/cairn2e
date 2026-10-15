@@ -570,7 +570,17 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       return null;
     }
 
-    // From anywhere else — another actor, a pack, the sidebar: `transfer.js#takeItem`.
+    // From anywhere else — another actor, a pack, the sidebar: `transfer.js#takeItem`. Onto a
+    // container's row it lands inside, as a drop on the container's own sheet does: a player
+    // putting their rope in the mule the party keeps in its Stash should not have to open the
+    // mule first. The refusal is asked here for the same reason that sheet asks it — a Fatigue
+    // has no pointer to write, and core would strip it and land the copy on the body.
+    const row = this.rowItem(event.target);
+    if (row?.system.isContainer) {
+      const refusal = nestingRefusal(this.actor, item, row.id);
+      if (refusal) return ui.notifications.warn(game.i18n.localize(refusal, { name: item.shownName }));
+      return takeItem(this.actor, item, row.id);
+    }
     return takeItem(this.actor, item);
   }
 }
