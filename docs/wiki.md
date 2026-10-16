@@ -1118,7 +1118,7 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **STR**, **DEX**, **WIL** | roll that save | ✓ |
 | **Roll Morale** | rolls a Morale save for the selected enemy | |
 | **Roll Reaction** | rolls 2d6 on the Reaction table | |
-| **Reset Player Hotbars** | puts the player macros back in their slots on every player's hotbar, leaving the other slots alone | |
+| **Reset Player Hotbars** | imports any player macro missing from the world, then puts the player macros back in their slots on every player's hotbar, leaving the other slots alone | |
 | **Restore Default Stores** | after a warning, replaces every store with the system's ten as they first were | |
 
 Each macro works on the **selected token**. With nothing selected, it works on **your own

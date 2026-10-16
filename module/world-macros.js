@@ -127,18 +127,37 @@ export async function seedPlayerHotbar() {
 }
 
 /**
- * The Warden's reset: every non-GM user gets the player macros back in their slots, over whatever
- * was there. The other slots are the player's own and are left alone. Also marks each user as
- * seeded, so a player who has not logged in yet is not seeded again on top of it.
+ * The player macros the pack has and this world lacks, imported at Observer beside the copies the
+ * world already has, so a world installed before a macro was added gets it too. A copy is found by
+ * `_stats.compendiumSource`, like `playerHotbar`; the folder is taken from a sibling copy rather
+ * than looked up by its name.
+ */
+async function importMissingPlayerMacros() {
+  const have = new Set(game.macros.map(m => m._stats.compendiumSource));
+  const missing = Object.values(PLAYER_HOTBAR).filter(uuid => !have.has(uuid));
+  if (!missing.length) return;
+  const sibling = game.macros.find(m => Object.values(PLAYER_HOTBAR).includes(m._stats.compendiumSource));
+  const data = (await Promise.all(missing.map(uuid => fromUuid(uuid)))).filter(Boolean).map(doc => {
+    const macro = game.macros.fromCompendium(doc);
+    macro.folder = sibling?.folder?.id ?? null;
+    macro.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER;
+    return macro;
+  });
+  await Macro.createDocuments(data);
+}
+
+/**
+ * The Warden's reset: any player macro this world lacks is imported first, then every non-GM user
+ * gets the player macros back in their slots, over whatever was there. The other slots are the
+ * player's own and are left alone. Also marks each user as seeded, so a player who has not logged
+ * in yet is not seeded again on top of it.
  */
 export async function resetPlayerHotbars() {
   if (!game.user.isGM) {
     return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.HotbarsWardenOnly"));
   }
+  await importMissingPlayerMacros();
   const hotbar = playerHotbar();
-  if (foundry.utils.isEmpty(hotbar)) {
-    return ui.notifications.warn(game.i18n.localize("CAIRN.Notify.HotbarsNoMacros"));
-  }
   const updates = game.users.filter(u => !u.isGM).map(u => ({
     _id: u.id,
     hotbar,
