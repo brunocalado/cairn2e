@@ -363,7 +363,7 @@
     "Create": "Begin a Dungeon Exploration",
     "Declare": "Declare",
     "DeclareEdit": "Change what this character does",
-    "DeclareLead": "You move about 12 m (40 ft) and do one thing. Everyone acts at the same time, so say it now, before anyone hears how the others fared.",
+    "DeclareLead": "You move about 12 m (40 ft) and do one thing. Everyone acts at the same time.",
     "DeclarePlaceholder": "Anything you can describe \u2014 I wedge the east door shut with my spikes.",
     "DeclarePrompt": "What do you do?",
     "DeclareTitle": "{name} \u2014 this turn",
@@ -379,7 +379,6 @@
     "Helping": "Helping \u00b7 {task}",
     "Ideas": "Need an idea?",
     "IdeasAside": "Examples, not a menu",
-    "InYourWords": "In your own words",
     "LendAHand": "Lend a hand?",
     "LookingIsFree": "<strong>Looking is free.</strong> Ask the Warden about anything you can see before you choose; only real effort spends your turn.",
     "MayDrawEvent": "May draw a Dungeon Event",
@@ -428,7 +427,8 @@
       "loud": "Noise"
     },
     "Turn": "Turn {turn}",
-    "Waiting": "Has not declared yet"
+    "Waiting": "Has not declared yet",
+    "WriteWhatYouDo": "Write what you do"
   },
   "CAIRN.Edit": {
     "Attributes": "Attributes",

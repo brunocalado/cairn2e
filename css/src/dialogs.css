@@ -115,16 +115,21 @@
             }
         }
 
+        /* Two lines and no handle: a declaration is short, and `maxlength` keeps it so. */
         textarea {
-            min-height: 60px;
-            resize: vertical;
+            height: calc(2lh + 8px);
+            resize: none;
             width: 100%;
         }
     }
 
+    /* The one rule a player most needs before choosing, framed so it reads as the aside it is
+       and not as small print: a hairline box in full ink. */
     .cairn-declare-free {
-        color: var(--cairn-ink-soft);
+        border: var(--cairn-hairline) solid var(--cairn-ink);
+        border-radius: var(--cairn-radius);
         font-size: 12px;
+        padding: 5px 8px;
     }
 
     .cairn-declare-heading {

@@ -36,6 +36,9 @@ const RISKY_ACTIONS = new Set(["hurry", "force"]);
 
 const DECLARE_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-declare-dialog.hbs`;
 
+/** A declaration is a line or two, never a paragraph: two lines of the dialog's field hold this. */
+const DECLARATION_MAX = 120;
+
 /**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
  * every turn start. Measured through the token's own path measurement rather than by adding the
@@ -301,8 +304,12 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
     const chosen = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
     const names = (list) => game.i18n.getListFormatter().format(list);
-    const content = await foundry.applications.handlebars.renderTemplate(DECLARE_TPL, {
+    // Handed over as a bare `<div>` rather than a string: DialogV2 runs a string through
+    // `cleanHTML`, which strips the field's `maxlength` and `placeholder` (observed on 14.369).
+    const content = document.createElement("div");
+    content.innerHTML = await foundry.applications.handlebars.renderTemplate(DECLARE_TPL, {
       declared: combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "",
+      maxLength: DECLARATION_MAX,
       ideas: keys.map((key) => ({
         key,
         label: game.i18n.localize(`CAIRN.Dungeon.Action.${key}`),
@@ -334,7 +341,8 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     if (!result) return;
     await combatant.update({
       [`flags.${SYSTEM_ID}`]: {
-        [COMBAT_FLAGS.DECLARED]: String(result.declared ?? "").trim(),
+        // `maxlength` is the field's; this is the boundary's, for a value that never went through it.
+        [COMBAT_FLAGS.DECLARED]: String(result.declared ?? "").trim().slice(0, DECLARATION_MAX),
         [COMBAT_FLAGS.TASK]: result.task || ""
       }
     });
