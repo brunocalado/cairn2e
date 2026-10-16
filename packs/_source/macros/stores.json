@@ -1,0 +1,15 @@
+{
+  "_id": "rDRUPjJFybkRTs6J",
+  "name": "Stores",
+  "type": "script",
+  "img": "icons/environment/settlement/wood-stall.webp",
+  "scope": "global",
+  "command": "cairn2e.stores();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!rDRUPjJFybkRTs6J"
+}

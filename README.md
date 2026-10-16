@@ -121,7 +121,7 @@ All the game content you need is already inside:
 | **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the Weather in Vald, the naming tables, and the Warden's generator tables |
 | **Rules** | the Player's Guide (principles, character creation, core rules, procedures and the Marketplace), linked to the items, tables and backgrounds it names |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
-| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, and the Warden's Reset Player Hotbars and Restore Default Stores |
+| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, Stores, and the Warden's Reset Player Hotbars and Restore Default Stores |
 | **Homebrew** | *More Gear* (clothing, food, drink, tools, transport, valuables and strange items), *Materials* for crafting, *More Spellbooks*, *More Scrolls* and 17 *Potions*: extra content, not from the Cairn books, kept in its own folder |
 
 Distances read in metres with the feet the map measures beside them, `12 m (40 ft)`, and weights

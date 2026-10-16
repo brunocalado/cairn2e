@@ -39,7 +39,7 @@ Create a world on the **Cairn 2e** system and launch it. The first time it opens
 - the system's macros in a **Cairn 2e** folder of the Macros directory (see [§17](#17-macros)).
 
 Each player finds their macros on the hotbar the first time they log in: the three saves, the
-Die of Fate, the Rules Summary and the Calendar on the left, Rest and Restore Abilities at the far end. Only
+Die of Fate, the Rules Summary, the Calendar and the Stores on the left, Rest and Restore Abilities at the far end. Only
 empty slots are filled, and only once.
 
 If players should build their own characters, open **Configure Settings → Permissions** and allow
@@ -1114,6 +1114,7 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **Restore Abilities** | restores STR, DEX and WIL to their maximum | ✓ |
 | **Rules Summary** | opens the one-page rules summary | ✓ |
 | **Calendar** | opens the Vald calendar | ✓ |
+| **Stores** | opens the stores the Warden has open to visits (every store, for the Warden) | ✓ |
 | **STR**, **DEX**, **WIL** | roll that save | ✓ |
 | **Roll Morale** | rolls a Morale save for the selected enemy | |
 | **Roll Reaction** | rolls 2d6 on the Reaction table | |
@@ -1139,6 +1140,7 @@ cairn2e.reaction();         // 2d6 on the Reaction table
 cairn2e.dieOfFate();        // 1d6
 cairn2e.rulesSummary();     // open the rules summary
 cairn2e.calendar();         // open the calendar
+cairn2e.stores();           // open the stores
 cairn2e.treasure();         // Warden only: open the Treasure window
 cairn2e.resetPlayerHotbars(); // Warden only: refill every player's hotbar
 cairn2e.restoreDefaultStores(); // Warden only: every store back to the system's ten
