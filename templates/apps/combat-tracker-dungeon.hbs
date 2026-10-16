@@ -1,12 +1,15 @@
 {{!-- A dungeon exploration's rows, drawn inside the tracker's one `<ol>` (the part may produce a
       single top-level element, so everything here is an `<li>`).
 
-      `procedures.md` → Dungeon Exploration Cycle: the Warden describes, the players declare their
-      intended movements and actions, the Warden resolves them. So each row carries what its
-      player declared — free text, the SRD's actions offered in a list with their rules and never
-      required — how far the token moved this turn, and an acted switch for the same flag a fight's row ticks.
-      Nothing here stops anyone doing anything. --}}
-<li class="cairn-combat-side is-active">{{localize "CAIRN.Dungeon.Party"}}</li>
+      Laid out in the order of `procedures.md` → Dungeon Exploration Cycle, each step headed and
+      said in one line: the Warden describes; the players declare and the Warden resolves them
+      simultaneously; the resources are recorded and, if appropriate, the Warden rolls a Dungeon
+      Event. Nothing here rolls, gates or decides on anyone's behalf. --}}
+<li class="cairn-combat-side cairn-dungeon-step">{{localize "CAIRN.Dungeon.Step.describe"}}</li>
+<li class="cairn-dungeon-note">{{localize "CAIRN.Dungeon.StepNote.describe"}}</li>
+
+<li class="cairn-combat-side cairn-dungeon-step">{{localize "CAIRN.Dungeon.Step.declare"}}</li>
+<li class="cairn-dungeon-note">{{localize "CAIRN.Dungeon.StepNote.declare"}}</li>
 
 {{#each dungeon.rows}}
     <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}}"
@@ -14,10 +17,10 @@
 
         <img class="token-image" src="{{img}}" alt="{{name}}" loading="lazy">
 
-        {{!-- One grid, two lines: the name with this turn's distance, then the declaration. The
-              last column is a 20px slot on both lines — the undo above, the action list below —
-              kept even when it is empty, so every row's distance, field and glyphs sit in the same
-              columns whoever owns it and whether or not it has moved. --}}
+        {{!-- One grid: the name with this turn's distance and the undo, then what the player
+              declared — or, to the player who owes it, the button that asks — with the edit
+              glyph, then the work they lend a hand to. The 20px slots are kept when empty, so
+              every row's distance and glyphs sit in the same columns. --}}
         <div class="token-name cairn-dungeon-body">
             <strong class="name">{{name}}</strong>
 
@@ -39,82 +42,128 @@
                 {{/if}}
             </span>
 
-            <input type="text" class="cairn-declared" name="declared.{{id}}" value="{{declared}}"
-                   autocomplete="off"
-                   placeholder="{{localize "CAIRN.Dungeon.DeclarePlaceholder"}}"
-                   aria-label="{{localize "CAIRN.Dungeon.DeclareLabel" name=name}}"
-                   {{#unless isOwner}}disabled{{/unless}}>
+            {{#if prompt}}
+                <button type="button" class="cairn-dungeon-declare" data-action="declareDungeon">
+                    <i class="fa-solid fa-feather" inert></i>{{localize "CAIRN.Dungeon.DeclarePrompt"}}
+                </button>
+            {{else if declared}}
+                <p class="cairn-declared">{{declared}}</p>
+            {{else}}
+                <p class="cairn-declared is-waiting">{{localize "CAIRN.Dungeon.Waiting"}}</p>
+            {{/if}}
 
-            <span class="cairn-dungeon-slot is-list">
-                {{#if isOwner}}
-                    <button type="button" class="inline-control combatant-control icon fa-solid fa-list {{#if choosing}}active{{/if}}"
-                            data-action="toggleDungeonActions" data-tooltip aria-expanded="{{#if choosing}}true{{else}}false{{/if}}"
-                            aria-label="{{localize "CAIRN.Dungeon.ChooseAction"}}"></button>
-                {{/if}}
+            <span class="cairn-dungeon-slot is-edit">
+                {{#if isOwner}}{{#unless prompt}}
+                    <button type="button" class="inline-control combatant-control icon fa-solid fa-feather"
+                            data-action="declareDungeon" data-tooltip
+                            aria-label="{{localize "CAIRN.Dungeon.DeclareEdit"}}"></button>
+                {{/unless}}{{/if}}
             </span>
+
+            {{#if task}}
+                <span class="cairn-dungeon-helping">{{localize "CAIRN.Dungeon.Helping" task=task}}</span>
+            {{/if}}
         </div>
 
-        {{!-- The acted mark is the system's toggle (Primitive 5), not a bare glyph: a pill with a
-              shape of its own reads as this row's, where a lone check floated in the column. It
-              is a `<button role="switch">` wearing the toggle's track and knob rather than the
-              partial's label and checkbox, because core's `activateCombatant` selects and pans to
-              the token on any click in the row that is not on an input or a button — the label's
-              track is neither. Everyone sees the state; only the owner can flip it. --}}
+        {{!-- Narrated: the Warden's own mark of whose action has been resolved at the table —
+              everyone acts at once in the fiction, and the Warden still talks to one player at a
+              time. The system's toggle (Primitive 5) as a `<button role="switch">`, because core's
+              `activateCombatant` selects and pans to the token on any click in the row that is
+              not on an input or a button. Everyone sees the state; only the Warden sets it. --}}
         <div class="cairn-combat-acted">
             <button type="button" class="cairn-switch cairn-acted-switch" role="switch"
                     aria-checked="{{#if resolved}}true{{else}}false{{/if}}"
                     data-action="toggleResolved" data-tooltip
-                    aria-label="{{localize (ifThen resolved "CAIRN.Dungeon.ActedUndo" "CAIRN.Dungeon.Acted")}}"
-                    {{#unless isOwner}}disabled{{/unless}}>
+                    aria-label="{{localize (ifThen resolved "CAIRN.Dungeon.NarratedUndo" "CAIRN.Dungeon.Narrated")}}"
+                    {{#unless @root.dungeon.warden}}disabled{{/unless}}>
                 <span class="cairn-switch-track"><span class="cairn-switch-knob"></span></span>
             </button>
         </div>
     </li>
-
-    {{!-- The open action list: each action's name and its rule line, readable without a hover.
-          A sibling of the row rather than inside it, where every click would also reach the
-          row's own `activateCombatant`. --}}
-    {{#if choosing}}
-        <li class="cairn-dungeon-actions" data-combatant-id="{{id}}">
-            <ul class="plain">
-                {{#each actions}}
-                    <li>
-                        <button type="button" data-action="chooseDungeonAction" data-key="{{key}}">
-                            <strong>{{label}}</strong> <span>{{rule}}</span>
-                        </button>
-                    </li>
-                {{/each}}
-            </ul>
-        </li>
-    {{/if}}
 {{/each}}
 
-{{!-- The Warden's side: when the SRD says to roll, and the roll. The four triggers are
-      reminders, never a gate — "If appropriate, the Warden should roll … Keep common sense in
-      mind". The one the client can see for itself, a token past torchlight, is drawn in full
-      ink; the other three need a judgement no document holds. --}}
+{{!-- Ongoing work: what takes several turns of effort, which several characters can share in one
+      turn. The Warden names it and fills the turns in by hand; the players choose it in their
+      declaration. Shown to the players only when there is some. --}}
+{{#if (or dungeon.warden dungeon.tasks.length)}}
+    <li class="cairn-dungeon-tasks">
+        <div class="cairn-dungeon-tasks-head">
+            <span class="cairn-dungeon-label">{{localize "CAIRN.Dungeon.Tasks"}}</span>
+            {{#if dungeon.warden}}
+                <button type="button" class="inline-control icon fa-solid fa-plus" data-action="addTask"
+                        data-tooltip aria-label="{{localize "CAIRN.Dungeon.AddTask"}}"></button>
+            {{/if}}
+        </div>
+        {{#each dungeon.tasks}}
+            <div class="cairn-dungeon-task" data-task-id="{{id}}">
+                <div class="cairn-dungeon-task-name">
+                    <strong>{{name}}</strong>
+                    {{#if @root.dungeon.warden}}
+                        <button type="button" class="inline-control icon fa-solid fa-xmark" data-action="deleteTask"
+                                data-tooltip aria-label="{{localize "CAIRN.Dungeon.DeleteTask"}}"></button>
+                    {{/if}}
+                </div>
+                <div class="cairn-dungeon-marks" role="group" aria-label="{{progress}}">
+                    {{#each marks}}
+                        {{#if @root.dungeon.warden}}
+                            <button type="button" class="cairn-dungeon-mark {{#if done}}is-done{{/if}}"
+                                    data-action="markEffort" data-index="{{index}}" aria-pressed="{{done}}"
+                                    aria-label="{{localize "CAIRN.Dungeon.TaskMark" n=n}}"></button>
+                        {{else}}
+                            <span class="cairn-dungeon-mark {{#if done}}is-done{{/if}}"></span>
+                        {{/if}}
+                    {{/each}}
+                    <span class="cairn-dungeon-progress">{{progress}}</span>
+                </div>
+                {{#if helpers}}
+                    <span class="cairn-dungeon-helpers">{{localize "CAIRN.Dungeon.TaskHelpers" names=helpers}}</span>
+                {{/if}}
+            </div>
+        {{/each}}
+    </li>
+{{/if}}
+
+{{!-- A fight breaks out: a second combat with the party already in it. This exploration stays as
+      it is and becomes the active one again when that fight is deleted. --}}
 {{#if dungeon.warden}}
-    <li class="cairn-dungeon-warden">
-        {{!-- A fight breaks out: a second combat with the party already in it. This exploration
-              stays as it is and becomes the active one again when that fight is deleted. --}}
+    <li class="cairn-dungeon-fight-row">
         <button type="button" class="cairn-dungeon-fight" data-action="startFight">
             <i class="fa-solid fa-swords" inert></i>{{localize "CAIRN.Dungeon.Fight"}}
         </button>
-        <p class="cairn-dungeon-when">{{localize "CAIRN.Dungeon.When"}}</p>
-        <ul class="cairn-dungeon-triggers plain">
-            {{#each dungeon.triggers}}
-                <li class="{{#if lit}}is-lit{{/if}}">{{label}}</li>
-            {{/each}}
-        </ul>
-        <button type="button" class="cairn-dungeon-roll" data-action="rollDungeonEvent">
+    </li>
+{{/if}}
+
+<li class="cairn-combat-side cairn-dungeon-step">{{localize "CAIRN.Dungeon.Step.close"}}</li>
+<li class="cairn-dungeon-note">{{localize "CAIRN.Dungeon.StepNote.close"}}</li>
+
+{{!-- The four triggers, one word each in a 2×2 grid, the full clause in the tooltip. The Warden
+      lights them; the players see the same grid and cannot press it, because the cost is theirs
+      to know ("Players should always be made aware of the cost"). A lit one is only a mark. --}}
+<li class="cairn-dungeon-close">
+    <div class="cairn-dungeon-triggers">
+        {{#each dungeon.triggers}}
+            <button type="button" class="cairn-dungeon-trigger" data-action="toggleTrigger" data-key="{{key}}"
+                    aria-pressed="{{#if lit}}true{{else}}false{{/if}}" data-tooltip-text="{{tip}}"
+                    {{#unless @root.dungeon.warden}}disabled{{/unless}}>{{word}}</button>
+        {{/each}}
+    </div>
+
+    {{#if dungeon.warden}}
+        {{!-- Filled when something is lit, hollow when nothing is: the roll is always one click,
+              and it is still there mid-turn — the Warden's Guide rolls in the middle of Freya's
+              action, not at the end of the cycle. --}}
+        <button type="button" class="cairn-dungeon-roll {{#unless dungeon.anyLit}}is-quiet{{/unless}}"
+                data-action="rollDungeonEvent">
             <i class="fa-solid fa-dice-d6" inert></i>{{localize "CAIRN.Dungeon.RollEvent"}}
         </button>
+        <p class="cairn-dungeon-hint">{{localize (ifThen dungeon.anyLit "CAIRN.Dungeon.RollHintLit" "CAIRN.Dungeon.RollHintNone")}}</p>
 
         {{!-- The event drawn this turn, until the turn changes. Exhaustion is the one row that
               writes to the sheets, and only when the Warden presses the party's choice. --}}
         {{#if dungeon.event}}
             <div class="cairn-dungeon-event">
-                <strong>{{dungeon.event.name}}</strong> {{dungeon.event.text}}
+                <span class="cairn-dungeon-label">{{localize "CAIRN.Dungeon.ThisEvent"}}</span>
+                <p><strong>{{dungeon.event.name}}</strong> {{dungeon.event.text}}</p>
             </div>
             {{#if dungeon.event.exhaustion}}
                 <div class="cairn-dungeon-exhaustion">
@@ -123,5 +172,5 @@
                 </div>
             {{/if}}
         {{/if}}
-    </li>
-{{/if}}
+    {{/if}}
+</li>

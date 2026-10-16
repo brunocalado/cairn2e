@@ -88,6 +88,135 @@
         }
     }
 
+    /* A dungeon turn's declaration: the lead and the free-looking line, the player's own words
+       in the ruled field, the ideas, the ongoing work. The words come first and are the widest
+       thing in the window; the ideas are lighter than buttons — a faint frame that takes the ink
+       when pressed — because they are suggestions, not the choices on offer. */
+    .cairn-declare-dialog {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* The words get the dialog's full width, their label over them rather than in the
+           field primitive's 120px gutter: they are the point of the window. */
+        > .cairn-field {
+            gap: 4px;
+            grid-template-columns: minmax(0, 1fr);
+
+            > label {
+                font-size: 11px;
+                letter-spacing: var(--cairn-label-track);
+                text-transform: uppercase;
+            }
+        }
+
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+            width: 100%;
+        }
+    }
+
+    .cairn-declare-free {
+        color: var(--cairn-ink-soft);
+        font-size: 12px;
+    }
+
+    .cairn-declare-heading {
+        align-items: baseline;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4px;
+
+        .cairn-field-label {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+    }
+
+    .cairn-declare-aside {
+        color: var(--cairn-ink-soft);
+        font-size: 11px;
+        font-style: italic;
+    }
+
+    .cairn-declare-ideas {
+        display: grid;
+        gap: 4px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* `[data-idea]` for the weight against Primitive 2's (0,2,1). */
+    .cairn-declare-ideas button.cairn-declare-idea[data-idea] {
+        --button-border-color: var(--cairn-ink-faint);
+        --button-hover-background-color: var(--cairn-paper-sunk);
+        --button-hover-border-color: var(--cairn-ink);
+        --button-hover-text-color: var(--cairn-ink);
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        font-size: 11px;
+        gap: 2px;
+        height: auto;
+        justify-content: flex-start;
+        letter-spacing: normal;
+        line-height: 1.3;
+        padding: 5px 7px;
+        text-align: left;
+        text-transform: none;
+        white-space: normal;
+
+        strong {
+            font-size: 12px;
+        }
+
+        span {
+            color: var(--cairn-ink-soft);
+        }
+
+        em {
+            font-size: 10px;
+        }
+    }
+
+    /* Pressed, the idea inverts as any pressed ink button does, and its rule follows the paper
+       ink instead of vanishing into the ground. */
+    .cairn-declare-ideas button.cairn-declare-idea[aria-pressed="true"] span {
+        color: inherit;
+        opacity: 0.8;
+    }
+
+    /* The tasks: Primitive 2's segmented run, one option to a line with its name over its
+       progress, so the chosen one inverts to ink as any chosen option does. */
+    .cairn-declare-tasks {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .cairn-choice-option.cairn-declare-task {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+        height: auto;
+        /* Not the run's tabular figures: Lora's `tnum` widens every space to a digit's width,
+           and a task's name is words. */
+        font-variant-numeric: normal;
+        justify-content: center;
+        letter-spacing: normal;
+        padding: 5px 8px;
+
+        span {
+            font-size: 11px;
+            opacity: 0.75;
+        }
+    }
+
     /**************************************************************************
      * Kettlewright importer — file-picker dialog and post-import summary.   *
      **************************************************************************/

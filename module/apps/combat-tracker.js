@@ -9,6 +9,7 @@ import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js
 import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { eatFood } from "../journey.js";
 import { CairnRulesSummary } from "./rules-summary.js";
+import { DUNGEON_TRIGGERS, MAX_EFFORT } from "../data/combat-dungeon.js";
 
 /** "move a distance equal to their torchlight's perimeter (about 40ft)" (`procedures.md`). */
 const TORCHLIGHT_FT = 40;
@@ -17,15 +18,23 @@ const TORCHLIGHT_FT = 40;
 const HURRY_FT = 3 * TORCHLIGHT_FT;
 
 /**
- * The exploration actions a row offers (`procedures.md` → Actions, The Basics). Engaging an enemy
- * is A Fight Breaks Out, and running away is the fight's Retreat (`core-rules.md` → Combat), so
- * neither is here. Each key has a label (`CAIRN.Dungeon.Action.<key>`) and a rule line
- * (`CAIRN.Dungeon.ActionRule.<key>`); a panicked character is offered `panic` after them.
+ * The exploration actions the declaration offers as ideas (`procedures.md` → Actions, The
+ * Basics). Examples, never a menu: the SRD lists them "such as … etc.", and a player may declare
+ * anything. Engaging an enemy is A Fight Breaks Out, and running away is the fight's Retreat
+ * (`core-rules.md` → Combat), so neither is here. Each key has a label
+ * (`CAIRN.Dungeon.Action.<key>`) and a rule line (`CAIRN.Dungeon.ActionRule.<key>`); a panicked
+ * character is offered `panic` after them.
  */
 const DUNGEON_ACTIONS = ["search", "listen", "force", "disarm", "dodge", "cast", "rest", "hurry"];
 
-/** When the party risks a Dungeon Event (`procedures.md` → Dungeon Events), in the SRD's order. */
-const DUNGEON_TRIGGERS = ["linger", "hurry", "enter", "loud"];
+/**
+ * The ideas that say they may draw a Dungeon Event: moving quickly is one of the four triggers,
+ * and forcing a door is the SRD's own example of a loud action ("Loud or noticeable actions may
+ * also trigger an encounter").
+ */
+const RISKY_ACTIONS = new Set(["hurry", "force"]);
+
+const DECLARE_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-declare-dialog.hbs`;
 
 /**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
@@ -57,6 +66,36 @@ function paceOf({ moved, units }) {
 }
 
 /**
+ * The declaration dialog's two behaviours, bound when it renders. An idea starts the sentence
+ * with its name and leaves the caret after it, so the player goes on in their own words; the
+ * pressed idea is remembered in the form for the one that rolls (`panic`). A chosen task is let
+ * go by clicking it again — every task starts unchosen, and choosing none is "not this turn".
+ * @param {HTMLElement} root  the dialog's element
+ */
+function wireDeclaration(root) {
+  const text = root.querySelector("textarea[name='declared']");
+  const idea = root.querySelector("input[name='idea']");
+  const ideas = root.querySelectorAll("button[data-idea]");
+  for (const button of ideas) {
+    button.addEventListener("click", () => {
+      text.value = button.dataset.label;
+      idea.value = button.dataset.idea;
+      for (const other of ideas) other.setAttribute("aria-pressed", String(other === button));
+      text.focus();
+      text.setSelectionRange(text.value.length, text.value.length);
+    });
+  }
+  for (const radio of root.querySelectorAll("input[name='task']")) {
+    const option = radio.closest("label");
+    option.addEventListener("pointerdown", () => { radio.dataset.was = String(radio.checked); });
+    radio.addEventListener("click", () => {
+      if (radio.dataset.was === "true") radio.checked = false;
+      radio.dataset.was = String(radio.checked);
+    });
+  }
+}
+
+/**
  * The combat tracker, grouped by side.
  *
  * 2e's round is side-based (`core-rules.md` → Combat) and has no initiative, so the tracker shows
@@ -73,14 +112,16 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     classes: [SYSTEM_ID],
     actions: {
       createDungeon: CairnCombatTracker.#onCreateDungeon,
-      nextDungeonTurn: CairnCombatTracker.#onNextDungeonTurn,
       rollDungeonEvent: CairnCombatTracker.#onRollDungeonEvent,
+      toggleTrigger: CairnCombatTracker.#onToggleTrigger,
+      declareDungeon: CairnCombatTracker.#onDeclareDungeon,
+      addTask: CairnCombatTracker.#onAddTask,
+      deleteTask: CairnCombatTracker.#onDeleteTask,
+      markEffort: CairnCombatTracker.#onMarkEffort,
       startFight: CairnCombatTracker.#onStartFight,
       exhaustionFatigue: CairnCombatTracker.#onExhaustionFatigue,
       exhaustionRation: CairnCombatTracker.#onExhaustionRation,
       toggleResolved: CairnCombatTracker.#onToggleResolved,
-      toggleDungeonActions: CairnCombatTracker.#onToggleDungeonActions,
-      chooseDungeonAction: CairnCombatTracker.#onChooseDungeonAction,
       revertMovement: CairnCombatTracker.#onRevertMovement,
       openRules: CairnCombatTracker.#onOpenRules,
       rollDexSave: CairnCombatTracker.#onRollDexSave,
@@ -101,21 +142,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       template: `systems/${SYSTEM_ID}/templates/apps/combat-tracker-footer.hbs`
     }
   };
-
-  /**
-   * What a dungeon exploration's player has typed into their row and not yet committed, by
-   * combatant id. Core restores the focused input after a re-render but draws it with the value
-   * the flag held, so a keystroke that races another row's update would otherwise be thrown away.
-   * @type {Map<string, string>}
-   */
-  #drafts = new Map();
-
-  /**
-   * The combatant whose action list is open on this client, if any. Local like the drafts, so
-   * another client's update re-renders the tracker without closing the list being read.
-   * @type {string|null}
-   */
-  #choosing = null;
 
   /**
    * @inheritDoc
@@ -165,30 +191,33 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   }
 
   /**
-   * The rows and the Warden's reminders of a dungeon exploration (`procedures.md` → Dungeon
-   * Exploration). Built on core's per-combatant entries, like the fight's sides.
+   * A dungeon exploration in the order of its cycle (`procedures.md` → Dungeon Exploration
+   * Cycle): the party's rows and the ongoing work, then the four triggers and the event. Built on
+   * core's per-combatant entries, like the fight's sides.
    * @param {CairnCombat} combat
    * @param {object[]} turns  core's entries, one per visible combatant
    */
   #dungeonContext(combat, turns) {
+    const { tasks, triggers, event } = combat.system;
+    const taskName = new Map(tasks.map((t) => [t.id, t.name]));
     const rows = [];
     for (const turn of turns) {
       const combatant = combat.combatants.get(turn.id);
       if (!combatant) continue;
       const movement = movedThisTurn(combatant.token);
       const pace = paceOf(movement);
-      const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
+      const declared = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "";
+      const taskId = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
       rows.push({
         ...turn,
         css: turn.css.replace("active", "").trim(),
         resolved: combatant.resolved,
-        declared: this.#drafts.get(turn.id) ?? combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "",
-        choosing: turn.isOwner && (this.#choosing === turn.id),
-        actions: keys.map((key) => ({
-          key,
-          label: game.i18n.localize(`CAIRN.Dungeon.Action.${key}`),
-          rule: game.i18n.localize(`CAIRN.Dungeon.ActionRule.${key}`)
-        })),
+        declared,
+        taskId,
+        task: taskName.get(taskId) ?? "",
+        // A player is asked outright; the Warden owns every row, and a button on each of them
+        // would bury the party's words under the Warden's prompts.
+        prompt: turn.isOwner && !game.user.isGM && !declared,
         ...movement,
         canRevert: !!combatant.token?.isOwner && (movement.moved > 0),
         pace,
@@ -199,16 +228,25 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     }
     rows.sort((a, b) => a.name.localeCompare(b.name));
 
-    const hurried = rows.some((r) => r.beyondTorch);
-    const event = combat.system.event;
+    const names = (list) => game.i18n.getListFormatter().format(list);
+    const lit = DUNGEON_TRIGGERS.filter((key) => triggers[key]);
     return {
       rows,
-      event: event ? { ...event, exhaustion: event.kind === "exhaustion" } : null,
       warden: game.user.isGM,
+      tasks: tasks.map((t) => ({
+        ...t,
+        marks: Array.from({ length: t.effort }, (_, index) => ({ index, n: index + 1, done: index < t.spent })),
+        progress: game.i18n.localize("CAIRN.Dungeon.TaskProgress", { spent: t.spent, effort: t.effort }),
+        helpers: names(rows.filter((r) => r.taskId === t.id).map((r) => r.name))
+      })),
       triggers: DUNGEON_TRIGGERS.map((key) => ({
-        label: game.i18n.localize(`CAIRN.Dungeon.Trigger.${key}`),
-        lit: (key === "hurry") && hurried
-      }))
+        key,
+        lit: triggers[key],
+        word: game.i18n.localize(`CAIRN.Dungeon.TriggerWord.${key}`),
+        tip: game.i18n.localize(`CAIRN.Dungeon.Trigger.${key}`)
+      })),
+      anyLit: lit.length > 0,
+      event: event ? { ...event, exhaustion: event.kind === "exhaustion" } : null
     };
   }
 
@@ -232,51 +270,130 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       options = { ...options, renderData: undefined };
     }
     await super._onRender(context, options);
-    this.#bindDeclarations();
   }
 
   /**
-   * A dungeon row's declaration. It is written when the player commits it (`change`: Enter, or
-   * leaving the field) — one flag write per declaration rather than one per keystroke, each of
-   * which would re-render every client's tracker. The owner may write their combatant's flags,
-   * the permission the acted mark already relies on.
+   * Light or put out one of the four Dungeon Event triggers. The Warden's alone, and only a mark:
+   * nothing rolls because one is lit, and the roll stays a click of its own.
    */
-  #bindDeclarations() {
-    for (const input of this.element.querySelectorAll("input.cairn-declared")) {
-      const { combatantId } = input.closest("[data-combatant-id]")?.dataset ?? {};
-      if (!combatantId) continue;
-      if (this.#drafts.has(combatantId) && (document.activeElement === input)) {
-        input.setSelectionRange(input.value.length, input.value.length);
-      }
-      input.addEventListener("input", () => this.#drafts.set(combatantId, input.value));
-      input.addEventListener("change", async () => {
-        this.#drafts.delete(combatantId);
-        const combatant = this.viewed?.combatants.get(combatantId);
-        if (combatant?.isOwner) await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED, input.value.trim());
-      });
-    }
-  }
-
-  /**
-   * End the dungeon turn. When a token moved past torchlight — the one Dungeon Event trigger the
-   * client can see — and no event was drawn this turn, the Warden is asked first, because the
-   * turn change empties the event slot and the moment to roll for this turn goes with it. A
-   * question, never a gate: "If appropriate, the Warden should roll" (`procedures.md`).
-   */
-  static async #onNextDungeonTurn() {
+  static async #onToggleTrigger(event, target) {
     const combat = this.viewed;
-    if (!combat?.isDungeon) return;
-    const hurried = combat.combatants.some((c) => ["hurry", "over"].includes(paceOf(movedThisTurn(c.token))));
-    if (hurried && !combat.system.event) {
-      const proceed = await foundry.applications.api.DialogV2.confirm({
-        classes: [SYSTEM_ID],
-        window: { title: "CAIRN.Dungeon.NextTurn" },
-        content: `<p>${game.i18n.localize("CAIRN.Dungeon.NextTurnUnrolled")}</p>`,
-        rejectClose: false
-      });
-      if (!proceed) return;
+    const { key } = target.dataset;
+    if (!game.user.isGM || !combat?.isDungeon || !DUNGEON_TRIGGERS.includes(key)) return;
+    await combat.update({ [`system.triggers.${key}`]: !combat.system.triggers[key] });
+  }
+
+  /**
+   * A player's declaration: what their character does this turn, in their own words, and the
+   * ongoing work they lend a hand to, if any. Both land on the Combatant in one write — the flags
+   * its owner may write without the GM.
+   *
+   * The actions are offered as ideas: picking one starts the sentence with its name, and the
+   * field stays free text. Shaking off panic is the one idea with a roll of its own: "A
+   * _panicked_ character must make a **WIL** **save** to overcome their condition as an
+   * **action** on their **turn**" (`procedures.md` → Panic), rolled once the declaration is made.
+   */
+  static async #onDeclareDungeon(event, target) {
+    const combat = this.viewed;
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
+    const combatant = combat?.combatants.get(combatantId);
+    if (!combat?.isDungeon || !combatant?.isOwner) return;
+    const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
+    const chosen = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
+    const names = (list) => game.i18n.getListFormatter().format(list);
+    const content = await foundry.applications.handlebars.renderTemplate(DECLARE_TPL, {
+      declared: combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "",
+      ideas: keys.map((key) => ({
+        key,
+        label: game.i18n.localize(`CAIRN.Dungeon.Action.${key}`),
+        rule: game.i18n.localize(`CAIRN.Dungeon.ActionRule.${key}`),
+        risky: RISKY_ACTIONS.has(key)
+      })),
+      tasks: combat.system.tasks.map((t) => {
+        const helpers = combat.combatants.filter((c) => (c.id !== combatant.id)
+          && (c.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) === t.id)).map((c) => c.name);
+        return {
+          id: t.id,
+          name: t.name,
+          chosen: t.id === chosen,
+          info: helpers.length
+            ? game.i18n.localize("CAIRN.Dungeon.TaskInfoHelped", { spent: t.spent, effort: t.effort, names: names(helpers) })
+            : game.i18n.localize("CAIRN.Dungeon.TaskProgress", { spent: t.spent, effort: t.effort })
+        };
+      })
+    });
+    const result = await foundry.applications.api.DialogV2.input({
+      classes: [SYSTEM_ID],
+      window: { title: game.i18n.localize("CAIRN.Dungeon.DeclareTitle", { name: combatant.name }) },
+      position: { width: 480 },
+      content,
+      render: (_event, dialog) => wireDeclaration(dialog.element),
+      ok: { label: game.i18n.localize("CAIRN.Dungeon.Declare") },
+      rejectClose: false
+    });
+    if (!result) return;
+    await combatant.update({
+      [`flags.${SYSTEM_ID}`]: {
+        [COMBAT_FLAGS.DECLARED]: String(result.declared ?? "").trim(),
+        [COMBAT_FLAGS.TASK]: result.task || ""
+      }
+    });
+    if ((result.idea === "panic") && combatant.actor && await rollSave(combatant.actor, "WIL")) {
+      await combatant.actor.toggleStatusEffect(CONDITION.PANICKED, { active: false });
     }
-    await combat.nextRound();
+  }
+
+  /**
+   * Ongoing work: something that takes several turns of effort, which several characters can
+   * share in one turn. The Warden names it and says how many turns it takes.
+   */
+  static async #onAddTask() {
+    const combat = this.viewed;
+    if (!game.user.isGM || !combat?.isDungeon) return;
+    const content = `
+      <div class="cairn-field">
+        <label>${game.i18n.localize("CAIRN.Dungeon.TaskName")}</label>
+        <input type="text" name="name" autofocus>
+      </div>
+      <div class="cairn-field">
+        <label>${game.i18n.localize("CAIRN.Dungeon.TaskEffort")}</label>
+        <input type="number" name="effort" value="2" min="1" max="${MAX_EFFORT}" step="1">
+      </div>`;
+    const result = await foundry.applications.api.DialogV2.input({
+      classes: [SYSTEM_ID],
+      window: { title: game.i18n.localize("CAIRN.Dungeon.AddTask") },
+      content,
+      ok: { label: game.i18n.localize("CAIRN.Dungeon.AddTask") },
+      rejectClose: false
+    });
+    const name = String(result?.name ?? "").trim();
+    if (!name) return;
+    const effort = Math.clamp(Math.round(Number(result.effort) || 1), 1, MAX_EFFORT);
+    await combat.update({
+      "system.tasks": [...combat.system.tasks, { id: foundry.utils.randomID(), name, effort, spent: 0 }]
+    });
+  }
+
+  /** Strike a task off the list, done or abandoned. */
+  static async #onDeleteTask(event, target) {
+    const combat = this.viewed;
+    const { taskId } = target.closest("[data-task-id]")?.dataset ?? {};
+    if (!game.user.isGM || !combat?.isDungeon || !taskId) return;
+    await combat.update({ "system.tasks": combat.system.tasks.filter((t) => t.id !== taskId) });
+  }
+
+  /**
+   * Fill in a task's turns of effort up to the mark clicked, or empty it back to there when it
+   * is already filled — so a mark is set or taken back by the same click.
+   */
+  static async #onMarkEffort(event, target) {
+    const combat = this.viewed;
+    const { taskId } = target.closest("[data-task-id]")?.dataset ?? {};
+    const index = Number(target.dataset.index);
+    if (!game.user.isGM || !combat?.isDungeon || !Number.isInteger(index)) return;
+    const tasks = combat.system.tasks.map((t) => (t.id !== taskId) ? t
+      : { ...t, spent: (index < t.spent) ? index : index + 1 });
+    await combat.update({ "system.tasks": tasks });
   }
 
   /**
@@ -363,46 +480,16 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   /**
    * Tick or untick a combatant's action for this round. The write lands on the Combatant, whose
    * owner may update its flags without the GM (`Combatant` permissions, v14) — which is what lets
-   * a player mark their own row with no socket involved.
+   * a player mark their own row in a fight with no socket involved.
    */
   static async #onToggleResolved(event, target) {
     const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
+    // In an exploration the mark is the Warden's: everyone acts at once, and "narrated" only
+    // says whose action the Warden has already resolved at the table.
+    if (this.viewed.isDungeon && !game.user.isGM) return;
     await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.RESOLVED, !combatant.resolved);
-  }
-
-  /**
-   * Open or close a dungeon row's action list. One list at a time: opening a row's closes any
-   * other, so the column never grows by more than one list.
-   */
-  static #onToggleDungeonActions(event, target) {
-    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
-    this.#choosing = (this.#choosing === combatantId) ? null : (combatantId ?? null);
-    this.render();
-  }
-
-  /**
-   * Declare the picked action: its name replaces whatever the field held, and the field stays
-   * free text — the SRD's list is examples ("such as … etc."), not the menu of what is allowed.
-   *
-   * Shaking off panic is the one action with a roll of its own: "A _panicked_ character must make
-   * a **WIL** **save** to overcome their condition as an **action** on their **turn**"
-   * (`procedures.md` → Panic). The list closes before the dice, so it is not left open behind the
-   * card.
-   */
-  static async #onChooseDungeonAction(event, target) {
-    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
-    const { key } = target.dataset;
-    const combatant = this.viewed?.combatants.get(combatantId);
-    if (!combatant?.isOwner || !key) return;
-    this.#choosing = null;
-    this.#drafts.delete(combatantId);
-    this.render();
-    if ((key === "panic") && combatant.actor && await rollSave(combatant.actor, "WIL")) {
-      await combatant.actor.toggleStatusEffect(CONDITION.PANICKED, { active: false });
-    }
-    await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED, game.i18n.localize(`CAIRN.Dungeon.Action.${key}`));
   }
 
   /** The header's help mark opens the Rules Summary, whose Dungeon section is the full text. */

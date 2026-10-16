@@ -349,7 +349,14 @@ export const COMBAT_FLAGS = {
    * "The players then declare their character's intended movements and actions"). Cleared
    * alongside RESOLVED.
    */
-  DECLARED: "declared"
+  DECLARED: "declared",
+
+  /**
+   * In a dungeon exploration, the id of the ongoing work (`DungeonCombatData#tasks`) this
+   * character lends a hand to this turn, or `""`. Cleared alongside RESOLVED: a player chooses
+   * again every turn.
+   */
+  TASK: "task"
 };
 
 /**

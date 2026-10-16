@@ -8,6 +8,7 @@
 import { COMBAT_FLAGS, FIGHT_FLAGS, MORALE_FLAGS, SYSTEM_ID } from "../constants.js";
 import { moraleTriggers } from "../combat/morale.js";
 import { postMoraleReminder } from "../rolls.js";
+import { DUNGEON_TRIGGERS } from "../data/combat-dungeon.js";
 
 /**
  * Cairn 2e combat.
@@ -182,12 +183,14 @@ export class CairnCombat extends Combat {
   /**
    * @inheritDoc
    *
-   * A dungeon's event belongs to the turn it was drawn in, so any change of turn — forward, back,
-   * or the exploration beginning — empties it in the same write that moves the round.
+   * A dungeon's event and its lit triggers belong to the turn they were drawn and lit in, so any
+   * change of turn — forward, back, or the exploration beginning — empties them in the same write
+   * that moves the round.
    */
   _preUpdate(changes, options, user) {
     if (this.isDungeon && ("round" in changes) && (changes.round !== this.round)) {
       foundry.utils.setProperty(changes, "system.event", null);
+      foundry.utils.setProperty(changes, "system.triggers", Object.fromEntries(DUNGEON_TRIGGERS.map((key) => [key, false])));
     }
     return super._preUpdate(changes, options, user);
   }
@@ -225,7 +228,7 @@ export class CairnCombat extends Combat {
 
   /**
    * Hand every combatant its action back, and clear the first-round DEX save and a dungeon turn's
-   * declaration with it, in one write.
+   * declaration and chosen task with it, in one write.
    *
    * The flags are set rather than deleted: one `updateEmbeddedDocuments` call means one database
    * round trip and one tracker re-render, where an unset per combatant would mean N of each. The
@@ -240,7 +243,8 @@ export class CairnCombat extends Combat {
         _id: c.id,
         [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.RESOLVED}`]: false,
         [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.DEX_SAVE}`]: null,
-        [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.DECLARED}`]: ""
+        [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.DECLARED}`]: "",
+        [`flags.${SYSTEM_ID}.${COMBAT_FLAGS.TASK}`]: ""
       }))
     );
   }

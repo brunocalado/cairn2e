@@ -1,0 +1,46 @@
+{{!-- A player's declaration for one dungeon turn (`procedures.md` → Dungeon Exploration Cycle:
+      "The players then declare their character's intended movements and actions").
+
+      The words come first and are the player's own. The SRD's actions follow as ideas — "such as
+      … etc.", examples and never a menu — each with its rule, and a click only starts the
+      sentence. Then the ongoing work they may lend a hand to, every task unchosen until clicked. --}}
+<div class="cairn-declare-dialog">
+    <p class="cairn-declare-lead">{{localize "CAIRN.Dungeon.DeclareLead"}}</p>
+    <p class="cairn-declare-free">{{{localize "CAIRN.Dungeon.LookingIsFree"}}}</p>
+
+    <div class="cairn-field">
+        <label for="cairn-declared">{{localize "CAIRN.Dungeon.InYourWords"}}</label>
+        <textarea id="cairn-declared" name="declared" rows="3" autofocus
+                  placeholder="{{localize "CAIRN.Dungeon.DeclarePlaceholder"}}">{{declared}}</textarea>
+    </div>
+    <input type="hidden" name="idea" value="">
+
+    <div class="cairn-declare-heading">
+        <span class="cairn-field-label">{{localize "CAIRN.Dungeon.Ideas"}}</span>
+        <span class="cairn-declare-aside">{{localize "CAIRN.Dungeon.IdeasAside"}}</span>
+    </div>
+    <div class="cairn-declare-ideas">
+        {{#each ideas}}
+            <button type="button" class="cairn-declare-idea" data-idea="{{key}}" data-label="{{label}}" aria-pressed="false">
+                <strong>{{label}}</strong>
+                <span>{{rule}}</span>
+                {{#if risky}}<em>{{localize "CAIRN.Dungeon.MayDrawEvent"}}</em>{{/if}}
+            </button>
+        {{/each}}
+    </div>
+
+    {{#if tasks.length}}
+        <div class="cairn-declare-heading">
+            <span class="cairn-field-label">{{localize "CAIRN.Dungeon.LendAHand"}}</span>
+        </div>
+        <div class="cairn-choice cairn-declare-tasks" role="radiogroup" aria-label="{{localize "CAIRN.Dungeon.LendAHand"}}">
+            {{#each tasks}}
+                <label class="cairn-choice-option cairn-declare-task">
+                    <input type="radio" name="task" value="{{id}}" {{checked chosen}} />
+                    <strong>{{name}}</strong>
+                    <span>{{info}}</span>
+                </label>
+            {{/each}}
+        </div>
+    {{/if}}
+</div>
