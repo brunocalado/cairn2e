@@ -92,10 +92,15 @@
        in the ruled field, the ideas, the ongoing work. The words come first and are the widest
        thing in the window; the ideas are lighter than buttons — a faint frame that takes the ink
        when pressed — because they are suggestions, not the choices on offer. */
+    /* Whatever the work list grows to, the window never outgrows the screen: the body scrolls
+       and the Declare button stays in reach. Both axes named (trap 11). */
     .cairn-declare-dialog {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        max-height: calc(100vh - 160px);
+        overflow: hidden auto;
+        padding-right: 4px;
 
         p {
             line-height: 1.4;
@@ -154,7 +159,7 @@
     .cairn-declare-ideas {
         display: grid;
         gap: 4px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     /* `[data-idea]` for the weight against Primitive 2's (0,2,1). */
@@ -197,11 +202,11 @@
         opacity: 0.8;
     }
 
-    /* The tasks: Primitive 2's segmented run, one option to a line with its name over its
-       progress, so the chosen one inverts to ink as any chosen option does. */
+    /* The tasks: Primitive 2's segmented run, each option as wide as its name over its progress,
+       side by side and wrapping — a cloud, so a long list costs lines and not one line each. The
+       chosen one inverts to ink as any chosen option does. */
     .cairn-declare-tasks {
-        flex-direction: column;
-        flex-wrap: nowrap;
+        align-items: stretch;
     }
 
     .cairn-choice-option.cairn-declare-task {

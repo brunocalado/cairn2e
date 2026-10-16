@@ -332,7 +332,8 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const result = await foundry.applications.api.DialogV2.input({
       classes: [SYSTEM_ID],
       window: { title: game.i18n.localize("CAIRN.Dungeon.DeclareTitle", { name: combatant.name }) },
-      position: { width: 480 },
+      // Wide and short: the eight ideas sit four to a row, so the window fits a laptop's height.
+      position: { width: 760 },
       content,
       render: (_event, dialog) => wireDeclaration(dialog.element),
       ok: { label: game.i18n.localize("CAIRN.Dungeon.Declare") },
