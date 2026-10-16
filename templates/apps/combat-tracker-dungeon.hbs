@@ -1,15 +1,10 @@
 {{!-- A dungeon exploration's rows, drawn inside the tracker's one `<ol>` (the part may produce a
       single top-level element, so everything here is an `<li>`).
 
-      Laid out in the order of `procedures.md` → Dungeon Exploration Cycle, each step headed and
-      said in one line: the Warden describes; the players declare and the Warden resolves them
-      simultaneously; the resources are recorded and, if appropriate, the Warden rolls a Dungeon
-      Event. Nothing here rolls, gates or decides on anyone's behalf. --}}
-<li class="cairn-combat-side cairn-dungeon-step">{{localize "CAIRN.Dungeon.Step.describe"}}</li>
-<li class="cairn-dungeon-note">{{localize "CAIRN.Dungeon.StepNote.describe"}}</li>
-
-<li class="cairn-combat-side cairn-dungeon-step">{{localize "CAIRN.Dungeon.Step.declare"}}</li>
-<li class="cairn-dungeon-note">{{localize "CAIRN.Dungeon.StepNote.declare"}}</li>
+      Three headed blocks, in the order of `procedures.md` → Dungeon Exploration Cycle: the party
+      declaring and being resolved, the ongoing work, and the Dungeon Event. The cycle itself is
+      the header's help mark. Nothing here rolls, gates or decides on anyone's behalf. --}}
+<li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Party"}}</li>
 
 {{#each dungeon.rows}}
     <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}}"
@@ -86,14 +81,14 @@
       turn. The Warden names it and fills the turns in by hand; the players choose it in their
       declaration. Shown to the players only when there is some. --}}
 {{#if (or dungeon.warden dungeon.tasks.length)}}
+    <li class="cairn-combat-side cairn-dungeon-block cairn-dungeon-tasks-head">
+        <span>{{localize "CAIRN.Dungeon.Tasks"}}</span>
+        {{#if dungeon.warden}}
+            <button type="button" class="inline-control icon fa-solid fa-plus" data-action="addTask"
+                    data-tooltip aria-label="{{localize "CAIRN.Dungeon.AddTask"}}"></button>
+        {{/if}}
+    </li>
     <li class="cairn-dungeon-tasks">
-        <div class="cairn-dungeon-tasks-head">
-            <span class="cairn-dungeon-label">{{localize "CAIRN.Dungeon.Tasks"}}</span>
-            {{#if dungeon.warden}}
-                <button type="button" class="inline-control icon fa-solid fa-plus" data-action="addTask"
-                        data-tooltip aria-label="{{localize "CAIRN.Dungeon.AddTask"}}"></button>
-            {{/if}}
-        </div>
         {{#each dungeon.tasks}}
             <div class="cairn-dungeon-task" data-task-id="{{id}}">
                 <div class="cairn-dungeon-task-name">
@@ -132,8 +127,7 @@
     </li>
 {{/if}}
 
-<li class="cairn-combat-side cairn-dungeon-step">{{localize "CAIRN.Dungeon.Step.close"}}</li>
-<li class="cairn-dungeon-note">{{localize "CAIRN.Dungeon.StepNote.close"}}</li>
+<li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Events"}}</li>
 
 {{!-- The four triggers, one word each in a 2×2 grid, the full clause in the tooltip. The Warden
       lights them; the players see the same grid and cannot press it, because the cost is theirs
@@ -150,12 +144,16 @@
     {{#if dungeon.warden}}
         {{!-- Filled when something is lit, hollow when nothing is: the roll is always one click,
               and it is still there mid-turn — the Warden's Guide rolls in the middle of Freya's
-              action, not at the end of the cycle. --}}
-        <button type="button" class="cairn-dungeon-roll {{#unless dungeon.anyLit}}is-quiet{{/unless}}"
-                data-action="rollDungeonEvent">
-            <i class="fa-solid fa-dice-d6" inert></i>{{localize "CAIRN.Dungeon.RollEvent"}}
-        </button>
-        <p class="cairn-dungeon-hint">{{localize (ifThen dungeon.anyLit "CAIRN.Dungeon.RollHintLit" "CAIRN.Dungeon.RollHintNone")}}</p>
+              action, not at the end of the cycle. Beside it, the square picks the row instead. --}}
+        <div class="cairn-dungeon-roll-row">
+            <button type="button" class="cairn-dungeon-roll {{#unless dungeon.anyLit}}is-quiet{{/unless}}"
+                    data-action="rollDungeonEvent">
+                <i class="fa-solid fa-dice-d6" inert></i>{{localize "CAIRN.Dungeon.RollEvent"}}
+            </button>
+            <button type="button" class="cairn-dungeon-choose fa-solid fa-list-ul"
+                    data-action="chooseDungeonEvent" data-tooltip
+                    aria-label="{{localize "CAIRN.Dungeon.ChooseEvent"}}"></button>
+        </div>
 
         {{!-- The event drawn this turn, until the turn changes. Exhaustion is the one row that
               writes to the sheets, and only when the Warden presses the party's choice. --}}

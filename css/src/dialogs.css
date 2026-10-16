@@ -318,11 +318,12 @@
      * Monster generator — the tier picker dialog.                           *
      **************************************************************************/
 
-    /* Four tier choices with descriptive labels read better stacked than in a row. Narrowed to
-       the tier picker by its own class: written as `&.application.dialog` it would stack EVERY
+    /* Four tier choices with descriptive labels read better stacked than in a row, and so do the
+       six Dungeon Event rows the Warden picks from. Narrowed to the two pickers by their own
+       classes: written as `&.application.dialog` it would stack EVERY
        dialog's buttons vertically, since every dialog the system opens carries
        `classes: [SYSTEM_ID]` — including two-button confirms. */
-    &.cairn-tier-picker .form-footer {
+    &:is(.cairn-tier-picker, .cairn-event-picker) .form-footer {
         flex-direction: column;
         align-items: stretch;
 

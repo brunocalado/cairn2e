@@ -733,6 +733,40 @@ export async function drawDungeonEvent() {
   const row = results?.[0];
   if (!row) return null;
   await table.toMessage(results, { messageOptions: { messageMode: WARDEN_ONLY } });
+  return dungeonEventOf(row);
+}
+
+/**
+ * The Warden picks the `Dungeon Event` row instead of rolling it — the result the fiction already
+ * calls for. Not a roll, so nothing is drawn; the picked row is whispered to the Wardens on the
+ * same card a draw posts, so the log reads the same either way. Closing the picker picks nothing.
+ * @returns {Promise<{kind: string, name: string, text: string}|null>}
+ */
+export async function chooseDungeonEvent() {
+  const table = await findTable(TABLES.DUNGEON_EVENT);
+  if (!table) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Dungeon.NoTable", { uuid: TABLES.DUNGEON_EVENT }));
+    return null;
+  }
+  const rows = table.results.contents.sort((a, b) => a.range[0] - b.range[0]);
+  const id = await foundry.applications.api.DialogV2.wait({
+    classes: [SYSTEM_ID, "cairn-event-picker"],
+    window: { title: game.i18n.localize("CAIRN.Dungeon.ChooseEvent") },
+    buttons: rows.map((row) => ({ action: row.id, label: `${row.range[0]} \u00b7 ${String(row.name ?? "").trim()}` })),
+    rejectClose: false
+  });
+  const row = table.results.get(id ?? "");
+  if (!row) return null;
+  await table.toMessage([row], { messageOptions: { messageMode: WARDEN_ONLY } });
+  return dungeonEventOf(row);
+}
+
+/**
+ * A `Dungeon Event` row as the tracker keeps it: its marker, which is what the tracker acts on,
+ * and its words, which are only printed.
+ * @param {TableResult} row
+ */
+function dungeonEventOf(row) {
   return {
     kind: row.flags?.[SYSTEM_ID]?.event ?? "",
     name: String(row.name ?? "").trim(),

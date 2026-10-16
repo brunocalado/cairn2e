@@ -6,7 +6,7 @@
  */
 
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
-import { drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
+import { chooseDungeonEvent, drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { eatFood } from "../journey.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { DUNGEON_TRIGGERS, MAX_EFFORT } from "../data/combat-dungeon.js";
@@ -121,6 +121,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     actions: {
       createDungeon: CairnCombatTracker.#onCreateDungeon,
       rollDungeonEvent: CairnCombatTracker.#onRollDungeonEvent,
+      chooseDungeonEvent: CairnCombatTracker.#onChooseDungeonEvent,
       toggleTrigger: CairnCombatTracker.#onToggleTrigger,
       declareDungeon: CairnCombatTracker.#onDeclareDungeon,
       addTask: CairnCombatTracker.#onAddTask,
@@ -418,6 +419,14 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const combat = this.viewed;
     if (!combat?.isDungeon) return;
     const event = await drawDungeonEvent();
+    if (event) await combat.update({ "system.event": event });
+  }
+
+  /** The Warden picks the event the fiction calls for, and it is kept as a rolled one is. */
+  static async #onChooseDungeonEvent() {
+    const combat = this.viewed;
+    if (!game.user.isGM || !combat?.isDungeon) return;
+    const event = await chooseDungeonEvent();
     if (event) await combat.update({ "system.event": event });
   }
 

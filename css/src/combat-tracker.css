@@ -220,14 +220,24 @@
      * this is core's chrome, and it follows the user's theme.              *
      **************************************************************************/
 
-    /* A step's one line under its heading: what happens in it, in the panel's soft ink. */
-    .cairn-dungeon-note {
-        color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
-        font-family: var(--cairn-serif);
-        font-size: 11px;
-        line-height: 1.35;
-        list-style: none;
-        padding: 0 8px 4px;
+    /* The exploration's three blocks — the party, the ongoing work, the Dungeon Event — each
+       opens on the side heading at full weight, over the structural rule, with air above it: a
+       block ends where the next heading's rule begins, never on a hairline between two rows. */
+    .cairn-combat-side.cairn-dungeon-block {
+        border-bottom: var(--cairn-rule) solid var(--cairn-surface-fg);
+        color: var(--cairn-surface-fg);
+        font-weight: 700;
+        margin-top: 14px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .cairn-dungeon-tasks-head {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
     }
 
     /* The row's body is one grid of three lines and three columns: the name, this turn's distance
@@ -389,7 +399,7 @@
         border-top: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
     }
 
-    .cairn-dungeon-note + .cairn-dungeon-row {
+    .cairn-combat-side + .cairn-dungeon-row {
         border-top: none;
     }
 
@@ -489,7 +499,6 @@
        and who is on it this turn. A mark is hollow until it is spent and solid after, the
        narrated switch's two shapes — at 14px two shades of grey would read as one. */
     .cairn-dungeon-tasks {
-        border-top: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
         color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
         font-family: var(--cairn-serif);
         font-size: 11px;
@@ -502,7 +511,6 @@
         text-transform: uppercase;
     }
 
-    .cairn-dungeon-tasks-head,
     .cairn-dungeon-task-name {
         align-items: center;
         display: flex;
@@ -533,6 +541,7 @@
         flex: none;
     }
 
+    .cairn-dungeon-tasks-head button.inline-control.icon,
     .cairn-dungeon-tasks button.inline-control.icon {
         --button-size: 20px;
         font-size: 11px;
@@ -642,8 +651,26 @@
         margin-right: 6px;
     }
 
-    .cairn-dungeon-roll {
+    /* The roll and, beside it, the square that picks the row instead. */
+    .cairn-dungeon-roll-row {
+        display: flex;
+        gap: 4px;
         margin-top: 6px;
+
+        .cairn-dungeon-roll {
+            flex: 1 1 auto;
+        }
+    }
+
+    .cairn-dungeon-roll-row button.cairn-dungeon-choose {
+        --button-background-color: transparent;
+        --button-text-color: var(--cairn-surface-fg);
+        flex: 0 0 auto;
+        font-family: var(--font-awesome);
+        font-size: 13px;
+        letter-spacing: 0;
+        padding: 0;
+        width: var(--button-size);
     }
 
     /* Nothing lit: hollow, as the button reads under the pointer — still one click away, since
@@ -651,11 +678,6 @@
     .cairn-dungeon-close button.cairn-dungeon-roll.is-quiet {
         --button-background-color: transparent;
         --button-text-color: var(--cairn-surface-fg);
-    }
-
-    .cairn-dungeon-hint {
-        margin: 3px 0 0;
-        text-align: center;
     }
 
     /* The drawn row: its name in full ink and bold, its words after it in the panel's soft ink. */
