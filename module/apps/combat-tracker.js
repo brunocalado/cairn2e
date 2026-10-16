@@ -226,7 +226,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         task: taskName.get(taskId) ?? "",
         // A player is asked outright; the Warden owns every row, and a button on each of them
         // would bury the party's words under the Warden's prompts.
-        prompt: turn.isOwner && !game.user.isGM && !declared,
+        prompt: combat.started && turn.isOwner && !game.user.isGM && !declared,
         ...movement,
         canRevert: !!combatant.token?.isOwner && (movement.moved > 0),
         pace,
@@ -241,6 +241,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const lit = DUNGEON_TRIGGERS.filter((key) => triggers[key]);
     return {
       rows,
+      started: combat.started,
       warden: game.user.isGM,
       tasks: tasks.map((t) => ({
         ...t,
@@ -289,7 +290,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   static async #onToggleTrigger(event, target) {
     const combat = this.viewed;
     const { key } = target.dataset;
-    if (!game.user.isGM || !combat?.isDungeon || !DUNGEON_TRIGGERS.includes(key)) return;
+    if (!game.user.isGM || !combat?.isDungeon || !combat.started || !DUNGEON_TRIGGERS.includes(key)) return;
     await combat.update({ [`system.triggers.${key}`]: !combat.system.triggers[key] });
   }
 
@@ -307,7 +308,8 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const combat = this.viewed;
     const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = combat?.combatants.get(combatantId);
-    if (!combat?.isDungeon || !combatant?.isOwner) return;
+    // No turn before Begin Exploring, so nothing to declare for.
+    if (!combat?.isDungeon || !combat.started || !combatant?.isOwner) return;
     const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
     const chosen = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
     const names = (list) => game.i18n.getListFormatter().format(list);
@@ -511,7 +513,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     if (!combatant) return;
     // In an exploration the mark is the Warden's: everyone acts at once, and "narrated" only
     // says whose action the Warden has already resolved at the table.
-    if (this.viewed.isDungeon && !game.user.isGM) return;
+    if (this.viewed.isDungeon && (!game.user.isGM || !this.viewed.started)) return;
     await combatant.setFlag(SYSTEM_ID, COMBAT_FLAGS.RESOLVED, !combatant.resolved);
   }
 

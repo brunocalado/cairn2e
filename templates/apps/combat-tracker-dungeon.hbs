@@ -3,7 +3,11 @@
 
       Three headed blocks, in the order of `procedures.md` → Dungeon Exploration Cycle: the party
       declaring and being resolved, the ongoing work, and the Dungeon Event. The cycle itself is
-      the header's help mark. Nothing here rolls, gates or decides on anyone's behalf. --}}
+      the header's help mark. Nothing here rolls, gates or decides on anyone's behalf.
+
+      Before Begin Exploring there is no turn, so nothing that belongs to one is drawn: no
+      declaration, no narrated mark, no Dungeon Event. The cycle begins with the Warden's
+      description, and a declaration made ahead of it would have no cycle to belong to. --}}
 <li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Party"}}</li>
 
 {{#each dungeon.rows}}
@@ -37,6 +41,7 @@
                 {{/if}}
             </span>
 
+            {{#if @root.dungeon.started}}
             {{#if prompt}}
                 <button type="button" class="cairn-dungeon-declare" data-action="declareDungeon">{{localize "CAIRN.Dungeon.DeclarePrompt"}}</button>
             {{else if declared}}
@@ -44,9 +49,10 @@
             {{else}}
                 <p class="cairn-declared is-waiting">{{localize "CAIRN.Dungeon.Waiting"}}</p>
             {{/if}}
+            {{/if}}
 
             <span class="cairn-dungeon-slot is-edit">
-                {{#if isOwner}}{{#unless prompt}}
+                {{#if (and isOwner @root.dungeon.started)}}{{#unless prompt}}
                     <button type="button" class="inline-control combatant-control icon fa-solid fa-feather"
                             data-action="declareDungeon" data-tooltip
                             aria-label="{{localize "CAIRN.Dungeon.DeclareEdit"}}"></button>
@@ -64,6 +70,7 @@
               `activateCombatant` selects and pans to the token on any click in the row that is
               not on an input or a button. Everyone sees the state; only the Warden sets it. --}}
         <div class="cairn-combat-acted">
+            {{#if @root.dungeon.started}}
             <button type="button" class="cairn-switch cairn-acted-switch" role="switch"
                     aria-checked="{{#if resolved}}true{{else}}false{{/if}}"
                     data-action="toggleResolved" data-tooltip
@@ -71,6 +78,7 @@
                     {{#unless @root.dungeon.warden}}disabled{{/unless}}>
                 <span class="cairn-switch-track"><span class="cairn-switch-knob"></span></span>
             </button>
+            {{/if}}
         </div>
     </li>
 {{/each}}
@@ -128,7 +136,7 @@
 {{!-- The Dungeon Event block is the Warden's alone (maintainer's call, 2026-10-16): the cost is
       said aloud at the table, and the panel is the Warden's reminder of it. The four triggers,
       one word each in a 2×2 grid, the full clause in the tooltip; a lit one is only a mark. --}}
-{{#if dungeon.warden}}
+{{#if (and dungeon.warden dungeon.started)}}
 <li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Events"}}</li>
 
 <li class="cairn-dungeon-close">
