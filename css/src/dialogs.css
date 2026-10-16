@@ -94,10 +94,23 @@
         flex-direction: column;
         gap: 8px;
 
-        > .cairn-field-label {
+        > .cairn-field-label,
+        > .cairn-field > label {
             font-size: 11px;
             letter-spacing: var(--cairn-label-track);
             text-transform: uppercase;
+        }
+
+        /* The name's label over its field, as the declaration's is, so both rows start at the
+           window's edge rather than one of them past the field primitive's 120px gutter. */
+        > .cairn-field {
+            gap: 4px;
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        /* The twelve counts share the width equally, so the run ends where the window does. */
+        .cairn-choice-option {
+            flex: 1 1 0;
         }
     }
 
