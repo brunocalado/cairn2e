@@ -88,6 +88,19 @@
         }
     }
 
+    /* A piece of ongoing work: its name, then its turns of effort as a segmented run. */
+    .cairn-task-dialog {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        > .cairn-field-label {
+            font-size: 11px;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+        }
+    }
+
     /* A dungeon turn's declaration: the lead and the free-looking line, the player's own words
        in the ruled field, the ideas, the ongoing work. The words come first and are the widest
        thing in the window; the ideas are lighter than buttons — a faint frame that takes the ink

@@ -1,0 +1,18 @@
+{{!-- The Warden names a piece of ongoing work and says how many turns of effort it takes. The
+      count is a closed range, so it is Primitive 2's segmented run, not a number field: a click,
+      and never a value the DataModel would refuse. --}}
+<div class="cairn-task-dialog">
+    <div class="cairn-field">
+        <label for="cairn-task-name">{{localize "CAIRN.Dungeon.TaskName"}}</label>
+        <input type="text" id="cairn-task-name" name="name" maxlength="{{maxLength}}" autofocus>
+    </div>
+    <div class="cairn-field-label">{{localize "CAIRN.Dungeon.TaskEffort"}}</div>
+    <div class="cairn-choice" role="radiogroup" aria-label="{{localize "CAIRN.Dungeon.TaskEffort"}}">
+        {{#each efforts as |n|}}
+            <label class="cairn-choice-option">
+                <input type="radio" name="effort" value="{{n}}" data-dtype="Number" {{checked (eq n 2)}} />
+                <span>{{n}}</span>
+            </label>
+        {{/each}}
+    </div>
+</div>

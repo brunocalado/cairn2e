@@ -39,6 +39,11 @@ const DECLARE_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-declare-dialog.
 /** A declaration is a line or two, never a paragraph: two lines of the dialog's field hold this. */
 const DECLARATION_MAX = 120;
 
+const TASK_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-task-dialog.hbs`;
+
+/** A task's name is a label in a narrow sidebar column, not a description. */
+const TASK_NAME_MAX = 40;
+
 /**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
  * every turn start. Measured through the token's own path measurement rather than by adding the
@@ -239,6 +244,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       tasks: tasks.map((t) => ({
         ...t,
         marks: Array.from({ length: t.effort }, (_, index) => ({ index, n: index + 1, done: index < t.spent })),
+        // The marks are the count; the words are for a screen reader only.
         progress: game.i18n.localize("CAIRN.Dungeon.TaskProgress", { spent: t.spent, effort: t.effort }),
         helpers: names(rows.filter((r) => r.taskId === t.id).map((r) => r.name))
       })),
@@ -359,23 +365,22 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   static async #onAddTask() {
     const combat = this.viewed;
     if (!game.user.isGM || !combat?.isDungeon) return;
-    const content = `
-      <div class="cairn-field">
-        <label>${game.i18n.localize("CAIRN.Dungeon.TaskName")}</label>
-        <input type="text" name="name" autofocus>
-      </div>
-      <div class="cairn-field">
-        <label>${game.i18n.localize("CAIRN.Dungeon.TaskEffort")}</label>
-        <input type="number" name="effort" value="2" min="1" max="${MAX_EFFORT}" step="1">
-      </div>`;
+    // A bare `<div>`, not a string, so `cleanHTML` leaves the name's `maxlength` in place.
+    const content = document.createElement("div");
+    content.innerHTML = await foundry.applications.handlebars.renderTemplate(TASK_TPL, {
+      maxLength: TASK_NAME_MAX,
+      efforts: Array.from({ length: MAX_EFFORT }, (_, i) => i + 1)
+    });
     const result = await foundry.applications.api.DialogV2.input({
       classes: [SYSTEM_ID],
       window: { title: game.i18n.localize("CAIRN.Dungeon.AddTask") },
+      // Wide enough for the twelve counts on one line.
+      position: { width: 460 },
       content,
       ok: { label: game.i18n.localize("CAIRN.Dungeon.AddTask") },
       rejectClose: false
     });
-    const name = String(result?.name ?? "").trim();
+    const name = String(result?.name ?? "").trim().slice(0, TASK_NAME_MAX);
     if (!name) return;
     const effort = Math.clamp(Math.round(Number(result.effort) || 1), 1, MAX_EFFORT);
     await combat.update({

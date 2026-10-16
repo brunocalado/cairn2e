@@ -520,10 +520,17 @@
             border-top: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
         }
 
+        /* A name with no space in it still wraps inside the column, and the × keeps its place. */
         strong {
             color: var(--cairn-surface-fg);
             font-size: 12px;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
+    }
+
+    .cairn-dungeon-task-name button {
+        flex: none;
     }
 
     .cairn-dungeon-tasks button.inline-control.icon {
@@ -559,11 +566,6 @@
             background: var(--cairn-surface-fg);
             border-color: var(--cairn-surface-fg);
         }
-    }
-
-    .cairn-dungeon-progress {
-        font-variant-numeric: tabular-nums;
-        margin-left: 4px;
     }
 
     .cairn-dungeon-fight-row {
