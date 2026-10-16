@@ -288,6 +288,7 @@
         .cairn-dungeon-declare {
             grid-column: 1 / -1;
             grid-row: 2;
+            justify-self: start;
         }
 
         .cairn-dungeon-helping {
@@ -328,21 +329,18 @@
         }
     }
 
-    /* The player's own row before they have declared: the panel's filled button, as a card
-       action is labelled — capitals, a glyph — because it is the one thing asked of them. */
+    /* The player's own row before they have declared: the panel's filled button, in capitals,
+       as wide as its one word and no wider, so it reads as a control and not a banner. */
     .cairn-dungeon-row button.cairn-dungeon-declare {
         font-family: var(--cairn-serif);
         font-size: 11px;
         height: auto;
         letter-spacing: var(--cairn-label-track);
         margin: 2px 0;
-        min-height: 24px;
+        min-height: 22px;
+        padding: 0 10px;
         text-transform: uppercase;
-        width: 100%;
-
-        i {
-            margin-right: 6px;
-        }
+        width: auto;
     }
 
     /* The work a character lends a hand to this turn: Primitive 8's tag in the panel's ink. */
@@ -592,8 +590,8 @@
     }
 
     /* The four triggers as a 2×2 grid of one-word buttons. Out, a hollow frame in soft ink; lit,
-       the panel's filled button — weight and ink, no hue. On a player's panel the same grid is
-       read and not pressed. `[data-action]` for the weight against the filled-button rule. */
+       the panel's filled button — weight and ink, no hue. `[data-action]` for the weight against
+       the filled-button rule. */
     .cairn-dungeon-triggers {
         display: grid;
         gap: 4px;
@@ -612,11 +610,6 @@
         height: 30px;
         letter-spacing: var(--cairn-label-track);
         text-transform: uppercase;
-
-        &:disabled {
-            cursor: default;
-            opacity: 1;
-        }
     }
 
     .cairn-dungeon-triggers button.cairn-dungeon-trigger[aria-pressed="true"] {
