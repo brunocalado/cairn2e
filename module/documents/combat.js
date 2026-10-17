@@ -225,6 +225,18 @@ export class CairnCombat extends Combat {
   }
 
   /**
+   * @override — the tracker's "Reset Initiative" clears what stands in for initiative here.
+   *
+   * 2e has no initiative score: the opening roll is each PC's first-round DEX save, kept in a flag
+   * core never touches, so core's reset left every row's mark and action tick in place.
+   * @param {object} [options]
+   */
+  async resetAll(options) {
+    await this.clearResolved();
+    return super.resetAll(options);
+  }
+
+  /**
    * Hand every combatant its action back, and clear the first-round DEX save and a dungeon turn's
    * declaration and chosen task with it, in one write.
    *
