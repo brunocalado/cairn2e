@@ -22,8 +22,9 @@ export const MAX_EFFORT = 12;
  *
  * `triggers` are the four reasons to roll, as the Warden lit them this turn. Nothing lights one
  * but the Warden and nothing reads one to roll: "If appropriate, the Warden should roll … Keep
- * common sense in mind". They are stored rather than kept on the Warden's client so the players
- * see them too — "Players should always be made aware of the cost" (`dungeon-exploration.md`).
+ * common sense in mind". They are the Warden's alone on screen — the cost is said aloud at the
+ * table — and stored on the Combat rather than on one client, so a reload or a second Warden
+ * finds them lit.
  *
  * `CairnCombat#_preUpdate` puts them out whenever the turn changes, so none outlives its turn.
  * The Dungeon Event drawn is not kept here: its card in the Warden's chat is the record.
