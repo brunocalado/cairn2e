@@ -136,7 +136,8 @@
 
 {{!-- The Dungeon Event block is the Warden's alone (maintainer's call, 2026-10-16): the cost is
       said aloud at the table, and the panel is the Warden's reminder of it. The four triggers,
-      one word each in a 2×2 grid, the full clause in the tooltip; a lit one is only a mark. --}}
+      one word each in a 2×2 grid, the full clause in the tooltip; a lit one is only a mark. Then
+      the roll, and the costs the table charges. --}}
 {{#if (and dungeon.warden dungeon.started)}}
 <li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Events"}}</li>
 
@@ -161,19 +162,17 @@
                     aria-label="{{localize "CAIRN.Dungeon.ChooseEvent"}}"></button>
         </div>
 
-        {{!-- The event drawn this turn, until the turn changes. Exhaustion is the one row that
-              writes to the sheets, and only when the Warden presses the party's choice. --}}
-        {{#if dungeon.event}}
-            <div class="cairn-dungeon-event">
-                <span class="cairn-dungeon-label">{{localize "CAIRN.Dungeon.ThisEvent"}}</span>
-                <p><strong>{{dungeon.event.name}}</strong> {{dungeon.event.text}}</p>
-            </div>
-            {{#if dungeon.event.exhaustion}}
-                <div class="cairn-dungeon-exhaustion">
-                    <button type="button" data-action="exhaustionFatigue">{{localize "CAIRN.Dungeon.AddFatigue"}}</button>
-                    <button type="button" data-action="exhaustionRation">{{localize "CAIRN.Dungeon.EatRation"}}</button>
-                </div>
+        {{!-- What the Dungeon Events table charges: Exhaustion's Fatigue and ration, Loss's
+              light. Always there, because the fiction charges them on any turn; each asks who
+              pays, so the Warden can let anyone off. Light only where the light-sources module
+              draws the lights — without it there is nothing to put out. The drawn event itself
+              stays in the Warden's chat. --}}
+        <div class="cairn-dungeon-costs">
+            <button type="button" data-action="spendFatigue" data-tooltip-text="{{localize "CAIRN.Dungeon.FatigueTip"}}">{{localize "CAIRN.Dungeon.Fatigue"}}</button>
+            <button type="button" data-action="spendRation" data-tooltip-text="{{localize "CAIRN.Dungeon.RationTip"}}">{{localize "CAIRN.Dungeon.Ration"}}</button>
+            {{#if dungeon.lights}}
+                <button type="button" data-action="putOutLights" data-tooltip-text="{{localize "CAIRN.Dungeon.LightTip"}}">{{localize "CAIRN.Dungeon.Light"}}</button>
             {{/if}}
-        {{/if}}
+        </div>
 </li>
 {{/if}}

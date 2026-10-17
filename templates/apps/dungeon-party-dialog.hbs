@@ -1,0 +1,11 @@
+{{!-- Who pays a cost the dungeon charges — a Fatigue, a ration, a light. One switch per
+      character, every one of them on: the party pays by default, and the Warden turns off whoever
+      the story lets off. `note` is what the cost lands on, where there is one (the burning torch). --}}
+<div class="cairn-party-dialog">
+    {{#each members}}
+        <div class="cairn-field">
+            <label for="cairn-payer-{{id}}">{{name}}{{#if note}} <span class="cairn-party-note">{{note}}</span>{{/if}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" id=(concat "cairn-payer-" id) field=id value=true}}
+        </div>
+    {{/each}}
+</div>

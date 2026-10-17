@@ -20,16 +20,13 @@ export const MAX_EFFORT = 12;
  * (`TokenDocument#_shouldRecordMovementHistory`), and the history is what tells the Warden who
  * moved past torchlight this turn.
  *
- * `event` is the Dungeon Event drawn this turn, kept for the Warden's eyes in the tracker. It
- * carries the row's marker and its words: the marker is what the tracker acts on (Exhaustion's
- * two buttons), the words are only what it prints.
- *
  * `triggers` are the four reasons to roll, as the Warden lit them this turn. Nothing lights one
  * but the Warden and nothing reads one to roll: "If appropriate, the Warden should roll … Keep
  * common sense in mind". They are stored rather than kept on the Warden's client so the players
  * see them too — "Players should always be made aware of the cost" (`dungeon-exploration.md`).
  *
- * `CairnCombat#_preUpdate` empties both whenever the turn changes, so neither outlives its turn.
+ * `CairnCombat#_preUpdate` puts them out whenever the turn changes, so none outlives its turn.
+ * The Dungeon Event drawn is not kept here: its card in the Warden's chat is the record.
  *
  * `tasks` is the ongoing work that takes several turns of effort — "some actions may take
  * multiple turns to complete" (`procedures.md` → Actions) — which several characters can share
@@ -39,11 +36,6 @@ export const MAX_EFFORT = 12;
 export class DungeonCombatData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
-      event: new fields.SchemaField({
-        kind: new fields.StringField({ required: true, blank: true }),
-        name: new fields.StringField({ required: true, blank: true }),
-        text: new fields.StringField({ required: true, blank: true })
-      }, { nullable: true, initial: null }),
       triggers: new fields.SchemaField(Object.fromEntries(
         DUNGEON_TRIGGERS.map((key) => [key, new fields.BooleanField({ initial: false })])
       )),

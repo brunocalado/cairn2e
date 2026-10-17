@@ -137,3 +137,34 @@ export async function carryLight(giver, arrived) {
   const { lit } = await ls.handOverLight(from, to);
   if (!lit) ui.notifications.warn(game.i18n.localize("CAIRN.Barter.LightOut", { item: from.name, name: to.parent.name }));
 }
+
+/** Whether the module draws the lights here, so the dungeon tracker offers putting them out. */
+export const lightsDrawn = () => !!game.modules.get(MODULE)?.active;
+
+/**
+ * Which of these actors has a light burning, and what it burns on — the people a Loss can reach
+ * ("Torches are blown out", `procedures.md` → Dungeon Events). Empty without the module: the
+ * system draws no light of its own, so there is none to put out.
+ * @param {Actor[]} actors
+ * @returns {Promise<{actor: Actor, item: string}[]>}
+ */
+export async function burningLights(actors) {
+  if (!lightsDrawn()) return [];
+  const ls = await api();
+  if (!ls) return [];
+  return actors.flatMap((actor) => {
+    const lit = ls.getActive(actor);
+    return lit ? [{ actor, item: lit.itemName ?? "" }] : [];
+  });
+}
+
+/**
+ * Put out the light burning on an actor, as the Token HUD's extinguish does: silently, and a torch
+ * keeps the time it had left for its next lighting (the module's `deactivate`). The GM's client
+ * reaches any actor; the module refuses one the user does not own.
+ * @param {Actor} actor
+ */
+export async function putOutLight(actor) {
+  const ls = await api();
+  if (ls) await ls.deactivate(actor);
+}

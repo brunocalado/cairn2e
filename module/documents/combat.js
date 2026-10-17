@@ -183,13 +183,11 @@ export class CairnCombat extends Combat {
   /**
    * @inheritDoc
    *
-   * A dungeon's event and its lit triggers belong to the turn they were drawn and lit in, so any
-   * change of turn — forward, back, or the exploration beginning — empties them in the same write
-   * that moves the round.
+   * A dungeon's lit triggers belong to the turn they were lit in, so any change of turn — forward,
+   * back, or the exploration beginning — puts them out in the same write that moves the round.
    */
   _preUpdate(changes, options, user) {
     if (this.isDungeon && ("round" in changes) && (changes.round !== this.round)) {
-      foundry.utils.setProperty(changes, "system.event", null);
       foundry.utils.setProperty(changes, "system.triggers", Object.fromEntries(DUNGEON_TRIGGERS.map((key) => [key, false])));
     }
     return super._preUpdate(changes, options, user);

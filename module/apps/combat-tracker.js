@@ -8,6 +8,7 @@
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
 import { chooseDungeonEvent, drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { eatFood } from "../journey.js";
+import { burningLights, lightsDrawn, putOutLight } from "../light-sources.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { DUNGEON_TRIGGERS, MAX_EFFORT } from "../data/combat-dungeon.js";
 
@@ -44,6 +45,8 @@ const TASK_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-task-dialog.hbs`;
 
 /** A task's name is a label in a narrow sidebar column, not a description. */
 const TASK_NAME_MAX = 40;
+
+const PARTY_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-party-dialog.hbs`;
 
 /**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
@@ -129,8 +132,9 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       deleteTask: CairnCombatTracker.#onDeleteTask,
       markEffort: CairnCombatTracker.#onMarkEffort,
       startFight: CairnCombatTracker.#onStartFight,
-      exhaustionFatigue: CairnCombatTracker.#onExhaustionFatigue,
-      exhaustionRation: CairnCombatTracker.#onExhaustionRation,
+      spendFatigue: CairnCombatTracker.#onSpendFatigue,
+      spendRation: CairnCombatTracker.#onSpendRation,
+      putOutLights: CairnCombatTracker.#onPutOutLights,
       toggleResolved: CairnCombatTracker.#onToggleResolved,
       revertMovement: CairnCombatTracker.#onRevertMovement,
       openRules: CairnCombatTracker.#onOpenRules,
@@ -208,7 +212,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    * @param {object[]} turns  core's entries, one per visible combatant
    */
   #dungeonContext(combat, turns) {
-    const { tasks, triggers, event } = combat.system;
+    const { tasks, triggers } = combat.system;
     const taskName = new Map(tasks.map((t) => [t.id, t.name]));
     const rows = [];
     for (const turn of turns) {
@@ -258,7 +262,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         tip: game.i18n.localize(`CAIRN.Dungeon.Trigger.${key}`)
       })),
       anyLit: lit.length > 0,
-      event: event ? { ...event, exhaustion: event.kind === "exhaustion" } : null
+      lights: lightsDrawn()
     };
   }
 
@@ -415,61 +419,106 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   }
 
   /**
-   * Draw a Dungeon Event and keep it on the exploration until the turn changes. The Warden
-   * decides when — the SRD's four triggers are only reminders — so this is only ever a click.
+   * Draw a Dungeon Event onto the Warden's chat. The Warden decides when — the SRD's four
+   * triggers are only reminders — so this is only ever a click.
    */
   static async #onRollDungeonEvent() {
-    const combat = this.viewed;
-    if (!combat?.isDungeon) return;
-    const event = await drawDungeonEvent();
-    if (event) await combat.update({ "system.event": event });
+    if (!game.user.isGM || !this.viewed?.isDungeon) return;
+    await drawDungeonEvent();
   }
 
-  /** The Warden picks the event the fiction calls for, and it is kept as a rolled one is. */
+  /** The Warden picks the event the fiction calls for, posted as a rolled one is. */
   static async #onChooseDungeonEvent() {
+    if (!game.user.isGM || !this.viewed?.isDungeon) return;
+    await chooseDungeonEvent();
+  }
+
+  /**
+   * The costs the Dungeon Events table charges, on the Warden's button and never on a draw:
+   * Exhaustion's Fatigue and ration ("The party must rest …, add a Fatigue, or consume a ration";
+   * resting is the sheet's own Rest) and Loss's light ("Torches are blown out"). Always there, for
+   * a cost the fiction charges on any turn, and each asks who pays — the whole party by default,
+   * and the Warden lets off whoever the story does.
+   */
+  static async #onSpendFatigue() {
+    await CairnCombatTracker.#chargeParty(this.viewed, "CAIRN.Dungeon.WhoFatigue",
+      async (actor) => (await actor.addFatigue()).length > 0,
+      "CAIRN.Dungeon.FatigueAdded", "CAIRN.Dungeon.FatigueNoRoom");
+  }
+
+  static async #onSpendRation() {
+    await CairnCombatTracker.#chargeParty(this.viewed, "CAIRN.Dungeon.WhoRation", eatFood,
+      "CAIRN.Dungeon.RationEaten", "CAIRN.Dungeon.RationNone");
+  }
+
+  /**
+   * Put out the lights the Warden picks, from those burning in the party, and say whose on the
+   * card Fatigue and ration post — the module puts a light out without a word in chat.
+   */
+  static async #onPutOutLights() {
     const combat = this.viewed;
     if (!game.user.isGM || !combat?.isDungeon) return;
-    const event = await chooseDungeonEvent();
-    if (event) await combat.update({ "system.event": event });
+    const burning = await burningLights(CairnCombatTracker.#party(combat));
+    if (!burning.length) {
+      ui.notifications.info(game.i18n.localize("CAIRN.Dungeon.NoLights"));
+      return;
+    }
+    const chosen = await CairnCombatTracker.#choosePayers("CAIRN.Dungeon.WhoLight",
+      burning.map(({ actor, item }) => ({ actor, note: item })));
+    if (!chosen.length) return;
+    for (const actor of chosen) await putOutLight(actor);
+    await postJourneyCard({
+      flavor: game.i18n.localize("CAIRN.Dungeon.Events"),
+      lines: [game.i18n.localize("CAIRN.Dungeon.LightsOut", { names: game.i18n.getListFormatter().format(chosen.map((a) => a.name)) })]
+    });
+  }
+
+  /** The party's characters, once each: the adventurers' rows that have an actor. */
+  static #party(combat) {
+    return [...new Set(combat.combatants.filter((c) => c.isAdventurer && c.actor).map((c) => c.actor))];
   }
 
   /**
-   * Exhaustion: "The party must rest (triggering another roll on this table), add a **Fatigue**,
-   * or consume a ration." The party chooses; these are the two that write to a sheet — resting is
-   * the sheet's own Rest. Either one spends the event: its marker is emptied and its words stay on
-   * screen, so the buttons go and a second click cannot charge the party twice.
+   * Ask which of these pay, every one of them on at first. Closing the window pays nobody.
+   * @param {string} titleKey
+   * @param {{actor: Actor, note?: string}[]} members
+   * @returns {Promise<Actor[]>}
    */
-  static async #onExhaustionFatigue() {
-    await CairnCombatTracker.#spendExhaustion(this.viewed, async (actor) => (await actor.addFatigue()).length > 0,
-      "CAIRN.Dungeon.FatigueLead", "CAIRN.Dungeon.FatigueAdded", "CAIRN.Dungeon.FatigueNoRoom");
-  }
-
-  static async #onExhaustionRation() {
-    await CairnCombatTracker.#spendExhaustion(this.viewed, eatFood,
-      "CAIRN.Dungeon.RationLead", "CAIRN.Dungeon.RationEaten", "CAIRN.Dungeon.RationNone");
+  static async #choosePayers(titleKey, members) {
+    const content = document.createElement("div");
+    content.innerHTML = await foundry.applications.handlebars.renderTemplate(PARTY_TPL, {
+      members: members.map(({ actor, note }) => ({ id: actor.id, name: actor.name, note: note ?? "" }))
+    });
+    const result = await foundry.applications.api.DialogV2.input({
+      classes: [SYSTEM_ID],
+      window: { title: game.i18n.localize(titleKey) },
+      content,
+      rejectClose: false
+    });
+    return result ? members.filter(({ actor }) => result[actor.id]).map(({ actor }) => actor) : [];
   }
 
   /**
-   * Charge every adventurer once and post one card that says who paid and who could not — a body
-   * with no free slot refuses a Fatigue (`documents/item.js`), a pack with no Rations has none to
-   * eat, and what happens then is the table's call.
+   * Charge whoever the Warden picks once, and post one card that says who paid and who could
+   * not — a body with no free slot refuses a Fatigue (`documents/item.js`), a pack with no Rations
+   * has none to eat, and what happens then is the table's call.
    * @param {CairnCombat} combat
+   * @param {string} titleKey
    * @param {(actor: Actor) => Promise<boolean>} charge  resolves whether the actor paid
    */
-  static async #spendExhaustion(combat, charge, leadKey, paidKey, unpaidKey) {
-    if (!combat?.isDungeon || (combat.system.event?.kind !== "exhaustion")) return;
-    await combat.update({ "system.event.kind": "" });
-    const actors = new Set(combat.combatants.filter((c) => c.isAdventurer && c.actor).map((c) => c.actor));
+  static async #chargeParty(combat, titleKey, charge, paidKey, unpaidKey) {
+    if (!game.user.isGM || !combat?.isDungeon) return;
+    const chosen = await CairnCombatTracker.#choosePayers(titleKey,
+      CairnCombatTracker.#party(combat).map((actor) => ({ actor })));
+    if (!chosen.length) return;
     const paid = [];
     const unpaid = [];
-    for (const actor of actors) ((await charge(actor)) ? paid : unpaid).push(actor.name);
+    for (const actor of chosen) ((await charge(actor)) ? paid : unpaid).push(actor.name);
     const names = (list) => game.i18n.getListFormatter().format(list);
     const lines = [];
     if (paid.length) lines.push(game.i18n.localize(paidKey, { names: names(paid) }));
     if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: names(unpaid) }));
-    // Escaped: the event's name is a table row's, which a Warden may have typed, and the flavor is
-    // drawn as markup.
-    await postJourneyCard({ flavor: foundry.utils.escapeHTML(combat.system.event.name), lead: game.i18n.localize(leadKey), lines });
+    await postJourneyCard({ flavor: game.i18n.localize("CAIRN.Dungeon.Events"), lines });
   }
 
   /**

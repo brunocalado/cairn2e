@@ -513,11 +513,6 @@
         padding: 4px 8px;
     }
 
-    .cairn-dungeon-label {
-        letter-spacing: var(--cairn-label-track);
-        text-transform: uppercase;
-    }
-
     .cairn-dungeon-task-name {
         align-items: center;
         display: flex;
@@ -589,7 +584,7 @@
         padding: 6px 8px 0;
     }
 
-    /* Closing the turn: the four triggers, the roll and the event drawn. */
+    /* Closing the turn: the four triggers, the roll and the costs it charges. */
     .cairn-dungeon-close {
         color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
         font-family: var(--cairn-serif);
@@ -635,12 +630,11 @@
         font-weight: 700;
     }
 
-    /* The fight, the roll, the declaration's prompt and the Exhaustion choices are the panel's
-       filled buttons (the rule at the top of this block), full width in the narrow sidebar, with
-       a card action's capital label. */
+    /* The fight, the roll and the declaration's prompt are the panel's filled buttons (the rule
+       at the top of this block), full width in the narrow sidebar, with a card action's capital
+       label. */
     .cairn-dungeon-fight,
-    .cairn-dungeon-roll,
-    .cairn-dungeon-exhaustion button {
+    .cairn-dungeon-roll {
         font-family: var(--cairn-serif);
         font-size: 11px;
         letter-spacing: var(--cairn-label-track);
@@ -682,25 +676,25 @@
         --button-text-color: var(--cairn-surface-fg);
     }
 
-    /* The drawn row: its name in full ink and bold, its words after it in the panel's soft ink. */
-    .cairn-dungeon-event {
-        border-top: var(--cairn-hairline) solid color-mix(in srgb, var(--cairn-surface-fg) 28%, transparent);
-        margin-top: 6px;
-        padding-top: 4px;
-
-        p {
-            margin: 2px 0 0;
-        }
-
-        strong {
-            color: var(--cairn-surface-fg);
-        }
-    }
-
-    .cairn-dungeon-exhaustion {
+    /* The costs, one word each on one line under the roll, in the hollow frame the square beside
+       the roll wears: a hand on the sheets the Warden reaches for, never the turn's main move.
+       Two or three, sharing the width. */
+    .cairn-dungeon-costs {
         display: flex;
-        flex-direction: column;
         gap: 4px;
         margin-top: 6px;
+    }
+
+    .cairn-dungeon-costs button[data-action] {
+        --button-background-color: transparent;
+        --button-text-color: var(--cairn-surface-fg);
+        flex: 1 1 0;
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        height: 26px;
+        letter-spacing: var(--cairn-label-track);
+        min-width: 0;
+        padding: 0 4px;
+        text-transform: uppercase;
     }
 }

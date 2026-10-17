@@ -114,6 +114,20 @@
         }
     }
 
+    /* Who pays a dungeon's cost: one row per character, the name in the field primitive's gutter
+       and the switch in its track, as any form's on/off row. What the cost lands on — the torch
+       burning — follows the name in the soft ink. */
+    .cairn-party-dialog {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .cairn-party-note {
+        color: var(--cairn-ink-soft);
+        font-style: italic;
+    }
+
     /* A dungeon turn's declaration: the lead and the free-looking line, the player's own words
        in the ruled field, the ideas, the ongoing work. The words come first and are the widest
        thing in the window; the ideas are lighter than buttons — a faint frame that takes the ink

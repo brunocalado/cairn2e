@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 import { SYSTEM_ID, FLAGS, CONDITION, TABLES, TABLES_PACK_ID, WARDEN_PACK_ID } from "./constants.js";
-import { findTable, loadPack, stripTags } from "./helpers.js";
+import { findTable, loadPack } from "./helpers.js";
 import { slotsForItem } from "./data/_derived.js";
 import { scheduleInk } from "./ink.js";
 import { isPublic } from "./calendar-notes.js";
@@ -714,39 +714,33 @@ export async function postNameCard({ name, formula }) {
 /**
  * Draw `Dungeon Event` (`procedures.md` → Dungeon Events) for the dungeon tracker. The card is
  * whispered to the Wardens: the row is their material to narrate, and the party meets the result
- * rather than reading it. What comes back is the row as the tracker keeps it — its marker, which
- * is what the tracker acts on, and its words, which are only printed. Missing table → a warning.
+ * rather than reading it, and the card is all the record there is. Missing table → a warning.
  *
  * The card carries the drawn row and no Roll. Core shows every player a whispered message that
  * holds a Roll, with its content hidden (`ChatMessage#visible`), so a "gm" draw still put a
  * private-roll card in the party's log each time the Warden rolled — telling them the dungeon had
  * just been asked about them. Without the Roll the message reaches the Wardens alone.
- * @returns {Promise<{kind: string, name: string, text: string}|null>}
  */
 export async function drawDungeonEvent() {
   const table = await findTable(TABLES.DUNGEON_EVENT);
   if (!table) {
     ui.notifications.warn(game.i18n.localize("CAIRN.Dungeon.NoTable", { uuid: TABLES.DUNGEON_EVENT }));
-    return null;
+    return;
   }
   const { results } = await table.draw({ displayChat: false });
-  const row = results?.[0];
-  if (!row) return null;
-  await table.toMessage(results, { messageOptions: { messageMode: WARDEN_ONLY } });
-  return dungeonEventOf(row);
+  if (results?.length) await table.toMessage(results, { messageOptions: { messageMode: WARDEN_ONLY } });
 }
 
 /**
  * The Warden picks the `Dungeon Event` row instead of rolling it — the result the fiction already
  * calls for. Not a roll, so nothing is drawn; the picked row is whispered to the Wardens on the
  * same card a draw posts, so the log reads the same either way. Closing the picker picks nothing.
- * @returns {Promise<{kind: string, name: string, text: string}|null>}
  */
 export async function chooseDungeonEvent() {
   const table = await findTable(TABLES.DUNGEON_EVENT);
   if (!table) {
     ui.notifications.warn(game.i18n.localize("CAIRN.Dungeon.NoTable", { uuid: TABLES.DUNGEON_EVENT }));
-    return null;
+    return;
   }
   const rows = table.results.contents.sort((a, b) => a.range[0] - b.range[0]);
   const id = await foundry.applications.api.DialogV2.wait({
@@ -756,22 +750,7 @@ export async function chooseDungeonEvent() {
     rejectClose: false
   });
   const row = table.results.get(id ?? "");
-  if (!row) return null;
-  await table.toMessage([row], { messageOptions: { messageMode: WARDEN_ONLY } });
-  return dungeonEventOf(row);
-}
-
-/**
- * A `Dungeon Event` row as the tracker keeps it: its marker, which is what the tracker acts on,
- * and its words, which are only printed.
- * @param {TableResult} row
- */
-function dungeonEventOf(row) {
-  return {
-    kind: row.flags?.[SYSTEM_ID]?.event ?? "",
-    name: String(row.name ?? "").trim(),
-    text: stripTags(row.description)
-  };
+  if (row) await table.toMessage([row], { messageOptions: { messageMode: WARDEN_ONLY } });
 }
 
 /**
