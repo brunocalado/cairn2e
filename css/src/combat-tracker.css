@@ -209,7 +209,7 @@
 
     .combatant.is-deprived {
         --cairn-deprived-motion: cairn-wither 4s ease-in-out infinite;
-        --cairn-withered: grayscale(0.85) sepia(0.35) brightness(0.7);
+        --cairn-withered: grayscale(0.85) sepia(0.4) contrast(0.6) brightness(0.65);
     }
 
     .combatant.is-deprived .token-image {
@@ -790,8 +790,9 @@
 }
 
 /* The colour drains over a second and a half, holds, and comes back: the return is what the eye
-   catches in a still column. Grey, darker and a little brown, a withered look rather than a
-   photograph's black and white. */
+   catches in a still column. Grey, a little brown, flatter and darker, a withered look rather than
+   a photograph's black and white. The contrast and the brightness are what a portrait already in
+   black and white still shows: it has no colour to lose, but it goes washed out and dim. */
 @keyframes cairn-wither {
     0%, 100% { filter: none; }
     40%, 70% { filter: var(--cairn-withered); }
