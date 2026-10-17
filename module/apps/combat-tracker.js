@@ -6,7 +6,7 @@
  */
 
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
-import { chooseDungeonEvent, drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
+import { chooseDungeonEvent, drawDungeonEvent, postJourneyCard, rollFirstRoundSave, rollMorale, rollSave } from "../rolls.js";
 import { eatFood } from "../journey.js";
 import { burningLights, putOutLight } from "../light-sources.js";
 import { CairnRulesSummary } from "./rules-summary.js";
@@ -595,8 +595,12 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    * rule's letter says "each PC", but circumstances that negate the requirement are the Warden's
    * to judge, so the control is a prompt the table can ignore rather than a gate.
    *
-   * `rollSave` posts the card itself, and the result is written to the combatant the roller
-   * already owns — which is why the player rolls their own die with no GM in the loop.
+   * `rollFirstRoundSave` posts the card itself, and the result is written to the combatant the
+   * roller already owns — which is why the player rolls their own die with no GM in the loop.
+   *
+   * A panicked character "does not act in the first round of combat" (`procedures.md` → Panic),
+   * so the roll asks first rather than refusing: the Warden may still allow it, and the card then
+   * says it was rolled through Panic.
    *
    * A failure also ticks the action mark: "PCs that fail their save lose their turn" — the
    * round has nothing left for them to do, and the side's heading should stop waiting on them.
@@ -606,7 +610,19 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant?.actor) return;
-    const passed = await rollSave(combatant.actor, "DEX");
+    const panicked = !!combatant.actor.system.panicked;
+    if (panicked) {
+      const proceed = await foundry.applications.api.DialogV2.confirm({
+        classes: [SYSTEM_ID],
+        window: { title: "CAIRN.Combat.PanicTitle" },
+        // A name is the player's own text and DialogV2 parses `content` as HTML.
+        content: `<p>${game.i18n.localize("CAIRN.Combat.PanicConfirm", { name: foundry.utils.escapeHTML(combatant.actor.name) })}</p>`,
+        rejectClose: false,
+        modal: true
+      });
+      if (!proceed) return;
+    }
+    const passed = await rollFirstRoundSave(combatant.actor, { panicked });
     const flags = { [COMBAT_FLAGS.DEX_SAVE]: passed ? "passed" : "failed" };
     if (!passed) flags[COMBAT_FLAGS.RESOLVED] = true;
     await combatant.update({ [`flags.${SYSTEM_ID}`]: flags });

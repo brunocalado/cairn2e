@@ -176,6 +176,31 @@ export async function rollSave(actor, key) {
 }
 
 /**
+ * The first-round DEX save (`core-rules.md` → Rounds): "PCs that fail their save lose their turn
+ * for this round". The caption names it, so it never reads as a DEX save on a risky act, and the
+ * line under the roll says what the result means for the round — the failure only until the next,
+ * as Lucius in `wardens-guide/combat.md` acts again in round two.
+ *
+ * A panicked character "does not act in the first round of combat" (`procedures.md` → Panic). The
+ * roll is still allowed, because the Warden may rule otherwise, but the card says it was rolled
+ * through Panic, so nobody reads the success as the rule's.
+ * @param {Actor} actor
+ * @param {{panicked?: boolean}} [options]
+ * @returns {Promise<boolean>} whether the save passed
+ */
+export async function rollFirstRoundSave(actor, { panicked = false } = {}) {
+  const { roll, passed } = await evaluateSave(actor.system.abilities.DEX.value);
+  const outcome = game.i18n.localize(passed ? "CAIRN.Combat.FirstRoundActs" : "CAIRN.Combat.FirstRoundLoses");
+  await postSaveRoll(roll, {
+    actor,
+    flavor: game.i18n.localize("CAIRN.Combat.FirstRoundSave"),
+    passed,
+    outcomeText: panicked ? game.i18n.localize("CAIRN.Combat.FirstRoundPanicked", { outcome }) : outcome
+  });
+  return passed;
+}
+
+/**
  * Morale: a WIL save on the first casualty, at half strength, or (a lone foe) at 0 HP
  * (core-rules.md → Morale). A led group may use its leader's WIL instead of its own — `null` on
  * `system.morale` means "use this actor's own WIL" (actor-npc.js). Not for PCs; the NPC sheet is

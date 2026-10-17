@@ -269,6 +269,10 @@
       "passed": "Passed the first-round DEX save \u2014 acts"
     },
     "DexSavePrompt": "Roll the first-round DEX save",
+    "FirstRoundActs": "Acts this round, before the opponents.",
+    "FirstRoundLoses": "Loses the turn this round, and acts again from the next.",
+    "FirstRoundPanicked": "{outcome} Rolled while panicked, though Panic allows no action in the first round unless the Warden rules otherwise.",
+    "FirstRoundSave": "First-round DEX save",
     "Morale": {
       "firstCasualty": "their first casualty",
       "half": "half their number down",
@@ -277,6 +281,8 @@
       "Hint": "Roll it from the flag on an opponent\u2019s row in the combat tracker."
     },
     "MoralePrompt": "Roll Morale for this opponent",
+    "PanicConfirm": "{name} is panicked, and a panicked character does not act in the first round. Roll the DEX save anyway?",
+    "PanicTitle": "Panicked",
     "Side": {
       "adventurers": "Adventurers",
       "opponents": "Opponents"
