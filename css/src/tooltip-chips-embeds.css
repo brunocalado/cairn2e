@@ -48,6 +48,13 @@
         -webkit-backdrop-filter: none;
     }
 
+    /* Leaving, it is gone at once: core fades a tooltip out over 500ms, which read as the
+       tooltip lingering after the pointer had moved on (maintainer, 2026-10-17). The fade in
+       stays core's. */
+    &.cairn-tooltip:where(:not(.active)) {
+        transition: visibility 0s 100ms, opacity 100ms;
+    }
+
     /**************************************************************************
      * Primitive 11 — the enriched chip.                                     *
      *                                                                       *

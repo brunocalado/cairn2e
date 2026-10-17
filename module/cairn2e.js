@@ -81,6 +81,19 @@ Hooks.once("init", async function () {
   // manager is a singleton. It is one line to revert if it ever gets in the way of a module.
   foundry.helpers.interaction.TooltipManager.TOOLTIP_ACTIVATION_MS = 900;
 
+  // Core waits the same delay again before it hides a tooltip the pointer has left, so the raised
+  // static kept every tooltip on screen almost a second after its element (maintainer, 2026-10-17:
+  // it has to go at once). The wait is private, so this listener closes the tooltip outright. It is
+  // bound before core's (`init` runs ahead of `Game#activateListeners`), and core's own handler
+  // then finds no element and does nothing. A tooltipped ancestor is left to core, which hands
+  // the tooltip up to it rather than hiding it. `game.tooltip` is read at event time: it does not
+  // exist yet during `init`.
+  document.body.addEventListener("pointerleave", event => {
+    if (event.target !== game.tooltip.element) return;
+    if (event.target.parentElement?.closest("[data-tooltip]")) return;
+    game.tooltip.deactivate();
+  }, { capture: true, passive: true });
+
   // Public API for hotbar macros and third-party modules. Named for SYSTEM_ID (CLAUDE.md §4) —
   // upstream's `game.cairn` is gone, so user macros written against it break, which is §0 working
   // as intended. Keep this surface small: every entry is a promise. Documented in README.md.
