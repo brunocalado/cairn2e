@@ -1,3 +1,43 @@
+# 0.2.0
+
+- [Added] **Take damage.** Damage rolled on the table's own dice or behind the Warden's screen is
+  typed in from the Actions menu or the new Take Damage macro in slot 8 of a player's hotbar, and
+  lands exactly as a damage card's Apply: armour, STR overflow, the Critical Damage card, Reverse
+  the hit and a Scar at exactly 0 HP. Confirming with no amount says no damage was taken.
+- [Added] A Stores macro in slot 7 of a new player's hotbar opens the stores open to visits.
+- [Added] A deprived combatant's portrait withers in the combat tracker, its colour draining and
+  coming back slowly, and a panicked one's trembles. Both run on one portrait, each beside its
+  condition's icon, and hold still for anyone who asked for less motion.
+- [Changed] **The dungeon tracker.** An exploration reads in three headed blocks, the party,
+  ongoing work and Dungeon events. A player declares in a dialog of ideas, each with its rule, in
+  one line of at most 50 characters. The Warden lights four one-word triggers, names ongoing work
+  and its turns, rolls or picks the Dungeon Event, and charges Fatigue, a ration or a light to the
+  characters left switched on. Before Begin Exploring a row offers no declaration.
+- [Changed] **Scars.** A Scar is one row and one Roll the Scar button: each die lands in the window
+  and on the Scar's single chat card, the place joins the Scar's name, and the window stays open on
+  the result. Only a hit decides a Scar, so stepping HP down on the sheet is a correction.
+- [Changed] Stores are visited from the Actions menu, and the character sheet no longer draws a
+  Stores chip beside Gold.
+- [Changed] The first-round DEX save card says what the roll means for the round, and a panicked
+  character's roll asks first and says on the card it went through Panic. Reset Initiative clears
+  the DEX saves and the acted marks.
+- [Changed] The tracker header keeps every encounter as a numbered tab, wrapping onto a second line
+  when there are many, and an exploration's number wears the dungeon glyph. A long combatant name
+  ends in an ellipsis with the whole name in its tooltip.
+- [Changed] Light Sources is required, so the dungeon tracker's Light is always there.
+- [Changed] Reset Player Hotbars imports the player macros a world is missing before it fills the
+  hotbars.
+- [Changed] A tooltip goes the moment the pointer leaves its element.
+- [Fixed] A Scar card the Warden posted for an absent player can be taken only once; its button
+  says the Scar is already taken.
+- [Fixed] A Scar whose card is deleted while its dice land finishes in a new card instead of
+  stopping with the window stuck on Rolling.
+- [Fixed] Torches are blown out only where a light is exposed: a covered Illuminate is not offered.
+- [Fixed] Two unlinked tokens of one actor each get their own switch when the dungeon charges a
+  cost, and every token is named by its own name in that dialog, its card and the Panic
+  confirmation.
+- [Fixed] A task chosen in the declaration with the arrow keys stays chosen.
+
 # 0.1.6
 
 - [Added] A player's Actions menu has a Stores row while a store is open to visits, beside the
