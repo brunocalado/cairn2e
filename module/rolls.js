@@ -367,8 +367,13 @@ export async function promptApplyRollAsDamage(total) {
  */
 export async function promptTakeDamage(name) {
   const result = await promptDamage({ title: game.i18n.localize("CAIRN.TakeDamage.Title", { name }), askAmount: true });
-  const amount = Math.trunc(Number(result?.amount));
-  if (!result || !Number.isFinite(amount) || amount < 1) return null;
+  if (!result) return null;
+  const amount = Math.trunc(Number(result.amount));
+  // Confirmed with no amount: say so, or the window just shuts and the button looks broken.
+  if (!Number.isFinite(amount) || amount < 1) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.TakeDamage.NoAmount"));
+    return null;
+  }
   return { ...result, amount };
 }
 

@@ -1648,6 +1648,7 @@
   "CAIRN.TakeDamage": {
     "Amount": "Damage",
     "Button": "Take damage",
+    "NoAmount": "No damage taken: type a whole number of 1 or more.",
     "Title": "{name} takes damage"
   },
   "CAIRN.TakeOut": "Take out",
