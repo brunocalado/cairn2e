@@ -85,10 +85,9 @@ async function api(retries = 20, delayMs = 250) {
  */
 export const registerLightSources = () => {
   Hooks.once("ready", async () => {
-    if (!game.modules.get(MODULE)?.active) return;
     const ls = await api();
     if (!ls) {
-      console.warn(`${SYSTEM_ID} | ${MODULE} is active but its API never became available`);
+      console.warn(`${SYSTEM_ID} | ${MODULE} is required but its API never became available`);
       return;
     }
     await ls.registerCompatibility({ itemTypes: ["gear"], chargesPath: "system.uses.value" });
@@ -102,13 +101,13 @@ export const registerLightSources = () => {
 /**
  * Light the source a just-cast spellbook is registered as, if any. Everything that makes the cast
  * a cast — the two hands, the Deprived save, the card, the Fatigue — has already run in the sheet;
- * this is only the flame. Silent when the module is absent or the book is no light. Found by the
+ * this is only the flame. Silent when the book is no light. Found by the
  * copy's `_stats.compendiumSource`: its own uuid is `Actor.….Item.…`, never the compendium key the
  * source is registered under, and its name is whatever a translation made of it.
  */
 export async function lightSpell(actor, item) {
   const entry = LIGHT_SOURCES.find((s) => s.uuid === item._stats?.compendiumSource);
-  if (!entry || !game.modules.get(MODULE)?.active) return;
+  if (!entry) return;
   const ls = await api();
   if (ls) await ls.activate(actor, entry.uuid);
 }
@@ -127,7 +126,6 @@ export async function lightSpell(actor, item) {
  * @param {Record<string, string>} arrived  Each landed source id → the uuid of the copy made of it.
  */
 export async function carryLight(giver, arrived) {
-  if (!game.modules.get(MODULE)?.active) return;
   const ls = await api();
   const burning = ls?.getActive(giver)?.itemId;
   const from = burning && arrived[burning] ? giver.items.get(burning) : null;
@@ -138,18 +136,13 @@ export async function carryLight(giver, arrived) {
   if (!lit) ui.notifications.warn(game.i18n.localize("CAIRN.Barter.LightOut", { item: from.name, name: to.parent.name }));
 }
 
-/** Whether the module draws the lights here, so the dungeon tracker offers putting them out. */
-export const lightsDrawn = () => !!game.modules.get(MODULE)?.active;
-
 /**
  * Which of these actors has a light burning, and what it burns on — the people a Loss can reach
- * ("Torches are blown out", `procedures.md` → Dungeon Events). Empty without the module: the
- * system draws no light of its own, so there is none to put out.
+ * ("Torches are blown out", `procedures.md` → Dungeon Events).
  * @param {Actor[]} actors
  * @returns {Promise<{actor: Actor, item: string}[]>}
  */
 export async function burningLights(actors) {
-  if (!lightsDrawn()) return [];
   const ls = await api();
   if (!ls) return [];
   return actors.flatMap((actor) => {

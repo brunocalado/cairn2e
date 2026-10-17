@@ -164,15 +164,13 @@
 
         {{!-- What the Dungeon Events table charges: Exhaustion's Fatigue and ration, Loss's
               light. Always there, because the fiction charges them on any turn; each asks who
-              pays, so the Warden can let anyone off. Light only where the light-sources module
-              draws the lights — without it there is nothing to put out. The drawn event itself
-              stays in the Warden's chat. --}}
+              pays, so the Warden can let anyone off. Light reaches the lights the light-sources
+              module keeps, which the system requires. The drawn event itself stays in the
+              Warden's chat. --}}
         <div class="cairn-dungeon-costs">
             <button type="button" data-action="spendFatigue" data-tooltip-text="{{localize "CAIRN.Dungeon.FatigueTip"}}">{{localize "CAIRN.Dungeon.Fatigue"}}</button>
             <button type="button" data-action="spendRation" data-tooltip-text="{{localize "CAIRN.Dungeon.RationTip"}}">{{localize "CAIRN.Dungeon.Ration"}}</button>
-            {{#if dungeon.lights}}
-                <button type="button" data-action="putOutLights" data-tooltip-text="{{localize "CAIRN.Dungeon.LightTip"}}">{{localize "CAIRN.Dungeon.Light"}}</button>
-            {{/if}}
+            <button type="button" data-action="putOutLights" data-tooltip-text="{{localize "CAIRN.Dungeon.LightTip"}}">{{localize "CAIRN.Dungeon.Light"}}</button>
         </div>
 </li>
 {{/if}}

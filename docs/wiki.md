@@ -145,18 +145,22 @@ few options for this system:
 
 What a store charges and pays is set on each store (see [§11](#11-stores-and-coin)).
 
+### Required module
+
+[Light Sources](https://github.com/brunocalado/light-sources) comes with the system, and Foundry
+turns it on in every Cairn 2e world. It lights torches, lanterns and candles from the token's
+right-click menu and spends their uses as they burn. A lit torch is the torch itself: remove it
+from the sheet and it goes out, hand it to another character and it arrives lit, and a module
+that carries items onto the map, such as Canvas Loot, takes the flame with it. A table that would
+rather not light anything on the map can still spend a torch's uses by clicking them on the sheet.
+
 ### Recommended modules
 
-All four are optional:
+All three are optional:
 
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls your dice in 3D, including a
   custom Cairn d20. The other dice wear the **Cairn Blood Moon** theme until a player picks
   another one in Dice So Nice's own settings.
-- [Light Sources](https://github.com/brunocalado/light-sources) lights torches, lanterns and
-  candles from the token's right-click menu and spends their uses as they burn. A lit torch is
-  the torch itself: remove it from the sheet and it goes out, hand it to another character and it
-  arrives lit, and a module that carries items onto the map, such as Canvas Loot, takes the flame
-  with it.
 - [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
   [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
   sounds Cairn's weapons, monster attacks and spells. The first time, the system's entries replace
@@ -1030,46 +1034,54 @@ from doing anything, and the Warden decides what happens.
 
 Press the **dungeon** button beside the **+** at the top of the combat tracker. Add the party's
 tokens the usual way (right-click a token and **Toggle Combat State**), then press **Begin
-Exploring**. The tracker counts **turns**, and **Next Turn** starts a new one. If someone moved
-past torchlight this turn and no Dungeon Event was rolled, it asks first. The glyph beside it ends
-the exploration.
+Exploring**. Until then the tracker shows only the party and the ongoing work. The tracker counts
+**turns**, and **Next Turn** starts a new one. The glyph beside it ends the exploration.
 
 ### Each turn
 
-- Each row has a line for what that character **does this turn**. Players fill in their own
-  character's line. The **list** button beside it offers the actions from the rules (search,
-  listen, force a door, move quickly…), each with its rule written under its name; picking one
-  writes it on the line, and the line stays free text, so anything goes.
-- A **Panicked** character also finds **Shake off panic** in that list: it rolls the WIL save,
-  and on a success the condition ends.
+The Warden describes the scene, then everyone declares at once.
+
+- A player's own row shows a **Declare** button. It opens a window with a line for what the
+  character does (up to 50 characters) and, as ideas, the actions from the rules (search, listen,
+  force a door, move quickly…), each with its rule. Clicking an idea starts the line; anything can
+  be written. A **Panicked** character also finds **Shake off panic**, which rolls the WIL save.
+  Once declared, the words show on the row, and the feather left of the name changes them.
 - Beside the name is **how far the token has moved** this turn, in the map's feet: green within
   torchlight's 12 m (40 ft), amber and bold with a running figure past it, red past the
-  36 m (120 ft) an action covers. Moving
-  further is allowed; it means the party is moving quickly. Moved too far? The **undo** arrow
-  beside the distance takes the token back to where the turn began, for its owner and the Warden.
-- The switch at the end of the row marks the character as having acted, as in a fight.
-- A new turn clears the lines, the marks and the distances.
+  36 m (120 ft) an action covers. Moving further is allowed; it means the party is moving
+  quickly. The **undo** arrow takes the token back to where the turn began, for its owner and the
+  Warden.
+- The upright switch at the end of the row is the Warden's **narrated** mark: everyone acts at the
+  same time, and the Warden marks each action once it has been told at the table.
+- A new turn clears the declarations, the marks and the distances.
 - The help mark at the top of the tracker sums up the turn; clicking it opens the Rules Summary.
 
-<p align="center">
-  <img src="images/dungeon-tracker.webp" alt="A dungeon exploration on turn 1: a panicked character's action list open with each action's rule and Shake off panic at the end, a character who searched and has acted, one who moved 45 ft with the running figure and the undo arrow, and the Warden's Dungeon Event reminders" width="35%">
-</p>
+### Ongoing work
 
-### Dungeon Events
+Some actions take several turns, such as clearing rubble or prying open a vault. The Warden's
+**+** under **Ongoing work** names the task and its turns of effort, from 1 to 12. In a
+declaration, a player can choose to lend a hand to one task, and the row says so. The Warden fills
+in the turns by clicking the marks; nothing is counted on its own. The **×** removes a task.
 
-Under the party, the Warden sees when the rules call for a roll on the **Dungeon Events** table:
-when the party stays too long in one place, moves quickly, enters a new area, or makes noise.
-"Moves quickly" lights up by itself when a token has gone past 12 m (40 ft). The other three are the
-Warden's call.
+### Dungeon events
 
-**Roll a Dungeon Event** rolls the table. The card goes to the Warden only, and the result stays in
-the tracker until the next turn. On **Exhaustion**, the party chooses:
+Only the Warden sees this part. The four buttons are the rules' reasons to roll on the **Dungeon
+Events** table: **Lingering**, **Haste**, **Entering** and **Noise** (hover one for the full rule).
+They are only reminders that the Warden lights by hand, and a new turn puts them out.
 
-- **Each adds a Fatigue** gives every character a Fatigue.
-- **Each eats a ration** spends one meal (a use of Rations, or of any gear marked *Food*) from each character.
-- To rest instead, use the **Rest** button on each sheet.
+**Roll a Dungeon Event** rolls the table, and the card goes to the Warden only. The square beside
+it picks the result instead of rolling it.
 
-The card says who had no free slot or nothing left to eat.
+Under the roll are the costs the table can charge, always available:
+
+- **Fatigue** adds a Fatigue.
+- **Ration** spends one meal (a use of Rations, or of any gear marked *Food*).
+- **Light** puts out a burning light, for when torches are blown out. Only characters with a light
+  lit are listed, each with what is burning.
+
+Each one asks who pays: the whole party is switched on, and the Warden switches off whoever the
+story lets off. The card says who paid, and who had no free slot or nothing left to eat. To rest
+instead, use the **Rest** button on each sheet.
 
 ### When a fight breaks out
 

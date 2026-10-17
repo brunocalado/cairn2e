@@ -8,7 +8,7 @@
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
 import { chooseDungeonEvent, drawDungeonEvent, postJourneyCard, rollMorale, rollSave } from "../rolls.js";
 import { eatFood } from "../journey.js";
-import { burningLights, lightsDrawn, putOutLight } from "../light-sources.js";
+import { burningLights, putOutLight } from "../light-sources.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { DUNGEON_TRIGGERS, MAX_EFFORT } from "../data/combat-dungeon.js";
 
@@ -261,8 +261,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         word: game.i18n.localize(`CAIRN.Dungeon.TriggerWord.${key}`),
         tip: game.i18n.localize(`CAIRN.Dungeon.Trigger.${key}`)
       })),
-      anyLit: lit.length > 0,
-      lights: lightsDrawn()
+      anyLit: lit.length > 0
     };
   }
 
