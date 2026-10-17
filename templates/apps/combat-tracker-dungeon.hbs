@@ -22,7 +22,7 @@
 <li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Party"}}</li>
 
 {{#each dungeon.rows}}
-    <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}} {{#if panicked}}is-panicked{{/if}}"
+    <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}} {{#if panicked}}is-panicked{{/if}} {{#if deprived}}is-deprived{{/if}}"
         data-combatant-id="{{id}}" data-action="activateCombatant">
 
         <img class="token-image" src="{{img}}" alt="{{name}}" loading="lazy">

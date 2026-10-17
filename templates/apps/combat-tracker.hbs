@@ -28,7 +28,7 @@
         </li>
 
         {{#each rows}}
-            <li class="combatant {{css}} {{#if resolved}}is-resolved{{/if}} {{#if panicked}}is-panicked{{/if}}"
+            <li class="combatant {{css}} {{#if resolved}}is-resolved{{/if}} {{#if panicked}}is-panicked{{/if}} {{#if deprived}}is-deprived{{/if}}"
                 data-combatant-id="{{id}}" data-action="activateCombatant">
 
                 <img class="token-image" src="{{img}}" alt="{{name}}" loading="lazy">

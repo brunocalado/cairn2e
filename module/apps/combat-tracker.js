@@ -184,13 +184,15 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   /**
    * @inheritDoc
    *
-   * A panicked combatant's portrait trembles, and Panic keeps its icon in the effects strip beside
-   * any other condition (maintainer's call, 2026-10-17): the tremble is read at a glance down the
-   * column, and the icons say every condition the row's tooltip names.
+   * A panicked combatant's portrait trembles and a deprived one withers, each beside the icon the
+   * effects strip draws for it (maintainer's call, 2026-10-17): the motion is read at a glance down
+   * the column, and the icons say every condition the row's tooltip names.
    */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
-    turn.panicked = !!combatant.actor?.appliedEffects.some((e) => e.statuses.has(CONDITION.PANICKED));
+    const has = (status) => !!combatant.actor?.appliedEffects.some((e) => e.statuses.has(status));
+    turn.panicked = has(CONDITION.PANICKED);
+    turn.deprived = has(CONDITION.DEPRIVED);
     return turn;
   }
 

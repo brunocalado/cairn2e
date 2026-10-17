@@ -189,14 +189,32 @@
         white-space: nowrap;
     }
 
-    /* A panicked portrait trembles: a frightened character, read at a glance down the column. Panic
-       keeps its icon in the effects strip too (maintainer's call, 2026-10-17), so every condition
-       the tooltip names is drawn, and users who asked for less motion still see it said. */
-    .combatant.is-panicked .token-image {
-        animation: cairn-tremble 0.35s linear infinite;
+    /* A panicked portrait trembles and a deprived one withers (maintainer's call, 2026-10-17):
+       fear is fast, want is slow, so the two read apart even on one portrait. Each condition
+       names its own animation and the portrait plays the list, so they add up without a rule for
+       the pair: the tremble moves `translate` and `rotate`, the wither moves `filter`. Each keeps
+       its icon in the effects strip, so every condition the tooltip names is drawn. Users who
+       asked for less motion get the portrait still, a deprived one held at its withered look. */
+    .combatant .token-image {
+        animation: var(--cairn-panic-motion, none), var(--cairn-deprived-motion, none);
 
         @media (prefers-reduced-motion: reduce) {
             animation: none;
+        }
+    }
+
+    .combatant.is-panicked {
+        --cairn-panic-motion: cairn-tremble 0.35s linear infinite;
+    }
+
+    .combatant.is-deprived {
+        --cairn-deprived-motion: cairn-wither 4s ease-in-out infinite;
+        --cairn-withered: grayscale(0.85) sepia(0.35) brightness(0.7);
+    }
+
+    .combatant.is-deprived .token-image {
+        @media (prefers-reduced-motion: reduce) {
+            filter: var(--cairn-withered);
         }
     }
 
@@ -760,12 +778,21 @@
     }
 }
 
-/* The panicked portrait's tremble (`.is-panicked` above). At column 0 because Chromium drops an
-   `@keyframes` nested inside a style rule. A pixel and a couple of degrees: fear, not a fit. */
+/* The panicked portrait's tremble and the deprived one's wither (`.is-panicked`, `.is-deprived`
+   above). At column 0 because Chromium drops an `@keyframes` nested inside a style rule. The
+   tremble is a pixel and a couple of degrees: fear, not a fit. */
 @keyframes cairn-tremble {
     0%, 100% { translate: 0 0; rotate: 0deg; }
     20% { translate: -1px 0; rotate: -2deg; }
     40% { translate: 1px 0; rotate: 1.5deg; }
     60% { translate: -1px 0; rotate: -1deg; }
     80% { translate: 1px 0; rotate: 2deg; }
+}
+
+/* The colour drains over a second and a half, holds, and comes back: the return is what the eye
+   catches in a still column. Grey, darker and a little brown, a withered look rather than a
+   photograph's black and white. */
+@keyframes cairn-wither {
+    0%, 100% { filter: none; }
+    40%, 70% { filter: var(--cairn-withered); }
 }
