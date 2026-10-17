@@ -189,22 +189,14 @@
         white-space: nowrap;
     }
 
-    /* Panic is the portrait trembling, not one more icon in the effects strip (maintainer's call,
-       2026-10-17): a frightened character, read at a glance down the column. Users who asked for
-       less motion get the still portrait and the icon back, so Panic is always said somehow. */
+    /* A panicked portrait trembles: a frightened character, read at a glance down the column. Panic
+       keeps its icon in the effects strip too (maintainer's call, 2026-10-17), so every condition
+       the tooltip names is drawn, and users who asked for less motion still see it said. */
     .combatant.is-panicked .token-image {
         animation: cairn-tremble 0.35s linear infinite;
 
         @media (prefers-reduced-motion: reduce) {
             animation: none;
-        }
-    }
-
-    .combatant.is-panicked .cairn-effect-panic {
-        display: none;
-
-        @media (prefers-reduced-motion: reduce) {
-            display: revert;
         }
     }
 
