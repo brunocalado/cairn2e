@@ -105,8 +105,9 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
       .map(({ uuid, macro }) => ({ uuid, name: macro.name, img: macro.img }));
     // A calendar module that replaces the world calendar brings its own window.
     context.hasCalendar = game.time.calendar instanceof CairnCalendar;
-    // The same test as the sheet's Stores chip: the store spends `game.user.character`'s purse,
-    // so the row shows only on the player's own character, and only while a store is open.
+    // The player's one way into the stores the Warden opens. The store spends
+    // `game.user.character`'s purse, so the row shows only on the player's own character, and
+    // only while a store is open to visits; the Warden has the sidebar's Store.
     context.hasStores = !game.user.isGM && this.actor === game.user.character
       && storeChoices(game.settings.get(SYSTEM_ID, SETTINGS.STORES), { isGM: false }).length > 0;
     return context;

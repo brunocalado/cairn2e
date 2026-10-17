@@ -1633,7 +1633,6 @@
     },
     "TakeOut": "Take out of the cart",
     "Visit": "Stores",
-    "VisitHint": "Visit a store the Warden has opened",
     "Visitable": "Players can visit",
     "VisitableOff": "Players cannot visit this store. Only Open to players shows it to them.",
     "VisitableOn": "Players can visit this store from their character sheet.",

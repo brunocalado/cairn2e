@@ -198,13 +198,11 @@ export const registerSettings = () => {
     config: false,
     type: Object,
     default: defaultStores(),
-    // The player's own sheet draws the Stores chip, and the Actions menu its Stores row, only
-    // while a store is open to visits, so both are redrawn with the window.
+    // The Actions menu draws its Stores row only while a store is open to visits, so it is
+    // redrawn with the window.
     onChange: () => {
       CairnStore.refresh();
       CairnActionsMenu.refresh(["tools"]);
-      const sheet = game.user.character?.sheet;
-      if (sheet?.rendered) sheet.render({ parts: ["nav"] });
     }
   });
 
