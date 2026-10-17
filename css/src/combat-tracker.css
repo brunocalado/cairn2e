@@ -482,11 +482,14 @@
 
     /* The exploration's help mark in the tracker header. The mark's paper disc is the sheet's;
        here it sits in core's chrome, where a paper disc vanished into the light theme's ground,
-       so it takes the swapping pair: a surface-ink disc with the ground's colour knocked out. */
+       so it takes the swapping pair: a surface-ink disc with the ground's colour knocked out.
+       Raised a pixel: centred on the title's box, the disc sat a pixel under its capitals, which
+       have no descenders to balance the line box (measured 2026-10-17). */
     .combat-tracker-header .cairn-help {
         align-self: center;
         background: var(--cairn-surface-fg);
         color: var(--cairn-surface-bg);
+        translate: 0 -1px;
 
         &:hover {
             background: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);

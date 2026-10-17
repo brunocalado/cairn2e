@@ -8,6 +8,17 @@
       Before Begin Exploring there is no turn, so nothing that belongs to one is drawn: no
       declaration, no narrated mark, no Dungeon Event. The cycle begins with the Warden's
       description, and a declaration made ahead of it would have no cycle to belong to. --}}
+{{!-- A fight breaks out: a second combat with the party already in it. This exploration stays as
+      it is and becomes the active one again when that fight is deleted. First in the panel, over
+      the party, so it is never pushed down out of reach by a long list of work. --}}
+{{#if dungeon.warden}}
+    <li class="cairn-dungeon-fight-row">
+        <button type="button" class="cairn-dungeon-fight" data-action="startFight">
+            <i class="fa-solid fa-swords" inert></i>{{localize "CAIRN.Dungeon.Fight"}}
+        </button>
+    </li>
+{{/if}}
+
 <li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Party"}}</li>
 
 {{#each dungeon.rows}}
@@ -120,16 +131,6 @@
                 {{/if}}
             </div>
         {{/each}}
-    </li>
-{{/if}}
-
-{{!-- A fight breaks out: a second combat with the party already in it. This exploration stays as
-      it is and becomes the active one again when that fight is deleted. --}}
-{{#if dungeon.warden}}
-    <li class="cairn-dungeon-fight-row">
-        <button type="button" class="cairn-dungeon-fight" data-action="startFight">
-            <i class="fa-solid fa-swords" inert></i>{{localize "CAIRN.Dungeon.Fight"}}
-        </button>
     </li>
 {{/if}}
 
