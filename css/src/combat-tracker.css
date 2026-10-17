@@ -209,6 +209,12 @@
         justify-content: center;
     }
 
+    /* An exploration's narrated switch stands upright, so its column is as narrow as the pill
+       (maintainer's call, 2026-10-17): the row's width goes to the declaration instead. */
+    .cairn-dungeon-row .cairn-combat-acted {
+        flex-basis: 24px;
+    }
+
     /**************************************************************************
      * Dungeon exploration — the party, one turn at a time.                  *
      *                                                                       *
@@ -240,21 +246,22 @@
         justify-content: space-between;
     }
 
-    /* The row's body is one grid of three lines and three columns: the name, this turn's distance
-       and the undo slot; then the declaration across the first two and the edit slot; then the
-       work the character lends a hand to. The 20px slots are kept when empty, so the distance,
-       the words and both glyphs land in the same columns on every row — a row that has moved,
-       one that has not, one somebody else owns. Core's `.token-name` is a flex column; this is
-       the same box, laid out as a grid. */
+    /* The row's body is one grid of three lines and four columns: the edit slot, the name, this
+       turn's distance and the undo slot; then the declaration under the name and running to the
+       row's end; then the work the character lends a hand to. The feather sits left of the name
+       (maintainer's call, 2026-10-17), so the words below get the width it used to take. The
+       20px slots are kept when empty, so the names, the distance, the words and both glyphs land
+       in the same columns on every row — a row that has moved, one that has not, one somebody
+       else owns. Core's `.token-name` is a flex column; this is the same box, laid out as a grid. */
     .cairn-dungeon-row .cairn-dungeon-body {
         align-items: center;
         column-gap: 2px;
         display: grid;
         grid-template-areas:
-            "name    moved   undo"
-            "declare declare edit"
-            "helping helping helping";
-        grid-template-columns: minmax(0, 1fr) auto 20px;
+            "edit name    moved   undo"
+            ".    declare declare declare"
+            ".    helping helping helping";
+        grid-template-columns: 20px minmax(0, 1fr) auto 20px;
         min-width: 0;
         row-gap: 1px;
 
@@ -276,7 +283,6 @@
         }
 
         .cairn-dungeon-slot.is-edit {
-            align-self: start;
             grid-area: edit;
         }
 
@@ -284,10 +290,8 @@
             grid-area: declare;
         }
 
-        /* The prompt has no edit glyph beside it, so it takes the slot's width as well. */
         .cairn-dungeon-declare {
-            grid-column: 1 / -1;
-            grid-row: 2;
+            grid-area: declare;
             justify-self: start;
         }
 
@@ -404,9 +408,9 @@
     /* The acted switch — the narrated mark in an exploration: Primitive 5 drawn as a button (see the template), in the panel's
        swapping pair, with two states that differ in shape and not only in shade — at 18px a
        faint track against a full one read as the same grey pill (maintainer, 2026-10-04).
-       Off is hollow: a soft-ink ring with a soft-ink knob at the left. On is solid and red —
+       Off is hollow: a soft-ink ring with a soft-ink knob at the foot. On is solid and red —
        the system's own `--cairn-loss`, ground down toward ink like the store's figures — with a
-       full-ink knob at the right: the row's action is spent (maintainer's call, 2026-10-04; green
+       full-ink knob at the head: the row's action is spent (maintainer's call, 2026-10-04; green
        read as the torchlight distance beside it, and core's `--color-level-error` was too loud
        for the panel).
        `[data-action]` for the weight against the panel's filled-button rule (0,3,1). */
@@ -426,13 +430,15 @@
             border: var(--cairn-rule) solid color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
             border-radius: 10px;
             box-sizing: border-box;
-            height: 20px;
-            width: 36px;
+            height: 36px;
+            width: 20px;
         }
 
+        /* Upright, off at the foot and on at the head — up for on, as a wall switch reads. */
         .cairn-switch-knob {
             background: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
             height: 12px;
+            top: 18px;
             width: 12px;
         }
 
@@ -442,7 +448,7 @@
 
             .cairn-switch-knob {
                 background: var(--cairn-surface-fg);
-                transform: translateX(16px);
+                transform: translateY(-16px);
             }
         }
 
