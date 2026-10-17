@@ -3,8 +3,17 @@
       (procedures.md → Traps). Armour always counts against HP; against an attribute it helps
       "only if applicable". So the switch is always drawn — the window never changes size under the
       Warden's pointer — and while HP is chosen it is held on and disabled (rolls.js), with the
-      help mark saying why. --}}
+      help mark saying why.
+
+      Take Damage draws the same dialog with the amount first (`askAmount`): damage rolled where
+      the system cannot see it, typed in by whoever takes it. --}}
 <div class="cairn-apply-damage-dialog">
+    {{#if askAmount}}
+    <div class="cairn-field cairn-apply-damage-amount">
+        <label for="take-damage-amount">{{localize 'CAIRN.TakeDamage.Amount'}}</label>
+        <input type="number" id="take-damage-amount" name="amount" min="1" step="1" autofocus>
+    </div>
+    {{/if}}
     <div class="cairn-field-label">{{localize 'CAIRN.Chat.ApplyTo'}}</div>
     <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.Chat.ApplyTo'}}">
         {{#each choices as |c|}}

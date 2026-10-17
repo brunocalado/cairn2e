@@ -354,15 +354,35 @@ async function promptDamageOptions(defaultBlast, weapons) {
  * @returns {Promise<{target: string, armor: boolean}|null>}
  */
 export async function promptApplyRollAsDamage(total) {
+  return promptDamage({ title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }) });
+}
+
+/**
+ * Take Damage (`macros.js#takeDamage`): the same choice as Apply as damage, with the amount typed
+ * in, because this damage was rolled somewhere the system cannot see — behind the Warden's screen,
+ * or on a table's real dice.
+ * @param {string} name  The actor taking it.
+ * @returns {Promise<{amount: number, target: string, armor: boolean}|null>}  null when closed or
+ *   no positive whole number was typed
+ */
+export async function promptTakeDamage(name) {
+  const result = await promptDamage({ title: game.i18n.localize("CAIRN.TakeDamage.Title", { name }), askAmount: true });
+  const amount = Math.trunc(Number(result?.amount));
+  if (!result || !Number.isFinite(amount) || amount < 1) return null;
+  return { ...result, amount };
+}
+
+/** The dialog both prompts above draw. */
+async function promptDamage({ title, askAmount = false }) {
   const choices = ["hp", "STR", "DEX", "WIL"].map((value) => ({
     value,
     label: game.i18n.localize(value === "hp" ? "CAIRN.HitProtection" : value),
     selected: value === "hp"
   }));
-  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices });
+  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices, askAmount });
   return foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
-    window: { title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }) },
+    window: { title },
     content,
     // Against HP armour is the rule, not a choice, so the switch is held on and disabled there.
     // What the Warden set for an attribute is remembered across a detour through HP.

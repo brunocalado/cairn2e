@@ -663,19 +663,22 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
 
   // Critical Damage's STR save button (module/combat/damage.js posts it). The token is looked up
   // on the scene the message names, not on the one this client has on screen: the owner may be
-  // looking at another scene, or at none. Once a save answers this card the button is gone for
+  // looking at another scene, or at none. A hit taken with no token (Take Damage from a sheet)
+  // names its actor in the hit flag instead. Once a save answers this card the button is gone for
   // everyone (`rolls.js#rollCriticalDamageSave`).
   const strSaveBtn = html.querySelector(".roll-str-save");
   if (strSaveBtn) {
-    const token = game.scenes.get(message.speaker?.scene)?.tokens.get(message.speaker?.token);
-    const answered = game.messages.some((m) => m.getFlag(SYSTEM_ID, FLAGS.CRITICAL_SAVE_FOR) === message.id);
+    const token = game.scenes.get(message.speaker?.scene)?.tokens.get(message.speaker?.token) ?? null;
     // A token whose Actor was deleted has `actor === null`; a throw here would leave every other
     // button on the card unwired.
-    const canRoll = !answered && token?.actor && (token.actor.testUserPermission(game.user, "OWNER") || game.user.isGM);
+    const hitActor = message.getFlag(SYSTEM_ID, FLAGS.HIT)?.actorUuid;
+    const actor = token ? token.actor : (hitActor ? fromUuidSync(hitActor) : null);
+    const answered = game.messages.some((m) => m.getFlag(SYSTEM_ID, FLAGS.CRITICAL_SAVE_FOR) === message.id);
+    const canRoll = !answered && actor && (actor.testUserPermission(game.user, "OWNER") || game.user.isGM);
     if (canRoll) {
       strSaveBtn.addEventListener("click", async () => {
         strSaveBtn.setAttribute("disabled", "disabled");
-        await rolls.rollCriticalDamageSave(token.actor, token, message.id);
+        await rolls.rollCriticalDamageSave(actor, token ?? undefined, message.id);
       });
     } else {
       // `hidden`, not a display value set from JS: core's `[hidden] { display: none !important }`

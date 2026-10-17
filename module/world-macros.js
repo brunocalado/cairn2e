@@ -9,8 +9,8 @@ import { SYSTEM_ID, SETTINGS, FLAGS, MACROS } from "./constants.js";
 
 /**
  * A new player's first hotbar page: the three saves up front, the Die of Fate, the rules summary,
- * the calendar and the stores beside them, and the two rest macros at the far end, where they are not pressed
- * by accident. The calendar is here because a hotbar slot works with no scene and with the canvas
+ * the calendar and the stores beside them, Take Damage (the one way a player hurts their own
+ * character), and the two rest macros at the far end, where they are not pressed by accident. The calendar is here because a hotbar slot works with no scene and with the canvas
  * off, where the Notes controls do not (core ignores a scene-control click until the canvas is
  * ready). Slot 10 is the one the
  * hotbar labels "0". These are also the macros a player may see and run; the rest of the pack
@@ -24,6 +24,7 @@ const PLAYER_HOTBAR = {
   5: MACROS.RULES_SUMMARY,
   6: MACROS.CALENDAR,
   7: MACROS.STORES,
+  8: MACROS.TAKE_DAMAGE,
   9: MACROS.REST,
   10: MACROS.RESTORE_ABILITIES
 };

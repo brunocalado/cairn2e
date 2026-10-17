@@ -1,7 +1,7 @@
 {
   "CAIRN.Actions": {
     "Title": "Actions",
-    "Tooltip": "Barter, the rules summary, Whisper, and the Warden's macros",
+    "Tooltip": "Take damage, Barter, the rules summary, Whisper, and the Warden's macros",
     "Macros": "Macros",
     "MacroMissing": "That macro is gone."
   },
@@ -1644,6 +1644,11 @@
   "CAIRN.Success": "Success",
   "CAIRN.Tables": "Tables",
   "CAIRN.TakeBack": "Take back \u2014 it returns to your inventory",
+  "CAIRN.TakeDamage": {
+    "Amount": "Damage",
+    "Button": "Take damage",
+    "Title": "{name} takes damage"
+  },
   "CAIRN.TakeOut": "Take out",
   "CAIRN.TakesSlots": "Takes Slots",
   "CAIRN.TakesSlotsHint": "You haul it \u2014 a bag on your back, a cart pulled with both hands \u2014 so it costs slots like anything else. Off, it hauls itself, costs none, and is always on your Aside tab.",

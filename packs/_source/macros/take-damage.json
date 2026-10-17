@@ -1,0 +1,15 @@
+{
+  "_id": "DU9MnuYAl4p3E9cn",
+  "name": "Take Damage",
+  "type": "script",
+  "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+  "scope": "global",
+  "command": "cairn2e.takeDamage();",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_key": "!macros!DU9MnuYAl4p3E9cn"
+}

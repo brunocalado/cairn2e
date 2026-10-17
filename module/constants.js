@@ -540,6 +540,7 @@ export const MACROS = {
   RULES_SUMMARY: packUuid("macros", "Macro", "QV2vvMfPeGT0TswP"),
   CALENDAR: packUuid("macros", "Macro", "4rcV3wC3O1GkZnlK"),
   STORES: packUuid("macros", "Macro", "rDRUPjJFybkRTs6J"),
+  TAKE_DAMAGE: packUuid("macros", "Macro", "DU9MnuYAl4p3E9cn"),
   REST: packUuid("macros", "Macro", "ucFx97BSC93VpXbj"),
   RESTORE_ABILITIES: packUuid("macros", "Macro", "8UaYzxdyp4z2sC64")
 };

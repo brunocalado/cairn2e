@@ -6,7 +6,8 @@
  */
 import { SYSTEM_ID } from "./constants.js";
 import { getInfoFromDropData } from "./helpers.js";
-import { rollDamage, rollDieOfFate, rollMorale, rollReaction, rollSave } from "./rolls.js";
+import { promptTakeDamage, rollDamage, rollDieOfFate, rollMorale, rollReaction, rollSave } from "./rolls.js";
+import { Damage } from "./combat/damage.js";
 
 /**
  * @param {Object} data
@@ -81,6 +82,26 @@ function macroActor({ required = true } = {}) {
 }
 
 /**
+ * Take damage the system did not roll: the amount is typed in, and it lands as the same hit a
+ * damage card's Apply does — armour, STR overflow, the Critical Damage card, the Warden's Reverse
+ * and, at exactly 0 HP, the Scar for the HP it really took. The one way a player hurts their own
+ * character, since the sheet's − is a correction and decides no Scar (`CairnActor#_preUpdate`).
+ * @param {Actor} actor
+ * @param {TokenDocument|null} [token]  speaks the card; an unlinked token's actor is its own
+ * @returns {Promise<object|null>}
+ */
+export async function takeDamage(actor, token = actor.token ?? null) {
+  if (!actor?.system.abilities) return null;
+  const result = await promptTakeDamage(actor.name);
+  if (!result) return null;
+  return Damage.applyToActor(actor, result.amount, {
+    attribute: result.target === "hp" ? null : result.target,
+    armor: !!result.armor,
+    token
+  });
+}
+
+/**
  * One-line entry points for the supplied macros and for anyone's own — `cairn2e.rest()` rather
  * than the token lookup, guard and call each macro used to repeat. Spread onto `game.cairn2e`.
  */
@@ -89,6 +110,12 @@ export const macroApi = {
   rest: () => macroActor()?.rest(),
   /** Restore lost STR, DEX and WIL (a week's rest with a healer). */
   restoreAbilities: () => macroActor()?.restoreAbilities(),
+  /** Damage typed in, on the selected token or the user's character (`takeDamage`). */
+  takeDamage: () => {
+    const token = canvas.tokens?.controlled[0]?.document ?? null;
+    const actor = macroActor();
+    return actor ? takeDamage(actor, token?.actor === actor ? token : actor.token ?? null) : undefined;
+  },
   /**
    * A plain ability save.
    * @param {"STR"|"DEX"|"WIL"} key  case-insensitive

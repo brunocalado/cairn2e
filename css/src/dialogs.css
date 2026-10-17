@@ -58,7 +58,8 @@
         flex-direction: column;
         gap: 6px;
 
-        > .cairn-field-label {
+        > .cairn-field-label,
+        > .cairn-field > label {
             font-size: 11px;
             letter-spacing: var(--cairn-label-track);
             text-transform: uppercase;
@@ -67,6 +68,11 @@
         .cairn-choice-option {
             flex: 1 1 0;
         }
+    }
+
+    /* Take Damage's amount, above the choice it is taken from. */
+    .cairn-apply-damage-amount {
+        margin-bottom: 8px;
     }
 
     .cairn-apply-damage-armor {

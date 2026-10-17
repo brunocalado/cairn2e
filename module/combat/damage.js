@@ -57,10 +57,18 @@ const ATTRIBUTE_LABELS = { STR: "CAIRN.Hit.StrLabel", DEX: "CAIRN.Hit.DexLabel",
  * Critical Damage prompt. Pure arithmetic and chat-card posting — the STR save the card offers is
  * rolled in `module/rolls.js`, the system's one place for that.
  *
- * Scars are not decided here. Every hit lands through `actor.update`, and `CairnActor#_preUpdate`
- * is the one place that sees the HP before and after in the same breath — so a character walked to
- * 0 on their own sheet reaches the Scars window by the same road as one taken down by this card.
+ * Scars are not decided here. Every hit lands through `actor.update` with `hitOptions()` below,
+ * and `CairnActor#_preUpdate` is the one place that sees the HP before and after in the same
+ * breath. The option is what makes a write a hit: the SRD's Scar is owed to an ATTACK that takes
+ * a PC to exactly 0, and a number corrected on the sheet is not one.
  */
+/**
+ * The update options that make a write a hit. A fresh object every time: core keeps the options
+ * object as the operation itself — the updates, the timestamps — and `_preUpdate` writes the Scar
+ * it decides onto it, so one shared object carried the last hit's Scar into the next.
+ */
+export const hitOptions = () => ({ [SYSTEM_ID]: { hit: true } });
+
 export class Damage {
   /**
    * @param {string[]} targetIds  Token ids, from the chat message's `targets` flag.
@@ -87,6 +95,27 @@ export class Damage {
   }
 
   /**
+   * One hit on one actor, card and all — the same hit a damage card's Apply lands, for damage
+   * that has no card behind it: the Take Damage prompt (`macros.js#takeDamage`), from a sheet's
+   * Actions menu or a hotbar macro. No token is needed; when there is one it speaks the card.
+   * @param {Actor} actor
+   * @param {number} damage  Before armor.
+   * @param {object} [options]
+   * @param {"STR"|"DEX"|"WIL"|null} [options.attribute]  Take it from this attribute, not HP.
+   * @param {boolean} [options.armor=true]  Whether armour reduces an attribute hit.
+   * @param {TokenDocument|null} [options.token]
+   * @returns {Promise<object|null>}  null for an actor with no body to hit
+   */
+  static async applyToActor(actor, damage, { attribute = null, armor = true, token = null } = {}) {
+    damage = Math.trunc(damage);
+    const data = attribute
+      ? await this.#hitAttribute(actor, token, damage, attribute, armor)
+      : await this.#hitHp(actor, token, damage);
+    if (data) await this.#postDamageMessage(data);
+    return data;
+  }
+
+  /**
    * @param {string} tokenId
    * @param {number} damage
    * @returns {Promise<object|null>} the before/after values `#postDamageMessage` renders
@@ -94,8 +123,11 @@ export class Damage {
   static async applyToTarget(tokenId, damage) {
     const token = canvas.scene?.tokens?.get(tokenId);
     if (!token?.actor) return null;
-    const actor = token.actor;
+    return this.#hitHp(token.actor, token, damage);
+  }
 
+  /** `applyToTarget`'s body, once there is an actor. */
+  static async #hitHp(actor, token, damage) {
     // Not everything on a map has a body. A party token stands for a group, not a creature: it
     // has no HP and no attributes, so there is nothing for armor to reduce and nothing to
     // overflow into. Asked by what it HAS rather than by its subtype, so a subtype added later
@@ -109,7 +141,7 @@ export class Damage {
 
     const { dmg, newHp, newStr } = computeDamage({ damage, armor, rawHp, effHp, str });
 
-    await actor.update({ "system.hp.value": newHp, "system.abilities.STR.value": newStr });
+    await actor.update({ "system.hp.value": newHp, "system.abilities.STR.value": newStr }, hitOptions());
 
     return { actor, token, dmg, damage, armor, hp: rawHp, str, newHp, newStr };
   }
@@ -125,13 +157,18 @@ export class Damage {
    */
   static async applyToAttribute(tokenId, damage, attribute, useArmor) {
     const token = canvas.scene?.tokens?.get(tokenId);
-    const actor = token?.actor;
-    if (!actor?.system.abilities?.[attribute]) return null;
+    if (!token?.actor) return null;
+    return this.#hitAttribute(token.actor, token, damage, attribute, useArmor);
+  }
+
+  /** `applyToAttribute`'s body, once there is an actor. */
+  static async #hitAttribute(actor, token, damage, attribute, useArmor) {
+    if (!actor.system.abilities?.[attribute]) return null;
 
     const armor = useArmor ? (actor.system.armorTotal ?? 0) : 0;
     const value = actor.system.abilities[attribute].value;
     const { dmg, newValue } = computeAttributeDamage({ damage, armor, value });
-    await actor.update({ [`system.abilities.${attribute}.value`]: newValue });
+    await actor.update({ [`system.abilities.${attribute}.value`]: newValue }, hitOptions());
     return { actor, token, dmg, damage, armor, useArmor, attribute, value, newValue };
   }
 
@@ -182,7 +219,7 @@ export class Damage {
     if (newStr === 0) {
       const content = await foundry.applications.handlebars.renderTemplate(DAMAGE_CARD_TPL, { dead: true });
       await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ token }),
+        speaker: ChatMessage.getSpeaker(token ? { token } : { actor }),
         flavor: game.i18n.localize("CAIRN.Damage"),
         content,
         ...hitFlag
@@ -216,7 +253,7 @@ export class Damage {
     });
 
     await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ token }),
+      speaker: ChatMessage.getSpeaker(token ? { token } : { actor }),
       flavor: game.i18n.localize("CAIRN.Damage"),
       content,
       ...hitFlag
@@ -235,7 +272,7 @@ export class Damage {
     const hitFlag = {
       [`flags.${SYSTEM_ID}.${FLAGS.HIT}`]: { actorUuid: actor.uuid, hp: 0, [attribute.toLowerCase()]: value - newValue }
     };
-    const speaker = ChatMessage.getSpeaker({ token });
+    const speaker = ChatMessage.getSpeaker(token ? { token } : { actor });
     const flavor = game.i18n.localize("CAIRN.Damage");
 
     if ((attribute === "STR") && (newValue === 0)) {

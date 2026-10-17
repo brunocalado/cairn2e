@@ -14,6 +14,7 @@ import { CairnCalendarApp } from "./calendar.js";
 import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
 import { storeChoices } from "../store-rules.js";
+import { takeDamage } from "../macros.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -59,6 +60,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
     position: { width: 260, height: "auto" },
     window: { icon: "fa-solid fa-bolt", resizable: false },
     actions: {
+      takeDamage: CairnActionsMenu.#onTakeDamage,
       openBarter: CairnActionsMenu.#onOpenBarter,
       openRules: CairnActionsMenu.#onOpenRules,
       openCalendar: CairnActionsMenu.#onOpenCalendar,
@@ -123,6 +125,10 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   _onClose(options) {
     super._onClose(options);
     CairnActionsMenu.#open.delete(this);
+  }
+
+  static async #onTakeDamage() {
+    await takeDamage(this.actor);
   }
 
   static async #onOpenBarter() {

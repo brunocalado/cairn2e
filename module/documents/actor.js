@@ -143,7 +143,7 @@ export class CairnActor extends Actor {
   }
 
   /**
-   * @override — the token follows the name, and a hit that reaches 0 HP decides a Scar.
+   * @override — the token follows the name, and a hit that reaches exactly 0 HP decides a Scar.
    *
    * Nothing here about coin: coin is Items (`data/item-coin.js`), so a sack that would not fit is
    * refused where every other item is, in `CairnItem._preCreateOperation`.
@@ -155,8 +155,13 @@ export class CairnActor extends Actor {
 
     // Scars are decided HERE because this is the only place that sees the HP before and after in
     // the same breath — `_onUpdate` and the `updateActor` hook both arrive with the old value
-    // already gone. It covers every path at once: the damage card's Apply, the sheet's − stepper,
-    // a macro, an import. The answer rides on `options` to the other side of the write.
+    // already gone. The answer rides on `options` to the other side of the write.
+    //
+    // Only a HIT decides one: the SRD's Scar is owed to "an attack" that takes a PC to exactly 0,
+    // and every hit is written by `Damage` with `hitOptions()` — the damage card's Apply, Apply as
+    // damage, Take Damage. The sheet's − stepper, the edit window, a macro or an import is a number
+    // being corrected; stepping 1 → 0 by hand read as a hit of 1, every time.
+    if (!options[SYSTEM_ID]?.hit) return;
     const hpTo = foundry.utils.getProperty(changes, "system.hp.value");
     if (hpTo === undefined) return;
     const lost = scarHpLost({
