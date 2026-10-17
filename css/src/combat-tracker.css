@@ -204,7 +204,7 @@
     }
 
     .combatant.is-panicked {
-        --cairn-panic-motion: cairn-tremble 0.8s linear infinite;
+        --cairn-panic-motion: cairn-tremble 1.6s linear infinite;
     }
 
     .combatant.is-deprived {
