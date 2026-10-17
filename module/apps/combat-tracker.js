@@ -51,6 +51,10 @@ const PARTY_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-party-dialog.hbs`
 /** "A, B and C", in the client's language. */
 const listNames = (list) => game.i18n.getListFormatter().format(list);
 
+/** A party member as the table knows them. Every unlinked token of one actor carries that actor's
+ *  name, so two hirelings would both be "Hireling"; the token's own name tells them apart. */
+const nameOf = (actor) => actor.token?.name ?? actor.name;
+
 /**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
  * every turn start. Measured through the token's own path measurement rather than by adding the
@@ -492,7 +496,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     for (const actor of chosen) await putOutLight(actor);
     await postJourneyCard({
       flavor: game.i18n.localize("CAIRN.Dungeon.Events"),
-      lines: [game.i18n.localize("CAIRN.Dungeon.LightsOut", { names: listNames(chosen.map((a) => a.name)) })]
+      lines: [game.i18n.localize("CAIRN.Dungeon.LightsOut", { names: listNames(chosen.map(nameOf)) })]
     });
   }
 
@@ -511,7 +515,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const content = document.createElement("div");
     content.innerHTML = await foundry.applications.handlebars.renderTemplate(PARTY_TPL, {
       // Keyed by place in the list, not by actor id: two unlinked tokens of one actor share the id.
-      members: members.map(({ actor, note }, index) => ({ id: String(index), name: actor.name, note: note ?? "" }))
+      members: members.map(({ actor, note }, index) => ({ id: String(index), name: nameOf(actor), note: note ?? "" }))
     });
     const result = await foundry.applications.api.DialogV2.input({
       classes: [SYSTEM_ID],
@@ -537,7 +541,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     if (!chosen.length) return;
     const paid = [];
     const unpaid = [];
-    for (const actor of chosen) ((await charge(actor)) ? paid : unpaid).push(actor.name);
+    for (const actor of chosen) ((await charge(actor)) ? paid : unpaid).push(nameOf(actor));
     const lines = [];
     if (paid.length) lines.push(game.i18n.localize(paidKey, { names: listNames(paid) }));
     if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: listNames(unpaid) }));
@@ -635,7 +639,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         classes: [SYSTEM_ID],
         window: { title: "CAIRN.Combat.PanicTitle" },
         // A name is the player's own text and DialogV2 parses `content` as HTML.
-        content: `<p>${game.i18n.localize("CAIRN.Combat.PanicConfirm", { name: foundry.utils.escapeHTML(combatant.actor.name) })}</p>`,
+        content: `<p>${game.i18n.localize("CAIRN.Combat.PanicConfirm", { name: foundry.utils.escapeHTML(combatant.name) })}</p>`,
         rejectClose: false,
         modal: true
       });
