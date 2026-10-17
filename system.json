@@ -3,90 +3,44 @@
   "title": "Cairn 2e",
   "description": "Cairn Second Edition for Foundry VTT. A rules-faithful implementation of the Cairn 2e SRD by Yochai Gal — background-driven character creation, roll-under saves, ten inventory slots, Panic, and the 2e bestiary.",
   "version": "0.1.6",
+  
   "compatibility": {
     "minimum": "14",
     "verified": "14.368"
   },
+  
   "authors": [
     {
       "name": "Mestre Digital",
       "url": "https://www.youtube.com/c/MestreDigital"
     }
   ],
+  
   "socket": true,
   "esmodules": [
     "module/cairn2e.js"
   ],
   "styles": [
-    {
-      "src": "css/cairn2e.min.css"
-    }
+    { "src": "css/cairn2e.min.css" }
   ],
   "documentTypes": {
     "Actor": {
       "character": {},
-      "npc": {
-        "htmlFields": [
-          "description"
-        ]
-      },
+      "npc": { "htmlFields": ["description"] },
       "party": {}
     },
     "Item": {
-      "gear": {
-        "htmlFields": [
-          "description",
-          "recharge",
-          "guiseDescription"
-        ],
-        "filePathFields": {
-          "guiseImg": [
-            "IMAGE"
-          ]
-        }
-      },
-      "coin": {
-        "htmlFields": [
-          "description"
-        ]
-      },
-      "fatigue": {
-        "htmlFields": [
-          "description"
-        ]
-      },
-      "background": {
-        "htmlFields": [
-          "description"
-        ]
-      },
-      "feature": {
-        "htmlFields": [
-          "description"
-        ]
-      },
-      "scar": {
-        "htmlFields": [
-          "description"
-        ]
-      },
-      "growth": {
-        "htmlFields": [
-          "description"
-        ]
-      }
+      "gear": { "htmlFields": ["description", "recharge", "guiseDescription"], "filePathFields": { "guiseImg": ["IMAGE"] } },
+      "coin": { "htmlFields": ["description"] },
+      "fatigue": { "htmlFields": ["description"] },
+      "background": { "htmlFields": ["description"] },
+      "feature": { "htmlFields": ["description"] },
+      "scar": { "htmlFields": ["description"] },
+      "growth": { "htmlFields": ["description"] }
     },
     "JournalEntryPage": {
-      "route": {
-        "htmlFields": [
-          "description"
-        ]
-      },
-      "faction": {
-        "htmlFields": [
-          "description"
-        ]
-      }
+      "route": { "htmlFields": ["description"] },
+      "faction": { "htmlFields": ["description"] }
     },
     "Combat": {
       "dungeon": {}
@@ -211,10 +165,7 @@
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
       "path": "packs/bestiary",
       "type": "Actor",
-      "ownership": {
-        "PLAYER": "NONE",
-        "ASSISTANT": "OWNER"
-      }
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
     },
     {
       "name": "hirelings",
@@ -236,10 +187,7 @@
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
       "path": "packs/macros",
       "type": "Macro",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
     },
     {
       "name": "more-gear",
@@ -281,75 +229,43 @@
     {
       "name": "Cairn 2e",
       "sorting": "m",
-      "packs": [
-        "macros"
-      ],
+      "packs": ["macros"],
       "folders": [
         {
           "name": "Character Creation",
           "sorting": "m",
           "color": "#6e5a3c",
-          "packs": [
-            "backgrounds",
-            "background-tables",
-            "background-gear",
-            "companions",
-            "character-traits",
-            "bonds",
-            "omens"
-          ]
+          "packs": ["backgrounds", "background-tables", "background-gear", "companions", "character-traits", "bonds", "omens"]
         },
         {
           "name": "Equipment",
           "sorting": "m",
           "color": "#4a5a52",
-          "packs": [
-            "gear",
-            "weapons",
-            "armor"
-          ]
+          "packs": ["gear", "weapons", "armor"]
         },
         {
           "name": "Magic",
           "sorting": "m",
           "color": "#4b3f63",
-          "packs": [
-            "spellbooks",
-            "scrolls",
-            "relics"
-          ]
+          "packs": ["spellbooks", "scrolls", "relics"]
         },
         {
           "name": "Reference",
           "sorting": "m",
           "color": "#3f5670",
-          "packs": [
-            "players-guide",
-            "tables",
-            "bestiary",
-            "hirelings",
-            "vald-calendar"
-          ]
+          "packs": ["players-guide", "tables", "bestiary", "hirelings", "vald-calendar"]
         },
         {
           "name": "Warden",
           "sorting": "m",
           "color": "#6e1414",
-          "packs": [
-            "warden"
-          ]
+          "packs": ["warden"]
         },
         {
           "name": "Homebrew",
           "sorting": "m",
           "color": "#5c5c5c",
-          "packs": [
-            "more-gear",
-            "materials",
-            "more-spellbooks",
-            "more-scrolls",
-            "potions"
-          ]
+          "packs": ["more-gear", "materials", "more-spellbooks", "more-scrolls", "potions"]
         }
       ]
     }
@@ -360,10 +276,7 @@
         "id": "light-sources",
         "type": "module",
         "manifest": "https://github.com/brunocalado/light-sources/releases/latest/download/module.json",
-        "compatibility": {
-          "minimum": "0.8.3",
-          "verified": "0.8.3"
-        },
+        "compatibility": { "minimum": "0.8.3", "verified": "0.8.3" },
         "reason": "Every light in the system burns through it: a Torch, Lantern, Candle Helmet or Lightsucker Candle lit from the Token HUD spends one of its uses and keeps the flame on it, Illuminate lights when it is cast, and the dungeon tracker's Light puts lights out."
       }
     ],
@@ -372,20 +285,14 @@
         "id": "dice-so-nice",
         "type": "module",
         "manifest": "https://gitlab.com/riccisi/foundryvtt-dice-so-nice/-/raw/master/module/module.json",
-        "compatibility": {
-          "minimum": "6.3.0",
-          "verified": "6.3.0"
-        },
+        "compatibility": { "minimum": "6.3.0", "verified": "6.3.0" },
         "reason": "Rolls the system's own 3D Cairn d20 (assets/dice/cairn-d20.glb)."
       },
       {
         "id": "grid-crafter",
         "type": "module",
         "manifest": "https://github.com/brunocalado/grid-crafter/releases/latest/download/module.json",
-        "compatibility": {
-          "minimum": "0.0.3",
-          "verified": "0.0.3"
-        },
+        "compatibility": { "minimum": "0.0.3", "verified": "0.0.3" },
         "reason": "Forges the Marketplace's weapons, armour and gear, and cooks food, from the Materials compendium on a crafting grid."
       },
       {
@@ -398,16 +305,8 @@
   },
   "flags": {
     "hotReload": {
-      "extensions": [
-        "css",
-        "hbs",
-        "json"
-      ],
-      "paths": [
-        "css",
-        "templates",
-        "lang"
-      ]
+      "extensions": ["css", "hbs", "json"],
+      "paths": ["css", "templates", "lang"]
     }
   },
   "languages": [
@@ -432,5 +331,7 @@
   "changelog": "CHANGELOG.md",
   "manifest": "https://github.com/brunocalado/cairn2e/releases/latest/download/system.json",
   "download": "https://github.com/brunocalado/cairn2e/releases/latest/download/cairn2e.zip",
+  
   "background": "systems/cairn2e/assets/background.webp"
+  
 }
