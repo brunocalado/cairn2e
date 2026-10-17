@@ -313,8 +313,9 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
     });
     // A message is its author's to write (and the Warden's). The card the window was opened with
     // is this user's when they posted it themselves; one the Warden posted for a player who was
-    // away is not, and the roll tells its story in a card of its own.
-    if (this.message?.isOwner) {
+    // away is not, and the roll tells its story in a card of its own. So does a card deleted while
+    // the dice were landing, or the update would throw and leave the Scar half rolled.
+    if (this.message?.isOwner && game.messages.has(this.message.id)) {
       await this.message.update({ content });
       return;
     }
