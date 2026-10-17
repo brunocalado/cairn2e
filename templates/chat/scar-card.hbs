@@ -1,0 +1,29 @@
+{{!-- A Scar, told to the table in one card. The caption is the message's `flavor` ("Scars").
+
+      It starts as a notice — who owes a Scar and how much the hit took — with the button that
+      opens the Scars window, the way back in for a player who closed it or was away when the hit
+      landed. When the window rolls, it rewrites this card line by line as each die lands, and the
+      button goes, because the Scar is taken. A gain rolled later from the Growth tab posts the
+      same card with its own lines and no HP figure. --}}
+{{#if notice}}
+<p>{{localize 'CAIRN.Scar.Notice' name=name lost=lost}}</p>
+<button type="button" class="cairn-card-action open-scars"><i class="fa-solid fa-heart-crack" inert></i> {{localize 'CAIRN.Scar.Open'}}</button>
+{{else}}
+<p class="cairn-card-lead">{{name}}</p>
+{{#if lost}}
+<p class="cairn-card-note">{{localize 'CAIRN.Scar.LostNote' lost=lost}}</p>
+{{/if}}
+{{#if lines.length}}
+<ul class="cairn-damage-state cairn-scar-lines">
+    {{#each lines as |l|}}
+    <li class="{{l.tone}}">
+        <span class="cairn-damage-label">{{l.label}}</span>
+        <span class="cairn-damage-value">{{l.value}}</span>
+    </li>
+    {{/each}}
+</ul>
+{{/if}}
+{{#if rolling}}
+<p class="cairn-card-note">{{localize 'CAIRN.Scar.Rolling'}}</p>
+{{/if}}
+{{/if}}

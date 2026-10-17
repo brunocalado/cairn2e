@@ -7,81 +7,129 @@
 
 .cairn2e {
     /**************************************************************************
-     * The Scars window (module/apps/scars.js) — the twelve rows of the      *
-     * table, the one for the HP lost already chosen.                        *
+     * The Scars window (module/apps/scars.js) — the one row the HP lost     *
+     * lands on, one button that rolls it, and what it did, line by line.    *
      *                                                                       *
-     * It is a list and a foot, and both are the sheet's own devices: the    *
-     * rows are Primitive 7 and the buttons are Primitive 2, so nothing here *
-     * invents a control. What IS particular to this window is "chosen": a   *
-     * row is picked, not toggled, so the mark is the row's number filled    *
-     * with ink — the same fill a marked Fatigue circle wears — and never a  *
-     * hue, a tint or a border.                                              *
+     * It is a head, a list and a foot, and all three are the sheet's own    *
+     * devices: the rows and the result lines are Primitive 7 and the        *
+     * buttons are Primitive 2, so nothing here invents a control. What IS   *
+     * particular to this window is "chosen": a row is picked, not toggled,  *
+     * so the mark is the row's number filled with ink — the same fill a     *
+     * marked Fatigue circle wears — and never a hue, a tint or a border.    *
+     * A result line says gain, loss and owed with weight and italic alone;  *
+     * the hue is the chat card's, where a roll outcome is allowed one.      *
      **************************************************************************/
 
     &.cairn-scars {
         .window-content {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
-        /* The list is the only part that gives: the head says what happened and the foot holds the
-           buttons, and a foot pushed off the bottom of a fixed window is a window with no way to
-           take the scar. `scrollable` on the rows part makes the `<ol>` itself the scroller, so
-           the two bounds have to be set here — `min-height: 0` because a flex item's automatic
-           minimum is its content, which is twelve paragraphs. */
-        .cairn-scars-head,
-        .cairn-scars-foot {
-            flex: 0 0 auto;
-        }
-
-        .cairn-scars-list {
-            flex: 1 1 auto;
-            min-height: 0;
-            overflow-y: auto;
-        }
-
+        /* The number reads as the thing that chose the row, so it is set at display size beside
+           the row's title and prose, with its label under the figure. */
         .cairn-scars-head {
             display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 12px;
+            align-items: flex-start;
+            gap: 14px;
         }
 
-        .cairn-scars-lead {
-            margin: 0;
-            font-family: var(--cairn-serif);
-        }
-
-        /* The number reads as the thing that chose the row, so it is set at the size the sheet
-           gives a stat and its label rides under the figure's baseline, as Gold's does. */
         .cairn-scars-lost {
+            flex: 0 0 auto;
+            min-width: 56px;
             margin: 0;
             display: flex;
-            align-items: baseline;
-            gap: 4px;
-            white-space: nowrap;
+            flex-direction: column;
+            align-items: center;
         }
 
         .cairn-scars-lost-n {
             font-family: var(--cairn-serif);
-            font-size: 22px;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1;
             font-variant-numeric: tabular-nums;
         }
 
         .cairn-scars-lost-label {
+            margin-top: 4px;
             font-size: 10px;
             font-weight: 700;
             letter-spacing: var(--cairn-label-track);
             text-transform: uppercase;
+            white-space: nowrap;
             color: var(--cairn-ink-soft);
+        }
+
+        .cairn-scars-row-text {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .cairn-scars-name {
+            margin: 0;
+            border: none;
+            font-family: var(--cairn-serif);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .cairn-scars-dice,
+        .cairn-scars-line-dice {
+            font-size: 11px;
+            font-variant-numeric: tabular-nums;
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-scars-dice {
+            margin: 0;
+        }
+
+        .cairn-scars-prose {
+            margin: 0;
+            font-family: var(--cairn-serif);
+            line-height: 1.45;
+        }
+
+        /* The Warden's door to the table: a word in the label voice, not a framed button — it sits
+           under the row's prose, and a framed button there would outweigh the Scar's own. */
+        .cairn-scars-toggle {
+            width: auto;
+            height: auto;
+            min-height: 0;
+            padding: 2px 0;
+            border: none;
+            background: none;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+            text-decoration: underline;
+            color: var(--cairn-ink-soft);
+            cursor: var(--cursor-pointer);
+
+            &:hover {
+                background: none;
+                color: var(--cairn-ink);
+            }
+        }
+
+        /* Bounded here, not by the window: the window sizes to its content, and the list is the
+           only part that scrolls. */
+        .cairn-scars-list {
+            max-height: 240px;
+            overflow: hidden auto;
         }
 
         .cairn-scars-row {
             display: flex;
             align-items: baseline;
             gap: 8px;
-            padding: 4px 2px;
+            padding: 3px 2px;
 
             /* Hover is said with the text alone. The rule under each row is a canvas stroke, not
                a border, so a ground painted on the row cannot meet it — the sunk fill sat inside
@@ -131,26 +179,68 @@
         .cairn-scars-foot {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-        }
-
-        .cairn-scars-outcome {
-            margin: 0;
-            font-family: var(--cairn-serif);
+            gap: 8px;
+            padding-top: 8px;
+            border-top: var(--cairn-rule) solid var(--cairn-ink);
         }
 
         .cairn-scars-note {
             margin: 0;
             font-family: var(--cairn-serif);
-            font-size: 11px;
+            font-style: italic;
             color: var(--cairn-ink-soft);
         }
 
-        /* The buttons share the whole width: two split it, the one that is left after the
-           location die is rolled takes all of it, so the irreversible button is never a stub in
-           a corner. */
+        .cairn-scars-line {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 5px 0;
+            font-family: var(--cairn-serif);
+
+            &:is(.gain, .loss, .state) .cairn-scars-line-value {
+                font-weight: 700;
+            }
+
+            &.owed .cairn-scars-line-value {
+                font-style: italic;
+                color: var(--cairn-ink-soft);
+            }
+
+            /* Only the line that just landed: the ones above it were already read. */
+            &.fresh {
+                animation: cairn-ink-in 0.35s ease-out both;
+            }
+        }
+
+        .cairn-scars-line-label {
+            flex: 0 0 auto;
+            min-width: 84px;
+            white-space: nowrap;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            text-transform: uppercase;
+            color: var(--cairn-ink-soft);
+        }
+
+        .cairn-scars-line-value {
+            min-width: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cairn-scars-line-dice {
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* One button, the whole width: the roll, then Done. While the dice land the note stands
+           where the button was, so the foot does not jump. */
         .cairn-scars-buttons {
             display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
             gap: 8px;
 
             button {
@@ -158,4 +248,11 @@
             }
         }
     }
+}
+
+/* A Scar's result line fading in (`.cairn-scars-line.fresh` above). At column 0 because Chromium
+   drops an `@keyframes` nested inside a style rule. */
+@keyframes cairn-ink-in {
+    from { opacity: 0; translate: 0 3px; }
+    to { opacity: 1; translate: 0 0; }
 }

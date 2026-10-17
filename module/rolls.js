@@ -573,18 +573,32 @@ export async function rollDamage(actor, item, { skipDialog = false } = {}) {
  * One of the Scars table's own dice: the d6 that says where it landed, or a row's gain
  * (`srd-2e/players-guide/core-rules.md` → Scars Table).
  *
- * Returns the total instead of posting. A Scar is taken in one window rather than assembled out of
- * four chat cards, so the window shows each die where it was rolled and posts the outcome once
- * (`module/apps/scars.js`).
+ * Returns the Roll instead of posting. A Scar is taken in one window and told in one card, which
+ * fills in line by line as each die lands (`module/apps/scars.js`); the faces are printed beside
+ * each line, so the Roll comes back whole rather than as its total.
  * @param {string} formula
- * @returns {Promise<number>}
+ * @returns {Promise<CairnRoll>}
  */
 export async function rollScarDie(formula) {
   const roll = await evaluateFormula(formula);
   // No message carries this roll, so Dice So Nice would never see it: the dice are thrown for
   // the whole table by hand, and the window waits for them to land before printing the face.
   await game.dice3d?.showForRoll(roll, game.user, true);
-  return roll.total;
+  return roll;
+}
+
+/**
+ * The WIL save rows 8 and 10 gate their gain on. The same save as {@link rollSave}, without its
+ * card: the Scar's card prints the save as one of its lines.
+ * @param {Actor} actor
+ * @param {"STR"|"DEX"|"WIL"} key
+ * @returns {Promise<{roll: CairnRoll, passed: boolean, target: number}>}
+ */
+export async function rollScarSave(actor, key) {
+  const target = actor.system.abilities[key].value;
+  const { roll, passed } = await evaluateSave(target);
+  await game.dice3d?.showForRoll(roll, game.user, true);
+  return { roll, passed, target };
 }
 
 /* -------------------------------------------- */

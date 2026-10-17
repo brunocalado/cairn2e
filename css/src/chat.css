@@ -283,6 +283,40 @@
         }
     }
 
+    /* The Scar card's lines (`templates/chat/scar-card.hbs`) are the damage card's ruled pairs.
+       What a die moved is a roll outcome, so it takes the palette's first exception; what is
+       still owed is a promise, said in italic. */
+    .cairn-scar-lines {
+        /* A Scar's value can be a sentence ("2d6, from the Growth tab…"), where a damage pair is
+           a number: the label keeps its width and the sentence wraps beside it. */
+        .cairn-damage-label {
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        .cairn-damage-value {
+            text-align: right;
+        }
+
+        .gain .cairn-damage-value {
+            color: var(--color-level-success-border);
+            font-weight: 700;
+        }
+
+        .loss .cairn-damage-value {
+            color: var(--color-level-error-border);
+            font-weight: 700;
+        }
+
+        .state .cairn-damage-value {
+            font-weight: 700;
+        }
+
+        .owed .cairn-damage-value {
+            font-style: italic;
+        }
+    }
+
     /* The save the hit now owes, cut off from the record of what it did. */
     .cairn-damage-consequence {
         border-top: var(--cairn-hairline) solid var(--cairn-surface-fg);

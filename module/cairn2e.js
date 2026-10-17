@@ -161,11 +161,12 @@ Hooks.once("init", async function () {
 
   // The Scars window belongs to the character's own player, and the client that applied the
   // damage is usually the Warden's. A query addresses one user and comes back as a promise;
-  // `User#query` throws when that user is not connected, which the chat card already covers.
+  // `User#query` throws when that user is not connected, and the Warden's client posts the card
+  // instead. The player's client posts it otherwise, so the window can write into it.
   CONFIG.queries[SCAR_QUERY] = async ({ actorUuid, hpLost }) => {
     const actor = await fromUuid(actorUuid);
     if (!actor) return false;
-    await CairnScars.open(actor, { hpLost });
+    await CairnScars.take(actor, hpLost);
     return true;
   };
 
@@ -687,12 +688,13 @@ Hooks.on("renderChatMessageHTML", async (message, html) => {
   // owner's client when the hit lands; this is the way back in after it has been closed, or after
   // the player who owes the roll has logged in again. The actor comes from the message's own flag,
   // not from the speaker's token: a Scar can be rolled a session later, when that token is gone.
+  // The message goes with it, so the window fills this card in when it is this user's to write.
   const scarBtn = html.querySelector(".open-scars");
   if (scarBtn) {
     const scarActor = fromUuidSync(message.getFlag(SYSTEM_ID, "scarActor"));
     const hpLost = message.getFlag(SYSTEM_ID, "scarHpLost");
     if (scarActor && (scarActor.testUserPermission(game.user, "OWNER") || game.user.isGM)) {
-      scarBtn.addEventListener("click", () => CairnScars.open(scarActor, { hpLost }));
+      scarBtn.addEventListener("click", () => CairnScars.open(scarActor, { hpLost, message }));
     } else {
       scarBtn.hidden = true;
     }

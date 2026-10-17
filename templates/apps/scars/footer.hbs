@@ -1,20 +1,37 @@
-{{!-- The row's own dice, then the one irreversible button.
+{{!-- What the button will roll, then what it rolled, then the button.
 
-      A location die is offered until it is rolled; the gain is NOT a button here — where
-      the row takes it at once, Take this Scar rolls it, and where the row defers it ("once
-      mended", "after recovery") it waits on the fiction and is offered on the character's Scars
-      tab instead. --}}
+      Before: one sentence of what the row rolls now, and whether its gain waits. After: one line
+      per effect — a condition, the save, the gain or the gain still owed — each with the dice
+      that decided it, written in as its die lands. The window stays open on the result until the
+      player closes it: a window that shut itself on the click was a maximum that moved unseen. --}}
 <footer class="cairn-scars-foot">
-    {{#if location}}
-    <p class="cairn-scars-outcome">{{localize 'CAIRN.Scar.Location'}}: <strong>{{location}}</strong></p>
+    {{#if preview}}
+    <p class="cairn-scars-note">{{preview}}</p>
     {{/if}}
     {{#if deferredNote}}
     <p class="cairn-scars-note">{{localize 'CAIRN.Scar.Deferred'}}</p>
     {{/if}}
+    {{#if lines.length}}
+    <ul class="cairn-plain-list cairn-scars-lines">
+        {{#each lines as |l|}}
+        <li class="cairn-scars-line {{l.tone}}{{#if l.fresh}} fresh{{/if}}"
+            {{#unless @last}}data-ink="hline" data-ink-seed="scar-line-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-scars-line-label">{{l.label}}</span>
+            <span class="cairn-scars-line-value">{{l.value}}</span>
+            {{#if l.dice}}<span class="cairn-scars-line-dice">{{l.dice}}</span>{{/if}}
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
     <div class="cairn-scars-buttons">
-        {{#if canRollLocation}}
-        <button type="button" data-action="scarRollLocation">{{localize 'CAIRN.Scar.RollLocation'}}</button>
+        {{#if ready}}
+        <button type="button" data-action="scarRoll"><i class="fa-solid fa-dice" inert></i> {{localize buttonLabel}}</button>
         {{/if}}
-        <button type="button" data-action="scarConfirm">{{localize 'CAIRN.Scar.Take'}}</button>
+        {{#if rolling}}
+        <p class="cairn-scars-note">{{localize 'CAIRN.Scar.Rolling'}}</p>
+        {{/if}}
+        {{#if done}}
+        <button type="button" data-action="scarDone">{{localize 'CAIRN.Scar.Done'}}</button>
+        {{/if}}
     </div>
 </footer>

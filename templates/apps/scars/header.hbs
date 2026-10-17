@@ -1,13 +1,25 @@
-{{!-- What happened, in the table's own terms: the amount of HP lost, which is the row to read.
-      The number is printed, not typed — it comes from the hit — and the row under it can still be
-      changed by the Warden, who is allowed to say otherwise; the player cannot. Opened from the Scars tab there was no hit, so there is no number to print and
-      the lead only says a row is to be picked. --}}
+{{!-- The one row this Scar is: the number that chose it, its title, and its prose. The number is
+      the HP the hit took — printed, not typed — or, opened from the Scars tab where there was no
+      hit, the row picked below. Where the row names a place, the place joins the title once its
+      die has landed: it is part of the Scar's name, not one of its effects.
+
+      The Warden may say another row applies, so the table opens from here for them; a player
+      answering a hit gets no toggle, because the row is not theirs to change. --}}
 <header class="cairn-scars-head">
-    {{#if hpLost}}
-    <p class="cairn-scars-lead">{{localize 'CAIRN.Scar.Lead'}}</p>
-    <p class="cairn-scars-lost"><span class="cairn-scars-lost-n">{{hpLost}}</span>
-        <span class="cairn-scars-lost-label">{{localize 'CAIRN.Scar.HpLost'}}</span></p>
-    {{else}}
-    <p class="cairn-scars-lead">{{localize 'CAIRN.Scar.LeadPick'}}</p>
-    {{/if}}
+    <p class="cairn-scars-lost">
+        <span class="cairn-scars-lost-n">{{number}}</span>
+        <span class="cairn-scars-lost-label">{{#if hpLost}}{{localize 'CAIRN.Scar.HpLost'}}{{else}}{{localize 'CAIRN.Scar.Entry'}}{{/if}}</span>
+    </p>
+    <div class="cairn-scars-row-text">
+        <h2 class="cairn-scars-name">{{name}}</h2>
+        {{#if placeDice}}
+        <p class="cairn-scars-dice">{{placeDice}}</p>
+        {{/if}}
+        <p class="cairn-scars-prose">{{text}}</p>
+        {{#if canToggle}}
+        <button type="button" class="cairn-scars-toggle" data-action="scarToggleTable">
+            {{#if tableOpen}}{{localize 'CAIRN.Scar.HideTable'}}{{else}}{{localize 'CAIRN.Scar.ShowTable'}}{{/if}}
+        </button>
+        {{/if}}
+    </div>
 </header>
