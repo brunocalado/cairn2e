@@ -7,7 +7,7 @@ and keeps the bookkeeping for you: the inventory slots, Fatigue, damage spilling
 watches of a journey and the turns of a dungeon.
 
 <p align="center">
-  <img src="docs/images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="49%">
+  <img src="docs/images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the gold, and ten inventory slots with fatigue markers" width="49%">
   <img src="docs/images/character-creator.webp" alt="The character creator's first step: choosing one of the twenty backgrounds" width="49%">
 </p>
 

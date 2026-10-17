@@ -288,7 +288,7 @@ the **Other Backgrounds** list.
 ## 3. The character sheet
 
 <p align="center">
-  <img src="images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the Stores button beside the gold, and ten inventory slots with fatigue markers" width="70%">
+  <img src="images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the gold, and ten inventory slots with fatigue markers" width="70%">
 </p>
 
 ### The top of the sheet
