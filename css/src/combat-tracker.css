@@ -486,6 +486,24 @@
         }
     }
 
+    /* The header's hairline between the two buttons that make an encounter and the ones that
+       switch between them: the soft ink of the panel's frames, a glyph's height. */
+    .cairn-encounters-rule {
+        align-self: center;
+        background: color-mix(in srgb, var(--cairn-surface-fg) 40%, transparent);
+        flex: 0 0 var(--cairn-hairline);
+        height: 16px;
+        margin: 0 4px;
+    }
+
+    /* An exploration's number carries the dungeon glyph before it, smaller than the figure: the
+       kind of encounter said by a shape, as the button that made it says it. */
+    .cairn-encounter-kind {
+        font-size: 0.7em;
+        margin-right: 3px;
+        opacity: 0.8;
+    }
+
     /* The exploration's help mark in the tracker header. The mark's paper disc is the sheet's;
        here it sits in core's chrome, where a paper disc vanished into the light theme's ground,
        so it takes the swapping pair: a surface-ink disc with the ground's colour knocked out.

@@ -160,11 +160,13 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   /**
    * @inheritDoc
    *
-   * The header and footer say "turn" instead of "round" for a dungeon exploration.
+   * The header and footer say "turn" instead of "round" for a dungeon exploration, and each
+   * encounter's number in the header says which kind it is.
    */
   async _prepareCombatContext(context, options) {
     await super._prepareCombatContext(context, options);
     context.isDungeon = !!this.viewed?.isDungeon;
+    for (const entry of context.combats ?? []) entry.isDungeon = !!game.combats.get(entry.id)?.isDungeon;
   }
 
   /**
