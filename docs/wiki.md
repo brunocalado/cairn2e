@@ -39,8 +39,8 @@ Create a world on the **Cairn 2e** system and launch it. The first time it opens
 - the system's macros in a **Cairn 2e** folder of the Macros directory (see [§17](#17-macros)).
 
 Each player finds their macros on the hotbar the first time they log in: the three saves, the
-Die of Fate, the Rules Summary, the Calendar and the Stores on the left, Rest and Restore Abilities at the far end. Only
-empty slots are filled, and only once.
+Die of Fate, the Rules Summary, the Calendar, the Stores and Take Damage, then Rest and Restore
+Abilities at the far end. Only empty slots are filled, and only once.
 
 If players should build their own characters, open **Configure Settings → Permissions** and allow
 **Create Actor** for the Player role.
@@ -156,7 +156,7 @@ rather not light anything on the map can still spend a torch's uses by clicking 
 
 ### Recommended modules
 
-All three are optional:
+All five are optional:
 
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls your dice in 3D, including a
   custom Cairn d20. The other dice wear the **Cairn Blood Moon** theme until a player picks
@@ -170,6 +170,13 @@ All three are optional:
 - [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's gear from
   materials on a crafting grid, cooks food, brews potions and takes things apart again (see
   [§12](#12-crafting-with-grid-crafter)).
+- [Canvas Harvest](https://github.com/brunocalado/canvas-harvest) puts ore veins, trees, herb
+  patches, carcasses and monster parts on the map, for the party to mine, chop, gather and carve
+  into the Materials that Grid Crafter works. It needs Canvas Loot, below, where what is gathered
+  lands (see [Gathering with Canvas Harvest](#gathering-with-canvas-harvest)).
+- [Canvas Loot](https://github.com/brunocalado/canvas-loot) drops, throws and picks up items as
+  tiles on the map. Its chat messages read as the system's own cards, and a lit torch dropped on
+  the map keeps its flame.
 
 ### Measures
 
@@ -293,10 +300,11 @@ the **Other Backgrounds** list.
   are crossed out and refuse while you are **Deprived**, as the rules say.
 - **Die of Fate** rolls a d6 in the open.
 - **Actions**, in the sheet's title bar, opens a small menu for the character's owner:
-  **Barter** (see below), the **Rules Summary**, the **Calendar**, **Whisper** (a private word, spoken as the
-  character, to the players you pick) and any macros the Warden has added (see
-  [§1](#settings)). With Grid Crafter active, the **Forge** is there too (see
-  [§12](#12-crafting-with-grid-crafter)).
+  **Take damage** (damage rolled at the table, typed in; see [§6](#damage-typed-in)), **Barter**
+  (see below), the **Rules Summary**, the **Calendar**, **Whisper** (a private word, spoken as
+  the character, to the players you pick), **Stores** while the Warden lets players visit one
+  (see [§11](#stores)), and any macros the Warden has added (see [§1](#settings)). With Grid
+  Crafter active, the **Forge** is there too (see [§12](#12-crafting-with-grid-crafter)).
 
 The **Rules Summary** puts the player's rules on one landscape page. The Warden can open it on
 everyone's screen with **Show to everyone**, on its title bar.
@@ -311,6 +319,10 @@ everyone's screen with **Show to everyone**, on its title bar.
 the current value (hold one down to keep counting). Click the attribute's name to roll a save
 (see [§5](#5-rolling-dice)).
 
+The **−** on HP is a correction, not a hit: it never applies armor and never asks for a Scar, even
+at 0. Damage a character takes goes through **Take damage** or a damage card (see
+[§6](#6-damage-critical-damage-and-scars)).
+
 **Armor** is worked out for you: it adds up the armor you have equipped, up to a maximum of 3.
 
 ### The edit window
@@ -322,8 +334,7 @@ itself is for reading and playing at the table.
 ### Gold
 
 The gold amount sits at the end of the row of tabs. Click it and type a new total. Coins are real
-items that take space, so see [§11](#11-stores-and-coin) for how they are carried. While the
-Warden lets players visit a store, a **Stores** button sits beside it.
+items that take space, so see [§11](#11-stores-and-coin) for how they are carried.
 
 ### Tabs
 
@@ -494,16 +505,36 @@ and gets its own **Damage** card in the log. Each of those cards has a **Reverse
 (also on its right-click menu), so the one target that should not have been hit is undone alone.
 The Scars work exactly as for a weapon. Only the Warden sees these buttons and entries.
 
+### Damage typed in
+
+Damage rolled where the system can't see it, on the table's own dice or behind the Warden's screen,
+is typed in. A player opens **Actions → Take damage** on their sheet, or presses the **Take
+Damage** macro on the hotbar, which works on the selected token or their own character. The window
+asks for the amount, where it lands (**HP**, **STR**, **DEX** or **WIL**) and whether armor helps,
+as **Apply as damage** does. The hit then lands exactly as a damage card's Apply: armor, STR
+overflow, the **Roll STR save** card, the Warden's **Reverse the hit**, and a Scar at exactly 0
+HP. Confirming with no amount, or with 0, says so and changes nothing.
+
 ### Scars
 
-When a hit takes a player's character to **exactly 0 HP** without touching STR, that player gets
-the **Scars** window. The right row of the Scars table is already chosen. Roll where it landed,
-then press **Take this Scar**.
+When a hit takes a player's character to **exactly 0 HP** without touching STR, the character
+has a Scar to roll. A card in the chat says who and how much HP the hit took, and the **Scars**
+window opens on that player's screen. If the player is not connected, the card waits for them: its
+**Roll the Scar** button opens the window whenever they come back. Only a hit does this; the HP
+**−** on the sheet never does (see [§3](#attributes-and-hp)).
+
+The window shows the one row of the Scars table that the HP lost lands on. **Roll the Scar** rolls
+everything that row asks for, one die after another: where it landed, which attribute grows, the
+WIL save, the gain. Each result is written in the window and on the chat card as its die lands,
+and the window stays open on the result until it is closed. A row with nothing to roll is taken
+with **Take this Scar**. The Warden can press **Show the table** to choose a different row; a
+player cannot. A Scar is taken once: a second press of the card's button says it has already been
+taken.
 
 Some Scars only give their benefit later, for example "once mended". Those wait on the **Growth**
 tab, where you roll the benefit when the Warden agrees the time has come. **Add a Scar** on the
-same tab records a Scar that no hit produced. Deleting a Scar puts any maximum it raised back where
-it was.
+same tab opens the window with the whole table, to record a Scar that no hit produced. Deleting a
+Scar puts any maximum it raised back where it was.
 
 ---
 
@@ -518,7 +549,13 @@ is built around that:
 - The group that still has to act is written in full ink, and every token of that group is marked
   on the map.
 - In the **first round** each player character has a button to roll the **DEX save** the rules ask
-  for. Anyone who fails loses that turn.
+  for. The card says what the roll means: the character acts this round, before the opponents, or
+  loses the turn and acts again from the next. A failure also marks the row as having acted. A
+  **Panicked** character does not act in the first round, so their button asks before rolling,
+  and the card says it was rolled through Panic.
+- A Panicked combatant's portrait trembles in the tracker.
+- Foundry's **Reset Initiative** clears the first-round DEX saves and the acted marks, which are
+  what stands in for initiative in Cairn.
 - Every opponent's row has a **Morale** flag, the Warden's alone, that rolls that opponent's
   Morale save at any moment.
 - When the opponents owe a Morale save (their first casualty, half their number down, or a lone
@@ -655,9 +692,9 @@ every other store, after a warning.
 
 **For players:**
 
-- While the Warden lets you visit at least one store, a **Stores** button sits beside your Gold on
-  your character sheet. It opens the store, and the list at the top of the window moves between
-  every store you can visit. Moving to another store empties your cart.
+- While the Warden lets you visit at least one store, **Stores** is in the **Actions** menu of your
+  character sheet, and the **Stores** macro on your hotbar opens it too. The list at the top of the
+  window moves between every store you can visit. Moving to another store empties your cart.
 - The Warden can also open a store on your screen with **Open to players**. It joins your list until
   you close the window, even if it is not one you can visit on your own.
 - The **For sale** tab lists the shelves. The **Yours** tab lists your own things that have a
@@ -683,18 +720,22 @@ rules of its own.
 **Materials.** The **Materials** compendium, in the Homebrew folder, holds what things are made of:
 ingots and nails, planks and glass, hide and leather, cloth and thread, herbs and raw food. Most are
 bought: the **Toolmaker**, **Tailor**, **Apothecary** and **Provisioner** sell them. Stick, Stone,
-Bone, Feather, Berries, Resin, Reeds and Sinew cost nothing and no store sells them: they are found,
-hunted or gathered, whenever the Warden says so. Tallow is bought, or rendered from Raw Meat in a
-pot. The three **Monster Parts**, Troll Tallow, Gargoyle Grit and Pixie
-Scale, are taken from the creature they name and sold nowhere; they are the dear part of a
-potion. Raw meat, fowl and fish, milk and vegetables are not food, so Make Camp won't eat them until
-they are cooked.
+Log, Rubble, Sand, Iron Ore, Bone, Feather, Sinew, Berries, Resin, Reeds, Flax, Acorns, Fruit and
+Grain cost nothing and no store sells them: they are found, hunted or gathered, whenever the Warden
+says so (or struck on the map, with [Canvas Harvest](#gathering-with-canvas-harvest)). The raw ones
+are worked first: two Iron Ore smelt into an Iron Ingot and two Sand into Glass (Smithing Tools), an
+Axe splits a Log into two Planks, and two Flax spin into Thread (Sewing Kit). Tallow is bought, or
+rendered from Raw Meat in a pot. The six **Monster Parts** are taken from the creature they name and
+sold nowhere: Troll Tallow, Gargoyle Grit, Pixie Scale and Phoenix Feather are the dear part of a
+potion, a Viper Venom Sac makes Antitoxin, and a Manticore Spike is worth its price as it is. Raw
+meat, fowl and fish, milk and vegetables are not food, so Make Camp won't eat them until they are
+cooked.
 
 **Recipes.** Grid Crafter's Recipe Book lists them all under **Cairn 2e**. What a recipe spends
 always costs less than what it makes, so making a thing is cheaper than buying it. Some things are
 made in steps: two Iron Ingots make a Steel Ingot, and a Steel Ingot makes two Steel Plates.
 Weapons, armour and tools have a shape, which works anywhere on the grid, exactly as drawn.
-Food, mixtures such as Antitoxin and Repellent, and the sixteen **Potions** have none: put the
+Food, mixtures such as Antitoxin and Repellent, and the seventeen **Potions** have none: put the
 ingredients in any cells. Every potion is poured into a Glass vial, one of its ingredients.
 
 **Tools.** Many recipes need a tool the character carries. It never goes on the grid and is never
@@ -744,6 +785,44 @@ scrolls and relics, which are found, never made; background gear; and More Gear'
 tools, valuables, strange items and transport.
 
 Whether crafting takes a Downtime Action, a workshop, or only a moment is the Warden's call.
+
+### Gathering with Canvas Harvest
+
+[Canvas Harvest](https://github.com/brunocalado/canvas-harvest) is an optional module, and it needs
+[Canvas Loot](https://github.com/brunocalado/canvas-loot). With it active, the Warden places
+resources on the map from Canvas Harvest's **Resource Book**, and a character standing by one
+mines, chops, gathers or carves it. What a strike gives lands beside the token as a Canvas Loot
+item, to pick up. Gathering is homebrew, like crafting, and it gives the raw side of the recipes
+above.
+
+The system adds 38 resources in seven groups: **Stone & Ore** (iron and gem veins, a rock face, a
+sand bank, a salt crust), **Timber** (a tree, deadfall), **Foraging** (herbs, mushrooms, brambles,
+wild flax, reeds, wild hives, nests, fruit trees, hazel, oak mast, roots and grain), **Hunting &
+Fishing** (a fishing spot, a game trail), **Carcasses** (small and large game, fowl, a bear, a
+predator, a winged beast, a catch of fish), **Remains** (an old battlefield, skeletons, a spider
+nest) and **Monster Parts** (a troll, a frozen gargoyle, a pixie bed, a killer bee hive, a
+manticore, a viper, phoenix ashes).
+
+- **Tools.** Stone is struck with a Pick, Crowbar, Chisel or Smelting Hammer, wood is chopped with
+  an Axe, Hand Axe or Saw, and a carcass is carved with a Dagger or any of the knives (or a
+  Bonesaw). Roots and grain are dug or reaped with a Sickle, a Sharpened Trowel or a Root Knife; a
+  fishing spot asks for a Fishing Rod or a Net, and a game trail for a trap. Herbs, fruit, nuts and
+  nests are picked by hand. Without the tool nothing is gathered, and the player is told which
+  tools would do.
+- **Noise.** The first strike on a vein, a rock face or a tree tells the Warden the sound carries,
+  as a reminder to check for an encounter.
+- **Danger.** A viper asks for a DEX save on a card, and whoever struck it rolls their own; on a
+  failure the venom touched them, and the Warden says what it does. Breaking into a killer bee hive
+  tells the Warden it is awake.
+- **Daylight.** A frozen gargoyle can only be scraped while the sun is on it, by the calendar's
+  clock.
+- **Growing back.** A spot that runs dry fills again by the world's clock: a fishing spot or a game
+  trail after a day, herbs, mushrooms, reeds, roots and nests after a week (six days in Vald), and
+  brambles, flax, hives, fruit, nuts, grain, sand and salt after a season. Veins, trees and
+  carcasses do not grow back.
+
+The Warden can copy and change any of them in the Resource Book. A copy keeps its rules (noise,
+venom, daylight, growing back), because they follow the resource's tags, not its name.
 
 ---
 
@@ -1127,6 +1206,7 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **Rules Summary** | opens the one-page rules summary | ✓ |
 | **Calendar** | opens the Vald calendar | ✓ |
 | **Stores** | opens the stores the Warden has open to visits (every store, for the Warden) | ✓ |
+| **Take Damage** | applies damage you type in (see [§6](#damage-typed-in)) | ✓ |
 | **STR**, **DEX**, **WIL** | roll that save | ✓ |
 | **Roll Morale** | rolls a Morale save for the selected enemy | |
 | **Roll Reaction** | rolls 2d6 on the Reaction table | |
@@ -1153,6 +1233,7 @@ cairn2e.dieOfFate();        // 1d6
 cairn2e.rulesSummary();     // open the rules summary
 cairn2e.calendar();         // open the calendar
 cairn2e.stores();           // open the stores
+cairn2e.takeDamage();       // type in damage taken
 cairn2e.treasure();         // Warden only: open the Treasure window
 cairn2e.resetPlayerHotbars(); // Warden only: refill every player's hotbar
 cairn2e.restoreDefaultStores(); // Warden only: every store back to the system's ten
@@ -1184,9 +1265,9 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 - **More Gear** holds clothing, food, drink, tools and transport the Marketplace doesn't list, the
   **Valuables** in four price bands and forty-five **Strange Items**, oddities whose meaning the
   Warden reads, in two. The Treasure window rolls on both (see [Treasure](#treasure)).
-- **Potions** holds sixteen one-dose potions: nine from *Alchemy & Potions — For Cairn*, revised
-  for Cairn 2e (credited in [CREDITS](CREDITS.md)), and seven of the system's own, each brewed
-  around a part taken from a Troll, a Gargoyle or a Pixie. No store sells them; with Grid Crafter
+- **Potions** holds seventeen one-dose potions: nine from *Alchemy & Potions — For Cairn*, revised
+  for Cairn 2e (credited in [CREDITS](CREDITS.md)), and eight of the system's own, each brewed
+  around a part taken from a Troll, a Gargoyle, a Pixie or a Phoenix. No store sells them; with Grid Crafter
   they are brewed (see [§12](#12-crafting-with-grid-crafter)).
 
 **Monster pictures.** The Bestiary comes with Foundry's standard icons. To use your own art:
