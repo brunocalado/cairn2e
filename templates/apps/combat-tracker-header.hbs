@@ -10,49 +10,31 @@
       Beside core's "+" sits the Warden's way into a dungeon exploration, and an exploration
       counts turns rather than rounds (`procedures.md` → Dungeon Exploration). A rule parts the
       two that make an encounter from the ones that switch between them, and an exploration's
-      number wears the same dungeon glyph as the button that made it. --}}
+      number wears the same dungeon glyph as the button that made it.
+
+      Every encounter is always a numbered tab, however many there are: past what one line holds
+      the numbers wrap onto a second, between the create buttons and the gear. Core's ◀ n/m ▶
+      past seven hid every encounter but one behind two arrows (maintainer's call, 2026-10-17). --}}
 <header class="combat-tracker-header">
 
     {{#if user.isGM}}
     <nav class="encounters {{ css }}" aria-label="{{ localize "COMBAT.NavLabel" }}">
 
-        {{#if displayCycle}}
+        {{#if combats.length}}
         <button type="button" class="inline-control icon fa-solid fa-plus" data-action="createCombat"
                 data-tooltip aria-label="{{ localize "COMBAT.Create" }}"></button>
         <button type="button" class="inline-control icon fa-solid fa-dungeon" data-action="createDungeon"
                 data-tooltip aria-label="{{ localize "CAIRN.Dungeon.Create" }}"></button>
         <span class="cairn-encounters-rule" aria-hidden="true"></span>
-
-        <div class="cycle-combats">
-            <button type="button" class="inline-control icon fa-solid fa-caret-left" data-action="cycleCombat"
-                    {{#if previousId}}data-combat-id="{{ previousId }}" {{else}}disabled{{/if}}
-                    data-tooltip aria-label="{{ localize "COMBAT.EncounterPrevious" }}"></button>
-            <div class="encounter-count">
-                <span class="value">{{#if isDungeon}}<i class="fa-solid fa-dungeon cairn-encounter-kind" inert></i>{{/if}}{{ currentIndex }}</span>
-                <span class="separator">&sol;</span>
-                <span class="max">{{ combats.length }}</span>
-            </div>
-            <button type="button" class="inline-control icon fa-solid fa-caret-right" data-action="cycleCombat"
-                    {{#if nextId}}data-combat-id="{{ nextId }}" {{else}}disabled{{/if}}
-                    data-tooltip aria-label="{{ localize "COMBAT.EncounterNext" }}"></button>
+        <div class="cairn-encounter-tabs">
+            {{#each combats}}
+            <button type="button" class="inline-control {{#if active}}active{{/if}}" data-action="cycleCombat"
+                    data-combat-id="{{ id }}"
+                    {{#if name}}data-tooltip aria-label="{{name}}"{{else if isDungeon}}data-tooltip aria-label="{{ localize "CAIRN.Dungeon.Exploration" n=label }}"{{/if}}>
+                {{#if isDungeon}}<i class="fa-solid fa-dungeon cairn-encounter-kind" inert></i>{{/if}}{{ label }}
+            </button>
+            {{/each}}
         </div>
-
-        <button type="button" class="inline-control icon fa-solid fa-gear" data-action="trackerSettings"
-                data-tooltip aria-label="{{ localize "COMBAT.Settings" }}"></button>
-
-        {{else if combats.length}}
-        <button type="button" class="inline-control icon fa-solid fa-plus" data-action="createCombat"
-                data-tooltip aria-label="{{ localize "COMBAT.Create" }}"></button>
-        <button type="button" class="inline-control icon fa-solid fa-dungeon" data-action="createDungeon"
-                data-tooltip aria-label="{{ localize "CAIRN.Dungeon.Create" }}"></button>
-        <span class="cairn-encounters-rule" aria-hidden="true"></span>
-        {{#each combats}}
-        <button type="button" class="inline-control {{#if active}}active{{/if}}" data-action="cycleCombat"
-                data-combat-id="{{ id }}"
-                {{#if name}}data-tooltip aria-label="{{name}}"{{else if isDungeon}}data-tooltip aria-label="{{ localize "CAIRN.Dungeon.Exploration" n=label }}"{{/if}}>
-            {{#if isDungeon}}<i class="fa-solid fa-dungeon cairn-encounter-kind" inert></i>{{/if}}{{ label }}
-        </button>
-        {{/each}}
         <button type="button" class="inline-control icon fa-solid fa-gear" data-action="trackerSettings"
                 data-tooltip aria-label="{{ localize "COMBAT.Settings" }}"></button>
 

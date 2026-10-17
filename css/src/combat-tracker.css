@@ -489,15 +489,28 @@
     /* The header's hairline between the two buttons that make an encounter and the ones that
        switch between them: the soft ink of the panel's frames, a glyph's height. */
     .cairn-encounters-rule {
-        align-self: center;
+        align-self: flex-start;
         background: color-mix(in srgb, var(--cairn-surface-fg) 40%, transparent);
         flex: 0 0 var(--cairn-hairline);
         height: 16px;
-        margin: 0 4px;
+        margin: 4px 4px 0;
     }
 
-    /* A numbered tab as wide as its figure and glyph: core's 8px a side was sized for seven bare
-       figures beside two buttons, and the header now holds two more things. */
+    /* The numbered tabs between the create buttons and the gear, wrapping onto as many lines as
+       there are encounters; the buttons either side stay on the first. Each tab as wide as its
+       figure and glyph: core's 8px a side was sized for bare figures beside two buttons. */
+    .combat-tracker-header .encounters.tabbed {
+        align-items: flex-start;
+    }
+
+    .cairn-encounter-tabs {
+        display: flex;
+        flex: 1 1 0;
+        flex-wrap: wrap;
+        gap: 2px 4px;
+        min-width: 0;
+    }
+
     .combat-tracker-header .encounters button.inline-control[data-action="cycleCombat"]:where(:not(.icon)) {
         padding: 0 4px;
     }
