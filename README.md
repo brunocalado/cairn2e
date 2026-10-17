@@ -30,9 +30,10 @@ fists. Click STR, DEX or WIL to make a save. Rest, Restore and the **Die of Fate
 each. Armor adds itself up from what you wear. When a character is overloaded or panicking, the
 sheet shows it.
 
-The **Actions** menu lets a player **Whisper** in character, **Barter** gear and coin with another
-player's character, open the one-page **Rules Summary** or the **Calendar**, and run the macros
-the Warden has put there. With Grid Crafter active, the **Forge** is there too. Drag a sack or a
+The **Actions** menu lets a player type in the damage the table rolled with **Take damage**,
+**Whisper** in character, **Barter** gear and coin with another player's character, open the
+one-page **Rules Summary** or the **Calendar**, walk into the **Stores** the Warden has opened, and
+run the macros the Warden has put there. With Grid Crafter active, the **Forge** is there too. Drag a sack or a
 cart onto another sheet you own, such as your mule's, and everything inside goes with it. A
 companion that comes with a background, like the Raven Familiar, is dragged from its item straight
 onto the map.
@@ -44,9 +45,11 @@ onto the map.
 ### Damage and combat
 Roll damage and apply it to the targeted token. Armor soaks what it can, HP goes first, the rest
 spills into STR, and the chat card offers the critical-damage save when it's due. A fall or a
-cave-in rolled on the spot applies the same way, and a hit on the wrong token is undone with one
-click. Scars, Panic, *impaired* and *enhanced* attacks, *blast*, Morale and Reactions are all
-handled. The combat tracker follows Cairn's rules: sides take turns, with no initiative roll.
+cave-in rolled on the spot applies the same way, and so does damage rolled on the table's own dice,
+typed in with Take damage. A hit on the wrong token is undone with one click. A hit that leaves
+a character at exactly 0 HP opens the Scars window on that player's screen, where one button rolls
+everything the Scar asks for. Scars, Panic, *impaired* and *enhanced* attacks, *blast*, Morale and
+Reactions are all handled. The combat tracker follows Cairn's rules: sides take turns, with no initiative roll.
 Select a token and hover another to read how far apart they are, height included. The ruler and a
 dragged token read in metres too.
 
@@ -69,8 +72,8 @@ dragged token read in metres too.
   undo), and says when the rules call for a Dungeon Event. If a fight breaks out, the dungeon picks
   up again on the same turn once it ends.
 - Ten small **Stores** come ready, from the Weaponsmith to the Tavern. Stock your own by dragging
-  items onto its shelves, open it on every player's screen, or let players walk in from their own
-  sheet. Players fill a cart, and the store checks both their gold *and* their free slots before
+  items onto its shelves, open it on every player's screen, or let players walk in from the
+  Actions menu of their own sheet. Players fill a cart, and the store checks both their gold *and* their free slots before
   anything changes hands.
 - The **Treasure** window rolls loot from the price bands of the compendiums, crafting materials by
   kind, or tables and folders of your own. Strike what you don't want and send the rest to the
@@ -121,7 +124,7 @@ All the game content you need is already inside:
 | **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the Weather in Vald, the naming tables, and the Warden's generator tables |
 | **Rules** | the Player's Guide (principles, character creation, core rules, procedures and the Marketplace), linked to the items, tables and backgrounds it names |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
-| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, Stores, and the Warden's Reset Player Hotbars and Restore Default Stores |
+| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, Stores, Take Damage, and the Warden's Reset Player Hotbars and Restore Default Stores |
 | **Homebrew** | *More Gear* (clothing, food, drink, tools, transport, valuables and strange items), *Materials* for crafting, *More Spellbooks*, *More Scrolls* and 17 *Potions*: extra content, not from the Cairn books, kept in its own folder |
 
 Distances read in metres with the feet the map measures beside them, `12 m (40 ft)`, and weights
@@ -130,7 +133,7 @@ in kilograms.
 ### It looks like the books
 The ink-on-paper design uses Lora, the typeface the Cairn books are set in. A new world opens on a
 welcome scene with its own music, and every player finds the saves, the Die of Fate, Rest, Restore
-Abilities, the Rules Summary and the Calendar already on their hotbar. With
+Abilities, the Rules Summary, the Calendar, the Stores and Take Damage already on their hotbar. With
 [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) installed, you roll a custom 3D Cairn
 d20.
 
@@ -164,6 +167,12 @@ Recommended modules, all optional:
   armour and gear from materials on a crafting grid, cooks food and brews potions. Some recipes
   need a tool, such as Smithing Tools or a Sewing Kit, and many things can also be made without
   one. A weapon, an armour or a piece of gear can be taken apart again for its materials.
+- [Canvas Harvest](https://github.com/brunocalado/canvas-harvest) puts 38 resources on the map,
+  from ore veins and trees to herb patches, carcasses and monster parts. The party mines, chops,
+  gathers and carves them with the right tool, and gets the raw materials Grid Crafter works.
+  Herbs, hives and game trails grow back by the calendar's clock. It needs
+  [Canvas Loot](https://github.com/brunocalado/canvas-loot), whose drops and pick-ups read as the
+  system's own chat cards.
 
 ## Learn more
 
