@@ -97,12 +97,14 @@ function wireDeclaration(root) {
       text.setSelectionRange(text.value.length, text.value.length);
     });
   }
-  for (const radio of root.querySelectorAll("input[name='task']")) {
-    const option = radio.closest("label");
-    option.addEventListener("pointerdown", () => { radio.dataset.was = String(radio.checked); });
+  // The chosen task is kept here, not read off the radio: by the time a click arrives the browser
+  // has already checked it, from the pointer and from an arrow key alike.
+  const tasks = [...root.querySelectorAll("input[name='task']")];
+  let chosen = tasks.find((radio) => radio.checked) ?? null;
+  for (const radio of tasks) {
     radio.addEventListener("click", () => {
-      if (radio.dataset.was === "true") radio.checked = false;
-      radio.dataset.was = String(radio.checked);
+      if (radio === chosen) radio.checked = false;
+      chosen = radio.checked ? radio : null;
     });
   }
 }
