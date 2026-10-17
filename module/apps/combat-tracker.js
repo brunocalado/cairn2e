@@ -36,8 +36,9 @@ const RISKY_ACTIONS = new Set(["hurry", "force"]);
 
 const DECLARE_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-declare-dialog.hbs`;
 
-/** A declaration is a line or two, never a paragraph: two lines of the dialog's field hold this. */
-const DECLARATION_MAX = 120;
+/** A declaration is one short line, never a paragraph (maintainer's call, 2026-10-17): it is read
+ *  off the tracker row, where a longer one wrapped into a block. */
+const DECLARATION_MAX = 50;
 
 const TASK_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-task-dialog.hbs`;
 
