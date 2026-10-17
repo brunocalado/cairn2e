@@ -496,6 +496,12 @@
         margin: 0 4px;
     }
 
+    /* A numbered tab as wide as its figure and glyph: core's 8px a side was sized for seven bare
+       figures beside two buttons, and the header now holds two more things. */
+    .combat-tracker-header .encounters button.inline-control[data-action="cycleCombat"]:where(:not(.icon)) {
+        padding: 0 4px;
+    }
+
     /* An exploration's number carries the dungeon glyph before it, smaller than the figure: the
        kind of encounter said by a shape, as the button that made it says it. */
     .cairn-encounter-kind {

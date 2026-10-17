@@ -49,6 +49,13 @@ const TASK_NAME_MAX = 40;
 const PARTY_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-party-dialog.hbs`;
 
 /**
+ * The most encounters the header shows as numbered tabs before it falls back to core's ◀ n/m ▶.
+ * Core allows seven beside its "+" and gear; the dungeon button, the rule and an exploration's
+ * glyph take that room, and five dungeon tabs are what the sidebar's 284px still holds.
+ */
+const ENCOUNTER_TABS_MAX = 5;
+
+/**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
  * every turn start. Measured through the token's own path measurement rather than by adding the
  * waypoints' `cost`: a move made by a document update carries a cost of 0 (observed on 14.368),
@@ -166,7 +173,10 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   async _prepareCombatContext(context, options) {
     await super._prepareCombatContext(context, options);
     context.isDungeon = !!this.viewed?.isDungeon;
-    for (const entry of context.combats ?? []) entry.isDungeon = !!game.combats.get(entry.id)?.isDungeon;
+    const combats = context.combats ?? [];
+    for (const entry of combats) entry.isDungeon = !!game.combats.get(entry.id)?.isDungeon;
+    context.displayCycle = combats.length > ENCOUNTER_TABS_MAX;
+    context.css = context.displayCycle ? "cycle" : (combats.length ? "tabbed" : "");
   }
 
   /**
