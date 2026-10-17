@@ -123,6 +123,9 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
     super(options);
     this.hpLost = options.hpLost ?? null;
     this.message = options.message ?? null;
+    /** The notice card this window answers, if any. `message` moves to a card of this user's own
+     *  when they cannot write the notice; the Scar remembers the notice, so its button stops. */
+    this.cardId = this.message?.id ?? null;
     this.entry = Math.min(Math.max(this.hpLost ?? 1, 1), SCAR_ENTRIES.length);
     // The row a hit lands on is the HP it took, not a choice. Only the Warden may say otherwise.
     this.locked = this.hpLost !== null && !game.user.isGM;
@@ -268,7 +271,8 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
         description: row ? `<p>${row.text}</p>` : "",
         outcome: { attr },
         resolved: false
-      }
+      },
+      flags: this.cardId ? { [SYSTEM_ID]: { scarCard: this.cardId } } : {}
     }], { [SYSTEM_ID]: { scar: true } });
 
     // Deprived or Doomed, on the rows that say so. Clearing it is a night's rest or the next
@@ -427,10 +431,23 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
     });
   }
 
+  /**
+   * Whether the Scar this notice card asks for has been taken. The card cannot say so itself when
+   * the Warden posted it for a player who was away: the player cannot rewrite the Warden's message,
+   * so the Scar carries the card's id instead.
+   */
+  static taken(actor, message) {
+    return actor.items.some((i) => i.type === "scar" && i.getFlag(SYSTEM_ID, "scarCard") === message.id);
+  }
+
   /** The way in, from anywhere: `game.cairn2e.scars.open(actor, { hpLost })` — or without
    *  `hpLost` when no hit is being answered, which is what the Scars tab's Add passes. */
   static async open(actor, { hpLost = null, message = null } = {}) {
     if (!actor) return null;
+    if (message && CairnScars.taken(actor, message)) {
+      ui.notifications.info(game.i18n.localize("CAIRN.Scar.Taken"));
+      return null;
+    }
     if (!(await tableRows())) {
       ui.notifications.warn(game.i18n.localize("CAIRN.Scar.NoTable"));
       return null;

@@ -3,7 +3,9 @@
       It starts as a notice — who owes a Scar and how much the hit took — with the button that
       opens the Scars window, the way back in for a player who closed it or was away when the hit
       landed. When the window rolls, it rewrites this card line by line as each die lands, and the
-      button goes, because the Scar is taken. A gain rolled later from the Growth tab posts the
+      button goes, because the Scar is taken. A notice the Warden posted for an absent player is
+      not the player's to rewrite: it keeps its button, and the button refuses once the Scar is
+      taken (module/cairn2e.js). A gain rolled later from the Growth tab posts the
       same card with its own lines and no HP figure. --}}
 {{#if notice}}
 <p>{{localize 'CAIRN.Scar.Notice' name=name lost=lost}}</p>
