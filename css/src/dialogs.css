@@ -114,13 +114,33 @@
         }
     }
 
-    /* Who pays a dungeon's cost: one row per character, the name in the field primitive's gutter
-       and the switch in its track, as any form's on/off row. What the cost lands on — the torch
-       burning — follows the name in the soft ink. */
+    /* Who pays a dungeon's cost: the party two to a line, each name with its switch at the end of
+       its column, so the window is as tall as half the party. A long name is cut with an ellipsis
+       rather than wrapped (its tooltip holds it whole), and is set as typed — a name, not a label.
+       What the cost lands on — the torch burning — follows it in the soft ink. */
     .cairn-party-dialog {
+        column-gap: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 6px;
+    }
+
+    .cairn-party-member {
+        align-items: center;
+        border-bottom: var(--cairn-hairline) solid var(--cairn-ink-faint);
         display: flex;
-        flex-direction: column;
         gap: 8px;
+        min-width: 0;
+        padding-bottom: 4px;
+
+        .cairn-party-name {
+            flex: 1 1 auto;
+            font-size: 13px;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 
     .cairn-party-note {
