@@ -48,6 +48,9 @@ const TASK_NAME_MAX = 40;
 
 const PARTY_TPL = `systems/${SYSTEM_ID}/templates/apps/dungeon-party-dialog.hbs`;
 
+/** "A, B and C", in the client's language. */
+const listNames = (list) => game.i18n.getListFormatter().format(list);
+
 /**
  * How far a token has moved this turn, from core's movement history, which the combat clears at
  * every turn start. Measured through the token's own path measurement rather than by adding the
@@ -265,7 +268,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     }
     rows.sort((a, b) => a.name.localeCompare(b.name));
 
-    const names = (list) => game.i18n.getListFormatter().format(list);
     const lit = DUNGEON_TRIGGERS.filter((key) => triggers[key]);
     return {
       rows,
@@ -276,7 +278,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         marks: Array.from({ length: t.effort }, (_, index) => ({ index, n: index + 1, done: index < t.spent })),
         // The marks are the count; the words are for a screen reader only.
         progress: game.i18n.localize("CAIRN.Dungeon.TaskProgress", { spent: t.spent, effort: t.effort }),
-        helpers: names(rows.filter((r) => r.taskId === t.id).map((r) => r.name))
+        helpers: listNames(rows.filter((r) => r.taskId === t.id).map((r) => r.name))
       })),
       triggers: DUNGEON_TRIGGERS.map((key) => ({
         key,
@@ -339,7 +341,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     if (!combat?.isDungeon || !combat.started || !combatant?.isOwner) return;
     const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
     const chosen = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
-    const names = (list) => game.i18n.getListFormatter().format(list);
     // Handed over as a bare `<div>` rather than a string: DialogV2 runs a string through
     // `cleanHTML`, which strips the field's `maxlength` and `placeholder` (observed on 14.369).
     const content = document.createElement("div");
@@ -360,7 +361,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
           name: t.name,
           chosen: t.id === chosen,
           info: helpers.length
-            ? game.i18n.localize("CAIRN.Dungeon.TaskInfoHelped", { spent: t.spent, effort: t.effort, names: names(helpers) })
+            ? game.i18n.localize("CAIRN.Dungeon.TaskInfoHelped", { spent: t.spent, effort: t.effort, names: listNames(helpers) })
             : game.i18n.localize("CAIRN.Dungeon.TaskProgress", { spent: t.spent, effort: t.effort })
         };
       })
@@ -491,7 +492,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     for (const actor of chosen) await putOutLight(actor);
     await postJourneyCard({
       flavor: game.i18n.localize("CAIRN.Dungeon.Events"),
-      lines: [game.i18n.localize("CAIRN.Dungeon.LightsOut", { names: game.i18n.getListFormatter().format(chosen.map((a) => a.name)) })]
+      lines: [game.i18n.localize("CAIRN.Dungeon.LightsOut", { names: listNames(chosen.map((a) => a.name)) })]
     });
   }
 
@@ -537,10 +538,9 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const paid = [];
     const unpaid = [];
     for (const actor of chosen) ((await charge(actor)) ? paid : unpaid).push(actor.name);
-    const names = (list) => game.i18n.getListFormatter().format(list);
     const lines = [];
-    if (paid.length) lines.push(game.i18n.localize(paidKey, { names: names(paid) }));
-    if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: names(unpaid) }));
+    if (paid.length) lines.push(game.i18n.localize(paidKey, { names: listNames(paid) }));
+    if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: listNames(unpaid) }));
     await postJourneyCard({ flavor: game.i18n.localize("CAIRN.Dungeon.Events"), lines });
   }
 
