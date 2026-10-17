@@ -553,7 +553,8 @@ is built around that:
   loses the turn and acts again from the next. A failure also marks the row as having acted. A
   **Panicked** character does not act in the first round, so their button asks before rolling,
   and the card says it was rolled through Panic.
-- A Panicked combatant's portrait trembles in the tracker.
+- A Panicked combatant's portrait trembles in the tracker, and a Deprived one slowly loses its
+  colour and gets it back. Each keeps its condition's icon beside the name.
 - Foundry's **Reset Initiative** clears the first-round DEX saves and the acted marks, which are
   what stands in for initiative in Cairn.
 - Every opponent's row has a **Morale** flag, the Warden's alone, that rolls that opponent's
