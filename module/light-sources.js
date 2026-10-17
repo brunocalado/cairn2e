@@ -145,9 +145,10 @@ export async function carryLight(giver, arrived) {
 export async function burningLights(actors) {
   const ls = await api();
   if (!ls) return [];
+  // A covered light (Illuminate hidden away) is not exposed to the wind.
   return actors.flatMap((actor) => {
     const lit = ls.getActive(actor);
-    return lit ? [{ actor, item: lit.itemName ?? "" }] : [];
+    return lit && !lit.stowed ? [{ actor, item: lit.itemName ?? "" }] : [];
   });
 }
 
