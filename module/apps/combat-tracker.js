@@ -175,6 +175,22 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   /**
    * @inheritDoc
    *
+   * A panicked combatant's portrait trembles instead of wearing Panic in the effects strip
+   * (maintainer's call, 2026-10-17). The icon is only marked here, not dropped: the stylesheet
+   * hides it, and brings it back for anyone who asked for less motion, so Panic never goes unsaid.
+   * Core's icon entry carries only the effect's image and name, so the image is what matches it.
+   */
+  async _prepareTurnContext(combat, combatant, index) {
+    const turn = await super._prepareTurnContext(combat, combatant, index);
+    const panic = combatant.actor?.appliedEffects.find((e) => e.statuses.has(CONDITION.PANICKED));
+    turn.panicked = !!panic;
+    for (const icon of turn.effects.icons) icon.isPanic = !!panic && (icon.img === panic.img);
+    return turn;
+  }
+
+  /**
+   * @inheritDoc
+   *
    * Core has already built one entry per combatant in `context.turns`, with the thumbnail, the
    * effect icons and the permission flags the row needs. Regroup those entries into the two sides
    * rather than rebuilding them, then sort each side by name — with no initiative, the name is

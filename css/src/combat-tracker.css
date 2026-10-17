@@ -176,6 +176,38 @@
         opacity: 0.55;
     }
 
+    /* A long name ends in an ellipsis on its one line rather than pushing the row taller; the
+       whole name is in its tooltip. Core's `.token-name` is a flex child with no floor, so it
+       needs `min-width: 0` before its text can be cut at all. */
+    .combatant .token-name {
+        min-width: 0;
+    }
+
+    .combatant .token-name .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Panic is the portrait trembling, not one more icon in the effects strip (maintainer's call,
+       2026-10-17): a frightened character, read at a glance down the column. Users who asked for
+       less motion get the still portrait and the icon back, so Panic is always said somehow. */
+    .combatant.is-panicked .token-image {
+        animation: cairn-tremble 0.35s linear infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
+    }
+
+    .combatant.is-panicked .cairn-effect-panic {
+        display: none;
+
+        @media (prefers-reduced-motion: reduce) {
+            display: revert;
+        }
+    }
+
     /* The Morale roll, and the first-round DEX save in its own narrow column left of the acted
        mark. The DEX save exists only in round one, so the row is a column narrower for the rest
        of the fight — deliberate: a permanently reserved gutter for a control that appears once
@@ -734,4 +766,14 @@
         padding: 0 4px;
         text-transform: uppercase;
     }
+}
+
+/* The panicked portrait's tremble (`.is-panicked` above). At column 0 because Chromium drops an
+   `@keyframes` nested inside a style rule. A pixel and a couple of degrees: fear, not a fit. */
+@keyframes cairn-tremble {
+    0%, 100% { translate: 0 0; rotate: 0deg; }
+    20% { translate: -1px 0; rotate: -2deg; }
+    40% { translate: 1px 0; rotate: 1.5deg; }
+    60% { translate: -1px 0; rotate: -1deg; }
+    80% { translate: 1px 0; rotate: 2deg; }
 }

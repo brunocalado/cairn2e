@@ -22,7 +22,7 @@
 <li class="cairn-combat-side cairn-dungeon-block">{{localize "CAIRN.Dungeon.Party"}}</li>
 
 {{#each dungeon.rows}}
-    <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}}"
+    <li class="combatant cairn-dungeon-row {{css}} {{#if resolved}}is-resolved{{/if}} {{#if panicked}}is-panicked{{/if}}"
         data-combatant-id="{{id}}" data-action="activateCombatant">
 
         <img class="token-image" src="{{img}}" alt="{{name}}" loading="lazy">
@@ -32,7 +32,7 @@
               under the name, then the work they lend a hand to. The 20px slots are kept when
               empty, so every row's names, distance and glyphs sit in the same columns. --}}
         <div class="token-name cairn-dungeon-body">
-            <strong class="name">{{name}}</strong>
+            <strong class="name" data-tooltip-text="{{name}}">{{name}}</strong>
 
             {{!-- The pace is a hue — within torchlight, past it, past the three torchlights an
                   action covers — and past torchlight a glyph as well, so it never rests on colour
