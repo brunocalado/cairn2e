@@ -507,7 +507,8 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   static async #choosePayers(titleKey, members) {
     const content = document.createElement("div");
     content.innerHTML = await foundry.applications.handlebars.renderTemplate(PARTY_TPL, {
-      members: members.map(({ actor, note }) => ({ id: actor.id, name: actor.name, note: note ?? "" }))
+      // Keyed by place in the list, not by actor id: two unlinked tokens of one actor share the id.
+      members: members.map(({ actor, note }, index) => ({ id: String(index), name: actor.name, note: note ?? "" }))
     });
     const result = await foundry.applications.api.DialogV2.input({
       classes: [SYSTEM_ID],
@@ -515,7 +516,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       content,
       rejectClose: false
     });
-    return result ? members.filter(({ actor }) => result[actor.id]).map(({ actor }) => actor) : [];
+    return result ? members.filter((_, index) => result[index]).map(({ actor }) => actor) : [];
   }
 
   /**
