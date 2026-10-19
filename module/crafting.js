@@ -628,13 +628,17 @@ export function categoriesOf(recipe) {
  * keeps recipes in memory, not in the world. Categories are names the books show, so they are
  * localized here, where `game.i18n` is ready. The tool a split-tool dismantle asks for is checked on
  * `preDismantle`, which Grid Crafter fires only on the client that pressed Dismantle.
+ * Every recipe is public, so every character's book lists them all: the book is where a player looks
+ * up what an item is for, and its search finds a recipe by its tool as well as its ingredients. Set
+ * on the registration rather than through `setRecipeAccess`, which would turn each into a world copy
+ * that no longer follows this file; the GM can still hide one that way.
  */
 export function registerCrafting() {
   const label = (c) => game.i18n.localize(`CAIRN.Crafting.Category.${c}`);
   Hooks.once(`${MODULE}.ready`, (api) => api.registerRecipes(SYSTEM_ID, [
     ...RECIPES.map((r) => ({ ...r, categories: categoriesOf(r).map(label) })),
     ...DISMANTLES.map((d) => ({ ...d, categories: d.categories.map(label) }))
-  ]));
+  ].map((r) => ({ ...r, access: "public" }))));
   Hooks.on(`${MODULE}.preDismantle`, askForTheTool);
   Hooks.once(`${MODULE}.ready`, installForgeMacro);
 }
