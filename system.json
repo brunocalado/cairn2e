@@ -299,6 +299,7 @@
         "id": "canvas-harvest",
         "type": "module",
         "manifest": "https://github.com/brunocalado/canvas-harvest/releases/latest/download/module.json",
+        "compatibility": { "minimum": "0.1.0", "verified": "0.1.0" },
         "reason": "Places ore veins, trees, herb patches, carcasses and monster parts on the map for the party to mine, chop, gather and carve into the Materials compendium."
       }
     ]

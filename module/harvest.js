@@ -354,7 +354,9 @@ async function regrow() {
  * runs in a world that does not use it. Every client registers, because Canvas Harvest keeps
  * resources and Tool Sets in memory, and the GM checks each strike against its own copy. Names and
  * verbs are localized here, where `game.i18n` is ready. The save button is wired from `init`,
- * since the log renders before the module is ready.
+ * since the log renders before the module is ready. Every resource is in the players' Field Guide from
+ * the start, so they can look up what a tool opens before the first strike; the GM's eye in the
+ * Resource Book still hides one.
  */
 export function registerHarvest() {
   Hooks.on("renderChatMessageHTML", wireSaveButton);
@@ -370,7 +372,8 @@ export function registerHarvest() {
       ...r,
       name: game.i18n.localize(`CAIRN.Harvest.Resource.${keyOf(r.id)}.Name`),
       verb: game.i18n.localize(`CAIRN.Harvest.Resource.${keyOf(r.id)}.Verb`),
-      category: game.i18n.localize(`CAIRN.Harvest.Category.${r.category}`)
+      category: game.i18n.localize(`CAIRN.Harvest.Category.${r.category}`),
+      guide: "shown"
     })));
     Hooks.on(`${MODULE}.preHarvest`, refuseAtNight);
     Hooks.on(`${MODULE}.harvest`, answerStrike);
