@@ -632,9 +632,12 @@ export function categoriesOf(recipe) {
  * up what an item is for, and its search finds a recipe by its tool as well as its ingredients. Set
  * on the registration rather than through `setRecipeAccess`, which would turn each into a world copy
  * that no longer follows this file; the GM can still hide one that way.
+ * Only gear goes on the grid: every material, weapon and armour is gear, and a Scar or a Fatigue
+ * placed there is a mistake. It is a suggestion the GM's Craftable Item Types overrides.
  */
 export function registerCrafting() {
   const label = (c) => game.i18n.localize(`CAIRN.Crafting.Category.${c}`);
+  Hooks.once(`${MODULE}.ready`, (api) => api.registerItemTypes(SYSTEM_ID, ["gear"]));
   Hooks.once(`${MODULE}.ready`, (api) => api.registerRecipes(SYSTEM_ID, [
     ...RECIPES.map((r) => ({ ...r, categories: categoriesOf(r).map(label) })),
     ...DISMANTLES.map((d) => ({ ...d, categories: d.categories.map(label) }))
