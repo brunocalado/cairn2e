@@ -1,3 +1,14 @@
+# 0.2.1
+
+- [Changed] Every crafting and dismantling recipe is public: every character's Recipe Book lists
+  them all, and its search finds a recipe by its tool as well as by its ingredients. The Warden can
+  still hide one. Needs Grid Crafter 0.2.1.
+- [Changed] Only gear goes on the crafting grid, so a Scar or a Fatigue can no longer be placed
+  there. The Warden's Craftable Item Types still overrides it.
+- [Added] Every harvest resource is in the players' Field Guide from the start, so they can look up
+  which tools open it before the first strike. The Warden's eye in the Resource Book still hides
+  one. Needs Canvas Harvest 0.1.0.
+
 # 0.2.0
 
 - [Added] **Take damage.** Damage rolled on the table's own dice or behind the Warden's screen is
