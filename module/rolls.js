@@ -372,6 +372,28 @@ export async function promptTakeDamage(actor) {
     askAmount: true,
     recipients: [{ name: actor.name, img: actor.img }]
   });
+  return typedAmount(result);
+}
+
+/**
+ * The Warden's Apply damage, from the Cairn tab (`macros.js#applyTypedDamage`): Take Damage's
+ * dialog, aimed at the targeted tokens instead of a sheet's actor. With nothing targeted it still
+ * opens, says so and cannot be confirmed, rather than a click that seems to do nothing.
+ * @param {{name: string, img: string}[]} recipients  The targeted tokens.
+ * @returns {Promise<{amount: number, target: string, armor: boolean}|null>}
+ */
+export async function promptApplyTypedDamage(recipients) {
+  const result = await promptDamage({
+    title: game.i18n.localize("CAIRN.ApplyDamage"),
+    askAmount: true,
+    recipients,
+    empty: recipients.length ? null : "CAIRN.Chat.ApplyNeedsTargets"
+  });
+  return typedAmount(result);
+}
+
+/** A typed-in amount, as a whole number of 1 or more, or `null`. */
+function typedAmount(result) {
   if (!result) return null;
   const amount = Math.trunc(Number(result.amount));
   // Confirmed with no amount: say so, or the window just shuts and the button looks broken.
@@ -383,16 +405,16 @@ export async function promptTakeDamage(actor) {
 }
 
 /**
- * The dialog both prompts above draw. It names who takes the hit, portrait and name, because the
+ * The dialog the prompts above draw. It names who takes the hit, portrait and name, because the
  * title alone went unread: a Warden with a monster targeted took Take Damage for "hit the target".
  */
-async function promptDamage({ title, askAmount = false, recipients = [] }) {
+async function promptDamage({ title, askAmount = false, recipients = [], empty = null }) {
   const choices = ["hp", "STR", "DEX", "WIL"].map((value) => ({
     value,
     label: game.i18n.localize(value === "hp" ? "CAIRN.HitProtection" : value),
     selected: value === "hp"
   }));
-  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices, askAmount, recipients });
+  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices, askAmount, recipients, empty });
   return foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title },
@@ -411,6 +433,7 @@ async function promptDamage({ title, askAmount = false, recipients = [] }) {
       sync();
       armor.addEventListener("change", () => { chosen = armor.checked; });
       for (const r of radios) r.addEventListener("change", sync);
+      if (empty) dialog.element.querySelector('button[data-action="ok"]').disabled = true;
       // The help mark's ring is drawn, and a dialog has no ink pass of its own.
       scheduleInk(dialog.element.querySelector(".window-content"));
     },

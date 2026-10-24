@@ -6,7 +6,7 @@
  */
 import { SYSTEM_ID } from "./constants.js";
 import { getInfoFromDropData } from "./helpers.js";
-import { promptTakeDamage, rollDamage, rollDieOfFate, rollMorale, rollReaction, rollSave } from "./rolls.js";
+import { promptApplyTypedDamage, promptTakeDamage, rollDamage, rollDieOfFate, rollMorale, rollReaction, rollSave } from "./rolls.js";
 import { Damage } from "./combat/damage.js";
 
 /**
@@ -99,6 +99,23 @@ export async function takeDamage(actor, token = actor.token ?? null) {
     armor: !!result.armor,
     token
   });
+}
+
+/**
+ * The Warden's Apply damage, from the Cairn tab: an amount typed in, landed on every token targeted
+ * when the button was pressed. The ids are captured with the list the dialog shows, so what is
+ * listed is what is hit even if the targets change while the window is open. Never the selected
+ * token or the user's character: a hit that lands somewhere the dialog did not name is the
+ * confusion this replaced.
+ * @returns {Promise<void>}
+ */
+export async function applyTypedDamage() {
+  const targets = Array.from(game.user.targets);
+  const result = await promptApplyTypedDamage(
+    targets.map((t) => ({ name: t.document.name, img: t.document.texture.src })));
+  if (!result) return;
+  return Damage.applyToTargets(targets.map((t) => t.id), result.amount,
+    { attribute: result.target === "hp" ? null : result.target, armor: !!result.armor });
 }
 
 /**

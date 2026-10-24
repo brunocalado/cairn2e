@@ -9,7 +9,8 @@
       the system cannot see it, typed in by whoever takes it.
 
       Both name who takes the hit first, portrait and name: the targets for Apply as damage, the
-      sheet's own actor for Take Damage. --}}
+      sheet's own actor for Take Damage. The Warden's Apply damage with nothing targeted says so in
+      their place, and its confirm is disabled (rolls.js). --}}
 <div class="cairn-apply-damage-dialog">
     {{#if recipients.length}}
     <div class="cairn-field-label">{{localize 'CAIRN.DamageRecipients'}}</div>
@@ -18,6 +19,9 @@
         <li><img src="{{r.img}}" alt="" /><span>{{r.name}}</span></li>
         {{/each}}
     </ul>
+    {{else if empty}}
+    <div class="cairn-field-label">{{localize 'CAIRN.DamageRecipients'}}</div>
+    <p class="hint">{{localize empty}}</p>
     {{/if}}
     {{#if askAmount}}
     <div class="cairn-field cairn-apply-damage-amount">
