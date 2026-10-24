@@ -127,8 +127,8 @@ function discardedLines({ armor, features, slotsUsed }) {
   return lines;
 }
 
-/** The connected players, plus nobody. Ownership is what turns the hireling into a PC: the Scars
- *  path and the travel roster both read `hasPlayerOwner`, never the type alone. */
+/** The connected players, plus nobody. Ownership is what puts the new PC on the travel roster,
+ *  which reads `hasPlayerOwner`, never the type alone. */
 function ownerOptions() {
   const users = game.users.filter((u) => u.active && !u.isGM);
   const nobody = `<option value="">${foundry.utils.escapeHTML(game.i18n.localize("CAIRN.Promote.Nobody"))}</option>`;

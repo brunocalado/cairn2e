@@ -166,7 +166,6 @@ export class CairnActor extends Actor {
     if (hpTo === undefined) return;
     const lost = scarHpLost({
       isCharacter: true,
-      hasPlayerOwner: this.hasPlayerOwner,
       hpFrom: this.system.hp.value,
       hpTo,
       strFrom: this.system.abilities.STR.value,

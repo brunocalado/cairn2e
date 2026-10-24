@@ -385,8 +385,8 @@ export class CairnScars extends CairnInkMixin(CairnSheetMixin(HandlebarsApplicat
    * (`client/documents/user.mjs`), which is exactly that case.
    */
   static async announce(actor, hpLost) {
-    // A character with no player owner never gets here at all (`scarHpLost`), and the Warden does
-    // not roll for one who is away.
+    // The Warden does not roll for a player who is away, and a character nobody plays has no one
+    // to hand the window to: both fall through to the card, whose button waits.
     const owners = game.users.filter((u) => !u.isGM && u.active && actor.testUserPermission(u, "OWNER"));
     if (owners.some((u) => u.isSelf)) return CairnScars.take(actor, hpLost);
     for (const owner of owners) {

@@ -58,25 +58,18 @@ export const SCAR_ENTRIES = [
  * is not a Scar (`srd-2e/players-guide/core-rules.md`: "If an attack would take a PC's HP exactly
  * to 0, refer to the Scars table").
  *
- * A hit that also spills onto STR is Critical Damage instead. An NPC takes neither, and the
- * hireling the Warden rolls is an `npc` Actor with `role: "hireling"` (`npc-generator.js`), so
- * `isCharacter` already excludes it. `hasPlayerOwner` is the second gate, and it is there for the
- * other kind of hireling: `core-rules.md` § Hirelings also allows one built exactly like a PC —
- * background, name, background tables, gold, attributes, HP, age — and one of those sitting in the
- * Warden's folder is still not a PC. "Only PCs gain Scars" (`srd-2e/wardens-guide/combat.md`);
- * what makes it one is a player owning it.
+ * A hit that also spills onto STR is Critical Damage instead. "Only PCs gain Scars"
+ * (`srd-2e/wardens-guide/combat.md`), and the `character` type is what makes a PC: the hireling the
+ * Warden rolls is an `npc` Actor with `role: "hireling"` (`npc-generator.js`), and monsters are
+ * their own type, so `isCharacter` excludes both. Ownership is not asked: a character the Warden
+ * keeps, or one whose player has left, is still a PC, and the Warden's hit on it owes a Scar like
+ * any other. With no owner connected, `CairnScars.announce` posts the card and its button waits.
  *
  * `strFrom`/`strTo` are compared as VALUES, not by the key's presence in the update: the damage
  * path writes STR on every hit, changed or not.
- *
- * Ownership is enough of a gate because it is also the one Foundry plays by: a player who can
- * open the sheet or move the token already owns the character. So a `character` nobody owns is
- * one nobody can play — a PC still in the Warden's folder, or one whose player left — and the
- * only hits it can take are the Warden's, which earn no automatic Scar on purpose. The Scars tab's
- * Add is not gated, so a Scar the Warden wants on it is one click away.
  */
-export function scarHpLost({ isCharacter, hasPlayerOwner, hpFrom, hpTo, strFrom, strTo }) {
-  if (!isCharacter || !hasPlayerOwner) return null;
+export function scarHpLost({ isCharacter, hpFrom, hpTo, strFrom, strTo }) {
+  if (!isCharacter) return null;
   if (hpTo !== 0 || hpFrom === 0) return null;
   if (strTo !== strFrom) return null;
   return hpFrom;
