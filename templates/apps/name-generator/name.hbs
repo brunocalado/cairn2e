@@ -1,6 +1,6 @@
 {{!-- The name and how it was built. Above it, what this kind asks for: the kind of place a Place
-      name is (typed, not rolled), the terrain a Terrain name is of, and a Realm's optional dominant
-      terrain. Under it, one list row (Primitive 7) per part: what it is, the die it came from, the
+      name is (typed, not rolled), the terrain a Terrain name is of, which list a Person name is
+      rolled on, and a Realm's optional dominant terrain. Under it, one list row (Primitive 7) per part: what it is, the die it came from, the
       word, and the controls — roll this part again, or on a Realm with a dominant terrain swap it
       for one of that terrain's synonyms. --}}
 <section class="cairn-name-main">
@@ -16,6 +16,18 @@
         <select id="name-gen-terrain" name="terrain">
             {{#each terrains}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
         </select>
+    </div>
+    {{/if}}
+    {{#if setup.person}}
+    <div class="cairn-field cairn-name-setup">
+        <span class="cairn-name-setup-label">{{localize "CAIRN.NameGen.GenderLabel"}}</span>
+        <div class="cairn-choice" role="radiogroup" aria-label="{{localize 'CAIRN.NameGen.GenderLabel'}}">
+            {{#each genders}}
+            <label class="cairn-choice-option">
+                <input type="radio" name="gender" value="{{key}}" {{#if checked}}checked{{/if}}>{{label}}
+            </label>
+            {{/each}}
+        </div>
     </div>
     {{/if}}
     {{#if setup.realm}}

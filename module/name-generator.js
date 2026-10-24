@@ -10,10 +10,12 @@ import { findTable, rollWardenTable, pick, stripTags } from "./helpers.js";
 
 /**
  * The Naming Procedures (`srd-2e/wardens-guide/naming-procedures.md`): a name for a place, a
- * region of a terrain, a faction, a realm or a forest. No UI here — the window
- * (`apps/name-generator.js`) and the Faction generator both call it.
+ * region of a terrain, a faction, a realm or a forest — and a person's given name, which the SRD
+ * rolls on the NPC Name table. No UI here — the window (`apps/name-generator.js`) and the Faction
+ * generator both call it.
  *
- * Every word comes from a RollTable in `cairn2e.warden`, rolled world copy first
+ * Every word comes from a RollTable in `cairn2e.warden` (a female or male person's name from the
+ * Homebrew `cairn2e.names`), rolled world copy first
  * (`helpers.js#rollWardenTable`), so a Warden's imported copy wins and a translation module
  * translates the words like any other table. Word ORDER is not in the tables: a formula row is
  * found by `flags.cairn2e.formula` and assembled with `CAIRN.NameGen.Formula.<n>` (or `<n>Bare`,
@@ -21,13 +23,17 @@ import { findTable, rollWardenTable, pick, stripTags } from "./helpers.js";
  * formula uses is read off that same string's placeholders.
  *
  * A name is a plain object, so the window can keep it, reroll one part of it and recompose it:
- * `{ kind, formula, poi, terrain, parts: { formula?, adjective?, noun?, slot? } }`, each part
- * `{ total, text, swapped? }` — `total` the die's face, or `null` for a part that was picked or
- * typed rather than rolled.
+ * `{ kind, formula, poi, terrain, gender, parts: { formula?, adjective?, noun?, slot?, given? } }`,
+ * each part `{ total, text, swapped? }` — `total` the die's face, or `null` for a part that was
+ * picked or typed rather than rolled.
  */
 
-/** The five kinds, in the window's tab order. */
-export const NAME_KINDS = ["place", "terrain", "faction", "realm", "forest"];
+/** The six kinds, in the window's tab order. */
+export const NAME_KINDS = ["place", "terrain", "faction", "realm", "forest", "person"];
+
+/** Any is the Warden's Guide's NPC Name d60, which has no gender; Female and Male are Homebrew. */
+export const PERSON_GENDERS = ["any", "female", "male"];
+const PERSON_TABLE = { any: TABLES.NPC_NAME, female: TABLES.PERSON_NAME_FEMALE, male: TABLES.PERSON_NAME_MALE };
 
 /** Per kind: the formula table and where the slot comes from. */
 const KINDS = {
@@ -35,7 +41,8 @@ const KINDS = {
   terrain: { formula: TABLES.NAME_FORMULA, slot: "terrain" },
   faction: { formula: TABLES.FACTION_NAME_FORMULA, slot: TABLES.GROUP_TYPE },
   realm: { formula: TABLES.RULER_NAME_FORMULA, slot: TABLES.RULER_TYPE },
-  forest: { formula: null, slot: null }
+  forest: { formula: null, slot: null },
+  person: { formula: null, slot: null }
 };
 
 /** The terrain a key stands for — Jungle rolls the Forest's synonyms, and so on. */
@@ -71,6 +78,7 @@ async function rolled(uuid) {
 /** The placeholders a formula string uses: which parts this name needs. */
 function partsUsed(name) {
   if (name.kind === "forest") return ["adjective", "noun"];
+  if (name.kind === "person") return ["given"];
   const raw = game.i18n.localize(`CAIRN.NameGen.Formula.${name.formula}`);
   return ["adjective", "noun", "slot"].filter((key) => raw.includes(`{${key}}`));
 }
@@ -79,7 +87,7 @@ function partsUsed(name) {
  * Roll one part of a name again, in place — the window's per-part reroll, and how a whole name is
  * built. A formula reroll keeps the words that are still used.
  * @param {object} name
- * @param {"formula"|"adjective"|"noun"|"slot"} key
+ * @param {"formula"|"adjective"|"noun"|"slot"|"given"} key
  */
 export async function rerollPart(name, key) {
   const kind = KINDS[name.kind];
@@ -97,6 +105,8 @@ export async function rerollPart(name, key) {
     if (kind.slot === "poi") name.parts.slot = { total: null, text: name.poi };
     else if (kind.slot === "terrain") name.parts.slot = await synonym(name.terrain);
     else name.parts.slot = await rolled(kind.slot);
+  } else if (key === "given") {
+    name.parts.given = await rolled(PERSON_TABLE[name.gender]);
   }
   return name;
 }
@@ -104,11 +114,13 @@ export async function rerollPart(name, key) {
 /**
  * Roll a whole name.
  * @param {string} kind  one of {@link NAME_KINDS}
- * @param {{terrain?: string, poi?: string}} [options]  the terrain a Terrain name is of; the kind
- *   of place a Place name is (typed by the Warden, not rolled)
+ * @param {{terrain?: string, poi?: string, gender?: string}} [options]  the terrain a Terrain name
+ *   is of; the kind of place a Place name is (typed by the Warden, not rolled); which list a Person
+ *   name is rolled on, one of {@link PERSON_GENDERS}
  */
-export async function rollName(kind, { terrain = "forest", poi = "" } = {}) {
-  const name = { kind, formula: null, poi, terrain, parts: {} };
+export async function rollName(kind, { terrain = "forest", poi = "", gender = "any" } = {}) {
+  const name = { kind, formula: null, poi, terrain, gender, parts: {} };
+  if (kind === "person") return rerollPart(name, "given");
   if (kind !== "forest") await rerollPart(name, "formula");
   for (const key of ["adjective", "noun", ...(kind === "forest" ? [] : ["slot"])]) await rerollPart(name, key);
   return name;
@@ -129,16 +141,17 @@ export async function swapTerrain(name, key, terrain) {
 /** The parts a name shows, in a fixed order, each with its key. */
 export function shownParts(name) {
   const used = partsUsed(name);
-  return [...(name.kind === "forest" ? [] : ["formula"]), ...used].map((key) => ({ key, ...name.parts[key] }));
+  return [...(["forest", "person"].includes(name.kind) ? [] : ["formula"]), ...used].map((key) => ({ key, ...name.parts[key] }));
 }
 
 /**
  * The name as text. `article` false drops the optional "(The)" and "of (the)" — the `Bare`
- * string of the same formula. A Forest name has no formula and no article.
+ * string of the same formula. A Forest or Person name has no formula and no article.
  * @param {object} name
  * @param {{article?: boolean}} [options]
  */
 export function composeName(name, { article = true } = {}) {
+  if (name.kind === "person") return (name.parts.given?.text ?? "").trim();
   const words = { adjective: name.parts.adjective?.text ?? "", noun: name.parts.noun?.text ?? "", slot: name.parts.slot?.text ?? "" };
   const text = name.kind === "forest"
     ? game.i18n.localize("CAIRN.NameGen.Forest", words)

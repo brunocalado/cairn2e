@@ -6,7 +6,7 @@
  */
 
 import { SYSTEM_ID } from "../constants.js";
-import { NAME_KINDS, rollName, rerollPart, swapTerrain, shownParts, composeName, terrainKeys } from "../name-generator.js";
+import { NAME_KINDS, PERSON_GENDERS, rollName, rerollPart, swapTerrain, shownParts, composeName, terrainKeys } from "../name-generator.js";
 import { postNameCard } from "../rolls.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
@@ -18,9 +18,9 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/apps/name-generator`;
 const HISTORY = 8;
 
 /**
- * The Warden's Name Generator: the five Naming Procedures of the SRD, one tab each, the name
- * rolled shown with every part and its die, and a click on a part rolls that part alone. Opened
- * from the Warden section of the Cairn 2e tab. One window per client; what it holds — the names
+ * The Warden's Name Generator: the five Naming Procedures of the SRD and a person's given name,
+ * one tab each, the name rolled shown with every part and its die, and a click on a part rolls
+ * that part alone. Opened from the Warden section of the Cairn 2e tab. One window per client; what it holds — the names
  * on each tab, the Recent list — is window state and closes with it.
  */
 export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
@@ -68,6 +68,7 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
   #article = true;
   #poi = "";
   #terrain = "forest";
+  #gender = "any";
   #dominant = "";
   #history = [];
 
@@ -80,7 +81,7 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
     const context = await super._prepareContext(options);
     const t = (key, data) => game.i18n.localize(key, data);
     const kind = this.#kind;
-    this.#names[kind] ??= await rollName(kind, { terrain: this.#terrain, poi: this.#poi });
+    this.#names[kind] ??= await rollName(kind, { terrain: this.#terrain, poi: this.#poi, gender: this.#gender });
     const name = this.#name;
     const text = composeName(name, { article: this.#article });
 
@@ -92,7 +93,8 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
     const terrains = (await terrainKeys()).map((key) => ({ key, label: t(`CAIRN.NameGen.Terrain.${key}`) }));
     context.terrains = terrains.map((o) => ({ ...o, selected: o.key === this.#terrain }));
     context.dominants = terrains.map((o) => ({ ...o, selected: o.key === this.#dominant }));
-    context.setup = { place: kind === "place", terrain: kind === "terrain", realm: kind === "realm" };
+    context.setup = { place: kind === "place", terrain: kind === "terrain", realm: kind === "realm", person: kind === "person" };
+    context.genders = PERSON_GENDERS.map((key) => ({ key, label: t(`CAIRN.NameGen.Gender.${key}`), checked: key === this.#gender }));
     context.parts = shownParts(name).map((part) => {
       const typed = part.key === "slot" && kind === "place";
       return {
@@ -104,7 +106,7 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
         canSwap: kind === "realm" && !!this.#dominant && ["adjective", "noun"].includes(part.key)
       };
     });
-    context.hasArticle = kind !== "forest";
+    context.hasArticle = !["forest", "person"].includes(kind);
     context.article = this.#article;
     context.history = this.#history.map((h, index) => ({ index, text: h.text, kind: t(`CAIRN.NameGen.Kind.${h.kind}`) }));
     return context;
@@ -127,6 +129,16 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
       this.#remember();
       this.render({ parts: ["name", "history"] });
     });
+    for (const radio of htmlElement.querySelectorAll("input[name='gender']")) {
+      radio.addEventListener("change", async (event) => {
+        if (!PERSON_GENDERS.includes(event.target.value)) return;
+        this.#gender = event.target.value;
+        this.#name.gender = this.#gender;
+        await rerollPart(this.#name, "given");
+        this.#remember();
+        this.render({ parts: ["name", "history"] });
+      });
+    }
     htmlElement.querySelector("select[name='dominant']")?.addEventListener("change", (event) => {
       this.#dominant = event.target.value;
       this.render({ parts: ["name"] });
@@ -160,7 +172,7 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
 
   /** @this {CairnNameGenerator} */
   static async #onRoll() {
-    this.#names[this.#kind] = await rollName(this.#kind, { terrain: this.#terrain, poi: this.#poi });
+    this.#names[this.#kind] = await rollName(this.#kind, { terrain: this.#terrain, poi: this.#poi, gender: this.#gender });
     if (!this.#text) ui.notifications.warn(game.i18n.localize("CAIRN.NameGen.NoTable"));
     this.#remember();
     this.render({ parts: ["name", "history"] });
@@ -210,6 +222,7 @@ export class CairnNameGenerator extends CairnInkMixin(HandlebarsApplicationMixin
     this.#kind = entry.kind;
     this.#names[entry.kind] = foundry.utils.deepClone(entry.name);
     this.#article = entry.article;
+    if (entry.kind === "person") this.#gender = entry.name.gender;
     this.render({ parts: ["tabs", "name", "footer"] });
   }
 }

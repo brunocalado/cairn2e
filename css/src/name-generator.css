@@ -8,7 +8,7 @@
 .cairn2e {
     /**************************************************************************
      * The name generator (module/apps/name-generator.js) — the SRD's Naming  *
-     * Procedures, one tab each.                                             *
+     * Procedures and a person's name, one tab each.                        *
      *                                                                       *
      * The tab rail is Primitive 6, the setup fields Primitive 3, the name a *
      * banner (Primitive 1) drawn in ink, and each part and each Recent name *
@@ -33,7 +33,9 @@
         .cairn-name-setup {
             --cairn-label-gutter: 9rem;
 
-            > label {
+            /* A radio group's caption is a span: a <label> around three radios labels the first. */
+            > label,
+            > .cairn-name-setup-label {
                 font-size: 11px;
                 text-transform: uppercase;
                 letter-spacing: var(--cairn-label-track);

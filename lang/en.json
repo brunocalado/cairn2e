@@ -1122,15 +1122,23 @@
       "terrain": "The Names Formula, with a synonym of the terrain in place of the POI.",
       "faction": "The Faction Names Formula and a Group Type.",
       "realm": "The Ruler Names Formula and a Ruler Type. With a dominant terrain, any word can be swapped for one of its synonyms.",
-      "forest": "The Forest Names table: an adjective and a noun. Change it up, and make it sound nice."
+      "forest": "The Forest Names table: an adjective and a noun. Change it up, and make it sound nice.",
+      "person": "Any rolls the Warden's Guide NPC Name table. Female and Male roll the Homebrew Person Names lists."
     },
+    "Gender": {
+      "any": "Any",
+      "female": "Female",
+      "male": "Male"
+    },
+    "GenderLabel": "Name list",
     "History": "Recent",
     "Kind": {
       "place": "Place",
       "terrain": "Terrain",
       "faction": "Faction",
       "realm": "Realm",
-      "forest": "Forest"
+      "forest": "Forest",
+      "person": "Person"
     },
     "Name": "Name",
     "NoTable": "A naming table is missing from the Warden compendium and from the world.",
@@ -1141,7 +1149,8 @@
       "place": "Place",
       "terrain": "Terrain",
       "faction": "Group",
-      "realm": "Rulers"
+      "realm": "Rulers",
+      "given": "Given name"
     },
     "Picked": "picked",
     "Poi": "Kind of place",
