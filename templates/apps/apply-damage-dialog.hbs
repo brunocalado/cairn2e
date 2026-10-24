@@ -6,8 +6,19 @@
       help mark saying why.
 
       Take Damage draws the same dialog with the amount first (`askAmount`): damage rolled where
-      the system cannot see it, typed in by whoever takes it. --}}
+      the system cannot see it, typed in by whoever takes it.
+
+      Both name who takes the hit first, portrait and name: the targets for Apply as damage, the
+      sheet's own actor for Take Damage. --}}
 <div class="cairn-apply-damage-dialog">
+    {{#if recipients.length}}
+    <div class="cairn-field-label">{{localize 'CAIRN.DamageRecipients'}}</div>
+    <ul class="cairn-apply-damage-recipients">
+        {{#each recipients as |r|}}
+        <li><img src="{{r.img}}" alt="" /><span>{{r.name}}</span></li>
+        {{/each}}
+    </ul>
+    {{/if}}
     {{#if askAmount}}
     <div class="cairn-field cairn-apply-damage-amount">
         <label for="take-damage-amount">{{localize 'CAIRN.TakeDamage.Amount'}}</label>

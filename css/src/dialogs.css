@@ -70,6 +70,31 @@
         }
     }
 
+    /* Who takes the hit, above everything else: a wrapping run of small portraits, each framed in
+       ink like any other drawn box, the name beside it. */
+    .cairn-apply-damage-recipients {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 12px;
+        list-style: none;
+        margin: 0 0 8px;
+        padding: 0;
+
+        > li {
+            align-items: center;
+            display: flex;
+            gap: 6px;
+        }
+
+        img {
+            border: var(--cairn-hairline) solid currentcolor;
+            border-radius: var(--cairn-radius);
+            height: 36px;
+            object-fit: cover;
+            width: 36px;
+        }
+    }
+
     /* Take Damage's amount, above the choice it is taken from. */
     .cairn-apply-damage-amount {
         margin-bottom: 8px;

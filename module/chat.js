@@ -74,12 +74,16 @@ export async function applyRollAsDamage(message) {
     ui.notifications.warn("CAIRN.Chat.ApplyNoTotal", { localize: true });
     return;
   }
-  const targetIds = Array.from(game.user.targets).map((t) => t.id);
+  const targets = Array.from(game.user.targets);
+  const targetIds = targets.map((t) => t.id);
   if (!targetIds.length) {
     ui.notifications.warn("CAIRN.Chat.ApplyNeedsTargets", { localize: true });
     return;
   }
-  const result = await promptApplyRollAsDamage(total);
+  // The token's own name and image, not its actor's: that is what the Warden targeted on the map,
+  // and an unlinked token's name can be its own.
+  const result = await promptApplyRollAsDamage(total,
+    targets.map((t) => ({ name: t.document.name, img: t.document.texture.src })));
   if (!result) return;
   const attribute = result.target === "hp" ? null : result.target;
   return Damage.applyToTargets(targetIds, total, { attribute, armor: !!result.armor });

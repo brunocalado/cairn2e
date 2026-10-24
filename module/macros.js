@@ -92,7 +92,7 @@ function macroActor({ required = true } = {}) {
  */
 export async function takeDamage(actor, token = actor.token ?? null) {
   if (!actor?.system.abilities) return null;
-  const result = await promptTakeDamage(actor.name);
+  const result = await promptTakeDamage(actor);
   if (!result) return null;
   return Damage.applyToActor(actor, result.amount, {
     attribute: result.target === "hp" ? null : result.target,

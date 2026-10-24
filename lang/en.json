@@ -325,6 +325,7 @@
   "CAIRN.CriticalDamageFull": "Critical Damage",
   "CAIRN.CriticalDamageSuccess": "Still in the fight, albeit with a lower STR score.",
   "CAIRN.Damage": "Damage",
+  "CAIRN.DamageRecipients": "Who takes it",
   "CAIRN.DayRate": "Day Rate",
   "CAIRN.Dead": "Dead",
   "CAIRN.DeleteItem": "Delete Item",

@@ -351,22 +351,27 @@ async function promptDamageOptions(defaultBlast, weapons) {
  * `templates/apps/apply-damage-dialog.hbs`. Armour always counts against HP, so its switch shows
  * only once an attribute is chosen.
  * @param {number} total
+ * @param {{name: string, img: string}[]} recipients  The targeted tokens, as the dialog lists them.
  * @returns {Promise<{target: string, armor: boolean}|null>}
  */
-export async function promptApplyRollAsDamage(total) {
-  return promptDamage({ title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }) });
+export async function promptApplyRollAsDamage(total, recipients) {
+  return promptDamage({ title: game.i18n.localize("CAIRN.Chat.ApplyAsDamageTitle", { total }), recipients });
 }
 
 /**
  * Take Damage (`macros.js#takeDamage`): the same choice as Apply as damage, with the amount typed
  * in, because this damage was rolled somewhere the system cannot see — behind the Warden's screen,
  * or on a table's real dice.
- * @param {string} name  The actor taking it.
+ * @param {Actor} actor  The actor taking it.
  * @returns {Promise<{amount: number, target: string, armor: boolean}|null>}  null when closed or
  *   no positive whole number was typed
  */
-export async function promptTakeDamage(name) {
-  const result = await promptDamage({ title: game.i18n.localize("CAIRN.TakeDamage.Title", { name }), askAmount: true });
+export async function promptTakeDamage(actor) {
+  const result = await promptDamage({
+    title: game.i18n.localize("CAIRN.TakeDamage.Title", { name: actor.name }),
+    askAmount: true,
+    recipients: [{ name: actor.name, img: actor.img }]
+  });
   if (!result) return null;
   const amount = Math.trunc(Number(result.amount));
   // Confirmed with no amount: say so, or the window just shuts and the button looks broken.
@@ -377,14 +382,17 @@ export async function promptTakeDamage(name) {
   return { ...result, amount };
 }
 
-/** The dialog both prompts above draw. */
-async function promptDamage({ title, askAmount = false }) {
+/**
+ * The dialog both prompts above draw. It names who takes the hit, portrait and name, because the
+ * title alone went unread: a Warden with a monster targeted took Take Damage for "hit the target".
+ */
+async function promptDamage({ title, askAmount = false, recipients = [] }) {
   const choices = ["hp", "STR", "DEX", "WIL"].map((value) => ({
     value,
     label: game.i18n.localize(value === "hp" ? "CAIRN.HitProtection" : value),
     selected: value === "hp"
   }));
-  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices, askAmount });
+  const content = await foundry.applications.handlebars.renderTemplate(APPLY_DIALOG_TPL, { choices, askAmount, recipients });
   return foundry.applications.api.DialogV2.input({
     classes: [SYSTEM_ID],
     window: { title },
