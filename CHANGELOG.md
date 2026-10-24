@@ -1,3 +1,17 @@
+# 0.2.2
+
+- [Added] **Person names.** The Name Generator has a sixth tab, Person, with a Name list choice:
+  Any rolls the Warden's Guide NPC Name table, Female and Male roll two new Homebrew lists, Female
+  Person Names (97) and Male Person Names (92), in the new Person Names compendium. A name picked
+  back from Recent brings its list with it.
+- [Added] The Warden applies typed damage from the Cairn tab: a new Apply damage button lands the
+  amount on every token targeted when it was pressed, and says so when nothing is targeted.
+- [Changed] The damage dialog names who takes the hit, portrait and name, before the amount is
+  typed in.
+- [Changed] Every character that a hit takes to exactly 0 HP gets its Scar, whether a player owns
+  it or not: a character the Warden keeps is still a PC. With no owner connected, the Scar card
+  waits for one.
+
 # 0.2.1
 
 - [Changed] Every crafting and dismantling recipe is public: every character's Recipe Book lists
