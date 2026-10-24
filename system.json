@@ -223,6 +223,13 @@
       "banner": "systems/cairn2e/assets/compendium-banner.webp",
       "path": "packs/potions",
       "type": "Item"
+    },
+    {
+      "name": "names",
+      "label": "Person Names",
+      "banner": "systems/cairn2e/assets/compendium-banner.webp",
+      "path": "packs/names",
+      "type": "RollTable"
     }
   ],
   "packFolders": [
@@ -265,7 +272,7 @@
           "name": "Homebrew",
           "sorting": "m",
           "color": "#5c5c5c",
-          "packs": ["more-gear", "materials", "more-spellbooks", "more-scrolls", "potions"]
+          "packs": ["more-gear", "materials", "more-spellbooks", "more-scrolls", "potions", "names"]
         }
       ]
     }

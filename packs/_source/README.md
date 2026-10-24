@@ -465,6 +465,26 @@ Monster Part (see `materials`).
 **Left out of the PDF:** its "potion of any spell", which in 2e is a Scroll, and its alchemist
 training and materials table, which are not potions.
 
+## `names` — person names (Homebrew)
+
+**Not SRD** (CLAUDE.md § 1, Homebrew). Two RollTables, **Female Person Names** (`1d97`) and
+**Male Person Names** (`1d92`), one text result per given name. The source is the `names` pack of
+the maintainer's own module `md-madness`, pruned for Cairn's tone on 2026-10-24: kept are its
+Scandinavian and Latin lists and cut-down German, English and Greek ones; cut are the surnames,
+the Brazilian, Spanish, Arabic, Chinese, Egyptian, Indian, Japanese, Nigerian and Russian lists,
+Angels and Demons, modern and duplicate names, and any name already in the SRD's NPC Name table
+or a background's `## Names` list (`checks/name-generator.check.mjs` holds that). A result carries
+the name alone — the cultures were the source, never a field.
+
+They are not 1e's `Female Names` / `Male Names` tables: those named the characters, and 2e's
+characters take their names from the background. These name the people the Warden meets, and
+only when the Name Generator's Person tab is asked for a gender. The SRD's NPC Name d60 stays in
+`cairn2e.warden` and is what that tab's *Any* rolls — the book's sixty names have no gender, and
+none is invented for them.
+
+Ids derive from `cairn2e:homebrew:names:<gender>` for the table and
+`cairn2e:homebrew:names:<gender>:<n>` for result `n`, `<gender>` being `female` or `male`.
+
 ## Prices on magic — a table rule, not an SRD one
 
 `srd-2e/` prices no spellbook, scroll or relic; `core-rules.md` says spellbooks "are recovered from

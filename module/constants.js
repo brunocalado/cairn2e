@@ -572,6 +572,9 @@ export const TABLES = {
   MONSTER_ABILITY: table("warden", "MJVroGZAIBEv3ZFt"),
   MONSTER_ABILITY_TARGET: table("warden", "DBXfbgkzqeFECHEV"),
   NPC_NAME: table("warden", "JjL5g8axLbyN8ekw"),
+  // Homebrew, in the `names` pack: the Name Generator rolls them when a Person is asked a gender.
+  PERSON_NAME_FEMALE: table("names", "pylyeKkEwZAn2K0Y"),
+  PERSON_NAME_MALE: table("names", "L0UI25DZHhPU4ES8"),
   NPC_BACKGROUND: table("warden", "umflUlD7IJj4BSsJ"),
   NPC_QUIRK: table("warden", "5NuRYMoj1M3sgac1"),
   NPC_GOAL: table("warden", "dtYtko9JNSzI9FGN"),
