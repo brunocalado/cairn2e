@@ -49,10 +49,6 @@ export function fieldNumber(field) {
 
 /**
  * A printed current value as a number.
- *
- * Its counterpart for a field is `fieldNumber`, and the pair exists because the sheet now reads
- * the same number from two different kinds of element: the span that is there almost all the
- * time, and the field a click puts over it for as long as someone is typing into it.
  * @param {HTMLElement} cell  a `.cairn-stat-current`
  * @returns {number}
  */
@@ -108,8 +104,7 @@ function markStepLimits(app, cell) {
 
 /**
  * Show a current value and queue the write. The number on the sheet changes immediately; the
- * actor is written 250ms after the last change, so a burst of taps, a hold, or a typed value
- * landing on top of them is one update.
+ * actor is written 250ms after the last change, so a burst of taps or a hold is one update.
  * @param {HTMLElement} cell  the `.cairn-stat-current` to set
  * @param {number} value
  */
@@ -135,9 +130,7 @@ function setStat(app, cell, value) {
  */
 export function stepStat(app, field, delta) {
   const cell = statCell(app, field);
-  // Nothing to step while the reader is typing into this one: the field over it owns the value
-  // until it commits, and a stepper that wrote underneath it would be overwritten on blur.
-  if (!cell || cell.querySelector("input")) return;
+  if (!cell) return;
   const max = Number(cell.dataset.max);
   // The value a step starts from is the one still WAITING to be written, if there is one —
   // never the printed number. A write takes a moment to land, and when it does the header
