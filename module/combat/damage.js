@@ -141,6 +141,9 @@ export class Damage {
 
     const { dmg, newHp, newStr } = computeDamage({ damage, armor, rawHp, effHp, str });
 
+    // STR goes in even when the hit stayed inside HP, and that cannot put a stale STR back over a
+    // correction somebody made meanwhile: core's client diff drops every key equal to this
+    // client's own source, and an STR the hit did not touch is the one it was read from.
     await actor.update({ "system.hp.value": newHp, "system.abilities.STR.value": newStr }, hitOptions());
 
     return { actor, token, dmg, damage, armor, hp: rawHp, str, newHp, newStr };
