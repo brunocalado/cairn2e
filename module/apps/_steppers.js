@@ -18,15 +18,51 @@
  * taps are one update with `+10`, not ten updates racing each other, and a hold that repeats
  * every 90ms never queues ninety writes. `_preClose` flushes whatever is still waiting.
  * Keyed by application, so each open sheet has its own and none outlives its window.
- * @type {WeakMap<foundry.applications.api.ApplicationV2, Map<string, {value: number, timer: number}>>}
+ *
+ * What waits is the CHANGE the reader made, not the number they saw. The write is a value, and
+ * one worked out at the tap would put back whatever the actor held then: a hit the Warden lands
+ * inside the wait would be overwritten, as if it had never been struck. Worked out at the flush,
+ * against the actor as it is by then, both the hit and the taps count.
+ * @type {WeakMap<foundry.applications.api.ApplicationV2, Map<string, {delta: number, timer: number}>>}
  */
 const PENDING = new WeakMap();
+
+/**
+ * The value each stepper write still on its way to the server sent, by field path. It is the base
+ * a tap steps from until the write lands, so the echo is not added to the delta a second time.
+ * @type {WeakMap<foundry.applications.api.ApplicationV2, Map<string, number>>}
+ */
+const IN_FLIGHT = new WeakMap();
 
 /** The pending writes of one application. */
 function pendingOf(app) {
   let pending = PENDING.get(app);
   if (!pending) PENDING.set(app, (pending = new Map()));
   return pending;
+}
+
+/** The writes of one application still on their way to the server. */
+function inFlightOf(app) {
+  let flight = IN_FLIGHT.get(app);
+  if (!flight) IN_FLIGHT.set(app, (flight = new Map()));
+  return flight;
+}
+
+/** The number the actor holds for `path`, or the one a write still out will leave it at. */
+function baseOf(app, path) {
+  return inFlightOf(app).get(path) ?? foundry.utils.getProperty(app.actor, path);
+}
+
+/** `path`'s maximum, read off the actor, so a Scar that moved it mid-burst is honoured. */
+function maxOf(app, path) {
+  const max = foundry.utils.getProperty(app.actor, path.replace(/\.value$/, ".max"));
+  return Number.isFinite(max) ? max : Infinity;
+}
+
+/** What the sheet shows for `path`: the base plus the waiting change, clamped to `[0, max]`. */
+function shownOf(app, path) {
+  const delta = pendingOf(app).get(path)?.delta ?? 0;
+  return Math.max(0, Math.min(baseOf(app, path) + delta, maxOf(app, path)));
 }
 
 /**
@@ -103,27 +139,9 @@ function markStepLimits(app, cell) {
 }
 
 /**
- * Show a current value and queue the write. The number on the sheet changes immediately; the
- * actor is written 250ms after the last change, so a burst of taps or a hold is one update.
- * @param {HTMLElement} cell  the `.cairn-stat-current` to set
- * @param {number} value
- */
-function setStat(app, cell, value) {
-  cell.textContent = String(value);
-  markStepLimits(app, cell);
-
-  const pending = pendingOf(app);
-  const path = cell.dataset.field;
-  const waiting = pending.get(path);
-  if (waiting) clearTimeout(waiting.timer);
-  pending.set(path, {
-    value,
-    timer: setTimeout(() => flushStep(app, path), 250)
-  });
-}
-
-/**
- * Move one current value by `delta`, clamped to `[0, max]`.
+ * Move one current value by `delta`, clamped to `[0, max]`. The number on the sheet changes
+ * immediately; the actor is written 250ms after the last change, so a burst of taps or a hold is
+ * one update.
  * @param {ApplicationV2} app
  * @param {string} field  the document path the stepper writes
  * @param {number} delta
@@ -131,30 +149,47 @@ function setStat(app, cell, value) {
 export function stepStat(app, field, delta) {
   const cell = statCell(app, field);
   if (!cell) return;
-  const max = Number(cell.dataset.max);
-  // The value a step starts from is the one still WAITING to be written, if there is one —
-  // never the printed number. A write takes a moment to land, and when it does the header
-  // re-renders from the actor, whose number may be a step or two behind what the reader has
-  // already tapped to; a tap that read the sheet at that moment stepped from the stale number
-  // and looked like nothing had happened. At 0 that is "the plus does nothing".
-  const current = pendingOf(app).get(field)?.value ?? cellNumber(cell);
-  const next = Math.max(0, Math.min(current + delta, Number.isFinite(max) ? max : Infinity));
+  // Stepped from what the sheet shows, which is the actor's number plus the change still waiting
+  // — never the printed text alone. A write takes a moment to land, and the re-render it causes
+  // draws the actor, which may be a step or two behind what the reader has already tapped to; a
+  // tap that read the sheet then stepped from the stale number and looked like nothing happened.
+  const current = shownOf(app, field);
+  const next = Math.max(0, Math.min(current + delta, maxOf(app, field)));
   if (next === current) return;
-  setStat(app, cell, next);
+  const pending = pendingOf(app);
+  const waiting = pending.get(field);
+  if (waiting) clearTimeout(waiting.timer);
+  // Kept as the distance from the base, so a hit that moves the base keeps the reader's taps.
+  // Taken from the base afresh rather than added to the old distance, which a clamp may have
+  // left past the limit: a `+` that did not move what the sheet shows would read as dead.
+  pending.set(field, {
+    delta: next - baseOf(app, field),
+    timer: setTimeout(() => flushStep(app, field), 250)
+  });
+  cell.textContent = String(next);
+  markStepLimits(app, cell);
 }
 
 /**
- * Write one queued stepper value. The entry stays in the map until the write has LANDED, so a
- * render in the meantime still knows the number to show and a tap in the meantime still steps
- * from it; a tap that arrives mid-flight replaces the entry, and the flush that finds the
- * entry changed underneath it leaves the newer one for its own timer.
+ * Write one queued stepper change, as the value it comes to NOW, against whatever has landed on
+ * the actor while it waited. Until the write returns, that value is the base the next tap steps
+ * from (`IN_FLIGHT`), so the echo of this write is not counted a second time.
  */
 async function flushStep(app, path) {
   const pending = pendingOf(app);
   const waiting = pending.get(path);
   if (!waiting) return;
-  await app.actor.update({ [path]: waiting.value });
-  if (pending.get(path) === waiting) pending.delete(path);
+  clearTimeout(waiting.timer);
+  const value = shownOf(app, path);
+  pending.delete(path);
+  const flight = inFlightOf(app);
+  flight.set(path, value);
+  try {
+    await app.actor.update({ [path]: value });
+  } finally {
+    // A later flush of the same field owns the entry now; leave it for that one.
+    if (flight.get(path) === value) flight.delete(path);
+  }
 }
 
 /**
@@ -171,13 +206,13 @@ export function bindSteppers(app, root) {
     markStepLimits(app, cell);
   }
 
-  // A re-render that lands while a stepper write is still waiting draws the actor's number,
-  // which is behind the one the reader has tapped to. Put the pending number back on the
-  // fresh field, so the sheet never shows a value the write is about to overtake.
-  for (const [path, waiting] of pendingOf(app)) {
+  // A re-render that lands while a stepper write is waiting or still out draws the actor's
+  // number alone. Draw the actor's number plus the reader's change instead, so the sheet never
+  // shows a value the write is about to overtake — and a hit that caused the render still shows.
+  for (const path of new Set([...pendingOf(app).keys(), ...inFlightOf(app).keys()])) {
     const cell = root.querySelector(`.cairn-stat-current[data-field="${path}"]`);
     if (!cell) continue;
-    cell.textContent = String(waiting.value);
+    cell.textContent = String(shownOf(app, path));
     markStepLimits(app, cell);
   }
 }
@@ -231,10 +266,5 @@ export function bindHold(app, signal) {
 
 /** Write everything still waiting, now — the sheet is closing. */
 export async function flushSteps(app) {
-  const pending = pendingOf(app);
-  for (const [path, waiting] of pending) {
-    clearTimeout(waiting.timer);
-    await app.actor.update({ [path]: waiting.value });
-    if (pending.get(path) === waiting) pending.delete(path);
-  }
+  for (const path of [...pendingOf(app).keys()]) await flushStep(app, path);
 }
