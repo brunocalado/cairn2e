@@ -7,7 +7,7 @@
 
 /**
  * The steppers on an actor sheet's header: a tap moves the printed number at once and the actor
- * is written a moment later; a hold repeats; a close flushes whatever is still waiting. Functions
+ * is written a moment later; a hold repeats and stops when it is released; a close flushes whatever is still waiting. Functions
  * over an application rather than members of one, so the subsystem is not held inside the base
  * sheet by `#`-private names.
  */
@@ -128,12 +128,13 @@ function setStat(app, cell, value) {
 }
 
 /**
- * Move one current value by the stepper's `data-step`, clamped to `[0, max]`.
+ * Move one current value by `delta`, clamped to `[0, max]`.
  * @param {ApplicationV2} app
- * @param {HTMLElement} step  The `.cairn-step` pressed; its `data-field` names the value.
+ * @param {string} field  the document path the stepper writes
+ * @param {number} delta
  */
-export function stepStat(app, step) {
-  const cell = statCell(app, step.dataset.field);
+export function stepStat(app, field, delta) {
+  const cell = statCell(app, field);
   // Nothing to step while the reader is typing into this one: the field over it owns the value
   // until it commits, and a stepper that wrote underneath it would be overwritten on blur.
   if (!cell || cell.querySelector("input")) return;
@@ -143,8 +144,8 @@ export function stepStat(app, step) {
   // re-renders from the actor, whose number may be a step or two behind what the reader has
   // already tapped to; a tap that read the sheet at that moment stepped from the stale number
   // and looked like nothing had happened. At 0 that is "the plus does nothing".
-  const current = pendingOf(app).get(cell.dataset.field)?.value ?? cellNumber(cell);
-  const next = Math.max(0, Math.min(current + Number(step.dataset.step), Number.isFinite(max) ? max : Infinity));
+  const current = pendingOf(app).get(field)?.value ?? cellNumber(cell);
+  const next = Math.max(0, Math.min(current + delta, Number.isFinite(max) ? max : Infinity));
   if (next === current) return;
   setStat(app, cell, next);
 }
@@ -164,7 +165,8 @@ async function flushStep(app, path) {
 }
 
 /**
- * Wire the steppers inside `root`, a part the sheet just rendered.
+ * Mark the steppers inside `root`, a part the sheet just rendered: their limits, and a value
+ * still waiting to be written. The press itself is `bindHold`'s, bound once per opening.
  * @param {ApplicationV2} app
  * @param {HTMLElement} root
  */
@@ -185,30 +187,52 @@ export function bindSteppers(app, root) {
     cell.textContent = String(waiting.value);
     markStepLimits(app, cell);
   }
+}
 
-  // Hold-to-repeat on the steppers. A press that lasts 400ms starts stepping every 90ms until
-  // it is released or leaves the glyph; the sheet's click handler (`statStep`) is then told to
-  // stand down for the click that ends the press, or a hold of eleven steps would land twelve.
-  // Everything the handler needs is the same `data-field` / `data-step` a click uses.
-  for (const step of root.querySelectorAll(".cairn-step")) {
-    let delay = 0;
-    let repeat = 0;
-    const stop = () => {
-      clearTimeout(delay);
-      clearInterval(repeat);
-      delay = repeat = 0;
-    };
-    step.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0) return;
-      stop();
-      step.dataset.held = "";
-      delay = setTimeout(() => {
-        step.dataset.held = "yes";
-        stepStat(app, step);
-        repeat = setInterval(() => stepStat(app, step), 90);
-      }, 400);
-    });
-    for (const end of ["pointerup", "pointerleave", "pointercancel"]) step.addEventListener(end, stop);
+/**
+ * The press being held on one sheet, if any — WHAT is held, never which element, because the
+ * element can be replaced under the finger. Keyed by application like `PENDING`.
+ * @type {WeakMap<foundry.applications.api.ApplicationV2, {field: string, delta: number, delay: number, repeat: number}>}
+ */
+const HELD = new WeakMap();
+
+/** End the press held on `app`, if there is one. */
+export function stopHold(app) {
+  const held = HELD.get(app);
+  if (!held) return;
+  clearTimeout(held.delay);
+  clearInterval(held.repeat);
+  HELD.delete(app);
+}
+
+/**
+ * Wire the steppers of one opening of `app`: a press steps once at once, as a native spin
+ * button does, and a press that lasts 400ms repeats every 90ms until it is released.
+ *
+ * Bound once, on the window root, because every Actor update re-renders the header part and core
+ * replaces its element (`_replaceHTML`). A hold tied to one `.cairn-step` outlived it: the release
+ * reached the new element, the old one never stopped, and the repeat ran on its own — driving
+ * the value to its limit and pinning it there against every tap the other way. The release is
+ * heard on `window`, which receives it whatever was redrawn under the finger. The step is on
+ * `pointerdown` and not `click` for the same reason: a click needs its press and release on one
+ * element, and a tap that straddled a render was lost.
+ * @param {ApplicationV2} app
+ * @param {AbortSignal} signal  aborted when the sheet closes
+ */
+export function bindHold(app, signal) {
+  app.element.addEventListener("pointerdown", (event) => {
+    const step = event.target.closest(".cairn-step");
+    if (!step || event.button !== 0) return;
+    stopHold(app);
+    const held = { field: step.dataset.field, delta: Number(step.dataset.step), delay: 0, repeat: 0 };
+    HELD.set(app, held);
+    stepStat(app, held.field, held.delta);
+    held.delay = setTimeout(() => {
+      held.repeat = setInterval(() => stepStat(app, held.field, held.delta), 90);
+    }, 400);
+  }, { signal });
+  for (const type of ["pointerup", "pointercancel", "blur"]) {
+    window.addEventListener(type, () => stopHold(app), { signal });
   }
 }
 

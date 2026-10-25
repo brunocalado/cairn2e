@@ -14,7 +14,7 @@ import { takeItem } from "../transfer.js";
 import { CairnSheetMixin, keptEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
-import { bindSteppers, stepStat, flushSteps, fieldNumber, fitToText } from "./_steppers.js";
+import { bindSteppers, bindHold, stopHold, flushSteps, fieldNumber, fitToText } from "./_steppers.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -51,8 +51,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       setAsideToggle: CairnActorSheet.#onSetAsideToggle,
       rollDamage: CairnActorSheet.#onRollDamage,
       rollSave: CairnActorSheet.#onRollSave,
-      openEdit: CairnActorSheet.#onOpenEdit,
-      statStep: CairnActorSheet.#onStatStep
+      openEdit: CairnActorSheet.#onOpenEdit
     }
     // No `dragDrop` option: v14 core reads none. Both `ActorSheetV2` and `ItemSheetV2` build their
     // own `DragDrop` with `dragSelector: ".draggable"` hard-coded and bind it to the whole sheet
@@ -195,7 +194,8 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       });
     }
 
-    // The steppers: limits read off the printed numbers, a pending value put back, hold-to-repeat.
+    // The steppers: limits read off the printed numbers, a pending value put back. The press is
+    // bound once per opening, in `_onFirstRender`.
     bindSteppers(this, htmlElement);
   }
 
@@ -515,18 +515,25 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
   /*  Steppers                                    */
   /* -------------------------------------------- */
 
-  /** A tap on a stepper. A tap that ended a hold has already been counted by the repeat. */
-  static #onStatStep(event, target) {
-    if (target.dataset.held === "yes") {
-      delete target.dataset.held;
-      return;
-    }
-    stepStat(this, target);
+  /** Aborts the stepper listeners of the current opening. */
+  #holdAbort = null;
+
+  /** @override — the steppers' press-and-hold, once per opening. */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+    this.#holdAbort = new AbortController();
+    bindHold(this, this.#holdAbort.signal);
   }
 
-  /** @override — a stepper write still waiting when the sheet closes goes out now. */
+  /**
+   * @override — a held stepper stops, and a write still waiting goes out now. The sheet instance
+   * outlives its window (it is `actor.sheet`), so a repeat left running would keep stepping a
+   * sheet that is gone and pin the value again on reopen.
+   */
   async _preClose(options) {
     await super._preClose(options);
+    this.#holdAbort?.abort();
+    stopHold(this);
     await flushSteps(this);
   }
 

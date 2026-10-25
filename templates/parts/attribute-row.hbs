@@ -27,9 +27,9 @@
 
       The two steppers either side change the CURRENT value by one, clamped to 0 and the
       maximum. They are always in the row, so nothing moves when one is reached for or runs
-      out of range; a hold repeats, and the writes are coalesced in `_steppers.js`. The plus sits
-      past the maximum rather than between the two numbers, where "11 + /13" read as an
-      expression. --}}
+      out of range; a press steps at once, a hold repeats, and the writes are coalesced in
+      `_steppers.js`. The plus sits past the maximum rather than between the two numbers, where
+      "11 + /13" read as an expression. --}}
 <div class="cairn-attributes">
     {{#each abilities as |ability|}}
     {{!-- The three attribute caps are rolls, and they say so: hovering one re-inks the brush
@@ -49,7 +49,7 @@
                 data-tooltip="{{localize 'CAIRN.Save' key=ability.key}}">{{localize ability.key}}</a>
         </div>
         <div class="cairn-stat-value">
-            {{#if ../editable}}<a class="cairn-step" data-action="statStep" data-step="-1" data-field="system.abilities.{{ability.key}}.value">&minus;</a>{{/if}}
+            {{#if ../editable}}<a class="cairn-step" data-step="-1" data-field="system.abilities.{{ability.key}}.value">&minus;</a>{{/if}}
             <span class="cairn-stat-number">
                 {{!-- `data-field` and `data-max` are not an affordance: `_steppers.js#markStepLimits`
                       reads them to decide which of the two steppers has run out of range. --}}
@@ -58,7 +58,7 @@
                     data-max="{{ability.max}}">{{ability.value}}</span>
                 <span class="cairn-stat-max">/{{ability.max}}</span>
             </span>
-            {{#if ../editable}}<a class="cairn-step" data-action="statStep" data-step="1" data-field="system.abilities.{{ability.key}}.value">+</a>{{/if}}
+            {{#if ../editable}}<a class="cairn-step" data-step="1" data-field="system.abilities.{{ability.key}}.value">+</a>{{/if}}
         </div>
     </div>
     {{/each}}
@@ -83,14 +83,14 @@
             </span>
             {{#if editable}}<span class="cairn-step-void" aria-hidden="true"></span>{{/if}}
             {{else}}
-            {{#if editable}}<a class="cairn-step" data-action="statStep" data-step="-1" data-field="system.hp.value">&minus;</a>{{/if}}
+            {{#if editable}}<a class="cairn-step" data-step="-1" data-field="system.hp.value">&minus;</a>{{/if}}
             <span class="cairn-stat-number">
                 <span class="cairn-stat-current"
                     data-field="system.hp.value"
                     data-max="{{system.hp.max}}">{{system.hp.value}}</span>
                 <span class="cairn-stat-max">/{{system.hp.max}}</span>
             </span>
-            {{#if editable}}<a class="cairn-step" data-action="statStep" data-step="1" data-field="system.hp.value">+</a>{{/if}}
+            {{#if editable}}<a class="cairn-step" data-step="1" data-field="system.hp.value">+</a>{{/if}}
             {{/if}}
         </div>
     </div>
