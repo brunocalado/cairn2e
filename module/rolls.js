@@ -814,7 +814,8 @@ export async function postNameCard({ name, formula }) {
  * The card carries the drawn row and no Roll. Core shows every player a whispered message that
  * holds a Roll, with its content hidden (`ChatMessage#visible`), so a "gm" draw still put a
  * private-roll card in the party's log each time the Warden rolled — telling them the dungeon had
- * just been asked about them. Without the Roll the message reaches the Wardens alone.
+ * just been asked about them. Without the Roll the message reaches the Wardens alone; the dice
+ * are still thrown on every screen, by {@link throwForWardens}.
  */
 export async function drawDungeonEvent() {
   const table = await findTable(TABLES.DUNGEON_EVENT);
@@ -822,8 +823,31 @@ export async function drawDungeonEvent() {
     ui.notifications.warn(game.i18n.localize("CAIRN.Dungeon.NoTable", { uuid: TABLES.DUNGEON_EVENT }));
     return;
   }
-  const { results } = await table.draw({ displayChat: false });
+  const { roll, results } = await table.draw({ displayChat: false });
+  if (roll) await throwForWardens(roll);
   if (results?.length) await table.toMessage(results, { messageOptions: { messageMode: WARDEN_ONLY } });
+}
+
+/**
+ * Throw a Warden's roll on every screen, its faces readable on the Wardens' alone (maintainer's
+ * call, 2026-10-25): the table sees the dungeon being asked, never the answer. A card that carries
+ * no Roll gives Dice So Nice nothing to animate, so the dice are thrown by hand — readable to the
+ * Wardens, and to the players as Dice So Nice's ghost dice, which carry no numbers. The second
+ * throw is `blind` so it never lands on the thrower's own screen too. The card waits for the
+ * Warden's dice to settle. Nothing happens in a world without Dice So Nice.
+ * @param {CairnRoll} roll
+ */
+async function throwForWardens(roll) {
+  const dice3d = game.dice3d;
+  if (!dice3d) return;
+  const active = game.users.filter((u) => u.active);
+  const wardens = active.filter((u) => u.isGM).map((u) => u.id);
+  const players = active.filter((u) => !u.isGM).map((u) => u.id);
+  const ghost = CairnRoll.fromData(roll.toJSON());
+  await Promise.all([
+    dice3d.showForRoll(roll, game.user, true, wardens),
+    players.length && dice3d.showForRoll(ghost, game.user, true, players, true, null, null, { ghost: true })
+  ]);
 }
 
 /**
