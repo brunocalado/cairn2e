@@ -129,6 +129,7 @@ export class CairnToken extends foundry.canvas.placeables.Token {
       if (!this.turnMarker) this.turnMarker = this.addChildAt(new TokenTurnMarker(this), 0);
       canvas.tokens.turnMarkers.add(this);
       this.turnMarker.draw();
+      this.#showRingOnViewedLevel();
     }
 
     // Remove a Turn Marker
@@ -137,6 +138,23 @@ export class CairnToken extends foundry.canvas.placeables.Token {
       this.turnMarker.destroy();
       this.turnMarker = null;
     }
+  }
+
+  /** @inheritDoc — a token that changes level shows or hides its ring with it. */
+  _refreshVisibility() {
+    super._refreshVisibility();
+    this.#showRingOnViewedLevel();
+  }
+
+  /**
+   * The ring is drawn only for a token on the level being viewed. It is a child of the token's
+   * container on the tokens layer, which sits above every level's floor, while the token's own
+   * artwork is drawn in the primary group under the floors above it: a token on the level below
+   * was hidden by the floor, and its ring was not (reported on 14.369). Viewing another level
+   * redraws the canvas, so this runs again for every token then.
+   */
+  #showRingOnViewedLevel() {
+    if (this.turnMarker) this.turnMarker.visible = this.document.level === canvas.level?.id;
   }
 
   /**
