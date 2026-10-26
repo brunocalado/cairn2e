@@ -171,9 +171,51 @@
 
     /* A combatant that has acted. Spent, not disabled: the row still opens its sheet, still pings,
        still takes the Warden's controls. It reads back at the soft ink every secondary thing in
-       the system uses. */
-    .combatant.is-resolved {
+       the system uses — all but its switch: faded with the row, the switch's on state read as its
+       off state. */
+    .combatant.is-resolved > :not(.cairn-combat-acted) {
         opacity: 0.55;
+    }
+
+    /* A fight's row body, laid out as an exploration's is: the name, this round's distance and
+       the undo slot on the first line, core's controls and the effects under them. Core's
+       `.token-name` is a flex column; this is the same box as a grid. */
+    .combatant .cairn-combat-body {
+        align-items: center;
+        column-gap: 2px;
+        display: grid;
+        grid-template-areas:
+            "name     moved    undo"
+            "controls controls controls";
+        grid-template-columns: minmax(0, 1fr) auto 20px;
+
+        .name {
+            grid-area: name;
+        }
+
+        .cairn-combat-moved {
+            grid-area: moved;
+            justify-self: end;
+        }
+
+        .cairn-combat-slot.is-undo {
+            grid-area: undo;
+        }
+
+        .combatant-controls {
+            grid-area: controls;
+        }
+    }
+
+    /* Ping and pan, the controls a row seldom needs: drawn only under the pointer, or when the
+       keyboard reaches the row, so the line under the name carries what the Warden marks. They
+       keep their place while hidden, so the row never shifts as the pointer crosses it. */
+    .combatant .combatant-controls .is-locate {
+        opacity: 0;
+    }
+
+    .combatant:is(:hover, :focus-within) .combatant-controls .is-locate {
+        opacity: 1;
     }
 
     /* A long name ends in an ellipsis on its one line rather than pushing the row taller; the
@@ -226,8 +268,23 @@
     .cairn-combat-dex {
         align-items: center;
         display: flex;
-        flex: 0 0 28px;
+        flex: 0 0 auto;
         justify-content: center;
+        min-width: 28px;
+    }
+
+    /* The first-round DEX save as a worded button: the panel's filled button in small capitals,
+       as an exploration's Declare is — the one thing round one asks of the player. */
+    .cairn-combat-dex button.cairn-combat-dex-roll {
+        font-family: var(--cairn-serif);
+        font-size: 11px;
+        font-weight: 700;
+        height: auto;
+        letter-spacing: var(--cairn-label-track);
+        min-height: 22px;
+        padding: 0 6px;
+        text-transform: uppercase;
+        width: auto;
     }
 
     /* The result. Two glyphs rather than two colours: a bolt for a PC who acts, a bar for one who
@@ -242,19 +299,14 @@
         }
     }
 
-    /* The acted control sits where core's initiative column used to, so it inherits that column's
-       place in the row rather than pushing the name around. */
+    /* The acted switch sits where core's initiative column used to. It stands upright, so its
+       column is as narrow as the pill (maintainer's call, 2026-10-17): the row's width goes to
+       the name, the distance and an exploration's declaration instead. */
     .cairn-combat-acted {
         align-items: center;
         display: flex;
-        flex: 0 0 var(--combatant-initiative-width, 44px);
+        flex: 0 0 24px;
         justify-content: center;
-    }
-
-    /* An exploration's narrated switch stands upright, so its column is as narrow as the pill
-       (maintainer's call, 2026-10-17): the row's width goes to the declaration instead. */
-    .cairn-dungeon-row .cairn-combat-acted {
-        flex-basis: 24px;
     }
 
     /**************************************************************************
@@ -315,16 +367,16 @@
             white-space: nowrap;
         }
 
-        .cairn-dungeon-moved {
+        .cairn-combat-moved {
             grid-area: moved;
             justify-self: end;
         }
 
-        .cairn-dungeon-slot.is-undo {
+        .cairn-combat-slot.is-undo {
             grid-area: undo;
         }
 
-        .cairn-dungeon-slot.is-edit {
+        .cairn-combat-slot.is-edit {
             grid-area: edit;
         }
 
@@ -346,14 +398,14 @@
     /* A slot holds one glyph at the field's height, so the row keeps one line's height per line.
        `.icon` for the weight: the panel's inline-control rule, which sets the 1.5rem size, is
        (0,4,1), and this comes after it. */
-    .cairn-dungeon-slot {
+    .cairn-combat-slot {
         display: flex;
         height: 20px;
         justify-content: center;
         width: 20px;
     }
 
-    .cairn-dungeon-slot button.inline-control.icon {
+    .cairn-combat-slot button.inline-control.icon {
         --button-size: 20px;
         font-size: 11px;
     }
@@ -401,12 +453,14 @@
 
     /* How far the token moved this turn, in tabular figures, coloured by pace (maintainer's
        call, 2026-10-02): within torchlight's 40 ft, past it, past the 120 ft an action covers.
-       The monochrome rule yields because the pace is the one thing the Warden reads off the
-       party column at a glance. Core's level tokens, as a roll outcome in chat uses them: one
-       value each, legible on the dark sidebar and on a popped-out paper tracker alike. Past
-       torchlight the figure is also bold with a running glyph, so it never rests on hue alone.
-       A scene not measured in feet carries no pace and stays soft ink. */
-    .cairn-dungeon-moved {
+       A fight's row wears the same three (maintainer's call, 2026-10-25): within one 40 ft move,
+       past it into the second, past the 80 ft the two cover. The monochrome rule yields because
+       the pace is the one thing the Warden reads off the column at a glance. Core's level
+       tokens, as a roll outcome in chat uses them: one value each, legible on the dark sidebar
+       and on a popped-out paper tracker alike. Past the free move the figure is also bold with a
+       running glyph, so it never rests on hue alone. A scene not measured in feet carries no
+       pace and stays soft ink. */
+    .cairn-combat-moved {
         color: color-mix(in srgb, var(--cairn-surface-fg) 62%, transparent);
         font-family: var(--cairn-serif);
         font-size: 11px;
@@ -414,15 +468,15 @@
         padding: 0 2px 0 4px;
         white-space: nowrap;
 
-        &.is-torch {
+        &.is-within {
             color: var(--color-level-success);
         }
 
-        &:is(.is-hurry, .is-over) {
+        &:is(.is-beyond, .is-over) {
             font-weight: 700;
         }
 
-        &.is-hurry {
+        &.is-beyond {
             color: var(--color-level-warning);
         }
 
@@ -518,15 +572,6 @@
         }
     }
 
-    /* A dungeon row that has acted fades its picture and words as a fight's row does, but not
-       its switch: faded with the row, the switch's on state read as its off state. */
-    .combatant.cairn-dungeon-row.is-resolved {
-        opacity: 1;
-
-        > :not(.cairn-combat-acted) {
-            opacity: 0.55;
-        }
-    }
 
     /* The header's hairline between the two buttons that make an encounter and the ones that
        switch between them: the soft ink of the panel's frames, a glyph's height. */

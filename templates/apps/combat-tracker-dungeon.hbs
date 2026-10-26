@@ -37,14 +37,14 @@
             {{!-- The pace is a hue — within torchlight, past it, past the three torchlights an
                   action covers — and past torchlight a glyph as well, so it never rests on colour
                   alone. --}}
-            <span class="cairn-dungeon-moved {{#if pace}}is-{{pace}}{{/if}}" data-tooltip
+            <span class="cairn-combat-moved {{#if pace}}is-{{pace}}{{/if}}" data-tooltip
                   aria-label="{{localize paceLabel}}">
-                {{#if beyondTorch}}<i class="fa-solid fa-person-running" inert></i>{{/if}}{{moved}}&nbsp;{{units}}
+                {{#if beyond}}<i class="fa-solid fa-person-running" inert></i>{{/if}}{{moved}}&nbsp;{{units}}
             </span>
 
             {{!-- Back to where the token stood when the turn began: core's recorded-movement undo,
                   for whoever owns the token — its player on their own row, the Warden on every row. --}}
-            <span class="cairn-dungeon-slot is-undo">
+            <span class="cairn-combat-slot is-undo">
                 {{#if canRevert}}
                     <button type="button" class="inline-control combatant-control icon fa-solid fa-rotate-left"
                             data-action="revertMovement" data-tooltip
@@ -62,7 +62,7 @@
             {{/if}}
             {{/if}}
 
-            <span class="cairn-dungeon-slot is-edit">
+            <span class="cairn-combat-slot is-edit">
                 {{#if (and isOwner @root.dungeon.started)}}{{#unless prompt}}
                     <button type="button" class="inline-control combatant-control icon fa-solid fa-feather"
                             data-action="declareDungeon" data-tooltip

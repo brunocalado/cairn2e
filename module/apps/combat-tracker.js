@@ -18,6 +18,14 @@ const TORCHLIGHT_FT = 40;
 /** "Players can use their action to move up to three times that distance" (`procedures.md`). */
 const HURRY_FT = 3 * TORCHLIGHT_FT;
 
+/** "a character may move up to 40ft and take up to one action … moving for a second time"
+ *  (`core-rules.md` → Combat): one free move, and a second one that spends the action. */
+const FIGHT_MOVE_FT = 40;
+
+/** The tooltip a row's distance carries, by pace, in an exploration and in a fight. */
+const DUNGEON_PACE = { moved: "CAIRN.Dungeon.Moved", beyond: "CAIRN.Dungeon.BeyondTorch", over: "CAIRN.Dungeon.BeyondHurry" };
+const FIGHT_PACE = { moved: "CAIRN.Combat.Moved", beyond: "CAIRN.Combat.BeyondMove", over: "CAIRN.Combat.BeyondRound" };
+
 /**
  * The exploration actions the declaration offers as ideas (`procedures.md` → Actions, The
  * Basics). Examples, never a menu: the SRD lists them "such as … etc.", and a player may declare
@@ -56,8 +64,8 @@ const listNames = (list) => game.i18n.getListFormatter().format(list);
 const nameOf = (actor) => actor.token?.name ?? actor.name;
 
 /**
- * How far a token has moved this turn, from core's movement history, which the combat clears at
- * every turn start. Measured through the token's own path measurement rather than by adding the
+ * How far a token has moved this turn or round, from core's movement history, which the combat
+ * clears at every turn start. Measured through the token's own path measurement rather than by adding the
  * waypoints' `cost`: a move made by a document update carries a cost of 0 (observed on 14.368),
  * while the measured distance is the one the ruler shows.
  * @param {TokenDocument|null} token
@@ -71,17 +79,40 @@ function movedThisTurn(token) {
 }
 
 /**
- * Where a turn's movement sits against `procedures.md` → The Basics: within torchlight, past it
- * (the action spent moving quickly, one of the four Dungeon Event triggers), or past the three
- * torchlights an action can cover at all. `""` on a scene not measured in feet, which cannot be
- * compared with a distance the SRD gives in feet.
+ * Where a turn's movement sits against its two limits: within the move that costs nothing, past
+ * it (the action spent moving), or past all an action can cover. An exploration's limits are
+ * torchlight and three torchlights (`procedures.md` → The Basics), where moving quickly is one
+ * of the four Dungeon Event triggers; a fight's are one move and two. `""` on a scene not
+ * measured in feet, which cannot be compared with a distance the SRD gives in feet.
  * @param {{moved: number, units: string}} movement
- * @returns {""|"torch"|"hurry"|"over"}
+ * @param {number} near  the free move, in feet
+ * @param {number} far   the most a turn can cover, in feet
+ * @returns {""|"within"|"beyond"|"over"}
  */
-function paceOf({ moved, units }) {
+function paceOf({ moved, units }, near, far) {
   if (units !== "ft") return "";
-  if (moved > HURRY_FT) return "over";
-  return (moved > TORCHLIGHT_FT) ? "hurry" : "torch";
+  if (moved > far) return "over";
+  return (moved > near) ? "beyond" : "within";
+}
+
+/**
+ * What a row prints of its token's movement: the distance, its pace, the tooltip that says it,
+ * and whether the viewer may take it back — whoever owns the token, the Warden on every row.
+ * @param {Combatant} combatant
+ * @param {number} near
+ * @param {number} far
+ * @param {{moved: string, beyond: string, over: string}} labels  the tooltip keys by pace
+ */
+function movementRow(combatant, near, far, labels) {
+  const movement = movedThisTurn(combatant.token);
+  const pace = paceOf(movement, near, far);
+  return {
+    ...movement,
+    canRevert: !!combatant.token?.isOwner && (movement.moved > 0),
+    pace,
+    beyond: (pace === "beyond") || (pace === "over"),
+    paceLabel: labels[pace] ?? labels.moved
+  };
 }
 
 /**
@@ -220,6 +251,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
       turn.resolved = combatant.resolved;
       turn.dexSave = combatant.dexSave;
       turn.isAdventurer = combatant.isAdventurer;
+      Object.assign(turn, movementRow(combatant, FIGHT_MOVE_FT, 2 * FIGHT_MOVE_FT, FIGHT_PACE));
       // Core marks the combatant at `combat.turn` active; there is no active combatant here.
       turn.css = turn.css.replace("active", "").trim();
       sides[combatant.isAdventurer ? "adventurers" : "opponents"].push(turn);
@@ -247,8 +279,6 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     for (const turn of turns) {
       const combatant = combat.combatants.get(turn.id);
       if (!combatant) continue;
-      const movement = movedThisTurn(combatant.token);
-      const pace = paceOf(movement);
       const declared = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.DECLARED) ?? "";
       const taskId = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
       rows.push({
@@ -261,12 +291,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
         // A player is asked outright; the Warden owns every row, and a button on each of them
         // would bury the party's words under the Warden's prompts.
         prompt: combat.started && turn.isOwner && !game.user.isGM && !declared,
-        ...movement,
-        canRevert: !!combatant.token?.isOwner && (movement.moved > 0),
-        pace,
-        beyondTorch: (pace === "hurry") || (pace === "over"),
-        paceLabel: { hurry: "CAIRN.Dungeon.BeyondTorch", over: "CAIRN.Dungeon.BeyondHurry" }[pace]
-          ?? "CAIRN.Dungeon.Moved"
+        ...movementRow(combatant, TORCHLIGHT_FT, HURRY_FT, DUNGEON_PACE)
       });
     }
     rows.sort((a, b) => a.name.localeCompare(b.name));
@@ -599,9 +624,10 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   }
 
   /**
-   * Take a token back to where it stood when the dungeon turn began. With no movement id, core's
-   * `revertRecordedMovement` displaces the token to the first recorded waypoint and empties the
-   * history, and the history only ever holds this turn's moves — `CairnCombat#nextRound` clears it.
+   * Take a token back to where it stood when the dungeon turn or the fight's round began. With no
+   * movement id, core's `revertRecordedMovement` displaces the token to the first recorded waypoint
+   * and empties the history, and the history only ever holds this turn's moves —
+   * `CairnCombat#nextRound` clears it.
    * A player may undo their own token with no GM in the loop (observed on 14.368); the button is
    * drawn only for an owner.
    */

@@ -242,11 +242,11 @@ Hooks.once("init", async function () {
   CONFIG.Combat.documentClass = CairnCombat;
   CONFIG.Combatant.documentClass = CairnCombatant;
   CONFIG.ui.combat = CairnCombatTracker;
-  // A dungeon exploration's row prints how far its token moved this turn. Core re-renders the
+  // Every tracker row prints how far its token moved this turn or round. Core re-renders the
   // tracker for a Combatant's own update, never for its token's movement.
   Hooks.on("moveToken", (token) => {
     const viewed = ui.combat?.viewed;
-    if (viewed?.isDungeon && (token.combatant?.parent === viewed)) ui.combat.render();
+    if (viewed && (token.combatant?.parent === viewed)) ui.combat.render();
   });
 
   // The canvas turn ring. Core lights it for the one token at `combat.combatant`, which this

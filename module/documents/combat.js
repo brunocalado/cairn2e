@@ -210,17 +210,17 @@ export class CairnCombat extends Combat {
   }
 
   /**
-   * @override — a new round gives every combatant its action back, and a dungeon turn's distances
-   * start again from nothing.
+   * @override — a new round gives every combatant its action back, and its distances start again
+   * from nothing.
    *
    * Core clears the movement histories itself, but only after the round has changed and with
    * `noHook`, so every tracker has already re-rendered on the new round and none hears the clear:
-   * a dungeon row went on printing last turn's distance (observed on 14.368). Cleared first, the
-   * round change is the render that shows it, and core's own clear finds nothing left to do.
+   * a row went on printing last turn's distance (observed on 14.368). Cleared first, the round
+   * change is the render that shows it, and core's own clear finds nothing left to do.
    */
   async nextRound() {
     await this.clearResolved();
-    if (this.isDungeon) await this.clearMovementHistories();
+    await this.clearMovementHistories();
     return super.nextRound();
   }
 

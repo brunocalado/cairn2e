@@ -264,10 +264,13 @@
   "CAIRN.Combat": {
     "Acted": "Mark as acted this round",
     "ActedUndo": "Has acted this round \u2014 click to undo",
+    "BeyondMove": "Moved past the 12 m (40 ft) of one move this round \u2014 the action spent moving again",
+    "BeyondRound": "Moved past the 24 m (80 ft) two moves cover this round",
     "DexSave": {
       "failed": "Failed the first-round DEX save \u2014 loses the turn",
       "passed": "Passed the first-round DEX save \u2014 acts"
     },
+    "DexSaveButton": "DEX",
     "DexSavePrompt": "Roll the first-round DEX save",
     "FirstRoundActs": "Acts this round, before the opponents.",
     "FirstRoundLoses": "Loses the turn this round, and acts again from the next.",
@@ -281,8 +284,10 @@
       "Hint": "Roll it from the flag on an opponent\u2019s row in the combat tracker."
     },
     "MoralePrompt": "Roll Morale for this opponent",
+    "Moved": "Moved this round",
     "PanicConfirm": "{name} is panicked, and a panicked character does not act in the first round. Roll the DEX save anyway?",
     "PanicTitle": "Panicked",
+    "RevertMovement": "Undo this round\u2019s movement",
     "Side": {
       "adventurers": "Adventurers",
       "opponents": "Opponents"
