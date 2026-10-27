@@ -11,7 +11,8 @@
      * character's (`.cairn-actor-header`) and needs nothing of its own.     *
      **************************************************************************/
 
-    /* PROMOTE, on the title bar: a word among core's icon controls. Core's `button.header-control`
+    /* The labelled title-bar button every window builds through `addFrameLabel` (Promote, Actions,
+       Draw Omens, Show to players…): a word among core's icon controls. Core's `button.header-control`
        gives it the bar's colour, size and no border; this only sets the word — the sheet's label
        voice — and lets the button be as wide as it. Qualified with `.window-header` on purpose:
        the ink-button primitive excludes the frame, and this must not become the way back in. */

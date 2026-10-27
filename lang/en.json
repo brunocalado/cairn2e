@@ -1240,6 +1240,7 @@
     "DeployedOff": "Held back: the party's token leaves them where they are. Press to have them travel with the party.",
     "DeployedOn": "Travelling with the party: gathered into its token and set down with it. Press to hold them back.",
     "DrawOmens": "Draw Omens",
+    "DrawOmensHint": "The youngest's Omen, read to the table, and each Omen growth's, whispered to its owner.",
     "FolderFromCompendium": "A party takes actors from the world. Import that folder first.",
     "FolderJoined": "{count} from {folder} joined the party.",
     "FolderNobodyNew": "Nobody in {folder} can join this party who is not on it already.",

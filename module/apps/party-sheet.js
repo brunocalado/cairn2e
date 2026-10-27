@@ -11,6 +11,7 @@ import { abilityRows } from "../helpers.js";
 import { drawPartyOmens, owesOmens } from "../omens.js";
 import { CairnActorSheet } from "./actor-sheet.js";
 import { CairnBarter } from "./barter.js";
+import { addFrameLabel } from "./_sheet-mixin.js";
 
 const TEMPLATES = `systems/${SYSTEM_ID}/templates`;
 
@@ -76,18 +77,28 @@ export class CairnPartySheet extends CairnActorSheet {
   }
 
   /**
-   * @override — "Draw Omens" for the Warden, only while the party owes one. In the menu rather
-   * than on the Party tab: it is used once a campaign, on a sheet the table opens every session.
-   * The menu is rebuilt each time it opens, so the entry goes once everything is drawn.
+   * @override — "Draw Omens" sits in the title bar, LEFT of the ellipsis, as a labelled button
+   * (`_sheet-mixin.js#addFrameLabel`), for the Warden only. Not in the ellipsis menu, where nobody
+   * could know it exists, and not on the Party tab, which the table opens every session for an
+   * action used once a campaign. Whether the party still owes an Omen is decided per render
+   * (`_onRender`).
    */
-  _getHeaderControls() {
-    const controls = super._getHeaderControls();
-    if (game.user.isGM && owesOmens(this.actor)) controls.push({
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+    if (game.user.isGM) addFrameLabel(frame, {
       action: "drawOmens",
-      icon: "fa-solid fa-eye",
-      label: "CAIRN.Party.DrawOmens"
+      label: game.i18n.localize("CAIRN.Party.DrawOmens"),
+      tooltip: game.i18n.localize("CAIRN.Party.DrawOmensHint")
     });
-    return controls;
+    return frame;
+  }
+
+  /** @override — a member's age, Omen or growth re-renders the party (`CairnActor#renderParties`),
+   *  so the button appears when the last age lands and goes once the draw has written. */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    const draw = this.element.querySelector('.window-header [data-action="drawOmens"]');
+    if (draw) draw.hidden = !owesOmens(this.actor);
   }
 
   /* -------------------------------------------- */

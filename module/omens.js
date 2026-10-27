@@ -11,7 +11,7 @@ import { toPlainText } from "./character-generator.js";
 import { omensOwed } from "./omen-rules.js";
 
 /**
- * The party's Omens, drawn by the Warden from the party sheet's menu once every character is made.
+ * The party's Omens, drawn by the Warden from the party sheet's title bar once every character is made.
  * Who is owed one, and why it waits for the whole party, is `omen-rules.js`'s; this reads the
  * party into its shape, draws, writes, and posts the cards.
  */
@@ -42,7 +42,7 @@ function owed(party) {
   };
 }
 
-/** Whether the party still owes an Omen: what puts Draw Omens in the Warden's menu. */
+/** Whether the party still owes an Omen: what shows Draw Omens in the Warden's title bar. */
 export function owesOmens(party) {
   const { youngest, growths } = owed(party);
   return youngest.length > 0 || growths.length > 0;
@@ -85,8 +85,9 @@ async function postOmen(actor, text, { note, whisper = [], messageMode }) {
   );
 }
 
-/** Parties whose draw is still writing. The menu is rebuilt each time it opens, so the entry is
- *  still there while the first draw lands, and a second pick would deal the youngest two Omens. */
+/** Parties whose draw is still writing. The button hides only once the writes re-render the
+ *  sheet, so it is still there while the first draw lands, and a second click would deal the
+ *  youngest two Omens. */
 const drawing = new Set();
 
 /**
