@@ -33,7 +33,7 @@
  */
 
 import { CairnActor } from "./documents/actor.js";
-import { SYSTEM_ID, FLAGS, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK } from "./constants.js";
+import { SYSTEM_ID, FLAGS, PACKS, TABLES, TRAIT_TABLES, GEAR_ARTWORK, DEFAULT_ARTWORK } from "./constants.js";
 import { drawTable, drawTableText, loadPack, pick, stripTags, copyOf, withWorldCopies } from "./helpers.js";
 import { evaluateFormula } from "./rolls.js";
 import { gainUpdate } from "./gains.js";
@@ -450,11 +450,15 @@ export async function assembleActorData(draft) {
   // The Background travels WITH the character, as an embedded Item: it carries the name list, the
   // starting gear and the two d6 tables, and none of that survives being reduced to a string. It
   // occupies no slot (`_derived.js#slotsForItem`).
+  // Its icon is also the character's portrait and token when nobody sets art: four Backgrounds on
+  // one map would otherwise wear the same soldier.
+  let img;
   if (draft.backgroundUuid) {
     const background = await fromUuid(draft.backgroundUuid);
     if (background) {
-    const source = copyOf(background);
-    items.push(source);
+      const source = copyOf(background);
+      items.push(source);
+      img = source.img;
     }
   }
 
@@ -529,6 +533,8 @@ export async function assembleActorData(draft) {
   return {
     name: draft.name?.trim() || draft.backgroundName || game.i18n.localize("CAIRN.CharacterCreator.DefaultName"),
     type: "character",
+    // Left out when there is no Background: the subtype default (`CairnActor.getDefaultArtwork`) applies.
+    ...(img && { img }),
     system,
     items
   };
@@ -590,6 +596,7 @@ export async function createCharacterFromDraft(draft) {
 
 /**
  * Write a draft into an existing Actor: wipe its Items, overwrite name + system, rebuild Items.
+ * Art nobody chose follows the new Background's icon; art somebody chose stays.
  *
  * Containers and what they hold survive: a new character written into the same Actor keeps the
  * sack and the mule the old one was carrying, exactly as they did when a container was a
@@ -603,6 +610,10 @@ export async function createCharacterFromDraft(draft) {
  */
 export async function applyDraftToActor(actor, draft) {
   const data = await assembleActorData(draft);
+  // Art is replaceable only when nobody chose it: the subtype default, or the icon of the
+  // Background being replaced. Read before the items go — the old Background is among them.
+  const unchosen = new Set([DEFAULT_ARTWORK.Actor.character,
+    actor.items.find((i) => i.type === "background")?.img].filter(Boolean));
   const kept = new Set(actor.items
     .filter((i) => i.system.isContainer || i.getFlag(SYSTEM_ID, FLAGS.UNARMED))
     .map((i) => i.id));
@@ -610,7 +621,13 @@ export async function applyDraftToActor(actor, draft) {
     .filter((i) => !kept.has(i.id) && !kept.has(i.system.container))
     .map((i) => i.id);
   await actor.deleteEmbeddedDocuments("Item", doomed, { render: false });
-  await actor.update({ name: data.name, system: data.system });
+  // The portrait and the token are decided apart: a player who set only a token keeps it. The
+  // prototype token is written here because core's `_preUpdate` only moves it off the default art,
+  // never off the previous Background's icon.
+  const art = {};
+  if (data.img && unchosen.has(actor.img)) art.img = data.img;
+  if (data.img && unchosen.has(actor.prototypeToken.texture.src)) art["prototypeToken.texture.src"] = data.img;
+  await actor.update({ name: data.name, system: data.system, ...art });
   // The generator is one of the controls that may give a growth (`documents/item.js`): the ones
   // it creates are the Background's, resolved against THIS character a moment ago.
   if (data.items.length) await actor.createEmbeddedDocuments("Item", data.items, { [SYSTEM_ID]: { growth: true } });
@@ -618,7 +635,11 @@ export async function applyDraftToActor(actor, draft) {
   const byScene = new Map();
   for (const token of actor.getActiveTokens()) {
     const scene = token.document.parent;
-    byScene.set(scene, [...(byScene.get(scene) ?? []), { _id: token.id, name: actor.name }]);
+    byScene.set(scene, [...(byScene.get(scene) ?? []), {
+      _id: token.id,
+      name: actor.name,
+      ...(data.img && unchosen.has(token.document.texture.src) && { "texture.src": data.img })
+    }]);
   }
   for (const [scene, updates] of byScene) await scene.updateEmbeddedDocuments("Token", updates);
   return actor;
