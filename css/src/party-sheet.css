@@ -23,6 +23,15 @@
      **************************************************************************/
 
     &.party {
+        /* No narrower than the widest row's seven tags on one line — two-digit HP, STR, DEX and
+           WIL, armour, ten slots and Fatigue held one line at 590px and wrapped at 585 (14.369).
+           Core clamps every width to the element's computed `min-width`, the resize handle's
+           included (`ApplicationV2#_updatePosition`). Spelled as `window.css`'s actor floor is,
+           which it has to outrank, and minimising is excluded for the same reason it is there. */
+        &.sheet.actor:where(:not(.minimizing, .minimized, .maximizing)) {
+            min-width: 590px;
+        }
+
         /* A resizable window with a real height to fill, like the item sheets — not the
            character's auto-height page, so the list takes what is left and scrolls. */
         .tab.active {
@@ -30,16 +39,19 @@
             min-height: 0;
         }
 
-        /* Five columns, two rows: order, portrait, then name / controls / switch on the first
-           row and the tags on the second. `.cairn-slot` is a flex line; this row is a grid
-           because the portrait spans both of its lines and a flex item cannot. `align-items:
-           start` is what puts the name on the portrait's top edge rather than centred on it. */
+        /* Five columns, two rows: order, portrait, the name over the tags, then the controls
+           and the switch. `.cairn-slot` is a flex line; this row is a grid because everything
+           but the name and the tags spans both of its lines and a flex item cannot. `align-items:
+           start` is what puts the name on the portrait's top edge rather than centred on it.
+           The name and the tags are shorter than the 44px portrait that spans them, and a grid
+           shares a spanning item's surplus across `auto` tracks — so the second track is the
+           `1fr` that takes it, below the tags, and the tags sit right under the name. */
         .cairn-party-member {
             align-items: start;
             column-gap: 8px;
             display: grid;
             grid-template-columns: 18px 44px minmax(0, 1fr) auto auto;
-            grid-template-rows: auto auto;
+            grid-template-rows: auto 1fr;
             /* The rule between rows is stroked on the box's bottom edge; without this the
                second line's tag frames sit on that same pixel and the stroke crosses them. */
             padding-bottom: 6px;
@@ -130,12 +142,19 @@
             line-height: 1;
         }
 
+        /* The two controls stand beside both lines, centred on the row as the portrait is. On
+           the first line alone their 26px would set the row's first track, and the 13px name
+           would leave the rest of it empty above the tags. */
         .cairn-party-member .cairn-item-controls {
+            align-self: center;
             grid-column: 4;
+            grid-row: 1 / 3;
         }
 
         .cairn-party-member .cairn-switch {
+            align-self: center;
             grid-column: 5;
+            grid-row: 1 / 3;
         }
 
         /* A missing member has Remove and no switch. Its fifth track is held open at the
@@ -144,21 +163,22 @@
         .cairn-party-member.is-missing::after {
             content: "";
             grid-column: 5;
+            grid-row: 1 / 3;
             width: 44px;
         }
 
         /* What the member is walking around with, as Tags (Primitive 8), under the name and
-           never under the picture: the grid places it in the name's column, so nothing here has
-           to know how wide the portrait is. Tabular figures so a column of rows reads down
-           rather than each line being measured on its own. It wraps within itself when even
-           the full width is not enough — seven tags at the sheet's 600px. */
+           never under the picture or the controls: the grid places it in the name's column, so
+           nothing here has to know how wide the portrait is. Tabular figures so a column of rows
+           reads down rather than each line being measured on its own. The window's `min-width`
+           above keeps the widest row on one line; the wrap is only what happens past it. */
         .cairn-party-load {
             align-items: center;
             display: flex;
             flex-wrap: wrap;
             font-variant-numeric: tabular-nums;
             gap: 4px;
-            grid-column: 3 / 6;
+            grid-column: 3;
         }
 
         /* A condition is its own icon at tag height, at the name's right. */
