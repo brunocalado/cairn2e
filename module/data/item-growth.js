@@ -56,11 +56,16 @@ export class GrowthData extends foundry.abstract.TypeDataModel {
       }),
       // A table whose drawn line IS what the growth gave, kept in `gained` — "roll a second time
       // on the Bonds table" (Outrider), "roll on the Omens table, but keep the result to yourself"
-      // (Mountebank). Drawn once, when the character is made. Blank for every other growth.
+      // (Mountebank). Drawn once: a Bonds table when the character is made, the Omens table by the
+      // party, once everyone is made (`omens.js`). Blank for every other growth.
       // A plain string, not `DocumentUUIDField`, for the reason `item-background.js` gives: that
       // field resolves a compendium uuid through `game.packs` while validating, and the pack
       // build validates with no `game` at all. `checks/background-grants.check.mjs` asserts it.
       table: new fields.StringField({ required: true, blank: true, initial: "" }),
+      // The id of the `table` result `gained` was drawn from, for the reason a character's
+      // `omen.result` is kept: the text is the player's to reword, the id says which face it is.
+      // Written by the party's Omen draw alone; blank on every other growth.
+      drawn: new fields.StringField({ required: true, blank: true, initial: "" }),
       // The gain has been applied to the actor. A growth that is pure fiction stays false forever,
       // and that is not a pending state — it is a growth with no number in it.
       resolved: new fields.BooleanField({ initial: false }),

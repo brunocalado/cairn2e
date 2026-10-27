@@ -8,6 +8,7 @@
 import { SYSTEM_ID } from "../constants.js";
 import { CONDITIONS } from "../conditions.js";
 import { abilityRows } from "../helpers.js";
+import { drawPartyOmens, owesOmens } from "../omens.js";
 import { CairnActorSheet } from "./actor-sheet.js";
 import { CairnBarter } from "./barter.js";
 
@@ -41,7 +42,8 @@ export class CairnPartySheet extends CairnActorSheet {
       memberOpen: CairnPartySheet.#onMemberOpen,
       memberRemove: CairnPartySheet.#onMemberRemove,
       memberDeployToggle: CairnPartySheet.#onMemberDeployToggle,
-      openBarter: CairnPartySheet.#onOpenBarter
+      openBarter: CairnPartySheet.#onOpenBarter,
+      drawOmens: CairnPartySheet.#onDrawOmens
     }
   };
 
@@ -71,6 +73,21 @@ export class CairnPartySheet extends CairnActorSheet {
   partsForRenderContext(renderContext) {
     const subject = String(renderContext ?? "").replace(/^(create|update|delete)/, "").toLowerCase();
     return subject === "items" ? ["stash"] : null;
+  }
+
+  /**
+   * @override — "Draw Omens" for the Warden, only while the party owes one. In the menu rather
+   * than on the Party tab: it is used once a campaign, on a sheet the table opens every session.
+   * The menu is rebuilt each time it opens, so the entry goes once everything is drawn.
+   */
+  _getHeaderControls() {
+    const controls = super._getHeaderControls();
+    if (game.user.isGM && owesOmens(this.actor)) controls.push({
+      action: "drawOmens",
+      icon: "fa-solid fa-eye",
+      label: "CAIRN.Party.DrawOmens"
+    });
+    return controls;
   }
 
   /* -------------------------------------------- */
@@ -258,6 +275,15 @@ export class CairnPartySheet extends CairnActorSheet {
   static async #onOpenBarter() {
     this.#barter ??= new CairnBarter({ actor: this.actor });
     await this.#barter.render({ force: true });
+  }
+
+  /* -------------------------------------------- */
+  /*  Omens                                       */
+  /* -------------------------------------------- */
+
+  /** Every Omen the party still owes: the youngest's, and each Omen growth's. */
+  static async #onDrawOmens() {
+    await drawPartyOmens(this.actor);
   }
 
   /* -------------------------------------------- */

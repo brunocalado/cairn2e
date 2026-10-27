@@ -556,13 +556,18 @@ export async function assembleActorData(draft) {
  *   its Strange Compass as the first one does.
  * - Neither: the gain is the growth's own prose — an ability, a vow, a companion.
  *
- * Every one of them is `resolved`: nothing about it is still owed.
+ * Every one of them is `resolved`: nothing about it is still owed. Except an Omens growth, which
+ * is returned as it came.
  * @param {object} data    the growth's creation data (`copyOf`)
  * @param {object} system  the character's `system` as assembled so far; mutated
  * @param {(uuids: string[]) => Promise<void>} embed  `assembleActorData`'s, for a drawn face's grants
  * @returns {Promise<object>}  `data`, resolved
  */
 async function resolveGrowth(data, system, embed) {
+  // The Foundling's and the False Prophet's Omen is drawn by the party, once every character is
+  // made (`omens.js`), so it is never a face somebody else in the party holds. Until then it is
+  // owed: `gained` blank, not resolved.
+  if (data.system.table === TABLES.OMENS) return data;
   const { attr, formula } = data.system.outcome ?? {};
   if (attr && formula) {
     const res = attr === "hp" ? system.hp : system.abilities[attr];

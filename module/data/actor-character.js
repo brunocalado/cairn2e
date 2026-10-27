@@ -64,7 +64,11 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       // down yet still has one.
       omen: new fields.SchemaField({
         enabled: new fields.BooleanField({ required: true, initial: false }),
-        text: new fields.StringField({ required: true, blank: true })
+        text: new fields.StringField({ required: true, blank: true }),
+        // Which face of the Omens table this is: the id of the result it was drawn from
+        // (`omens.js#drawPartyOmens`), so no one else in the party is dealt it. Not the text,
+        // which is the player's to reword. Blank for an Omen typed in by hand.
+        result: new fields.StringField({ required: true, blank: true })
       }),
       age: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
 
