@@ -148,35 +148,37 @@
     /* Who pays a dungeon's cost: the party two to a line, each name with its switch at the end of
        its column, so the window is as tall as half the party. A long name is cut with an ellipsis
        rather than wrapped (its tooltip holds it whole), and is set as typed — a name, not a label.
-       What the cost lands on — the torch burning — follows it in the soft ink. */
+       What the cost lands on — the torch burning — follows it in the soft ink. The rows are nested
+       here because the party sheet's roster row uses the same two classes, `.cairn-party-member`
+       and `.cairn-party-name`, and an unscoped rule reached it too. */
     .cairn-party-dialog {
         column-gap: 16px;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         row-gap: 6px;
-    }
 
-    .cairn-party-member {
-        align-items: center;
-        border-bottom: var(--cairn-hairline) solid var(--cairn-ink-faint);
-        display: flex;
-        gap: 8px;
-        min-width: 0;
-        padding-bottom: 4px;
-
-        .cairn-party-name {
-            flex: 1 1 auto;
-            font-size: 13px;
+        .cairn-party-member {
+            align-items: center;
+            border-bottom: var(--cairn-hairline) solid var(--cairn-ink-faint);
+            display: flex;
+            gap: 8px;
             min-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    }
+            padding-bottom: 4px;
 
-    .cairn-party-note {
-        color: var(--cairn-ink-soft);
-        font-style: italic;
+            .cairn-party-name {
+                flex: 1 1 auto;
+                font-size: 13px;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .cairn-party-note {
+            color: var(--cairn-ink-soft);
+            font-style: italic;
+        }
     }
 
     /* A dungeon turn's declaration: the lead and the free-looking line, the player's own words
