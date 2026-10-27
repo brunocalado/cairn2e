@@ -66,18 +66,4 @@ export class PartyData extends foundry.abstract.TypeDataModel {
   get roster() {
     return this.lineup.filter((m) => !!m.actor);
   }
-
-  /* -------------------------------------------- */
-
-  /** @override — tell each member which parties list it, so a change on their sheet can find
-   *  the group sheets that draw them (`CairnActor#renderParties`). */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    // World Actors only. A compendium copy and an unsaved draft both resolve members whose
-    // sheets they could never usefully redraw, and registering them would pin this party in
-    // every one of those members' sets for as long as the copy lives.
-    if (game.actors?.get(this.parent.id) !== this.parent) return;
-    for (const { actor } of this.roster) actor.parties?.add(this.parent);
-  }
 }

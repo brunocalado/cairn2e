@@ -116,11 +116,8 @@ export class CairnBarter extends CairnInkMixin(HandlebarsApplicationMixin(Applic
       .filter((a) => a.type === "character" && a.id !== this.actor.id && !seen.has(a.id) && seen.add(a.id))
       .sort(byName);
     // A character hands things to every party whose roster lists it; a party hands them to the
-    // characters. Read off the rosters themselves, not `CairnActor#parties`, which keeps a party
-    // its member has left until reload — and would offer a Stash the character no longer shares.
-    const parties = this.actor.type === "character"
-      ? game.actors.filter((a) => a.type === "party" && a.system.members.some((m) => m.actor === this.actor.uuid)).sort(byName)
-      : [];
+    // characters.
+    const parties = this.actor.type === "character" ? this.actor.parties.sort(byName) : [];
     context.targets = [...characters, ...parties]
       .map((a) => ({ uuid: a.uuid, name: a.name, selected: a.uuid === this.#target }));
     context.actorId = this.actor.id;

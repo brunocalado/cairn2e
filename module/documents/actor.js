@@ -35,13 +35,17 @@ export function unarmedItemData() {
  */
 export class CairnActor extends Actor {
   /**
-   * The `party` Actors whose roster lists this one. `PartyData#prepareBaseData` adds a party on
-   * every data preparation and nothing removes one, so a member taken off a roster keeps that
-   * party in its set until reload — `renderParties` may then redraw a party that no longer lists
-   * it, which is harmless.
-   * @type {Set<Actor>}
+   * The world `party` Actors whose roster lists this one — asked of the rosters each time, never
+   * remembered on the member. A remembered link was written by the party's data preparation, and
+   * core prepares a document created in this session in its constructor, before it is set in
+   * `game.actors` (`ClientDatabaseBackend`): a new party's members never learned of it until a
+   * reload, and a member taken off kept the party until then. Matched by uuid over `lineup`,
+   * holes included, so a member just deleted still finds the parties that must draw its hole.
+   * @type {Actor[]}
    */
-  parties = new Set();
+  get parties() {
+    return game.actors.filter((a) => a.type === "party" && a.system.lineup.some((m) => m.uuid === this.uuid));
+  }
 
   /**
    * Redraw the members list of every party that lists this Actor.
