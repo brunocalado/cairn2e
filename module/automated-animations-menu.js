@@ -23,6 +23,9 @@
  * and picks at random when it holds several files. The PSFX licence forbids repackaging its audio,
  * so nothing but the path is here. Without PSFX the sound fails soft and the animation still
  * plays.
+ *
+ * Entries carry AA's Motion fields, drawn by Sequencer on the tokens and never written to them: a
+ * blow lunges its attacker and shakes its target, and the screen shakes only for a blast.
  */
 
 /** The Automatic Recognition schema these entries are written in. AA no longer migrates: it
@@ -55,13 +58,46 @@ const extras = () => ({
   target: { enable: false, video: OFF, sound: sound(), options: { ...FADE, isRadius: false, persistent: false, size: 1, unbindAlpha: false, unbindVisibility: false } }
 });
 
+/** One side of AA's Motion tab, every field its schema holds. */
+const side = (type, { strength = 5, distance = 0.5, color = "#ff0000", scale = 1.2, height = 10,
+  opacity = 0.2, duration = 500, delay = 0 } = {}) =>
+  ({ enable: true, type, strength, distance, color, scale, height, opacity, duration, delay });
+const still = (type) => ({ ...side(type), enable: false });
+
+/**
+ * AA's Motion tab and its screen shake. `onlyOnHit` is off: outside dnd5e, pf2e and midi-qol AA
+ * counts every target as hit anyway, and in Cairn an attack always hits — armor only reduces it.
+ */
+const moves = ({ source, target, shake } = {}) => ({
+  motion: { source: source ?? still("lunge"), target: { ...(target ?? still("shake")), onlyOnHit: false } },
+  screenShake: { enable: !!shake, strength: 20, duration: 250, delay: 0, ...shake }
+});
+
+/**
+ * The struck token shakes when the blow lands, which is late in JB2A's clips: a melee swing winds
+ * up for about 0.8 s and strikes between 0.8 and 1.2 s, an arrow arrives at 0.45–0.75 s depending
+ * on the distance, a bullet at 0.1–0.4 s, an explosion peaks at 0.25–0.45 s. The lunge leads into
+ * the strike rather than the wind-up.
+ * @param {number} delay  ms after the effect starts
+ */
+const struck = (delay) => side("shake", { strength: 6, duration: 300, delay });
+const LUNGE = side("lunge", { distance: 0.2, duration: 200, delay: 650 });
+const SWING = { source: LUNGE, target: struck(900) };
+const HEAVY = { source: LUNGE, target: side("knockback", { distance: 0.15, duration: 250, delay: 900 }) };
+const SHOT = { target: struck(550) };
+const BITE = { target: struck(400) };
+const BLAST = { target: struck(250), shake: { strength: 8, duration: 300, delay: 150 } };
+const PUSH = { target: side("knockback", { distance: 0.5, duration: 300, delay: 200 }) };
+const CHARMED = { target: side("flash", { color: "#ff7fbf", duration: 600 }) };
+const DAZED = { target: side("float", { height: 8, duration: 1200 }) };
+
 const head = (label, menu) => ({
   label, menu,
   soundOnly: { sound: { delay: 0, enable: false, startTime: 0, volume: 0.75 } }
 });
 
 /** A weapon swing from the attacker to the target. */
-const melee = (label, [menuType, animation, variant, color], file) => ({
+const melee = (label, [menuType, animation, variant, color], file, move = SWING) => ({
   ...head(label, "melee"),
   primary: {
     video: video("melee", menuType, animation, variant, color),
@@ -75,32 +111,36 @@ const melee = (label, [menuType, animation, variant, color], file) => ({
     sound: sound(),
     options: { detect: "automatic", range: 2, isReturning: false, switchType: "on" }
   },
+  ...moves(move),
   ...extras()
 });
 
 /** A projectile from the attacker to the target. */
-const range = (label, [menuType, animation, variant, color], file) => ({
+const range = (label, [menuType, animation, variant, color], file, move = SHOT) => ({
   ...head(label, "range"),
   primary: {
     video: video("range", menuType, animation, variant, color),
     sound: sound(file),
     options: { delay: 0, elevation: 1000, isReturning: false, isWait: false, onlyX: false, opacity: 1, repeat: 1, repeatDelay: 500, ...LOOK }
   },
+  ...moves(move),
   ...extras()
 });
 
-/** An effect on the targets, or on the caster when nobody is targeted. */
-const ontoken = (label, [menuType, animation, variant, color], file) => ({
+/** An effect on the targets, or on the caster when nobody is targeted. Still unless told to move. */
+const ontoken = (label, [menuType, animation, variant, color], file, move = {}) => ({
   ...head(label, "ontoken"),
   primary: {
     video: video("static", menuType, animation, variant, color),
     sound: sound(file),
     options: { ...FADE, elevation: 0, isRadius: false, isWait: false, persistent: false, playOn: "default", repeatDelay: 500, size: 1.5, unbindAlpha: false, unbindVisibility: false }
   },
+  ...moves(move),
   ...extras()
 });
 
-/** AA's teleport preset: the caster picks a square within range and the token moves there. */
+/** AA's teleport preset: the caster picks a square within range and the token moves there. AA
+ *  draws no Motion tab for it, so it carries none. */
 const teleport = (label, color, file) => {
   const end = (variant, delay) => ({
     dbSection: "static", enable: true, menuType: "spell", animation: "mistystep", variant, color,
@@ -146,7 +186,7 @@ const NECROTIC = "psfx.impacts.magicaleffects.necrotic";
 const ENTRIES = () => [
   // Marketplace and Background weapons.
   ["Sword", (l) => melee(l, ["weapon", "sword", "01", "white"], SWORD)],
-  ["Greatsword", (l) => melee(l, ["weapon", "greatsword", "01", "white"], SWOOSH_HEAVY(6))],
+  ["Greatsword", (l) => melee(l, ["weapon", "greatsword", "01", "white"], SWOOSH_HEAVY(6), HEAVY)],
   ["Dagger", (l) => melee(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(6))],
   ["Rapier", (l) => melee(l, ["weapon", "rapier", "01", "white"], SWOOSH_LIGHT(5))],
   ["Handaxe", (l) => melee(l, ["weapon", "handaxe", "01", "white"], SWOOSH_HEAVY(1))],
@@ -158,8 +198,8 @@ const ENTRIES = () => [
   // JB2A draws no flail, and no sickle: the nearest head and the nearest curve.
   ["Flail", (l) => melee(l, ["weapon", "mace", "01", "white"], SWOOSH_HEAVY(3))],
   ["Sickle", (l) => melee(l, ["weapon", "scimitar", "01", "white"], SWOOSH_LIGHT(2))],
-  ["Halberd", (l) => melee(l, ["weapon", "halberd", "01", "white"], SWOOSH_HEAVY(4))],
-  ["Hammer", (l) => melee(l, ["weapon", "warhammer", "01", "white"], SWOOSH_HEAVY(5))],
+  ["Halberd", (l) => melee(l, ["weapon", "halberd", "01", "white"], SWOOSH_HEAVY(4), HEAVY)],
+  ["Hammer", (l) => melee(l, ["weapon", "warhammer", "01", "white"], SWOOSH_HEAVY(5), HEAVY)],
   ["Staff", (l) => melee(l, ["weapon", "quarterstaff", "01", "white"], SWOOSH_LIGHT(3))],
   ["Knife", (l) => melee(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(4))],
   ["Falchion", (l) => melee(l, ["weapon", "falchion", "01", "white"], SWOOSH_LIGHT(5))],
@@ -170,7 +210,7 @@ const ENTRIES = () => [
   ["Crossbow", (l) => range(l, ["weapon", "bolt", "physical", "orange"], ARROW)],
   ["Sling", (l) => range(l, ["weapon", "sling", "01", "white"], SWOOSH_LIGHT(1))],
   ["Throwing Knives", (l) => range(l, ["weapon", "dagger", "01", "white"], SWOOSH_LIGHT(1))],
-  ["Blunderbuss", (l) => range(l, ["weapon", "bullet", "1", "orange"], "psfx.ranged-weapons.guns.single-fire.revolver")],
+  ["Blunderbuss", (l) => range(l, ["weapon", "bullet", "1", "orange"], "psfx.ranged-weapons.guns.single-fire.revolver", { source: side("recoil", { distance: 0.15, duration: 150 }), target: struck(250) })],
   // Last Breath is a short sword, and without its own entry the Breath below would play fire.
   ["Last Breath", (l) => melee(l, ["weapon", "shortsword", "01", "white"], SWORD)],
   ["Blade", (l) => melee(l, ["weapon", "sword", "01", "white"], SWORD)],
@@ -195,14 +235,14 @@ const ENTRIES = () => [
   ["Spiked Boots", (l) => melee(l, ["weapon", "unarmedstrike", "physical", "blue"], THUD)],
   ["Tupshead Crown", (l) => melee(l, ["generic", "2hp", "01", "white"], THUD)],
   // Thrown and bursting: blast, so the burst is on each target.
-  ["Blast Sphere", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], BOOM)],
-  ["Fire Eggs", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], BOOM)],
-  ["Fireseeds", (l) => ontoken(l, ["generic", "explosion", "01", "red"], BOOM)],
-  ["Seed Bomb", (l) => ontoken(l, ["generic", "explosion", "01", "green"], BOOM)],
+  ["Blast Sphere", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], BOOM, BLAST)],
+  ["Fire Eggs", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], BOOM, BLAST)],
+  ["Fireseeds", (l) => ontoken(l, ["generic", "explosion", "01", "red"], BOOM, BLAST)],
+  ["Seed Bomb", (l) => ontoken(l, ["generic", "explosion", "01", "green"], BOOM, BLAST)],
 
   // Monster attacks.
-  ["Bite", (l) => ontoken(l, ["creature", "bite", "01", "red"], SLASH)],
-  ["Claw", (l) => ontoken(l, ["creature", "claw", "01", "red"], SLASH)],
+  ["Bite", (l) => ontoken(l, ["creature", "bite", "01", "red"], SLASH, BITE)],
+  ["Claw", (l) => ontoken(l, ["creature", "claw", "01", "red"], SLASH, BITE)],
   ["Tentacles", (l) => melee(l, ["creature", "claw", "01", "green"], THUD)],
   ["Talons", (l) => melee(l, ["creature", "claw", "01", "brown"], SLASH)],
   ["Beak", (l) => melee(l, ["creature", "bite", "01", "grey"], SLASH)],
@@ -210,15 +250,15 @@ const ENTRIES = () => [
   ["Gore", (l) => melee(l, ["generic", "2hp", "01", "white"], THUD)],
   ["Sting", (l) => melee(l, ["generic", "1hp", "01", "white"], SWOOSH_LIGHT(6))],
   ["Touch", (l) => ontoken(l, ["energy", "strands", "01", "purple"], NECROTIC)],
-  ["Breath", (l) => ontoken(l, ["fire", "eruption", "01", "orange"], "psfx.creature.dragons.attacks.breath.small.fire")],
+  ["Breath", (l) => ontoken(l, ["fire", "eruption", "01", "orange"], "psfx.creature.dragons.attacks.breath.small.fire", BLAST)],
   ["Teeth", (l) => melee(l, ["creature", "bite", "01", "grey"], SLASH)],
   ["Nails", (l) => melee(l, ["creature", "claw", "01", "darkred"], SLASH)],
   ["Tuber-Fingers", (l) => melee(l, ["creature", "claw", "01", "brown"], THUD)],
   ["Tail Spike", (l) => melee(l, ["generic", "1hp", "01", "white"], SWOOSH_LIGHT(6))],
   ["Sharpened Arms", (l) => melee(l, ["generic", "1hs", "01", "white"], SLASH)],
-  ["Knotted Arms", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD)],
-  ["Hooves", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD)],
-  ["Charge", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD)],
+  ["Knotted Arms", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD, HEAVY)],
+  ["Hooves", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD, HEAVY)],
+  ["Charge", (l) => melee(l, ["generic", "2hb", "01", "white"], THUD, HEAVY)],
   ["Life Drain", (l) => ontoken(l, ["energy", "strands", "01", "purple"], NECROTIC)],
   ["Roots", (l) => ontoken(l, ["spell", "entangle", "01", "brown"], VINES)],
   ["Vines", (l) => ontoken(l, ["spell", "entangle", "01", "green"], VINES)],
@@ -229,12 +269,12 @@ const ENTRIES = () => [
   // Spells (and the Scrolls that share their names) with something to show.
   ["Shield", (l) => ontoken(l, ["shieldspell", "complete", "01", "blue"], "psfx.1st-level-spells.shield-spell.intro.v1.003")],
   ["Ward", (l) => ontoken(l, ["shieldfx", "energyfield", "01", "yellow"], "psfx.1st-level-spells.shield-spell.intro.v1.003")],
-  ["Haste", (l) => ontoken(l, ["marker", "energystrand", "01", "blueorange"], CAST)],
-  ["Sleep", (l) => ontoken(l, ["spell", "sleep", "01", "darkpurple"], "psfx.1st-level-spells.sleep.v1.001")],
-  ["Charm", (l) => ontoken(l, ["conditions", "heart", "01", "pink"], WHISPER(1))],
-  ["Hypnotize", (l) => ontoken(l, ["conditions", "dizzystars", "01", "purple"], WHISPER(2))],
-  ["Befuddle", (l) => ontoken(l, ["conditions", "dizzystars", "01", "yellow"], WHISPER(3))],
-  ["Pacify", (l) => ontoken(l, ["conditions", "heart", "02", "teal"], WHISPER(4))],
+  ["Haste", (l) => ontoken(l, ["marker", "energystrand", "01", "blueorange"], CAST, { target: side("pulse", { scale: 1.1, duration: 400 }) })],
+  ["Sleep", (l) => ontoken(l, ["spell", "sleep", "01", "darkpurple"], "psfx.1st-level-spells.sleep.v1.001", { target: side("fade", { opacity: 0.6, duration: 800 }) })],
+  ["Charm", (l) => ontoken(l, ["conditions", "heart", "01", "pink"], WHISPER(1), CHARMED)],
+  ["Hypnotize", (l) => ontoken(l, ["conditions", "dizzystars", "01", "purple"], WHISPER(2), DAZED)],
+  ["Befuddle", (l) => ontoken(l, ["conditions", "dizzystars", "01", "yellow"], WHISPER(3), DAZED)],
+  ["Pacify", (l) => ontoken(l, ["conditions", "heart", "02", "teal"], WHISPER(4), CHARMED)],
   ["Phobia", (l) => ontoken(l, ["conditions", "fear", "01", "darkpurple"], WHISPER(1))],
   ["Command", (l) => ontoken(l, ["magicsign", "enchantment", "complete", "purple"], "psfx.casting.sound.001")],
   ["Web", (l) => ontoken(l, ["spell", "web", "01", "white"], CAST)],
@@ -247,13 +287,13 @@ const ENTRIES = () => [
   ["Icy Touch", (l) => ontoken(l, ["impact", "frost", "01", "blue"], "psfx.impacts.magicaleffects.cold")],
   ["Flare", (l) => ontoken(l, ["generic", "explosion", "01", "orange"], "psfx.casting.fire.001")],
   ["Illuminate", (l) => ontoken(l, ["marker", "light", "complete", "yellow"], "psfx.cantrips.light.v1.001")],
-  ["Push/Pull", (l) => ontoken(l, ["generic", "outpulse", "01", "whiteblue"], GUST)],
-  ["Repel", (l) => ontoken(l, ["generic", "outpulse", "02", "whiteblue"], GUST)],
+  ["Push/Pull", (l) => ontoken(l, ["generic", "outpulse", "01", "whiteblue"], GUST, PUSH)],
+  ["Repel", (l) => ontoken(l, ["generic", "outpulse", "02", "whiteblue"], GUST, PUSH)],
   ["Telekinesis", (l) => ontoken(l, ["generic", "outpulse", "01", "purplepink"], CAST)],
-  ["Earthquake", (l) => ontoken(l, ["impact", "groundcrack", "01", "orange"], EARTH)],
+  ["Earthquake", (l) => ontoken(l, ["impact", "groundcrack", "01", "orange"], EARTH, BLAST)],
   ["Pit", (l) => ontoken(l, ["impact", "groundcrack", "01", "white"], EARTH)],
   ["Fog Cloud", (l) => ontoken(l, ["smoke", "plume", "complete", "grey"], "psfx.casting.water.001")],
-  ["Smoke Form", (l) => ontoken(l, ["smoke", "plume", "complete", "grey"], CAST)],
+  ["Smoke Form", (l) => ontoken(l, ["smoke", "plume", "complete", "grey"], CAST, { source: side("fade", { opacity: 0.4, duration: 800 }) })],
   ["Arcane Eye", (l) => ontoken(l, ["eyes", "single", "01", "bluegreen"], DIVINATION)],
   ["Vision", (l) => ontoken(l, ["eyes", "single", "02", "orangeyellow"], DIVINATION)],
   ["True Sight", (l) => ontoken(l, ["eyes", "single", "03", "yellow"], DIVINATION)],

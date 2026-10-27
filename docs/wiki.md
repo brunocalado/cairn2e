@@ -161,12 +161,13 @@ All five are optional:
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls your dice in 3D, including a
   custom Cairn d20. The other dice wear the **Cairn Blood Moon** theme until a player picks
   another one in Dice So Nice's own settings.
-- [Automated Animations](https://foundryvtt.com/packages/autoanimations), with
-  [JB2A Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and
-  sounds Cairn's weapons, monster attacks and spells. The first time, the system's entries replace
-  the module's Automatic Recognition menu, whose defaults are made for D&D; a later version only
-  adds its new entries, so an entry you edit or delete stays that way. Turning the system's
-  setting off stops any further changes.
+- [Automated Animations](https://foundryvtt.com/packages/autoanimations), with [JB2A
+  Patreon](https://jb2a.com/) and [PSFX](https://github.com/JimHPerry/psfx), animates and sounds
+  Cairn's weapons, monster attacks and spells. The tokens move with the blow (the attacker lunges,
+  the struck token shakes or is knocked back), and the screen shakes for blasts. The first time, the
+  system's entries replace the module's Automatic Recognition menu, whose defaults are made for D&D;
+  a later version only adds its new entries, so an entry you edit or delete stays that way. Turning
+  the system's setting off stops any further changes.
 - [Grid Crafter](https://github.com/brunocalado/grid-crafter) makes the Marketplace's gear from
   materials on a crafting grid, cooks food, brews potions and takes things apart again (see
   [§12](#12-crafting-with-grid-crafter)).
