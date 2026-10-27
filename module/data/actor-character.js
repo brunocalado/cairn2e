@@ -28,7 +28,8 @@ function backgroundTableField() {
  *
  * 2e creation is background-driven (`srd-2e/players-guide/character-creation.md`): roll or choose
  * a Background, take its name/gear/two d6 tables, roll 3d6 per attribute (swap any two), 1d6 HP,
- * the eight d10 traits, a d20 Bond, age 2d20+10, and — if youngest — a d20 Omen.
+ * the eight d10 traits, a d20 Bond, age 2d20+10, and — for the youngest — a d20 Omen, which the
+ * Warden draws from the party sheet once every character is made.
  *
  * The upstream `features` array (a homegrown mini-effects system) is **gone**: stat changes are
  * ActiveEffects now, and descriptive text is an item or one of the Identity fields.

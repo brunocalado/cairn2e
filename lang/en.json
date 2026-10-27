@@ -199,7 +199,6 @@
     "NameHint": "Pick one of the Background's names, roll one, or type any name you like.",
     "NamePlaceholder": "Type a name, or pick one above",
     "Next": "Next",
-    "OmenPlaceholder": "Roll an Omen, or type your own…",
     "OnceHint": "Attributes, HP and the swap are rolled once. They are kept if you close this window.",
     "Open": "Generate Character",
     "PickName": "Pick a Name",
@@ -212,7 +211,6 @@
     "RollD20": "Roll (d20)",
     "RollHp": "Roll HP (1d6)",
     "RollName": "Roll a Name",
-    "RollOmen": "Roll an Omen",
     "RolledOnCreate": "rolled on create",
     "Status": "Status",
     "StillNeeded": "Still needed: {missing}",
@@ -233,8 +231,7 @@
     "Title": "Create a Character",
     "TitleFor": "Generate: {name}",
     "Traits": "Traits",
-    "Years": "years",
-    "Youngest": "Youngest character"
+    "Years": "years"
   },
   "CAIRN.CharacterGenerator": "Generate character",
   "CAIRN.CharacterRegeneratorConfirm": "Are you sure you want to delete and regenerate this character?",

@@ -10,7 +10,7 @@ import {
   TRAIT_KEYS, ATTR_KEYS, traitRows,
   getBackgrounds, isSrdBackground, drawBackground, drawBackgroundTable,
   rollAttributeSet, rollHitProtection, rollAge,
-  rollTrait, rollAllTraits, drawBond, drawOmen, drawName,
+  rollTrait, rollAllTraits, drawBond, drawName,
   draftFromBackground, createCharacterFromDraft, applyDraftToActor
 } from "../character-generator.js";
 import { stripTags } from "../helpers.js";
@@ -20,7 +20,7 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 const CREATOR = `systems/${SYSTEM_ID}/templates/apps/creator`;
 
-/** Enrich authored compendium HTML (the background blurb, bond/omen text) for display. */
+/** Enrich authored compendium HTML (the background blurb, bond text) for display. */
 function enrich(html) {
   return foundry.applications.ux.TextEditor.implementation.enrichHTML(html ?? "", { secrets: false });
 }
@@ -29,8 +29,9 @@ function enrich(html) {
  * The 2e character-creation flow as a wizard — one tab per numbered step of
  * `srd-2e/players-guide/character-creation.md`: roll or choose a Background, pick a name, roll
  * attributes (with the one permitted swap) and HP, roll the two Background tables, then the
- * eight traits, a Bond, age, and — if youngest — an Omen. The name, the traits, the Bond and the
- * Omen are fields: a roll fills one, and whatever is typed there is what the character keeps. The seventh tab is the Review: it
+ * eight traits, a Bond and an age. The creator draws no Omen: the youngest character's is drawn
+ * from the party sheet once everyone is made, because who that is cannot be known before. The
+ * name, the traits and the Bond are fields: a roll fills one, and whatever is typed there is what the character keeps. The seventh tab is the Review: it
  * prints the draft as it stands and, under a Status heading, says what is still needed or that
  * everything blank will be rolled on create; the one "Create Character" button is the footer's
  * right-hand button on that tab, where Next was. Tabs 2–7 are inert until a Background is chosen,
@@ -42,7 +43,7 @@ function enrich(html) {
  * reopening the window is not a re-roll; applying the character clears them, and the Warden can
  * clear them from the sheet's header menu. The lock belongs to the character, not the player:
  * it follows the actor if it changes hands, and the Warden can see it where the actor is.
- * Everything else (Background, name, tables, traits, Bond, age, Omen) stays re-rollable.
+ * Everything else (Background, name, tables, traits, Bond, age) stays re-rollable.
  *
  * Opened from the sidebar it creates a new Actor. Opened from a character sheet's header menu
  * it is given that `actor` and writes the draft into it instead — name, attributes, HP, gold,
@@ -79,7 +80,6 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
       rollBond: CairnCharacterCreator.#onRollBond,
       dropBondGrant: CairnCharacterCreator.#onDropBondGrant,
       rollAge: CairnCharacterCreator.#onRollAge,
-      rollOmen: CairnCharacterCreator.#onRollOmen,
       stepBack: CairnCharacterCreator.#onStepBack,
       stepNext: CairnCharacterCreator.#onStepNext
     }
@@ -260,9 +260,8 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     context.swapDone = !!d.attrs && d.swapped;
     context.traitsComplete = TRAIT_KEYS.every((key) => !!d.traits[key]);
     context.tables = await this.#tableContext();
-    // Both are drawn plain (`character-generator.js#drawBond`), and both print plain.
+    // Drawn plain (`character-generator.js#drawBond`), and printed plain.
     context.bondText = d.bond ?? "";
-    context.omenText = d.omen ?? "";
     // What the drawn Bond hands over, by the documents' own names. A sack of coin says its amount,
     // since every sack is called Gold.
     context.bondGrants = await Promise.all(
@@ -274,7 +273,7 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
         return { index, ok: !!doc, name };
       })
     );
-    // The Bond and Omen fields hold what the edit window's do, at the same cap.
+    // The Bond field holds what the edit window's does, at the same cap.
     context.limits = EDIT_LIMITS;
 
     // The footer's Create button and the Review's Status line come from the same four conditions
@@ -317,8 +316,8 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
   /* -------------------------------------------- */
 
   /** @override — the fields with no `data-action`, bound on the part that was just rendered: a
-   *  Roll Name re-renders `name` alone, and the `bond` part it leaves in place keeps the one
-   *  `youngest` listener it was born with. */
+   *  Roll Name re-renders `name` alone, and the `bond` part it leaves in place keeps the
+   *  listeners it was born with. */
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
     htmlElement.querySelector('[name="charname"]')?.addEventListener("change", (event) => {
@@ -334,20 +333,13 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     // Trimmed, so a field emptied to whitespace reads as blank and is rolled on create; capped
     // here as well as by `maxlength`, which stops typing and pasting but not a script. The Bond's
     // grants are left alone: they belong to the draw, not to the words.
-    for (const key of ["bond", "omen"]) {
-      htmlElement.querySelector(`[name="${key}"]`)?.addEventListener("change", (event) => {
-        this.#draft[key] = event.target.value.slice(0, EDIT_LIMITS.text).trim();
-      });
-    }
+    htmlElement.querySelector('[name="bond"]')?.addEventListener("change", (event) => {
+      this.#draft.bond = event.target.value.slice(0, EDIT_LIMITS.text).trim();
+    });
 
     htmlElement.querySelector('[name="age"]')?.addEventListener("change", (event) => {
       const n = Number(event.target.value);
       this.#draft.age = Number.isFinite(n) ? n : this.#draft.age;
-    });
-
-    htmlElement.querySelector('[name="youngest"]')?.addEventListener("change", (event) => {
-      this.#draft.youngest = event.target.checked;
-      this.render({ parts: ["bond"] });
     });
   }
 
@@ -459,7 +451,7 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
   }
 
   /* -------------------------------------------- */
-  /*  Tables, traits, bond, age, omen            */
+  /*  Tables, traits, bond, age                 */
   /* -------------------------------------------- */
 
   static async #onRollTable(event, target) {
@@ -497,11 +489,6 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     this.render({ parts: ["bond"] });
   }
 
-  static async #onRollOmen() {
-    this.#draft.omen = await drawOmen();
-    this.render({ parts: ["bond"] });
-  }
-
   /* -------------------------------------------- */
   /*  Submit                                      */
   /* -------------------------------------------- */
@@ -519,7 +506,6 @@ export class CairnCharacterCreator extends CairnInkMixin(HandlebarsApplicationMi
     }
     if (!d.bond) ({ text: d.bond, grants: d.bondGrants } = await drawBond());
     if (!d.age) d.age = await rollAge();
-    if (d.youngest && !d.omen) d.omen = await drawOmen();
     for (let i = 0; i < d.tables.length; i++) {
       if (!d.tableResults[i]?.text) d.tableResults[i] = await drawBackgroundTable(d.tables[i]);
     }

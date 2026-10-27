@@ -273,7 +273,7 @@
             }
         }
 
-        /* The Bond step's second and third headings follow content: the same air over them the
+        /* The Bond step's second heading follows content: the same air over it the
            HP heading gets over the swap row. */
         .creator-text + .step-heading,
         .creator-bond-grants + .step-heading,
@@ -383,9 +383,9 @@
             }
         }
 
-        /* The Bond and the Omen: the edit window's drawn text box, at three lines. That window's
-           box takes `flex: 1` to fill its panel; here it shares the panel with two other steps,
-           so it keeps its own height. */
+        /* The Bond: the edit window's drawn text box, at three lines. That window's box takes
+           `flex: 1` to fill its panel; here it shares the panel with the Age, so it keeps its own
+           height. */
         .creator-text {
             flex: 0 0 auto;
             width: 100%;

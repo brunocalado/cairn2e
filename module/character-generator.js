@@ -180,11 +180,6 @@ export async function drawBond() {
   return { text, grants };
 }
 
-/** Draw an Omen (d20) — plain text, like the Bond above it. */
-export async function drawOmen() {
-  return toPlainText(await drawTableText(TABLES.OMENS));
-}
-
 /** One name off the draft's Background list; the Background's own name when the list is empty.
  *  Not a `Roll`: the SRD says "choose a name from the available list", so a 3D die for a list
  *  pick would be theatre. */
@@ -420,13 +415,11 @@ export function draftFromBackground(background) {
     swapPicks: [],
     hp: null,
     age: null,
-    youngest: false,
     traits: {},
     bond: "",
     // What the drawn Bond hands over, as uuids. They belong to the draw, not to the words: a
     // Bond reworded or cleared keeps them, and the player strikes one off by hand.
     bondGrants: [],
-    omen: "",
     tableResults: []
   };
 }
@@ -437,7 +430,7 @@ function tableSlot(result) {
 }
 
 /**
- * Turn a finished draft into `Actor.create` data — attributes, HP, bond, omen, age, traits, and
+ * Turn a finished draft into `Actor.create` data — attributes, HP, bond, age, traits, and
  * the embedded Items: the Background itself, the starting gear, the sack of starting gold, and
  * what the two table results and the Bond grant.
  * @param {object} draft
@@ -511,9 +504,9 @@ export async function assembleActorData(draft) {
     },
     hp: { value: hp, max: hp },
     bond: draft.bond ?? "",
-    // Only the youngest character draws one, so the flag follows `youngest` rather than the
-    // text: a youngest character with a blank Omen still has an Omen section to fill in.
-    omen: { enabled: !!draft.youngest, text: draft.youngest ? (draft.omen ?? "") : "" },
+    // Blank, also when a draft is written into an existing character: the new character has no
+    // Omen yet, and the party sheet draws the youngest's once every character is made.
+    omen: { enabled: false, text: "", result: "" },
     age: draft.age ?? 0,
     traits: { ...BLANK_TRAITS, ...draft.traits },
     backgroundTables: {

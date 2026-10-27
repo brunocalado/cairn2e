@@ -30,11 +30,6 @@
 
         <dt>{{localize "CAIRN.CharacterCreator.Age"}}</dt>
         <dd>{{#if draft.age}}{{draft.age}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
-
-        {{#if draft.youngest}}
-        <dt>{{localize "CAIRN.Omen"}}</dt>
-        <dd>{{#if omenText}}{{omenText}}{{else}}<em>{{localize "CAIRN.CharacterCreator.RolledOnCreate"}}</em>{{/if}}</dd>
-        {{/if}}
     </dl>
 
     {{!-- Which actor is written is said twice — in the footer's button and in the line here —
