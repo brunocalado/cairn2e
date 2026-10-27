@@ -10,10 +10,11 @@ import { SYSTEM_ID, SETTINGS } from "./constants.js";
 /**
  * Hand Automated Animations the system's entries, once AA is ready to take them.
  *
- * `aa.initialize` is the last thing AA's own `ready` does, after it registers the Automatic
- * Recognition settings and migrates them; the system's `ready` runs before AA's, when reading
- * those settings would throw. The hook never fires without the module, so this is a no-op in a
- * world that lacks it — no module-presence probe needed.
+ * `aa.initialize` is the last thing AA's own `ready` does, after it has checked the stored menus —
+ * their schema version, and fresh ids written back for a menu holding duplicates — and registered
+ * its animations with Sequencer (read in AA 8.0.0). The system's `ready` runs before AA's, so a
+ * replacement written there would race that check's write. The hook never fires without the
+ * module, so this is a no-op in a world that lacks it — no module-presence probe needed.
  */
 export const registerAutomatedAnimations = () => {
   Hooks.once("aa.initialize", deliverAnimations);
@@ -39,15 +40,15 @@ const MENUS = ["melee", "range", "ontoken", "templatefx", "aura", "preset", "aef
  *
  * Afterwards it adds, through `mergeMenus`, only the entries this world has never been given: AA
  * adds an entry only when its menu holds no entry of the same rinsed label, and never changes or
- * removes one (read in AA 7.1.3's `AAAutorecManager`). That keeps a Warden's edit, but not a
+ * removes one (read in AA 8.0.0's `AAAutorecManager`). That keeps a Warden's edit, but not a
  * deletion: merged again, a deleted entry comes back. So the system remembers what it gave, and a
  * later version adds only its new entries. A label the Warden already had counts as given, and
  * theirs is the one that stays.
  *
  * A translation adds its own names through the `cairn2e.animationLabels` hook
- * (`docs/translating.md`), called here so that everything arrives in ONE write: AA writes a merge
- * without awaiting it, and a second merge started before the first had landed would read the old
- * menu and write it back without the first one's entries.
+ * (`docs/translating.md`), called here so that everything arrives in ONE write: a second merge
+ * started before the first had landed would read the old menu and write it back without the first
+ * one's entries.
  *
  * Runs on the active GM alone — only a GM may write a world setting, and two GMs online would
  * otherwise race the same write.

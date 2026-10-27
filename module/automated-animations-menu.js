@@ -25,14 +25,15 @@
  * plays.
  */
 
-/** The Automatic Recognition schema these entries are written in. AA migrates an older one
- *  itself and refuses a newer one, so this is the version they were observed in (AA 7.1.3). */
+/** The Automatic Recognition schema these entries are written in. AA no longer migrates: it
+ *  refuses an older one as well as a newer one, so this must equal its own `SCHEMA_VERSION`
+ *  (AA 8.0.0). */
 export const AUTOREC_VERSION = 5;
 
 /**
  * @param {string} [file]  a PSFX database path, or nothing for silence
  */
-const sound = (file) => ({
+const sound = (file = "") => ({
   enable: !!file, delay: 0, file, repeat: 1, repeatDelay: 250, startTime: 0, volume: 0.75
 });
 
@@ -40,9 +41,12 @@ const video = (dbSection, menuType, animation, variant, color) => ({
   dbSection, menuType, animation, variant, color, enableCustom: false, customPath: ""
 });
 
-/** The switched-off extra sections every entry carries, shaped as AA's own defaults are. */
+/**
+ * The switched-off extra sections every entry carries, shaped as AA's own defaults are — down to
+ * the case of a colour, which AA's schema stores lowercased.
+ */
 const OFF = video("static", "spell", "curewounds", "01", "blue");
-const LOOK = { contrast: 0, saturate: 0, tint: false, tintColor: "#FFFFFF", zIndex: 1 };
+const LOOK = { contrast: 0, saturate: 0, tint: false, tintColor: "#ffffff", zIndex: 1 };
 const FADE = { addTokenWidth: false, anchor: "0.5", delay: 0, elevation: 1000, fadeIn: 250, fadeOut: 500, isMasked: false, opacity: 1, repeat: 1, repeatDelay: 250, ...LOOK };
 const extras = () => ({
   macro: { enable: false },
@@ -69,7 +73,7 @@ const melee = (label, [menuType, animation, variant, color], file) => ({
   meleeSwitch: {
     video: video("range", "weapon", "arrow", "regular", "regular"),
     sound: sound(),
-    options: { detect: "automatic", range: 2, returning: false, switchType: "on" }
+    options: { detect: "automatic", range: 2, isReturning: false, switchType: "on" }
   },
   ...extras()
 });
