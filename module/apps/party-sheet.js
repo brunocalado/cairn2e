@@ -94,7 +94,8 @@ export class CairnPartySheet extends CairnActorSheet {
   }
 
   /** @override — a member's age, Omen or growth re-renders the party (`CairnActor#renderParties`),
-   *  so the button appears when the last age lands and goes once the draw has written. */
+   *  so the button appears as soon as one character has an age — when the party is complete is
+   *  the Warden's call — and goes once the draw has written. */
   async _onRender(context, options) {
     await super._onRender(context, options);
     const draw = this.element.querySelector('.window-header [data-action="drawOmens"]');
