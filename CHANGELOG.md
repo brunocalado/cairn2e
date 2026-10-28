@@ -1,3 +1,30 @@
+# 0.2.3
+
+- [Added] **Party Omens.** The Warden draws the party's Omens from the party sheet's title bar,
+  with **Draw Omens**, once every character is made. The youngest's Omen is posted for everyone to
+  read; the Foundling's and the Mountebank's False Prophet are whispered to their owners. No two
+  characters in a party get the same Omen.
+- [Changed] The character creator no longer asks who is youngest, and a new character starts with
+  no Omen.
+- [Added] A character with no picture of its own wears its Background's icon, on the sheet and on
+  its token. Re-making the character with another Background changes an icon nobody chose.
+- [Added] A blow moves the tokens: the attacker lunges and the struck token shakes. The Automated
+  Animations entries are written for AA 8.0.0.
+- [Added] A Dungeon Event roll shows its dice on every screen, with the faces for the Wardens and
+  ghost dice for the players.
+- [Changed] In a fight, a row shows this round's distance with its undo, marks the action with the
+  same switch as exploration, and asks for the first-round DEX save in words.
+- [Changed] A party member's stats sit right under the name, and the row is as tall as the
+  portrait.
+- [Changed] Verified on Foundry 14.369.
+- [Fixed] A party made in the same session redraws when its members change, and a member taken off
+  no longer reaches it.
+- [Fixed] The party sheet's conditions sit beside the member's name again.
+- [Fixed] The turn ring shows only on the level being viewed, so a token below no longer shows
+  through the floor above.
+- [Fixed] A stepper press steps once, and holding it stops when it is released. A hit that lands
+  while a burst of presses waits is kept.
+
 # 0.2.2
 
 - [Added] **Person names.** The Name Generator has a sixth tab, Person, with a Name list choice:
