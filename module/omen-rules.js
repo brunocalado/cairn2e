@@ -19,6 +19,8 @@ import { TABLES } from "./constants.js";
  *
  * - `youngest` is empty once anyone holds an Omen: an announced Omen never moves, so a character
  *   who joins later and turns out younger takes nothing, and a second draw hands out nothing.
+ *   A drawn face counts even with the switch off: the switch is the Warden's to take a resolved
+ *   Omen off the sheet, and switching it off does not undo the announcement.
  *   Otherwise it is every character tied at the lowest age; one with no age rolled (0) is left out.
  * - `growths` is every Omens-table growth not yet drawn.
  * - `taken` is every face already held — by an Omen still switched on, or a growth — so the draw
@@ -42,7 +44,7 @@ export function omensOwed(characters) {
 
   const aged = characters.filter((c) => c.age > 0);
   const lowest = Math.min(...aged.map((c) => c.age));
-  const youngest = characters.some((c) => c.omen.enabled)
+  const youngest = characters.some((c) => c.omen.enabled || c.omen.result)
     ? []
     : aged.filter((c) => c.age === lowest).map((c) => c.id);
   return { youngest, growths, taken };
