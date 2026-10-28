@@ -1,4 +1,4 @@
-# Cairn 2e — user guide
+# Cairn 2e user guide
 
 How to play **Cairn Second Edition** on **Foundry VTT v14** with this system: where each button
 is and what it does. It is written for the Warden (the game master) and the players alike. It does
@@ -54,6 +54,7 @@ depend on who you are:
 |---|---|---|
 | **Characters** | anyone allowed to create actors | Generate character · Import from Kettlewright |
 | **Generators** | the Warden only | Generate NPC · Generate Hireling · Generate Name · Generate Monster · Generate Faction · Treasure |
+| **Combat** | the Warden only | Apply damage |
 | **Campaign** | the Warden only | Calendar · Journey · Store |
 | **Reference** | the Warden only | Rules Summary · Hazards |
 
@@ -69,8 +70,8 @@ table decision: the SRD's own dates for them cannot all give the 72 days it stat
 
 The **Calendar** window shows today, the **watch**, the year and the month. A day in Cairn is three
 watches, morning (from 06:00), afternoon (from 14:00) and night (from 22:00), drawn as a dial of
-the date from midnight to midnight — night in two pieces, its small hours at the left and its
-first two hours at the right — with the current watch filled and a needle at the exact time. Everyone can open it, from the
+the date from midnight to midnight. Night comes in two pieces, its small hours at the left and its
+first two hours at the right. The current watch is filled and a needle at the exact time. Everyone can open it, from the
 **Calendar** button in the Notes controls (left of the map, while a scene is shown), the
 **Calendar** macro on the hotbar, or **Actions → Calendar** on the character sheet. Players browse
 any month of any year and change nothing: the year's arrows and **Go to today** are on the toolbar
@@ -209,13 +210,17 @@ and **Next** to move between them:
 4. **Background tables**: roll each of the Background's two tables. When a result names an item,
    you get that item.
 5. **Traits**: press **Roll all**, or roll the eight traits one by one.
-6. **Bond**: roll a Bond and an age. Tick **Youngest character** if that is you, and you roll an
-   **Omen** too. A roll fills the Bond's or the Omen's box, and what the box holds is what the
-   character keeps: reword the roll, or write your own. When the Bond you roll names an item (the
+6. **Bond**: roll a Bond and an age. The roll fills the Bond's box, and what the box holds is
+   what the character keeps: reword the roll, or write your own. When the Bond you roll names an item (the
    Strange Compass and 20gp, the Stone Heart), it is listed under the box and you get it. Rewording
    the Bond keeps the items; press the **×** beside one to leave it behind.
 7. **Review**: check everything, then press **Create Character**. Anything you left blank is rolled
-   for you.
+   for you. A character with no picture of its own wears its Background's icon, on the sheet and
+   on its token.
+
+There is no Omen in the creator. The rules give it to the youngest character, and who that is is
+only known once every character is made, so the Warden draws it from the party sheet (see
+[§10](#10-the-party)).
 
 <p align="center">
   <img src="images/character-creator.webp" alt="The character creator's first step: choosing one of the twenty backgrounds" width="70%">
@@ -224,9 +229,10 @@ and **Next** to move between them:
 **Rolls that come with the Background.** Some Backgrounds roll a second time on the Bonds or Omens
 table: the Foundling's **Omen** (whatever their age) and the Fieldwarden's **Second Bond**, at the
 foot of their starting gear, and two table answers, the Outrider's *Always Pay Your Debts* and the
-Mountebank's *False Prophet*. The creator rolls it when it makes the character and records it on
-the **Growth** tab. A second Bond hands over what it names, like the first one, and its gold joins
-the same sack.
+Mountebank's *False Prophet*. Each is recorded on the **Growth** tab. The creator rolls the Bonds
+when it makes the character, and a second Bond hands over what it names, like the first one, and
+its gold joins the same sack. The Omens wait, and the Warden draws them with the party's (see
+[§10](#10-the-party)).
 
 **Rolled once.** A player's attribute roll, swap and HP roll are kept even if they close the
 window, so closing it doesn't give a re-roll. The Warden can allow a new try from the character
@@ -234,7 +240,8 @@ sheet's menu (the cog icon): **Reset generator rolls**.
 
 **Re-making an existing character.** The same window opens from a character sheet's menu
 (**Generate Character**). There the last button is **Apply**. It replaces the character's name,
-attributes, identity and items, and keeps their containers and what's in them. The Warden also has
+attributes, identity and items, and keeps their containers and what's in them. A portrait or token
+that is still the old Background's icon changes to the new one; a picture someone chose stays. The Warden also has
 **Regenerate** in that menu, which re-rolls the whole character at once after asking to confirm.
 
 ### Importing from Kettlewright
@@ -269,7 +276,7 @@ twenty in the book.
    several items, one document result each; a granted coin Item adds to the starting gold. Open any
    table in the *Background Tables* compendium to see one.
 
-   **Type `1d6` in the table's Formula box, and never press Normalize.** With the box empty, the
+   Type `1d6` in the table's **Formula** box, and never press **Normalize**. With the box empty, the
    table counts every result as a face (six answers and six items roll a d12), and its first roll
    renumbers the rows one after another, so an answer no longer comes with its item. Leave
    **Draw with Replacement** ticked, as it is on a new table.
@@ -399,7 +406,7 @@ Details tab; on a Growth, the **Grants** zone is on its Details tab. Drag an act
 or a gear onto the dotted zone to add it, and the **×** on its row takes it off. Click a name to
 open it.
 
-**Drag a granted actor from its row onto the map** to bring it into play. An actor from a compendium
+Drag a granted actor from its row onto the map to bring it into play. An actor from a compendium
 becomes one copy in the world, owned by the item's players, in a **Grants** folder of the Actors
 directory, and its token is linked to it, so a companion wounded on one scene is wounded on the
 next. Dragging the same row again sets another token of that same copy, not a second creature. An
@@ -516,6 +523,10 @@ as **Apply as damage** does. The hit then lands exactly as a damage card's Apply
 overflow, the **Roll STR save** card, the Warden's **Reverse the hit**, and a Scar at exactly 0
 HP. Confirming with no amount, or with 0, says so and changes nothing.
 
+The Warden types damage in with **Apply damage**, in the **Combat** section of the Cairn 2e tab. It
+lands on the tokens targeted when the button is pressed, which the window lists, and never on the
+selected token. With several targets, each takes the whole amount, as with **Apply as damage**.
+
 ### Scars
 
 When a hit takes a player's character to **exactly 0 HP** without touching STR, the character
@@ -622,7 +633,14 @@ directory like any other actor and choose **Party** as its type.
   drag rows to change it.
 - The sheet has three tabs: **Party** for the player characters, **Followers** for hirelings,
   mounts and other companions, and **Stash**. Each row on the first two shows that member's HP,
-  attributes, armor and load at a glance. Click a name to open their sheet.
+  attributes, armor and load. Click a name to open their sheet.
+- **Omens.** While the party owes an Omen, its title bar shows the Warden **Draw Omens**. Press it
+  once every character is made and on the list. It draws the youngest character's Omen and posts it for everyone to read,
+  as the rules say. It also draws the Omens some Backgrounds owe (the Foundling's, the
+  Mountebank's *False Prophet*) and whispers each to its character's owner, to keep private for
+  now. Nobody in the party gets the same Omen as another. Once the youngest's is drawn, a
+  character who joins later and is younger gets none, and the button is gone until someone owes
+  one again.
 - **The Stash** is what the group holds and nobody carries: treasure found and not yet shared out,
   a sack of coin, the spare rope. Drop gear or coin on the party's sheet and it lands in the
   Stash tab, listed like the things on a character's Aside tab.
@@ -635,7 +653,7 @@ directory like any other actor and choose **Party** as its type.
     the party, and takes them back out of the party to a character, through the same window as
     on a character sheet (see [§3](#giving-things-to-another-character)). The party is offered
     only to characters on its list. Whatever doesn't fit on the character stays in the Stash.
-  - **The Stash is open to the players by default**, because they own the party. A Warden who
+  - Players can use the Stash by default, because they own the party. A Warden who
     wants it closed lowers the party's ownership (its default permission, as for any actor): a
     player who can only observe it sees the Stash but is not offered Barter.
 - **Press P** to open the active party's sheet from anywhere. To choose which party is active,
@@ -889,7 +907,8 @@ Both rolls go to the Wardens only.
 
 Opens the **Name Generator**, the Warden's Guide's Naming Procedures with one tab each: **Place**
 (type the kind of place: Gulch, Fort, Lake…), **Terrain** (pick a terrain; its synonyms stand in
-for the place), **Faction**, **Realm** and **Forest**.
+for the place), **Faction**, **Realm** and **Forest**, plus **Person** for an NPC's given name. Its
+**Name list** is **Any**, the book's NPC Name table, or **Female** or **Male**, two homebrew lists.
 
 - The window shows the name, then how it was built: the formula and each word, with the die it
   came from. The die beside a part rolls that part again and nothing else.
@@ -901,8 +920,9 @@ for the place), **Faction**, **Realm** and **Forest**.
   hears it when you say it. **Recent** keeps the last eight names; click one to bring it back.
 - Every word comes from the **Warden Tables** compendium (Name Formula, Name Adjective, Name Noun,
   Terrain Synonym, Group Type, Ruler Type, Faction and Ruler Name Formula, Forest Adjective and
-  Forest Noun), so you can roll any of them with `[[/table …]]`, and an imported copy you edit is
-  the one the generator uses.
+  Forest Noun, NPC Name), or for a female or male name from the **Person Names** compendium, so you
+  can roll any of them with `[[/table …]]`, and an imported copy you edit is the one the generator
+  uses.
 
 <p align="center">
   <img src="images/name-generator.webp" alt="The Name Generator on its Realm tab: a realm name, the die and the word behind each part, and the recent names" width="60%">
@@ -998,8 +1018,8 @@ see in its place: the name they call it (**Known as**), its **Picture**, and its
   read-only. The holder can still carry it, set it aside, stow it, hand it over or drop it, but
   not sell it in a Store.
 - A store's shelf can sell a gear that is unknown: the buyer sees its guise and pays its price.
-- Experimenting with it is a conversation: the player says what they try, and you rule — a WIL save
-  if the fiction wants one.
+- Experimenting with it is a conversation: the player says what they try, and you rule, with a WIL
+  save if the fiction wants one.
 - You see the real name everywhere, with an **Unknown to them** tag. The eye again reveals it and
   posts a card saying what it turned out to be.
 - The real data never leaves the client, so a player who opens the console can read it. This is a
@@ -1254,7 +1274,7 @@ The **Compendium Packs** tab holds everything the game needs, in a **Cairn 2e** 
 | **Magic** | Spellbooks, Scrolls, Relics |
 | **Reference** | Player's Guide, Game Tables, Bestiary, Hirelings, Vald Calendar |
 | **Warden** | Warden Tables |
-| **Homebrew** | More Gear, Materials, More Spellbooks, More Scrolls, Potions: extra content, not from the Cairn books |
+| **Homebrew** | More Gear, Materials, More Spellbooks, More Scrolls, Potions, Person Names: extra content, not from the Cairn books |
 
 **Macros** sits at the top of the folder.
 

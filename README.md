@@ -20,7 +20,8 @@ watches of a journey and the turns of a dungeon.
 Pick one of the 20 backgrounds, such as Aurifex, Bonekeeper or Fungal Forager, let the dice pick
 one, or choose one the Warden wrote for the campaign. The creator walks you through the rest step
 by step: a name from the background's own list, attributes, starting gear, personality traits, a
-Bond and an Omen. Anything you leave blank is rolled for you. A character already built on
+Bond and an age. Anything you leave blank is rolled for you, and a character with no picture of
+its own wears its background's icon. A character already built on
 [Kettlewright](https://kettlewright.com) comes in with one click.
 
 ### The character sheet
@@ -46,7 +47,7 @@ onto the map.
 Roll damage and apply it to the targeted token. Armor soaks what it can, HP goes first, the rest
 spills into STR, and the chat card offers the critical-damage save when it's due. A fall or a
 cave-in rolled on the spot applies the same way, and so does damage rolled on the table's own dice,
-typed in with Take damage. A hit on the wrong token is undone with one click. A hit that leaves
+typed in with Take damage by a player or with Apply damage by the Warden. A hit on the wrong token is undone with one click. A hit that leaves
 a character at exactly 0 HP opens the Scars window on that player's screen, where one button rolls
 everything the Scar asks for. Scars, Panic, *impaired* and *enhanced* attacks, *blast*, Morale and
 Reactions are all handled. The combat tracker follows Cairn's rules: sides take turns, with no initiative roll.
@@ -59,8 +60,8 @@ dragged token read in metres too.
 </p>
 
 ### Tools for the Warden
-- One-click generators for NPCs, hirelings, monsters, whole factions and names for places, realms
-  and forests, all built from the rulebook's own tables.
+- One-click generators for NPCs, hirelings, monsters, whole factions and names for people, places,
+  factions, realms and forests, all built from the rulebook's own tables.
 - A **Calendar** in the Vald reckoning of the Warden's Guide: watches, seasons, the Reclamation,
   and notes on any day, starting with the setting's holidays. The Warden sets the time and shows
   it to everyone, and a scene can darken and lighten with the clock.
@@ -87,7 +88,9 @@ dragged token read in metres too.
 - A faction sheet lists its agents in rank order and an agenda to tick off, with buttons for
   faction actions and opposed saves.
 - The party sheet shows everyone's HP, attributes and load side by side, plus the followers
-  travelling with them and a **Stash** for what the group holds and nobody carries.
+  travelling with them and a **Stash** for what the group holds and nobody carries. Once every
+  character is made, the Warden draws the party's Omens from it: the youngest's, read to the table,
+  and the private ones some backgrounds owe.
 - Rules written in your notes work: `[[/save WIL]]` in a journal becomes a clickable save, and a
   trap written as `[[/damage d6 STR]]` rolls its damage against STR instead of HP.
 - When a character dies, you can promote a hireling to a player character.
@@ -125,7 +128,7 @@ All the game content you need is already inside:
 | **Rules** | the Player's Guide (principles, character creation, core rules, procedures and the Marketplace), linked to the items, tables and backgrounds it names |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
 | **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, Stores, Take Damage, and the Warden's Reset Player Hotbars and Restore Default Stores |
-| **Homebrew** | *More Gear* (clothing, food, drink, tools, transport, valuables and strange items), *Materials* for crafting, *More Spellbooks*, *More Scrolls* and 17 *Potions*: extra content, not from the Cairn books, kept in its own folder |
+| **Homebrew** | *More Gear* (clothing, food, drink, tools, transport, valuables and strange items), *Materials* for crafting, *More Spellbooks*, *More Scrolls*, 17 *Potions* and female and male *Person Names*: extra content, not from the Cairn books, kept in its own folder |
 
 Distances read in metres with the feet the map measures beside them, `12 m (40 ft)`, and weights
 in kilograms.
