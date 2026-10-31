@@ -4,9 +4,6 @@ This page is for people who write macros and modules for Cairn 2e. Everything th
 them is on one object, `game.cairn2e`, which is also a global named `cairn2e`, so a macro can be
 one line: `cairn2e.rest()`.
 
-The system is in alpha. A name on this page can change or go away in any version, with no
-fallback for the old one. The [changelog](../CHANGELOG.md) says when it does.
-
 ## Contents
 
 1. [When to call](#1-when-to-call)
