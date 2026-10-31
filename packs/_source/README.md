@@ -213,8 +213,7 @@ have bands of their own:
   anachronistic. Eight more are the maintainer's own, made to be cooked with Grid Crafter and priced
   by the same rule: Meat Pie, Fish Pie and Vegetable Pottage (three meals, 10), Fowl Soup and Trail
   Mix (four meals, 14 — the stews' price), and Mushroom Omelette, Berry Tart and Porridge (two meals,
-  5). Trail Mix is the one recipe that saves slots: Nuts, Dried Fruit and Honey, three meals in three
-  slots, become four in one. They are two folders rather than one because a Warden pricing a tavern round
+  5). They are two folders rather than one because a Warden pricing a tavern round
   reaches for one of them and not the other. **Killer Bee Honey** is the one SRD thing here: the
   Killer Bees' "special honey that heals 1d6 STR. 3 uses" (`wardens-guide/bestiary.md`), which no
   SRD pack carries as an item. It sits in Food because it is honey, and it is not marked food,
@@ -322,10 +321,10 @@ charm is that the Warden reads them. **None is a relic and none is a container**
 
 **Not SRD** (CLAUDE.md § 1, Homebrew), made to be the ingredients of Grid Crafter recipes. 2e names the
 act — "given proper ingredients" (`procedures.md`, Herbology), "given time and adequate materials"
-(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 45 `gear`
+(`kettlewright.md`) — and gives no list of materials, so the pack is the maintainer's. 47 `gear`
 documents in seven folders: **Metal** (Iron Ore, Iron Ingot, Steel Ingot, Steel Plate, Nails), **Wood & Stone**
 (Log, Stick, Plank, Stone, Rubble, Sand, Glass), **Hide & Bone** (Hide, Leather, Leather Strip, Bone, Feather, Sinew),
-**Cloth** (Flax, Cloth, Thread), **Herbs** (Herbs, Mushrooms, Wax, Berries, Resin, Reeds), **Raw Food**
+**Cloth** (Flax, Cloth, Thread), **Herbs** (Herbs, Field Mushrooms, Morels, Toadstools, Wax, Berries, Resin, Reeds), **Raw Food**
 (Raw Meat, Raw Fish, Raw Fowl, Flour, Eggs, Milk, Vegetables, Salt, Tallow, Fruit, Grain, Acorns) and **Monster Parts** (Troll Tallow, Gargoyle Grit, Pixie Scale,
 Viper Venom Sac, Phoenix Feather, Manticore Spike).
 
@@ -336,7 +335,7 @@ Viper Venom Sac, Phoenix Feather, Manticore Spike).
   Glass, Smithing Tools), **Flax** (two spin to two Thread, Sewing Kit), and **Rubble**, the waste
   rock a gem vein mostly gives, which no recipe spends on purpose. Three more are foraged: **Fruit**
   (two dry to Dried Fruit), **Grain** (two grind to Flour) and **Acorns** (three, leached with Cooking
-  Gear, to Flour). The other twenty-three cost 1–3 gp and sit at the front of the shelf of
+  Gear, to Flour). The other twenty-five cost 1–3 gp and sit at the front of the shelf of
   the shop that sells their kind — the Toolmaker, the Tailor, the Apothecary and the Provisioner. A
   world already made keeps the stores it was seeded with.
 - **Taken, not bought.** A Monster Part is taken from the creature it names, sits on no shelf, and
@@ -347,19 +346,26 @@ Viper Venom Sac, Phoenix Feather, Manticore Spike).
   spike is worth 150gp to a collector") and serves no recipe; the **Viper Venom Sac** ("An antitoxin
   can be made from their poison sacs") is 10, below the band, because the Antitoxin it is brewed into
   costs 20 and the price rule holds.
-- **Petty** is Nails, Stick, Leather Strip, Feather, Sinew, Thread, Herbs, Mushrooms, Wax, Berries,
-  Resin, Reeds, Salt, Tallow, Flax, Fruit, Grain, Acorns and the Viper Venom Sac;
+- **Petty** is Nails, Stick, Leather Strip, Feather, Sinew, Thread, Herbs, Morels, Toadstools, Wax,
+  Resin, Reeds, Salt, Tallow, Flax, Grain, Acorns and the Viper Venom Sac;
   ingots, plates, planks, hides and cloth take a slot, so hauling them stays a cost, and a Log and
   Rubble are *bulky*: two slots, the weight of a tree or a vein's waste carried out. Every other
   Monster Part takes a slot too (maintainer's call, 2026-10-10): at 25 gp and up, a petty one let a
   party that found a spot to harvest carry a fortune that weighed nothing.
-- **Raw food is not food.** Make Camp does not eat Raw Meat, Milk or Vegetables; cooking them is the
-  point. Raw Fowl is its own material, apart from Raw Meat, so the roasts and the fowl soup need a
+- **Raw food is a meal in a pinch.** Fruit, Berries, Vegetables, Eggs, Raw Fish, Raw Meat, Raw Fowl,
+  Milk and Field Mushrooms are food with one use and one slot, so Make Camp eats them, and a fishing
+  trip feeds the party without Grid Crafter; the SRD ends a hunt, a fishing trip or a forage in
+  Rations directly. Cooking is worth it for the slot: several ingredients become one dish with more
+  meals in it, and a food recipe never makes fewer meals, or fewer to the slot, than the food it
+  spends (`checks/crafting.check.mjs`). Four stay ingredients: **Morels** are poisonous raw and safe
+  once cooked, **Toadstools** are poison, **Grain** is ground first and **Acorns** are leached first;
+  eating a raw one is the Warden's to rule. Milk is bought, or gathered from a dairy cow the Warden
+  places while she is giving it. Raw Fowl is its own material, apart from Raw Meat, so the roasts and the fowl soup need a
   bird and not any carcass. **Tallow** is fat: rendered from Raw Meat with Cooking Gear (two from one)
   or bought, it is what a torch, fire oil, an oil can, grease and three potions burn or bind with,
   where those recipes once spent the meat itself.
-- **No material has uses.** Grid Crafter spends a whole item per cell, so a material with several uses
-  would lose all but one.
+- **No material has more than one use.** Grid Crafter spends a whole item per cell, so a material with
+  several uses would lose all but one.
 - **The price rule:** a recipe's ingredients cost less than what it makes, so crafting is always the
   cheaper way to a thing and never a way to turn gold into more gold.
 

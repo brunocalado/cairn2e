@@ -35,7 +35,9 @@ export const CLOTH = material("JaJx5zyAPRdmz9Wj");    // Cloth
 export const THREAD = material("eXms8M5FCH5zalA0");   // Thread
 export const GLASS = material("5c5J4HtAjGWa2j6C");    // Glass
 export const HERBS = material("YWkjnNFpBnAP6KEY");    // Herbs
-export const MUSHROOMS = material("W14ZDOc6ucmSlUN6"); // Mushrooms
+export const FIELD_MUSHROOMS = material("6FyCNSnRRkBQ8Ck3"); // Field Mushrooms
+export const MORELS = material("MT2y9TGGgOW2Ze0U");   // Morels
+export const TOADSTOOLS = material("9HLaCNV05y6Kseh9"); // Toadstools
 export const WAX = material("uRm9psesRIQFI465");      // Wax
 export const BERRIES = material("Wa6Zczi11KDvWqmE");  // Berries
 export const MEAT = material("SqWNZv1XM3TFGCzy");     // Raw Meat
@@ -262,7 +264,7 @@ export const RECIPES = [
               [_, _, _]] },
     // The second way is the SRD's own: "An antitoxin can be made from their poison sacs" (Viper).
     { id: "antitoxin", result: GEAR.ANTITOXIN, shaped: false, variants: [
-      { requires: ALCHEMY, cells: [HERBS, HERBS, MUSHROOMS, GLASS, _, _, _, _, _] },
+      { requires: ALCHEMY, cells: [HERBS, HERBS, TOADSTOOLS, GLASS, _, _, _, _, _] },
       { requires: ALCHEMY, cells: [VENOM, HERBS, GLASS, _, _, _, _, _, _] }] },
     { id: "bandages", result: gear("F8yysdbnA0y5L4sA"),
       cells: [[CLOTH, HERBS, CLOTH],
@@ -399,7 +401,7 @@ export const RECIPES = [
                 [_, STRIP, _],
                 [_, STRIP, _]] }] },
     { id: "sedative", result: gear("Pl1vyKGTou4BZeAC"), requires: ALCHEMY, shaped: false,
-      cells: [HERBS, MUSHROOMS, MUSHROOMS, GLASS, _, _, _, _, _] },
+      cells: [HERBS, TOADSTOOLS, TOADSTOOLS, GLASS, _, _, _, _, _] },
     { id: "sewing-kit", result: SEWING,
       cells: [[_, BONE, _],
               [THREAD, LEATHER, THREAD],
@@ -457,7 +459,8 @@ export const RECIPES = [
                 [_, HIDE, _]] }] }
   ]),
 
-  // Food is shapeless: a stew has no shape. What is cooked is food, which raw meat and fish are not.
+  // Food is shapeless: a stew has no shape. Raw food is a meal in a pinch, one a slot; cooking packs
+  // what several ingredients hold into one dish, and never loses a meal doing it.
   // A dish that goes over the fire needs Cooking Gear; what is salted, dried or mixed does not.
   ...filed("Food", [
     { id: "rations", result: GEAR.RATIONS, shaped: false, variants: [
@@ -480,13 +483,14 @@ export const RECIPES = [
       cells: [FISH, FISH, HERBS, SALT, _, _, _, _, _] },
     { id: "pemmican", result: moreGear("n6cVjhDIEJa4V8eu"), shaped: false,
       cells: [MEAT, MEAT, BERRIES, SALT, _, _, _, _, _] },
-    { id: "mushroom-soup", result: moreGear("qJELvjFtKGhMdEEG"), requires: COOKING, shaped: false,
-      cells: [MUSHROOMS, MUSHROOMS, HERBS, _, _, _, _, _, _] },
+    { id: "mushroom-soup", result: moreGear("qJELvjFtKGhMdEEG"), shaped: false, variants: [
+      { requires: COOKING, cells: [MORELS, MORELS, HERBS, _, _, _, _, _, _] },
+      { requires: COOKING, cells: [FIELD_MUSHROOMS, FIELD_MUSHROOMS, HERBS, _, _, _, _, _, _] }] },
     { id: "honey-cakes", result: moreGear("9cXVG6PemCUPDzD2"), requires: COOKING, shaped: false,
       cells: [FLOUR, EGGS, HONEY, _, _, _, _, _, _] },
     { id: "bread", result: moreGear("0CmxUSfbtPFMBz5v"), requires: COOKING, quantity: 2, shaped: false,
       cells: [FLOUR, _, _, _, _, _, _, _, _] },
-    { id: "dried-fruit", result: DRIED_FRUIT, shaped: false, variants: [
+    { id: "dried-fruit", result: DRIED_FRUIT, quantity: 2, shaped: false, variants: [
       { cells: [BERRIES, BERRIES, _, _, _, _, _, _, _] },
       { cells: [FRUIT, FRUIT, _, _, _, _, _, _, _] }] },
     { id: "cheese-local", result: moreGear("hR7BHskkiM7a7CIz"), requires: COOKING, quantity: 2, shaped: false,
@@ -503,8 +507,9 @@ export const RECIPES = [
       cells: [VEG, VEG, SALT, _, _, _, _, _, _] },
     { id: "fowl-soup", result: moreGear("pYctxhdwCKopKSWM"), requires: COOKING, shaped: false,
       cells: [FOWL, VEG, HERBS, SALT, _, _, _, _, _] },
-    { id: "mushroom-omelette", result: moreGear("Bo0yQLTSar45lqlU"), requires: COOKING, shaped: false,
-      cells: [EGGS, MUSHROOMS, HERBS, _, _, _, _, _, _] },
+    { id: "mushroom-omelette", result: moreGear("Bo0yQLTSar45lqlU"), shaped: false, variants: [
+      { requires: COOKING, cells: [EGGS, MORELS, HERBS, _, _, _, _, _, _] },
+      { requires: COOKING, cells: [EGGS, FIELD_MUSHROOMS, HERBS, _, _, _, _, _, _] }] },
     { id: "berry-tart", result: moreGear("nmDjU2NjQgHOHAkU"), requires: COOKING, shaped: false,
       cells: [FLOUR, BERRIES, HONEY, _, _, _, _, _, _] },
     { id: "porridge", result: moreGear("aPSpoYuVqAqNJ9Wy"), requires: COOKING, shaped: false,
@@ -523,15 +528,15 @@ export const RECIPES = [
       { requires: ALCHEMY, cells: [GLASS, HERBS, BONE, _, _, _, _, _, _] },
       { requires: ALCHEMY, cells: [GLASS, HERBS, HIDE, _, _, _, _, _, _] }] },
     { id: "astral-sight", result: potion("0uqB4aGNo7ZClrsG"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, MUSHROOMS, BERRIES, SALT, _, _, _, _, _] },
+      cells: [GLASS, TOADSTOOLS, BERRIES, SALT, _, _, _, _, _] },
     { id: "dragons-roar", result: potion("8kwslqDlLWCqvlO0"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, BONE, TALLOW, SALT, _, _, _, _, _] },
     { id: "liquid-luck", result: potion("ObiettKQSBCmEoli"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, HONEY, HERBS, BERRIES, _, _, _, _, _] },
     { id: "heartstopper", result: potion("9MwOmL24PBKxq00d"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, MUSHROOMS, MUSHROOMS, MUSHROOMS, _, _, _, _, _] },
+      cells: [GLASS, TOADSTOOLS, TOADSTOOLS, TOADSTOOLS, _, _, _, _, _] },
     { id: "new-potential", result: potion("0UhW8YXgn00FGOCg"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, EGGS, HERBS, MUSHROOMS, BERRIES, _, _, _, _] },
+      cells: [GLASS, EGGS, HERBS, MORELS, BERRIES, _, _, _, _] },
     { id: "stoneform", result: potion("XEnQs002PTTeRAtY"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, STONE, STONE, SALT, _, _, _, _, _] },
     { id: "water-deflector", result: potion("DmH7WEDwJlwRrFTa"), requires: ALCHEMY, shaped: false,
@@ -550,7 +555,7 @@ export const RECIPES = [
     { id: "last-stand-cordial", result: potion("PDXTPmOTFExeoDbg"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, TROLL, HERBS, TALLOW, _, _, _, _, _] },
     { id: "lethe-water", result: potion("7HBWiFzpfFZxXeeb"), requires: ALCHEMY, shaped: false,
-      cells: [GLASS, PIXIE, MUSHROOMS, BERRIES, _, _, _, _, _] },
+      cells: [GLASS, PIXIE, TOADSTOOLS, BERRIES, _, _, _, _, _] },
     { id: "owl-eye-drops", result: potion("DGesbkzk13zzwxOf"), requires: ALCHEMY, shaped: false,
       cells: [GLASS, GARGOYLE, FEATHER, BERRIES, _, _, _, _, _] },
     { id: "phoenix-draught", result: potion("F2OGvyqsOHE4YYVj"), requires: ALCHEMY, shaped: false,

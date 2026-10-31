@@ -7,9 +7,9 @@
 
 import { FLAGS, SYSTEM_ID, packUuid } from "./constants.js";
 import {
-  ACORNS, BERRIES, BONE, CLOTH, EGGS, FEATHER, FISH, FLAX, FOWL, FRUIT, GARGOYLE, GRAIN, HERBS, HIDE, HONEY,
-  IRON, LOG, MEAT, MUSHROOMS, NAILS, NUTS, ORE, PHOENIX, PIXIE, REEDS, RESIN, SALT, SAND, SINEW, STICK,
-  STONE, TALLOW, THREAD, TROLL, VEG, VENOM, WAX
+  ACORNS, BERRIES, BONE, CLOTH, EGGS, FEATHER, FIELD_MUSHROOMS, FISH, FLAX, FOWL, FRUIT, GARGOYLE, GRAIN, HERBS, HIDE, HONEY,
+  IRON, LOG, MEAT, MILK, MORELS, NAILS, NUTS, ORE, PHOENIX, PIXIE, REEDS, RESIN, SALT, SAND, SINEW, STICK,
+  STONE, TALLOW, THREAD, TOADSTOOLS, TROLL, VEG, VENOM, WAX
 } from "./crafting.js";
 import { SEASON_DAYS, darknessAt, watchGeometry } from "./calendar-rules.js";
 import { rollHarvestSave } from "./rolls.js";
@@ -108,8 +108,8 @@ const REGROW_DAYS = new Map([[TAGS.REGROW_DAY, 1], [TAGS.REGROW_WEEK, 6], [TAGS.
 const drop = (uuid, weight, min = 1, max = min) => ({ uuid, weight, min, max });
 
 /**
- * The resources this system registers. A drop's `max` is at most 3 for a petty item and 2 for one
- * that takes a slot: nothing stacks here, and Canvas Harvest lands each unit on its own free space.
+ * The resources this system registers. A drop's `max` is at most 3: nothing stacks here, and Canvas
+ * Harvest lands each unit on its own free space.
  * `name` and `verb` are added from en.json at registration (`CAIRN.Harvest.Resource.<Id>`), and
  * `category`, the Resource Book's group for it, is a key under `CAIRN.Harvest.Category`.
  */
@@ -138,10 +138,10 @@ export const RESOURCES = [
     strikes: 4, drops: [drop(STICK, 1, 1, 3)] },
   { id: "herb-patch", category: "Foraging", img: "icons/consumables/plants/herb-marjoram-basil-oregano-leaf-bunch-green.webp", animation: "gather",
     strikes: 4, tags: [TAGS.REGROW_WEEK],
-    drops: [drop(HERBS, 4, 1, 3), drop(BERRIES, 2, 1, 2), drop(MUSHROOMS, 1)] },
+    drops: [drop(HERBS, 4, 1, 3), drop(BERRIES, 2, 1, 2), drop(FIELD_MUSHROOMS, 1)] },
   { id: "mushroom-ring", category: "Foraging", img: "icons/consumables/mushrooms/cluster-red-brown.webp", animation: "gather",
     strikes: 4, tags: [TAGS.REGROW_WEEK],
-    drops: [drop(MUSHROOMS, 1, 1, 3)] },
+    drops: [drop(FIELD_MUSHROOMS, 3, 1, 3), drop(MORELS, 2, 1, 3), drop(TOADSTOOLS, 2, 1, 3)] },
   { id: "bramble", category: "Foraging", img: "icons/consumables/fruit/berry-bunch-red-green.webp", animation: "gather",
     strikes: 4, tags: [TAGS.REGROW_SEASON],
     drops: [drop(BERRIES, 4, 1, 3), drop(NUTS, 1)] },
@@ -201,6 +201,11 @@ export const RESOURCES = [
     drops: [drop(MEAT, 5), drop(FEATHER, 3, 1, 3), drop(BONE, 1), drop(HIDE, 1)] },
   { id: "fish-catch", category: "Carcasses", img: "icons/environment/creatures/fish-crosshatched-silver-blue.webp", animation: "carve",
     toolSets: ["carve"], strikes: 3, drops: [drop(FISH, 1, 1, 2)] },
+  // Livestock: a cow in milk, placed by the Warden only while she is giving it. No tool: anything
+  // that holds milk will do, and a player can always improvise one.
+  { id: "dairy-cow", category: "Livestock", img: "icons/creatures/mammals/livestock-cow-green.webp", animation: "gather",
+    strikes: 2, tags: [TAGS.REGROW_DAY],
+    drops: [drop(MILK, 1, 1, 2)] },
   // Remains: bones, rags and webbing where others met their end.
   { id: "old-battlefield", category: "Remains", img: "icons/equipment/head/helm-norman-brown.webp", animation: "gather",
     strikes: 5, drops: [drop(BONE, 3), drop(CLOTH, 2), drop(NAILS, 2, 1, 3), drop(IRON, 1)] },

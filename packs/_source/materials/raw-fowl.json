@@ -4,15 +4,16 @@
   "type": "gear",
   "img": "icons/consumables/meat/chicken-breast-raw-pink.webp",
   "system": {
-    "description": "<p>Raw Fowl</p>",
+    "description": "<p>Raw Fowl (one meal)</p>",
     "slots": 1,
     "equipped": false,
     "cost": 1,
     "container": "",
     "uses": {
-      "value": 0,
-      "max": 0
+      "value": 1,
+      "max": 1
     },
+    "food": true,
     "damage": "",
     "blast": false,
     "armor": 0,

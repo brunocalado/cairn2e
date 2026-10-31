@@ -598,6 +598,7 @@
       "Carcasses": "Carcasses",
       "Foraging": "Foraging",
       "HuntingAndFishing": "Hunting & Fishing",
+      "Livestock": "Livestock",
       "MonsterParts": "Monster Parts",
       "Remains": "Remains",
       "StoneAndOre": "Stone & Ore",
@@ -624,6 +625,10 @@
       "Bramble": {
         "Name": "Bramble",
         "Verb": "Pick"
+      },
+      "DairyCow": {
+        "Name": "Dairy Cow",
+        "Verb": "Milk"
       },
       "Deadfall": {
         "Name": "Deadfall",

@@ -114,6 +114,8 @@ export function defaultStores() {
       material("QfYsVtcCaat3wc4h"), // Milk
       material("zu4qKYpliSHqKu3G"), // Raw Fowl
       material("VJDxi8WZpgu7aEIS"), // Vegetables
+      material("6FyCNSnRRkBQ8Ck3"), // Field Mushrooms
+      material("MT2y9TGGgOW2Ze0U"), // Morels
       material("cn0bmxAJv4XOVrJd"), // Tallow
       gear("yQOui5IqPJ0IHTCf"), // Rope
       homebrew("yypWKdw4aHNfxiTH"), // Tinder Box
@@ -146,7 +148,7 @@ export function defaultStores() {
     ]),
     apothecary: shelf("CAIRN.Store.Default.Apothecary", [
       material("YWkjnNFpBnAP6KEY"), // Herbs
-      material("W14ZDOc6ucmSlUN6"), // Mushrooms
+      material("9HLaCNV05y6Kseh9"), // Toadstools
       gear("dcg6C3sgIfUklUu7"), // Bathing Goods
       gear("LJuSzL3jPRwPcvAL"), // Common Agents
       homebrew("imAtEycOcQWwVP6X"), // Incense

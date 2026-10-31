@@ -748,8 +748,12 @@ Axe splits a Log into two Planks, and two Flax spin into Thread (Sewing Kit). Ta
 rendered from Raw Meat in a pot. The six **Monster Parts** are taken from the creature they name and
 sold nowhere: Troll Tallow, Gargoyle Grit, Pixie Scale and Phoenix Feather are the dear part of a
 potion, a Viper Venom Sac makes Antitoxin, and a Manticore Spike is worth its price as it is. Raw
-meat, fowl and fish, milk and vegetables are not food, so Make Camp won't eat them until they are
-cooked.
+food is a meal in a pinch: fruit, berries, vegetables, eggs, raw meat, fowl and fish, milk and
+field mushrooms are each one meal in one slot, so Make Camp eats them as it eats Rations, and
+cooking is worth it for the slot, since several ingredients become one dish with more meals in it.
+Mushrooms come in three kinds: field mushrooms are eaten as found, morels are poisonous raw and
+safe once cooked, and toadstools are poison, kept for the Apothecary's brews. What happens to
+someone who eats a raw morel or a raw steak is the Warden's to rule.
 
 **Recipes.** Grid Crafter's Recipe Book lists them all under **Cairn 2e**. What a recipe spends
 always costs less than what it makes, so making a thing is cheaper than buying it. Some things are
@@ -815,14 +819,16 @@ mines, chops, gathers or carves it. What a strike gives lands beside the token a
 item, to pick up. Gathering is homebrew, like crafting, and it gives the raw side of the recipes
 above.
 
-The system adds 38 resources in seven groups: **Stone & Ore** (iron and gem veins, a rock face, a
+The system adds 39 resources in eight groups: **Stone & Ore** (iron and gem veins, a rock face, a
 sand bank, a salt crust), **Timber** (a tree, deadfall), **Foraging** (herbs, mushrooms, brambles,
 wild flax, reeds, wild hives, nests, fruit trees, hazel, oak mast, roots and grain), **Hunting &
 Fishing** (a fishing spot, a game trail), **Carcasses** (small and large game, fowl, a bear, a
-predator, a winged beast, a catch of fish), **Remains** (an old battlefield, skeletons, a spider
+predator, a winged beast, a catch of fish), **Livestock** (a dairy cow), **Remains** (an old battlefield, skeletons, a spider
 nest) and **Monster Parts** (a troll, a frozen gargoyle, a pixie bed, a killer bee hive, a
 manticore, a viper, phoenix ashes).
 
+- **Milk.** A dairy cow needs no tool: anything that holds milk will do. The Warden places the spot
+  only while the cow is giving milk, and it fills again after a day.
 - **Tools.** Stone is struck with a Pick, Crowbar, Chisel or Smelting Hammer, wood is chopped with
   an Axe, Hand Axe or Saw, and a carcass is carved with a Dagger or any of the knives (or a
   Bonesaw). Roots and grain are dug or reaped with a Sickle, a Sharpened Trowel or a Root Knife; a

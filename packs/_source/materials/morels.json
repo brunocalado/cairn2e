@@ -1,10 +1,10 @@
 {
-  "_id": "W14ZDOc6ucmSlUN6",
-  "name": "Mushrooms",
+  "_id": "MT2y9TGGgOW2Ze0U",
+  "name": "Morels",
   "type": "gear",
-  "img": "icons/consumables/mushrooms/mushroom-spotted-red.webp",
+  "img": "icons/consumables/mushrooms/helm-brown.webp",
   "system": {
-    "description": "<p>Mushrooms (<em>petty</em>)</p>",
+    "description": "<p>Morels (<em>petty</em>). Poisonous raw; safe once cooked.</p>",
     "slots": 0,
     "equipped": false,
     "cost": 1,
@@ -26,6 +26,6 @@
     "default": 0
   },
   "effects": [],
-  "_key": "!items!W14ZDOc6ucmSlUN6",
+  "_key": "!items!MT2y9TGGgOW2Ze0U",
   "folder": "2Yzsr9IIsfysN2i5"
 }

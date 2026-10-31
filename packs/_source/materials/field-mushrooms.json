@@ -1,0 +1,32 @@
+{
+  "_id": "6FyCNSnRRkBQ8Ck3",
+  "name": "Field Mushrooms",
+  "type": "gear",
+  "img": "icons/consumables/mushrooms/convex-bolete-brown.webp",
+  "system": {
+    "description": "<p>Field Mushrooms (one meal)</p>",
+    "slots": 1,
+    "equipped": false,
+    "cost": 1,
+    "container": "",
+    "uses": {
+      "value": 1,
+      "max": 1
+    },
+    "food": true,
+    "damage": "",
+    "blast": false,
+    "armor": 0,
+    "magic": "none",
+    "recharge": "",
+    "capacity": 0,
+    "takesSlots": false,
+    "carried": true
+  },
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_key": "!items!6FyCNSnRRkBQ8Ck3",
+  "folder": "2Yzsr9IIsfysN2i5"
+}
