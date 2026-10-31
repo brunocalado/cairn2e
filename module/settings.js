@@ -14,6 +14,7 @@ import { CairnTreasure } from "./apps/treasure.js";
 import { defaultTreasureSources } from "./treasure-rules.js";
 import { CairnActionsMenu } from "./apps/actions-menu.js";
 import { CairnActionMacros } from "./apps/action-macros.js";
+import { CairnCalendarEventsImport } from "./apps/calendar-events-import.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { deliverAnimations } from "./automated-animations.js";
 import { syncSceneDarkness } from "./calendar.js";
@@ -233,6 +234,17 @@ export const registerSettings = () => {
     hint: "CAIRN.Settings.ActionMacros.Hint",
     icon: "fa-solid fa-bolt",
     type: CairnActionMacros,
+    restricted: true
+  });
+
+  // The calendar events a world is missing, brought in on the Warden's word
+  // (module/apps/calendar-events-import.js).
+  game.settings.registerMenu(SYSTEM_ID, "calendar-events-menu", {
+    name: "CAIRN.Settings.CalendarEvents.Name",
+    label: "CAIRN.Settings.CalendarEvents.Label",
+    hint: "CAIRN.Settings.CalendarEvents.Hint",
+    icon: "fa-solid fa-calendar-plus",
+    type: CairnCalendarEventsImport,
     restricted: true
   });
 };

@@ -72,6 +72,7 @@
     "EditNote": "Edit the note",
     "Everyone": "Everyone sees it",
     "EveryYear": "Every year",
+    "EventsImported": "Calendar events imported: {count}.",
     "Folder": "Calendar notes",
     "GoToToday": "Go to today",
     "JourneyHint": "A journey is underway: it spends the time. The clock moves when the journey resolves a watch.",
@@ -79,6 +80,7 @@
     "MakeToday": "Make this today",
     "MonthLabel": "Month",
     "Name": "The Vald Calendar",
+    "NoEventsMissing": "No calendar event is missing.",
     "NoNotes": "No notes on this day.",
     "NoReclamation": "{name} comes only in a year ending in 0. Pick one, or make the note every year.",
     "NoteTitle": "Title",
@@ -1552,6 +1554,12 @@
       "Missing": "Missing",
       "Remove": "Take off the list",
       "Empty": "No macros yet. Drop one here."
+    },
+    "CalendarEvents": {
+      "Name": "Calendar events",
+      "Label": "Import missing events",
+      "Hint": "Bring in the calendar's dated events this world has no copy of: events added to the compendium since the world began, and any you deleted. An event you edited, and a note you wrote yourself, are left alone.",
+      "Confirm": "Add every calendar event this world is missing. An event you deleted comes back. An event you edited, and every note you wrote yourself, stays as it is."
     },
     "BestiaryArt": {
       "Name": "Bestiary artwork",

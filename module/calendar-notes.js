@@ -85,14 +85,11 @@ async function ensureFolder() {
 
 /**
  * Import the SRD's dated events from `cairn2e.vald-calendar` — or from the packs a module named,
- * `calendar.js#calendarEventPacks` — into a new world's note folder, once, visible to everyone. Shaped like
- * `installWorldMacros`: the active GM alone, the setting written before anything is created, so a
- * Warden who deletes the folder is not handed it back. A pack changed later does not reach a world
- * that already imported it; to take the new events, delete the folder and clear
- * `calendar-events-installed`. A pack id the world does not have is skipped with a warning, so a
- * module's typo costs its events and not the world's launch. The ids are handed in rather than
- * read off `calendar.js`, which extends core's calendar class at load: `rolls.js` imports this
- * file, and the checks import `rolls.js` under plain Node.
+ * `calendar.js#calendarEventPacks` — into a new world's note folder, once, visible to everyone.
+ * Shaped like `installWorldMacros`: the active GM alone, the setting written before anything is
+ * created, so a Warden who deletes the folder is not handed it back on the next launch. Events a
+ * pack gains later, or a note the Warden deleted, come in from the settings' Import Calendar
+ * Events button (`importMissingEvents`).
  * @param {string[]} packIds
  */
 export async function installCalendarEvents(packIds) {
@@ -100,26 +97,46 @@ export async function installCalendarEvents(packIds) {
   if (game.settings.get(SYSTEM_ID, SETTINGS.CALENDAR_EVENTS_INSTALLED)) return;
   try {
     await game.settings.set(SYSTEM_ID, SETTINGS.CALENDAR_EVENTS_INSTALLED, true);
-    const packs = packIds.map((id) => {
-      const pack = game.packs.get(id);
-      if (!pack) console.warn(`${SYSTEM_ID} | no compendium ${id} to import calendar events from`);
-      return pack;
-    }).filter(Boolean);
-    if (!packs.length) return;
-    const folder = await ensureFolder();
-    const data = [];
-    for (const pack of packs) {
-      for (const doc of await pack.getDocuments()) {
-        const entry = game.journal.fromCompendium(doc);
-        entry.folder = folder.id;
-        entry.ownership = { default: LEVELS.OBSERVER };
-        data.push(entry);
-      }
-    }
-    await foundry.documents.JournalEntry.implementation.createDocuments(data);
+    await importMissingEvents(packIds);
   } catch (err) {
     console.error(`${SYSTEM_ID} | could not import the calendar's events`, err);
   }
+}
+
+/**
+ * Import the events of every listed pack that this world has no copy of, visible to everyone, into
+ * the note folder — made again if the Warden deleted it. A copy is a JournalEntry whose
+ * `_stats.compendiumSource` is the pack document's uuid (`fromCompendium` writes it), so a renamed,
+ * moved or edited note still counts and is never touched; a deleted one comes back. A pack id the
+ * world does not have is skipped with a warning, so a module's typo costs its events and not the
+ * world's launch. The ids are handed in rather than read off `calendar.js`, which extends core's
+ * calendar class at load: `rolls.js` imports this file, and the checks import `rolls.js` under
+ * plain Node.
+ * @param {string[]} packIds
+ * @returns {Promise<number>}  how many notes were created
+ */
+export async function importMissingEvents(packIds) {
+  const have = new Set(game.journal.map((e) => e._stats.compendiumSource).filter(Boolean));
+  const data = [];
+  let folder;
+  for (const id of packIds) {
+    const pack = game.packs.get(id);
+    if (!pack) {
+      console.warn(`${SYSTEM_ID} | no compendium ${id} to import calendar events from`);
+      continue;
+    }
+    for (const doc of await pack.getDocuments()) {
+      if (have.has(doc.uuid)) continue;
+      folder ??= await ensureFolder();
+      const entry = game.journal.fromCompendium(doc);
+      entry.folder = folder.id;
+      // `fromCompendium` clears ownership to None: an event is for everyone.
+      entry.ownership = { default: LEVELS.OBSERVER };
+      data.push(entry);
+    }
+  }
+  if (data.length) await foundry.documents.JournalEntry.implementation.createDocuments(data);
+  return data.length;
 }
 
 /**
