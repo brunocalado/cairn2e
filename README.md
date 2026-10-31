@@ -181,7 +181,8 @@ Recommended modules, all optional:
 ## Learn more
 
 The [user guide](docs/wiki.md) covers everything in detail: the character creator, the sheet,
-rolling in play, every Warden tool, containers, and the API for macro and module authors.
+rolling in play, every Warden tool and containers. Macro and module authors have
+[the API](docs/API.md).
 
 The system is in English. A translation is a separate module: to make one, see
 [Translating Cairn 2e](docs/translating.md).

@@ -96,7 +96,7 @@ Hooks.once("init", async function () {
 
   // Public API for hotbar macros and third-party modules. Named for SYSTEM_ID (CLAUDE.md §4) —
   // upstream's `game.cairn` is gone, so user macros written against it break, which is §0 working
-  // as intended. Keep this surface small: every entry is a promise. Documented in README.md.
+  // as intended. Keep this surface small: every entry is a promise. Documented in docs/API.md.
   game.cairn2e = {
     CairnActor,
     CairnItem,

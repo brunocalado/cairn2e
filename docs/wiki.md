@@ -1254,7 +1254,7 @@ Importing happens once per world: a folder the Warden deletes does not come back
 ### Writing your own
 
 Each of these is one line, so you can build your own macro: create a **Script** macro and type
-one of these lines.
+one of these lines. Everything else a macro or a module can call is in [the API](API.md).
 
 ```js
 cairn2e.rest();             // restore HP
