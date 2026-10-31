@@ -58,7 +58,9 @@ A translation module needs two things in its `module.json`:
   text page's `name` and `text.content`. The content is plain paragraphs (`<p>`), the event's time
   first; keep it free of other markup, because the calendar reads a note back as plain text. A
   world imports the events once, as its own notes, so a translation reaches a world only if it
-  is active the first time the Warden launches it.
+  is active the first time the Warden launches it. After that, the Warden's **Import missing
+  events** button brings in, translated, only the events the world has no copy of. It never
+  rewrites a note the world already has.
 - **The Player's Guide** (`cairn2e.players-guide`): each JournalEntry's `name`, and each page's
   `name` and `text.content`. Keep every `@UUID[…]` and `[[/table …]]` exactly as it is and
   translate only the `{label}` after a `@UUID`. A link that ends in `#slug` opens the page at the

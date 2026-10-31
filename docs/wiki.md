@@ -66,7 +66,9 @@ Foundry's world clock speaks the **Vald calendar** of the Warden's Guide: twelve
 a six-day week from Market Day to Resting Day, four seasons of 72 days, and the six-day
 **Reclamation** after Sunset in every year ending in 0. A new world starts on **1 Mourning 7728**,
 at 06:00. Each season begins on the 1st of its first month (Mourning, Sunrise, Flood, Quell), a
-table decision: the SRD's own dates for them cannot all give the 72 days it states.
+table decision: the SRD's own dates for them cannot all give the 72 days it states. A module can
+give the calendar other names, another first year and its own events, keeping the same months,
+weeks and seasons (see [the API](API.md#2-renaming-the-calendar)).
 
 The **Calendar** window shows today, the **watch**, the year and the month. A day in Cairn is three
 watches, morning (from 06:00), afternoon (from 14:00) and night (from 22:00), drawn as a dial of
@@ -100,8 +102,9 @@ for **Add a note**: a title, the day it starts, **Every year** or one year only,
 lasts, whether **everyone** sees it, and plain text. Each note is a journal entry in the
 **Calendar notes** folder, so it can also be opened from the Journal tab. A new world starts with
 the 24 holidays, festivals, solstices and equinoxes of the Vald calendar as notes everyone sees;
-the Warden can edit, hide or delete them like any other. A deleted one is back with one drag from
-the **Vald Calendar** compendium. A note hidden from players is kept out of their windows, not off
+the Warden can edit, hide or delete them like any other. A deleted one comes back with
+**Configure Settings → Calendar events → Import missing events**, which adds every event the world
+has no copy of and leaves the ones you edited alone. A note hidden from players is kept out of their windows, not off
 their computers: a player who opens the console can read it.
 
 **Weather.** The cloud after the selected day's date is the Warden's **Roll the weather**: it rolls
@@ -138,6 +141,9 @@ few options for this system:
   the Bestiary compendium (see [§18](#18-compendiums)).
 - **Scene darkness follows the clock**: on by default; turn it off when a lighting module sets
   the darkness instead (see [The calendar and the watch](#the-calendar-and-the-watch)).
+- **Calendar events → Import missing events**: brings in the calendar events this world has no
+  copy of, such as one you deleted. An event you edited, and a note you wrote, stay as they are
+  (see [The calendar and the watch](#the-calendar-and-the-watch)).
 - **Actions menu macros → Choose macros**: drop macros here, and they appear in every character's
   **Actions** menu, run as that character (see [§3](#3-the-character-sheet)). A player sees only
   the ones they may run.

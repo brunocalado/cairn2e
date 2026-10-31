@@ -103,8 +103,9 @@ last call wins. It does not merge with the earlier one.
 Month and week length, the Reclamation, the leap rule and the seasons' dates stay Vald's:
 calendar notes, foraging regrowth and the Weather in Vald tables all depend on them. A module
 that wants a different calendar sets Foundry's `CONFIG.time.worldCalendarConfig` and
-`CONFIG.time.worldCalendarClass` itself. The system then hides its calendar window and chat
-clock, and its watches and scene darkness follow that calendar's day.
+`CONFIG.time.worldCalendarClass` itself. The system then drops its chat clock and the calendar
+buttons in the Notes controls, the Actions menu and the Cairn tab. Its watches and scene darkness
+follow that calendar's day.
 
 ## 3. One-line macros
 
