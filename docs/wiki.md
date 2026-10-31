@@ -368,8 +368,9 @@ Each item row has small buttons: **equip / unequip**, **use / restore a use**, *
 moves to Aside, and the same button brings it back), **post to chat** and **delete**. A
 weapon has a die button that rolls its damage.
 
-**An item's description** is always open for whoever may edit it: click in it and type, and it is
-saved when you leave the box. Anyone else reads it with its links working.
+**An item's description** reads like a page, its links working. Whoever may edit it clicks the
+text to write in it, and it is saved when they leave the box. Drag a document onto it and it
+becomes a link. The same goes for an NPC's description and a route's or faction's.
 
 To add something, drag it from a compendium onto the sheet, or press **+** on a tab and pick a
 kind: gear, weapon, armor, spellbook, scroll, relic, container or coin. The **+** on **Body**
