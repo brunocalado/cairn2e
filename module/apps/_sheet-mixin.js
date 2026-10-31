@@ -15,11 +15,13 @@
  * The editor parts a document change has left showing an old value.
  *
  * A sheet keeps its ProseMirror parts out of an ordinary redraw: rebuilding one costs the user
- * its scroll position and selection, and a save from that editor changes nothing it shows. But a
- * write from elsewhere — a macro, a second Warden, a re-roll — left the sheet showing the old text,
- * which the next edit then wrote back over the new. So a part is stale when the change touched its
- * field and either there is no editor in it (a reader's enriched text) or the editor holds
- * something else AND nobody is typing in it: an editor with focus keeps the user's text.
+ * its scroll position and selection. But a write from elsewhere — a macro, a second Warden, a
+ * re-roll — left the sheet showing the old text, which the next edit then wrote back over the new.
+ * So a part is stale when the change touched its field and nobody is typing in it (an editor with
+ * focus keeps the user's text), and then one of three: its editor is closed, because a closed
+ * toggled editor shows the enriched text it was built with and core never refreshes that copy, not
+ * even after its own save; or there is no editor in it (a reader's enriched text); or the open
+ * editor holds something else.
  * @param {foundry.applications.api.DocumentSheetV2} sheet
  * @param {object|undefined} renderData  The change, as core hands it to the render.
  * @param {Record<string, string>} editors  Field path → the id of the part that draws it.
@@ -33,10 +35,25 @@ export function staleEditorParts(sheet, renderData, editors) {
     if (!element) continue;
     const editor = element.querySelector(`prose-mirror[name="${field}"]`);
     if (editor?.matches(":focus-within")) continue;
-    if (editor && editor.value === foundry.utils.getProperty(sheet.document, field)) continue;
+    if (editor?.open && editor.value === foundry.utils.getProperty(sheet.document, field)) continue;
     stale.push(part);
   }
   return stale;
+}
+
+/**
+ * The parts an update rebuilds when every field it touched is an editor's, or null when it touched
+ * anything else. Without it, a description save rebuilds every part of the sheet: the actor sheet's
+ * `partsForRenderContext` has no answer for an editor field and lets every part through.
+ * @param {foundry.applications.api.DocumentSheetV2} sheet
+ * @param {object|undefined} renderData  The change, as core hands it to the render.
+ * @returns {string[]|null}  Part ids, or null when the change is not an editor's alone.
+ */
+export function editorOnlyParts(sheet, renderData) {
+  const editors = sheet.constructor.EDITOR_FIELDS;
+  const keys = Object.keys(foundry.utils.flattenObject(renderData ?? {})).filter((k) => !k.startsWith("_"));
+  if (!keys.length || !keys.every((k) => k in editors)) return null;
+  return staleEditorParts(sheet, renderData, editors);
 }
 
 /**
@@ -84,9 +101,9 @@ export function keptEditorParts(sheet, renderData) {
 export const CairnSheetMixin = (Base) => class extends Base {
   /**
    * Document paths whose only display on the sheet is inside a ProseMirror editor, each with the
-   * part that draws it. The editor already shows the value the user just saved, so an update that
-   * touches nothing else must not rebuild the sheet around it — only a part left showing an old
-   * value is rebuilt (`staleEditorParts`). Each sheet that has one lists its own.
+   * part that draws it. An update that touches nothing else must not rebuild the sheet around it —
+   * only a part left showing an old value is rebuilt (`staleEditorParts`), which includes the part
+   * of an editor that has just saved and closed. Each sheet that has one lists its own.
    * @type {Record<string, string>}
    */
   static EDITOR_FIELDS = {};

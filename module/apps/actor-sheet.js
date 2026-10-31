@@ -11,7 +11,7 @@ import { slotsForItem, layoutSlots, nestingRefusal, goneWhenSpent } from "../dat
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { lightSpell } from "../light-sources.js";
 import { takeItem } from "../transfer.js";
-import { CairnSheetMixin, keptEditorParts } from "./_sheet-mixin.js";
+import { CairnSheetMixin, editorOnlyParts, keptEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 import { createItemFromPrompt } from "./_item-prompt.js";
 import { bindSteppers, bindHold, stopHold, flushSteps, fieldNumber, fitToText } from "./_steppers.js";
@@ -117,9 +117,11 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     if (explicit || options.isFirstRender || !options.renderContext) return;
 
     // An editor part goes with every change unless it is on screen and current
-    // (`_sheet-mixin.js#keptEditorParts`); the rest go when the change is theirs.
+    // (`_sheet-mixin.js#keptEditorParts`); the rest go when the change is theirs, and none of
+    // them when the change is an editor's alone (`editorOnlyParts`).
     const kept = keptEditorParts(this, options.renderData);
-    const wanted = this.partsForRenderContext(options.renderContext, options.renderData);
+    const wanted = editorOnlyParts(this, options.renderData)
+      ?? this.partsForRenderContext(options.renderContext, options.renderData);
     const editors = Object.values(this.constructor.EDITOR_FIELDS);
     options.parts = options.parts.filter((id) => !kept.includes(id)
       && (!wanted || wanted.includes(id) || editors.includes(id)));

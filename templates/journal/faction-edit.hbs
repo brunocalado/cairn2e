@@ -13,8 +13,9 @@
       translation renames the table. Traits are the one control that rolls a PAIR, because the SRD's trait table
       is two columns rolled together and a single trait is half an answer.
 
-      The description is the real `<prose-mirror>` element, as the item sheets write it: the
-      `{{editor}}` helper emits markup nothing in v2 activates. --}}
+      The description is the real `<prose-mirror>` element, toggled and opened from its text as
+      the item sheets write it (`templates/item/tab-description.hbs`): the `{{editor}}` helper
+      emits markup nothing in v2 activates. --}}
 <section>
     <div class="cairn-prop-list">
         <div class="cairn-field cairn-die-row">
@@ -210,6 +211,6 @@
 
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="faction-description" data-ink-w="1.6">
         <prose-mirror name="system.description" value="{{system.description}}"
-            data-document-uuid="{{uuid}}"></prose-mirror>
+            data-document-uuid="{{uuid}}" toggled>{{{description}}}</prose-mirror>
     </div>
 </section>

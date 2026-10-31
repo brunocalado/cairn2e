@@ -238,6 +238,18 @@
             display: none;
         }
 
+        /* The text opens a closed editor (`_ink-mixin.js#bindEditor`), so core's hover pencil
+           (`prose-mirror:hover button.toggle:enabled`) is a second way in that covers the end of
+           the first line. */
+        prose-mirror[toggled] button.toggle {
+            display: none;
+        }
+
+        /* A closed editor reads as text, and a click on it types. */
+        prose-mirror.inactive .editor-content {
+            cursor: text;
+        }
+
         /* Core gives the editor's own scroller a border and a ground; inside the drawn box both
            are a second edge. */
         .editor-content {

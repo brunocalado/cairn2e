@@ -23,12 +23,12 @@
                 {{#if editable}}data-action="editImage" data-edit="system.guiseImg"{{/if}} />
         </div>
     </div>
-    {{!-- An editor that is always open, as the description is (`tab-description.hbs`). A sheet
-          that cannot be edited — a locked compendium's — reads the enriched guise instead. --}}
+    {{!-- An editor that opens from its text, as the description is (`tab-description.hbs`). A
+          sheet that cannot be edited — a locked compendium's — reads the enriched guise instead. --}}
     <div class="cairn-prose-box cairn-guise-box" data-ink="box" data-ink-seed="item-guise" data-ink-w="1.6">
         {{#if editable}}
         <prose-mirror name="system.guiseDescription" value="{{system.guiseDescription}}"
-            data-document-uuid="{{item.uuid}}"></prose-mirror>
+            data-document-uuid="{{item.uuid}}" toggled>{{{guiseHTML}}}</prose-mirror>
         {{else}}
         <div class="editor-content">{{{guiseHTML}}}</div>
         {{/if}}

@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID } from "../constants.js";
 import { enrich } from "../helpers.js";
-import { CairnSheetMixin, keptEditorParts } from "./_sheet-mixin.js";
+import { CairnSheetMixin, editorOnlyParts, keptEditorParts } from "./_sheet-mixin.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -193,6 +193,9 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     // its own, or repaint that one line by hand here.
     const kept = keptEditorParts(this, options.renderData);
     options.parts = options.parts.filter((id) => !kept.includes(id));
+    // A change that is an editor's alone rebuilds that editor's part and nothing around it.
+    const only = editorOnlyParts(this, options.renderData);
+    if (only) options.parts = options.parts.filter((id) => only.includes(id));
   }
 
   /** @override */

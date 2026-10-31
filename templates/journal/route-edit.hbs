@@ -5,9 +5,9 @@
       pin sits (`module/data/page-route.js`). No season either — the season belongs to the day
       the party sets out, and the journey window is where it is picked.
 
-      The description is the real `<prose-mirror>` element, exactly as an item sheet writes it:
-      the `{{editor}}` helper emits markup nothing in v2 activates (see
-      `templates/item/tab-description.hbs` for the whole reason). --}}
+      The description is the real `<prose-mirror>` element, toggled and opened from its text,
+      exactly as an item sheet writes it: the `{{editor}}` helper emits markup nothing in v2
+      activates (see `templates/item/tab-description.hbs` for the whole reason). --}}
 <section>
     {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="system.path" label=(localize "CAIRN.Journey.Path") options=paths}}
     {{> "systems/cairn2e/templates/parts/route-pick.hbs" name="system.distance" label=(localize "CAIRN.Journey.Distance") options=distances}}
@@ -19,6 +19,6 @@
 
     <div class="cairn-prose-box" data-ink="box" data-ink-seed="route-description" data-ink-w="1.6">
         <prose-mirror name="system.description" value="{{system.description}}"
-            data-document-uuid="{{uuid}}"></prose-mirror>
+            data-document-uuid="{{uuid}}" toggled>{{{description}}}</prose-mirror>
     </div>
 </section>

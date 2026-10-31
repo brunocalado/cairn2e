@@ -9,7 +9,8 @@ import { paintInk, scheduleInk } from "../ink.js";
 /**
  * What every window that draws its rules and frames on a canvas does, in one place: repaint after
  * a render, on a resize of the content box, on a scroll or a `<details>` toggle inside a part, and
- * on a tab change; save a ProseMirror editor when it loses focus; stop observing on close.
+ * on a tab change; open a rich-text editor from its text or a drag, and save and close it when it
+ * is left (`bindEditor`); stop observing on close.
  *
  * Per-part listeners are bound in `_attachPartListeners`, which core's `_replaceHTML` calls once
  * for each part it actually rendered, with the element it just created. These windows re-render
@@ -76,16 +77,7 @@ export const CairnInkMixin = (Base) => class extends Base {
         target.addEventListener("toggle", repaint, true);
       }
     }
-    // An editor's toolbar — where core puts the save button — is hidden, so leaving the field is
-    // what commits it. `save()` writes the serialized HTML back onto the element and fires
-    // `change`, which is what `submitOnChange` listens for. `save()` throws on an editor with no
-    // ProseMirror behind it, hence `open`; focus moving between the editor's own parts is not
-    // leaving it.
-    for (const editor of htmlElement.querySelectorAll("prose-mirror")) {
-      editor.addEventListener("focusout", (event) => {
-        if (editor.open && !editor.contains(event.relatedTarget)) editor.save();
-      });
-    }
+    for (const editor of htmlElement.querySelectorAll("prose-mirror[toggled]")) bindEditor(editor);
   }
 
   /**
@@ -104,3 +96,105 @@ export const CairnInkMixin = (Base) => class extends Base {
     this.#inkResize = null;
   }
 };
+
+/**
+ * A toggled editor with no pencil: closed, it is the enriched text, so a link in it is a button
+ * that opens its document; a click on the text opens it, a drag entering it opens it, and leaving
+ * it saves and closes it. Toggled rather than always open because an open editor shows a dropped
+ * document as its raw `@UUID[…]{Name}` text, and core draws it as a link only while closed.
+ *
+ * - The click places the caret where it landed only when the raw text reads the same as the
+ *   enriched one. A link's raw form is longer, so coordinates taken on the enriched text would put
+ *   the caret inside its `@UUID[…]`, and what was typed would go into the id. Otherwise the caret
+ *   goes to the end. A click on a link, an inline roll or a chip that acts does what it does and
+ *   leaves the box closed.
+ * - `open` is heard on the element itself: core dispatches it as a plain `new Event("open")` and
+ *   hands `{ bubbles: true }` to `dispatchEvent`, which ignores it, so it never bubbles.
+ * - A drag entering the box opens it so core's ProseMirror drop plugin writes the link at the drop
+ *   point and stops the drop there; on a closed box the sheet's own drop handler took it (an NPC
+ *   gained the item instead). A drag that only crosses the box closes it again on the way out,
+ *   and one that starts inside it (a link dragged out) never opens it.
+ * - The toolbar, where core puts the save button, is hidden, so leaving the box is what commits
+ *   it. `save()` fires `change`, which `submitOnChange` listens for, and closes the editor; the
+ *   sheet then rebuilds the part, because a closed editor's enriched view is a private copy core
+ *   set once and never refreshes (`_sheet-mixin.js#staleEditorParts`).
+ * - Activation is async (`#activateEditor` awaits the document), and `save()` before it finishes
+ *   throws on the editor it has not built yet. So a save asked for in that window waits for
+ *   `open`, and anything else only saves once the element carries `active`.
+ * - `save()` is never re-entered. It destroys the ProseMirror view, and when the view still holds
+ *   focus — a drag leaving the box it opened — that fires `focusout` synchronously, inside the
+ *   save; a second `save()` from there closed the editor under the first, which then threw on the
+ *   destroyed view and left the box empty (measured 14.369).
+ * @param {HTMLElement} editor  A `<prose-mirror toggled>`.
+ */
+function bindEditor(editor) {
+  let clickAt = null;
+  let dragFromInside = false;
+  let openedByDrag = false;
+  let closeOnOpen = false;
+  let closing = false;
+  const active = () => editor.classList.contains("active");
+  const close = () => {
+    if (closing || !active()) return;
+    closing = true;
+    try { editor.save(); }
+    finally { closing = false; }
+  };
+
+  editor.addEventListener("click", (event) => {
+    if (editor.open || event.target.closest("a, button, [role=\"button\"]")) return;
+    const raw = document.createElement("template");
+    raw.innerHTML = editor.value;
+    const shown = editor.querySelector(".editor-content")?.textContent;
+    clickAt = raw.content.textContent === shown ? { x: event.clientX, y: event.clientY } : null;
+    editor.open = true;
+  });
+
+  editor.addEventListener("open", () => {
+    if (closeOnOpen) {
+      closeOnOpen = false;
+      close();
+      return;
+    }
+    editor.focus();
+    const selection = document.getSelection();
+    const at = clickAt && document.caretPositionFromPoint(clickAt.x, clickAt.y);
+    clickAt = null;
+    if (at && editor.contains(at.offsetNode)) selection.collapse(at.offsetNode, at.offset);
+    else {
+      const range = document.createRange();
+      range.selectNodeContents(editor.querySelector(".ProseMirror"));
+      range.collapse(false);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  });
+
+  // Focus moving between the editor's own parts is not leaving it.
+  editor.addEventListener("focusout", (event) => {
+    if (!editor.contains(event.relatedTarget)) close();
+  });
+
+  editor.addEventListener("dragstart", () => { dragFromInside = true; });
+  editor.addEventListener("dragend", () => { dragFromInside = false; });
+  editor.addEventListener("dragenter", () => {
+    if (dragFromInside) return;
+    if (editor.open) {
+      // Back in before the activation the drag started has finished: keep it open after all.
+      if (closeOnOpen) [closeOnOpen, openedByDrag] = [false, true];
+      return;
+    }
+    openedByDrag = true;
+    editor.open = true;
+  });
+  editor.addEventListener("dragleave", (event) => {
+    if (!openedByDrag || editor.contains(event.relatedTarget)) return;
+    openedByDrag = false;
+    if (active()) close();
+    else if (editor.open) closeOnOpen = true;
+  });
+  editor.addEventListener("drop", () => {
+    openedByDrag = false;
+    closeOnOpen = false;
+  });
+}
