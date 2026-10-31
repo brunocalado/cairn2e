@@ -31,6 +31,15 @@
         gap: 8px;
     }
 
+    /* The form scrolls, not the window, so Save stays in it however short the window is: without
+       this the content part claimed its full height and pushed the footer out (hidden at 400 px,
+       2026-10-31). Same three declarations as the faction form below, for the same reasons. */
+    &.cairn-route .cairn-route-form {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden auto;
+    }
+
     /* The total, under the four runs: the arithmetic the Warden is watching while they pick. */
     .cairn-route-total {
         font-family: var(--cairn-serif);

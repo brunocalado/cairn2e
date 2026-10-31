@@ -211,10 +211,16 @@
         }
     }
 
+    /* `flex: 1` is a base size of 0: the box takes the height left over, so the editor fills its
+       tab and scrolls inside it. The floor is for when nothing is left over — a short window, or
+       the foot of a form that scrolls (a faction's) — where `min-height: 0` let the box shrink to
+       its padding and the editor to 0 px, and a document dropped on it landed on the form. 7rem
+       is under the smallest box at any window's default size (a growth's), so no default layout
+       moves; below it the tab or the form scrolls instead. */
     .cairn-prose-box {
         display: flex;
         flex: 1;
-        min-height: 0;
+        min-height: 7rem;
         padding: 8px 10px;
 
         .editor,

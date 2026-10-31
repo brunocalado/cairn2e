@@ -26,8 +26,12 @@ const TEMPLATES = `systems/${SYSTEM_ID}/templates/journal`;
  * opens the window already set to this route.
  */
 export class CairnRoutePageSheet extends CairnInkMixin(JournalEntryPageHandlebarsSheet) {
-  /** @override — nothing drawn here follows a scroller. */
-  static INK_SCROLLERS = [];
+  /**
+   * @override — the SCROLLER is the form inside `.window-content`: in a short window the form
+   * scrolls rather than pushing Save out of the window, and the marks are placed from viewport
+   * positions, so without its scroll listener they stay where the rows were.
+   */
+  static INK_SCROLLERS = [".cairn-route-form"];
 
   /** @override */
   static DEFAULT_OPTIONS = {
@@ -44,7 +48,13 @@ export class CairnRoutePageSheet extends CairnInkMixin(JournalEntryPageHandlebar
   /** @override — core's header is replaced, not inherited: see `route-header.hbs`. */
   static EDIT_PARTS = {
     header: { template: `${TEMPLATES}/route-header.hbs` },
-    content: { template: `${TEMPLATES}/route-edit.hbs`, classes: ["standard-form"] },
+    // `scrollable` names the form itself: every pick is a document update and a re-render, and
+    // without it a scrolled form jumps back to the top on each one.
+    content: {
+      template: `${TEMPLATES}/route-edit.hbs`,
+      classes: ["standard-form", "cairn-route-form"],
+      scrollable: [""]
+    },
     footer: super.EDIT_PARTS.footer
   };
 
