@@ -138,7 +138,10 @@ export class CairnCalendarNote extends CairnInkMixin(HandlebarsApplicationMixin(
     else if (!int(days) || days < 1) problem = "CAIRN.Calendar.BadLength";
     else if (year !== null && (!int(year) || year < 0)) problem = "CAIRN.Calendar.BadYear";
     else if (year !== null && month === RECLAMATION + 1 && !isReclamationYear(year)) problem = "CAIRN.Calendar.NoReclamation";
-    if (problem) return ui.notifications.warn(game.i18n.localize(problem));
+    if (problem) {
+      const name = game.i18n.localize(game.time.calendar.months.values[RECLAMATION].name);
+      return ui.notifications.warn(game.i18n.localize(problem, { name }));
+    }
     await saveNote({
       entry: this.entry, title: String(data.title ?? ""), text: String(data.text ?? ""),
       note: { year, month, day, days }, everyone: !!data.everyone

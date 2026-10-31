@@ -23,6 +23,7 @@
  * lighting module with it.
  */
 
+import { SYSTEM_ID } from "./constants.js";
 import { WATCHES } from "./journey-rules.js";
 
 /** "There are 24 hours in a day and 6 days in a week. Each month has 24 days (4 weeks), with
@@ -34,6 +35,75 @@ export const RECLAMATION = 12;
 export const RECLAMATION_DAYS = 6;
 /** "The current year is 7728." — the only year the SRD names. */
 export const START_YEAR = 7728;
+
+const keys = (group, names) => names.map((key) => `CAIRN.Calendar.${group}.${key}`);
+
+/**
+ * Everything about the calendar a module may change with `game.cairn2e.defineCalendar`: its
+ * names, the year a new world starts in, and the packs a new world's events come from. Names are
+ * i18n keys here, and a module may pass literal strings instead — `localize` hands back a string
+ * it has no key for unchanged. The structure (month and week length, the Reclamation, the leap
+ * rule, the seasons) is not in it: the constants above, the notes, the harvest and the weather
+ * tables all read it, so it stays Vald's.
+ */
+export const VALD_DEFINITION = Object.freeze({
+  name: "CAIRN.Calendar.Name",
+  months: ["Mourning", "Silence", "Veil", "Sunrise", "Bright", "Ashfall", "Flood", "Highwater", "Rise", "Quell", "Bane", "Sunset"]
+    .map((key) => ({ name: `CAIRN.Calendar.Month.${key}`, abbreviation: `CAIRN.Calendar.MonthAbbr.${key}` })),
+  reclamation: { name: "CAIRN.Calendar.Month.Reclamation", abbreviation: "CAIRN.Calendar.MonthAbbr.Reclamation" },
+  weekdays: keys("Weekday", ["Market", "Garden", "Song", "Tithe", "Bathing", "Resting"]),
+  reclamationDays: keys("ReclamationDay", ["Recognize", "Remember", "Reward", "Rejoice", "Relinquish", "Renew"]),
+  seasons: keys("Season", ["Dead", "Dry", "Wet", "Harvest"]),
+  startYear: START_YEAR,
+  events: [`${SYSTEM_ID}.vald-calendar`]
+});
+
+/**
+ * A calendar definition laid over a base: every key left out keeps the base's value, and every key
+ * given is taken whole — an array is never merged index by index. A month or the Reclamation with
+ * no abbreviation is abbreviated by its name. Throws on anything that does not fit, so a module
+ * author's mistake surfaces at load, in their console, and never as a half-renamed calendar.
+ * @param {typeof VALD_DEFINITION} base
+ * @param {object} [definition]
+ * @returns {typeof VALD_DEFINITION}
+ */
+export function resolveCalendarDefinition(base, definition = {}) {
+  const fail = (what) => { throw new Error(`Calendar definition: ${what}`); };
+  if (!definition || typeof definition !== "object" || Array.isArray(definition)) fail("must be an object");
+  const isName = (s) => typeof s === "string" && s.trim() !== "";
+  const nameList = (key, length) => {
+    const list = definition[key];
+    if (!Array.isArray(list) || list.length !== length || !list.every(isName)) fail(`${key} must be ${length} non-empty strings`);
+    return [...list];
+  };
+  const month = (key, m) => {
+    if (!m || typeof m !== "object" || !isName(m.name)) fail(`${key} needs a non-empty name`);
+    if (Object.keys(m).some((k) => k !== "name" && k !== "abbreviation")) fail(`${key} takes only name and abbreviation`);
+    if (m.abbreviation !== undefined && !isName(m.abbreviation)) fail(`${key}'s abbreviation must be a non-empty string`);
+    return { name: m.name, abbreviation: m.abbreviation ?? m.name };
+  };
+  const read = {
+    name: () => isName(definition.name) ? definition.name : fail("name must be a non-empty string"),
+    months: () => {
+      const list = definition.months;
+      if (!Array.isArray(list) || list.length !== base.months.length) fail(`months must be ${base.months.length} months`);
+      return list.map((m, i) => month(`month ${i + 1}`, m));
+    },
+    reclamation: () => month("reclamation", definition.reclamation),
+    weekdays: () => nameList("weekdays", base.weekdays.length),
+    reclamationDays: () => nameList("reclamationDays", base.reclamationDays.length),
+    seasons: () => nameList("seasons", base.seasons.length),
+    startYear: () => (Number.isInteger(definition.startYear) && definition.startYear >= 0)
+      ? definition.startYear : fail("startYear must be an integer of 0 or more"),
+    events: () => (Array.isArray(definition.events) && definition.events.every(isName))
+      ? [...definition.events] : fail("events must be an array of pack ids")
+  };
+  const unknown = Object.keys(definition).filter((k) => !(k in read));
+  if (unknown.length) fail(`unknown key ${unknown.join(", ")}`);
+  const resolved = { ...base };
+  for (const key of Object.keys(definition)) resolved[key] = read[key]();
+  return resolved;
+}
 
 /**
  * Day of year (1-based) each season begins: midnight on 1 Mourning, 1 Sunrise, 1 Flood, 1 Quell —

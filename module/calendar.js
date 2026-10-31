@@ -7,54 +7,47 @@
 
 import { SYSTEM_ID, SETTINGS, FLAGS } from "./constants.js";
 import {
-  isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, START_YEAR, RECLAMATION,
-  watchGeometry, watchAt, nextWatchStart, darknessAt
+  isReclamationYear, reclamationsBefore, daysBeforeYear, yearOfDay, seasonOf, MONTH_DAYS, YEAR_DAYS, RECLAMATION,
+  RECLAMATION_DAYS, VALD_DEFINITION, resolveCalendarDefinition, watchGeometry, watchAt, nextWatchStart, darknessAt
 } from "./calendar-rules.js";
 
-const month = (key, ordinal, days = 24, leapDays) => ({
-  name: `CAIRN.Calendar.Month.${key}`, abbreviation: `CAIRN.Calendar.MonthAbbr.${key}`,
-  ordinal, days, ...(leapDays ? { leapDays } : {})
-});
+/** The calendar's names, first year and event packs: Vald's, until a module defines its own. */
+let definition = VALD_DEFINITION;
 
 /** The Reclamation's six days, by name — drawn in place of the weekdays during the leap week. */
-export const RECLAMATION_DAY_NAMES = ["Recognize", "Remember", "Reward", "Rejoice", "Relinquish", "Renew"]
-  .map((key) => `CAIRN.Calendar.ReclamationDay.${key}`);
+export const reclamationDayNames = () => definition.reclamationDays;
+
+/** The packs a new world's calendar events are imported from, in order. */
+export const calendarEventPacks = () => definition.events;
 
 /**
- * The Vald calendar as core's `CalendarData` config. The Reclamation is a thirteenth month with no
- * days in an ordinary year and six in a leap year: core sums `leapDays ?? days` into
- * `daysPerLeapYear`, and its month loop never reaches a month of 0 days.
+ * The calendar as core's `CalendarData` config, named by a definition. The Reclamation is a
+ * thirteenth month with no days in an ordinary year and six in a leap year: core sums
+ * `leapDays ?? days` into `daysPerLeapYear`, and its month loop never reaches a month of 0 days.
  *
  * `yearZero` is 0 and the stored year is the year shown: core reads `yearZero` nowhere, and 7728
  * years of seconds are far inside a double's exact range.
  */
-export const VALD_CALENDAR = {
-  name: "CAIRN.Calendar.Name",
-  years: { yearZero: 0, firstWeekday: 0, leapYear: { leapStart: 0, leapInterval: 10 } },
-  months: {
-    values: [
-      month("Mourning", 1), month("Silence", 2), month("Veil", 3), month("Sunrise", 4),
-      month("Bright", 5), month("Ashfall", 6), month("Flood", 7), month("Highwater", 8),
-      month("Rise", 9), month("Quell", 10), month("Bane", 11), month("Sunset", 12),
-      month("Reclamation", 13, 0, 6)
-    ]
-  },
-  days: {
-    values: ["Market", "Garden", "Song", "Tithe", "Bathing", "Resting"].map((key, i) => ({
-      name: `CAIRN.Calendar.Weekday.${key}`, ordinal: i + 1
-    })),
-    daysPerYear: 288, hoursPerDay: 24, minutesPerHour: 60, secondsPerMinute: 60
-  },
-  // Read by anything that reads the config; `CairnCalendar` computes the season itself.
-  seasons: {
-    values: [
-      { name: "CAIRN.Calendar.Season.Dead", monthStart: 1, monthEnd: 3 },
-      { name: "CAIRN.Calendar.Season.Dry", monthStart: 4, monthEnd: 6 },
-      { name: "CAIRN.Calendar.Season.Wet", monthStart: 7, monthEnd: 9 },
-      { name: "CAIRN.Calendar.Season.Harvest", monthStart: 10, monthEnd: 12 }
-    ]
-  }
-};
+function calendarConfig({ name, months, reclamation, weekdays, seasons }) {
+  return {
+    name,
+    years: { yearZero: 0, firstWeekday: 0, leapYear: { leapStart: 0, leapInterval: 10 } },
+    months: {
+      values: [
+        ...months.map((m, i) => ({ ...m, ordinal: i + 1, days: MONTH_DAYS })),
+        { ...reclamation, ordinal: RECLAMATION + 1, days: 0, leapDays: RECLAMATION_DAYS }
+      ]
+    },
+    days: {
+      values: weekdays.map((weekday, i) => ({ name: weekday, ordinal: i + 1 })),
+      daysPerYear: YEAR_DAYS, hoursPerDay: 24, minutesPerHour: 60, secondsPerMinute: 60
+    },
+    // Read by anything that reads the config; `CairnCalendar` computes the season itself.
+    seasons: {
+      values: seasons.map((season, i) => ({ name: season, monthStart: 3 * i + 1, monthEnd: 3 * i + 3 }))
+    }
+  };
+}
 
 /**
  * Core's leap-year arithmetic, replaced. `CalendarData#isLeapYear` makes `leapStart` a leap year
@@ -98,13 +91,37 @@ export class CairnCalendar extends foundry.data.CalendarData {
  * calendar with it, only after `init` returns, so the config and the class are all it takes.
  */
 export function registerCalendar() {
-  CONFIG.time.worldCalendarConfig = VALD_CALENDAR;
+  CONFIG.time.worldCalendarConfig = calendarConfig(definition);
   CONFIG.time.worldCalendarClass = CairnCalendar;
 }
 
 /**
- * Set a world's clock to 1 Mourning 7728, 06:00 — the first watch of the SRD's "current year" —
- * once, on the first launch under this calendar. Whatever time the world held before is
+ * Rename the calendar, choose the year a new world starts in, or the packs a new world's events
+ * come from — for a module, from its `init` hook (or `i18nInit` for a `library: true` module,
+ * whose scripts load before the system's, so `game.cairn2e` does not exist yet during its `init`).
+ * Core builds the calendar from `CONFIG.time` once `init` and `i18nInit` are over; a call after
+ * that throws and changes nothing.
+ *
+ * Every key is optional and a key left out keeps Vald's value; a key given is taken whole. Names
+ * are literal strings or i18n keys. `startYear` applies only to a world's first launch, and
+ * `events` (pack ids, replacing `cairn2e.vald-calendar`) only to the events imported then and by
+ * the Warden's import button. A later call replaces an earlier one; it is never merged with it.
+ * Nothing is stored: the definition is read on every load, so an updated or disabled module
+ * changes the names on the next reload, and the notes, which hold numbers, keep their days.
+ * @param {{name?: string, months?: {name: string, abbreviation?: string}[],
+ *   reclamation?: {name: string, abbreviation?: string}, weekdays?: string[],
+ *   reclamationDays?: string[], seasons?: string[], startYear?: number, events?: string[]}} given
+ *   12 months, 6 weekdays, 6 Reclamation days, 4 seasons in Dead, Dry, Wet, Harvest order
+ */
+export function defineCalendar(given) {
+  if (game.time) throw new Error(`${SYSTEM_ID} | defineCalendar is called from init or i18nInit, before the world calendar is built`);
+  definition = resolveCalendarDefinition(VALD_DEFINITION, given);
+  if (CONFIG.time.worldCalendarClass === CairnCalendar) CONFIG.time.worldCalendarConfig = calendarConfig(definition);
+}
+
+/**
+ * Set a world's clock to 1 Mourning 7728, 06:00 — the first watch of the SRD's "current year", or
+ * the first year a module defined — once, on the first launch under this calendar. Whatever time the world held before is
  * overwritten, not converted. Shaped like `installWorldMacros`: the active GM alone, the setting
  * written before anything else so a failure is not retried on every launch.
  */
@@ -114,7 +131,7 @@ export async function installCalendar() {
   if (!(game.time.calendar instanceof CairnCalendar)) return;
   try {
     await game.settings.set(SYSTEM_ID, SETTINGS.CALENDAR_INSTALLED, true);
-    await game.time.set(game.time.calendar.componentsToTime({ year: START_YEAR, day: 0, hour: 6 }));
+    await game.time.set(game.time.calendar.componentsToTime({ year: definition.startYear, day: 0, hour: 6 }));
   } catch (err) {
     console.error(`${SYSTEM_ID} | could not set the Vald calendar's start date`, err);
   }
@@ -128,7 +145,7 @@ export async function installCalendar() {
 export function formatDate(year, month, day) {
   const annual = year === null;
   if (month === RECLAMATION) {
-    const name = game.i18n.localize(RECLAMATION_DAY_NAMES[day]);
+    const name = game.i18n.localize(definition.reclamationDays[day]);
     return annual ? name : game.i18n.localize("CAIRN.Calendar.ReclamationDate", { day: name, year });
   }
   const name = game.i18n.localize(game.time.calendar.months.values[month].name);

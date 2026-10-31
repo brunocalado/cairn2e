@@ -11,7 +11,7 @@ import {
   MONTH_DAYS, RECLAMATION, RECLAMATION_DAYS, SEASON_STARTS, SEASON_DAYS, YEAR_DAYS,
   isReclamationYear, seasonOf, watchStartFor, watchAt, noteText, noteOccurrence, absoluteDay
 } from "../calendar-rules.js";
-import { RECLAMATION_DAY_NAMES, geometry, currentWatch, formatDate } from "../calendar.js";
+import { reclamationDayNames, geometry, currentWatch, formatDate } from "../calendar.js";
 import { noteOf, notesOn, readableNotes, isPublic, saveNote } from "../calendar-notes.js";
 import { postCalendarNoteCard } from "../rolls.js";
 import { rollWardenText } from "../helpers.js";
@@ -272,7 +272,7 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
     const month = cal.months.values[view.month];
     context.reclamation = reclamation;
     context.monthName = t(month.name);
-    context.heads = reclamation ? RECLAMATION_DAY_NAMES.map((k) => t(k)) : cal.days.values.map((d) => t(d.name));
+    context.heads = reclamation ? reclamationDayNames().map((k) => t(k)) : cal.days.values.map((d) => t(d.name));
     const length = reclamation ? RECLAMATION_DAYS : MONTH_DAYS;
     // One walk of the journal for the whole grid and the selected day, not one per day.
     const readable = readableNotes();
@@ -311,7 +311,10 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
   /** "Market Day · Dead season, day 31 of 72", or "Reclamation, day 4 of 6". */
   #subOf(year, month, day) {
     const cal = game.time.calendar;
-    if (month === RECLAMATION) return game.i18n.localize("CAIRN.Calendar.ReclamationSub", { day: day + 1, days: RECLAMATION_DAYS });
+    if (month === RECLAMATION) {
+      const name = game.i18n.localize(cal.months.values[RECLAMATION].name);
+      return game.i18n.localize("CAIRN.Calendar.ReclamationSub", { name, day: day + 1, days: RECLAMATION_DAYS });
+    }
     const time = cal.componentsToTime({ year, day: month * MONTH_DAYS + day });
     const weekday = game.i18n.localize(cal.days.values[cal.timeToComponents(time).dayOfWeek].name);
     const season = seasonOf(month, day);

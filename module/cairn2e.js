@@ -61,7 +61,7 @@ import { installTokenDefaults } from "./token-defaults.js";
 import { installWorldMacros, seedPlayerHotbar, resetPlayerHotbars } from "./world-macros.js";
 import { scanBestiaryArt, injectBestiaryArt } from "./bestiary-art.js";
 import { installTokenHudLabels, CairnTokenHUD } from "./token-hud.js";
-import { registerCalendar, installCalendar, CairnCalendar, mountChatClock, refreshChatClock, syncSceneDarkness } from "./calendar.js";
+import { registerCalendar, defineCalendar, calendarEventPacks, installCalendar, CairnCalendar, mountChatClock, refreshChatClock, syncSceneDarkness } from "./calendar.js";
 import { CairnCalendarApp } from "./apps/calendar.js";
 import { installCalendarEvents } from "./calendar-notes.js";
 import { GRANT_QUERY, applyGrant, onDropCanvasData } from "./grants.js";
@@ -147,6 +147,10 @@ Hooks.once("init", async function () {
     rulesSummary: () => CairnRulesSummary.open(),
     // The calendar window, for anyone — the supplied "Calendar" macro calls it.
     calendar: () => CairnCalendarApp.open(),
+    // For a module's `init` (or a library module's `i18nInit`) and nowhere else: renames the
+    // calendar, sets a new world's first year and the packs its events come from
+    // (module/calendar.js). Throws once the world calendar is built.
+    defineCalendar,
     // The stores open to visits, for a player; every store, for the Warden — the supplied
     // "Stores" macro calls it. The window itself says when no store is open.
     stores: () => CairnStore.open(),
@@ -479,7 +483,7 @@ Hooks.once("ready", () => {
   registerSelectMenus();
 
   installCalendar();
-  installCalendarEvents();
+  installCalendarEvents(calendarEventPacks());
   // Every open calendar redraws when a note changes, on whichever client changed it.
   CairnCalendarApp.watchNotes();
 
