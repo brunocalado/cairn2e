@@ -84,6 +84,7 @@
     "NoNotes": "No notes on this day.",
     "NoReclamation": "{name} comes only in a year ending in 0. Pick one, or make the note every year.",
     "NoteTitle": "Title",
+    "OtherCalendar": "This world keeps another calendar, set by a module. The Cairn calendar window shows only the Vald calendar.",
     "NoteWindow": "Note · {date}",
     "Once": "Once",
     "NextYear": "Next year",

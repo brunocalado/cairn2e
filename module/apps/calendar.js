@@ -11,7 +11,7 @@ import {
   MONTH_DAYS, RECLAMATION, RECLAMATION_DAYS, SEASON_STARTS, SEASON_DAYS, YEAR_DAYS,
   isReclamationYear, seasonOf, watchStartFor, watchAt, noteText, noteOccurrence, absoluteDay
 } from "../calendar-rules.js";
-import { reclamationDayNames, geometry, currentWatch, formatDate } from "../calendar.js";
+import { CairnCalendar, reclamationDayNames, geometry, currentWatch, formatDate } from "../calendar.js";
 import { noteOf, notesOn, readableNotes, isPublic, saveNote } from "../calendar-notes.js";
 import { postCalendarNoteCard } from "../rolls.js";
 import { rollWardenText } from "../helpers.js";
@@ -107,9 +107,18 @@ export class CairnCalendarApp extends CairnInkMixin(HandlebarsApplicationMixin(A
    * Open the window, or bring the open one forward. `view` moves it to that day — the Warden's
    * Show to players, which arrives over the socket and is checked like any payload. A window
    * opened fresh with no view looks at today.
+   *
+   * Under a module's own world calendar the window refuses: it draws and counts Vald's months
+   * whatever `game.time` holds, so it would show the wrong month and Set as today would write a
+   * wrong date. The buttons are already hidden then; this covers the Calendar macro, the API and
+   * the socket.
    * @param {{year: number, month: number, day: number}} [view]
    */
   static open(view) {
+    if (!(game.time.calendar instanceof CairnCalendar)) {
+      ui.notifications.warn("CAIRN.Calendar.OtherCalendar", { localize: true });
+      return;
+    }
     const app = (CairnCalendarApp.#instance ??= new CairnCalendarApp());
     if (view) app.#view = CairnCalendarApp.#clamp(view);
     else if (!app.rendered) app.#view = null;

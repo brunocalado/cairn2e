@@ -104,7 +104,8 @@ Month and week length, the Reclamation, the leap rule and the seasons' dates sta
 calendar notes, foraging regrowth and the Weather in Vald tables all depend on them. A module
 that wants a different calendar sets Foundry's `CONFIG.time.worldCalendarConfig` and
 `CONFIG.time.worldCalendarClass` itself. The system then drops its chat clock and the calendar
-buttons in the Notes controls, the Actions menu and the Cairn tab. Its watches and scene darkness
+buttons in the Notes controls, the Actions menu and the Cairn tab, and the Calendar macro and
+`cairn2e.calendar()` show a warning instead of opening the window. Its watches and scene darkness
 follow that calendar's day.
 
 ## 3. One-line macros
