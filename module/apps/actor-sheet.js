@@ -7,7 +7,7 @@
 
 import { SYSTEM_ID } from "../constants.js";
 import { rollDamage, rollSave } from "../rolls.js";
-import { slotsForItem, layoutSlots, nestingRefusal } from "../data/_derived.js";
+import { slotsForItem, layoutSlots, nestingRefusal, goneWhenSpent } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
 import { lightSpell } from "../light-sources.js";
 import { takeItem } from "../transfer.js";
@@ -311,8 +311,9 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       isUsedUp: uses.max > 0 && uses.value <= 0,
       showUses: uses.max > 0,
       // "They disappear after one use" (`srd-2e/players-guide/core-rules.md` → Scrolls). A scroll
-      // is the one carried thing whose use is its end, so it is the one kind that carries this
-      // control — gear spends charges and stays, a relic recharges. Not from a party's Stash: a
+      // is the one carried thing whose use is its end and has no count, so it is the one kind that
+      // carries this control — other gear goes at its last charge, through the minus, and a relic
+      // recharges. Not from a party's Stash: a
       // scroll there is in nobody's hands, so nobody is reading it aloud.
       canConsume: item.system.magic === "scroll" && item.parent?.type !== "party",
       // "Anyone can cast a spell by holding a Spellbook in both hands and reading its contents
@@ -378,11 +379,22 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     await item.update({ "system.uses.value": Math.min(item.system.uses.value + 1, item.system.uses.max) });
   }
 
-  // Spend a charge. The last one spent leaves the item at zero and on the sheet: a Torch that has
-  // burned its three is still a Torch, and what a spent thing does next is the table's to say.
+  // Spend a charge. The last one spent throws the thing away (`documents/item.js#_onUpdate`),
+  // unless it is refilled or a relic, which stay at zero and dimmed. Throwing away has no undo, so
+  // it asks first, as the scroll's Consume does.
   static async #onItemUseDecrement(event, target) {
     const item = this.rowItem(target);
     if (!item) return;
+    if (goneWhenSpent(item) && (item.system.uses.value === 1)) {
+      const proceed = await foundry.applications.api.DialogV2.confirm({
+        classes: [SYSTEM_ID],
+        // A name is the player's own text and DialogV2 parses `content` as HTML.
+        content: game.i18n.localize("CAIRN.Notify.ConfirmUseUp", { name: foundry.utils.escapeHTML(item.shownName) }),
+        rejectClose: false,
+        modal: true
+      });
+      if (!proceed) return;
+    }
     await item.update({ "system.uses.value": Math.max(item.system.uses.value - 1, 0) });
   }
 

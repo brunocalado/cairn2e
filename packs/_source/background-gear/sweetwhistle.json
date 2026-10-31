@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p><strong>Sweetwhistle</strong> 1 charge. Listeners hear a soft, familiar voice in the distance that they cannot resist following. <strong>Recharge</strong>: Lose a dear memory. (Describe it.)</p>",
+    "description": "<p><strong>Sweetwhistle</strong> 1 charge. Listeners hear a soft, familiar voice in the distance that they cannot resist following.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,
@@ -16,8 +16,8 @@
     "damage": "",
     "blast": false,
     "armor": 0,
-    "magic": "none",
-    "recharge": "",
+    "magic": "relic",
+    "recharge": "<p>Lose a dear memory. (Describe it.)</p>",
     "capacity": 0,
     "takesSlots": false,
     "carried": true

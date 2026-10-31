@@ -99,6 +99,7 @@
           "value": 0,
           "max": 6
         },
+        "refillable": true,
         "damage": "",
         "blast": false,
         "armor": 0,
@@ -129,6 +130,7 @@
           "value": 6,
           "max": 6
         },
+        "refillable": true,
         "damage": "",
         "blast": false,
         "armor": 0,

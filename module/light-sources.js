@@ -46,9 +46,16 @@ const uuid = (pack, id) => `Compendium.${SYSTEM_ID}.${pack}.Item.${id}`;
  * degrading" (procedures.md § Light) — never one torch out of a stack. So the four that spend are
  * "charge": the lit item is the flame, it goes where the item goes, and it goes out when the item
  * leaves any other way.
+ *
+ * A Torch is used up: the module removes it once its last flame ends for good (`discardSpent`).
+ * The system cannot do that itself, because the last charge is spent when the flame is lit and
+ * the Torch has to burn on at 0 (`documents/item.js#_onUpdate`). The Lantern and the Candle
+ * Helmet are refillable and the Lightsucker Candle is a relic, so all three stay at 0. A Warden
+ * who has edited the Torch's source in the light editor keeps their own copy, and ticks **Used
+ * Up When Spent** there to have the same.
  */
 export const LIGHT_SOURCES = [
-  { uuid: uuid("gear", "38nboO4axGNV5vQC"), consume: "charge", light: TORCH },
+  { uuid: uuid("gear", "38nboO4axGNV5vQC"), consume: "charge", discardSpent: true, light: TORCH },
   { uuid: uuid("gear", "lAOJ4KhINKHkQFKY"), consume: "charge", light: LANTERN },
   { uuid: uuid("background-gear", "eFWBZIBDrdwE0I7x"), consume: "charge", light: CANDLE },
   { uuid: uuid("relics", "CuRKq09QbCykPLcb"), consume: "charge", light: GLOOM },
@@ -97,6 +104,12 @@ export const registerLightSources = () => {
     );
   });
 };
+
+/** Whether `item` is the flame of the light burning on its actor right now. Synchronous: it is
+ *  asked from `_onUpdate`, and the module creates the flame before it spends the charge. */
+export function isBurning(item) {
+  return game.modules.get(MODULE)?.api?.getActive(item.parent)?.itemId === item.id;
+}
 
 /**
  * Light the source a just-cast spellbook is registered as, if any. Everything that makes the cast

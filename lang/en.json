@@ -1213,6 +1213,7 @@
     "CoinNoRoom": "No room for {amount} gold pieces — nothing on you or in your containers can hold them.",
     "CoinShort": "Not enough coin: {amount} needed, {gold} in every sack together.",
     "ConfirmConsume": "Read aloud and consume",
+    "ConfirmUseUp": "Use the last of {name}? It will be gone.",
     "ConfirmDelete": "Delete",
     "ConfirmDeleteContents": "It holds {n} item(s), which go with it.",
     "ContainerInItself": "{name} cannot be put inside itself.",
@@ -1319,6 +1320,7 @@
     "RestoreFlavor": "{name}'s attributes are restored",
     "Line": "{label}: {from} to {to}"
   },
+  "CAIRN.Refillable": "Refillable",
   "CAIRN.RegenerateCharacter": "Regenerate",
   "CAIRN.RelicHint": "A Relic causes no Fatigue, has limited uses, and recharges when its condition is met.",
   "CAIRN.Remove": "Remove",

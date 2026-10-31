@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p><strong>Vagrant's Veil</strong> 1 charge. Wear it to blend seamlessly into crowds, appearing as a simple pauper. <strong>Recharge</strong>: Donate the day's winnings to the poor. <em>Petty</em></p>",
+    "description": "<p><strong>Vagrant's Veil</strong> 1 charge. Wear it to blend seamlessly into crowds, appearing as a simple pauper. <em>Petty</em></p>",
     "slots": 0,
     "equipped": false,
     "cost": 0,
@@ -16,8 +16,8 @@
     "damage": "",
     "blast": false,
     "armor": 0,
-    "magic": "none",
-    "recharge": "",
+    "magic": "relic",
+    "recharge": "<p>Donate the day's winnings to the poor.</p>",
     "capacity": 0,
     "takesSlots": false,
     "carried": true

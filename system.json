@@ -283,8 +283,8 @@
         "id": "light-sources",
         "type": "module",
         "manifest": "https://github.com/brunocalado/light-sources/releases/latest/download/module.json",
-        "compatibility": { "minimum": "0.8.3", "verified": "0.8.3" },
-        "reason": "Every light in the system burns through it: a Torch, Lantern, Candle Helmet or Lightsucker Candle lit from the Token HUD spends one of its uses and keeps the flame on it, Illuminate lights when it is cast, and the dungeon tracker's Light puts lights out."
+        "compatibility": { "minimum": "0.10.1", "verified": "0.10.1" },
+        "reason": "Every light in the system burns through it: a Torch, Lantern, Candle Helmet or Lightsucker Candle lit from the Token HUD spends one of its uses and keeps the flame on it, a Torch burned down is removed once its last flame goes out, Illuminate lights when it is cast, and the dungeon tracker's Light puts lights out."
       }
     ],
     "recommends": [

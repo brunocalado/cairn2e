@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p><strong>Catring</strong> 2 charges. Climb up walls and fall safely. <strong>Recharge</strong>: Place the ring on a stray cat's tail.</p>",
+    "description": "<p><strong>Catring</strong> 2 charges. Climb up walls and fall safely.</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,
@@ -16,8 +16,8 @@
     "damage": "",
     "blast": false,
     "armor": 0,
-    "magic": "none",
-    "recharge": "",
+    "magic": "relic",
+    "recharge": "<p>Place the ring on a stray cat's tail.</p>",
     "capacity": 0,
     "takesSlots": false,
     "carried": true

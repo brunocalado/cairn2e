@@ -185,6 +185,17 @@ export function layoutSlots(units, slotsMax) {
 }
 
 /**
+ * Whether a thing is used up for good when its last use is spent: gear with uses that is
+ * neither a relic, which recharges (`core-rules.md` → Relics), nor marked refillable.
+ * @param {{type: string, system: object}} item
+ * @returns {boolean}
+ */
+export function goneWhenSpent(item) {
+  const sys = item.system;
+  return item.type === "gear" && sys.uses?.max > 0 && sys.magic !== "relic" && !sys.refillable;
+}
+
+/**
  * The name the table reads for an item: a gear unknown to its holder goes by its guise, whoever
  * is writing — chat, a notification another user sees, a hotbar macro. Over plain data, so a
  * caller holding the data of an item already gone (a barter card naming what moved) can ask too.

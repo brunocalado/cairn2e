@@ -53,6 +53,10 @@ export class GearData extends foundry.abstract.TypeDataModel {
       // → Dungeon Exploration Cycle). A mark, not a name — a Roast Goose or a Warden's hardtack is
       // food exactly as Rations are.
       food: new fields.BooleanField({ initial: false }),
+      // Refilled, not used up: a Lantern topped up with oil, a mallet whittled new stakes. A relic
+      // recharges and needs no mark. Everything else with uses is thrown away at its last
+      // (`documents/item.js#_onUpdate`).
+      refillable: new fields.BooleanField({ initial: false }),
       // Physical axis. A blank die is "not a weapon"; a zero is "not armour". *Impaired* forces
       // d4 and *Enhanced* d12 regardless of the die — that substitution lives in the roll code.
       damage: new fields.StringField({

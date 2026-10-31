@@ -166,6 +166,13 @@
             {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.food" value=system.food
                 id=(concat "gear-food-" item.id)}}
         </div>
+        {{!-- Refilled rather than used up: kept at 0 uses instead of thrown away. --}}
+        <div class="cairn-field cairn-prop-row"
+            data-ink="hline" data-ink-at="bottom" data-ink-w="0.9" data-ink-a="0.42" data-ink-seed="gear-refillable">
+            <label for="gear-refillable-{{item.id}}">{{localize 'CAIRN.Refillable'}}</label>
+            {{> "systems/cairn2e/templates/parts/toggle.hbs" field="system.refillable" value=system.refillable
+                id=(concat "gear-refillable-" item.id)}}
+        </div>
         {{/if}}
 
         {{#if axes.capacity}}

@@ -5,7 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { slotsForItem, nestingRefusal, tableNameOf, containerRoom } from "../data/_derived.js";
+import { slotsForItem, nestingRefusal, tableNameOf, containerRoom, goneWhenSpent } from "../data/_derived.js";
+import { isBurning } from "../light-sources.js";
 import { placeOf, sackAt } from "../coin-rules.js";
 import { SYSTEM_ID, DEFAULT_ARTWORK, GEAR_ARTWORK } from "../constants.js";
 import { revertScarGain } from "../scars.js";
@@ -310,6 +311,21 @@ export class CairnItem extends Item {
       warnNoRoom(this.name, added, free);
       return false;
     }
+  }
+
+  /**
+   * @override — a thing spent to its last use is gone (`_derived.js#goneWhenSpent`), whoever
+   * spent it: the sheet, Make Camp, a light. `changed` is a diff, so a `uses.value` in it at 0
+   * came down from above 0. `_onUpdate` runs on every client, so only the one that made the change
+   * acts. A burning light is left to light-sources, which removes a Torch once its flame ends for
+   * good (`light-sources.js#LIGHT_SOURCES`).
+   */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+    if ((userId !== game.user.id) || !this.actor) return;
+    const value = changed.system?.uses?.value;
+    if ((value === undefined) || (value > 0) || !goneWhenSpent(this) || isBurning(this)) return;
+    this.delete().catch((err) => console.error(`${SYSTEM_ID} | ${this.name} was spent and could not be removed`, err));
   }
 
   /**

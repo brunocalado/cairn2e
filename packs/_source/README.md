@@ -67,8 +67,11 @@ guess. `checks/compendium.check.mjs` holds all of this.
 ### A count the SRD does not print
 
 The `uses` counter carries the SRD's number where it prints one. Where it prints none, a thing
-that is plainly one dose is `uses 1/1`, so the sheet can spend it and show it spent. A spent
-item stays on the sheet at 0; `+` refills it. The Marketplace's Antitoxin, Fire Oil, Sedative
+that is plainly one dose is `uses 1/1`, so the sheet can spend it. A thing spent to its last use
+is thrown away, unless it is a relic, which recharges, or marked `refillable`, which stays at 0
+for `+` to refill. Four documents are refillable: the Lantern and the Oil Can in `gear/` (and
+the hirelings' copies of both), the Candle Helmet in `background-gear/`, and Stakes & Mallet in
+`more-gear/`. A potion, a Torch and Rations are not, and nothing marks them. The Marketplace's Antitoxin, Fire Oil, Sedative
 and Repellent are one dose each; the bigger vials backgrounds hand out are their own documents
 (`Antitoxin (2 uses)`, `Repellent (3 uses)`). The Greenwise's Healing Potion is one dose, like
 the Healing Salve the same background starts with. Three things stay without a count:
@@ -557,6 +560,14 @@ The pack is exactly the residue of three lists: the twenty `## Starting Gear` li
 (*What a Bond grants*, further down). A line that names a Marketplace document points at it, every
 other line gets a document here. Nothing is added that no background or Bond names. `cost` is 0
 throughout — background issue, not merchandise — but for the Bonds' Single Gem.
+
+Eight of them are relics: the Breeze Knot, Catring, Death-Whistle, Gildfinger, Sun Stick,
+Sweetwhistle, Vagrant's Veil and Warble-Whistle. The SRD does not call them relics, but each has
+charges and prints a **Recharge**, which is the rule's own definition ("Relics usually have limited
+use, as well as a Recharge condition", `core-rules.md` → Relics). So each is `magic: "relic"`, and
+its Recharge sentence sits in `recharge` rather than in `description`. They stay at cost 0 and in
+this pack, not in `relics/`. The Blood Pail and the Pain Band print a Recharge too but have no
+count, so they stay mundane gear.
 
 The pack is filed by origin, in compendium folders: one `_folder-<slug>.json` per background, and
 `_folder-shared.json` for what more than one hands out — Boiled Leather (Fletchwind, Marchguard,

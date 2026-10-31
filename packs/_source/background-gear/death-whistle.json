@@ -4,7 +4,7 @@
   "type": "gear",
   "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
   "system": {
-    "description": "<p><strong>To the death, always</strong>: You never back down from a fight, no matter the odds. Take a <strong>Death-Whistle</strong>, 1 charge. Its scream frightens away all who hear it (save WIL or flee). <strong>Recharge</strong>: Capture the final breath of a dying warrior.</p>",
+    "description": "<p><strong>To the death, always</strong>: You never back down from a fight, no matter the odds. Take a <strong>Death-Whistle</strong>, 1 charge. Its scream frightens away all who hear it (save WIL or flee).</p>",
     "slots": 1,
     "equipped": false,
     "cost": 0,
@@ -16,8 +16,8 @@
     "damage": "",
     "blast": false,
     "armor": 0,
-    "magic": "none",
-    "recharge": "",
+    "magic": "relic",
+    "recharge": "<p>Capture the final breath of a dying warrior.</p>",
     "capacity": 0,
     "takesSlots": false,
     "carried": true
