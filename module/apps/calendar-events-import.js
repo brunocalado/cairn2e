@@ -6,7 +6,7 @@
  */
 
 import { SYSTEM_ID } from "../constants.js";
-import { calendarEventPacks } from "../calendar.js";
+import { CairnCalendar, calendarEventPacks } from "../calendar.js";
 import { importMissingEvents } from "../calendar-notes.js";
 
 const { DialogV2 } = foundry.applications.api;
@@ -30,6 +30,20 @@ export class CairnCalendarEventsImport extends DialogV2 {
       { action: "cancel", label: "COMMON.Cancel", icon: "fa-solid fa-xmark" }
     ]
   };
+
+  /**
+   * Under a module's own world calendar there is nothing to import into: Vald's dates mean nothing
+   * there, and no window shows the notes. The menu is registered before the world calendar
+   * exists, so it cannot be hidden; it refuses instead, as the calendar window does.
+   * @override
+   */
+  async render(options, _options) {
+    if (!(game.time.calendar instanceof CairnCalendar)) {
+      ui.notifications.warn("CAIRN.Calendar.OtherCalendar", { localize: true });
+      return this;
+    }
+    return super.render(options, _options);
+  }
 
   /** @override */
   _initializeApplicationOptions(options) {

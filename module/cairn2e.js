@@ -477,13 +477,14 @@ Hooks.once("ready", () => {
 
   // A world's first launch under the Vald calendar sets its clock to 1 Mourning 7728, 06:00
   // (module/calendar.js), and imports the SRD's dated events as its first notes
-  // (module/calendar-notes.js). Not awaited, like the above.
+  // (module/calendar-notes.js). Not awaited, like the above. Under a module's own calendar the
+  // events stay out, and come in on the first launch after that module is gone.
   // Every <select> in a system window opens an ink-on-paper menu, not the browser's own list
   // (module/select-menu.js).
   registerSelectMenus();
 
   installCalendar();
-  installCalendarEvents(calendarEventPacks());
+  if (game.time.calendar instanceof CairnCalendar) installCalendarEvents(calendarEventPacks());
   // Every open calendar redraws when a note changes, on whichever client changed it.
   CairnCalendarApp.watchNotes();
 
