@@ -108,6 +108,11 @@ export function registerCalendar() {
  * the Warden's import button. A later call replaces an earlier one; it is never merged with it.
  * Nothing is stored: the definition is read on every load, so an updated or disabled module
  * changes the names on the next reload, and the notes, which hold numbers, keep their days.
+ *
+ * Month and week length, the Reclamation, the leap rule and the seasons are not on offer: the
+ * notes, the harvest and the weather tables all read them. A module that wants another structure
+ * sets `CONFIG.time.worldCalendarConfig` and `worldCalendarClass` itself; the calendar window and
+ * the chat clock then stand aside, and the watches and scene darkness follow its day.
  * @param {{name?: string, months?: {name: string, abbreviation?: string}[],
  *   reclamation?: {name: string, abbreviation?: string}, weekdays?: string[],
  *   reclamationDays?: string[], seasons?: string[], startYear?: number, events?: string[]}} given
