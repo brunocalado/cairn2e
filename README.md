@@ -154,10 +154,11 @@ characters, open **Configure Settings → Permissions** and allow **Create Actor
 
 [Light Sources](https://github.com/brunocalado/light-sources) is required, and Foundry turns it on
 in every Cairn 2e world. It lights torches, lanterns and candles from the token HUD and spends
-their uses. A lit torch is the torch itself: remove it from the sheet and it goes out, hand it to
-another character and it arrives lit, and a module that carries items onto the map, such as
-Canvas Loot, takes the flame with it. A table that would rather not light anything on the map
-can still spend a torch's uses by clicking them on the sheet.
+their uses, and a torch burned down is thrown away once its flame goes out. A lit torch is the
+torch itself: remove it from the sheet and it goes out, hand it to another character and it
+arrives lit, and a module that carries items onto the map, such as Canvas Loot, takes the flame
+with it. A table that would rather not light anything on the map can still spend a torch's uses
+by clicking them on the sheet.
 
 Recommended modules, all optional:
 - [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) rolls the 3D Cairn d20, and the

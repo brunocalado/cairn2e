@@ -150,7 +150,8 @@ What a store charges and pays is set on each store (see [§11](#11-stores-and-co
 
 [Light Sources](https://github.com/brunocalado/light-sources) comes with the system, and Foundry
 turns it on in every Cairn 2e world. It lights torches, lanterns and candles from the token's
-right-click menu and spends their uses as they burn. A lit torch is the torch itself: remove it
+right-click menu and spends their uses as they burn. A torch lit with its last use burns on, and
+is thrown away once its flame goes out for good. A lit torch is the torch itself: remove it
 from the sheet and it goes out, hand it to another character and it arrives lit, and a module
 that carries items onto the map, such as Canvas Loot, takes the flame with it. A table that would
 rather not light anything on the map can still spend a torch's uses by clicking them on the sheet.
@@ -383,8 +384,11 @@ which the rules write as *d8+d8*.
 on the sheet carries a **Food** tag. Rations, and most of the food in More Gear, already have it.
 Make Camp and a dungeon's Exhaustion eat a use of it as they eat Rations (see [§14](#each-watch)).
 
-**One dose.** A potion, an Antitoxin, Fire Oil, a Sedative or a Repellent has one use: the use
-button on its row spends it, and restoring the use refills it.
+**Used up.** A thing spent to its last use is gone: a Ration eaten, a potion drunk, a Torch burned
+down. The use button on its row asks before it spends the last one. Two kinds stay on the sheet at
+zero instead: a relic, which recharges, and anything with **Refillable** switched on under **Uses**
+on its Details tab. The Lantern, the Oil Can, the Candle Helmet and the Stakes & Mallet already
+have it.
 
 ### Giving things to another character
 
@@ -823,9 +827,9 @@ The system adds 39 resources in eight groups: **Stone & Ore** (iron and gem vein
 sand bank, a salt crust), **Timber** (a tree, deadfall), **Foraging** (herbs, mushrooms, brambles,
 wild flax, reeds, wild hives, nests, fruit trees, hazel, oak mast, roots and grain), **Hunting &
 Fishing** (a fishing spot, a game trail), **Carcasses** (small and large game, fowl, a bear, a
-predator, a winged beast, a catch of fish), **Livestock** (a dairy cow), **Remains** (an old battlefield, skeletons, a spider
-nest) and **Monster Parts** (a troll, a frozen gargoyle, a pixie bed, a killer bee hive, a
-manticore, a viper, phoenix ashes).
+predator, a winged beast, a catch of fish), **Livestock** (a dairy cow), **Remains** (an old
+battlefield, skeletons, a spider nest) and **Monster Parts** (a troll, a frozen gargoyle, a pixie
+bed, a killer bee hive, a manticore, a viper, phoenix ashes).
 
 - **Milk.** A dairy cow needs no tool: anything that holds milk will do. The Warden places the spot
   only while the cow is giving milk, and it fills again after a day.
