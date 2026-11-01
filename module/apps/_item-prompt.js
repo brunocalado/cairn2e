@@ -24,7 +24,7 @@ const ITEM_PRESETS = {
   weapon: { damage: "d6" },
   armor: { armor: 1 },
   spellbook: { magic: "spellbook" },
-  scroll: { magic: "scroll", slots: 0, uses: { value: 1, max: 1 } },
+  scroll: { magic: "scroll", slots: 0 },
   relic: { magic: "relic", uses: { value: 1, max: 1 } },
   container: { capacity: 1, takesSlots: true }
 };

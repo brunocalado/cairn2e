@@ -183,7 +183,7 @@ the toggle under its name.
 
 `core-rules.md` § Scrolls: "similar to Spellbooks, however: they are *petty*, they do not cause
 Fatigue, they disappear after one use." So `scrolls/` is `spellbooks/` again, one document per
-spell by the same name, as `magic: "scroll"`, `slots: 0`, `uses: 1/1`. A spellbook document's
+spell by the same name, as `magic: "scroll"`, `slots: 0`, `uses: 0/0` (being a scroll is its one use; it is read aloud through Consume). A spellbook document's
 italic first paragraph is the *book's* quirk ("Leaves grow along the spine"); a scroll is a
 different object and carries only the spell. Ids derive from `cairn2e:scroll:<slug>`.
 

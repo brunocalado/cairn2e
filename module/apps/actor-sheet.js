@@ -312,11 +312,10 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       isFatigue: item.type === "fatigue",
       isUsedUp: uses.max > 0 && uses.value <= 0,
       showUses: uses.max > 0,
-      // "They disappear after one use" (`srd-2e/players-guide/core-rules.md` → Scrolls). A scroll
-      // is the one carried thing whose use is its end and has no count, so it is the one kind that
-      // carries this control — other gear goes at its last charge, through the minus, and a relic
-      // recharges. Not from a party's Stash: a
-      // scroll there is in nobody's hands, so nobody is reading it aloud.
+      // "They disappear after one use" (`srd-2e/players-guide/core-rules.md` → Scrolls). Being a
+      // scroll is the one use, so a scroll has no count and draws no pip: this is its one control.
+      // Other gear goes at its last charge, through the minus, and a relic recharges. Not from a
+      // party's Stash: a scroll there is in nobody's hands, so nobody is reading it aloud.
       canConsume: item.system.magic === "scroll" && item.parent?.type !== "party",
       // "Anyone can cast a spell by holding a Spellbook in both hands and reading its contents
       // aloud" (`srd-2e/players-guide/core-rules.md` → Casting Spells). Held is equipped; a
