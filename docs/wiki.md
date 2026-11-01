@@ -435,8 +435,8 @@ its owners. The Warden has to be connected for a player's drag to work.
   **Deprived**, you are asked first: roll the WIL save, or cast without it if the Warden allows.
   With no free slot the spell still goes to chat, but no Fatigue is added and the card says an
   item must be dropped to cast it. What happens next is the Warden's call.
-- **Scrolls**: petty (no slot), and they cause no Fatigue. Reading one uses it up, and you are
-  asked to confirm first.
+- **Scrolls**: petty (no slot), and they cause no Fatigue. A scroll has no uses to count. Its
+  read-aloud button posts the spell to chat and uses the scroll up, and asks you to confirm first.
 - **Relics**: cause no Fatigue and have a limited number of uses. Their sheet has a **Recharge**
   tab that says what brings the uses back.
 
@@ -1194,7 +1194,8 @@ it picks the result instead of rolling it.
 Under the roll are the costs the table can charge, always available:
 
 - **Fatigue** adds a Fatigue.
-- **Ration** spends one meal (a use of Rations, or of any gear marked *Food*).
+- **Ration** spends one meal (a use of Rations, or of any gear marked *Food*). Anyone carrying
+  more than one food is asked about: the Warden picks what each of them eats.
 - **Light** puts out a burning light, for when torches are blown out. Only characters with a light
   lit are listed, each with what is burning.
 

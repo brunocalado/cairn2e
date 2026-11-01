@@ -195,7 +195,9 @@ await cairn2e.journey.apply("start", {
 `apply(type, data)` returns `true` when the change was made. The other types are the window's
 buttons: `rollLost`, `rollSupply`, `resupply`, `resolveWatch`, `rerollEvent`, `setWeather`,
 `adjust`, `addFatigueToParty`, `end` and a few more. `apply` runs on the Warden's client only,
-and returns `false` on a player's. A player's Lost and Supply rolls reach the Warden through the
+and returns `false` on a player's. A Make Camp `resolveWatch` can open a dialog asking the Warden
+what each character eats. If the Warden closes it, nothing changes, but `apply` still returns
+`true`. A player's Lost and Supply rolls reach the Warden through the
 journey window. Driving a journey through the window is simpler, and the window stays in step
 with what `apply` does.
 
