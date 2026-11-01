@@ -1,3 +1,31 @@
+# 0.2.4
+
+- [Added] **Foraged food feeds the party.** Raw food is a meal in a pinch: fruit, berries,
+  vegetables, eggs, raw meat, fowl, fish, milk and field mushrooms are each one meal. Mushrooms
+  come in three kinds: field mushrooms are eaten as found, morels are poisonous raw and safe once
+  cooked, and toadstools are poison. A cow in milk can be milked.
+- [Added] **The Warden picks the meal.** At Make Camp and at a dungeon's Exhaustion, anyone
+  carrying more than one food is listed in one dialog, and the Warden picks what each of them
+  eats. Closing it eats nothing.
+- [Changed] A thing spent to its last use is gone: a Ration eaten, a potion drunk, a Torch burned
+  down. The use button asks before the last one. A relic, and anything marked **Refillable**
+  (the Lantern, the Oil Can, the Candle Helmet, the Stakes & Mallet), stays at zero instead. The
+  background gear that recharges is now a relic.
+- [Changed] Typing 0 into **Uses** on the Details tab only marks a thing spent; it stays on the
+  sheet until you delete it.
+- [Changed] A scroll has no uses to count. Reading it aloud is the only way to spend it, so its
+  spell always reaches chat.
+- [Changed] A rich-text box reads as text with its links as buttons, and opens for editing where
+  it is clicked or when something is dragged onto it.
+- [Added] **Calendar for modules.** A module can rename the Vald calendar, choose the year a new
+  world starts in and the packs its events come from. The [API page](docs/API.md) explains how.
+- [Added] **Import missing events.** Under Configure Settings, the Warden can bring back the
+  calendar events a world is missing, such as one that was deleted.
+- [Fixed] Under a module's own world calendar, the calendar window and the event import stand
+  aside instead of drawing Vald's months or writing a wrong date.
+- [Fixed] A rich-text box no longer shrinks to nothing in a short window or at the foot of a
+  faction, and the route form scrolls instead of hiding Save.
+
 # 0.2.3
 
 - [Added] **Party Omens.** The Warden draws the party's Omens from the party sheet's title bar,
