@@ -761,7 +761,7 @@ rendered from Raw Meat in a pot. The six **Monster Parts** are taken from the cr
 sold nowhere: Troll Tallow, Gargoyle Grit, Pixie Scale and Phoenix Feather are the dear part of a
 potion, a Viper Venom Sac makes Antitoxin, and a Manticore Spike is worth its price as it is. Raw
 food is a meal in a pinch: fruit, berries, vegetables, eggs, raw meat, fowl and fish, milk and
-field mushrooms are each one meal in one slot, so Make Camp eats them as it eats Rations, and
+field mushrooms are each one meal in one slot, so Make Camp can feed them as it feeds Rations, and
 cooking is worth it for the slot, since several ingredients become one dish with more meals in it.
 Mushrooms come in three kinds: field mushrooms are eaten as found, morels are poisonous raw and
 safe once cooked, and toadstools are poison, kept for the Apothecary's brews. What happens to
@@ -1109,8 +1109,8 @@ spent. The **Day** it shows counts the days of the journey.
 3. **Spend the watch.** The button only works once everything needed has been rolled. It then
    updates the sheets for you:
    - **Make Camp** eats one meal per person (a use of Rations, or of any gear marked *Food*) and
-     clears their Fatigue. The food closest to running out goes first, so a half-eaten meal is
-     finished before a fresh one is opened. Anyone with no meal becomes Deprived.
+     clears their Fatigue. Anyone carrying more than one food is asked about: the Warden picks
+     what each of them eats. Anyone with no meal becomes Deprived.
    - **Supply** hands out the Rations found.
    - **Travel** moves the party closer, or finds the way again if they were lost.
 

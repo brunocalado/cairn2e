@@ -1,0 +1,16 @@
+{{!-- What each character eats, asked of the Warden only for those carrying more than one food:
+      one with a single food eats it without a row here, one with none goes without. The first
+      food in inventory order is picked at first; nothing ranks them. Same rows as the payer
+      dialog, a select where its switch is. --}}
+<div class="cairn-party-dialog cairn-meal-dialog">
+    {{#each rows}}
+        <div class="cairn-party-member">
+            <label class="cairn-party-name" for="cairn-meal-{{index}}" data-tooltip-text="{{name}}">{{name}}</label>
+            <select id="cairn-meal-{{index}}" name="{{index}}">
+                {{#each foods}}
+                    <option value="{{id}}">{{name}} {{value}}/{{max}}</option>
+                {{/each}}
+            </select>
+        </div>
+    {{/each}}
+</div>

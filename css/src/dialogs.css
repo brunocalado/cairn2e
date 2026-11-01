@@ -181,6 +181,20 @@
         }
     }
 
+    /* What each character eats: the payer dialog's rows, one to a line — a food's name and uses
+       beside the character's left the name a single letter in the half-width column a switch
+       fits in. */
+    .cairn-meal-dialog {
+        grid-template-columns: minmax(0, 1fr);
+
+        /* As wide as its longest food, not the row: core's form controls fill their line. */
+        select {
+            flex: 0 1 auto;
+            min-width: 0;
+            width: auto;
+        }
+    }
+
     /* A dungeon turn's declaration: the lead and the free-looking line, the player's own words
        in the ruled field, the ideas, the ongoing work. The words come first and are the widest
        thing in the window; the ideas are lighter than buttons — a faint frame that takes the ink

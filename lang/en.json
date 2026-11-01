@@ -1040,7 +1040,8 @@
       "inclement": "Inclement",
       "nice": "Nice",
       "unpleasant": "Unpleasant"
-    }
+    },
+    "WhoEatsWhat": "Who eats what"
   },
   "CAIRN.KWImport": {
     "BadJson": "That file is not valid JSON.",

@@ -7,7 +7,7 @@
 
 import { COMBAT_FLAGS, CONDITION, FIGHT_FLAGS, SYSTEM_ID } from "../constants.js";
 import { chooseDungeonEvent, drawDungeonEvent, postJourneyCard, rollFirstRoundSave, rollMorale, rollSave } from "../rolls.js";
-import { eatFood } from "../journey.js";
+import { eatMeals } from "../journey.js";
 import { burningLights, putOutLight } from "../light-sources.js";
 import { CairnRulesSummary } from "./rules-summary.js";
 import { DUNGEON_TRIGGERS, MAX_EFFORT } from "../data/combat-dungeon.js";
@@ -493,12 +493,18 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    */
   static async #onSpendFatigue() {
     await CairnCombatTracker.#chargeParty(this.viewed, "CAIRN.Dungeon.WhoFatigue",
-      async (actor) => (await actor.addFatigue()).length > 0,
+      async (actors) => {
+        const paid = new Set();
+        for (const actor of actors) if ((await actor.addFatigue()).length > 0) paid.add(actor);
+        return paid;
+      },
       "CAIRN.Dungeon.FatigueAdded", "CAIRN.Dungeon.FatigueNoRoom");
   }
 
+  /** A ration each, the journey's way: the Warden picks the meal of anyone carrying more than one
+   *  food, after picking who pays. */
   static async #onSpendRation() {
-    await CairnCombatTracker.#chargeParty(this.viewed, "CAIRN.Dungeon.WhoRation", eatFood,
+    await CairnCombatTracker.#chargeParty(this.viewed, "CAIRN.Dungeon.WhoRation", eatMeals,
       "CAIRN.Dungeon.RationEaten", "CAIRN.Dungeon.RationNone");
   }
 
@@ -556,16 +562,20 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    * has none to eat, and what happens then is the table's call.
    * @param {CairnCombat} combat
    * @param {string} titleKey
-   * @param {(actor: Actor) => Promise<boolean>} charge  resolves whether the actor paid
+   * @param {(actors: Actor[]) => Promise<Set<Actor>|null>} charge  charges them all at once, so a
+   *   ration can ask about every meal in one dialog; resolves who paid, or `null` when the Warden
+   *   cancelled and nothing was charged, and then no card is posted
    */
   static async #chargeParty(combat, titleKey, charge, paidKey, unpaidKey) {
     if (!game.user.isGM || !combat?.isDungeon) return;
     const chosen = await CairnCombatTracker.#choosePayers(titleKey,
       CairnCombatTracker.#party(combat).map((actor) => ({ actor })));
     if (!chosen.length) return;
+    const charged = await charge(chosen);
+    if (!charged) return;
     const paid = [];
     const unpaid = [];
-    for (const actor of chosen) ((await charge(actor)) ? paid : unpaid).push(nameOf(actor));
+    for (const actor of chosen) (charged.has(actor) ? paid : unpaid).push(nameOf(actor));
     const lines = [];
     if (paid.length) lines.push(game.i18n.localize(paidKey, { names: listNames(paid) }));
     if (unpaid.length) lines.push(game.i18n.localize(unpaidKey, { names: listNames(unpaid) }));

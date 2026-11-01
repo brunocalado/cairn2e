@@ -61,7 +61,7 @@ import { SYSTEM_ID, SETTINGS, GEAR, TABLES, CONDITION } from "./constants.js";
 import { rollWardenTable, copyOf } from "./helpers.js";
 import {
   ACTIONS, WATCHES, WEATHER, WEATHER_EFFECTS, PATHS, DISTANCES, TERRAINS, VAST_MAX,
-  watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, pendingNeeds, eventsForWatch, isFood, nextMeal
+  watchesNeeded, isLost, supplyDie, weatherFor, raiseTerrain, pendingNeeds, eventsForWatch, isFood, foodChoices
 } from "./journey-rules.js";
 import { currentWatch, advanceWatch } from "./calendar.js";
 import {
@@ -71,6 +71,8 @@ import { parseEncounterResults } from "./encounters.js";
 
 /** The query a player's client sends the Warden's; registered in `module/cairn2e.js`. */
 export const JOURNEY_QUERY = `${SYSTEM_ID}.journey`;
+
+const MEAL_TPL = `systems/${SYSTEM_ID}/templates/apps/meal-dialog.hbs`;
 
 /**
  * The `Wilderness Event` markers dispatch reads, from `flags.cairn2e.event` on each result: an
@@ -94,7 +96,7 @@ export function current() {
 }
 
 /** How many meals the character is carrying — uses, not items: a meal is spent a use at a
- *  time (`eatFood`), so three items with one use left are three meals, not three stacks. */
+ *  time (`eatMeals`), so three items with one use left are three meals, not three stacks. */
 export function mealsCarried(actor) {
   return actor.items.reduce((n, i) => n + (isFood(i) ? i.system.uses.value : 0), 0);
 }
@@ -460,11 +462,14 @@ async function resolveWatch(journey) {
   const lines = [];
   const t = (k) => game.i18n.localize(k);
 
-  // Make Camp: a Ration each; those who ate and slept clear every Fatigue.
+  // Make Camp: a meal each; those who ate and slept clear every Fatigue. The Warden may be asked
+  // what someone eats, and closing that leaves the watch unspent — which is why this is the first
+  // write in the function: nothing above it has touched a sheet, the journey or the clock.
   if (action === "camp") {
+    const ate = await eatMeals(crew);
+    if (!ate) return;
     for (const actor of crew) {
-      const ate = await eatFood(actor);
-      if (ate) {
+      if (ate.has(actor)) {
         // Food and rest met: the need is answered, so Deprived lifts first — a Deprived PC "cannot
         // recover … from Fatigue" (`core-rules.md`), and nothing else in the system lifts it.
         await actor.toggleStatusEffect(CONDITION.DEPRIVED, { active: false });
@@ -641,13 +646,47 @@ async function end() {
 /*  The sheets                                  */
 /* -------------------------------------------- */
 
-/** Spend one use of the character's food closest to running out (`nextMeal`). `false` when there
- *  is none left to spend. Also what a dungeon's Exhaustion spends (`module/apps/combat-tracker.js`). */
-export async function eatFood(actor) {
-  const meal = nextMeal(actor.items);
-  if (!meal) return false;
-  await meal.spendUse();
-  return true;
+/**
+ * Feed these characters a meal each: one with a single food eats it, one with several is asked
+ * about in one dialog, and one with none goes without. `null` when the Warden closes the dialog,
+ * and then nothing was eaten. Make Camp and a dungeon's Exhaustion both feed through here
+ * (`module/apps/combat-tracker.js`), and both run on the Warden's client, so the choice is the
+ * Warden's: the player says at the table what they eat.
+ * @param {Actor[]} actors
+ * @returns {Promise<Set<Actor>|null>}  who ate
+ */
+export async function eatMeals(actors) {
+  const options = actors.map((actor) => ({ actor, foods: foodChoices(actor.items) }));
+  const asked = options.filter((o) => o.foods.length > 1);
+  const meals = new Map(options.filter((o) => o.foods.length === 1).map((o) => [o, o.foods[0]]));
+  if (asked.length) {
+    const content = document.createElement("div");
+    content.innerHTML = await foundry.applications.handlebars.renderTemplate(MEAL_TPL, {
+      // Keyed by place in the list, not by actor id: two unlinked tokens of one actor share the id.
+      rows: asked.map(({ actor, foods }, index) => ({
+        index,
+        name: actor.token?.name ?? actor.name,
+        foods: foods.map((f) => ({ id: f.id, name: f.name, value: f.system.uses.value, max: f.system.uses.max }))
+      }))
+    });
+    const picks = await foundry.applications.api.DialogV2.input({
+      classes: [SYSTEM_ID],
+      window: { title: game.i18n.localize("CAIRN.Journey.WhoEatsWhat") },
+      content,
+      rejectClose: false
+    });
+    if (!picks) return null;
+    asked.forEach((o, index) => {
+      const meal = o.foods.find((f) => f.id === picks[index]);
+      if (meal) meals.set(o, meal);
+    });
+  }
+  const ate = new Set();
+  for (const [{ actor }, meal] of meals) {
+    await meal.spendUse();
+    ate.add(actor);
+  }
+  return ate;
 }
 
 /**

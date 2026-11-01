@@ -151,13 +151,13 @@ export function eventsForWatch(night, action) {
 export const isFood = (i) => i.type === "gear" && i.system.food;
 
 /**
- * The meal a character eats next: a use of the food closest to running out, so a half-eaten
- * Rations is finished before a full one is opened and the slot it holds comes free. Ties keep
- * inventory order — `Array#sort` is stable.
+ * Every food a character could eat now, in inventory order. Which one is eaten is the Warden's
+ * call (`journey.js#eatMeals`), and nothing here ranks them: a rule that ate the food closest to
+ * running out ate the Raw Meat kept for a stew before a half-eaten Rations, and any rule that
+ * knew better would be encoding what the table means to keep.
  * @param {Iterable<{type: string, system: {food: boolean, uses: {value: number}}}>} items
- * @returns {object|null}
+ * @returns {object[]}
  */
-export function nextMeal(items) {
-  return [...items].filter((i) => isFood(i) && i.system.uses.value > 0)
-    .sort((a, b) => a.system.uses.value - b.system.uses.value)[0] ?? null;
+export function foodChoices(items) {
+  return [...items].filter((i) => isFood(i) && i.system.uses.value > 0);
 }
