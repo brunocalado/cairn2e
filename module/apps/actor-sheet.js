@@ -380,7 +380,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
     await item.update({ "system.uses.value": Math.min(item.system.uses.value + 1, item.system.uses.max) });
   }
 
-  // Spend a charge. The last one spent throws the thing away (`documents/item.js#_onUpdate`),
+  // Spend a charge. The last one spent throws the thing away (`documents/item.js#spendUse`),
   // unless it is refilled or a relic, which stay at zero and dimmed. Throwing away has no undo, so
   // it asks first, as the scroll's Consume does.
   static async #onItemUseDecrement(event, target) {
@@ -396,7 +396,7 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       });
       if (!proceed) return;
     }
-    await item.update({ "system.uses.value": Math.max(item.system.uses.value - 1, 0) });
+    await item.spendUse();
   }
 
   /**

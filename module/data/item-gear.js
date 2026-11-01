@@ -54,8 +54,8 @@ export class GearData extends foundry.abstract.TypeDataModel {
       // food exactly as Rations are.
       food: new fields.BooleanField({ initial: false }),
       // Refilled, not used up: a Lantern topped up with oil, a mallet whittled new stakes. A relic
-      // recharges and needs no mark. Everything else with uses is thrown away at its last
-      // (`documents/item.js#_onUpdate`).
+      // recharges and needs no mark. Everything else with uses is thrown away when its last is
+      // spent (`documents/item.js#spendUse`).
       refillable: new fields.BooleanField({ initial: false }),
       // Physical axis. A blank die is "not a weapon"; a zero is "not armour". *Impaired* forces
       // d4 and *Enhanced* d12 regardless of the die — that substitution lives in the roll code.

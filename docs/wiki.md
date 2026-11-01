@@ -392,7 +392,8 @@ on the sheet carries a **Food** tag. Rations, and most of the food in More Gear,
 Make Camp and a dungeon's Exhaustion eat a use of it as they eat Rations (see [§14](#each-watch)).
 
 **Used up.** A thing spent to its last use is gone: a Ration eaten, a potion drunk, a Torch burned
-down. The use button on its row asks before it spends the last one. Two kinds stay on the sheet at
+down. The use button on its row asks before it spends the last one. Typing 0 into **Uses** on the
+Details tab only marks it spent; it stays until you delete it. Two kinds stay on the sheet at
 zero instead: a relic, which recharges, and anything with **Refillable** switched on under **Uses**
 on its Details tab. The Lantern, the Oil Can, the Candle Helmet and the Stakes & Mallet already
 have it.

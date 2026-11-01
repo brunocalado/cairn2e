@@ -646,7 +646,7 @@ async function end() {
 export async function eatFood(actor) {
   const meal = nextMeal(actor.items);
   if (!meal) return false;
-  await meal.update({ "system.uses.value": meal.system.uses.value - 1 });
+  await meal.spendUse();
   return true;
 }
 

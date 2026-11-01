@@ -314,18 +314,16 @@ export class CairnItem extends Item {
   }
 
   /**
-   * @override — a thing spent to its last use is gone (`_derived.js#goneWhenSpent`), whoever
-   * spent it: the sheet, Make Camp, a light. `changed` is a diff, so a `uses.value` in it at 0
-   * came down from above 0. `_onUpdate` runs on every client, so only the one that made the change
-   * acts. A burning light is left to light-sources, which removes a Torch once its flame ends for
-   * good (`light-sources.js#LIGHT_SOURCES`).
+   * Spend one use. The last one spent throws the thing away (`_derived.js#goneWhenSpent`), unless
+   * its flame is burning on it: light-sources removes a Torch once that flame ends for good
+   * (`light-sources.js#LIGHT_SOURCES`, `discardSpent`). Only spending throws away. A 0 typed into
+   * the Uses field, or a mark changed at 0, is an edit and leaves the thing on the sheet.
+   * @returns {Promise<CairnItem|undefined>}
    */
-  _onUpdate(changed, options, userId) {
-    super._onUpdate(changed, options, userId);
-    if ((userId !== game.user.id) || !this.actor) return;
-    const value = changed.system?.uses?.value;
-    if ((value === undefined) || (value > 0) || !goneWhenSpent(this) || isBurning(this)) return;
-    this.delete().catch((err) => console.error(`${SYSTEM_ID} | ${this.name} was spent and could not be removed`, err));
+  async spendUse() {
+    const left = Math.max(this.system.uses.value - 1, 0);
+    if ((left === 0) && goneWhenSpent(this) && !isBurning(this)) return this.delete();
+    return this.update({ "system.uses.value": left });
   }
 
   /**
