@@ -30,7 +30,7 @@
  * @param {object} source
  * @returns {object}
  */
-function arrival(source) {
+export function arrival(source) {
   const data = structuredClone(source);
   delete data._id;
   data.system = { ...(data.system ?? {}), container: "" };

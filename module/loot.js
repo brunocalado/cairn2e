@@ -7,6 +7,7 @@
 
 import { SYSTEM_ID } from "./constants.js";
 import { metric } from "./token-distance-rules.js";
+import { arrival } from "./transfer-rules.js";
 
 /**
  * Canvas Loot: an optional module that drops, throws and picks up items as tiles on the map. Its
@@ -49,9 +50,31 @@ function restyle(messageData) {
   });
 }
 
+/**
+ * What lies on the ground is what would arrive off a dead man: in nobody's hand, in no container
+ * here. Moves between actors state this in `arrival`; a pickup is a plain create, so the tile has
+ * to hold it already, because `_preCreateOperation` cannot clear a hand on every create: the
+ * generators and importers make equipped gear on purpose. And a claw stays on its owner
+ * (`transfer.js#takeItem`); a snapshot cannot tell a pack's claws from a monster's, so neither
+ * lands. Canvas Loot only checks disabled item types, and this runs on the GM's client, which
+ * writes every tile.
+ * @param {TileDocument} tile
+ * @returns {false|void}  false cancels the tile, and Canvas Loot leaves the item where it was.
+ */
+function settle(tile) {
+  const source = tile.flags[MODULE]?.item;
+  if (!source) return;
+  if (source.system?.bodily) {
+    ui.notifications.warn(game.i18n.localize("CAIRN.Barter.Bodily", { name: source.name }));
+    return false;
+  }
+  tile.updateSource({ [`flags.${MODULE}.item`]: arrival(source) });
+}
+
 export function registerLoot() {
   Hooks.once(`${MODULE}.ready`, async () => {
     template = await foundry.applications.handlebars.getTemplate(CARD_TPL);
     Hooks.on(`${MODULE}.preChatMessage`, restyle);
+    Hooks.on("preCreateTile", settle);
   });
 }
