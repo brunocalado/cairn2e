@@ -42,7 +42,7 @@
       "img": "icons/svg/sword.svg",
       "system": {
         "description": "<p>dagger (d6)</p>",
-        "slots": 0,
+        "slots": 1,
         "equipped": true,
         "cost": 0,
         "container": "",
@@ -72,7 +72,7 @@
       "img": "icons/svg/sword.svg",
       "system": {
         "description": "<p>sling (d6)</p>",
-        "slots": 0,
+        "slots": 1,
         "equipped": true,
         "cost": 0,
         "container": "",

@@ -73,7 +73,7 @@
       "img": "icons/svg/sword.svg",
       "system": {
         "description": "<p>spear (d8)</p>",
-        "slots": 0,
+        "slots": 1,
         "equipped": true,
         "cost": 0,
         "container": "",

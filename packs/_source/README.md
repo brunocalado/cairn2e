@@ -59,7 +59,10 @@ Cutpurse's Twin Daggers. The die field holds one die and `paired` the second, an
 says the thing is part of whoever has it — claws, a bite, a tail spike, the Barber-Surgeon's metal
 arm while it is on the shoulder or the sigils toughening their skin — so it costs no slot, is always to hand, and cannot be set aside,
 stowed, handed over or sold. In `bestiary/` the natural attacks are bodily and the made ones
-(swords, bows, spears, the Lich's soul dagger) are not, which is what a looted monster gives up.
+(swords, bows, spears, the Lich's soul dagger) are not, which is what a looted monster gives up. A
+made weapon costs what the Marketplace says, so it weighs the same in a looter's hands: a bow, a
+`paired` weapon or a d10/d12 takes 2 slots, every other made weapon 1. A monster has no capacity
+(`slots.max: 0`), so the cost binds only whoever takes it.
 **A document is written out in full** — every field of the
 schema, defaults included — so a diff reads the same on every file and validation has nothing to
 guess. `checks/compendium.check.mjs` holds all of this.

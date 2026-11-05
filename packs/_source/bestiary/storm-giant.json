@@ -42,7 +42,7 @@
       "img": "icons/svg/sword.svg",
       "system": {
         "description": "<p>great sword (d12)</p>",
-        "slots": 0,
+        "slots": 2,
         "equipped": true,
         "cost": 0,
         "container": "",
