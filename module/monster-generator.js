@@ -197,8 +197,8 @@ async function pickTier() {
 /*  Assembly                                    */
 /* -------------------------------------------- */
 
-/** The one equipped `*` attack Item — a bite is not an inventory item, so `slots: 0` (which reads
- *  as *petty*) keeps it off any ledger. */
+/** The one equipped `*` attack Item. A bite is part of whoever has it, so it is `bodily`: it costs
+ *  no slot, is always to hand and cannot be carried off. */
 function makeAttackItem(verb, die) {
   return {
     // Verbatim table verb + `*`. Not singularised — that breaks on translation; the `*` marks
@@ -209,6 +209,7 @@ function makeAttackItem(verb, die) {
     system: {
       description: `<p>${verb} (${die})</p>`,
       slots: 0,
+      bodily: true,
       equipped: true,
       damage: die,
       blast: false
@@ -219,8 +220,8 @@ function makeAttackItem(verb, die) {
 
 /**
  * An equipped armour Item, so `armorTotal` derives via `NpcData.prepareDerivedData` (the actor's
- * own `armor` stays 0). `slots: 0` — natural armour is a hide, not carried gear, so it occupies no
- * slot, exactly like the attack Item; `sumEquippedArmor` keys off `armor`/`equipped`, not the cost.
+ * own `armor` stays 0). Natural armour is a hide, not carried gear, so it is `bodily` exactly like
+ * the attack Item and costs no slot; `sumEquippedArmor` keys off `armor`/`equipped`, not the cost.
  * @param {string} feature     the rolled Monster Feature, as text
  * @param {boolean} isArmour   whether that feature's result is marked `flags.cairn2e.armour` —
  *                             Carapace, Scales and Shell ARE natural armour, and the Item is named
@@ -236,6 +237,7 @@ function makeArmourItem(feature, isArmour, value) {
     system: {
       description: `<p>${game.i18n.localize("CAIRN.MonsterGen.ArmourDescription", { name, value })}</p>`,
       slots: 0,
+      bodily: true,
       equipped: true,
       armor: value
     },
