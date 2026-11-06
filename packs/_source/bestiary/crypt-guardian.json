@@ -39,7 +39,7 @@
       "_id": "JDStyRGCbLlBGX39",
       "name": "Ethereal Claws",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "system": {
         "description": "<p>ethereal claws (d8+d8)</p>",
         "slots": 0,

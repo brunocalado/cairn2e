@@ -39,7 +39,7 @@
       "_id": "rZE5Gkkss8Wri2NJ",
       "name": "Trident",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/polearms/trident-curved-steel.webp",
       "system": {
         "description": "<p>trident (d8)</p>",
         "slots": 1,

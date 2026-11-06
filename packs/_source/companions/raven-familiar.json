@@ -42,7 +42,7 @@
     {
       "name": "Beak",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/beak-hooked-red.webp",
       "system": {
         "description": "<p>beak (d6)</p>",
         "slots": 0,

@@ -39,7 +39,7 @@
       "_id": "IAAJcicjMzquoxN7",
       "name": "Icicle Dagger",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/daggers/dagger-crooked-ice-blue.webp",
       "system": {
         "description": "<p>icicle dagger (d6)</p>",
         "slots": 1,

@@ -39,7 +39,7 @@
       "_id": "nDl2yJslmhWHLEGA",
       "name": "Short Sword",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/swords/shortsword-guard-worn.webp",
       "system": {
         "description": "<p>short sword (d6)</p>",
         "slots": 1,
@@ -69,7 +69,7 @@
       "_id": "8EHwE0jqyW0zUBeI",
       "name": "Short Bow",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/bows/shortbow-recurve-leather.webp",
       "system": {
         "description": "<p>short bow (d6)</p>",
         "slots": 2,

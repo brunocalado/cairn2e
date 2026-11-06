@@ -39,7 +39,7 @@
       "_id": "s9DnbCjJE90iehTB",
       "name": "Tentacles",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/biological/tentacle-pink.webp",
       "system": {
         "description": "<p>tentacles (d8+d8)</p>",
         "slots": 0,

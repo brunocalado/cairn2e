@@ -39,7 +39,7 @@
       "_id": "dCNmIonGlqGcrvhU",
       "name": "Lightning Sword",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/swords/sword-flanged-lightning.webp",
       "system": {
         "description": "<p>lightning sword (d12)</p>",
         "slots": 2,

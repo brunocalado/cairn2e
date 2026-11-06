@@ -39,7 +39,7 @@
       "_id": "BIwdEcX1QgqUMdSz",
       "name": "Sword",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/swords/sword-guard-steel-green.webp",
       "system": {
         "description": "<p>sword (d6)</p>",
         "slots": 1,
@@ -69,7 +69,7 @@
       "_id": "DzV7AJvoOGhTcI1E",
       "name": "Bite",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
       "system": {
         "description": "<p>bite (d10)</p>",
         "slots": 0,

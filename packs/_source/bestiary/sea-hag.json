@@ -39,7 +39,7 @@
       "_id": "i5yH3TCt0FafZ9Uo",
       "name": "Long Claws",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "system": {
         "description": "<p>long claws (d6+d6)</p>",
         "slots": 0,

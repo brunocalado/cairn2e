@@ -39,7 +39,7 @@
       "_id": "LfAGki5JBHnumRXx",
       "name": "Horn",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/horn-simple-tan.webp",
       "system": {
         "description": "<p>horn (d10, ignores armor)</p>",
         "slots": 0,

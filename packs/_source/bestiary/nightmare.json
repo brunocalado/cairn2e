@@ -39,7 +39,7 @@
       "_id": "wgyebsiBry1vGqjM",
       "name": "Flaming Hooves",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/hooves-cloven-grey.webp",
       "system": {
         "description": "<p>flaming hooves (d8+d8)</p>",
         "slots": 0,

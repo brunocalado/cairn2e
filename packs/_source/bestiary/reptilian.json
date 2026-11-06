@@ -39,7 +39,7 @@
       "_id": "QPrD4LHB4rf4wcBY",
       "name": "Bone Spear",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/polearms/spear-simple-jagged.webp",
       "system": {
         "description": "<p>bone spear (d8)</p>",
         "slots": 1,

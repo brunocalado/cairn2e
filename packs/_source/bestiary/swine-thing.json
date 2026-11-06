@@ -39,7 +39,7 @@
       "_id": "RhsrLNs6nHEEQEpO",
       "name": "Gore",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/horn-simple-tan.webp",
       "system": {
         "description": "<p>gore (d6+d6)</p>",
         "slots": 0,

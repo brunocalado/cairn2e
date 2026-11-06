@@ -39,7 +39,7 @@
       "_id": "KCQvn1Q55kBfHWsr",
       "name": "Life Drain",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/unholy/hand-grasping-green.webp",
       "system": {
         "description": "<p>life drain (d6)</p>",
         "slots": 0,

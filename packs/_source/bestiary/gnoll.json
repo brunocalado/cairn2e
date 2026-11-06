@@ -39,7 +39,7 @@
       "_id": "RnSpAmGqjce8CPyO",
       "name": "Spear",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/polearms/spear-flared-gray.webp",
       "system": {
         "description": "<p>spear (d8)</p>",
         "slots": 1,

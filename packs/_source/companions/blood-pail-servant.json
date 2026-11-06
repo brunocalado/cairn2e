@@ -42,7 +42,7 @@
     {
       "name": "Shard Fists",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/earth/strike-fist-stone.webp",
       "system": {
         "description": "<p>shard fists (d8+d8)</p>",
         "slots": 0,

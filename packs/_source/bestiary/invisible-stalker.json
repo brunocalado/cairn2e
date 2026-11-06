@@ -39,7 +39,7 @@
       "_id": "3X6RlGJBscii9AFP",
       "name": "Fists",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/earth/strike-fist-stone.webp",
       "system": {
         "description": "<p>fists (d4+d4)</p>",
         "slots": 0,

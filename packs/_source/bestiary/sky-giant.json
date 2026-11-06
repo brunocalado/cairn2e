@@ -39,7 +39,7 @@
       "_id": "EaTWtfNh4JPd5zPd",
       "name": "Mace",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/maces/mace-flanged-steel-grey.webp",
       "system": {
         "description": "<p>mace (d10)</p>",
         "slots": 2,

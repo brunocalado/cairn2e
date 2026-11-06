@@ -39,7 +39,7 @@
       "_id": "UjWtDnKqbCub5C5X",
       "name": "Spear",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/polearms/spear-flared-gray.webp",
       "system": {
         "description": "<p>spear (d8)</p>",
         "slots": 1,
@@ -69,7 +69,7 @@
       "_id": "PEwovn36ZblehSLY",
       "name": "Short Bow",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/bows/shortbow-recurve-leather.webp",
       "system": {
         "description": "<p>short bow (d6)</p>",
         "slots": 2,

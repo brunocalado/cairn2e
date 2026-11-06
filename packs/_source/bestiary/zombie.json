@@ -39,7 +39,7 @@
       "_id": "NBFFQ0VPQOuTt8nP",
       "name": "Jagged Nails",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "system": {
         "description": "<p>jagged nails (d6)</p>",
         "slots": 0,

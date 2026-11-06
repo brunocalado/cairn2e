@@ -39,7 +39,7 @@
       "_id": "5AkdeapWPggC9i21",
       "name": "Bite",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
       "system": {
         "description": "<p>bite (d8)</p>",
         "slots": 0,
@@ -70,7 +70,7 @@
       "_id": "Kv5bBjNSX52QDh6N",
       "name": "Fire Breath",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
       "system": {
         "description": "<p>fire breath (d6, <em>blast</em>)</p>",
         "slots": 0,

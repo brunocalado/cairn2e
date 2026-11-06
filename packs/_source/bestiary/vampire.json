@@ -39,7 +39,7 @@
       "_id": "OQUGWfhDn2SHCmb7",
       "name": "Bite",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
       "system": {
         "description": "<p>bite (d10)</p>",
         "slots": 0,

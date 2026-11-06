@@ -39,7 +39,7 @@
       "_id": "SSGq11T7whFHTpEB",
       "name": "Vines",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/nature/root-vine-hand-strike.webp",
       "system": {
         "description": "<p>vines (d4, <em>blast</em>)</p>",
         "slots": 0,

@@ -39,7 +39,7 @@
       "_id": "FrpH3Vi1MfQYRPsL",
       "name": "Great Sword",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/swords/greatsword-flamberge.webp",
       "system": {
         "description": "<p>great sword (d12)</p>",
         "slots": 2,

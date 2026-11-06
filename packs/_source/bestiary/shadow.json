@@ -39,7 +39,7 @@
       "_id": "vJG2QsB4BPs1TEja",
       "name": "Draining Touch",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/unholy/hand-grasping-green.webp",
       "system": {
         "description": "<p>draining touch (d6, ignores armor)</p>",
         "slots": 0,

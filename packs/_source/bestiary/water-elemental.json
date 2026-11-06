@@ -39,7 +39,7 @@
       "_id": "7cKm3OGxP43nRfN1",
       "name": "Spray",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/water/water-jet-wave-blue.webp",
       "system": {
         "description": "<p>spray (d8)</p>",
         "slots": 0,

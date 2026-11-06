@@ -39,7 +39,7 @@
       "_id": "oGcBPlE6oOeiGiYr",
       "name": "Tentacles",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/biological/tentacle-pink.webp",
       "system": {
         "description": "<p>tentacles (d8+d8, <em>blast</em>)</p>",
         "slots": 0,
@@ -71,7 +71,7 @@
       "_id": "YjbgNs1nBVEODqRn",
       "name": "Bite",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
       "system": {
         "description": "<p>bite (d10)</p>",
         "slots": 0,

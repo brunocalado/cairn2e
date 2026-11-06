@@ -57,7 +57,7 @@
     {
       "name": "Claws",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "system": {
         "description": "<p>claws (d4+d4)</p>",
         "slots": 0,

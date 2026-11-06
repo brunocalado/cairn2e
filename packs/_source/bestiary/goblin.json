@@ -39,7 +39,7 @@
       "_id": "5Qmw1UNEFr0CUrAz",
       "name": "Dagger",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/daggers/dagger-bone-grey.webp",
       "system": {
         "description": "<p>dagger (d6)</p>",
         "slots": 1,
@@ -69,7 +69,7 @@
       "_id": "lo225FmX7VAH2MhF",
       "name": "Sling",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/slings/sling-leather.webp",
       "system": {
         "description": "<p>sling (d6)</p>",
         "slots": 1,

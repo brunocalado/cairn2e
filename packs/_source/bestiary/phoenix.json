@@ -39,7 +39,7 @@
       "_id": "l6FdGQdqoRRXDNRP",
       "name": "Talons",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/claws/claw-bird-yellow.webp",
       "system": {
         "description": "<p>talons (d10+d10)</p>",
         "slots": 0,

@@ -39,7 +39,7 @@
       "_id": "NVr3GJHdWs5NE4Hm",
       "name": "Tentacles",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/biological/tentacle-pink.webp",
       "system": {
         "description": "<p>tentacles (d6, <em>blast</em>)</p>",
         "slots": 0,

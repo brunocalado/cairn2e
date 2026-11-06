@@ -39,7 +39,7 @@
       "_id": "CcvG0lCQRU9vejfm",
       "name": "Horns",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/horn-simple-tan.webp",
       "system": {
         "description": "<p>horns (d8)</p>",
         "slots": 0,

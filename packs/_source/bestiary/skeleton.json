@@ -39,7 +39,7 @@
       "_id": "eadeyCRUIhapJzWe",
       "name": "Rusty Sword",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/swords/sword-guard-worn-brown.webp",
       "system": {
         "description": "<p>rusty sword (d6)</p>",
         "slots": 1,
@@ -69,7 +69,7 @@
       "_id": "TlxSfNEML10lk1O1",
       "name": "Bow",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/bows/shortbow-leaves-green.webp",
       "system": {
         "description": "<p>bow (d6)</p>",
         "slots": 2,

@@ -39,7 +39,7 @@
       "_id": "Uj9RJ8xfdH8uSVLv",
       "name": "Club",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/clubs/club-baton-brown.webp",
       "system": {
         "description": "<p>club (d10)</p>",
         "slots": 2,

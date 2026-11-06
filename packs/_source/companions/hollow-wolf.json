@@ -42,7 +42,7 @@
     {
       "name": "Teeth",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
       "system": {
         "description": "<p>teeth (d6)</p>",
         "slots": 0,

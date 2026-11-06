@@ -39,7 +39,7 @@
       "_id": "VIOXajvGBnDuFcMj",
       "name": "Leystaff",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/staves/staff-ornate-blue-jewel.webp",
       "system": {
         "description": "<p>leystaff (d8)</p>",
         "slots": 1,

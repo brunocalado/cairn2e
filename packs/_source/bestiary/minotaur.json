@@ -39,7 +39,7 @@
       "_id": "MaQtFJvufaDF9cEG",
       "name": "Two-Handed Axe",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/axes/axe-double-chopping-black.webp",
       "system": {
         "description": "<p>two-handed axe (d10)</p>",
         "slots": 2,
@@ -69,7 +69,7 @@
       "_id": "eRLlv3EI60O3mCya",
       "name": "Charge",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/horn-simple-tan.webp",
       "system": {
         "description": "<p>charge (d12)</p>",
         "slots": 0,

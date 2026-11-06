@@ -39,7 +39,7 @@
       "_id": "w7lxX7qbjdDGT5cm",
       "name": "Dual Sickles",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/sickles/hand-sickle.webp",
       "system": {
         "description": "<p>dual sickles (d6+d6)</p>",
         "slots": 2,

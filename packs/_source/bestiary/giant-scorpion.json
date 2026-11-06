@@ -39,7 +39,7 @@
       "_id": "6NkuULYO6gwgaQWt",
       "name": "Claws",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "system": {
         "description": "<p>claws (d10+d10)</p>",
         "slots": 0,

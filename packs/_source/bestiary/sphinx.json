@@ -39,7 +39,7 @@
       "_id": "uMpyvMqU5e5v3rNo",
       "name": "Claws",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "system": {
         "description": "<p>claws (d8+d8, <em>blast</em>)</p>",
         "slots": 0,
@@ -71,7 +71,7 @@
       "_id": "xFzblHZTCKqwDX1p",
       "name": "Beak",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/bones/beak-hooked-red.webp",
       "system": {
         "description": "<p>beak (d10)</p>",
         "slots": 0,

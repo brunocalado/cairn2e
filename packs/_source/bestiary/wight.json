@@ -39,7 +39,7 @@
       "_id": "hGeYCmdIYXTAsEGP",
       "name": "Long Sword",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/weapons/swords/greatsword-crossguard-steel.webp",
       "system": {
         "description": "<p>long sword (d10)</p>",
         "slots": 2,

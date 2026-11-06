@@ -39,7 +39,7 @@
       "_id": "of6ziB5RYJUGJKt9",
       "name": "Bite",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
       "system": {
         "description": "<p>bite (d10)</p>",
         "slots": 0,
@@ -70,7 +70,7 @@
       "_id": "OwZ88bT7JTV2gQST",
       "name": "Acid Squirt",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/magic/acid/projectile-stream-bubbles.webp",
       "system": {
         "description": "<p>acid squirt (d8, <em>blast</em>)</p>",
         "slots": 0,

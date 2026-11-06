@@ -205,7 +205,8 @@ function makeAttackItem(verb, die) {
     // "special effect is in the description", which is always true for a rolled monster.
     name: `${verb}*`,
     type: "gear",
-    img: "icons/svg/sword.svg",
+    // The rolled verb can be anything from Stings to Throws, so one picture stands for all of them.
+    img: "icons/creatures/abilities/fangs-teeth-bite.webp",
     system: {
       description: `<p>${verb} (${die})</p>`,
       slots: 0,
@@ -233,7 +234,7 @@ function makeArmourItem(feature, isArmour, value) {
   return {
     name,
     type: "gear",
-    img: "icons/svg/shield.svg",
+    img: "icons/commodities/leather/scales-brown.webp",
     system: {
       description: `<p>${game.i18n.localize("CAIRN.MonsterGen.ArmourDescription", { name, value })}</p>`,
       slots: 0,

@@ -39,7 +39,7 @@
       "_id": "IeZw21D5l1RCrQi8",
       "name": "Tendrils",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/commodities/biological/tentacle-pink.webp",
       "system": {
         "description": "<p>tendrils (d8+d8)</p>",
         "slots": 0,

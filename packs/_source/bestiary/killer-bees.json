@@ -39,7 +39,7 @@
       "_id": "bP3F2EftaRjrWaOt",
       "name": "Sting",
       "type": "gear",
-      "img": "icons/svg/sword.svg",
+      "img": "icons/creatures/abilities/stinger-poison-scorpion-brown.webp",
       "system": {
         "description": "<p>sting (d6)</p>",
         "slots": 0,
