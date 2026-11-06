@@ -2,7 +2,7 @@
   "_id": "lPIZmpl0kNeVeHjz",
   "name": "Manacles",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/sundries/survival/cuffs-shackles-steel.webp",
   "system": {
     "description": "<p><strong>Manacles</strong> Though old, it's still effective even against the very strong. You don't have the key.</p>",
     "slots": 1,

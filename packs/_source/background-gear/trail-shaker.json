@@ -2,7 +2,7 @@
   "_id": "l5BKyLu47EaA6OHE",
   "name": "Trail Shaker",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/chimes-wood-brown.webp",
   "system": {
     "description": "<p><strong>Trail Shaker</strong> A noisy instrument that reveals nearby trails, even when deeply hidden.</p>",
     "slots": 1,

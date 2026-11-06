@@ -26,7 +26,7 @@
       "_id": "0TvholAev8ne9Btq",
       "type": "document",
       "name": "Shrieking Trumpet",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/mushrooms/conical-bell-yellow.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.teRheumzKM0pJXT3",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "Vx008s1HHFvVOzvH",
       "type": "document",
       "name": "Torch Fungus",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/mushrooms/ovate-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.KKsw9ACiDCDTSqoI",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "b42wy5J1GlFAa7u7",
       "type": "document",
       "name": "Murderous Truffle",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/mushrooms/crimini-button-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.I3KXaQMUrtGd6iog",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "S53UWLDa6I22u4W5",
       "type": "document",
       "name": "Hellcap",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/conical-mushroom-poison-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.HzvLMqN9lkVXXYot",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "OjM5W9foKk72IZfL",
       "type": "document",
       "name": "Sproutcup",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/mushrooms/umbontae-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.o0sREJHJiuguAgZK",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "uWU8EZzpyT0BlwgY",
       "type": "document",
       "name": "Rootflower",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/consumables/mushrooms/convex-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.mmBqlIUYkTEbDzp5",
       "weight": 1,
       "range": [

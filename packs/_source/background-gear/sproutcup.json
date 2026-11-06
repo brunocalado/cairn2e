@@ -2,7 +2,7 @@
   "_id": "o0sREJHJiuguAgZK",
   "name": "Sproutcup",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/mushrooms/umbontae-green.webp",
   "system": {
     "description": "<p><strong>Sproutcup</strong>. Ingest to shrink down to the size of a mouse. (Your belongings stay the same size.) You return to normal size within the hour, often in fits and starts. 1 use.</p>",
     "slots": 1,

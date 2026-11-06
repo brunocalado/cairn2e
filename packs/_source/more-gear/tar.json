@@ -2,7 +2,7 @@
   "_id": "E4uW8F8LZ50bJuaT",
   "name": "Tar",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/containers/misc/bucket-wooden-brown.webp",
   "system": {
     "description": "<p>Tar</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "yPS8pQF0WkshCSej",
   "name": "Black Rose Fiddle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/harp-red.webp",
   "system": {
     "description": "<p>A <strong>Black Rose Fiddle</strong> (<em>bulky</em>). Its music causes intense sadness and immobility in nearby mortals. (Others are merely fascinated.) You don't know how to play.</p>",
     "slots": 2,

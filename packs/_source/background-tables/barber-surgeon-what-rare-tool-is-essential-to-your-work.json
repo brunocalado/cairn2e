@@ -26,7 +26,7 @@
       "_id": "gy3ibLCx2aPfDGnO",
       "type": "document",
       "name": "Regrowth Salve",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/potion-jar-capped-teal.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.xBEa5qiAvTbFRivY",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "ZCnQdj9awxLmHpYA",
       "type": "document",
       "name": "Graftgrub",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/bug-larva-yellow.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.FYOqVhoY7IgX0jto",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "QjQHpflKDnc5yTiR",
       "type": "document",
       "name": "Woundwax",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/materials/slime-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.GH02yHndc9PRLj7S",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "LaWUlmvRkssGRXAE",
       "type": "document",
       "name": "Quicksilver",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/bottle-round-empty-glass.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.qxTG8NpWvL5xhDwq",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "BgJJekOJ3itModNg",
       "type": "document",
       "name": "Pneuma Pump",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/tech/valve-pressure-pipe-copper.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.GYr0CGyEZKhHJ2Bc",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "WQHK5AGFjTbdrdTD",
       "type": "document",
       "name": "Lodestone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/stone-chunk-iron-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.mekQYoy0t5swY3bS",
       "weight": 1,
       "range": [

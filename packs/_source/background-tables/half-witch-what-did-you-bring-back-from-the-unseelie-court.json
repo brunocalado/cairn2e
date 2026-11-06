@@ -26,7 +26,7 @@
       "_id": "DegR5kiqU6mRYd5N",
       "type": "document",
       "name": "Black Rose Fiddle",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/instruments/harp-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.yPS8pQF0WkshCSej",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "1Z8hdD8JUCz2nMH7",
       "type": "document",
       "name": "Paper Legs",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/sundries/documents/paper-plain-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.G1Il2u914D9omMwC",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "u4tRsFp4aHl24fuh",
       "type": "document",
       "name": "Living Nightmare",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ssowp07GbBy3zlNG",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "TGD73Wp5qroy0eGI",
       "type": "document",
       "name": "Nightmare Claws",
-      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "img": "icons/creatures/claws/claw-hooked-curved.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.RfpXCY11B68u8JW0",
       "weight": 1,
       "range": [
@@ -131,7 +131,7 @@
       "_id": "YROmiBvsFQf1l1Rm",
       "type": "document",
       "name": "Raven Familiar",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/creatures/birds/corvid-watchful-glowing-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Lxu9rhxsOa6nDmn7",
       "weight": 1,
       "range": [
@@ -161,7 +161,7 @@
       "_id": "PXecwbiDb2lALTbe",
       "type": "document",
       "name": "Briar Thorn",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/plants/thorned-stem-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.MWIa2YsDRT2T2AHj",
       "weight": 1,
       "range": [
@@ -191,7 +191,7 @@
       "_id": "UM1ztc5PTdwKoqxe",
       "type": "document",
       "name": "True Name",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/sundries/documents/document-symbol-rune-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Bdx82zDGng3elLdY",
       "weight": 1,
       "range": [

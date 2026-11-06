@@ -2,7 +2,7 @@
   "_id": "F8E12PoGStCv2Who",
   "name": "Pocket Leyfinder",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/navigation/watch-simple-blue.webp",
   "system": {
     "description": "<p><strong>Order of the Crossroads</strong>. Take a <strong>Pocket Leyfinder</strong>. It points to nearby ley lines and other sources of arcane power. If you lose it, the punishment is death.</p>",
     "slots": 1,

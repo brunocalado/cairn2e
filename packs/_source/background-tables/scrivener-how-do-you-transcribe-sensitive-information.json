@@ -26,7 +26,7 @@
       "_id": "ruIsAKkeeJ8oy25p",
       "type": "document",
       "name": "Fib Ink",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/scribal/ink-quill-pink.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.D6pAlAkWuQzDtnDq",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "Ba74mJz3mlzFnjN9",
       "type": "document",
       "name": "Cipher Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/ore-chunk-black.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.pebwozFmYjfABGu6",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "Izmfsb8DFvOCw53F",
       "type": "document",
       "name": "Everquill",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.VzrVZE7u7PTC3fK2",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "nLj2VCYXcq52pH3v",
       "type": "document",
       "name": "Whisper Vial",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.kFG1UnQ6pigr51cI",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "lIqc38CiGtZGrxep",
       "type": "document",
       "name": "Sanguine Lens",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/scribal/lens-grey-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.vQpQzGjNwiuyckao",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "DuybgXpqFvAqFlen",
       "type": "document",
       "name": "Echo Leaf",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/materials/parchment-secrets.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.3SpDCvBpakDYOOBJ",
       "weight": 1,
       "range": [

@@ -26,7 +26,7 @@
       "_id": "uw1YAWDTAeNukANR",
       "type": "document",
       "name": "Pocket Leyfinder",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/navigation/watch-simple-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.F8E12PoGStCv2Who",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "9sz4zE5ONEJ6VVbQ",
       "type": "document",
       "name": "Star-Iron Mace",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/maces/mace-round-spiked-black.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.v6emYZBBsFX0dbL0",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "EQdr0vnBvqJ0ARal",
       "type": "document",
       "name": "Order of the Glass Sigil",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/magic/symbols/rune-sigil-rough-white-teal.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.vzD55F7U01CrsHvV",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "TPeKuNeTdrbw8NEd",
       "type": "document",
       "name": "Voidglass Shard",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/gems/gem-shattered-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.BvzLYpL8tjNPyy05",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "62VB9qj2JZHLpOQn",
       "type": "document",
       "name": "Quicksilver Chain",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/metal/chain-silver.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.qrBsywERFb1i96w0",
       "weight": 1,
       "range": [
@@ -206,7 +206,7 @@
       "_id": "jwo2FzvlnxNsInbj",
       "type": "document",
       "name": "Quell Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/stone-chunk-grey-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.mYXU0h65i42LVv6c",
       "weight": 1,
       "range": [

@@ -2,7 +2,7 @@
   "_id": "I3KXaQMUrtGd6iog",
   "name": "Murderous Truffle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/mushrooms/crimini-button-brown.webp",
   "system": {
     "description": "<p><strong>Murderous Truffle</strong>. Pungent, highly toxic, and very rare (worth 50gp to assassins).  Illegal pretty much everywhere. 1 use.</p>",
     "slots": 1,

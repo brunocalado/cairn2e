@@ -2,7 +2,7 @@
   "_id": "XBxhkAMiiymXvIHo",
   "name": "Pan Flute",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/pipe-flute-tan.webp",
   "system": {
     "description": "<p><strong>Rodents</strong> Take a <strong>Pan Flute</strong> that emits a high-pitched sound that only rodents can hear. So long as you play, they will follow, even to their deaths.</p>",
     "slots": 1,

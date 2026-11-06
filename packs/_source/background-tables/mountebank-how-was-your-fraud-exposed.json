@@ -56,7 +56,7 @@
       "_id": "dkpPPtd4XweDzi01",
       "type": "document",
       "name": "Beauty Cream",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/potion-jar-corked-labeled-purple-pink.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4HEHe1tB3hHuU2lL",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "wHFabVYURHVMR7Tp",
       "type": "document",
       "name": "Knife",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/daggers/knife-simple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.BGYt5BrAy8cCxZ5d",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "nYJFiY7xW8qRYTtA",
       "type": "document",
       "name": "False Prophet",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/magic/symbols/question-stone-yellow.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.HCVTwKUC14njSeA4",
       "weight": 1,
       "range": [
@@ -131,7 +131,7 @@
       "_id": "8MoZyfph4OFUvSKR",
       "type": "document",
       "name": "Captain's Uniform",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/chest/coat-collared-red-gold.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.7VuzBnk4beAbm3vP",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "liA3KtuNJnFk3HxO",
       "type": "document",
       "name": "Ceremonial Sword",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/weapons/swords/sword-jeweled-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ykShJoGDtpnPkpMV",
       "weight": 1,
       "range": [
@@ -161,7 +161,7 @@
       "_id": "mQoskn0LYeY1DLkZ",
       "type": "document",
       "name": "Bouquet of Flowers",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/flowers/bouquet-pink.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.vxLPzZAAssSfs4TO",
       "weight": 1,
       "range": [
@@ -191,7 +191,7 @@
       "_id": "825eLugLYvkoXkqb",
       "type": "document",
       "name": "Hedgewitch's Curse",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.KHxnNL96nXL02SsP",
       "weight": 1,
       "range": [

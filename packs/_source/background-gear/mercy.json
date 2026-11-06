@@ -2,7 +2,7 @@
   "_id": "sK1Q5G2se5JQllDO",
   "name": "Mercy",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
   "system": {
     "description": "<p><strong>Mercy</strong>. Choose a <strong>weapon type</strong> (blunt, blade, etc). Attacks with this weapon are <em>enhanced</em>. If your vow is broken, you can never use that weapon type again.</p>",
     "gained": "",

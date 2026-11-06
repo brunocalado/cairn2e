@@ -26,7 +26,7 @@
       "_id": "AZvB9qKq8jMVEhu8",
       "type": "document",
       "name": "Quick-Flame Rod",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/lights/torch-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.74E5R54mzTgcTCOm",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "TgCzUtRl9imaii3c",
       "type": "document",
       "name": "Whiskerwort",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/plants/grass-bundle-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Gf8CSI77QabBOrHb",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "zRl1Tc5PQz0mxe2a",
       "type": "document",
       "name": "Wolfsbane",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/flowers/blooms-purple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.AnunDtBy7rD60IPV",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "eLdJIyJXtivjEIGt",
       "type": "document",
       "name": "Large Net",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/fishing/net-simple-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.eLyRCyEHOFlEJ367",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "vZNdNZPeCg4tRShs",
       "type": "document",
       "name": "Warble-Whistle",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/creatures/birds/songbird-yellow-flying.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.1uVj9BEQSnH70DTg",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "60hsuSOtp2n0UToU",
       "type": "document",
       "name": "Pan Flute",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/instruments/pipe-flute-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.XBxhkAMiiymXvIHo",
       "weight": 1,
       "range": [
@@ -206,7 +206,7 @@
       "_id": "R9moSer4eImybVcm",
       "type": "document",
       "name": "Warming Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/ore-chunk-magma-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.wGB2hbtyPyhpuqnc",
       "weight": 1,
       "range": [
@@ -221,7 +221,7 @@
       "_id": "e9Nb8JWC4ouzmVyv",
       "type": "document",
       "name": "Antitoxin (2 uses)",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/vial-cork-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.aBpJxZpULDLBTHKA",
       "weight": 1,
       "range": [

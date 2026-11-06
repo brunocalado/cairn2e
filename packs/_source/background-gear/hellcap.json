@@ -2,7 +2,7 @@
   "_id": "HzvLMqN9lkVXXYot",
   "name": "Hellcap",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/conical-mushroom-poison-red.webp",
   "system": {
     "description": "<p><strong>Hellcap</strong>. Exposure to its aroma causes intense nausea and vomiting. Either way, it clears the room. Bottled (1 use).</p>",
     "slots": 1,

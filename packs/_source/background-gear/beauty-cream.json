@@ -2,7 +2,7 @@
   "_id": "4HEHe1tB3hHuU2lL",
   "name": "Beauty Cream",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/potion-jar-corked-labeled-purple-pink.webp",
   "system": {
     "description": "<p>After seducing a wealthy patron, their family hired a criminal gang to retrieve you. You got away and need to lay low. Start with <strong>Beauty Cream</strong>, 2 uses. Apply to appear irresistibly beautiful for the next 12 hours.</p>",
     "slots": 1,

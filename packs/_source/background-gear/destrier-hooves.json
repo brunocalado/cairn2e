@@ -2,7 +2,7 @@
   "_id": "7Ojq6LzdXJWTGrr6",
   "name": "Destrier Hooves",
   "type": "gear",
-  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "img": "icons/commodities/bones/hooves-cloven-grey.webp",
   "system": {
     "description": "<p>The Heavy Destrier's hooves (d10+d10), while you ride it.</p>",
     "slots": 0,

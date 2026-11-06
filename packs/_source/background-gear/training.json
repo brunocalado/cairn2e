@@ -2,7 +2,7 @@
   "_id": "TOjjEYUsFiroYa2M",
   "name": "Training",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/skills/melee/swords-parry-block-yellow.webp",
   "system": {
     "description": "<p><strong>Training</strong>. If you are the first to attack, melee attacks against you are <em>impaired</em> until you take STR damage.</p>",
     "gained": "",

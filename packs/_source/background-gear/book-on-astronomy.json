@@ -2,7 +2,7 @@
   "_id": "m3cJazh7JLNaydeO",
   "name": "Book On Astronomy",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/skills/trades/academics-astronomy-navigation-purple.webp",
   "system": {
     "description": "<p>Your debut composition reduced the audience to a gibbering mess, murmuring of bright creatures descending from the night sky. Later you noticed that the notes resembled stellar constellations. Take a <strong>Book On Astronomy</strong>, and a lot of questions.</p>",
     "slots": 1,

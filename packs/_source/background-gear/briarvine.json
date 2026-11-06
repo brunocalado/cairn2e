@@ -2,7 +2,7 @@
   "_id": "ZUOBHgR9kStncbuG",
   "name": "Briarvine",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/plants/thorned-stem-vine-green.webp",
   "system": {
     "description": "<p><strong>Briarvine</strong> Entangles any creature up to horse size (STR to break free). Reusable.</p>",
     "slots": 1,

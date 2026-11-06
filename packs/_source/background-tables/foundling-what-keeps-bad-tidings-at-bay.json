@@ -26,7 +26,7 @@
       "_id": "7wtBDsJ0zWbjrmjd",
       "type": "document",
       "name": "Pipeweed",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/plants/dried-leaf-stem-herb-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Ldy47pupQPnbpJRi",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "3dhiJqJSHHuwz7xV",
       "type": "document",
       "name": "Stink Jar",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/skills/toxins/bottle-open-vapors-pink.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.VJkBDz6wmSYLrGxZ",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "pCHbZ3j4OQE0DIU0",
       "type": "document",
       "name": "Ivy Worm",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/bug-caterpillar-dotted-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.vDMC1uDj456djOEX",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "MXxr4DLxVBbqmK1J",
       "type": "document",
       "name": "Dream Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/gems/gem-rough-round-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.HoJNSOy9mtsKkv6m",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "OMIdIrrNNeTjJhjx",
       "type": "document",
       "name": "Drowning Rod",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/wood/wood-pole.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.foWMpl8UNZd0vu5d",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "Y5qmbZ2YnELsppR6",
       "type": "document",
       "name": "Rabbit's Foot",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/biological/foot-black-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.NkAOwcjGzcU4FlyS",
       "weight": 1,
       "range": [

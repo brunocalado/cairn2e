@@ -2,7 +2,7 @@
   "_id": "KHxnNL96nXL02SsP",
   "name": "Hedgewitch's Curse",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
   "system": {
     "description": "<p>You were cursed by a hedgewitch for fooling some innocent village folk. Magic acts unpredictably in your hands (<em>WIL save to avoid disaster</em>). If you are the target of magic, the same applies to its wielder.</p>",
     "gained": "",

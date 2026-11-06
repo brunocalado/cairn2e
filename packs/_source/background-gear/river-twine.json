@@ -2,7 +2,7 @@
   "_id": "89BqLVnmimUCnicN",
   "name": "River Twine",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/cloth/thread-spindle-grey-green.webp",
   "system": {
     "description": "<p><em>The Reed Fisher</em>. A celebrated song about a massive carp that always seems to get away. Begin with a spool of <strong>River Twine</strong> (5 uses). Each dip into the river guarantees a catch, though it might not be pleasant.</p>",
     "slots": 1,

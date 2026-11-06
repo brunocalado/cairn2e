@@ -2,7 +2,7 @@
   "_id": "6kaEavt257Pbi2x8",
   "name": "Rebreak Glass",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/drinks/glass-liquid-blue.webp",
   "system": {
     "description": "<p><strong>Rebreak Glass</strong> A wine flute that can be broken multiple times, reforming after 24 hours. Makes a really loud noise.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "AnunDtBy7rD60IPV",
   "name": "Wolfsbane",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/flowers/blooms-purple.webp",
   "system": {
     "description": "<p><strong>Canines</strong> Take a wreath of <strong>Wolfsbane</strong> and a <strong>Large Net</strong>. Effective against werewolves as well.</p>",
     "slots": 1,

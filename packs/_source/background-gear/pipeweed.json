@@ -2,7 +2,7 @@
   "_id": "Ldy47pupQPnbpJRi",
   "name": "Pipeweed",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/plants/dried-leaf-stem-herb-brown.webp",
   "system": {
     "description": "<p><strong>Pipeweed</strong> Your good luck charm. Conversations tend to flow more easily after a smoke. 6 uses.</p>",
     "slots": 1,

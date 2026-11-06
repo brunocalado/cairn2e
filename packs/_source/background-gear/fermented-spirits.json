@@ -2,7 +2,7 @@
   "_id": "pEHP5K89nA8AiCTl",
   "name": "Fermented Spirits",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/drinks/alcohol-jar-spirits-gray.webp",
   "system": {
     "description": "<p><strong>Fermented Spirits</strong> Keeps you warm at the best of times and as an explosive at the worst. 3 Uses.</p>",
     "slots": 1,

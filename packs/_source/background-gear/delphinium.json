@@ -2,7 +2,7 @@
   "_id": "CoYteO3FpzkSDBFY",
   "name": "Delphinium",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/flowers/cornflower-blue.webp",
   "system": {
     "description": "<p><strong>Delphinium</strong> Breathe water for up to one hour. 1 use, but can be divided into fractional doses.</p>",
     "slots": 1,

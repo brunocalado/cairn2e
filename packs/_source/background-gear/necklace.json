@@ -2,7 +2,7 @@
   "_id": "SulX4PIRkGlgxEfF",
   "name": "Necklace",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/equipment/neck/choker-chain-thin-gold.webp",
   "system": {
     "description": "<p>You sell rare and quality items to monasteries and nobles alike. Take a <strong>Spyglass</strong>, a <strong>Necklace</strong> (<em>petty</em>) worth 20gp, and a <strong>Scroll</strong> of Mirrorwalk (<em>petty</em>).</p>",
     "slots": 0,

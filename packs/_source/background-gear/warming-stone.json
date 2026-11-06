@@ -2,7 +2,7 @@
   "_id": "wGB2hbtyPyhpuqnc",
   "name": "Warming Stone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/stone/ore-chunk-magma-brown.webp",
   "system": {
     "description": "<p><strong>Serpents</strong> Take a <strong>Warming Stone</strong> that generates an irresistible heat and a vial of <strong>Antitoxin</strong> (2 uses).</p>",
     "slots": 1,

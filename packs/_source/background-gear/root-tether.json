@@ -2,7 +2,7 @@
   "_id": "KAvkfotK32ckA7Y8",
   "name": "Root Tether",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
   "system": {
     "description": "<p><strong>Root Tether</strong> When thrown, binds a creature as large as a wolf to the soil for a short time.</p>",
     "slots": 1,

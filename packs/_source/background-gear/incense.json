@@ -2,7 +2,7 @@
   "_id": "CPE5ucoX5XYdDBzi",
   "name": "Incense",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
   "system": {
     "description": "<p><strong>Incense</strong> Perfect for rituals or to keep the flies at bay. Cools the blood.</p>",
     "slots": 1,

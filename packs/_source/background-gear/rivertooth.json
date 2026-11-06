@@ -2,7 +2,7 @@
   "_id": "Y682KAUC1WENVPK3",
   "name": "Rivertooth",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/horse-brown.webp",
   "system": {
     "description": "<p><strong>Rivertooth</strong> Impressively strong, capable of carrying heavy loads. 4 HP. +6 slots (only +2 slots if carrying two people).</p>",
     "slots": 1,

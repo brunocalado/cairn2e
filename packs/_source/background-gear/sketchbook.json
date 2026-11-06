@@ -2,7 +2,7 @@
   "_id": "txv2JH2yBZqbBt4Q",
   "name": "Sketchbook",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/sundries/books/book-simple-brown.webp",
   "system": {
     "description": "<p>Your life was saved by a member of the <strong>Marchguard</strong>, and you were inspired to join their ranks. Take a <strong>Snare Trap</strong> and a <strong>Sketchbook</strong> filled with detailed drawings.</p>",
     "slots": 1,

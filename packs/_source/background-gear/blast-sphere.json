@@ -2,7 +2,7 @@
   "_id": "o1DUVmYUEeZEocdd",
   "name": "Blast Sphere",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/weapons/thrown/bomb-fuse-black.webp",
   "system": {
     "description": "<p><strong>Blast Sphere</strong> A head-sized iron ball filled with explosive powder that detonates on impact (d12, <em>blast</em>, <em>bulky</em>, 1 use).</p>",
     "slots": 2,

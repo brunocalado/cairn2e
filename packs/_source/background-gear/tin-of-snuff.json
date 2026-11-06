@@ -2,7 +2,7 @@
   "_id": "5clwUMOrBdXtNVix",
   "name": "Tin of Snuff",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/treasure/token-brass-round.webp",
   "system": {
     "description": "<p>There was an explosion, and you lost your sense of smell. Well, almost: you can sniff out gold as a pig does truffles. Take a <strong>Tin of Snuff</strong> (6 uses) to dampen the impact. Use it every day or become <em>deprived</em>.</p>",
     "slots": 1,

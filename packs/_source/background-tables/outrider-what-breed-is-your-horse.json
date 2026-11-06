@@ -26,7 +26,7 @@
       "_id": "vnwWpPSQUqkFo5fT",
       "type": "document",
       "name": "Heavy Destrier",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/people/cavalry-heavy.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.qv7CiTSgODz1HV7G",
       "weight": 1,
       "range": [
@@ -41,7 +41,7 @@
       "_id": "KaMIBzP6XLDAp4UA",
       "type": "document",
       "name": "Destrier Hooves",
-      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "img": "icons/commodities/bones/hooves-cloven-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.7Ojq6LzdXJWTGrr6",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "Oz2AIAzLi9Ys1yrs",
       "type": "document",
       "name": "Blacklegged Dandy",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/horses.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ECmJMMTEuq9xLH3M",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "QcIFUfKpFoPIcaIR",
       "type": "document",
       "name": "Rivertooth",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/horse-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Y682KAUC1WENVPK3",
       "weight": 1,
       "range": [
@@ -131,7 +131,7 @@
       "_id": "KnvKAPSBxO3MKodD",
       "type": "document",
       "name": "Piebald Cob",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/horse-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.hN1oB32z0O6MDImS",
       "weight": 1,
       "range": [
@@ -161,7 +161,7 @@
       "_id": "zRIrkoHUktLg5DcC",
       "type": "document",
       "name": "Linden White",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/horse-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.b0FQBwj3iQHSNTw5",
       "weight": 1,
       "range": [
@@ -191,7 +191,7 @@
       "_id": "XWrjoplECWt6uppz",
       "type": "document",
       "name": "Stray Fogger",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/people/cavalry.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.k91T19GK4bXOD7Dv",
       "weight": 1,
       "range": [

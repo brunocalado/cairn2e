@@ -2,7 +2,7 @@
   "_id": "HQNowNfmVb9iAIbO",
   "name": "Gold Powder",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/materials/bowl-powder-gold.webp",
   "system": {
     "description": "<p>You were adept at creating <em>fake</em> gold, which is almost as good. Eventually, your ruse was discovered, and you had to make a hasty retreat. Take a heavy <strong>Metal Ingot</strong> and <strong>Gold Powder</strong> (3 uses).</p>",
     "slots": 1,

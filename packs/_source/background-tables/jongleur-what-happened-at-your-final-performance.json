@@ -26,7 +26,7 @@
       "_id": "InhUfkEr5cwJUK5X",
       "type": "document",
       "name": "Rapier",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/swords/sword-guard-engraved.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.q8KGFMVCkf9CevmD",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "RcFqIB9xKFPjXRg6",
       "type": "document",
       "name": "Book On Astronomy",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/skills/trades/academics-astronomy-navigation-purple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.m3cJazh7JLNaydeO",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "yqY2zjBM63Hyfr0y",
       "type": "document",
       "name": "Thesaurus",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/books/book-tooled-brass-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.3dHpGhYn7v9Wh9Ub",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "8kGTFrBvluK3wN9F",
       "type": "document",
       "name": "Stage Mail",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/equipment/chest/breastplate-layered-gold.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.nrEnPWY7jEFCReVc",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "NVecIZtOlgnbtIZ4",
       "type": "document",
       "name": "Uncanny Hand-Puppet",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/magic/control/control-influence-puppet.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.SsePOUjOCpkExzqS",
       "weight": 1,
       "range": [
@@ -191,7 +191,7 @@
       "_id": "7jONXaJTWJWdNVVh",
       "type": "document",
       "name": "Rabbit Skull",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/bones/skull-bird-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.mFiy1VnTfwXjjaMY",
       "weight": 1,
       "range": [

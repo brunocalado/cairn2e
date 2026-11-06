@@ -2,7 +2,7 @@
   "_id": "b0FQBwj3iQHSNTw5",
   "name": "Linden White",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/horse-white.webp",
   "system": {
     "description": "<p><strong>Linden White</strong> Highly trained and agile, it can perform intricate maneuvers in a time of need (no DEX save to flee). 4 HP. +3 slots.</p>",
     "slots": 1,

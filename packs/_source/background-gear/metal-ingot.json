@@ -2,7 +2,7 @@
   "_id": "ez13VGlo7DC0CzoL",
   "name": "Metal Ingot",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/metal/ingot-worn-iron.webp",
   "system": {
     "description": "<p>You were adept at creating <em>fake</em> gold, which is almost as good. Eventually, your ruse was discovered, and you had to make a hasty retreat. Take a heavy <strong>Metal Ingot</strong> and <strong>Gold Powder</strong> (3 uses).</p>",
     "slots": 1,

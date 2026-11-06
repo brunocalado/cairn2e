@@ -2,7 +2,7 @@
   "_id": "Aalhcp0nOrxrjLoV",
   "name": "Iron Rattle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
   "system": {
     "description": "<p><strong>Iron Rattle</strong> A noisemaker for distracting or scaring your quarry. Sounds convincingly like a snake.</p>",
     "slots": 1,

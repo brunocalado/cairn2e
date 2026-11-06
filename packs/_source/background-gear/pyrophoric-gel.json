@@ -2,7 +2,7 @@
   "_id": "fU25aQlZH0ZZzF6E",
   "name": "Pyrophoric Gel",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/materials/slime-thick-green.webp",
   "system": {
     "description": "<p><strong>Pyrophoric Gel</strong> A sticky green fluid that catches fire when exposed to air, then burns for 8 hours. Cannot be extinguished (1 use).</p>",
     "slots": 1,

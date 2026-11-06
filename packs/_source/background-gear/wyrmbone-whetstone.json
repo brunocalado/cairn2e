@@ -2,7 +2,7 @@
   "_id": "8ongO5gP907EQCC4",
   "name": "Wyrmbone Whetstone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/bones/bones-dragon-grey.webp",
   "system": {
     "description": "<p><strong>Revere the tools of death</strong>: Weapons are to be respected and maintained. Take a <strong>Wyrmbone Whetstone</strong>. Following a half-hour ritual sharpening, attacks with the weapon are <em>enhanced</em> until STR damage is dealt.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "B0ZefbK4fv915fBd",
   "name": "Truth Serum",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/consumables/potions/potion-bottle-labeled-medicine-capped-red-black.webp",
   "system": {
     "description": "<p>You were exposed to a long-acting truth serum whose effects have yet to wear off. The disorder has its advantages: you cannot repeat lies you've heard, either.</p>",
     "gained": "",

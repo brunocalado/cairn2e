@@ -2,7 +2,7 @@
   "_id": "ptNfu4uSEvAILuBw",
   "name": "Transport",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/containers/boxes/parcel.webp",
   "system": {
     "description": "<p><strong>Transport</strong> You deliver \"delicate\" packages throughout the lands. You have at least one contact in any major town.</p>",
     "gained": "",

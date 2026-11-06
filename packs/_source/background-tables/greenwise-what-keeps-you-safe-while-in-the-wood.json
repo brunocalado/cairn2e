@@ -26,7 +26,7 @@
       "_id": "prlJBFW3JnSslDp4",
       "type": "document",
       "name": "Amadou",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/mushrooms/campanulate-bell-shiny-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.31nDzDagDqWnhCU3",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "qhDKnC5CRieLswst",
       "type": "document",
       "name": "Delphinium",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/flowers/cornflower-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.CoYteO3FpzkSDBFY",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "YTv1lx8USssijXxK",
       "type": "document",
       "name": "Tacky Stalk",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/plants/dried-bundle-tied-stems-sticks-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.LCWuvkv7uhPZUde6",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "5syzkUEDwHKon0rY",
       "type": "document",
       "name": "Wisp Lantern",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/lights/lantern-iron-lit-yellow.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.wJN05qN2KgW0maLu",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "9MAxWeXKBOR73K7w",
       "type": "document",
       "name": "Seed Bomb",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/thrown/bomb-fuse-cloth-pink.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.jZycdTszlUUeXNHl",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "XsjR1XNc3tMF8KbG",
       "type": "document",
       "name": "Briarvine",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/plants/thorned-stem-vine-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ZUOBHgR9kStncbuG",
       "weight": 1,
       "range": [

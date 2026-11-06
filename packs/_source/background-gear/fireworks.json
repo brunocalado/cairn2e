@@ -2,7 +2,7 @@
   "_id": "uiZ0BQSoKrAaZkac",
   "name": "Fireworks",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/weapons/thrown/rocket.webp",
   "system": {
     "description": "<p><strong>Fireworks</strong> A dazzling albeit dangerous display. Enough explosive material to blow off a finger or three. 2 uses remain.</p>",
     "slots": 1,

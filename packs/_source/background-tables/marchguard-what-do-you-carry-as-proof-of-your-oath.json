@@ -26,7 +26,7 @@
       "_id": "z99jlygQvG7pksbB",
       "type": "document",
       "name": "Impressive Pin",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/treasure/brooch-shield-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.3qFGVDbeO7FRdPcr",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "L0UhEKilfgBOmUPN",
       "type": "document",
       "name": "Oath Compass",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/navigation/map-nautical-compass.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.zoOmfShxfnQcMGPX",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "Mt76MCaPli2EXYbd",
       "type": "document",
       "name": "Pullstones",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/boulder-black.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Lpg22lNT9ZSP0aFX",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "wsi6Kys8bahkePLm",
       "type": "document",
       "name": "Fireflask",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/potion-flask-stopped-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.r1AGYEqerObkjsed",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "5jeoZdrKeJVo188G",
       "type": "document",
       "name": "Pain Band",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/finger/ring-ball-thorns-bronze.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4s16rvYxwC1L2JN0",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "dhV4CLnhLQp7VYvG",
       "type": "document",
       "name": "Poacher's Woe",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/weapons/ammunition/arrows-barbed-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.M2OF2XbYRSawBL7i",
       "weight": 1,
       "range": [

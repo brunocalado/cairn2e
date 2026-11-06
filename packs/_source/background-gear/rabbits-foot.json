@@ -2,7 +2,7 @@
   "_id": "NkAOwcjGzcU4FlyS",
   "name": "Rabbit's Foot",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/biological/foot-black-grey.webp",
   "system": {
     "description": "<p><strong>Rabbit's Foot</strong> You were wearing it when they found you. They say it is the foot of she who left you and that it protects you from witch magic. <em>Petty</em>.</p>",
     "slots": 0,

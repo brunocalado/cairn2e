@@ -26,7 +26,7 @@
       "_id": "zlUDQ27NTggkxt36",
       "type": "document",
       "name": "Performance",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/skills/trades/music-singing-voice-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.xE2mA1akQNNsKRYC",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "IDQxSw3o193bt29I",
       "type": "document",
       "name": "Rapier",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/swords/sword-guard-engraved.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.lkT31MQ2uGNxj9QQ",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "DeQ2dbpPCxKBols5",
       "type": "document",
       "name": "Wares",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/containers/boxes/crates-wooden-stacked.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.zUxkALwCjUUy7jfa",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "UGVUZFfP0Zle7tIY",
       "type": "document",
       "name": "Transport",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/containers/boxes/parcel.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ptNfu4uSEvAILuBw",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "oPU079zqk9TtQmbh",
       "type": "document",
       "name": "Sailor's Friend",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/skills/trades/profession-sailing-ship.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.SFXQPKPVX4KfxioO",
       "weight": 1,
       "range": [
@@ -206,7 +206,7 @@
       "_id": "b3C77ikbNNLL82RV",
       "type": "document",
       "name": "Guide",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/environment/vehicles/boat-fishing-masted.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.n5wlwslyuHpGYPPz",
       "weight": 1,
       "range": [
@@ -221,7 +221,7 @@
       "_id": "eD2t06Y63Ml4JjtM",
       "type": "document",
       "name": "Map",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/navigation/map-chart-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.pWeX1kmxVIeKrEpc",
       "weight": 1,
       "range": [

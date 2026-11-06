@@ -2,7 +2,7 @@
   "_id": "fICdjNx3Gavu5Gfg",
   "name": "Healing Potion",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/bottle-round-corked-red.webp",
   "system": {
     "description": "<p>You created a restorative tincture that also causes accidental infertility. Take a <strong>Healing Potion</strong> that completely restores STR. Only you know of its unintended side-effects.</p>",
     "slots": 1,

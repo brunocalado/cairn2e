@@ -2,7 +2,7 @@
   "_id": "NsPPWaaxjuwjO1gy",
   "name": "Rime Seed",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/magic/water/tendrils-ice-growth.webp",
   "system": {
     "description": "<p>An <em>ice nettle</em>, trapping and draining sheep. You lost your commission when the fungus you introduced killed half the flock. Take a <strong>Rime Seed</strong> (1 use). It freezes any body of water, no matter the size. Don't eat it.</p>",
     "slots": 1,

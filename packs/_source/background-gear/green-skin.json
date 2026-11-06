@@ -2,7 +2,7 @@
   "_id": "UpVBZBmRFw4sltaD",
   "name": "Green Skin",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/magic/nature/elemental-plant-humanoid.webp",
   "system": {
     "description": "<p>Your radical experiments turned your skin green, and you now gain nourishment as a plant. You don't need <strong>Rations</strong>, but a day without sufficient sunlight and water leaves you <em>deprived</em>.</p>",
     "gained": "",

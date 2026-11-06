@@ -2,7 +2,7 @@
   "_id": "nq2XgprYC73FXra8",
   "name": "Cursed Sapphire",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/gems/gem-faceted-hexagon-blue.webp",
   "system": {
     "description": "<p><strong>Cursed Sapphire</strong> Worth <strong>200gp</strong>, it noticeably returns to your pocket shortly after you spend it. You can't seem to get rid of it.</p>",
     "slots": 1,

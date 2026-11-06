@@ -2,7 +2,7 @@
   "_id": "mekQYoy0t5swY3bS",
   "name": "Lodestone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/stone/stone-chunk-iron-grey.webp",
   "system": {
     "description": "<p><strong>Lodestone</strong> Draws out dangerous elements from the body and acts as a powerful magnetic force.</p>",
     "slots": 1,

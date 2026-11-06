@@ -26,7 +26,7 @@
       "_id": "At8U4wwRUTiFbJjL",
       "type": "document",
       "name": "Bezoar Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/rock-chunk-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.wH4qWlaD0vmW9QWr",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "lCA5IhWUk4M0Haoa",
       "type": "document",
       "name": "Soporific Concoction",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/potion-bottle-labeled-stopped-purple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4cI7VOx1HmPC04xL",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "7mvPGAriFNgCixcU",
       "type": "document",
       "name": "Antitoxin (2 uses)",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/vial-cork-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.aBpJxZpULDLBTHKA",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "UC4Qt5qdsoDqNBRM",
       "type": "document",
       "name": "Green Skin",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/magic/nature/elemental-plant-humanoid.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.UpVBZBmRFw4sltaD",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "m8XsEWaiYTzU25uR",
       "type": "document",
       "name": "Healing Potion",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.fICdjNx3Gavu5Gfg",
       "weight": 1,
       "range": [

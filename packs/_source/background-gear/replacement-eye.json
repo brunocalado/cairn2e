@@ -2,7 +2,7 @@
   "_id": "JSz8fKRzwFpIxWrf",
   "name": "Replacement Eye",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/commodities/tech/electronics-sensor-eye.webp",
   "system": {
     "description": "<p>You have a replacement <strong>eye</strong> that can magnify objects, act as a telescope, and provide minimal night vision. You cannot wear anything metal on your head, and the presence of strong magnets make you <em>deprived</em>.</p>",
     "gained": "",

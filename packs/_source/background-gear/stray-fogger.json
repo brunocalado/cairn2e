@@ -2,7 +2,7 @@
   "_id": "k91T19GK4bXOD7Dv",
   "name": "Stray Fogger",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/people/cavalry.webp",
   "system": {
     "description": "<p><strong>Stray Fogger</strong> Wild but very fast (even in <strong>Tough</strong> terrain). Rides light. 4 HP. +2 slots.</p>",
     "slots": 1,

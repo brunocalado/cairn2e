@@ -2,7 +2,7 @@
   "_id": "5SZFAovjMw7UcwI3",
   "name": "Reed Whistle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/plants/dried-bundle-pointy-stems-sticks-brown.webp",
   "system": {
     "description": "<p><em>The Tinker's Two-Step</em>. A humorous fairy tale about a gift-giving traveler. Start with a <strong>Reed Whistle</strong>. Anyone in earshot must pass a WIL save to perform an act of violence.</p>",
     "slots": 1,

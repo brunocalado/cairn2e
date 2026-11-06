@@ -2,7 +2,7 @@
   "_id": "mmBqlIUYkTEbDzp5",
   "name": "Rootflower",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/consumables/mushrooms/convex-tan.webp",
   "system": {
     "description": "<p><strong>Rootflower</strong>. A white fungus found only on corpses deep underground. Ingest to restore d6 WIL. You will dream of the dead and their stories. 1 use.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "Bm4nyVQu5l6EFRTi",
   "name": "Mythos Mask",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/equipment/head/mask-carved-gargoyle-grey.webp",
   "system": {
     "description": "<p><strong>Mythos Mask</strong> A plaster mask that allows one to take on a monster's countenance. Once it comes off, add a <strong>Fatigue</strong>.</p>",
     "slots": 1,

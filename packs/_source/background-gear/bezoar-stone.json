@@ -2,7 +2,7 @@
   "_id": "wH4qWlaD0vmW9QWr",
   "name": "Bezoar Stone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/stone/rock-chunk-brown.webp",
   "system": {
     "description": "<p>An ill-tempered forest spirit cursed you for stealing, marking you as an enemy of their kind. Take a <strong>Bezoar Stone</strong>. Ingesting it cures any poison (1 use, unless retrieved).</p>",
     "slots": 1,

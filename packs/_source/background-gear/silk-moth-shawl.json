@@ -2,7 +2,7 @@
   "_id": "wL00mrrO0EVEVOBg",
   "name": "Silk Moth Shawl",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/equipment/back/mantle-collared-white.webp",
   "system": {
     "description": "<p><strong>Silk Moth Shawl</strong> A weatherproof blanket, it can also douse a fire without being damaged.</p>",
     "slots": 1,

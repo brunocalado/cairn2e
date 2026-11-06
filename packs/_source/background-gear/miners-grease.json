@@ -2,7 +2,7 @@
   "_id": "LzE2nfhfA3dlemQs",
   "name": "Miner's Grease",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/materials/slime-yellow.webp",
   "system": {
     "description": "<p><strong>Miner's Grease</strong> Great for dislodging a gem, tool, or limb from a tight crack. Highly explosive. 3 uses.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "DEZjfBsajrtrRMD3",
   "name": "Paring Knife",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/weapons/daggers/knife-green.webp",
   "system": {
     "description": "<p>An <em>azure warbler</em>. The gametes attract a sizeable profit, if properly extracted. You succeeded but left its nest to the wolves. Take a <strong>Paring Knife</strong> (d6), <strong>an extra 20gp</strong>, and a pang of regret.</p>",
     "slots": 1,

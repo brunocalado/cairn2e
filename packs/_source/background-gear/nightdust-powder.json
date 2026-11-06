@@ -2,7 +2,7 @@
   "_id": "cLqOz8QRWgv1rhQ7",
   "name": "Nightdust Powder",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/laboratory/bowl-powder-purple.webp",
   "system": {
     "description": "<p><strong>Nightdust Powder</strong> Made from the ritual burning of six owls. When tossed in the air, day turns to night for a short while. 2 uses.</p>",
     "slots": 1,

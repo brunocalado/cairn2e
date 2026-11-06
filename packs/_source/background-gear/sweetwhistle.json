@@ -2,7 +2,7 @@
   "_id": "nq6RXDLtXMUhkpWB",
   "name": "Sweetwhistle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/whistle-copper.webp",
   "system": {
     "description": "<p><strong>Sweetwhistle</strong> 1 charge. Listeners hear a soft, familiar voice in the distance that they cannot resist following.</p>",
     "slots": 1,

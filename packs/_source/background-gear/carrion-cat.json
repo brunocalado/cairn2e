@@ -2,7 +2,7 @@
   "_id": "ntO6lCdFDMSmeUAL",
   "name": "Carrion Cat",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/creatures/mammals/humanoid-cat-skulking-teal.webp",
   "system": {
     "description": "<p><strong>Carrion Cat</strong> A clever pet, small enough to hide in your pack (<em>bulky</em>), but strong enough to scare off smaller predators. Requires one <strong>Ration</strong> a day, and it must be meat.</p>",
     "slots": 2,

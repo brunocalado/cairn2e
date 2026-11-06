@@ -2,7 +2,7 @@
   "_id": "aBpJxZpULDLBTHKA",
   "name": "Antitoxin (2 uses)",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/vial-cork-green.webp",
   "system": {
     "description": "<p>Antitoxin (2 uses)</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "FYOqVhoY7IgX0jto",
   "name": "Graftgrub",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/bug-larva-yellow.webp",
   "system": {
     "description": "<p><strong>Graftgrub</strong> A small worm that can fuse inanimate objects with parts of the body.  1 use.</p>",
     "slots": 1,

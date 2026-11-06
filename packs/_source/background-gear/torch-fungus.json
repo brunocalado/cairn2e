@@ -2,7 +2,7 @@
   "_id": "KKsw9ACiDCDTSqoI",
   "name": "Torch Fungus",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/mushrooms/ovate-blue.webp",
   "system": {
     "description": "<p><strong>Torch Fungus</strong>. When crushed, it creates a cold blue light for a short while. 2 uses.</p>",
     "slots": 1,

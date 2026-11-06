@@ -26,7 +26,7 @@
       "_id": "9O6thIAbMZWMaJhC",
       "type": "document",
       "name": "Steadymade Buckler",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/equipment/shield/buckler-wooden-boss-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.1EQGGjrrAPYCj2N6",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "nCrDqDdkQTfdfd3V",
       "type": "document",
       "name": "Wyrmbone Whetstone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/bones/bones-dragon-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.8ongO5gP907EQCC4",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "lN0SEAwKLAUwADfg",
       "type": "document",
       "name": "Death-Whistle",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/instruments/whistle-sports.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.DheWLKOxdaqdpBrW",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "C05YMPvYvX9IeRiY",
       "type": "document",
       "name": "Revere the Dead",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/sundries/misc/tombstone.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.uxCVpb71dwaeErg8",
       "weight": 1,
       "range": [
@@ -161,7 +161,7 @@
       "_id": "mkHJMO9XARAPyrqw",
       "type": "document",
       "name": "Tally Stick",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/wood/kindling-stick-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.FoqAK9jbTA9oCvBe",
       "weight": 1,
       "range": [
@@ -191,7 +191,7 @@
       "_id": "IX5QphkKpWW6LPli",
       "type": "document",
       "name": "Blacked-Out Ledger",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/books/book-black-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.DJkRtDuSnf3U5y2J",
       "weight": 1,
       "range": [
@@ -206,7 +206,7 @@
       "_id": "trv6FfG4ykFafeCC",
       "type": "document",
       "name": "Always Pay Your Debts",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/skills/social/trading-justice-scale-gold.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.lX7f1ht79ApDzR1S",
       "weight": 1,
       "range": [

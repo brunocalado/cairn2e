@@ -2,7 +2,7 @@
   "_id": "mgKHET3LbU874Lc2",
   "name": "Falconry",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/creatures/birds/raptor-hawk-flying.webp",
   "system": {
     "description": "<p><strong>Falconry</strong>. You keep a falcon [3 hp, 5 STR, 16 DEX, 4 WIL, claws (d6+d6), bite (d8)]. It only eats live game.</p>",
     "gained": "",

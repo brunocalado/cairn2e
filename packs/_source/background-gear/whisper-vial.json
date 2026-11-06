@@ -2,7 +2,7 @@
   "_id": "kFG1UnQ6pigr51cI",
   "name": "Whisper Vial",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
   "system": {
     "description": "<p><strong>Whisper Vial</strong> Whisper a message into the vial, and it will play it back to whoever opens it next.</p>",
     "slots": 1,

@@ -26,7 +26,7 @@
       "_id": "y1i7sE3VmO2cBWQz",
       "type": "document",
       "name": "False Cuffs",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/survival/cuffs-hand.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.IkmQ2BGG4YzKELmO",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "vBVfjXiYsxYJe3m0",
       "type": "document",
       "name": "Pocket Theatre",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/flags/banner-worn-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.sbaHE98mny4rZ1NH",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "jWqqq58mqo1hl1h4",
       "type": "document",
       "name": "Ghost Violin",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/instruments/harp-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.3uXSwvudD28ppJZq",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "PacOYpWVPkvpvipW",
       "type": "document",
       "name": "Tragic Tales",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/books/book-rounded-clasp-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.GNEAE2tzDbTCKKXH",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "EFG598LxOeuw8L6n",
       "type": "document",
       "name": "Mythos Mask",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/head/mask-carved-gargoyle-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Bm4nyVQu5l6EFRTi",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "x24VtGvglyI5sHk1",
       "type": "document",
       "name": "Rebreak Glass",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/drinks/glass-liquid-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.6kaEavt257Pbi2x8",
       "weight": 1,
       "range": [

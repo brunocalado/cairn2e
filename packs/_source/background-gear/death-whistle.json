@@ -2,7 +2,7 @@
   "_id": "DheWLKOxdaqdpBrW",
   "name": "Death-Whistle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/whistle-sports.webp",
   "system": {
     "description": "<p><strong>To the death, always</strong>: You never back down from a fight, no matter the odds. Take a <strong>Death-Whistle</strong>, 1 charge. Its scream frightens away all who hear it (save WIL or flee).</p>",
     "slots": 1,

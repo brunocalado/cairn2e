@@ -2,7 +2,7 @@
   "_id": "lkT31MQ2uGNxj9QQ",
   "name": "Rapier",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/weapons/swords/sword-guard-engraved.webp",
   "system": {
     "description": "<p><strong>Bodyguard</strong> You are a protector for those afraid to travel alone. Start with a <strong>Rapier</strong> (d8).</p>",
     "slots": 1,

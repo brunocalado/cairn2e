@@ -2,7 +2,7 @@
   "_id": "qrBsywERFb1i96w0",
   "name": "Quicksilver Chain",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/metal/chain-silver.webp",
   "system": {
     "description": "<p><strong>Order of Canaas</strong>. Once per day, you can change into a wolf. Take a <strong>Quicksilver Chain</strong>. Without it, you are unable to shift back.</p>",
     "slots": 1,

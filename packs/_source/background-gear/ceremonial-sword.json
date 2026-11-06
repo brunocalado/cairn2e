@@ -2,7 +2,7 @@
   "_id": "ykShJoGDtpnPkpMV",
   "name": "Ceremonial Sword",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/weapons/swords/sword-jeweled-red.webp",
   "system": {
     "description": "<p>Your latest stunt destroyed a priceless artifact and injured a dozen bystanders. Start with a <strong>Captain's Uniform</strong> (<em>petty</em>), a <strong>Ceremonial Sword</strong> (harmless, 60gp), and a <strong>Bouquet of Flowers</strong>.</p>",
     "slots": 1,

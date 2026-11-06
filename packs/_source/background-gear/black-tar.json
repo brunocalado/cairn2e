@@ -2,7 +2,7 @@
   "_id": "jQR4IOKK3Xecmehc",
   "name": "Black Tar",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/laboratory/bowl-liquid-black.webp",
   "system": {
     "description": "<p><strong>Black Tar</strong> Versatile: both sticky and highly flammable. 3 uses.</p>",
     "slots": 1,

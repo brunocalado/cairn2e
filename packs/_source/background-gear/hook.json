@@ -2,7 +2,7 @@
   "_id": "72QZzLH6Ek9EZ9Ky",
   "name": "Hook",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/fasteners/chain-hook-grey.webp",
   "system": {
     "description": "<p>One of your fingers has been swapped, the bone replaced by gold and iron. Take a <strong>Hook</strong> and a <strong>Screwdriver</strong> that can attach to the fingertip.</p>",
     "slots": 1,

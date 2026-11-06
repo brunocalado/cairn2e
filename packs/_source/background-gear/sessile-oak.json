@@ -2,7 +2,7 @@
   "_id": "ezLUjUljK45AvPv2",
   "name": "Sessile Oak",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/weapons/staves/staff-ornate-wood.webp",
   "system": {
     "description": "<p><strong>Sessile Oak</strong> (d8, <em>bulky</em>). Slams into targets. On <strong>Critical Damage</strong> something is torn off.</p>",
     "slots": 2,

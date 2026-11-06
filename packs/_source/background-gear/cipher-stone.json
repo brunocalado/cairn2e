@@ -2,7 +2,7 @@
   "_id": "pebwozFmYjfABGu6",
   "name": "Cipher Stone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/stone/ore-chunk-black.webp",
   "system": {
     "description": "<p><strong>Cipher Stone</strong> A pair of sharp black stones. Each one decrypts any message written by the other.</p>",
     "slots": 1,

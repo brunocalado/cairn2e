@@ -2,7 +2,7 @@
   "_id": "ECmJMMTEuq9xLH3M",
   "name": "Blacklegged Dandy",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/horses.webp",
   "system": {
     "description": "<p><strong>Blacklegged Dandy</strong> Hardy and adaptable. <strong>Tough</strong> or <strong>Perilous</strong> terrain are one step easier. 6 HP. +4 slots.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "UfBNfUb65boIYD18",
   "name": "Burial Wagon",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/containers/misc/coffin-wood-brown.webp",
   "system": {
     "description": "<p>A <strong>burial wagon</strong> (+6 slots, <em>slow</em>) from your last job. It came with a stubborn old <strong>donkey</strong> (+4 slots, only +2 slots if pulling wagon).</p>",
     "slots": 1,

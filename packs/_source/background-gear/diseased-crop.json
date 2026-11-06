@@ -2,7 +2,7 @@
   "_id": "SQ34CVKE5D1rlE8q",
   "name": "Diseased Crop",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/plants/leaf-dried-eaten-green.webp",
   "system": {
     "description": "<p><em>The Withering</em>, a type of stem rot from the <strong>Roots</strong>. Take a <strong>Diseased Crop</strong> (6 uses) that quickly decays any plant it touches.</p>",
     "slots": 1,

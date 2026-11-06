@@ -26,7 +26,7 @@
       "_id": "1QS8kMrg2zXr3SzJ",
       "type": "document",
       "name": "Manacles",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/survival/cuffs-shackles-steel.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.lPIZmpl0kNeVeHjz",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "EdxWzCoCA6d9hJO8",
       "type": "document",
       "name": "Sponge",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/stone-porous-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.lwBMgGS02zYwRSfo",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "5pclAAp86MFGmonr",
       "type": "document",
       "name": "Pulley",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/tech/wheel-wooden.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.8BppvD9SESWlm5lC",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "cnn0xzVJ8eYsnG97",
       "type": "document",
       "name": "Incense",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.CPE5ucoX5XYdDBzi",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "9jC8OOgQqLBgAd8e",
       "type": "document",
       "name": "Crowbar",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/tools/hand/pry-bar-steel.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.futZXCCxru3SoaeU",
       "weight": 1,
       "range": [

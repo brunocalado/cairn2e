@@ -26,7 +26,7 @@
       "_id": "Xaowxzu983Vp27xF",
       "type": "document",
       "name": "Western Yew",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/staves/staff-simple-hooked.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Bjz2eRQ4v6lMrzK6",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "P3DL3KqWIjfHs16w",
       "type": "document",
       "name": "Sessile Oak",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/staves/staff-ornate-wood.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ezLUjUljK45AvPv2",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "hhgjFqxIkKL6pfe3",
       "type": "document",
       "name": "Stone Pine",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/staves/staff-simple-spiral-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.AKvMp9GOxgNeOVHQ",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "4NjfOk3n1ytVlbDg",
       "type": "document",
       "name": "White Ash",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/weapons/staves/staff-simple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.VLia0ygZksPLMBA2",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "HjlkAUFxjdAACqDS",
       "type": "document",
       "name": "Striped Bamboo",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/staves/staff-simple-spiral-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Bss4Lo5uZaNxSOwO",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "HlbFsZAhKAbuBX4f",
       "type": "document",
       "name": "Wych Elm",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/staves/staff-simple-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.kfZH0GahkD9zQ1jG",
       "weight": 1,
       "range": [

@@ -2,7 +2,7 @@
   "_id": "eJcHAMbULBwNCTdI",
   "name": "Clatter Keeper",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/tech/crank.webp",
   "system": {
     "description": "<p><strong>Clatter Keeper</strong> A hand-cranked device that emits a loud noise, frightening away most creatures.</p>",
     "slots": 1,

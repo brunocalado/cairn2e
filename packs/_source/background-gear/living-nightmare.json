@@ -2,7 +2,7 @@
   "_id": "ssowp07GbBy3zlNG",
   "name": "Living Nightmare",
   "type": "growth",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp",
   "system": {
     "description": "<p>A <strong>Living Nightmare</strong> that dwells within you but manifests whenever you are in danger. It has your same <strong>Attributes</strong> and <strong>HP</strong> and attacks with claws (d8+d8). It disappears on <strong>Critical Damage</strong> (take 1d4 WIL damage), re-appearing again on the next full moon.</p>",
     "gained": "",

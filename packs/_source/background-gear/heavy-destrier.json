@@ -2,7 +2,7 @@
   "_id": "qv7CiTSgODz1HV7G",
   "name": "Heavy Destrier",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/people/cavalry-heavy.webp",
   "system": {
     "description": "<p><strong>Heavy Destrier</strong> A beast built for war, an imposing creature. 8 HP, 1 Armor, hooves (d10+d10), +2 slots.</p>",
     "slots": 1,

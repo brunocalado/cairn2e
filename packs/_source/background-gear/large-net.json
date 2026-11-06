@@ -2,7 +2,7 @@
   "_id": "eLyRCyEHOFlEJ367",
   "name": "Large Net",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/fishing/net-simple-tan.webp",
   "system": {
     "description": "<p><strong>Canines</strong> Take a wreath of <strong>Wolfsbane</strong> and a <strong>Large Net</strong>. Effective against werewolves as well.</p>",
     "slots": 1,

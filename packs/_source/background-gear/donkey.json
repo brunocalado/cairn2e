@@ -2,7 +2,7 @@
   "_id": "JPVLxVmbQqezbbNY",
   "name": "Donkey",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/horse-white.webp",
   "system": {
     "description": "<p>You scavenge raw tin and iron from battlefields, pulling teeth from still-twitching corpses. Start with a young <strong>Donkey</strong> (+4 slots, slow), a <strong>Crossbow</strong> (d8 damage, <em>bulky</em>), and a <strong>Saw</strong> (d6).</p>",
     "slots": 1,

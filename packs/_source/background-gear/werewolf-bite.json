@@ -2,7 +2,7 @@
   "_id": "UkWcH9vQhdd6IB6l",
   "name": "Werewolf Bite",
   "type": "gear",
-  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "img": "icons/creatures/abilities/fangs-teeth-bite.webp",
   "system": {
     "description": "<p>bite (d8), turned</p>",
     "slots": 0,

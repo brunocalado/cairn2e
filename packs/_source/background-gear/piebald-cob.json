@@ -2,7 +2,7 @@
   "_id": "hN1oB32z0O6MDImS",
   "name": "Piebald Cob",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/horse-tan.webp",
   "system": {
     "description": "<p><strong>Piebald Cob</strong> Intelligent, it can understand simple commands and even has an instinct for danger. 6 HP. +4 slots.</p>",
     "slots": 1,

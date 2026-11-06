@@ -2,7 +2,7 @@
   "_id": "LgBqpQhhyjmDtios",
   "name": "Goosefelt Tarp",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/sundries/survival/bedroll-tan.webp",
   "system": {
     "description": "<p>Noble-born, you joined to escape family trouble. Take a <strong>Goosefelt Tarp</strong> (fits two) that you stole before leaving home.</p>",
     "slots": 1,

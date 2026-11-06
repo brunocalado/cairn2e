@@ -26,7 +26,7 @@
       "_id": "g3U2vbk6kw1yJfIy",
       "type": "document",
       "name": "Rebirth Ash",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/gems/powder-raw-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.1K20rm8DwnMXDadc",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "1y9gbXyu8nbOoHKq",
       "type": "document",
       "name": "Glamour Feather",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/materials/feather-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.xlXXe7jGfxXYlSvE",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "cf5VLkBuFtw9RSVF",
       "type": "document",
       "name": "Hawthorn Seed",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/nuts/hazelnut-acorn-shell-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.3A8SdkU2zWFptFGU",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "PpkdnY126DPib1jy",
       "type": "document",
       "name": "Stonetree Sap",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/commodities/gems/gem-rough-teardrop-orange.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Yl6gUdD1HxV4T67L",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "1q9fdt1Jnu6kcsXU",
       "type": "document",
       "name": "Nightdust Powder",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/laboratory/bowl-powder-purple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.cLqOz8QRWgv1rhQ7",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "zbTcxxExMcdo6hdO",
       "type": "document",
       "name": "Hex Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/magic/symbols/runes-carved-stone-purple.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.vjjcuL8OYN1dPBML",
       "weight": 1,
       "range": [

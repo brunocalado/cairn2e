@@ -2,7 +2,7 @@
   "_id": "vQpQzGjNwiuyckao",
   "name": "Sanguine Lens",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/scribal/lens-grey-red.webp",
   "system": {
     "description": "<p><strong>Sanguine Lens</strong> Extracts blood from a target without their knowledge. A stolen drop placed on the eye reveals memories from the past day.</p>",
     "slots": 1,

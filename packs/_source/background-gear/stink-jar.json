@@ -2,7 +2,7 @@
   "_id": "VJkBDz6wmSYLrGxZ",
   "name": "Stink Jar",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/skills/toxins/bottle-open-vapors-pink.webp",
   "system": {
     "description": "<p><strong>Stink Jar</strong> Shattering this jar releases an odor so foul all nearby must make a STR save or immediately vomit. 1 use.</p>",
     "slots": 1,

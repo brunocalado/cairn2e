@@ -2,7 +2,7 @@
   "_id": "zFiBNnGYRntjd3yv",
   "name": "Metal Arm",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/commodities/tech/plating-metal-armor-piston.webp",
   "system": {
     "description": "<p>One <strong>arm</strong> is fully metal and comes off at the shoulder. It can be used as a weapon (d8, <em>bulky</em> when not attached) and can move independently if you are within sight of it.</p>",
     "slots": 2,

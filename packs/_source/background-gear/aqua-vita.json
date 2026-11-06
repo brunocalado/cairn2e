@@ -2,7 +2,7 @@
   "_id": "Br8aGcDkFHPBj9JR",
   "name": "Aqua Vita",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/bottle-round-label-cork-blue.webp",
   "system": {
     "description": "<p><strong>Aqua Vita</strong> Purifies any liquid, converting it to pure water. Drinking it cures 1d6 STR (1 use).</p>",
     "slots": 1,

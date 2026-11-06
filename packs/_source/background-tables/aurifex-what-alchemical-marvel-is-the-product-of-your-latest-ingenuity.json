@@ -26,7 +26,7 @@
       "_id": "yLIq2DXjTIagFYw3",
       "type": "document",
       "name": "Pyrophoric Gel",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/materials/slime-thick-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.fU25aQlZH0ZZzF6E",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "gj3EZ9Oy1Ol1CJ4K",
       "type": "document",
       "name": "Blast Sphere",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/thrown/bomb-fuse-black.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.o1DUVmYUEeZEocdd",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "IWyE9UDAGu3uaN46",
       "type": "document",
       "name": "Aqua Vita",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/bottle-round-label-cork-blue.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Br8aGcDkFHPBj9JR",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "pNvAjFXIGaVp4erE",
       "type": "document",
       "name": "Mimic Stone",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/stone/stone-chunk-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.xPsvZ0AyojpgOj8g",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "HvFyqq4r6gtIs8nA",
       "type": "document",
       "name": "Spark Dust",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/laboratory/powder-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.JXdlNPsepcQUaPJS",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "RwpaCi6f2M4XNMd6",
       "type": "document",
       "name": "Homunculus",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/treasure/doll-voodoo.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.1WM5z7Fbm8mA5mJY",
       "weight": 1,
       "range": [

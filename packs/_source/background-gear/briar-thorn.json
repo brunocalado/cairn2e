@@ -2,7 +2,7 @@
   "_id": "MWIa2YsDRT2T2AHj",
   "name": "Briar Thorn",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/plants/thorned-stem-brown.webp",
   "system": {
     "description": "<p>A <strong>Briar Thorn</strong>. It can pierce any organic material (quite painfully) but when removed leaves no trace of the intrusion.</p>",
     "slots": 1,

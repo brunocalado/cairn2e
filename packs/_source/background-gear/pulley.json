@@ -2,7 +2,7 @@
   "_id": "8BppvD9SESWlm5lC",
   "name": "Pulley",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/tech/wheel-wooden.webp",
   "system": {
     "description": "<p><strong>Pulley</strong> Great for moving gravestones, rocks, or even bodies.</p>",
     "slots": 1,

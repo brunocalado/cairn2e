@@ -2,7 +2,7 @@
   "_id": "UIINMbOilYR9MA5w",
   "name": "Mortal Wound",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/skills/wounds/injury-stitched-flesh-red.webp",
   "system": {
     "description": "<p>A <strong>mortal wound</strong> from a freed <em>revenant</em>. You were healed, but the disfigurement has made you a pariah. You require neither air nor sustenance but are still subject to pain and death. Trapped between worlds, the dead see you as one of their own.</p>",
     "gained": "",

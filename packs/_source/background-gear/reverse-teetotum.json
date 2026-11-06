@@ -2,7 +2,7 @@
   "_id": "Xo6jBlpD8CH588Wx",
   "name": "Reverse Teetotum",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/tech/clock-stopwatch-brass.webp",
   "system": {
     "description": "<p><strong>Reverse Teetotum</strong> 1 use. When spun, time skips backwards 30 seconds. Everyone remembers what happened.</p>",
     "slots": 1,

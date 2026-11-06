@@ -2,7 +2,7 @@
   "_id": "3SpDCvBpakDYOOBJ",
   "name": "Echo Leaf",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/materials/parchment-secrets.webp",
   "system": {
     "description": "<p><strong>Echo Leaf</strong> A blank parchment. Whomever unfurls it sees their actions of the day slowly revealed in a tight scrawl. <em>Petty</em>.</p>",
     "slots": 0,

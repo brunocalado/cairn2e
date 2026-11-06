@@ -2,7 +2,7 @@
   "_id": "fwoApCOAHLYNM0aH",
   "name": "Plague Doctor's Mask",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/equipment/head/mask-plague-leather-brown.webp",
   "system": {
     "description": "<p>A <strong>plague doctor's mask</strong>, after its owner succumbed to the disease that wiped out everyone you once knew. They should have kept it on.</p>",
     "slots": 1,

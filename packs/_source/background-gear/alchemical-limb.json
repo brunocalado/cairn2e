@@ -2,7 +2,7 @@
   "_id": "DrcFePc7O1LrYX90",
   "name": "Alchemical Limb",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/equipment/hand/gauntlet-armored-grey.webp",
   "system": {
     "description": "<p>A <em>mock firefly</em>, baiting water carriers with its glowing lure. Take an <strong>Alchemical Limb</strong> (d8, <em>petty</em> when worn) to replace the one it tore off and an <strong>Oil Can</strong> (6 uses). The limb is immune to heat and poison. Needs to be oiled daily.</p>",
     "slots": 0,

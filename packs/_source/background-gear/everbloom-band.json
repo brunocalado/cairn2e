@@ -2,7 +2,7 @@
   "_id": "2t28CRddYjGOPB3N",
   "name": "Everbloom Band",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/magic/nature/leaf-flower-wreath-glow-green-blue.webp",
   "system": {
     "description": "<p><strong>Everbloom Band</strong> A circlet adorned with flowers that never wilt. On <strong>Critical Damage</strong>, the flowers dissolve into dust, but you act as if your save succeeded (STR loss still occurs).</p>",
     "slots": 1,

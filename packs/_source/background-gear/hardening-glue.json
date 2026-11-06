@@ -2,7 +2,7 @@
   "_id": "MSZRzsapAQWoBFB4",
   "name": "Hardening Glue",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
   "system": {
     "description": "<p><strong>Hardening Glue</strong> Makes any flat material (cloth, leather, sand) as hard as stone. Expensive (20gp a bottle, 3 uses).</p>",
     "slots": 1,

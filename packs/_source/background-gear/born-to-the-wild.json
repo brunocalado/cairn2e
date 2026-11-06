@@ -2,7 +2,7 @@
   "_id": "j03LUPyFuOktccJv",
   "name": "Born to the Wild",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/environment/wilderness/tree-ash.webp",
   "system": {
     "description": "<p>Your family has a long tradition of serving, and you were trained from an early age on how to survive in the wild. When taking the Supply action, your yield increases by one step (e.g. 1d4 &gt; 1d6).</p>",
     "gained": "",

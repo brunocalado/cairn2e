@@ -2,7 +2,7 @@
   "_id": "Eteo9tzRD8FuMKoW",
   "name": "Crow-Shaped Amulet",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/equipment/neck/necklace-simple-feather-red-brown.webp",
   "system": {
     "description": "<p>A <strong>crow-shaped amulet</strong>. You can ask a question of the dead but must add a <strong>Fatigue</strong> each time. They do not always speak truthfully.</p>",
     "slots": 1,

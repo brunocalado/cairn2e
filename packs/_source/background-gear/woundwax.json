@@ -2,7 +2,7 @@
   "_id": "GH02yHndc9PRLj7S",
   "name": "Woundwax",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/materials/slime-white.webp",
   "system": {
     "description": "<p><strong>Woundwax</strong> Heals wounds from fire or chemicals (restoring full STR) but nothing else. 2 uses.</p>",
     "slots": 1,

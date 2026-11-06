@@ -2,7 +2,7 @@
   "_id": "QAADGn2utwPRdVRl",
   "name": "War",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/weapons/ammunition/arrows-war-red.webp",
   "system": {
     "description": "<p><strong>War</strong>. If you are first to attack, your bow gains the <em>blast</em> property for the first round.</p>",
     "gained": "",

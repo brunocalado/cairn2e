@@ -2,7 +2,7 @@
   "_id": "rJ2vUjANd4bmb7Gp",
   "name": "Luxcompass",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/navigation/compass-brass-blue-red.webp",
   "system": {
     "description": "<p><strong>Luxcompass</strong> Hums softly as it moves closer to the Sun. Eventually the noise becomes unbearably loud.</p>",
     "slots": 1,

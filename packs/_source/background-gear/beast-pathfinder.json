@@ -2,7 +2,7 @@
   "_id": "uxFQSEWA0z3aTyqm",
   "name": "Beast Pathfinder",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/creatures/abilities/paw-print-tan.webp",
   "system": {
     "description": "<p>That the land is a language unto itself. Your chance of becoming lost in a terrain dominated by the beasts of your <strong>specialty</strong> is reduced by one step (e.g. 4-in-6 becomes 3-in-6).</p>",
     "gained": "",

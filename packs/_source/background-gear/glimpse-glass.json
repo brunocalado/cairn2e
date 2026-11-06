@@ -2,7 +2,7 @@
   "_id": "CArCHDVTo5GYtcmd",
   "name": "Glimpse Glass",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/scribal/lens-grey-brown.webp",
   "system": {
     "description": "<p><strong>Glimpse Glass</strong> 3 uses. A monocle that lets you see through walls or other obstructions. It shatters after the last use.</p>",
     "slots": 1,

@@ -26,7 +26,7 @@
       "_id": "a4CXR6VaIe5ls1yX",
       "type": "document",
       "name": "Fire Eggs",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/skills/ranged/bomb-grenade-thrown-orange.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4V9WFTAr4ZHxrOh0",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "ikIXOFiwpvl9Pu5r",
       "type": "document",
       "name": "Black Tar",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/laboratory/bowl-liquid-black.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.jQR4IOKK3Xecmehc",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "99UDAZZIcOnzy5Wx",
       "type": "document",
       "name": "Spiked Boots (d8)",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/equipment/feet/boots-plate-pointed.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.vQSvVz6WGcnN4YjW",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "DcCPJ0kgeVJYe4Ab",
       "type": "document",
       "name": "Tinker's Paste",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/containers/kitchenware/jug-clay-brown-sealed.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.nJeuEIoEh0GlATMU",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "pXHeL3SkySLZFGJQ",
       "type": "document",
       "name": "Fireworks",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/weapons/thrown/rocket.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.uiZ0BQSoKrAaZkac",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "VVWwRJKzIEYrHebY",
       "type": "document",
       "name": "Carrion Cat",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/creatures/mammals/humanoid-cat-skulking-teal.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.ntO6lCdFDMSmeUAL",
       "weight": 1,
       "range": [

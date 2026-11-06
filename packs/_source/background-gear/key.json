@@ -2,7 +2,7 @@
   "_id": "QVN9ehJopt69l6ou",
   "name": "Key",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/sundries/misc/key-steel.webp",
   "system": {
     "description": "<p>As a convict, the Oath was simply a means of avoiding punishment. Take a set of <strong>Lockpicks</strong> and the <strong>Key</strong> (<em>petty</em>) to a safehouse.</p>",
     "slots": 0,

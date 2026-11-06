@@ -2,7 +2,7 @@
   "_id": "xBEa5qiAvTbFRivY",
   "name": "Regrowth Salve",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/potion-jar-capped-teal.webp",
   "system": {
     "description": "<p><strong>Regrowth Salve</strong> Regrows a body part over the course of a day. 1 use.</p>",
     "slots": 1,

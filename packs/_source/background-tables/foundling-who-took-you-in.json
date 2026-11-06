@@ -26,7 +26,7 @@
       "_id": "TnvRnDDKcoP9s7Vo",
       "type": "document",
       "name": "Weathered Longbow",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/bows/longbow-recurve-leather-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.iEUZVVPNiglkNYa4",
       "weight": 1,
       "range": [
@@ -41,7 +41,7 @@
       "_id": "hQc5nODhFzhzknIo",
       "type": "document",
       "name": "Leather Jerkin",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/equipment/chest/breastplate-collared-leather-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.DbcvvfOSGpy7DrSX",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "KouvNVCZS7vfcYRN",
       "type": "document",
       "name": "Healing Unguent",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/potions/potion-jar-corked-labeled-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.9BtKYG2BNCwCzLCC",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "VDbbDVXgp4voVPJD",
       "type": "document",
       "name": "Gnarled Staff",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/staves/staff-simple-knotted.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.1ePmqcscDNh4F8pY",
       "weight": 1,
       "range": [
@@ -131,7 +131,7 @@
       "_id": "ozws1dxyalV92cHM",
       "type": "document",
       "name": "Smith's Apron",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/chest/vest-leather-improvised.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.yc8GS1DnyyRIMelH",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "ig7nHSqEhorGZqYh",
       "type": "document",
       "name": "Oft-mended Chain Mail",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/equipment/chest/vest-improvised.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.5Dv8yshW76unGOYK",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "AgZJSI9rltmB6EXO",
       "type": "document",
       "name": "Storybook",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/books/book-tooled-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4N07ZBPkJ0v0Rtll",
       "weight": 1,
       "range": [
@@ -221,7 +221,7 @@
       "_id": "fC0s8EvkNfQjfvO8",
       "type": "document",
       "name": "Monk's Habit",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/head/hood-cloth-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.BtXPYd8GDwqaKlsg",
       "weight": 1,
       "range": [

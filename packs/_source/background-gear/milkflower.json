@@ -2,7 +2,7 @@
   "_id": "kuUxvROCFKHSLxhU",
   "name": "Milkflower",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/flowers/daisy-white.webp",
   "system": {
     "description": "<p><strong>Milkflower</strong> A gentle stimulant. Chewing it makes you immune to <em>panic</em> for the next hour. 3 uses.</p>",
     "slots": 1,

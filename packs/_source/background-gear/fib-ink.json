@@ -2,7 +2,7 @@
   "_id": "D6pAlAkWuQzDtnDq",
   "name": "Fib Ink",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/scribal/ink-quill-pink.webp",
   "system": {
     "description": "<p><strong>Fib Ink</strong> Glows when used to write true statements but fades if used to write false ones.</p>",
     "slots": 1,

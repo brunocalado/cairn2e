@@ -26,7 +26,7 @@
       "_id": "mnZuIViXSZLN2ut8",
       "type": "document",
       "name": "Alchemical Limb",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/equipment/hand/gauntlet-armored-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.DrcFePc7O1LrYX90",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "orSZezo2fIiQINDe",
       "type": "document",
       "name": "Rime Seed",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/magic/water/tendrils-ice-growth.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.NsPPWaaxjuwjO1gy",
       "weight": 1,
       "range": [
@@ -101,7 +101,7 @@
       "_id": "Qp3dg9kTK2mLYO2b",
       "type": "document",
       "name": "Tooth",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/neck/pendant-simple-tooth.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.LGSop6UijQMtrW23",
       "weight": 1,
       "range": [
@@ -131,7 +131,7 @@
       "_id": "yPsScaUz9kzGWTNi",
       "type": "document",
       "name": "Heartseed",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/nuts/acorn-glowing-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4lWjDnDDuFloLcu8",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "0GbNClVofvnhXAtQ",
       "type": "document",
       "name": "Iron Bracers",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/equipment/wrist/bracer-armored-steel-worn.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Rdiqu6FYImZLG10c",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "jhlULpISVJ0a4U2q",
       "type": "document",
       "name": "Hollow Wolf",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/creatures/mammals/wolf-howl-moon-black.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.4DGbOldlkgKCSM0r",
       "weight": 1,
       "range": [
@@ -206,7 +206,7 @@
       "_id": "CbdJtyxMusKgfy0F",
       "type": "document",
       "name": "Paring Knife",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/weapons/daggers/knife-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.DEZjfBsajrtrRMD3",
       "weight": 1,
       "range": [

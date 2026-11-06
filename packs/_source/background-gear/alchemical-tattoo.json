@@ -2,7 +2,7 @@
   "_id": "rbEgox1TSSubgBJH",
   "name": "Alchemical Tattoo",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/creatures/abilities/paw-print-pair-purple.webp",
   "system": {
     "description": "<p><strong>Alchemical Tattoo</strong> A dog, cat, or bird that can leave your body on demand. It follows your commands to the best of its abilities and can pass its injuries (<em>as STR loss</em>) back onto you. <em>Petty</em>.</p>",
     "slots": 0,

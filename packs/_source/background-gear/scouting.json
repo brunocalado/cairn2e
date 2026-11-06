@@ -2,7 +2,7 @@
   "_id": "6m0dfLNHrj3jl359",
   "name": "Scouting",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/tools/navigation/spyglass-telescope-blue.webp",
   "system": {
     "description": "<p><strong>Scouting</strong>. When taking the Travel action, your presence decreases the chance of getting lost by one step (e.g. 4-in-6 becomes 3-in-6).</p>",
     "gained": "",

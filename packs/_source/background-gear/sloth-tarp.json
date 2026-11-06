@@ -2,7 +2,7 @@
   "_id": "KGtmcOagEBv2HIpe",
   "name": "Sloth-Tarp",
   "type": "gear",
-  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "img": "icons/commodities/cloth/cloth-roll-worn-green.webp",
   "system": {
     "description": "<p><strong>Sloth-Tarp</strong> A tough and weatherproof fabric, useful for hanging off trees. When inside, you have +1 Armor.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "32JB6AK6twVj4XuO",
   "name": "Miracle Oil",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/bottle-circular-corked-labeled-green.webp",
   "system": {
     "description": "<p><strong>Miracle Oil</strong> A smelly, slippery concoction. 2 uses.</p>",
     "slots": 1,

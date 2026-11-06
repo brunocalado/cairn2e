@@ -2,7 +2,7 @@
   "_id": "zoOmfShxfnQcMGPX",
   "name": "Oath Compass",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/navigation/map-nautical-compass.webp",
   "system": {
     "description": "<p><strong>Oath Compass</strong> Points not towards North, but instead to the nearest member of the Guard. It also lets you know when they're getting close.</p>",
     "slots": 1,

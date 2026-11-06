@@ -2,7 +2,7 @@
   "_id": "4V9WFTAr4ZHxrOh0",
   "name": "Fire Eggs",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/skills/ranged/bomb-grenade-thrown-orange.webp",
   "system": {
     "description": "<p><strong>Fire Eggs</strong> Six small pellets made of sea salt, wood, and crockery-dust. They explode at low heat (d8, <em>blast</em>) but the flames dissipate quickly.</p>",
     "slots": 1,

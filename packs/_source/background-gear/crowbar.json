@@ -2,7 +2,7 @@
   "_id": "futZXCCxru3SoaeU",
   "name": "Crowbar",
   "type": "gear",
-  "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+  "img": "icons/tools/hand/pry-bar-steel.webp",
   "system": {
     "description": "<p><strong>Crowbar</strong> d6 damage. Sometimes you just need to get the damn thing open!</p>",
     "slots": 1,

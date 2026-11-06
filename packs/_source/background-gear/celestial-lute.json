@@ -2,7 +2,7 @@
   "_id": "h0FHhK87PTvpApGh",
   "name": "Celestial Lute",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/harp-gold-glowing.webp",
   "system": {
     "description": "<p><em>Harper's Devotion</em>. A sad, short tale about a musician that falls in love with a star. Start with a <strong>Celestial Lute</strong>. Reveals the constellations above, no matter the weather.</p>",
     "slots": 1,

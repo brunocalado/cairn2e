@@ -2,7 +2,7 @@
   "_id": "WfCRYaU9MC2wTrzx",
   "name": "Hired Protection",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/environment/people/spearfighter.webp",
   "system": {
     "description": "<p>You offer protection as a service, quietly watching for threats as money exchanges hands. You start with <strong>+d4 HP</strong>, and carry a <strong>Long Sword</strong> (d10, <em>bulky</em>) and a <strong>Gambeson</strong> (+1 Armor).</p>",
     "gained": "",

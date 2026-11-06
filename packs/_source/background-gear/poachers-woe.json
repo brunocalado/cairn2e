@@ -2,7 +2,7 @@
   "_id": "M2OF2XbYRSawBL7i",
   "name": "Poacher's Woe",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/weapons/ammunition/arrows-barbed-white.webp",
   "system": {
     "description": "<p><strong>Poacher's Woe</strong> Strongly-scented arrows (3 uses). The scent is powerful enough to track with ease.</p>",
     "slots": 1,

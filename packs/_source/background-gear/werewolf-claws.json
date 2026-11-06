@@ -2,7 +2,7 @@
   "_id": "jepUqm9CX55Ifi71",
   "name": "Werewolf Claws",
   "type": "gear",
-  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "img": "icons/creatures/claws/claw-hooked-curved.webp",
   "system": {
     "description": "<p>claws (d6+d6), turned</p>",
     "slots": 0,

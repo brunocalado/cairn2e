@@ -2,7 +2,7 @@
   "_id": "mYXU0h65i42LVv6c",
   "name": "Quell Stone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/stone/stone-chunk-grey-white.webp",
   "system": {
     "description": "<p><strong>Order of the Silent Veil</strong>. Take a <strong>Quell Stone</strong> (2 uses) wrapped in burlap. Extinguishes any nearby flames once exposed to air.</p>",
     "slots": 1,

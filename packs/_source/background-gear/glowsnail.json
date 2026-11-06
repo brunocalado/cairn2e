@@ -2,7 +2,7 @@
   "_id": "c0r1qv53i57sklKQ",
   "name": "Glowsnail",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/creatures/invertebrates/snail-spiral-green.webp",
   "system": {
     "description": "<p><strong>Glowsnail</strong> Casts a soft, bioluminescent light. Feeds on one ration every two days.</p>",
     "slots": 1,

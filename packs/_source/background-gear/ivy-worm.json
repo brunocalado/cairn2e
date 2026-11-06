@@ -2,7 +2,7 @@
   "_id": "vDMC1uDj456djOEX",
   "name": "Ivy Worm",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/environment/creatures/bug-caterpillar-dotted-green.webp",
   "system": {
     "description": "<p><strong>Ivy Worm</strong> A green worm often mistaken for a weed. Swallowed whole, it absorbs any toxins or rot in the body before exiting through the usual way.</p>",
     "slots": 1,

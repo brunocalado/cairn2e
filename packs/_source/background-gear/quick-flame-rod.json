@@ -2,7 +2,7 @@
   "_id": "74E5R54mzTgcTCOm",
   "name": "Quick-Flame Rod",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/sundries/lights/torch-grey.webp",
   "system": {
     "description": "<p><strong>Arachnids</strong> Take a <strong>Quick-Flame Rod</strong> and an <strong>Oil Can</strong> (6 uses). It can destroy a large spider nest in seconds.</p>",
     "slots": 1,

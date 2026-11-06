@@ -26,7 +26,7 @@
       "_id": "ZFMeF9MAllhsbrqX",
       "type": "document",
       "name": "Crow-Shaped Amulet",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/neck/necklace-simple-feather-red-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Eteo9tzRD8FuMKoW",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "4NZLKAtTuhHjR2ra",
       "type": "document",
       "name": "Mortal Wound",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/skills/wounds/injury-stitched-flesh-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.UIINMbOilYR9MA5w",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "E6yKHZn3L0eMXGBt",
       "type": "document",
       "name": "Blood Pail",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/containers/misc/bucket-steel-red.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.qT0PMfRtiArjU9JQ",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "jwr4NCXstFp59ryG",
       "type": "document",
       "name": "Burial Wagon",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/containers/misc/coffin-wood-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.UfBNfUb65boIYD18",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "pwYFjN9fKKXGVnkN",
       "type": "document",
       "name": "Plague Doctor's Mask",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/head/mask-plague-leather-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.fwoApCOAHLYNM0aH",
       "weight": 1,
       "range": [

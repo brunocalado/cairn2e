@@ -2,7 +2,7 @@
   "_id": "ja7mkKNhdydnTeJL",
   "name": "Valor",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/commodities/treasure/medal-ribbon-gold-red.webp",
   "system": {
     "description": "<p><strong>Valor</strong>. The first time you inflict <strong>Critical Damage</strong>, you receive +d4 HP, returning to the previous limit at the end of combat. If your vow is broken, you die.</p>",
     "gained": "",

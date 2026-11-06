@@ -2,7 +2,7 @@
   "_id": "pWeX1kmxVIeKrEpc",
   "name": "Map",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/navigation/map-chart-tan.webp",
   "system": {
     "description": "<p><strong>Guide</strong> You shepherd caravans and travelers across water-soaked lands. Start a <strong>map</strong> (<em>petty</em>) relevant to your next journey.</p>",
     "slots": 0,

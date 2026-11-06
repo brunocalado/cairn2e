@@ -2,7 +2,7 @@
   "_id": "RfpXCY11B68u8JW0",
   "name": "Nightmare Claws",
   "type": "gear",
-  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "img": "icons/creatures/claws/claw-hooked-curved.webp",
   "system": {
     "description": "<p>The Living Nightmare's claws (d8+d8), while it is manifest.</p>",
     "slots": 0,

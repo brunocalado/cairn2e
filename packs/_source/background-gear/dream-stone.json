@@ -2,7 +2,7 @@
   "_id": "HoJNSOy9mtsKkv6m",
   "name": "Dream Stone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/gems/gem-rough-round-blue.webp",
   "system": {
     "description": "<p><strong>Dream Stone</strong> A smooth blue stone that helps recall dreams more clearly. Overuse can cause dream-addiction.</p>",
     "slots": 1,

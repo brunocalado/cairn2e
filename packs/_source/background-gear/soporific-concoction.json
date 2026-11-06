@@ -2,7 +2,7 @@
   "_id": "4cI7VOx1HmPC04xL",
   "name": "Soporific Concoction",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/potion-bottle-labeled-stopped-purple.webp",
   "system": {
     "description": "<p>A close friend disappeared into the forest. Now you see their face in any tea you brew. Take a <strong>Soporific Concoction</strong> (3 uses).</p>",
     "slots": 1,

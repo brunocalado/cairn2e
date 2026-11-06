@@ -2,7 +2,7 @@
   "_id": "9BtKYG2BNCwCzLCC",
   "name": "Healing Unguent",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/consumables/potions/potion-jar-corked-labeled-red.webp",
   "system": {
     "description": "<p>A wizened apothecary, who taught you the healing arts but maintained a clinical detachment. Take a <strong>Healing Unguent</strong> (restores d4 STR, 1 use).</p>",
     "slots": 1,

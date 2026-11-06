@@ -26,7 +26,7 @@
       "_id": "I4hSWUAa8xOGH29M",
       "type": "document",
       "name": "Catring",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/finger/ring-eye-silver-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.KTSGhGgqEwwFQtFX",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "na80UVRFyPfHUB4H",
       "type": "document",
       "name": "Gildfinger",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/hand/glove-cuffed-leather-brown-gold.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.cb2LarMjkAtfeGZW",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "ztXJY2HVASbmdNIC",
       "type": "document",
       "name": "Glimpse Glass",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/scribal/lens-grey-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.CArCHDVTo5GYtcmd",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "G4iEQyCXqchkVyqL",
       "type": "document",
       "name": "Sweetwhistle",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/instruments/whistle-copper.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.nq6RXDLtXMUhkpWB",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "LcQTwYQSUcxjpi5I",
       "type": "document",
       "name": "Vagrant's Veil",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/back/cape-layered-tattered-brown-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.rHVQOrE0J3q9GlcF",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "5IDvOkrtUHHP2d31",
       "type": "document",
       "name": "Reverse Teetotum",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/tech/clock-stopwatch-brass.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.Xo6jBlpD8CH588Wx",
       "weight": 1,
       "range": [

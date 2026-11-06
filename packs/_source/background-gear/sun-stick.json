@@ -2,7 +2,7 @@
   "_id": "FnjrJ2TfJiE6VLZ1",
   "name": "Sun Stick",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/sundries/lights/torch-brown-lit.webp",
   "system": {
     "description": "<p><strong>Sun Stick</strong> Provides ample warmth and light for up to one hour. 1 use.</p>",
     "slots": 1,

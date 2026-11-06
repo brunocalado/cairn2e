@@ -2,7 +2,7 @@
   "_id": "1uVj9BEQSnH70DTg",
   "name": "Warble-Whistle",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/creatures/birds/songbird-yellow-flying.webp",
   "system": {
     "description": "<p><strong>Birds</strong> Take a <strong>Warble-Whistle</strong> (3 charges). It can imitate any bird call and can even be used to send simple messages.</p>",
     "slots": 1,

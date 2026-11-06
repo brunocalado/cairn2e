@@ -2,7 +2,7 @@
   "_id": "vjjcuL8OYN1dPBML",
   "name": "Hex Stone",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/magic/symbols/runes-carved-stone-purple.webp",
   "system": {
     "description": "<p><strong>Hex Stone</strong> Gathered from a river that flows from the <em>other side</em>. Removed from its iron tin, it can absorb the effects of an active magical effect. If destroyed, the magic is released. 1 use.</p>",
     "slots": 1,

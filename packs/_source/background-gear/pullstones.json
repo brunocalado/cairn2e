@@ -2,7 +2,7 @@
   "_id": "Lpg22lNT9ZSP0aFX",
   "name": "Pullstones",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/stone/boulder-black.webp",
   "system": {
     "description": "<p><strong>Pullstones</strong> Two jet-black stones. When separated, the stones will always roll toward one another.</p>",
     "slots": 1,

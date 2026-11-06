@@ -2,7 +2,7 @@
   "_id": "GYr0CGyEZKhHJ2Bc",
   "name": "Pneuma Pump",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/commodities/tech/valve-pressure-pipe-copper.webp",
   "system": {
     "description": "<p><strong>Pneuma Pump</strong> Portable iron lungs (<em>bulky</em>). Enables life-saving surgery or underwater breathing.</p>",
     "slots": 2,

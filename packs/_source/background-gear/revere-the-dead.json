@@ -2,7 +2,7 @@
   "_id": "uxCVpb71dwaeErg8",
   "name": "Revere the Dead",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/sundries/misc/tombstone.webp",
   "system": {
     "description": "<p><strong>Revere the dead</strong>: Death is a journey we all take, and it deserves respect. Take an extra <strong>30gp</strong>. You always place two gold pieces on the eyelids of a slain foe. Somehow, you always find the coin.</p>",
     "gained": "",

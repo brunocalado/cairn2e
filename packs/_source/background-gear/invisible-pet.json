@@ -2,7 +2,7 @@
   "_id": "e8ikGgxT7ZLy7wwf",
   "name": "Invisible Pet",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/sundries/misc/pet-collar-blue.webp",
   "system": {
     "description": "<p>You dematerialized a beloved pet. Now it follows you around, invisible but always present. Although it cannot interact with the physical realm, you are able to share its senses. (Add a <strong>Fatigue</strong> each time.) It follows basic commands.</p>",
     "gained": "",

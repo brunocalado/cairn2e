@@ -2,7 +2,7 @@
   "_id": "XekEgVaDHdGfbso3",
   "name": "Hunting",
   "type": "growth",
-  "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+  "img": "icons/environment/people/archer.webp",
   "system": {
     "description": "<p><strong>Hunting</strong>. When taking the Supply action, your ability to secure <strong>Rations</strong> increases by <strong>one step</strong> (e.g. 1d4 becomes 1d6).</p>",
     "gained": "",

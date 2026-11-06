@@ -2,7 +2,7 @@
   "_id": "3uXSwvudD28ppJZq",
   "name": "Ghost Violin",
   "type": "gear",
-  "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+  "img": "icons/tools/instruments/harp-white.webp",
   "system": {
     "description": "<p><strong>Ghost Violin</strong> A dark-gray violin that plays a haunting tune, mirrored by an invisible, distant twin.</p>",
     "slots": 1,

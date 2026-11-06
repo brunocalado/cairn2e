@@ -26,7 +26,7 @@
       "_id": "quOpH8VG4pOhpfQR",
       "type": "document",
       "name": "Reed Whistle",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/consumables/plants/dried-bundle-pointy-stems-sticks-brown.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.5SZFAovjMw7UcwI3",
       "weight": 1,
       "range": [
@@ -56,7 +56,7 @@
       "_id": "UlIF4f8sT2ps1V2G",
       "type": "document",
       "name": "Breeze Knot",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/sundries/survival/rope-wrapped-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.qF0NPa3uQZ95j077",
       "weight": 1,
       "range": [
@@ -86,7 +86,7 @@
       "_id": "viZpNrKfqiIOtZwJ",
       "type": "document",
       "name": "Celestial Lute",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/tools/instruments/harp-gold-glowing.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.h0FHhK87PTvpApGh",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "aOA67KufQesmwlVW",
       "type": "document",
       "name": "River Twine",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/cloth/thread-spindle-grey-green.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.89BqLVnmimUCnicN",
       "weight": 1,
       "range": [
@@ -146,7 +146,7 @@
       "_id": "MXv5jJRbm9naTBfe",
       "type": "document",
       "name": "Stone Flute",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/bones/horn-engraved-stripes-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.6jF0zcje2Z856Inl",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "PGaytyGKsQNCN5M0",
       "type": "document",
       "name": "Feather Quill",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/commodities/materials/feather-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.NRY3T2EhLhzsILuW",
       "weight": 1,
       "range": [

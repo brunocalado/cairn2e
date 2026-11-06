@@ -26,7 +26,7 @@
       "_id": "sZ1gHFenrkPgfrzK",
       "type": "document",
       "name": "Master Tinker",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/commodities/tech/cog-brass.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.GuYeGjODWlAIUP5x",
       "weight": 1,
       "range": [
@@ -71,7 +71,7 @@
       "_id": "72KW7k4R2uPZWXAN",
       "type": "document",
       "name": "Traveler's Cant",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/sundries/documents/document-symbol-rune-tan.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.rbgBgT9lFrqv2YtN",
       "weight": 1,
       "range": [
@@ -116,7 +116,7 @@
       "_id": "wSzFE2QTKBtMvaSs",
       "type": "document",
       "name": "Smelting Hammer",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/tools/smithing/hammer-maul-steel-grey.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.UCGz949Ymr5OqJGz",
       "weight": 1,
       "range": [
@@ -131,7 +131,7 @@
       "_id": "9FCn3vYuY3oUgtXs",
       "type": "document",
       "name": "Tin Helm",
-      "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+      "img": "icons/equipment/head/helm-kettle-worn.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.7Aj7hCQVdEFQNGgL",
       "weight": 1,
       "range": [
@@ -176,7 +176,7 @@
       "_id": "PMNjiMAvLbhXRLhb",
       "type": "document",
       "name": "Necklace",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/equipment/neck/choker-chain-thin-gold.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.SulX4PIRkGlgxEfF",
       "weight": 1,
       "range": [
@@ -251,7 +251,7 @@
       "_id": "eDtc8NF0LkTmXUOu",
       "type": "document",
       "name": "Hired Protection",
-      "img": "icons/magic/nature/vines-thorned-curled-glow-green.webp",
+      "img": "icons/environment/people/spearfighter.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.WfCRYaU9MC2wTrzx",
       "weight": 1,
       "range": [
@@ -281,7 +281,7 @@
       "_id": "sJyTD8DQK0OauR7v",
       "type": "document",
       "name": "Donkey",
-      "img": "icons/containers/bags/sack-cloth-heavy-brown.webp",
+      "img": "icons/environment/creatures/horse-white.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.JPVLxVmbQqezbbNY",
       "weight": 1,
       "range": [
@@ -311,7 +311,7 @@
       "_id": "MpTgdvikbLeo4n0c",
       "type": "document",
       "name": "Saw",
-      "img": "icons/weapons/swords/shortsword-guard-brown.webp",
+      "img": "icons/tools/hand/saw-steel.webp",
       "documentUuid": "Compendium.cairn2e.background-gear.Item.GwK6hO7CYbR10jHy",
       "weight": 1,
       "range": [
