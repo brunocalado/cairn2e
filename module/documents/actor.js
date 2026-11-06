@@ -19,6 +19,8 @@ export function unarmedItemData() {
   return {
     name: game.i18n.localize("CAIRN.Unarmed"),
     type: "gear",
+    // Given outright: with a damage die and no image, `getDefaultArtwork` would hand fists a sword.
+    img: "icons/skills/melee/unarmed-punch-fist.webp",
     system: { damage: "d4", bodily: true, slots: 0 },
     flags: { [SYSTEM_ID]: { [FLAGS.UNARMED]: true } }
   };
