@@ -2,7 +2,7 @@
   "_id": "T6IrNv5Ihn2PrDmc",
   "name": "Calcify",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-green.webp",
   "system": {
     "description": "<p>Target object turns to stone at the caster's touch. Living targets save vs STR.</p>",
     "slots": 0,

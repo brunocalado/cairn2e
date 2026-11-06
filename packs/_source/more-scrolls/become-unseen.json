@@ -2,7 +2,7 @@
   "_id": "SX7AB2FwadlrxDHB",
   "name": "Become Unseen",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-skull-brown.webp",
   "system": {
     "description": "<p>Target becomes invisible for 1 hour, and are still able use abilities and attack without detection. Afterwards they become incapacitated (deprived)</p>",
     "slots": 0,

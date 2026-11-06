@@ -2,7 +2,7 @@
   "_id": "K3xHSqUzeHD2yUI7",
   "name": "Scry Creature",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-blue-white.webp",
   "system": {
     "description": "<p>Indicates the precise location of a familiar creature.</p>",
     "slots": 0,

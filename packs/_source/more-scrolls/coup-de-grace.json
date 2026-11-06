@@ -2,7 +2,7 @@
   "_id": "LIAGGTDx1pm3rz7D",
   "name": "Coup de Grâce",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-leather-tan.webp",
   "system": {
     "description": "<p>An ally's next attack ignores armor and takes damage directly from their target's STR.</p>",
     "slots": 0,

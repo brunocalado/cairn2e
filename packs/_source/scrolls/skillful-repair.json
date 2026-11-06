@@ -2,7 +2,7 @@
   "_id": "JIOVDRfqDnMqgKii",
   "name": "Skillful Repair",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-leather-tan.webp",
   "system": {
     "description": "<p>You make minor repairs to a nonliving object.</p>",
     "slots": 0,

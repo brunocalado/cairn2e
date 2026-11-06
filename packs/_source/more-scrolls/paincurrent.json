@@ -2,7 +2,7 @@
   "_id": "HDT5cOykOf3jdaui",
   "name": "Paincurrent",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-skull-brown.webp",
   "system": {
     "description": "<p>An arc of electricity passes from your fingertips to a target you touch. They take 1d8 damage (1d10 if wearing metal armor).</p>",
     "slots": 0,

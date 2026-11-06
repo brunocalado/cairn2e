@@ -2,7 +2,7 @@
   "_id": "iHJhA53BDkL1Jmkr",
   "name": "Icy Touch",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-green.webp",
   "system": {
     "description": "<p>A thick ice layer spreads across a touched surface, up to 3 m (10 ft) in radius.</p>",
     "slots": 0,

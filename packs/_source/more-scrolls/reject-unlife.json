@@ -2,7 +2,7 @@
   "_id": "mCB94E3DxITHMGlj",
   "name": "Reject Unlife",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-leather-tan.webp",
   "system": {
     "description": "<p>Nearby undead are immobilized for 30 seconds or until you take another action.</p>",
     "slots": 0,

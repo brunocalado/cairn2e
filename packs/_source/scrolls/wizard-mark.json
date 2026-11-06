@@ -2,7 +2,7 @@
   "_id": "RDOyDBJ1CLUwG5DL",
   "name": "Wizard Mark",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-leather-tan.webp",
   "system": {
     "description": "<p>Your finger can shoot a stream of ulfire-colored paint. This paint is only visible to you and can be seen at any distance, even through solid objects.</p>",
     "slots": 0,

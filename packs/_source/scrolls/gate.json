@@ -2,7 +2,7 @@
   "_id": "1e1XOoPRpHdqFjcq",
   "name": "Gate",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-green.webp",
   "system": {
     "description": "<p>A portal to a random plane opens.</p>",
     "slots": 0,

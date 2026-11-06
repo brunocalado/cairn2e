@@ -2,7 +2,7 @@
   "_id": "A7Br4CFn373zUGUi",
   "name": "Cinder Flesh",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-red-green.webp",
   "system": {
     "description": "<p>Energy beams burn enemies (1d10 blast damage) in a straight line.</p>",
     "slots": 0,

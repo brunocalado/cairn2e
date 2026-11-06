@@ -2,7 +2,7 @@
   "_id": "DxZ0SfzGVUqD1IA9",
   "name": "Beguilement",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-blue.webp",
   "system": {
     "description": "<p>Target humanoid must make a WIL save or is controlled telepathically.</p>",
     "slots": 0,

@@ -2,7 +2,7 @@
   "_id": "d6OBX2GdsWADKdpR",
   "name": "Word of Pain",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-red-tan.webp",
   "system": {
     "description": "<p>A single phrase from your lips does 1d10 blast damage. Affected targets are also deafened.</p>",
     "slots": 0,

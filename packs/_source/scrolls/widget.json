@@ -2,7 +2,7 @@
   "_id": "WYSFAzhIln8b69R1",
   "name": "Widget",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-blue-white.webp",
   "system": {
     "description": "<p>A primitive version of a drawn tool or item appears before you and disappears after a short time.</p>",
     "slots": 0,

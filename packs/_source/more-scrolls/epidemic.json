@@ -2,7 +2,7 @@
   "_id": "edXSpDPpmSMBBab7",
   "name": "Epidemic",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-red-green.webp",
   "system": {
     "description": "<p>Infects target with disease, which spreads until the source of magic is destroyed.</p>",
     "slots": 0,

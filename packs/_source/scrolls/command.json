@@ -2,7 +2,7 @@
   "_id": "kJ4kfBxC0WkZP31D",
   "name": "Command",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-gold-red.webp",
   "system": {
     "description": "<p>A target obeys a single three-word command that does not cause it harm.</p>",
     "slots": 0,

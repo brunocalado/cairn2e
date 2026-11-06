@@ -169,7 +169,9 @@ thing, the nearest shape stands.
   card draws that one, so changing an item's picture means changing every result naming it. A result
   naming an Actor is exempt, since a bestiary portrait can be replaced by the Warden's art.
 
-Scrolls keep one icon, spellbooks their ten looks and features `DEFAULT_ARTWORK.Item.feature`.
+Spellbooks and scrolls have ten looks each, with no meaning behind the colour: they tell two apart on
+the map. A spell's scroll follows its book's look, so a spell always looks the same. Features wear
+`DEFAULT_ARTWORK.Item.feature`.
 `checks/icons.check.mjs` enforces all of this.
 
 ## `bestiary` — a monster's bullets are `feature` Items

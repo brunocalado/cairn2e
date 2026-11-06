@@ -2,7 +2,7 @@
   "_id": "obN0eYy5DHH9gsgY",
   "name": "Soul Annex",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-red-tan.webp",
   "system": {
     "description": "<p>Target's spirit is caged within their body and replaced with the caster's. If the body is slain the original soul departs, but the caster must pass a WIL save to return to their body.</p>",
     "slots": 0,

@@ -2,7 +2,7 @@
   "_id": "KCdRffwyEsniIGVR",
   "name": "Arcane Stain",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-blue.webp",
   "system": {
     "description": "<p>Inscribes an invisible rune you can feel. Suffer 1d4 WIL loss if removed.</p>",
     "slots": 0,

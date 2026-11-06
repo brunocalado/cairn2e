@@ -2,7 +2,7 @@
   "_id": "aoQ0rGhuzr94yEJe",
   "name": "Curse Unlife",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-red-tan.webp",
   "system": {
     "description": "<p>Deals 1d4+2 STR loss to one undead, ignoring armor and resistances.</p>",
     "slots": 0,

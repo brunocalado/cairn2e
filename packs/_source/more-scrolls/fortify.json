@@ -2,7 +2,7 @@
   "_id": "29aHkqsQxlDdYqQM",
   "name": "Fortify",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-blue.webp",
   "system": {
     "description": "<p>Damage from heat, ice, acid or electricity are impaired against a target for the next hour.</p>",
     "slots": 0,

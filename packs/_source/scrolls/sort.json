@@ -2,7 +2,7 @@
   "_id": "uSljIXF2BMyFQLgS",
   "name": "Sort",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-green.webp",
   "system": {
     "description": "<p>Inanimate items sort themselves according to categories you set.</p>",
     "slots": 0,

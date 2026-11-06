@@ -2,7 +2,7 @@
   "_id": "YFnX1RP6FZ19c3gt",
   "name": "Runic Slumber",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-red-tan.webp",
   "system": {
     "description": "<p>A rune you draw puts the reader into a magical sleep that lasts 1d6 hours.</p>",
     "slots": 0,

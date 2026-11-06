@@ -2,7 +2,7 @@
   "_id": "0wWvhESNxQJrzRGx",
   "name": "Trueshift",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-gold-tan.webp",
   "system": {
     "description": "<p>A willing target takes on a new form (keeping only their WIL), but must pass a WIL save to shift out.</p>",
     "slots": 0,

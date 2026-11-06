@@ -2,7 +2,7 @@
   "_id": "rD0QuIhOb13zEqxB",
   "name": "Chilling Graze",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-sealed-gold-red.webp",
   "system": {
     "description": "<p>Target loses 1d4+1 STR and is deprived.</p>",
     "slots": 0,

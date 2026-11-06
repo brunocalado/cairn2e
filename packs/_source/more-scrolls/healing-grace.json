@@ -2,7 +2,7 @@
   "_id": "fGV3D1lbNjaA0T26",
   "name": "Healing Grace",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-green.webp",
   "system": {
     "description": "<p>A target heals 1d6 STR, and you become deprived until you take the time to mediate, pray or sleep.</p>",
     "slots": 0,

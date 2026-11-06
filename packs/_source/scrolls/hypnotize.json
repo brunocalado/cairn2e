@@ -2,7 +2,7 @@
   "_id": "QDZRd4bkiWhq6TBb",
   "name": "Hypnotize",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-skull-brown.webp",
   "system": {
     "description": "<p>A creature enters a trance and will truthfully answer one yes or no question you ask it.</p>",
     "slots": 0,

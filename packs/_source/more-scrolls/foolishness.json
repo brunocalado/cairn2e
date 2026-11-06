@@ -2,7 +2,7 @@
   "_id": "lwkGXUOfyS2JmmrA",
   "name": "Foolishness",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-green.webp",
   "system": {
     "description": "<p>A target you touch becomes vulnerable to wild mood swings, sweeping conclusions and silly behavior. They also lose 1d6 WIL for 24 hours (down to a minimum of 1).</p>",
     "slots": 0,

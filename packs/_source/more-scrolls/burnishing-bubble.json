@@ -2,7 +2,7 @@
   "_id": "v5V4a9gjZ0oWcC5H",
   "name": "Burnishing Bubble",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-red-tan.webp",
   "system": {
     "description": "<p>Target is enclosed by an impenetrable sphere that rolls along the ground, unless they pass a DEX save.</p>",
     "slots": 0,

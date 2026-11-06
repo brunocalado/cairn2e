@@ -2,7 +2,7 @@
   "_id": "ZAyLLvCjWyCpudrx",
   "name": "Arcane Confinement",
   "type": "gear",
-  "img": "icons/sundries/scrolls/scroll-bound-black-tan.webp",
+  "img": "icons/sundries/scrolls/scroll-bound-leather-tan.webp",
   "system": {
     "description": "<p>Target is bound by magical rope, able only to speak but nothing more.</p>",
     "slots": 0,
