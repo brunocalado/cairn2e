@@ -1,3 +1,19 @@
+# 0.2.5
+
+- [Changed] **Everything in the packs wears a picture of itself.** Monsters' weapons and attacks,
+  background gear, growths and the rest each show what they are, on the sheet, in a table's roll and
+  on the map. A Short Sword and a Short Bow dropped with Canvas Loot no longer look alike. Copies
+  already in a world keep their old picture.
+- [Changed] Scrolls have ten looks, and a spell's scroll looks like its book.
+- [Changed] A new character's fists look like fists, and a rolled monster wears a bite and scales
+  instead of a sword and a shield.
+- [Changed] Verified on Foundry 14.370.
+- [Fixed] A monster's sword costs a slot and its bow two, so what is looted from one no longer
+  lands in Petty.
+- [Fixed] A rolled monster's bite and hide are part of it, and cannot be carried off.
+- [Fixed] With Canvas Loot, what is dropped on the map lands in nobody's hand and in no container,
+  and a claw stays on its owner.
+
 # 0.2.4
 
 - [Added] **Foraged food feeds the party.** Raw food is a meal in a pinch: fruit, berries,
