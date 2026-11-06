@@ -151,6 +151,27 @@ source file; that rewritten file is what gets committed. Nothing references an e
 id, so a random one is as stable as a derived one, and `checks/compendium.check.mjs` asserts the
 key of every embedded item against its parent.
 
+## Icons
+
+A shipped item wears a picture of itself. Core art only: it is on every install and needs no licence
+check. A picture is chosen by what the item is, from its description and not its flavour name (Fire
+Eggs are pellets, Rivertooth is a horse), and it has been looked at: the icon database's text is
+generated and sometimes wrong, and `tools/hand/knife-paring.webp` is a trowel. Where core has no such
+thing, the nearest shape stands.
+
+- **A default is wrong on a shipped document.** `DEFAULT_ARTWORK` and `GEAR_ARTWORK` are what a blank
+  item starts with.
+- **One thing, one picture.** Sharing is for the same object in two packs and for true variants,
+  and each pair is listed with its reason in the check. The same name wears the same icon everywhere.
+- **One icon per kind of natural attack.** A Bite is the same thing on every monster, so `bodily` items
+  are out of the rule above; they never wear a picture from `icons/weapons/`.
+- **A table result carries the item's image.** A `document` result stores its own `img` and the chat
+  card draws that one, so changing an item's picture means changing every result naming it. A result
+  naming an Actor is exempt, since a bestiary portrait can be replaced by the Warden's art.
+
+Scrolls keep one icon, spellbooks their ten looks and features `DEFAULT_ARTWORK.Item.feature`.
+`checks/icons.check.mjs` enforces all of this.
+
 ## `bestiary` — a monster's bullets are `feature` Items
 
 Every bestiary Actor carries `"role": "monster"`, an empty `system.description`, its statline as
@@ -169,7 +190,7 @@ naming rule, which the monster generator follows too:
 A bullet opening with a **label** and a colon is named by the label; any other bullet is named by
 its **first sentence** as plain text (inline tags stripped, the full stop kept), with the remaining
 sentences as its description, or `""` for a one-sentence bullet. A colon mid-sentence ("Can cast
-the following spells at will: …") is not a label. Every feature wears `FEATURE_ICON`
+the following spells at will: …") is not a label. Every feature wears `DEFAULT_ARTWORK.Item.feature`
 (`module/constants.js`). There is no separate `criticalDamage` field on an NPC: in every entry
 that has one, the bullet already is the feature.
 
