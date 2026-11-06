@@ -2,7 +2,7 @@
   "_id": "RbEki8EeJk4As6U3",
   "name": "Eyestone",
   "type": "gear",
-  "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+  "img": "icons/equipment/neck/amulet-carved-stone-eye.webp",
   "system": {
     "description": "<p>Choose an object created by living creatures. You can sense the nearest example.</p>",
     "slots": 1,

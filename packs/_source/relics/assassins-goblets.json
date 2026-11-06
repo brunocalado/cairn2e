@@ -2,7 +2,7 @@
   "_id": "Jn3uUcsPuTkh75C4",
   "name": "Assassin's Goblets",
   "type": "gear",
-  "img": "icons/consumables/drinks/wine-amphora-clay-gray.webp",
+  "img": "icons/containers/kitchenware/goblet-skeletal-black.webp",
   "system": {
     "description": "<p>A pair of fragile wine flutes. Any liquid poured into one is swapped with the other.</p>",
     "slots": 1,

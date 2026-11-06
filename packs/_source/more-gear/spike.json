@@ -2,7 +2,7 @@
   "_id": "9w6ktviyNUhhL0RE",
   "name": "Spike",
   "type": "gear",
-  "img": "icons/environment/traps/metal-spikes.webp",
+  "img": "icons/tools/fasteners/pin-spiked.webp",
   "system": {
     "description": "<p>Spike (<em>petty</em>)</p>",
     "slots": 0,

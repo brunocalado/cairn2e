@@ -2,7 +2,7 @@
   "_id": "1aObADSCj3jIkUPw",
   "name": "Axe",
   "type": "gear",
-  "img": "icons/weapons/axes/axe-battle-simple.webp",
+  "img": "icons/weapons/axes/axe-battle-worn.webp",
   "system": {
     "description": "<p>Axe (d8 damage)</p>",
     "slots": 1,

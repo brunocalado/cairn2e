@@ -2,7 +2,7 @@
   "_id": "BgBHOBRaOlLJCh31",
   "name": "Air Bladder",
   "type": "gear",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/sundries/survival/wetskin-leather-tan.webp",
   "system": {
     "description": "<p>Air Bladder</p>",
     "slots": 1,

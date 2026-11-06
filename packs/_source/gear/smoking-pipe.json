@@ -2,7 +2,7 @@
   "_id": "CVGcWnnLF3qFEF3J",
   "name": "Smoking Pipe",
   "type": "gear",
-  "img": "icons/tools/instruments/pipe-flue-tan.webp",
+  "img": "icons/sundries/misc/pipe-wooden-curved-oak.webp",
   "system": {
     "description": "<p>Smoking Pipe (<em>petty</em>)</p>",
     "slots": 0,

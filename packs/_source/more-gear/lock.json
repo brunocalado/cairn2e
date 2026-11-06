@@ -2,7 +2,7 @@
   "_id": "YIgMWNexXwxKqJMb",
   "name": "Lock",
   "type": "gear",
-  "img": "icons/svg/padlock.svg",
+  "img": "icons/sundries/misc/lock-bronze-reinforced.webp",
   "system": {
     "description": "<p>Lock (key included)</p>",
     "slots": 1,

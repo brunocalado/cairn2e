@@ -2,7 +2,7 @@
   "_id": "f1xQn9PMCI6e57um",
   "name": "Ladder",
   "type": "gear",
-  "img": "icons/sundries/misc/ladder-white.webp",
+  "img": "icons/tools/hand/ladder-common-wood.webp",
   "system": {
     "description": "<p>A guild warehouse. Take a <strong>Ladder</strong> (<em>bulky</em>, 3 m / 10 ft) and <strong>Blinding Powder</strong> (1 use).</p>",
     "slots": 2,

@@ -2,7 +2,7 @@
   "_id": "TW5yKKAsks3DHU6g",
   "name": "Drowse Balm",
   "type": "gear",
-  "img": "icons/commodities/metal/ingot-rough-white.webp",
+  "img": "icons/commodities/stone/masonry-block-cube-tan.webp",
   "system": {
     "description": "<p><strong>Drowse Balm</strong> A wax bar. If boiled in water, the steam acts as a soporific agent.</p>",
     "slots": 1,

@@ -2,7 +2,7 @@
   "_id": "DFozNyWpcuFSc7hR",
   "name": "Wine, good",
   "type": "gear",
-  "img": "icons/consumables/drinks/wine-bottle-glass-white.webp",
+  "img": "icons/consumables/drinks/wine-amphora-clay-red.webp",
   "system": {
     "description": "<p>Wine, good (bottle)</p>",
     "slots": 1,

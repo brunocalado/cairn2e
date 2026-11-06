@@ -2,7 +2,7 @@
   "_id": "6n8b28bouLbvoC3B",
   "name": "Cart, big",
   "type": "gear",
-  "img": "icons/containers/misc/wheelbarrow-white.webp",
+  "img": "icons/environment/vehicles/minecart-coal.webp",
   "system": {
     "description": "<p>Cart, big (+6 slots)</p>",
     "slots": 1,

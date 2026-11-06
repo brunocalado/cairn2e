@@ -2,7 +2,7 @@
   "_id": "3TPfAnMBaNC4rHFH",
   "name": "Sailor",
   "type": "npc",
-  "img": "icons/environment/people/commoner.webp",
+  "img": "icons/environment/settlement/ship.webp",
   "system": {
     "abilities": {
       "STR": {

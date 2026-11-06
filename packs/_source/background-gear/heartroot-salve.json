@@ -2,7 +2,7 @@
   "_id": "knyvKDHoSvB3XB8G",
   "name": "Heartroot Salve",
   "type": "gear",
-  "img": "icons/consumables/potions/potion-jar-corked-orange.webp",
+  "img": "icons/tools/laboratory/mortar-liquid-pink.webp",
   "system": {
     "description": "<p>Heartroot Salve (restores 1d4 STR, 1 use)</p>",
     "slots": 1,

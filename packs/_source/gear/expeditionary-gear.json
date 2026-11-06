@@ -2,7 +2,7 @@
   "_id": "5yJLuqVex4HpsIhJ",
   "name": "Expeditionary Gear",
   "type": "gear",
-  "img": "icons/tools/fasteners/nail-steel.webp",
+  "img": "icons/containers/bags/pack-canvas-white-brown.webp",
   "system": {
     "description": "<p>Expeditionary Gear (Climbing Spikes, Pulley, etc.)</p>",
     "slots": 1,

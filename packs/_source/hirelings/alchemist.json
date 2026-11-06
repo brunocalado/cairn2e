@@ -148,7 +148,7 @@
     {
       "name": "Acid",
       "type": "gear",
-      "img": "icons/consumables/potions/vial-cork-green.webp",
+      "img": "icons/consumables/potions/bottle-conical-fumes-green.webp",
       "system": {
         "description": "<p>Acid</p>",
         "slots": 1,

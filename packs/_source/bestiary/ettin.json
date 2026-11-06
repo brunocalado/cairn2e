@@ -2,7 +2,7 @@
   "_id": "Q0ItCwyuKWmbKpkh",
   "name": "Ettin",
   "type": "npc",
-  "img": "icons/creatures/magical/humanoid-giant-forest-blue.webp",
+  "img": "icons/creatures/unholy/demon-fanged-horned-yellow.webp",
   "system": {
     "abilities": {
       "STR": {

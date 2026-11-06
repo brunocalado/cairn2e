@@ -2,7 +2,7 @@
   "_id": "IPbov0cLCcRyGD9G",
   "name": "Eye Patch",
   "type": "gear",
-  "img": "icons/svg/eye.svg",
+  "img": "icons/commodities/leather/leather-patch-grey.webp",
   "system": {
     "description": "<p>Eye Patch (<em>petty</em>)</p>",
     "slots": 0,

@@ -2,7 +2,7 @@
   "_id": "riO6dGPX20svCtL0",
   "name": "Repellent",
   "type": "gear",
-  "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
+  "img": "icons/consumables/plants/dried-herb-bundle-brown.webp",
   "system": {
     "description": "<p>Repellent (Wolfsbane, Mugwort, etc.)</p>",
     "slots": 1,

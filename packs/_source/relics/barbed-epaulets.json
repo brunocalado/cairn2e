@@ -2,7 +2,7 @@
   "_id": "64LzsdCvNGgW5cQZ",
   "name": "Barbed Epaulets",
   "type": "gear",
-  "img": "icons/weapons/clubs/club-barbed-skull.webp",
+  "img": "icons/equipment/shoulder/pauldron-spiked-black.webp",
   "system": {
     "description": "<p>Spiked shoulder pads that poison anyone that touches them (STR save or lose consciousness).</p>",
     "slots": 1,
