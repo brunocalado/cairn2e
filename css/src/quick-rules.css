@@ -114,6 +114,60 @@
             text-transform: uppercase;
         }
 
+        /* An item's head: picture and grip at the left edge, the name and its tags beside them,
+           a drawn rule under all of it. The picture and the grip are one drag source, so the
+           hand says so; the grip is soft ink until the pointer is on it. */
+        .cairn-quick-item-head {
+            align-items: center;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+
+            .cairn-quick-title {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .cairn-quick-drag {
+            align-items: center;
+            cursor: grab;
+            display: flex;
+            flex: 0 0 auto;
+            gap: 4px;
+
+            i {
+                color: var(--cairn-ink-soft);
+                font-size: 14px;
+            }
+
+            &:hover i {
+                color: var(--cairn-ink);
+            }
+        }
+
+        .cairn-quick-item-img {
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            height: 48px;
+            object-fit: cover;
+            width: 48px;
+        }
+
+        .cairn-quick-item-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+
+            .cairn-item-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+        }
+
         .cairn-quick-body {
             font-family: var(--cairn-serif);
             font-size: 13px;
@@ -169,6 +223,11 @@
                 padding: 4px 6px;
                 vertical-align: top;
             }
+        }
+
+        /* The label and the condition on one line, as the item sheet's Recharge tab reads. */
+        .cairn-quick-recharge > p {
+            display: inline;
         }
 
         .cairn-quick-mark {

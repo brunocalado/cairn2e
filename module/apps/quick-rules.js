@@ -301,14 +301,40 @@ export class CairnQuickRules extends CairnInkMixin(HandlebarsApplicationMixin(Ap
 
   async #entryContext() {
     const selected = this.#selected;
-    const enrich = (html) => foundry.applications.ux.TextEditor.implementation.enrichHTML(html);
-    if (selected?.kind === "item") return { item: true, body: await enrich(`@Embed[${selected.uuid}]`) };
+    if (selected?.kind === "item") return this.#itemContext(selected.uuid);
     const rule = selected?.kind === "rule" && this.#rules().find((r) => r.id === selected.id);
     if (!rule) return { pick: true };
     return {
       rule: true,
       title: rule.label,
       body: await this.#ruleBody(rule)
+    };
+  }
+
+  /**
+   * An item drawn for this window rather than as core's embed: the picture and a drag handle at
+   * the left, both one drag source, then the name and its tags, then the words. Core's embed
+   * centred the picture over dead space and closed with a citation chip that read as a button.
+   * What a hidden gear shows is its guise, as everywhere else (`CairnItem#shownName`).
+   * @param {string} uuid
+   */
+  async #itemContext(uuid) {
+    const item = await fromUuid(uuid);
+    if (!item) return { pick: true };
+    const enrich = (html) => foundry.applications.ux.TextEditor.implementation.enrichHTML(html ?? "", {
+      relativeTo: item, secrets: item.isOwner
+    });
+    const hidden = item.isHiddenFromMe;
+    return {
+      item: {
+        uuid,
+        name: item.shownName,
+        img: item.shownImg,
+        system: item.system,
+        hidden,
+        description: await enrich(item.shownDescription),
+        recharge: !hidden && item.system.magic === "relic" ? await enrich(item.system.recharge) : ""
+      }
     };
   }
 

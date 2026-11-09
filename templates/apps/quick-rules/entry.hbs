@@ -1,15 +1,33 @@
-{{!-- The entry on show. A rule: its title and its text, this system's own en.json HTML and
-      the enriched embed under it, so drawn raw. An item: its own card, through `@Embed`, which
-      reaches `GearData#toEmbed`. What matches the query is marked by the window afterwards,
-      text node by text node, never by rewriting this markup. --}}
+{{!-- The entry on show. A rule: its title and its text, this system's own en.json HTML and the
+      enriched embed under it, so drawn raw. An item: its picture and a drag handle at the left —
+      one drag source, onto a sheet — beside its name and tags, then its words. What matches the
+      query is marked by the window afterwards, text node by text node, never by rewriting this
+      markup. --}}
 <div class="cairn-quick-entry">
     {{#if pick}}
     <p class="cairn-empty">{{localize "CAIRN.QuickRules.Pick"}}</p>
     {{else}}
-    {{#if rule}}
-    <h3 class="cairn-quick-title" data-ink="hline" data-ink-seed="quick-title" data-ink-w="1.8" data-ink-at="bottom">{{title}}</h3>
-    {{/if}}
-    <div class="cairn-quick-body">{{{body}}}</div>
+    <div class="cairn-quick-body">
+        {{#if item}}
+        <div class="cairn-quick-item-head" data-ink="hline" data-ink-seed="quick-item-head" data-ink-w="1.8" data-ink-at="bottom">
+            <span class="cairn-quick-drag draggable" data-uuid="{{item.uuid}}" data-tooltip="{{localize 'CAIRN.QuickRules.Drag'}}"
+                  aria-label="{{localize 'CAIRN.QuickRules.Drag'}}">
+                <img class="cairn-quick-item-img" src="{{item.img}}" alt="" />
+                <i class="fa-solid fa-grip-vertical" inert></i>
+            </span>
+            <div class="cairn-quick-item-title">
+                <h3 class="cairn-quick-title">{{item.name}}</h3>
+                <span class="cairn-item-tags">{{> "systems/cairn2e/templates/parts/item-tags.hbs" system=item.system hidden=item.hidden}}</span>
+            </div>
+        </div>
+        {{{item.description}}}
+        {{!-- The recharge is enriched HTML, a <p> of its own, so it cannot sit inside one. --}}
+        {{#if item.recharge}}<div class="cairn-quick-recharge"><strong>{{localize 'CAIRN.Recharge'}}</strong> {{{item.recharge}}}</div>{{/if}}
+        {{else}}
+        <h3 class="cairn-quick-title" data-ink="hline" data-ink-seed="quick-title" data-ink-w="1.8" data-ink-at="bottom">{{title}}</h3>
+        {{{body}}}
+        {{/if}}
+    </div>
     <button type="button" class="cairn-quick-send" data-action="sendToChat">
         <i class="fa-solid fa-comment" inert></i> {{localize "CAIRN.QuickRules.SendToChat"}}
     </button>

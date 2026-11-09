@@ -1311,6 +1311,7 @@
   },
   "CAIRN.QuickRules": {
     "Button": "Quick Rules",
+    "Drag": "Drag onto a character sheet",
     "Entry": {
       "Actions": {
         "Title": "Actions",
