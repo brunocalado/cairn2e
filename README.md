@@ -85,6 +85,8 @@ dragged token read in metres too.
   rules, not Cairn 2e.
 - Any item, from a relic to a strange potion, can be unknown gear: it hides behind the name,
   picture and appearance the Warden gives it, and can't be used until it is revealed.
+- Any item has a **Warden** tab for notes only the Warden reads and writes: what it really is,
+  where it came from. On a sheet, a small note mark shows the Warden which items have them.
 - A faction sheet lists its agents in rank order and an agenda to tick off, with buttons for
   faction actions and opposed saves.
 - The party sheet shows everyone's HP, attributes and load side by side, plus the followers

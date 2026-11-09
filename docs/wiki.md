@@ -1048,6 +1048,21 @@ see in its place: the name they call it (**Known as**), its **Picture**, and its
   <img src="images/unknown-gear-player.webp" alt="The same relic on its holder's screen: Tarnished Bell, with the plain bell picture and the appearance the Warden wrote, and no Recharge tab" width="45%">
 </p>
 
+### Notes on an item
+
+Every item, from a sword to a Scar or a Background, has a **Warden** tab at the end of its sheet
+for your own notes: what it really is, where it came from, the hook it carries. Click the text to
+write, as in a description; links and dragged documents work the same way. On a compendium item,
+which can't be edited, the tab only reads.
+
+- Only the Warden sees the tab. A player's copy of the sheet has no Warden tab, and a player can't
+  change the notes, even on their own item.
+- An item with notes shows a small **note** mark on its row, on a character's, an NPC's or a
+  party's sheet, for the Warden alone. Hover it for a reminder of where the notes are.
+- A copy of the item carries its notes, such as one bought off a store's shelf you wrote on.
+- Like unknown gear, this is a table tool, not a lock: the notes reach the client of whoever holds
+  the item, and a player who opens the console can read them.
+
 ### Encounters from tables
 
 When the Warden rolls an encounter table and a result names creatures ("1d4 Wolves"), the chat
