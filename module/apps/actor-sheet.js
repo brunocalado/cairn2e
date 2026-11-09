@@ -6,6 +6,7 @@
  */
 
 import { SYSTEM_ID } from "../constants.js";
+import { stripTags } from "../helpers.js";
 import { rollDamage, rollSave } from "../rolls.js";
 import { slotsForItem, layoutSlots, nestingRefusal, goneWhenSpent } from "../data/_derived.js";
 import { adjustGold, moveCoin, promptCoinAmount } from "../coin.js";
@@ -306,6 +307,9 @@ export class CairnActorSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsApp
       hidden: item.isHiddenFromMe,
       // The Warden's reminder that the holder does not know what this is.
       unknownToHolder: item.type === "gear" && !!item.system.unknown && game.user.isGM,
+      // The Warden's reminder that they wrote something on this (`system.wardenNotes`). Read as
+      // text: an editor that was emptied can leave `<p></p>` behind.
+      hasWardenNotes: game.user.isGM && !!stripTags(item.system.wardenNotes ?? ""),
       type: item.type,
       img: item.shownImg,
       system: item.system,

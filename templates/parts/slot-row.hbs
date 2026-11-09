@@ -63,6 +63,7 @@
             </span>
             {{> "systems/cairn2e/templates/parts/item-tags.hbs" system=row.item.system hidden=row.item.hidden}}
             {{#if row.item.unknownToHolder}}{{> "systems/cairn2e/templates/parts/unknown-tag.hbs"}}{{/if}}
+            {{#if row.item.hasWardenNotes}}{{> "systems/cairn2e/templates/parts/warden-notes-tag.hbs"}}{{/if}}
             {{!-- A container on the ten (a Cart you pull, a bag) carries its capacity chip here
                   too. Its contents are read on its own sheet's Contents tab: this row cannot
                   unfold without moving the numbered lines under it. Not on a container hidden

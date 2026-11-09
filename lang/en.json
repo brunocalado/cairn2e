@@ -1746,6 +1746,7 @@
   },
   "CAIRN.Uses": "Uses",
   "CAIRN.WardenNotes": {
+    "RowHint": "You wrote notes on this. They are on its Warden tab.",
     "Tab": "Warden"
   },
   "CAIRN.WardenUserName": "Warden",
