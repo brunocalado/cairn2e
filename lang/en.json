@@ -1745,6 +1745,9 @@
     "ToHolderHint": "Its holder sees only the name, picture and appearance you wrote for it."
   },
   "CAIRN.Uses": "Uses",
+  "CAIRN.WardenNotes": {
+    "Tab": "Warden"
+  },
   "CAIRN.WardenUserName": "Warden",
   "CAIRN.Watches": {
     "afternoon": "afternoon",

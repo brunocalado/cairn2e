@@ -5,6 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { wardenNotesField } from "./_fields.js";
+
 const fields = foundry.data.fields;
 
 /**
@@ -28,6 +30,7 @@ export class ScarData extends foundry.abstract.TypeDataModel {
       // table below based on the *amount of HP lost in the attack*".
       entry: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 12 }),
       description: new fields.HTMLField({ required: true, blank: true }),
+      wardenNotes: wardenNotesField(),
       outcome: new fields.SchemaField({
         attr: new fields.StringField({
           required: true,

@@ -1,0 +1,13 @@
+{{!-- The Warden's notes (`system.wardenNotes`). Only a GM's sheet draws this part
+      (`CairnItemSheet#tabIds`). An editor that opens from its text, as the description's does;
+      a sheet that cannot be edited (a locked compendium's) reads the enriched notes instead. --}}
+<section class="tab {{tabs.warden.cssClass}}" data-group="primary" data-tab="warden">
+    <div class="cairn-prose-box" data-ink="box" data-ink-seed="item-warden" data-ink-w="1.6">
+        {{#if editable}}
+        <prose-mirror name="system.wardenNotes" value="{{system.wardenNotes}}"
+            data-document-uuid="{{item.uuid}}" toggled>{{{wardenNotesHTML}}}</prose-mirror>
+        {{else}}
+        <div class="editor-content">{{{wardenNotesHTML}}}</div>
+        {{/if}}
+    </div>
+</section>

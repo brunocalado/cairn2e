@@ -5,6 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { wardenNotesField } from "./_fields.js";
+
 const fields = foundry.data.fields;
 
 /**
@@ -30,6 +32,7 @@ export class BackgroundData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       description: new fields.HTMLField({ required: true, blank: true }),
+      wardenNotes: wardenNotesField(),
       names: new fields.ArrayField(new fields.StringField({ blank: false })),
       // A dice formula, not a number: the SRD writes one, and the generator rolls it.
       startingGold: new fields.StringField({ required: true, blank: true, initial: "3d6" }),

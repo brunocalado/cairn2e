@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { grantsField } from "./_fields.js";
+import { grantsField, wardenNotesField } from "./_fields.js";
 
 const fields = foundry.data.fields;
 
@@ -32,6 +32,7 @@ export class GrowthData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       description: new fields.HTMLField({ required: true, blank: true }),
+      wardenNotes: wardenNotesField(),
       // What this growth gave, in words. The Growth chapter's examples are mostly this — a save no
       // longer asked, a food no longer needed, a Spellbook read under duress — and none of it is a
       // number `outcome` could hold. Plain text: one or two dictated sentences, not a document.

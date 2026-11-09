@@ -78,6 +78,18 @@ export function grantsField() {
 }
 
 /**
+ * The Warden's own notes on an item: what it really is, where it came from, the hook it carries.
+ * Only a GM's sheet draws them (`CairnItemSheet#tabIds`) and only a GM may write them
+ * (`documents/item.js#_preUpdate`). They are NOT secret from a determined holder: Foundry sends a
+ * document whole to whoever may see it, so the text is in a player's client. The same trade the
+ * Guise makes.
+ * @returns {foundry.data.fields.HTMLField}
+ */
+export function wardenNotesField() {
+  return new fields.HTMLField({ required: true, blank: true });
+}
+
+/**
  * The fields every carried Item shares.
  *
  * What a thing costs is ONE number. "Most items take up one slot unless otherwise indicated.
@@ -94,6 +106,7 @@ export function grantsField() {
 export function itemBaseFields() {
   return {
     description: new fields.HTMLField({ required: true, blank: true }),
+    wardenNotes: wardenNotesField(),
     slots: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 0 }),
     equipped: new fields.BooleanField({ initial: false }),
     cost: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),

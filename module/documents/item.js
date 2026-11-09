@@ -237,6 +237,11 @@ export class CairnItem extends Item {
    */
   async _preUpdate(changes, options, user) {
     if ((await super._preUpdate(changes, options, user)) === false) return false;
+    // The Warden's notes are the Warden's: a holder's client carries them (a document travels whole)
+    // but never writes them. Stripped, not refused: a write that copies a whole `system` back
+    // (a copy, an import) is legitimate and should land without the notes. Before the allow-list
+    // below, so a stripped change can still pass it.
+    if (!user.isGM && changes.system && "wardenNotes" in changes.system) delete changes.system.wardenNotes;
     // An unknown gear is cargo to its holder: they may move it — set it aside, take it back,
     // stow it — and nothing else. Every use would answer part of what the guise hides (its
     // charges, its die, its armour), so equipping, spending a charge and editing are refused for

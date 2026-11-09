@@ -174,7 +174,9 @@ export class CairnGearSheet extends CairnItemSheet {
       ...(sys.magic === "relic" && !this.item.isHiddenFromMe ? ["recharge"] : []),
       ...(sys.isContainer ? ["contents"] : []),
       // The Warden's own tab, while the holder does not know what this is: what they see instead.
-      ...(sys.unknown && game.user.isGM ? ["guise"] : [])
+      ...(sys.unknown && game.user.isGM ? ["guise"] : []),
+      // The Warden's notes, last as on every item (`CairnItemSheet#tabIds`).
+      ...(game.user.isGM ? ["warden"] : [])
     ];
   }
 

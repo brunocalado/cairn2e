@@ -91,8 +91,8 @@ export async function removeAt(item, path, index) {
 }
 
 /**
- * What every item sheet shares: the frame, the size, the tab rail, the description, the render
- * narrowing and the digit fields. It is the sheet of a coin, a Fatigue and a feature, which have
+ * What every item sheet shares: the frame, the size, the tab rail, the description, the Warden's
+ * notes, the render narrowing and the digit fields. It is the sheet of a coin, a Fatigue and a feature, which have
  * no behaviour of their own; a gear (`CairnGearSheet`), a Background (`CairnBackgroundSheet`), a
  * growth (`CairnGrowthSheet`) and a scar (`CairnScarSheet`) each extend it in a file of their own.
  * The Details tab's template is chosen per document type in `_configureRenderParts`, which also
@@ -113,12 +113,13 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     header: { template: `${SHARED}/item-header.hbs` },
     nav: { template: `${SHARED}/sheet-nav.hbs` },
     details: { template: `${TEMPLATES}/gear-details.hbs`, scrollable: [""] },
-    description: { template: `${TEMPLATES}/tab-description.hbs`, scrollable: [""] }
+    description: { template: `${TEMPLATES}/tab-description.hbs`, scrollable: [""] },
+    warden: { template: `${TEMPLATES}/tab-warden.hbs`, scrollable: [""] }
   };
 
   /** Item fields whose only display is inside an editor, and their parts (see
    *  `CairnSheetMixin.EDITOR_FIELDS`). */
-  static EDITOR_FIELDS = { "system.description": "description" };
+  static EDITOR_FIELDS = { "system.description": "description", "system.wardenNotes": "warden" };
 
   // The group must be declared so `changeTab` accepts it; `_getTabsConfig` narrows the list to the
   // item's own tabs at render time.
@@ -127,7 +128,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
       initial: "description",
       tabs: [
         { id: "details", label: "CAIRN.Details" },
-        { id: "description", label: "CAIRN.Description" }
+        { id: "description", label: "CAIRN.Description" },
+        { id: "warden", label: "CAIRN.WardenNotes.Tab" }
       ]
     }
   };
@@ -146,9 +148,10 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
   tabGroups = { primary: null };
 
   /** Tab ids this document actually shows, in rail order. A subclass whose tabs follow its
-   *  fields overrides it. */
+   *  fields overrides it. The Warden's notes come last on every subtype, and only on a GM's
+   *  sheet: a player's never builds the part at all. */
   get tabIds() {
-    return SUBTYPE_TABS[this.document.type] ?? ["description"];
+    return [...(SUBTYPE_TABS[this.document.type] ?? ["description"]), ...(game.user.isGM ? ["warden"] : [])];
   }
 
   /** @override — v14's documented hook for a dynamic tab set (`api/application.mjs:723`).
@@ -219,6 +222,8 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
     context.displayImg = item.shownImg;
     context.descriptionValue = item.shownDescription;
     context.descriptionHTML = await enrich(item.shownDescription, item);
+    // Enriched for a GM only, so a player's render never even builds the HTML.
+    if (game.user.isGM) context.wardenNotesHTML = await enrich(item.system.wardenNotes, item);
     return context;
   }
 

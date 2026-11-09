@@ -5,6 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { wardenNotesField } from "./_fields.js";
+
 const fields = foundry.data.fields;
 
 /**
@@ -20,6 +22,7 @@ export class FeatureData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       description: new fields.HTMLField({ required: true, blank: true }),
+      wardenNotes: wardenNotesField(),
       // A Critical Damage clause — the `**Critical Damage**: …` bullet under a bestiary
       // statblock. The words are drawn by the sheet; the flag only says which features get them.
       critical: new fields.BooleanField({ initial: false })

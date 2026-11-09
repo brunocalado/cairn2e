@@ -5,6 +5,8 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
+import { wardenNotesField } from "./_fields.js";
+
 const fields = foundry.data.fields;
 
 /**
@@ -15,8 +17,8 @@ const fields = foundry.data.fields;
  *
  * Rules (`srd-2e/players-guide/core-rules.md`): each Fatigue occupies exactly one slot, never
  * *petty*, never *bulky*, cannot be equipped. It lasts until the PC recuperates.
- * The shape is a description and nothing else; everything else is fixed by the rules and enforced
- * by the slot maths in the document.
+ * The shape is a description and the Warden's notes every item carries; everything else is fixed
+ * by the rules and enforced by the slot maths in the document.
  *
  * It has no `container` pointer: a Fatigue is always one of the ten slots, never in a mule or a
  * sack. "A Backpack that can hold up to six slots of items or Fatigue"
@@ -28,7 +30,8 @@ export class FatigueData extends foundry.abstract.TypeDataModel {
 
   static defineSchema() {
     return {
-      description: new fields.HTMLField({ required: true, blank: true })
+      description: new fields.HTMLField({ required: true, blank: true }),
+      wardenNotes: wardenNotesField()
     };
   }
 }

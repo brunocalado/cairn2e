@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { containerField } from "./_fields.js";
+import { containerField, wardenNotesField } from "./_fields.js";
 import { goldSlots } from "./_derived.js";
 
 const fields = foundry.data.fields;
@@ -35,6 +35,7 @@ export class CoinData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       description: new fields.HTMLField({ required: true, blank: true }),
+      wardenNotes: wardenNotesField(),
       // Gold pieces in this one sack. Its weight is READ off this number (`_derived.js#slotsForItem`),
       // never stored beside it: under 100 it is *petty*, and every hundred is a slot.
       value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
