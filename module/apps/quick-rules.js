@@ -203,7 +203,9 @@ function ranked(rows, query) {
  * is never out of step with the window.
  *
  * One window per client, opened from a character's Actions menu, the Warden's sidebar, or the
- * supplied macro.
+ * supplied macro. No keybinding: every Shift+letter a table would guess collides with core's
+ * movement (Shift+WASD rotates the selected token) or a module. No floating button on the canvas:
+ * the maintainer refused one.
  */
 export class CairnQuickRules extends CairnInkMixin(HandlebarsApplicationMixin(ApplicationV2)) {
   /** @override — the list and the entry scroll on their own, and their drawn rules with them. */
