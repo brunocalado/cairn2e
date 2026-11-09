@@ -29,6 +29,7 @@ import { CairnTreasure } from "./apps/treasure.js";
 import { renderTreasureButton, bindTreasureChatDrop } from "./treasure.js";
 import { renderHazardSaveButton } from "./apps/hazards.js";
 import { CairnRulesSummary } from "./apps/rules-summary.js";
+import { CairnQuickRules } from "./apps/quick-rules.js";
 import * as kettlewrightImport from "./kettlewright-import.js";
 import { CairnCharacterCreator } from "./apps/character-creator.js";
 import { registerSelectMenus } from "./select-menu.js";
@@ -145,6 +146,8 @@ Hooks.once("init", async function () {
     resetPlayerHotbars,
     // The rules summary window, for anyone — the supplied "Rules Summary" macro calls it.
     rulesSummary: () => CairnRulesSummary.open(),
+    // Quick Rules, for anyone — the supplied "Quick Rules" macro calls it.
+    quickRules: () => CairnQuickRules.open(),
     // The calendar window, for anyone — the supplied "Calendar" macro calls it.
     calendar: () => CairnCalendarApp.open(),
     // For a module's `init` (or a library module's `i18nInit`) and nowhere else: renames the

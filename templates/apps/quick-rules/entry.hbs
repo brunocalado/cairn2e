@@ -1,0 +1,17 @@
+{{!-- The entry on show. A rule: its title and its text, this system's own en.json HTML and
+      the enriched embed under it, so drawn raw. An item: its own card, through `@Embed`, which
+      reaches `GearData#toEmbed`. What matches the query is marked by the window afterwards,
+      text node by text node, never by rewriting this markup. --}}
+<div class="cairn-quick-entry">
+    {{#if pick}}
+    <p class="cairn-empty">{{localize "CAIRN.QuickRules.Pick"}}</p>
+    {{else}}
+    {{#if rule}}
+    <h3 class="cairn-quick-title" data-ink="hline" data-ink-seed="quick-title" data-ink-w="1.8" data-ink-at="bottom">{{title}}</h3>
+    {{/if}}
+    <div class="cairn-quick-body">{{{body}}}</div>
+    <button type="button" class="cairn-quick-send" data-action="sendToChat">
+        <i class="fa-solid fa-comment" inert></i> {{localize "CAIRN.QuickRules.SendToChat"}}
+    </button>
+    {{/if}}
+</div>

@@ -10,6 +10,7 @@ import { CairnInkMixin } from "./_ink-mixin.js";
 import { CairnWhisper } from "./whisper.js";
 import { CairnBarter } from "./barter.js";
 import { CairnRulesSummary } from "./rules-summary.js";
+import { CairnQuickRules } from "./quick-rules.js";
 import { CairnCalendarApp } from "./calendar.js";
 import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
@@ -63,6 +64,7 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
       takeDamage: CairnActionsMenu.#onTakeDamage,
       openBarter: CairnActionsMenu.#onOpenBarter,
       openRules: CairnActionsMenu.#onOpenRules,
+      openQuickRules: CairnActionsMenu.#onOpenQuickRules,
       openCalendar: CairnActionsMenu.#onOpenCalendar,
       openWhisper: CairnActionsMenu.#onOpenWhisper,
       openStores: CairnActionsMenu.#onOpenStores,
@@ -139,6 +141,11 @@ export class CairnActionsMenu extends CairnInkMixin(HandlebarsApplicationMixin(A
   /** The rules summary is one window per client, not one per menu, so it is not held here. */
   static async #onOpenRules() {
     await CairnRulesSummary.open();
+  }
+
+  /** One window per client, like the rules summary. */
+  static async #onOpenQuickRules() {
+    await CairnQuickRules.open();
   }
 
   /** One window per client, like the rules summary. */

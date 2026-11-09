@@ -17,6 +17,7 @@ import { CairnCalendar } from "../calendar.js";
 import { CairnStore } from "./store.js";
 import { CairnTreasure } from "./treasure.js";
 import { CairnRulesSummary } from "./rules-summary.js";
+import { CairnQuickRules } from "./quick-rules.js";
 import { CairnHazards } from "./hazards.js";
 import { importKettlewrightCharacter } from "../kettlewright-import.js";
 import { applyTypedDamage } from "../macros.js";
@@ -52,6 +53,7 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
       openJourney: CairnSidebarTab.#onOpenJourney,
       openStore: CairnSidebarTab.#onOpenStore,
       openRules: CairnSidebarTab.#onOpenRules,
+      openQuickRules: CairnSidebarTab.#onOpenQuickRules,
       openHazards: CairnSidebarTab.#onOpenHazards,
       applyDamage: CairnSidebarTab.#onApplyDamage,
       openCalendar: CairnSidebarTab.#onOpenCalendar
@@ -149,6 +151,11 @@ export class CairnSidebarTab extends HandlebarsApplicationMixin(AbstractSidebarT
   /** @this {CairnSidebarTab} */
   static #onOpenRules() {
     CairnRulesSummary.open();
+  }
+
+  /** @this {CairnSidebarTab} */
+  static #onOpenQuickRules() {
+    CairnQuickRules.open();
   }
 
   /** @this {CairnSidebarTab} */

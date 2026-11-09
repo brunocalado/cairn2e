@@ -1309,6 +1309,39 @@
     "RateSuffix": "gp/day",
     "Title": "Promote to Player Character"
   },
+  "CAIRN.QuickRules": {
+    "Button": "Quick Rules",
+    "Entry": {
+      "CriticalDamage": {
+        "Title": "Critical Damage",
+        "Text": "<ul><li>Damage that reduces a target's HP below zero is subtracted <em>from their STR</em> by the amount of damage remaining. The target must then immediately make a STR save to avoid taking <strong>Critical Damage</strong>, using their <em>new STR score</em>. On a success, the target is still in the fight (albeit with a lower STR score) and must continue to make critical damage saves when incurring damage.</li><li>Any PC that suffers Critical Damage cannot do anything but crawl weakly, grasping for life. If given aid (such as bandages), they will stabilize. If left untreated, they die within the hour. NPCs and monsters that fail a Critical Damage save are considered dead, per the <strong>Warden's</strong> discretion. Additionally, some enemies will have special abilities or effects that are triggered when their target fails a critical damage save.</li></ul>"
+      },
+      "Saves": {
+        "Title": "Saves",
+        "Text": "<ul><li>A save is a roll to avoid negative outcomes from risky choices. Characters roll a d20 and compare the results to the appropriate attribute. If they roll equal to or under that attribute, they succeed. Otherwise, they fail. A 1 is always a success, and a 20 is always a failure.</li><li>If two opponents are each trying to overcome the other, whoever is most at risk should save.</li><li>If two characters need to take an action together, whoever is most at risk should save (usually the character with the lowest relevant Attribute).</li></ul>"
+      },
+      "Scars": {
+        "Title": "Scars",
+        "Text": "<p>If damage to a PC would reduce their HP to exactly 0, look up the result on the table below based on the <em>amount of HP lost in the attack</em>. For example, if a PC went from 3 HP to 0 HP, they would look at entry #3 (Walloped).</p>"
+      }
+    },
+    "Group": {
+      "Character": "Character",
+      "Combat": "Combat",
+      "Core": "Core Rules",
+      "Dungeon": "Dungeon",
+      "Hazards": "Hazards",
+      "Magic": "Magic",
+      "Wilderness": "Wilderness"
+    },
+    "Homebrew": "Homebrew",
+    "More": "{count} more items match; type more to narrow them.",
+    "NoMatch": "Nothing matches.",
+    "Pick": "Pick a rule or an item from the list.",
+    "Search": "Search the rules and the items",
+    "SendToChat": "Send to chat",
+    "Title": "Quick Rules"
+  },
   "CAIRN.Quirk": "Quirk",
   "CAIRN.Reaction": "Reaction",
   "CAIRN.Reactions": {

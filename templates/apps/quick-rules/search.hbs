@@ -1,0 +1,7 @@
+{{!-- The search field, a part of its own: typing re-renders the list alone, so the field keeps
+      its focus and its caret. --}}
+<div class="cairn-quick-search">
+    <i class="fa-solid fa-magnifying-glass" inert></i>
+    <input type="search" name="query" value="{{query}}" autocomplete="off" spellcheck="false"
+           placeholder="{{localize 'CAIRN.QuickRules.Search'}}" aria-label="{{localize 'CAIRN.QuickRules.Search'}}" />
+</div>

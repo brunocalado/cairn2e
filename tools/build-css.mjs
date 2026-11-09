@@ -48,6 +48,7 @@ export const CSS_SOURCES = [
   "store.css",
   "actions.css",
   "rules-summary.css",
+  "quick-rules.css",
   "calendar.css",
   "name-generator.css",
   "treasure.css",

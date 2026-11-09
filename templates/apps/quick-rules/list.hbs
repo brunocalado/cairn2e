@@ -1,0 +1,44 @@
+{{!-- What the search found. With no query, the rules this user may see under their groups'
+      headings, and no items: 885 rows is not a list. With one, the rules that match, then the
+      items (Primitive 7 rows, capped, with a line saying how many more matched). An item row
+      carries `draggable` for the window's own DragDrop, and its glyph says which pack it is
+      from: a spellbook and its scroll share a name and a picture. The rule under a row is drawn
+      ink and only emitted when a row follows. --}}
+<div class="cairn-quick-list">
+    {{#if grouped}}
+    {{#each groups as |group|}}
+    <section class="cairn-quick-group">
+        <h3 class="cairn-edit-group" data-ink="hline" data-ink-seed="quick-group-{{@index}}" data-ink-w="1.8" data-ink-at="bottom">{{group.label}}</h3>
+        <ol class="cairn-plain-list">
+            {{#each group.rules as |rule|}}
+            <li class="cairn-slot cairn-quick-row{{#if rule.active}} active{{/if}}" data-action="showEntry" data-entry-id="{{rule.id}}" role="button"
+                {{#unless @last}}data-ink="hline" data-ink-seed="quick-{{rule.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+                <span class="cairn-item-title">{{rule.label}}</span>
+            </li>
+            {{/each}}
+        </ol>
+    </section>
+    {{/each}}
+    {{else}}
+    <ol class="cairn-plain-list">
+        {{#each rules as |rule|}}
+        <li class="cairn-slot cairn-quick-row{{#if rule.active}} active{{/if}}" data-action="showEntry" data-entry-id="{{rule.id}}" role="button"
+            {{#if rule.rule}}data-ink="hline" data-ink-seed="quick-{{rule.id}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/if}}>
+            <span class="cairn-quick-glyph"><i class="fa-solid fa-book-open" inert></i></span>
+            <span class="cairn-item-title">{{rule.label}}</span>
+        </li>
+        {{/each}}
+        {{#each items as |item|}}
+        <li class="cairn-slot cairn-quick-row draggable{{#if item.active}} active{{/if}}" data-action="showEntry" data-uuid="{{item.uuid}}" role="button"
+            {{#unless @last}}data-ink="hline" data-ink-seed="quick-item-{{@index}}" data-ink-w="0.9" data-ink-a="0.42" data-ink-at="bottom"{{/unless}}>
+            <span class="cairn-quick-glyph"><i class="fa-solid {{item.glyph}}" inert></i></span>
+            <img class="cairn-quick-img" src="{{item.img}}" alt="" />
+            <span class="cairn-item-title">{{item.name}}</span>
+            {{#if item.homebrew}}<span class="cairn-item-tag">{{localize "CAIRN.QuickRules.Homebrew"}}</span>{{/if}}
+        </li>
+        {{/each}}
+    </ol>
+    {{#if more}}<p class="cairn-quick-more">{{more}}</p>{{/if}}
+    {{#if empty}}<p class="cairn-empty">{{localize "CAIRN.QuickRules.NoMatch"}}</p>{{/if}}
+    {{/if}}
+</div>

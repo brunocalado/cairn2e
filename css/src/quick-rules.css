@@ -1,0 +1,149 @@
+/*!
+ * Cairn 2e for Foundry VTT — https://github.com/brunocalado/cairn2e
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+.cairn2e {
+    /**************************************************************************
+     * The quick rules window (module/apps/quick-rules.js) — a play rule or  *
+     * an item, found by typing, shown in the book's words or as its card.   *
+     *                                                                       *
+     * The search is a ruled field (Primitive 3) across the top; under it    *
+     * the list and the entry stand side by side, each scrolling on its own. *
+     * Rows are list rows (Primitive 7): soft ink, full ink on hover, bold   *
+     * when on show — weight, never a tint. A rule's text is set as the     *
+     * rules summary sets it, Lora over a drawn rule. What matches the query *
+     * is marked with weight and an underline: a highlighter's yellow would  *
+     * be the one hue on the page.                                           *
+     **************************************************************************/
+
+    &.cairn-quick-rules {
+        /* The three parts' roots sit directly in here: the search over both columns, the list
+           and the entry under it. `minmax(0, 1fr)` rows so the columns scroll instead of
+           growing the window. */
+        .window-content {
+            display: grid;
+            gap: 10px 20px;
+            grid-template-columns: minmax(220px, 2fr) minmax(0, 3fr);
+            grid-template-rows: auto minmax(0, 1fr);
+            padding: 10px 16px 14px;
+        }
+
+        .cairn-quick-search {
+            align-items: center;
+            display: flex;
+            gap: 8px;
+            grid-column: 1 / -1;
+
+            input {
+                flex: 1;
+                font-size: 14px;
+            }
+        }
+
+        /* Both axes are named: beside a scrolling axis a `visible` one is promoted to `auto`,
+           and a sub-pixel overhang then draws a sideways bar. */
+        .cairn-quick-list,
+        .cairn-quick-entry {
+            min-height: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 0 4px;
+        }
+
+        .cairn-quick-group + .cairn-quick-group {
+            margin-top: 10px;
+        }
+
+        .cairn-quick-row {
+            align-items: center;
+            cursor: var(--cursor-pointer);
+            gap: 6px;
+            padding: 0 2px;
+
+            .cairn-item-title {
+                color: var(--cairn-ink-soft);
+                flex: 1 1 auto;
+                font-family: var(--cairn-serif);
+                min-width: 0;
+            }
+
+            &:hover .cairn-item-title {
+                color: var(--cairn-ink);
+            }
+
+            &.active .cairn-item-title {
+                color: var(--cairn-ink);
+                font-weight: 700;
+            }
+        }
+
+        /* The source's glyph, a fixed column so every name starts at the same x. */
+        .cairn-quick-glyph {
+            flex: 0 0 16px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .cairn-quick-img {
+            border: var(--cairn-hairline) solid var(--cairn-ink);
+            border-radius: var(--cairn-radius);
+            flex: 0 0 auto;
+            height: 22px;
+            object-fit: cover;
+            width: 22px;
+        }
+
+        .cairn-quick-more {
+            color: var(--cairn-ink-soft);
+            font-family: var(--cairn-serif);
+            font-size: 12px;
+            font-style: italic;
+            margin: 8px 0 0;
+        }
+
+        .cairn-quick-title {
+            font-family: var(--cairn-serif);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: var(--cairn-label-track);
+            margin: 0 0 8px;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .cairn-quick-body {
+            font-family: var(--cairn-serif);
+            font-size: 13px;
+            line-height: 1.4;
+
+            p {
+                margin: 0 0 6px;
+            }
+
+            ul {
+                margin: 0 0 6px;
+                padding-left: 16px;
+            }
+
+            li {
+                margin: 0 0 4px;
+            }
+        }
+
+        .cairn-quick-mark {
+            background: none;
+            color: inherit;
+            font-weight: 700;
+            text-decoration: underline var(--cairn-hairline);
+            text-underline-offset: 2px;
+        }
+
+        .cairn-quick-send {
+            margin-top: 10px;
+            width: 100%;
+        }
+    }
+}
