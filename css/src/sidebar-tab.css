@@ -26,8 +26,12 @@
 
        A candle in the dark: the ground is the wordmark's own black, and the flame is the one
        thing on it, in ember at rest and brighter under the pointer or with the tab open. The
-       grey-lilac the button used to wear was a leftover of the skull glyph it used to carry. */
-    &[data-tab="cairn2e"] {
+       grey-lilac the button used to wear was a leftover of the skull glyph it used to carry.
+
+       `.ui-control` because the tab's own panel is `<section data-tab="cairn2e">` with the scope
+       class too: on `[data-tab]` alone the flame was drawn a second time, over the panel's first
+       heading. */
+    &.ui-control[data-tab="cairn2e"] {
         /* Opaque, unlike core's translucent rail buttons: the point of the colour is to be found
            at a glance, and 85% alpha washed the dark out to grey over a bright scene. */
         --control-bg-color: var(--cairn-rail-bg);

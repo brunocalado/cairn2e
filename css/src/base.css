@@ -87,8 +87,8 @@
     /* The same flame at the peak of its flicker, and lit on the rail while the game is paused. */
     --cairn-candle-lit: #f5be5a;
     /* The sidebar rail button's dark: the wordmark's own black, chosen against a bright scene by
-       eye (`&[data-tab="cairn2e"]` below says why it is opaque). Core's six control properties
-       read these; nothing else does. */
+       eye (`&.ui-control[data-tab="cairn2e"]` in `sidebar-tab.css` says why it is opaque). Core's
+       six control properties read these; nothing else does. */
     --cairn-rail-bg: #16130f;
     --cairn-rail-border: #3a3128;
     --cairn-rail-icon: #c07a2c;
