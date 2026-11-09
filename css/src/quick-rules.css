@@ -133,6 +133,44 @@
             }
         }
 
+        /* A rule's table (Scars, Reactions) is core's embed, which wears the interface theme's
+           dark header and row bands — on paper, a slab of the dark theme. Here it is ink on the
+           page: capitals over the structural rule, a faint hairline between rows, no fill. */
+        .cairn-quick-body table {
+            background: none;
+            border: none;
+            border-collapse: collapse;
+            color: var(--cairn-ink);
+            margin: 6px 0 0;
+
+            thead {
+                background: none;
+                border: none;
+                border-bottom: var(--cairn-rule) solid var(--cairn-ink);
+            }
+
+            th {
+                color: var(--cairn-ink);
+                font-size: 11px;
+                letter-spacing: var(--cairn-label-track);
+                text-shadow: none;
+                text-transform: uppercase;
+            }
+
+            tr {
+                background: none;
+            }
+
+            tbody tr + tr {
+                border-top: var(--cairn-hairline) solid var(--cairn-ink-faint);
+            }
+
+            td {
+                padding: 4px 6px;
+                vertical-align: top;
+            }
+        }
+
         .cairn-quick-mark {
             background: none;
             color: inherit;

@@ -5,7 +5,7 @@
  * it under the terms of the GNU General Public License version 3.
  */
 
-import { SYSTEM_ID, TABLES } from "../constants.js";
+import { SYSTEM_ID, TABLES, packUuid } from "../constants.js";
 import { CairnInkMixin } from "./_ink-mixin.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -22,12 +22,87 @@ const GROUPS = ["core", "character", "combat", "magic", "dungeon", "wilderness",
  * `gm` hides the entry from players: hiding, not secrecy — the text is in the client either way.
  */
 export const ENTRIES = [
+  { id: "attributes", group: "core",
+    title: "CAIRN.QuickRules.Entry.Attributes.Title", text: ["CAIRN.QuickRules.Entry.Attributes.Text"] },
   { id: "saves", group: "core",
     title: "CAIRN.QuickRules.Entry.Saves.Title", text: ["CAIRN.QuickRules.Entry.Saves.Text"] },
+  { id: "healing", group: "core",
+    title: "CAIRN.QuickRules.Entry.Healing.Title", text: ["CAIRN.QuickRules.Entry.Healing.Text"] },
+  { id: "deprivation", group: "core",
+    title: "CAIRN.QuickRules.Entry.Deprivation.Title", text: ["CAIRN.QuickRules.Entry.Deprivation.Text"] },
+  { id: "armor", group: "core",
+    title: "CAIRN.QuickRules.Entry.Armor.Title", text: ["CAIRN.QuickRules.Entry.Armor.Text"] },
+  // The Reactions table; one caller, so its uuid is written here rather than in `TABLES`.
+  { id: "reactions", group: "core", embed: packUuid("tables", "RollTable", "3nbxjvFKsudTga50"),
+    title: "CAIRN.QuickRules.Entry.Reactions.Title", text: ["CAIRN.QuickRules.Entry.Reactions.Text"] },
+  { id: "morale", group: "core",
+    title: "CAIRN.QuickRules.Entry.Morale.Title", text: ["CAIRN.QuickRules.Entry.Morale.Text"] },
+  { id: "dieOfFate", group: "core",
+    title: "CAIRN.QuickRules.Entry.DieOfFate.Title", text: ["CAIRN.QuickRules.Entry.DieOfFate.Text"] },
+  { id: "hitProtection", group: "character",
+    title: "CAIRN.QuickRules.Entry.HitProtection.Title", text: ["CAIRN.QuickRules.Entry.HitProtection.Text"] },
+  { id: "inventory", group: "character",
+    title: "CAIRN.QuickRules.Entry.Inventory.Title", text: ["CAIRN.QuickRules.Entry.Inventory.Text"] },
+  { id: "rounds", group: "combat",
+    title: "CAIRN.QuickRules.Entry.Rounds.Title", text: ["CAIRN.QuickRules.Entry.Rounds.Text"] },
+  { id: "actions", group: "combat",
+    title: "CAIRN.QuickRules.Entry.Actions.Title", text: ["CAIRN.QuickRules.Entry.Actions.Text"] },
+  { id: "attacking", group: "combat",
+    title: "CAIRN.QuickRules.Entry.Attacking.Title", text: ["CAIRN.QuickRules.Entry.Attacking.Text"] },
+  { id: "attackModifiers", group: "combat",
+    title: "CAIRN.QuickRules.Entry.AttackModifiers.Title", text: ["CAIRN.QuickRules.Entry.AttackModifiers.Text"] },
   { id: "criticalDamage", group: "combat",
     title: "CAIRN.QuickRules.Entry.CriticalDamage.Title", text: ["CAIRN.QuickRules.Entry.CriticalDamage.Text"] },
+  { id: "attributeLoss", group: "combat",
+    title: "CAIRN.QuickRules.Entry.AttributeLoss.Title", text: ["CAIRN.QuickRules.Entry.AttributeLoss.Text"] },
+  { id: "characterDeath", group: "combat",
+    title: "CAIRN.QuickRules.Entry.CharacterDeath.Title", text: ["CAIRN.QuickRules.Entry.CharacterDeath.Text"] },
+  { id: "detachments", group: "combat",
+    title: "CAIRN.QuickRules.Entry.Detachments.Title", text: ["CAIRN.QuickRules.Entry.Detachments.Text"] },
+  { id: "retreat", group: "combat",
+    title: "CAIRN.QuickRules.Entry.Retreat.Title", text: ["CAIRN.QuickRules.Entry.Retreat.Text"] },
+  { id: "rangedAttacks", group: "combat",
+    title: "CAIRN.QuickRules.Entry.RangedAttacks.Title", text: ["CAIRN.QuickRules.Entry.RangedAttacks.Text"] },
   { id: "scars", group: "combat", embed: TABLES.SCARS,
     title: "CAIRN.QuickRules.Entry.Scars.Title", text: ["CAIRN.QuickRules.Entry.Scars.Text"] },
+  { id: "spellbooks", group: "magic",
+    title: "CAIRN.QuickRules.Entry.Spellbooks.Title", text: ["CAIRN.QuickRules.Entry.Spellbooks.Text"] },
+  { id: "castingSpells", group: "magic",
+    title: "CAIRN.QuickRules.Entry.CastingSpells.Title", text: ["CAIRN.QuickRules.Entry.CastingSpells.Text"] },
+  { id: "scrolls", group: "magic",
+    title: "CAIRN.QuickRules.Entry.Scrolls.Title", text: ["CAIRN.QuickRules.Entry.Scrolls.Text"] },
+  { id: "relics", group: "magic",
+    title: "CAIRN.QuickRules.Entry.Relics.Title", text: ["CAIRN.QuickRules.Entry.Relics.Text"] },
+  { id: "dungeonTurns", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.DungeonTurns.Title", text: ["CAIRN.QuickRules.Entry.DungeonTurns.Text"] },
+  { id: "dungeonActions", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.DungeonActions.Title", text: ["CAIRN.QuickRules.Entry.DungeonActions.Text"] },
+  { id: "searching", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.Searching.Title", text: ["CAIRN.QuickRules.Entry.Searching.Text"] },
+  { id: "resting", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.Resting.Title", text: ["CAIRN.QuickRules.Entry.Resting.Text"] },
+  { id: "panic", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.Panic.Title", text: ["CAIRN.QuickRules.Entry.Panic.Text"] },
+  { id: "light", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.Light.Title", text: ["CAIRN.QuickRules.Entry.Light.Text"] },
+  { id: "doors", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.Doors.Title", text: ["CAIRN.QuickRules.Entry.Doors.Text"] },
+  { id: "traps", group: "dungeon",
+    title: "CAIRN.QuickRules.Entry.Traps.Title", text: ["CAIRN.QuickRules.Entry.Traps.Text"] },
+  { id: "watches", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.Watches.Title", text: ["CAIRN.QuickRules.Entry.Watches.Text"] },
+  { id: "night", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.Night.Title", text: ["CAIRN.QuickRules.Entry.Night.Text"] },
+  { id: "sleep", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.Sleep.Title", text: ["CAIRN.QuickRules.Entry.Sleep.Text"] },
+  { id: "travel", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.Travel.Title", text: ["CAIRN.QuickRules.Entry.Travel.Text"] },
+  { id: "explore", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.Explore.Title", text: ["CAIRN.QuickRules.Entry.Explore.Text"] },
+  { id: "supply", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.Supply.Title", text: ["CAIRN.QuickRules.Entry.Supply.Text"] },
+  { id: "makeCamp", group: "wilderness",
+    title: "CAIRN.QuickRules.Entry.MakeCamp.Title", text: ["CAIRN.QuickRules.Entry.MakeCamp.Text"] },
   // The maintainer's own rulings (the Hazards window), reusing that window's strings. The
   // Warden's, as the window is.
   { id: "fall", group: "hazards", gm: true,
@@ -235,11 +310,15 @@ export class CairnQuickRules extends CairnInkMixin(HandlebarsApplicationMixin(Ap
     };
   }
 
-  /** A rule's text, then its embed. The text keys are this system's own HTML, so drawn raw. */
+  /**
+   * A rule's text, then its embed. The text keys are this system's own HTML, so drawn raw. The
+   * rule's text is the embed's caption: core would otherwise put a table's description under it,
+   * and the Reactions table's description is the lead sentence over again.
+   */
   async #ruleBody(rule) {
     const text = rule.text.map((key) => game.i18n.localize(key));
     if (rule.embed) {
-      text.push(await foundry.applications.ux.TextEditor.implementation.enrichHTML(`@Embed[${rule.embed}]`));
+      text.push(await foundry.applications.ux.TextEditor.implementation.enrichHTML(`@Embed[${rule.embed} caption=false]`));
     }
     return text.join("");
   }
