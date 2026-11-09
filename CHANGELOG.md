@@ -1,3 +1,10 @@
+# 0.2.6
+
+- [Added] **Notes for the Warden on any item.** Every item has a **Warden** tab where the Warden
+  writes what it really is, where it came from, the hook it carries. Players never see the tab
+  and can't change the notes.
+- [Added] On a sheet, a small note mark shows the Warden which items carry notes.
+
 # 0.2.5
 
 - [Changed] **Everything in the packs wears a picture of itself.** Monsters' weapons and attacks,
