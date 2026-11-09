@@ -13,7 +13,7 @@
  * Days are counted from year 0, which is itself a Reclamation year: a decade is one 294-day year
  * and then nine of 288.
  *
- * The watch is read off the same clock — "A day is divided into three watches, called _morning_,
+ * The watch is read off the same clock — "A day is divided into three watches: _morning_,
  * _afternoon_, and _night_", "three eight-hour segments per day" (`srd-2e/players-guide/
  * procedures.md` → Wilderness Exploration). World time is the one clock, because core keeps it
  * and every calendar module reads and writes it, so a calendar and the watch can never disagree.
