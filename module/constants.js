@@ -537,7 +537,7 @@ export const MACROS = {
   DEX: packUuid("macros", "Macro", "K1N14Q8WrUBJEqwN"),
   WIL: packUuid("macros", "Macro", "RRGbIskYd1RlZNNb"),
   DIE_OF_FATE: packUuid("macros", "Macro", "CvQ9vA7upRgv5VDk"),
-  RULES_SUMMARY: packUuid("macros", "Macro", "QV2vvMfPeGT0TswP"),
+  QUICK_RULES: packUuid("macros", "Macro", "9anlomDHbkIv2oqa"),
   CALENDAR: packUuid("macros", "Macro", "4rcV3wC3O1GkZnlK"),
   STORES: packUuid("macros", "Macro", "rDRUPjJFybkRTs6J"),
   TAKE_DAMAGE: packUuid("macros", "Macro", "DU9MnuYAl4p3E9cn"),

@@ -39,7 +39,7 @@ Create a world on the **Cairn 2e** system and launch it. The first time it opens
 - the system's macros in a **Cairn 2e** folder of the Macros directory (see [§17](#17-macros)).
 
 Each player finds their macros on the hotbar the first time they log in: the three saves, the
-Die of Fate, the Rules Summary, the Calendar, the Stores and Take Damage, then Rest and Restore
+Die of Fate, Quick Rules, the Calendar, the Stores and Take Damage, then Rest and Restore
 Abilities at the far end. Only empty slots are filled, and only once.
 
 If players should build their own characters, open **Configure Settings → Permissions** and allow
@@ -1290,8 +1290,8 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **Die of Fate** | rolls a d6 | ✓ |
 | **Rest** | restores lost HP | ✓ |
 | **Restore Abilities** | restores STR, DEX and WIL to their maximum | ✓ |
-| **Rules Summary** | opens the one-page rules summary | ✓ |
-| **Quick Rules** | opens Quick Rules (players open it from the sheet's **Actions** menu) | |
+| **Quick Rules** | looks up a rule or an item (see [§3](#3-the-character-sheet)) | ✓ |
+| **Rules Summary** | opens the one-page rules summary (players open it from the sheet's **Actions** menu) | |
 | **Calendar** | opens the Vald calendar | ✓ |
 | **Stores** | opens the stores the Warden has open to visits (every store, for the Warden) | ✓ |
 | **Take Damage** | applies damage you type in (see [§6](#damage-typed-in)) | ✓ |

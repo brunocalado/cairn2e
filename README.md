@@ -147,7 +147,7 @@ in kilograms.
 ### It looks like the books
 The ink-on-paper design uses Lora, the typeface the Cairn books are set in. A new world opens on a
 welcome scene with its own music, and every player finds the saves, the Die of Fate, Rest, Restore
-Abilities, the Rules Summary, the Calendar, the Stores and Take Damage already on their hotbar. With
+Abilities, Quick Rules, the Calendar, the Stores and Take Damage already on their hotbar. With
 [Dice So Nice](https://foundryvtt.com/packages/dice-so-nice) installed, you roll a custom 3D Cairn
 d20.
 
