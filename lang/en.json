@@ -1451,7 +1451,7 @@
     },
     "Inventory": {
       "Title": "Inventory",
-      "Slots": "Ten slots, but only four or five items carried comfortably without bags, mounts or carts. A Backpack holds up to six slots of items or Fatigue.",
+      "Slots": "Ten slots, but only four items carried comfortably without bags, mounts or carts. A Backpack holds up to six slots of items or Fatigue.",
       "Size": "Most items take one slot. <em>Petty</em> items take none, <em>bulky</em> items take two. Coin under 100gp is petty.",
       "Full": "A full inventory — all ten slots — reduces a PC to 0 HP. No one can fill more than ten."
     },
