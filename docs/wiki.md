@@ -56,7 +56,7 @@ depend on who you are:
 | **Generators** | the Warden only | Generate NPC · Generate Hireling · Generate Name · Generate Monster · Generate Faction · Treasure |
 | **Combat** | the Warden only | Apply damage |
 | **Campaign** | the Warden only | Calendar · Journey · Store |
-| **Reference** | the Warden only | Rules Summary · Hazards |
+| **Reference** | the Warden only | Rules Summary · Quick Rules · Hazards |
 
 A player who cannot create actors does not see the tab at all, and doesn't need it.
 
@@ -318,9 +318,9 @@ the **Other Backgrounds** list.
 - **Die of Fate** rolls a d6 in the open.
 - **Actions**, in the sheet's title bar, opens a small menu for the character's owner:
   **Take damage** (damage rolled at the table, typed in; see [§6](#damage-typed-in)), **Barter**
-  (see below), the **Rules Summary**, the **Calendar**, **Whisper** (a private word, spoken as
-  the character, to the players you pick), **Stores** while the Warden lets players visit one
-  (see [§11](#stores)), and any macros the Warden has added (see [§1](#settings)). With Grid
+  (see below), the **Rules Summary**, **Quick Rules** (see below), the **Calendar**, **Whisper**
+  (a private word, spoken as the character, to the players you pick), **Stores** while the
+  Warden lets players visit one (see [§11](#stores)), and any macros the Warden has added (see [§1](#settings)). With Grid
   Crafter active, the **Forge** is there too (see [§12](#12-crafting-with-grid-crafter)).
 
 The **Rules Summary** puts the player's rules on one landscape page. The Warden can open it on
@@ -329,6 +329,25 @@ everyone's screen with **Show to everyone**, on its title bar.
 <p align="center">
   <img src="images/rules-summary.webp" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="100%">
 </p>
+
+**Quick Rules** finds a rule or an item as you type. With the search field empty, it lists the
+rules a table reaches for in play, in the Player's Guide's own words, under **Core Rules**,
+**Character**, **Combat**, **Magic**, **Dungeon** and **Wilderness**. The Warden also sees
+**Hazards**, the house rulings of the Hazards window (see [§13](#hazards)). Type two letters or
+more and the list shows the rules that match, then the items of the Gear, Weapons, Armor,
+Spellbooks, Scrolls and Relics compendiums and the Homebrew ones, which carry a **Homebrew** tag.
+An icon on each item row says which compendium it comes from, so a spellbook and its scroll are
+told apart. Past fifty items, a line says how many more match.
+
+- Click a row to read it on the right, with what you typed marked in the text. The Reactions and
+  Scars rules show their tables beneath.
+- **Send to chat** posts the rule, or the item's card, for the table.
+- Drag an item onto a character sheet, by its row in the list or by the picture and grip at the
+  left of the item you are reading.
+- An unknown gear shows its guise here too (see [§13](#unknown-gear)).
+
+Players open it from the **Actions** menu, the Warden from the **Reference** section of the Cairn
+2e tab.
 
 ### Attributes and HP
 
@@ -1015,6 +1034,7 @@ A Warden's macro can open it with `cairn2e.treasure();`.
 book has no rule for: **Fall**, **Drowning** (smoke and gas too), **Crushing** and **Exposure**
 (fire, acid, great heat, bitter cold). They are house rulings, not Cairn 2e. They follow the book's
 own rule that harm outside combat comes off an attribute, usually STR, and so they never touch HP.
+The four are also in **Quick Rules**, under **Hazards**, for the Warden only.
 
 Pick the hazard at the top. Every hazard climbs the same ladder, so a step is the same die on all
 four: **Light** d4, **Serious** d6, **Severe** d8, **Extreme** d10, and **Fatal**. Each step has an
@@ -1271,6 +1291,7 @@ everyone, so a macro can also be dragged from it onto the hotbar.
 | **Rest** | restores lost HP | ✓ |
 | **Restore Abilities** | restores STR, DEX and WIL to their maximum | ✓ |
 | **Rules Summary** | opens the one-page rules summary | ✓ |
+| **Quick Rules** | opens Quick Rules (players open it from the sheet's **Actions** menu) | |
 | **Calendar** | opens the Vald calendar | ✓ |
 | **Stores** | opens the stores the Warden has open to visits (every store, for the Warden) | ✓ |
 | **Take Damage** | applies damage you type in (see [§6](#damage-typed-in)) | ✓ |
@@ -1298,6 +1319,7 @@ cairn2e.morale();           // a Morale save for the selected NPC
 cairn2e.reaction();         // 2d6 on the Reaction table
 cairn2e.dieOfFate();        // 1d6
 cairn2e.rulesSummary();     // open the rules summary
+cairn2e.quickRules();       // open Quick Rules
 cairn2e.calendar();         // open the calendar
 cairn2e.stores();           // open the stores
 cairn2e.takeDamage();       // type in damage taken

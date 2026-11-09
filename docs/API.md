@@ -129,6 +129,7 @@ Each of these is a complete Script macro.
 |---|---|
 | `cairn2e.calendar()` | The calendar. |
 | `cairn2e.rulesSummary()` | The one-page rules summary. |
+| `cairn2e.quickRules()` | Quick Rules: a play rule or a compendium item, found by typing. |
 | `cairn2e.stores()` | The stores open to visits; every store, for the Warden. |
 | `cairn2e.treasure()` | Warden only. The Treasure window. |
 | `cairn2e.restoreDefaultStores()` | Warden only. After a warning, puts every store back to the system's ten. |

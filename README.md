@@ -33,11 +33,18 @@ sheet shows it.
 
 The **Actions** menu lets a player type in the damage the table rolled with **Take damage**,
 **Whisper** in character, **Barter** gear and coin with another player's character, open the
-one-page **Rules Summary** or the **Calendar**, walk into the **Stores** the Warden has opened, and
-run the macros the Warden has put there. With Grid Crafter active, the **Forge** is there too. Drag a sack or a
+one-page **Rules Summary** or the **Calendar**, look something up in **Quick Rules**, walk into
+the **Stores** the Warden has opened, and run the macros the Warden has put there. With Grid
+Crafter active, the **Forge** is there too. Drag a sack or a
 cart onto another sheet you own, such as your mule's, and everything inside goes with it. A
 companion that comes with a background, like the Raven Familiar, is dragged from its item straight
 onto the map.
+
+**Quick Rules** finds a rule or an item as you type. The rules are the ones a table reaches for in
+play, from saves and Armor to Panic and Make Camp, in the Player's Guide's own words. The items are
+everything in the equipment, magic and Homebrew compendiums. Either goes to chat with one click,
+and an item drags straight onto a sheet. The Warden also opens it from the Cairn 2e tab, where it
+holds the Hazards rulings too.
 
 <p align="center">
   <img src="docs/images/rules-summary.webp" alt="The Rules Summary: the player's rules on one landscape page, in three columns from Attributes to the Die of Fate" width="90%">
@@ -131,7 +138,7 @@ All the game content you need is already inside:
 | **Tables** | traits, Bonds, Omens, Scars, Reactions, the Die of Fate, Wilderness and Dungeon Events, the Weather in Vald, the naming tables, and the Warden's generator tables |
 | **Rules** | the Player's Guide (principles, character creation, core rules, procedures and the Marketplace), linked to the items, tables and backgrounds it names |
 | **Calendar** | the Vald calendar's 24 holidays, festivals, solstices and equinoxes |
-| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Calendar, Stores, Take Damage, and the Warden's Reset Player Hotbars and Restore Default Stores |
+| **Macros** | Die of Fate, Rest, Restore Abilities, Roll Morale, Roll Reaction, STR / DEX / WIL saves, Rules Summary, Quick Rules, Calendar, Stores, Take Damage, and the Warden's Reset Player Hotbars and Restore Default Stores |
 | **Homebrew** | *More Gear* (clothing, food, drink, tools, transport, valuables and strange items), *Materials* for crafting, *More Spellbooks*, *More Scrolls*, 17 *Potions* and female and male *Person Names*: extra content, not from the Cairn books, kept in its own folder |
 
 Distances read in metres with the feet the map measures beside them, `12 m (40 ft)`, and weights
