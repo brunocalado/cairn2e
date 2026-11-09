@@ -266,5 +266,21 @@ export class CairnItemSheet extends CairnInkMixin(CairnSheetMixin(HandlebarsAppl
         field.value = String(Math.max(min, Number(field.value) || 0));
       });
     }
+
+    // Right-click on the portrait opens it in core's `ImagePopout`, as the actor sheet's does —
+    // core's `ItemSheetV2` has no artwork control of its own. Built from the picture and name
+    // EVERYONE may see (`tableImg`, `tableName`), not the ones this user sees: a Warden's
+    // `shownImg` is the real art of an unknown gear, and the popout's Show Players would hand
+    // it to the table. The title is forced on because a receiver without permission on the item —
+    // any other player, for gear on a character — would otherwise get the picture untitled, and
+    // `tableName` is safe for all of them. A left-click keeps core's `editImage`.
+    for (const img of htmlElement.querySelectorAll("img.portrait")) {
+      img.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        const { tableImg: src, tableName: title, uuid } = this.item;
+        new foundry.applications.apps.ImagePopout({ src, uuid, showTitle: true, window: { title } })
+          .render({ force: true });
+      });
+    }
   }
 }
