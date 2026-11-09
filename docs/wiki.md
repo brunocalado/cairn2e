@@ -308,7 +308,9 @@ the **Other Backgrounds** list.
 
 ### The top of the sheet
 
-- **Portrait and name.**
+- **Portrait and name.** Right-click the portrait to see it full size, on an NPC's or a party's
+  sheet too. The Warden's copy of that window has **Show Players** in the **⋮** menu on its title
+  bar, to put the picture on everyone's screen.
 - **Background and age.** Drag a Background from the compendium onto its spot to set it.
 - **Panicked** and **Deprived**: click one to turn it on or off.
 - **Rest** restores lost HP. **Restore Abilities** restores STR, DEX and WIL to their maximum. Both
@@ -428,6 +430,13 @@ its owners. The Warden has to be connected for a player's drag to work.
 ---
 
 ## 4. Items, magic and containers
+
+### An item's picture
+
+Right-click the picture at the top of an item's sheet to see it full size. The Warden can then put
+it on everyone's screen with **Show Players**, in the **⋮** menu on that window's title bar: a
+handout for a map, a letter or a relic the party just found. Players can look, but only the Warden
+can show.
 
 ### Magic
 
@@ -1040,6 +1049,8 @@ see in its place: the name they call it (**Known as**), its **Picture**, and its
   save if the fiction wants one.
 - You see the real name everywhere, with an **Unknown to them** tag. The eye again reveals it and
   posts a card saying what it turned out to be.
+- Right-clicking its picture shows the guise, to you as well, so **Show Players** hands the table
+  only the name and picture they already know. Reveal it first to show the real one.
 - The real data never leaves the client, so a player who opens the console can read it. This is a
   table tool, not a lock.
 
