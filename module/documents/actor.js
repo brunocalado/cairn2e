@@ -80,7 +80,7 @@ export class CairnActor extends Actor {
 
   /**
    * @override — the prototype token's defaults (`module/token-defaults.js`), and every
-   * character's fists: a bodily `gear` rolling d4, "Unarmed attacks always do d4 damage"
+   * character's fists: a bodily `gear` rolling d4, "Unarmed attacks always do 1d4 damage"
    * (`core-rules.md`). The fists are a real item rather than a line the sheet draws, so they can
    * be renamed, given another die or deleted like anything else a character has.
    *

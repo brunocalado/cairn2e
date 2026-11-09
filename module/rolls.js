@@ -499,7 +499,7 @@ export function damageFormula(...dice) {
 
 /**
  * The die one weapon rolls under the attack modifiers. Impaired forces d4 "regardless of the
- * attacks damage die" and Enhanced d12 "instead of their normal die" (core-rules.md → Attack
+ * attack's damage die" and Enhanced d12 "instead of their normal die" (core-rules.md → Attack
  * Modifiers), so with two weapons each is substituted on its own: `{1d4,1d4}kh`.
  * @param {Item} weapon
  * @param {{impaired?: boolean, enhanced?: boolean}} [mods]
