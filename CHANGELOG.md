@@ -1,3 +1,20 @@
+# 0.2.7
+
+- [Added] **Quick Rules: a rule or an item, one search away.** Type a word and it finds the play
+  rules a table reaches for, in the Player's Guide's own words, and every item in the equipment,
+  magic and Homebrew compendiums. Either goes to chat with one click, and an item drags onto a
+  sheet. Players open it from the sheet's **Actions** menu, the Warden from the **Reference**
+  section of the Cairn 2e tab, where it also holds the Hazards rulings.
+- [Added] Right-click an item's picture to see it full size, and the Warden can show it to every
+  player as a handout. An unknown gear shows only its guise.
+- [Changed] A new player finds **Quick Rules** on the hotbar in place of the Rules Summary, which
+  stays in the sheet's **Actions** menu. In a world already running, the Warden's **Reset Player
+  Hotbars** macro brings it in.
+- [Fixed] The Player's Guide's combat, magic and exploration pages read as the printed book: a
+  character carries four items comfortably, not four or five, and a lantern is relit with oil.
+- [Fixed] The Warden's tab shows its candle flame on the rail button only, not again over its
+  first heading.
+
 # 0.2.6
 
 - [Added] **Notes for the Warden on any item.** Every item has a **Warden** tab where the Warden
