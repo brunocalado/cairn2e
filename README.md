@@ -4,7 +4,7 @@
 adventurers exploring a dangerous, mysterious forest. Characters are fragile, gear matters, and
 every choice counts. This system brings Cairn Second Edition to [Foundry VTT](https://foundryvtt.com)
 and keeps the bookkeeping for you: the inventory slots, Fatigue, damage spilling into STR, the
-watches of a journey and the turns of a dungeon.
+watches of a journey and the cycles of a dungeon.
 
 <p align="center">
   <img src="docs/images/character-sheet.webp" alt="A character sheet: three attributes, HP, armor, the gold, and ten inventory slots with fatigue markers" width="49%">
@@ -75,10 +75,10 @@ dragged token read in metres too.
 - The **Journey** window, shared with the players, runs the wilderness watch by watch. It rolls
   weather, getting lost and wilderness events, spends Rations and Fatigue on everyone's sheet, and
   an encounter can drop its creatures straight onto the map.
-- In a dungeon, the combat tracker runs exploration turn by turn. It shows what each character is
+- In a dungeon, the combat tracker runs exploration cycle by cycle. It shows what each character is
   doing, offers the rulebook's actions with their rules, tracks how far each token moved (with an
   undo), and says when the rules call for a Dungeon Event. If a fight breaks out, the dungeon picks
-  up again on the same turn once it ends.
+  up again on the same cycle once it ends.
 - Ten small **Stores** come ready, from the Weaponsmith to the Tavern. Stock your own by dragging
   items onto its shelves, open it on every player's screen, or let players walk in from the
   Actions menu of their own sheet. Players fill a cart, and the store checks both their gold *and* their free slots before

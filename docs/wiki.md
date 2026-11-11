@@ -622,7 +622,7 @@ it includes any difference in height. It works for everyone, in a fight or out o
 measured again on the next hover, not while either token moves. Dragging a token or measuring with
 the ruler reads in metres with the feet beside them too.
 
-The same tracker also runs a dungeon, turn by turn: see [§15](#15-exploring-a-dungeon).
+The same tracker also runs a dungeon, cycle by cycle: see [§15](#15-exploring-a-dungeon).
 
 ---
 
@@ -1191,7 +1191,7 @@ button.
 
 ## 15. Exploring a dungeon
 
-A dungeon runs in the **combat tracker**, one turn at a time. Any dangerous place counts: a ruin, a
+A dungeon runs in the **combat tracker**, one cycle at a time. Any dangerous place counts: a ruin, a
 manor house, a cave. The tracker keeps count and reminds you of the rules. It never stops anyone
 from doing anything, and the Warden decides what happens.
 
@@ -1200,11 +1200,12 @@ from doing anything, and the Warden decides what happens.
 Press the **dungeon** button beside the **+** at the top of the combat tracker. Add the party's
 tokens the usual way (right-click a token and **Toggle Combat State**), then press **Begin
 Exploring**. Until then the tracker shows only the party and the ongoing work. The tracker counts
-**turns**, and **Next Turn** starts a new one. The glyph beside it ends the exploration.
+**cycles**, and **Next Cycle** starts a new one. The glyph beside it ends the exploration.
 
-### Each turn
+### Each cycle
 
-The Warden describes the scene, then everyone declares at once.
+The Warden describes the scene, then everyone declares at once. Each character's share of
+the cycle is their turn: a move and one action, all happening at the same time.
 
 - A player's own row shows a **Declare** button. It opens a window with a line for what the
   character does (up to 50 characters) and, as ideas, the actions from the rules (search, listen,
@@ -1218,8 +1219,8 @@ The Warden describes the scene, then everyone declares at once.
   Warden.
 - The upright switch at the end of the row is the Warden's **narrated** mark: everyone acts at the
   same time, and the Warden marks each action once it has been told at the table.
-- A new turn clears the declarations, the marks and the distances.
-- The help mark at the top of the tracker sums up the turn; clicking it opens the Rules Summary.
+- A new cycle clears the declarations, the marks and the distances.
+- The help mark at the top of the tracker sums up the cycle; clicking it opens the Rules Summary.
 
 ### Ongoing work
 
@@ -1232,7 +1233,7 @@ in the turns by clicking the marks; nothing is counted on its own. The **×** re
 
 Only the Warden sees this part. The four buttons are the rules' reasons to roll on the **Dungeon
 Events** table: **Lingering**, **Haste**, **Entering** and **Noise** (hover one for the full rule).
-They are only reminders that the Warden lights by hand, and a new turn puts them out.
+They are only reminders that the Warden lights by hand, and a new cycle puts them out.
 
 **Roll a Dungeon Event** rolls the table, and the card goes to the Warden only. The square beside
 it picks the result instead of rolling it.
@@ -1252,7 +1253,7 @@ instead, use the **Rest** button on each sheet.
 ### When a fight breaks out
 
 **A Fight Breaks Out** starts an ordinary fight with the party already in it. Add the monsters and
-fight as usual. When the fight ends, the tracker goes back to the dungeon on the same turn, with
+fight as usual. When the fight ends, the tracker goes back to the dungeon on the same cycle, with
 everything as it was.
 
 ---

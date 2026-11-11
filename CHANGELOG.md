@@ -1,3 +1,10 @@
+# Unreleased
+
+- [Fixed] Dungeon exploration counts **cycles**, as the Player's Guide does: the tracker reads
+  *Cycle 1*, **Next Cycle** starts a new one, and Lingering is more than one cycle in a room. A
+  character's turn is still their move and one action within the cycle, and ongoing work is still
+  counted in turns of effort.
+
 # 0.2.7
 
 - [Added] **Quick Rules: a rule or an item, one search away.** Type a word and it finds the play
