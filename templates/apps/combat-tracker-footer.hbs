@@ -6,12 +6,12 @@
       a player marks their own row acted instead, on the row itself.
 
       Everything that remains is the Warden's, which is also who it is shown to. A dungeon
-      exploration counts turns instead of rounds, and its framed button ends the turn. --}}
+      exploration counts cycles instead of rounds, and its framed button ends the cycle. --}}
 <nav class="combat-controls" data-tooltip-direction="UP">
     {{#if hasCombat}}
         {{#if user.isGM}}
             {{#if (and isDungeon combat.round)}}
-                {{!-- A dungeon exploration is turn after turn, so ending the turn is the framed
+                {{!-- A dungeon exploration is cycle after cycle, so ending the cycle is the framed
                       button, and ending the exploration shrinks to the glyph beside it (core asks
                       before it deletes). --}}
                 <button type="button" class="inline-control combat-control icon fa-solid fa-backward-step"

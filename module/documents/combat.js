@@ -30,7 +30,7 @@ import { DUNGEON_TRIGGERS } from "../data/combat-dungeon.js";
 export class CairnCombat extends Combat {
   /**
    * A dungeon exploration rather than a fight (`module/data/combat-dungeon.js`). Its rounds are
-   * dungeon turns and its combatants are the party; everything that belongs to a fight — the
+   * dungeon cycles and its combatants are the party; everything that belongs to a fight — the
    * Morale baseline and reminders, the first-round DEX save — stays off.
    */
   get isDungeon() {
@@ -183,7 +183,7 @@ export class CairnCombat extends Combat {
   /**
    * @inheritDoc
    *
-   * A dungeon's lit triggers belong to the turn they were lit in, so any change of turn — forward,
+   * A dungeon's lit triggers belong to the cycle they were lit in, so any change of cycle — forward,
    * back, or the exploration beginning — puts them out in the same write that moves the round.
    */
   _preUpdate(changes, options, user) {
@@ -198,7 +198,7 @@ export class CairnCombat extends Combat {
    *
    * A fight that broke out of a dungeon exploration hands the table back to it when it ends —
    * End Combat or a delete from the context menu alike — so the exploration is the active combat
-   * again, on the turn it had reached, and its tokens record their movement against it once more.
+   * again, on the cycle it had reached, and its tokens record their movement against it once more.
    * One client acts: the one that deleted the fight. Core has just activated whatever the
    * tracker was left viewing; this runs after it.
    */
@@ -237,7 +237,7 @@ export class CairnCombat extends Combat {
   }
 
   /**
-   * Hand every combatant its action back, and clear the first-round DEX save and a dungeon turn's
+   * Hand every combatant its action back, and clear the first-round DEX save and a dungeon cycle's
    * declaration and chosen task with it, in one write.
    *
    * The flags are set rather than deleted: one `updateEmbeddedDocuments` call means one database

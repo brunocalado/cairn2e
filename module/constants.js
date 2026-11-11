@@ -366,7 +366,7 @@ export const COMBAT_FLAGS = {
 export const FIGHT_FLAGS = {
   /**
    * The id of the dungeon exploration a fight broke out of. When the fight is deleted, that
-   * exploration becomes the active combat again, on the turn it had reached
+   * exploration becomes the active combat again, on the cycle it had reached
    * (`CairnCombat#_onDelete`).
    */
   ORIGIN: "origin"

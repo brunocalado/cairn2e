@@ -200,7 +200,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   /**
    * @inheritDoc
    *
-   * The header and footer say "turn" instead of "round" for a dungeon exploration, and each
+   * The header and footer say "cycle" instead of "round" for a dungeon exploration, and each
    * encounter's number in the header says which kind it is. The header never cycles: every
    * encounter stays a tab (see the template).
    */
@@ -365,7 +365,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
     const combat = this.viewed;
     const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = combat?.combatants.get(combatantId);
-    // No turn before Begin Exploring, so nothing to declare for.
+    // No cycle before Begin Exploring, so nothing to declare for.
     if (!combat?.isDungeon || !combat.started || !combatant?.isOwner) return;
     const keys = combatant.actor?.system.panicked ? [...DUNGEON_ACTIONS, "panic"] : DUNGEON_ACTIONS;
     const chosen = combatant.getFlag(SYSTEM_ID, COMBAT_FLAGS.TASK) ?? "";
@@ -588,7 +588,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
    * record their movement against it. The Warden adds the monsters. The exploration is left as it
    * is, and comes back when the fight is deleted (`CairnCombat#_onDelete`), which is why this is
    * a second combat and not the exploration converted in place: a fight starts at round one, and
-   * the exploration would lose its turn count, its declarations and its pending event.
+   * the exploration would lose its cycle count, its declarations and its pending event.
    */
   static async #onStartFight() {
     const dungeon = this.viewed;
@@ -634,7 +634,7 @@ export class CairnCombatTracker extends foundry.applications.sidebar.tabs.Combat
   }
 
   /**
-   * Take a token back to where it stood when the dungeon turn or the fight's round began. With no
+   * Take a token back to where it stood when the dungeon cycle or the fight's round began. With no
    * movement id, core's `revertRecordedMovement` displaces the token to the first recorded waypoint
    * and empties the history, and the history only ever holds this turn's moves —
    * `CairnCombat#nextRound` clears it.
