@@ -1,4 +1,4 @@
-# Unreleased
+# 0.2.8
 
 - [Fixed] Dungeon exploration counts **cycles**, as the Player's Guide does: the tracker reads
   *Cycle 1*, **Next Cycle** starts a new one, and Lingering is more than one cycle in a room. A
